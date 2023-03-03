@@ -25,12 +25,12 @@ alias paliases="print -rl -- ${(k)aliases}"
 # custom vars
 alias b="cd .."
 alias h="cd ~"
+alias ncf="cd ~/.config/nvim && nvim"
 alias xo="xdg-open"
 alias py="python3.11"
 alias python="python3.11"
 alias cat="bat"
 alias cls="clear"
-alias ls="exa"
 alias wd="pwd"
 alias t="touch"
 alias m="mkdir"
@@ -55,6 +55,7 @@ alias pmrsb="xo http://127.0.0.1:8000/ && python manage.py runserver"
 alias cpwd="cpwd"
 alias e="exists"
 alias r="custom_rename"
+alias c="count_files"
 
 # autoload -Uz promptinit && promptinit && prompt pure
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
@@ -72,6 +73,7 @@ source ~/.zsh_plugins.zsh
 
 source ~/zsh_custom_scripts/zsh-auto-enable-py-env.sh
 source ~/zsh_custom_scripts/exists.sh
+source ~/zsh_custom_scripts/count_files.sh
 source ~/zsh_custom_scripts/cpwd.sh
 source ~/zsh_custom_scripts/custom_rename.sh
 
