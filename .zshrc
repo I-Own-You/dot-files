@@ -18,7 +18,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 
 # Created by newuser for 5.8.1
-alias nzsh="nvim ~/.zshrc"
+alias nzsh="cd ~ && nvim .zshrc"
 alias szsh=". ~/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 
