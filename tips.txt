@@ -1,2 +1,11 @@
 https://github.com/dandavison/delta/releases # for delta, for git diff
-python3 -m pip install --user --upgrade pynvim #
+python3 -m pip install --user --upgrade pynvim # for pynvim
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                      │SET UP SSH KEY FOR GIT│                                                      │
+│‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
+│system supports ed25519 ? ssh-keygen -t ed25519 -C "your_email@example.com" : ssh-keygen -t rsa -b 4096 -C "your_email@example.com" │
+│eval "$(ssh-agent -s)" # start ssh agent                                                                                            │
+│ssh-add ~/.ssh/id_ed25519 # add key to ssh                                                                                          │
+│cat ~/.ssh/id_ed25519.pub # go and add key to github or gitlab or whatever                                                          │
+│ssh -T git@gitlab.com # add github to allowed                                                                                       │  
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
