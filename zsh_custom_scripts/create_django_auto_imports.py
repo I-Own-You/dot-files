@@ -38,7 +38,7 @@ for root, dirs, files in os.walk(dict_custom_paths[sys.argv[1]][0]):
                 # Split the contents into lines
                 lines = contents.split("\n")
                 for line in lines:
-                    if line.startswith(" ") or line.startswith("#"):
+                    if line.startswith(" ") or line.startswith("#") or line.startswith("@"):
                         continue
                     # Find global definitions of functions, classes, and variables
                     if (
