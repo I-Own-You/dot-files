@@ -30,7 +30,7 @@ alias ncf="cd ~/.config/nvim && nvim"
 alias xo="xdg-open"
 alias py="python3.11"
 alias python="python3.11"
-alias cat="bat"
+alias cat="batcat"
 alias cls="clear"
 alias wd="pwd"
 alias t="touch"
@@ -80,6 +80,7 @@ alias gbib='git bisect bad'
 alias gbig='git bisect good'
 alias gbir='git bisect reset'
 alias gbis='git bisect start'
+# affads
 # gc	git commit -v
 # gc!	git commit -v --amend
 # gcn!	git commit -v --no-edit --amend
