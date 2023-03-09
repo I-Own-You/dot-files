@@ -1,1 +1,2 @@
-https://github.com/dandavison/delta/releases - for delta, for git diff
+https://github.com/dandavison/delta/releases # for delta, for git diff
+python3 -m pip install --user --upgrade pynvim #

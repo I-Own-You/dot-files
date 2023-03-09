@@ -24,6 +24,11 @@ alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 
 # custom vars
+alias u="sudo apt update"
+alias ug="sudo apt upgrade"
+alias uu="sudo apt update && sudo apt upgrade"
+alias remove="sudo apt remove"
+alias rc="sudo apt autoremove && sudo apt autoclean"
 alias b="cd .."
 alias h="cd ~"
 alias ncf="cd ~/.config/nvim && nvim"
