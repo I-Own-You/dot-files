@@ -21,7 +21,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 alias nzsh="cd ~ && nvim .zshrc"
 alias szsh=". ~/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
-
+test
 # custom vars
 alias b="cd .."
 alias h="cd ~"
