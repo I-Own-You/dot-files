@@ -318,8 +318,8 @@ function zvm_after_init() {
 # antidote update -- update itself and also plugins
 
 
-# eval "`pip completion --zsh`"
-# compctl -K _pip_completion pip3
+eval "`pip completion --zsh`"
+compctl -K _pip_completion pip3
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
