@@ -19,8 +19,8 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 
 # Created by newuser for 5.8.1
-alias nzsh="cd ~ && nvim .zshrc"
-alias szsh=". ~/.zshrc"
+alias nzsh="cd ~/dot-files && nvim .zshrc"
+alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 
 # custom vars
@@ -38,7 +38,7 @@ alias m="mkdir"
 alias fgit="forgit::"
 
 # cusotm pip
-alias pir="pip install -r requirements.txt"
+alias pir="pip install -r"
 alias pi="pip install"
 alias pui="pip uninstall"
 alias pp="pip freeze | sort"
@@ -98,7 +98,7 @@ alias gbis='git bisect start'
 # gpristine	git reset --hard && git clean -dffx
 # gcm	git checkout $(git_main_branch)
 # gcd	git checkout develop
-alias gc='git commit -m'
+alias gcm='git commit -m'
 # gco	git checkout
 # gcount	git shortlog -sn
 # gcp	git cherry-pick
