@@ -1,3 +1,6 @@
 exa
 bat
 xclip
+dconf-editor
+synaptic
+gpick
