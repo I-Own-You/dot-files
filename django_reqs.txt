@@ -1,0 +1,4 @@
+djangorestframework-stubs
+django-stubs
+django-stubs-ext
+django-types
