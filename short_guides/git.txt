@@ -112,3 +112,9 @@ TIPS:
     4.2 git rebase origin/main                                           ( 2 example )
     4.3 git merge origin/main                                            ( 3 example )
     4.4 git pull                                                         ( 4 example )
+
+    5. if you pushed to a remote branch that you doesnt have right to push and got reject, then you must do this:
+    5.1 create a branch on the commit you made changes
+    5.2 push again but from new branch
+    5.3 checkout to previous branch that was rejected
+    5.4 git reset from previous branch to avoid fufutre confilcts
