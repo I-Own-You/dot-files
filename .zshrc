@@ -271,6 +271,8 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=info:#4271ae,prompt:#8959a8,pointer:#d17013
 --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
 # export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias : "
+export VISUAL=nvim
+export EDITOR=nvim
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
@@ -299,7 +301,6 @@ function zvm_after_init() {
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-jimhester-SLASH-per-directory-history/per-directory-history.zsh &&
       bindkey "^ " autosuggest-accept      
 }
-
 
 # rm -rf `antidote home` or rm -rf $(antidote home)
 # rm ${ZDOTDIR:-~}/.zsh_plugins.zsh or rm ~/.zsh_plugins.zsh - remove completely
