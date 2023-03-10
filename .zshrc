@@ -74,18 +74,19 @@ alias gav='git add --verbose'
 alias gap='git apply'
 # alias gapt='git apply --3way'
 alias gb='git branch'
+alias gbf='git branch -f'
 # gba	git branch -a
 # gbd	git branch -d
 # gbD	git branch -D
 # gbl	git blame -b -w
-alias gbnm='git branch --no-merged'
-alias gbr='git branch --remote'
+# alias gbnm='git branch --no-merged'
+# alias gbr='git branch --remote'
 alias gbi= 'git bisect'
 alias gbib='git bisect bad'
 alias gbig='git bisect good'
 alias gbir='git bisect reset'
 alias gbis='git bisect start'
-# affads
+alias gc='git commit'
 # gc	git commit -v
 # gc!	git commit -v --amend
 # gcn!	git commit -v --no-edit --amend
@@ -97,7 +98,8 @@ alias gbis='git bisect start'
 # gcas	git commit -a -s
 # gcasm	git commit -a -s -m
 # gcsm	git commit -s -m
-# gcb	git checkout -b
+alias gchb='git checkout -b'
+alias gch='git checkout'
 # gcf	git config --list
 # gcl	git clone --recurse-submodules
 # gclean	git clean -id
@@ -165,7 +167,6 @@ alias gcm='git commit -m'
 # gmum	git merge upstream/$(git_main_branch)
 # gma	git merge --abort
 alias gp='git push'
-alias gpo='git push -u origin'
 # gpd	git push --dry-run
 # gpf	git push --force-with-lease
 # gpf!	git push --force
@@ -183,8 +184,10 @@ alias gpo='git push -u origin'
 # grbo	git rebase --onto
 # grbs	git rebase --skip
 # grev	git revert
-# grh	git reset
-# grhh	git reset --hard
+alias grt='git reset'
+alias grts='git reset --soft'
+alias grth='git reset --hard'
+alias grtm='git reset --merge'
 # groh	git reset origin/$(git_current_branch) --hard
 # grm	git rm
 # grmc	git rm --cached
