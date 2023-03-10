@@ -146,6 +146,7 @@ alias gcm='git commit -m'
 # gk	gitk --all --branches
 # gke	gitk --all $(git log -g --pretty=%h)
 # gl	git pull
+alias gl="git log"
 # glg	git log --stat
 # glgp	git log --stat -p
 # glgg	git log --graph
