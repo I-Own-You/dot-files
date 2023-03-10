@@ -22,11 +22,7 @@ git checkout HEAD~^2^2 -                   (
 
 git branch -f [branch] [branch or commit] - ( force a branch to assign to a branch/commit )
 
-git reset [branch or commmit] -            (
-                                            reverse changes by moving up a commit,
-                                            the last commit is erased from history like it never has been made,
-                                            works best  for local machine but not for remote because doesnt corrupt history
-                                           )
+git reset [branch or commmit] -            ( reverse changes by moving n commits )
 git revert [branch or commit] -            ( reverse changes by copying the current commit under it without the changes made to it )
 
 git cherry-pick [<commit1> <commit2> <commitN>] - ( copies commits bellow the current postioin where you are, any commit from any position )
