@@ -77,7 +77,7 @@ alias gb='git branch'
 alias gbf='git branch -f'
 # gba	git branch -a
 # gbd	git branch -d
-# gbD	git branch -D
+alias gbD='git branch -D'
 # gbl	git blame -b -w
 # alias gbnm='git branch --no-merged'
 # alias gbr='git branch --remote'
