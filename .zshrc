@@ -109,7 +109,7 @@ alias gch='git checkout'
 alias gcm='git commit -m'
 # gco	git checkout
 # gcount	git shortlog -sn
-# gcp	git cherry-pick
+alias gcp='git cherry-pick'
 # gcpa	git cherry-pick --abort
 # gcpc	git cherry-pick --continue
 # gcs	git commit -S
