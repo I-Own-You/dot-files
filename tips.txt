@@ -1,3 +1,7 @@
+1. install kitty https://sw.kovidgoyal.net/kitty/binary/
+
+1. change bash to zsh
+
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
 2. ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
 3. ln -s ~/dot-files/zsh_custom_scripts ~/.zsh_custom_scripts
