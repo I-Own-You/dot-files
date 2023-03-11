@@ -1,12 +1,15 @@
-ln -s ~/dot-files/.zshrc ~/.zshrc
-ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
-ln -s ~/dot-files/zsh_custom_scripts ~/.zsh_custom_scripts
+1. ln -s ~/dot-files/.zshrc ~/.zshrc
+2. ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
+3. ln -s ~/dot-files/zsh_custom_scripts ~/.zsh_custom_scripts
 
-1. also look into .gitconfig for delta settings
+1. also look into .gitconfig for delta settings https://github.com/dandavison/delta/releases # for delta, for git diff
 2. install pip reqs
 3. install linux_packs
+                  2
+1. ipython profile create
+1. set 'vi' mode for ipython in setting search for ".editing_mode"
+2. create a jk_switch.py in startup folder of .ipyton folder from https://ipython.readthedocs.io/en/stable/config/details.html#keyboard-shortcuts
 
-https://github.com/dandavison/delta/releases # for delta, for git diff
 python3 -m pip install --user --upgrade pynvim # for pynvim
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
