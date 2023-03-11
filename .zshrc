@@ -75,6 +75,7 @@ alias gav='git add --verbose'
 alias gap='git apply'
 # alias gapt='git apply --3way'
 alias gb='git branch'
+alias gbl='git branch --list'
 alias gbf='git branch -f'
 # gba	git branch -a
 # gbd	git branch -d
@@ -278,6 +279,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 # export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias : "
 export VISUAL=nvim
 export EDITOR=nvim
+export FORGIT_NO_ALIASES=1
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
