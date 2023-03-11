@@ -338,11 +338,3 @@ compctl -K _pip_completion pip3
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-
-# into zsh-vi-mode plugin
-# ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-# ZVM_VI_VISUAL_ESCAPE_BINDKEY=jk
-# ZVM_VI_HIGHLIGHT_BACKGROUND=#383737 # Hex value
-# ZVM_VI_EDITOR=nvim
