@@ -113,8 +113,8 @@ alias gcm='git commit -m'
 # gcpa	git cherry-pick --abort
 # gcpc	git cherry-pick --continue
 # gcs	git commit -S
-# gd	git diff
-# gdca	git diff --cached
+alias gd='git diff'
+alias gdc='git diff --cached'
 # gdcw	git diff --cached --word-diff
 # gdct	git describe --tags $(git rev-list --tags --max-count=1)
 # gds	git diff --staged
