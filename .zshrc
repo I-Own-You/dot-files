@@ -196,7 +196,7 @@ alias grtm='git reset --merge'
 # grmc	git rm --cached
 # grmv	git remote rename
 # grrm	git remote remove
-# grs	git restore
+alias gr='git restore'
 # grset	git remote set-url
 # grss	git restore --source
 # grst	git restore --staged
