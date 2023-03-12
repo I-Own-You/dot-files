@@ -138,9 +138,10 @@ alias gdc='git diff --cached'
 # ggpull	git pull origin "$(git_current_branch)"
 # ggpur	ggu
 # ggpush	git push origin "$(git_current_branch)"
-# ggsup	git branch --set-upstream-to=origin/$(git_current_branch)
+alias gbuu='git branch --unset-upstream'
 # ggu	git pull --rebase origin $(current_branch)
-# gpsup	git push --set-upstream origin $(git_current_branch)
+alias gpsu='git push --set-upstream origin $(git branch --show-current)'
+alias gpdr='git push origin --delete'
 # ghh	git help
 # gignore	git update-index --assume-unchanged
 # gignored	git ls-files -v | grep "^[[:lower:]]"
