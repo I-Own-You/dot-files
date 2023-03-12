@@ -198,9 +198,9 @@ alias grtm='git reset --merge'
 # grmv	git remote rename
 # grrm	git remote remove
 alias gr='git restore'
+alias grs='git restore --staged'
 # grset	git remote set-url
 # grss	git restore --source
-# grst	git restore --staged
 # grt	cd "$(git rev-parse --show-toplevel || echo .)"
 # gru	git reset --
 # grup	git remote update
