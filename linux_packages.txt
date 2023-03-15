@@ -5,3 +5,4 @@ xclip
 dconf-editor
 synaptic
 gpick
+vokoscreen-ng
