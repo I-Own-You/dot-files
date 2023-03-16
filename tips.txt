@@ -14,6 +14,8 @@
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
 3. create a jk_switch.py in startup folder of .ipyton folder from https://ipython.readthedocs.io/en/stable/config/details.html#keyboard-shortcuts
 
+1. look into treesj plugin neovim and turn off but not leader<j>
+
 1. into zsh-vi-mode plugin
 2. ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 3. ZVM_VI_VISUAL_ESCAPE_BINDKEY=jk
