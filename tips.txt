@@ -28,6 +28,12 @@
     hl(0, "DiagnosticSignError", { fg = "#ff004d", bg = "" })
     hl(0, "LspDiagnosticsSignError", { fg = "#ff004d", bg = "#171717" })
     hl(0, "LspDiagnosticsUnderlineError", { fg = "#ff004d", bg = "#171717" })
+    hl(0, "NvimTreeCursorLine", { fg = 'NONE', bg = c.black2 })
+    hl(0, "NvimTreeNormal", { fg = 'NONE', bg = c.black })
+    hl(0, "NvimTreeFolderIcon", { fg = '#F71964', bg = 'NONE' })
+    hl(0, "NvimTreeFolderName", { fg = '#F71964', bg = 'NONE' })
+    hl(0, "NvimTreeOpenedFolderName", { fg = '#F71964', bg = 'NONE', bold=true, italic=true, })
+    hl(0, "NvimTreeGitDirty", { fg = c.vibrant_green, bg = 'NONE' })
 
 
 python3 -m pip install --user --upgrade pynvim # for pynvim
