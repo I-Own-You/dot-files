@@ -20,6 +20,16 @@
 4. ZVM_VI_HIGHLIGHT_BACKGROUND=#383737 # Hex value
 5. ZVM_VI_EDITOR=nvim
 
+1. for gatekeeper theme.lua
+    hl(0, "Visual", { fg = 'NONE', bg ='#292828' })
+    hl(0, "TabLine", { fg = c.light_grey, bg = "#181818"})
+    hl(0, "DiagnosticError", { fg = "#ff004d", bg = "#101010" })
+    hl(0, "LspDiagnosticsDefaultError", { fg = "#ff004d", bg = "#171717" })
+    hl(0, "DiagnosticSignError", { fg = "#ff004d", bg = "" })
+    hl(0, "LspDiagnosticsSignError", { fg = "#ff004d", bg = "#171717" })
+    hl(0, "LspDiagnosticsUnderlineError", { fg = "#ff004d", bg = "#171717" })
+
+
 python3 -m pip install --user --upgrade pynvim # for pynvim
 cat packages.txt | xargs sudo apt-get install -y # install linux packages
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
