@@ -24,6 +24,8 @@
 
 1. for gatekeeper theme.lua
     hl(0, "Visual", { fg = 'NONE', bg ='#292828' })
+    hl(0, "Number", { fg = c.blue, bg = 'NONE' })
+    hl(0, "Boolean", { fg = c.base0E, bg = 'NONE' })
     hl(0, "TabLine", { fg = c.light_grey, bg = "#181818"})
     hl(0, "DiagnosticError", { fg = "#ff004d", bg = "#101010" })
     hl(0, "LspDiagnosticsDefaultError", { fg = "#ff004d", bg = "#171717" })
@@ -36,6 +38,12 @@
     hl(0, "NvimTreeFolderName", { fg = '#686069', bg = 'NONE' })
     hl(0, "NvimTreeOpenedFolderName", { fg = '#686069', bg = 'NONE', bold=true, italic=true, })
     hl(0, "NvimTreeGitDirty", { fg = c.vibrant_green, bg = 'NONE' })
+    hl(0, "@function", { fg = '#f2b83a', bg = 'NONE' })
+    hl(0, "@function.builtin", { fg = '#f2b83a', bg = 'NONE' })
+    hl(0, "@method", { fg = '#f2b83a', bg = 'NONE' })
+    hl(0, "@variable.builtin", { fg = '#754263', bg = 'NONE' })
+    hl(0, "@field", { fg = '#ffffff', bg = 'NONE' })
+    hl(0, "@parameter", { fg = '#42e0f5', bg = 'NONE' })
 
 
 python3 -m pip install --user --upgrade pynvim # for pynvim
