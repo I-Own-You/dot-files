@@ -1,61 +1,325 @@
-# Arrays
-                Access: O(1)
-                Insertion (at the end): O(1) amortized, O(n) worst case
-                Insertion (at the beginning): O(n)
-                Deletion: O(n)
-                Search: O(n)
+# Array
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-73"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-74"></span><p class="line862">Copy </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Append </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-76"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Delete Item </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-78"></span><p class="line862">Search item </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+</tbody></table>
+
 # Linked Lists
-                Access: O(n)
-                Insertion (at the beginning): O(1)
-                Insertion (at the end): O(n)
-                Deletion: O(1) if node to be deleted is given, O(n) otherwise
-                Search: O(n)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-73"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Append Left </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Append </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Delete Item </p></td>
+  <td><p class="line862">O(1) if you have the node</p></td>
+  <td><p class="line862">O(n) if you must search the node</p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-78"></span><p class="line862">Search item </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+</tbody></table>
+
+# Double Linked Lists
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-73"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Append Left </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Append </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+    <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862">O(n) </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Delete Item </p></td>
+  <td><p class="line862">O(1) from start/end</p></td>
+  <td><p class="line862">O(n) if you must search the node</p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-78"></span><p class="line862">Search item </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-78"></span><p class="line862">Reversal </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+</tbody></table>
+
 # Stacks
-                Push: O(1)
-                Pop: O(1)
-                Peek: O(1)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Push </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Pop </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Peek </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
 # Queues
-                Enqueue: O(1)
-                Dequeue: O(1)
-                Peek: O(1)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Enqueue </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Dequeue </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Peek </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
 # Trees
-                Access (for a balanced binary search tree): O(log n)
-                Insertion (for a balanced binary search tree): O(log n)
-                Deletion (for a balanced binary search tree): O(log n)
-                Search (for a balanced binary search tree): O(log n)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(log n) if balanced </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(log n) if balanced </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(log n) if balanced </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Search </p></td>
+  <td><p class="line862">O(log n) if balanced </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
 # Graphs
-                Access: O(1) for an adjacency matrix, O(deg(v)) for an adjacency list
-                Insertion: O(1) for an adjacency matrix, O(deg(v)) for an adjacency list
-                Deletion: O(1) for an adjacency matrix, O(deg(v)) for an adjacency list
-                Search: O(V + E)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(1) adjacency matrix, O(deg(v)) adjacency list </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(1) adjacency matrix, O(deg(v)) adjacency list </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(1) adjacency matrix, O(deg(v)) adjacency list </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Search </p></td>
+  <td><p class="line862">O(V + E) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
 # Hash Tables
-                Access: O(1)
-                Insertion: O(1) expected, O(n) worst case
-                Deletion: O(1) expected, O(n) worst case
-                Search: O(1) expected, O(n) worst case
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"></p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862">O(n) </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862">O(n) </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Search </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862">O(n) </p></td>
+</tr>
+</tbody></table>
+
 # Heaps
-                Insertion: O(log n)
-                Deletion: O(log n)
-                Peek: O(1)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(log n) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(log n) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Peek </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
 # Sets
-                Insertion: O(log n) for a balanced binary search tree, O(1) for a hash table
-                Deletion: O(log n) for a balanced binary search tree, O(1) for a hash table
-                Search: O(log n) for a balanced binary search tree, O(1) for a hash table
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(log n) balanced binary search tree, O(1) hash table </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(log n) balanced binary search tree, O(1) hash table </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Peek </p></td>
+  <td><p class="line862">O(log n) balanced binary search tree, O(1) hash table </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
 # Maps
-                Insertion: O(log n) for a balanced binary search tree, O(1) for a hash table
-                Deletion: O(log n) for a balanced binary search tree, O(1) for a hash table
-                Search: O(log n) for a balanced binary search tree, O(1) for a hash table
-# Tries
-                Access: O(m), where m is the length of the key being searched
-                Insertion: O(m), where m is the length of the key being inserted
-                Deletion: O(m), where m is the length of the key being deleted
-                Search: O(m), where m is the length of the key being searched
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(log n) balanced binary search tree, O(1) hash table </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(log n) balanced binary search tree, O(1) hash table </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Peek </p></td>
+  <td><p class="line862">O(log n) balanced binary search tree, O(1) hash table </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
+# Tries 
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+  </tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(m) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(m) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(m) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Search </p></td>
+  <td><p class="line862">O(m) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+#### m - length of key being searched
+
 # Vectors
-                Access: O(1)
-                Insertion (at the end): O(1) amortized, O(n) worst case
-                Insertion (at the beginning): O(n)
-                Deletion: O(n)
-                Search: O(n)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+  </tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Apend </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862">O(n) </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Apend Left </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Deletion </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+  <tr>  <td><span class="anchor" id="line-77"></span><p class="line862">Search </p></td>
+  <td><p class="line862">O(n) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
+
 # Matrices
-                Access: O(1)
-                Insertion: O(1)
+<table style="width:"><tbody><tr>  <td><p class="line891"><strong>Operation</strong> </p></td>
+  <td><p class="line891"><strong>Average Case</strong> </p></td>
+  <td><p class="line891"><strong>Worst Case</strong> </p></td>
+  </tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Get Item </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tr>
+  <tr>  <td><span class="anchor" id="line-75"></span><p class="line862">Insertion </p></td>
+  <td><p class="line862">O(1) </p></td>
+  <td><p class="line862"> </p></td>
+</tr>
+</tbody></table>
