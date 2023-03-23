@@ -1,5 +1,2 @@
-fzf
-ripgrep
 yarp
 pynvim
-ipython
