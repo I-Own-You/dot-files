@@ -6,3 +6,6 @@ dconf-editor
 synaptic
 gpick
 vokoscreen-ng
+fzf
+ripgrep
+ipython
