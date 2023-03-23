@@ -9,3 +9,5 @@ vokoscreen-ng
 fzf
 ripgrep
 ipython
+python3-venv
+python3.11-venv
