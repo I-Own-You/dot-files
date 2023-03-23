@@ -1,1 +1,7 @@
 https://github.com/Wox-launcher/Wox
+Choose:
+          Listary: http://www.listary.com/
+          Wox: https://github.com/Wox-launcher/Wox
+          Hain: https://github.com/hainproject/hain
+          Zazu: https://github.com/tinytacoteam/zazu
+          FARR: https://www.donationcoder.com/Software/Mouser/findrun/
