@@ -6,7 +6,7 @@
 
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
 2. ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
-3. ln -s ~/dot-files/zsh_custom_scripts ~/.zsh_custom_scripts
+3. ln -s ~/dot-files/zsh_custom_scripts ~/zsh_custom_scripts
 
 1. also look into .gitconfig for delta settings https://github.com/dandavison/delta/releases # for delta, for git diff
 2. install pip reqs
