@@ -47,6 +47,7 @@
     hl(0, "@field", { fg = '#ffffff', bg = 'NONE' })
     hl(0, "@parameter", { fg = '#42e0f5', bg = 'NONE' })
 
+1. sudo updatedb
 
 python3 -m pip install --user --upgrade pynvim # for pynvim
 cat packages.txt | xargs sudo apt-get install -y # install linux packages
