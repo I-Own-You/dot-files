@@ -51,6 +51,7 @@
     hl(0, "@keyword.function", { fg = '#FF5F5F', bg = 'NONE' })
     hl(0, "Conditional", { fg = '#FF5F5F', bg = 'NONE' })
     hl(0, "Identifier", { fg = '#ffffff', bg = 'NONE', sp = 'NONE',  })
+    hl(0, "Function", { fg = '#f2b83a', bg = 'NONE' })
 
 1. sudo updatedb for locate to work (fzf)
 
