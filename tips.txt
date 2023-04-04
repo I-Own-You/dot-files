@@ -43,11 +43,16 @@
     hl(0, "@function", { fg = '#f2b83a', bg = 'NONE' })
     hl(0, "@function.builtin", { fg = '#f2b83a', bg = 'NONE' })
     hl(0, "@method", { fg = '#f2b83a', bg = 'NONE' })
-    hl(0, "@variable.builtin", { fg = '#754263', bg = 'NONE' })
+    hl(0, "@variable.builtin", { fg = '#BB9AF7', bg = 'NONE' })
     hl(0, "@field", { fg = '#ffffff', bg = 'NONE' })
     hl(0, "@parameter", { fg = '#42e0f5', bg = 'NONE' })
+    hl(0, "@keyword.return", { fg = '#FF5F5F', bg = 'NONE' })
+    hl(0, "@keyword", { fg = '#FF5F5F', bg = 'NONE' })
+    hl(0, "@keyword.function", { fg = '#FF5F5F', bg = 'NONE' })
+    hl(0, "Conditional", { fg = '#FF5F5F', bg = 'NONE' })
+    hl(0, "Identifier", { fg = '#ffffff', bg = 'NONE', sp = 'NONE',  })
 
-1. sudo updatedb
+1. sudo updatedb for locate to work (fzf)
 
 python3 -m pip install --user --upgrade pynvim # for pynvim
 cat packages.txt | xargs sudo apt-get install -y # install linux packages
