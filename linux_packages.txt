@@ -16,3 +16,4 @@ npm
 luarocks
 locate
 ULauncher
+TimeShift
