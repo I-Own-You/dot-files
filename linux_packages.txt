@@ -6,6 +6,7 @@ dconf-editor (only xfce)
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
 vokoscreen-ng (from off site)
+ipython3
 fzf (github releases)
 ripgrep (github releases)
 python3.11 (sudo add-apt-repository ppa:deadsnakes/ppa, sudo apt install python3.11)
