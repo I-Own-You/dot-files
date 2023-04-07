@@ -1,14 +1,14 @@
 zsh
-exa
-bat
-xclip
-dconf-editor
-synaptic
-gpick
-vokoscreen-ng
-fzf
-ripgrep
-ipython
+exa (github releases)
+bat (github releases)
+xclip (only xfce)
+dconf-editor (only xfce)
+synaptic or moune pakcage manager
+color picker (any, gpick for example)
+vokoscreen-ng (from off site)
+fzf (github releases)
+ripgrep (github releases)
+python3.11 (sudo add-apt-repository ppa:deadsnakes/ppa, sudo apt install python3.11)
 python3-venv
 python3.11-venv
 curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11  (for pip3.11)
