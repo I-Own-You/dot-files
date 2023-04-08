@@ -19,7 +19,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 
 # Created by newuser for 5.8.1
-alias nzsh="cd ~/dot-files && nvim .zshrc"
+alias nzsh="cd ~/dot-files && vim .zshrc"
 alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 
@@ -31,14 +31,14 @@ alias remove="sudo apt remove"
 alias rc="sudo apt autoremove && sudo apt autoclean"
 alias b="cd .."
 alias h="cd ~"
-alias ncf="cd ~/.config/nvim && nvim"
-alias dff="cd ~/dot-files && nvim"
-alias vim="nvim"
+alias ncf="cd ~/.config/nvim && vim"
+alias dff="cd ~/dot-files && vim"
+alias vim="~/.local/bin/./nvim.appimage"
 alias xo="xdg-open"
 alias py="python3.11"
-alias ip="ipython --TerminalInteractiveShell.editing_mode=vi"
+alias ip="ipython3 --TerminalInteractiveShell.editing_mode=vi"
 alias python="python3.11"
-alias cat="batcat"
+alias cat="bat"
 alias cls="clear"
 alias wd="pwd"
 alias t="touch"
@@ -50,6 +50,7 @@ alias pir="pip install -r"
 alias pi="pip install"
 alias pui="pip uninstall"
 alias pp="pip freeze | sort"
+alias pip3.11="~/.local/bin/pip3.11"
 
 # custom django
 alias pm="python manage.py"
@@ -281,8 +282,8 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=info:#4271ae,prompt:#8959a8,pointer:#d17013
 --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
 # export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias : "
-export VISUAL=nvim
-export EDITOR=nvim
+export VISUAL=vim
+export EDITOR=vim
 export FORGIT_NO_ALIASES=1
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
@@ -342,3 +343,4 @@ compctl -K _pip_completion pip3
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
