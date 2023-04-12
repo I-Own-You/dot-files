@@ -295,7 +295,7 @@ antidote load
 
 source ~/.zsh_plugins.zsh
 
-source ~/zsh_custom_scripts/zsh-auto-enable-py-env.sh
+# source ~/zsh_custom_scripts/zsh-auto-enable-py-env.sh
 source ~/zsh_custom_scripts/exists.sh
 source ~/zsh_custom_scripts/count_files.sh
 source ~/zsh_custom_scripts/cpwd.sh
