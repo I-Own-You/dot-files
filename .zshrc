@@ -35,7 +35,7 @@ alias h="cd ~"
 alias gw="gwenview"
 alias ncf="cd ~/.config/nvim && vim"
 alias dff="cd ~/dot-files && vim"
-alias vim="~/.local/bin/nvim_exec_image/nvim.appimage"
+alias vim="~/Documents/nvim_exec_image/nvim.appimage"
 alias xo="xdg-open"
 alias py="python3.11"
 alias ip="ipython3 --TerminalInteractiveShell.editing_mode=vi"
@@ -284,12 +284,12 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=info:#4271ae,prompt:#8959a8,pointer:#d17013
 --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
 # export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias : "
-# export VISUAL="~/.local/bin/nvim.appimage"
-# export EDITOR="~/.local/bin/nvim.appimage"
+# export VISUAL="~/Documents/nvim_exec_image/nvim.appimage"
+# export EDITOR="~/Documents/nvim_exec_image/nvim.appimage"
 export VISUAL=nvim.appimage
 export EDITOR=nvim.appimage
 export FORGIT_NO_ALIASES=1
-export PATH=$PATH:/home/mkc/.local/bin/nvim_exec_image # for nvim.appimage to execute
+export PATH=$PATH:~/Documents/nvim_exec_image/nvim.appimage # for nvim.appimage to execute
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
