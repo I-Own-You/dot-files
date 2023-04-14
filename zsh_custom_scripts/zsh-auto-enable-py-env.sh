@@ -4,18 +4,18 @@ NOCOLOR="\033[0m"
 
 function cd() {
   builtin cd "$@"
-  if [[ -d .env ]]; then
+  if [[ -d env ]]; then
     if [[ -z "$VIRTUAL_ENV" ]]; then
-      source .env/bin/activate
-      echo -e "${GREEN}Virtual environment${NOCOLOR} has been activated: ${GREEN}$(pwd -P)/.env${NOCOLOR}"
+      source env/bin/activate
+      echo -e "${GREEN}Virtual environment${NOCOLOR} has been activated: ${GREEN}$(pwd -P)/env${NOCOLOR}"
     else
-      if [[ "$VIRTUAL_ENV" != "$(pwd -P)/.env" ]]; then
+      if [[ "$VIRTUAL_ENV" != "$(pwd -P)/env" ]]; then
         old_env="$VIRTUAL_ENV"
         deactivate
-        source .env/bin/activate
+        source env/bin/activate
         echo -e "${GREEN}Virtual environment${NOCOLOR} has been deactivated: ${RED}$old_env${NOCOLOR}"
         if [[ -n "$old_env" ]]; then
-            echo -e "${GREEN}Virtual environment${NOCOLOR} has been activated: ${GREEN}$(pwd -P)/.env${NOCOLOR}"
+            echo -e "${GREEN}Virtual environment${NOCOLOR} has been activated: ${GREEN}$(pwd -P)/env${NOCOLOR}"
         fi
       fi
     fi
