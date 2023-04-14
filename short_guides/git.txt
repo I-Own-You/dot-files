@@ -117,7 +117,7 @@ TIPS:
     5.1 create a branch on the commit you made changes
     5.2 push again but from new branch
     5.3 checkout to previous branch that was rejected
-    5.4 git reset from previous branch to avoid fufutre confilcts
+    5.4 git reset from previous branch to avoid future confilcts
 
     6. Restoring deleted files:
     6.1 git checkout HEAD <filename>                              ( restore a file after deletion, both staged and not)
