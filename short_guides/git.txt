@@ -118,3 +118,13 @@ TIPS:
     5.2 push again but from new branch
     5.3 checkout to previous branch that was rejected
     5.4 git reset from previous branch to avoid fufutre confilcts
+
+    6. Restoring deleted files:
+    6.1 git checkout HEAD <filename>                              ( restore a file after deletion, both staged and not)
+    6.2 git reset --hard HEAD~1                                   ( commited, but didnt push. If you dont include --hard, then deletion will appear as                                                                  unstage, then you can use 6.1 option)
+    6.3.1 git log -- <filename>                                   ( commited & pushed, search history for commits for deleted file)
+    6.3.2 git checkout <commit hash> -- <filename>                ( commited & pushed, restore the file on specific commit)
+    6.3.3 git checkout <deletion commit hash>~1 -- <filename>     ( commited & pushed, restore the file before the deletion commit)
+    6.4 6.3.1, 6.3.2, 6.3.3                                       ( commited n times)
+    6.5 git revert --no-commit <commit>                           ( to not break git tree, just revert the changes in commit,
+                                                                    --no-commit option lets you choose what changes to revert, omit it for full revert)
