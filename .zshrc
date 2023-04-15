@@ -132,7 +132,8 @@ alias gdc='git diff --cached'
 # gdw	git diff --word-diff
 # gf	git fetch
 # gfa	git fetch --all --prune
-# gfg	git ls-files | grep
+alias gls='git ls-files'
+alias glsg='git ls-files | grep'
 # gfo	git fetch origin
 # gg	git gui citool
 # gga	git gui citool --amend
