@@ -19,3 +19,4 @@ locate
 ULauncher
 TimeShift
 github cli
+exuberant-ctags
