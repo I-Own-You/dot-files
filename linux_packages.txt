@@ -18,5 +18,5 @@ luarocks
 locate
 ULauncher
 TimeShift
-github cli
+github cli (from github)
 exuberant-ctags
