@@ -84,11 +84,11 @@ alias gb='git branch'
 alias gbl='git branch --list'
 alias gbf='git branch -f'
 # gba	git branch -a
-# gbd	git branch -d
+alias gbd='git branch -d'
 alias gbD='git branch -D'
 # gbl	git blame -b -w
 # alias gbnm='git branch --no-merged'
-# alias gbr='git branch --remote'
+alias gbr='git branch --remote'
 alias gbi= 'git bisect'
 alias gbib='git bisect bad'
 alias gbig='git bisect good'
@@ -231,8 +231,8 @@ alias gstst='git stash show --text'
 alias gstiu='git stash --include-untracked'
 alias gstall='git stash --all'
 # gsu	git submodule update
-# gsw	git switch
-# gswc	git switch -c
+alias gsw='git switch'
+alias gswc='git switch -c'
 # gts	git tag -s
 # gtv	git tag | sort -V
 # gtl	gtl(){ git tag --sort=-v:refname -n -l ${1}* }; noglob gtl
