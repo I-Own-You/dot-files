@@ -1,6 +1,7 @@
 1. install kitty https://sw.kovidgoyal.net/kitty/binary/
 
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
+2. move nvim.appimage to /usr/local/bin/nvim
 
 1. change bash to zsh
 
