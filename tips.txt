@@ -61,6 +61,10 @@ python3 -m pip install --user --upgrade pynvim # for pynvim
 cat packages.txt | xargs sudo apt-get install -y # install linux packages
 
 1. create tags for every project/file you need
+
+1. Install gitlab cli tool:
+2. https://docs.makedeb.org/prebuilt-mpr/getting-started/#setting-up-the-repository
+3. https://gitlab.com/gitlab-org/cli/-/blob/main/docs/installation_options.md (Prebuilt-MPR section at the end or just sudo apt install glab)
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
 │‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
