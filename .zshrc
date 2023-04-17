@@ -19,7 +19,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 
 # Created by newuser for 5.8.1
-alias nzsh="cd ~/dot-files && vim .zshrc"
+alias nzsh="cd ~/dot-files && nvim .zshrc"
 alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 
@@ -33,9 +33,9 @@ alias l="exa"
 alias b="cd .."
 alias h="cd ~"
 alias gw="gwenview"
-alias ncf="cd ~/.config/nvim && vim"
-alias dff="cd ~/dot-files && vim"
-alias vim="~/Documents/nvim_exec_image/nvim.appimage"
+alias ncf="cd ~/.config/nvim && nvim"
+alias dff="cd ~/dot-files && nvim"
+alias vim="nvim"
 alias xo="xdg-open"
 alias py="python3.11"
 alias ip="ipython3 --TerminalInteractiveShell.editing_mode=vi"
