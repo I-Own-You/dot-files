@@ -65,6 +65,7 @@ cat packages.txt | xargs sudo apt-get install -y # install linux packages
 1. Install gitlab cli tool:
 2. https://docs.makedeb.org/prebuilt-mpr/getting-started/#setting-up-the-repository
 3. https://gitlab.com/gitlab-org/cli/-/blob/main/docs/installation_options.md (Prebuilt-MPR section at the end or just sudo apt install glab)
+4. glab completion -s zsh > "/usr/local/share/zsh/site-functions/_glab"
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
 │‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
