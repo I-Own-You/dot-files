@@ -20,3 +20,4 @@ ULauncher
 TimeShift
 github cli (from github)
 exuberant-ctags
+fd-find
