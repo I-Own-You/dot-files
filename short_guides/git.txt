@@ -128,3 +128,83 @@ TIPS:
     6.4 6.3.1, 6.3.2, 6.3.3                                       ( commited n times)
     6.5 git revert --no-commit <commit>                           ( to not break git tree, just revert the changes in commit,
                                                                     --no-commit option lets you choose what changes to revert, omit it for full revert)
+    7 Delete some files from index tree and put them in .gitignore file
+    7.1 git rm -r --cached .                                      ( delete files from index tree)
+    7.2 git add .                                                 ( add them again)
+    7.3 git commit -m "your message"                              ( commit)
+
+    8.1 Fix and solve merge confilcts
+    8.2 git merge --abort                                         ( undo merge)
+    8.3 git checkout --ours or --theirs confilcted path_to_file   ( choose which editing is used, --ours means my, --their means their)
+    8.4 git add file_path                                         ( add the confilcted file)
+    8.5 git commit                                                ( commit)
+    
+    9 Changing git email and name
+    9.1 git config --global user.name "your_name"                 ( globally, before commit and push)
+    9.2 git config --global user.email "your_email"               ( globally, before commit andp push)
+    9.3 git config user.name "your_name"                          ( per repository, before commit and push)
+    9.4 git config user.email "your_email"                        ( per repository, before commit andp push)
+    9.5 git commit --author="your_name <your_email>"              ( change just for the next commit)
+    9.6 git commit --amend --author="your_name"                   ( change for last commit)
+    9.7.1 git rebase -i -p <commit-hash>                          ( choose all the commits you want to edit)
+    9.7.2 git commit --amend --author="your_name <your_email>"    ( change for the current commit chose for editing)
+    9.7.3 git rebase --continue                                   ( continue the interactive panel)
+    9.8 git filter-branch                                         ( another way of changing things, search it up, its not easy)
+
+    10 Adding an empty folder
+    10.1 just add an empty file named .keep and as a result it will be visible for git, just a name convention
+
+    11 Deleting a remote branch
+    11.1 git push <remote_name> --delete <branch_name>            
+    11.2 keep in mind, remote and local branches are apart, you must delete them excplicilty, even if one track another
+
+    12 Saving changes for latter actions
+    12.1 git stash                                                ( stash your changes(save))
+    12.2 git pop                                                  ( retrieve those changes)
+
+    13 Creating a local branch from remote one
+    13.1 git checkout --track <branch_name> origin<remote_branch>               ( because of --track it creates a local branch from remote one, if
+                                                                                  <branch_name> is omitted then it takes the remote branch name)
+
+    14 Remove untracked files from working tree
+    14.1 git clean -fd                                            ( clean removes untracked files, -f forces it, -d removes also untracked directories,
+                                                                    it cannot be undone)
+    15 Creating branches
+    15.1 git branch <branch_name>                                 ( creates a branch)
+    15.2 git branch <branch_name> <commit-hash>                   ( creates a branch on <commit-hash> pos)
+    15.3 git branch <branch_name> <tag>                           ( creates a  branch on <tag> pos)
+    15.4 git branch <branch_name> <another_existing_branch>       ( creates a branch based on another branch so <branch_name> share all commits and
+                                                                    history of it)
+    16 Undo git add or restore a file modifications
+    16.1 git restore <file_name>                                  ( will remove any modifications from file)
+    16.2 git restore --staged <file_name>                         ( will remove the <file_name> from stage area)
+    16.3 git reset <file_name>                                    ( will remove the <file_name> from stage area)
+
+    17 Adding a remote to a repo if it was initialized and not created on web browser
+    17.1 git remote add origin <link_to_it>                       ( for example https://github.com/gittower/example.git)
+
+    18 Deleting stale remote branches that are still referenced on local repo
+    18.1 git fetch --prune origin                                 ( fetch and delete)
+    18.2 git remote prune origin                                  ( just delete)
+
+    19 Finding bugs with git bisect
+    19.1 git bisect start                                         ( start the bisect)
+    19.2 git bisect bad <commit>                                  ( give the bad commit)
+    19.3 git bisect good <commit>                                 ( give the good commit)
+    19.4 git bisect good/bad                                      ( now we run our app and see if current commit is good or bad, and so on)
+    19.5 git bisect reset                                         ( when you found the problem commit, cancel the bisect proccess)
+
+    20 Squash commits into one
+    20.1 git rebase -i HEAD~3                                     ( combine last 3 commits as one for example)
+    20.2 git merge --squash feature/login                         ( all commits from feature/login branch will go as one commit instead of creating a
+                                                                    merge commit, the new commit will  have only 1 parent and not 2 as with merge)
+    21 Diff branch, files, etc.
+    21.1 git diff <branch_name1> <branch_name2>                   ( see differences between branch1 and branch2)
+    21.2 git diff <branch_name1>..<branch_name2>                  ( same as 21.1, comparing the latest commits)
+    21.3 git diff <branch_name1>...<branch_name2>                 ( take last commit of <branch_name2>
+                                                                    and diff it with the common ancestor of both <branch_name1> and <branch_name2>)
+    21.4 git diff <branch>                                        ( see differences between working tree and copy working tree)
+    21.5 git diff --staged <branch>                               ( see differences betweeen working tree and index tree)
+    21.6 git diff <branch_name1> <branch_name2> <file_name>       ( see difference in <file_name> from branch1 and branch2)
+    21.7 git log <branch_name1> <branch_name2>                    ( see differences between commits for both branches)
+    21.8 git log <branch_name1>..<branch_name2>                   ( same as 21.7)
