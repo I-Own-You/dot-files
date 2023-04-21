@@ -208,3 +208,6 @@ TIPS:
     21.6 git diff <branch_name1> <branch_name2> <file_name>       ( see difference in <file_name> from branch1 and branch2)
     21.7 git log <branch_name1> <branch_name2>                    ( see differences between commits for both branches)
     21.8 git log <branch_name1>..<branch_name2>                   ( same as 21.7)
+    
+    22 Delete the initial commmit
+    22.1 git update-ref -d HEAD                                   ( delete the initial commit)
