@@ -189,7 +189,7 @@ alias gp='git push'
 # gpu	git push upstream
 # gpv	git push -v
 # gr	git remote
-# gra	git remote add
+alias gra='git remote add'
 # grb	git rebase
 # grba	git rebase --abort
 # grbc	git rebase --continue
