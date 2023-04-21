@@ -19,6 +19,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 
 # Created by newuser for 5.8.1
+alias s="sudo "
 alias nzsh="cd ~/dot-files && nvim .zshrc"
 alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
