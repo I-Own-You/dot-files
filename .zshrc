@@ -66,6 +66,7 @@ alias pmcs="python manage.py collectstatic"
 alias pmrs="python manage.py runserver"
 alias pmrsb="xo http://127.0.0.1:8000/ && python manage.py runserver"
 alias djshell="django-admin shell --settings=player_market.settings -i ipython"
+alias da="django-admin"
 
 # custom scripts == ~/zsh_custom_scripts/
 alias cpwd="cpwd"
