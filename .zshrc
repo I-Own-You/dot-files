@@ -176,7 +176,7 @@ alias gl="git log"
 # glog	git log --oneline --decorate --graph
 # gloga	git log --oneline --decorate --graph --all
 # glp	git log --pretty=<format>
-# gm	git merge
+alias gm='git merge'
 # gmom	git merge origin/$(git_main_branch)
 # gmt	git mergetool --no-prompt
 # gmtvim	git mergetool --no-prompt --tool=vimdiff
@@ -238,7 +238,7 @@ alias gstall='git stash --all'
 # gsu	git submodule update
 alias gsw='git switch'
 alias gswc='git switch -c'
-# gts	git tag -s
+alias gt='git tag'
 # gtv	git tag | sort -V
 # gtl	gtl(){ git tag --sort=-v:refname -n -l ${1}* }; noglob gtl
 # gunignore	git update-index --no-assume-unchanged

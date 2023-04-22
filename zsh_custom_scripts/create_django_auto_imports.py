@@ -3,7 +3,7 @@ import sys
 
 dict_custom_paths = {
     "/home/mkc/.config/nvim/django_imports.txt": [
-        "/home/mkc/Documents/projects/home/player_market/env/lib/python3.11/site-packages/django",
+        "/home/mkc/Documents/personal_projects/andys_pizza/env/lib/python3.11/site-packages/django",
         "/home/mkc/.config/nvim/django_imports.txt",
         "django.",
     ],
@@ -11,9 +11,9 @@ dict_custom_paths = {
     #     '/home/mkc/documents/projects/home/player_market/env/lib/python3.11/site-packages/django',
     #     'django_rest_imports.txt',
     # ],
-    "/home/mkc/Documents/projects/home/player_market/project_auto_imports.txt": [
-        "/home/mkc/Documents/projects/home/player_market/",
-        "/home/mkc/Documents/projects/home/player_market/project_auto_imports.txt",
+    "/home/mkc/Documents/personal_projects/andys_pizza/project_auto_imports.txt": [
+        "/home/mkc/Documents/personal_projects/andys_pizza/",
+        "/home/mkc/Documents/personal_projects/andys_pizza/project_auto_imports.txt",
         "",
     ],
 }
