@@ -25,17 +25,17 @@ exists() {
 
   # Search for the file or directory
   if [[ -e "${search_dir}${search_name}" ]]; then
-    echo "${BLUE}${search_name}${NOCOLOR} ${GREEN}found at ${NOCOLOR}${YELLOW}$(find . -name "$search_name" | head -n1)${NOCOLOR}"
+    echo "${BLUE}${search_name}${NOCOLOR} ${GREEN}found at ${NOCOLOR}${YELLOW}$(sudo find . -name "$search_name" | head -n1)${NOCOLOR}"
     return 0
   else
     if [[ "$recursive_search" == true ]]; then
-      if [[ -n "$(find . -name "$search_name" -type d)" || -n "$(find . -name "$search_name" -type f)" ]]; then
+      if [[ -n "$(sudo find . -name "$search_name" -type d)" || -n "$(sudo find . -name "$search_name" -type f)" ]]; then
         if [[ "$search_dir" == "./" ]]; then
-          count=$(find . -name "$search_name" | wc -l)
+          count=$(sudo find . -name "$search_name" | wc -l)
           echo "${BLUE}${search_name}${NOCOLOR} ${GREEN}found ${NOCOLOR}(${YELLOW}${count}${NOCOLOR} ${GREEN}occurrences) at:${NOCOLOR}"
-          find . -name "$search_name" -print0 | while read -d $'\0' file; do echo "${YELLOW}$file${NOCOLOR}"; done
+          sudo find . -name "$search_name" -print0 | while read -d $'\0' file; do echo "${YELLOW}$file${NOCOLOR}"; done
         else
-          echo "${BLUE}${search_name}${NOCOLOR} ${GREEN}found at:${NOCOLOR} ${YELLOW}$(find . -name "$search_name" | head -n1)${NOCOLOR}"
+          echo "${BLUE}${search_name}${NOCOLOR} ${GREEN}found at:${NOCOLOR} ${YELLOW}$(sudo find . -name "$search_name" | head -n1)${NOCOLOR}"
         fi
         return 0
       else
