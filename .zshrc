@@ -295,7 +295,7 @@ export EDITOR=nvim
 # export VISUAL=./nvim.appimage
 # export EDITOR=./nvim.appimage
 export FORGIT_NO_ALIASES=1
-# export PATH=$PATH:~/Documents/nvim_exec_image/nvim.appimage # for nvim.appimage to execute
+export PATH=/usr/local/bin/node-v18.16.0-linux-x64/bin:$PATH
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
@@ -355,3 +355,5 @@ compctl -K _pip_completion pip3
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
