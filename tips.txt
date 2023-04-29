@@ -89,6 +89,7 @@ cat packages.txt | xargs sudo apt-get install -y # install linux packages
    python -m venv debugpy
    debugpy/bin/python -m pip install debugpy
 
+1. install wl-clipboard for wayland copy/paste
 
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
