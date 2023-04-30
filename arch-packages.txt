@@ -1,0 +1,1 @@
+hyprland-per-window-layout #aur, only if u need, 600mb size
