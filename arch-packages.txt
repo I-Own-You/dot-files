@@ -1,1 +1,6 @@
-hyprland-per-window-layout #aur, only if u need, 600mb size
+# Hyprland 
+hyprland-per-window-layout #aur
+wl-clipboard #aur
+hyprpicker-git #aur
+dunst
+libnotify

@@ -6,9 +6,12 @@
 
 1. change bash to zsh
 
+#remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
 2. ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
 3. ln -s ~/dot-files/zsh_custom_scripts ~/zsh_custom_scripts
+4. ln -sf ~/dot-files/hypr/hyprland.conf ~/.config/hypr (after installing hyprland)
+5. ln -s ~/dot-files/hypr/dunstrc ~/.config/dunst/dunstrc (after installing dunst and running it)
 
 1. also look into .gitconfig for delta settings https://github.com/dandavison/delta/releases # for delta, for git diff
 [core]
