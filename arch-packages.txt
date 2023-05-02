@@ -8,5 +8,6 @@ libnotify
 # SYSTEM
 networkmanager # ethernet driver
 broadcom-wl # wifi driver
-https://aur.archlinux.org/packages/nvidia-340xx-utils # nvidia driver first
-https://aur.archlinux.org/packages/nvidia-340xx-dkms # nvidia driver second
+1.https://aur.archlinux.org/packages/nvidia-340xx-utils # nvidia driver first
+2.https://aur.archlinux.org/packages/nvidia-340xx-dkms # nvidia driver second
+3.cp 20-nvidia.conf /etc/X11/xorg.conf.d/
