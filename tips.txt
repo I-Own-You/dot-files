@@ -94,6 +94,8 @@ cat packages.txt | xargs sudo apt-get install -y # install linux packages
 
 1. install wl-clipboard for wayland copy/paste
 
+1. follow this guide for hyprland https://wiki.hyprland.org/Nvidia/
+
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
 │‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
