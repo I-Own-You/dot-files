@@ -8,3 +8,5 @@ libnotify
 # SYSTEM
 networkmanager # ethernet driver
 broadcom-wl # wifi driver
+https://aur.archlinux.org/packages/nvidia-340xx-utils # nvidia driver first
+https://aur.archlinux.org/packages/nvidia-340xx-dkms # nvidia driver second
