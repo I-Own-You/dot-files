@@ -4,3 +4,7 @@ wl-clipboard #aur
 hyprpicker-git #aur
 dunst
 libnotify
+
+# SYSTEM
+networkmanager # ethernet driver
+broadcom-wl # wifi driver
