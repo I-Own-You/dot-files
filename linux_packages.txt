@@ -1,23 +1,19 @@
 zsh
-exa (github releases)
-bat (github releases)
+exa 
+bat 
 xclip (only xfce)
 dconf-editor (only xfce)
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
-vokoscreen-ng (from off site)
-ipython3
-fzf (github releases)
-ripgrep (github releases)
-python3.11 (sudo add-apt-repository ppa:deadsnakes/ppa, sudo apt install python3.11)
+vokoscreen (from off site)
+ipython
+fzf 
+ripgrep 
 python3-venv
 python3.11-venv
-curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11  (for pip3.11)
-nodejs (from github, check site, from there go to github)
-luarocks
+npm 
 locate
-ULauncher
 TimeShift
-github cli (from github)
-exuberant-ctags
-fd-find
+github-cli
+ctags
+fd

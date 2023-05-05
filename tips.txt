@@ -2,16 +2,13 @@
 2. install the recommended font from https://github.com/romkatv/powerlevel10k
 
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
-2. move nvim.appimage to /usr/local/bin/nvim
 
-1. change bash to zsh
+1. chsh -s $(which zsh) change bash to zsh 
 
 #remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
 2. ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
 3. ln -s ~/dot-files/zsh_custom_scripts ~/zsh_custom_scripts
-4. ln -sf ~/dot-files/hypr/hyprland.conf ~/.config/hypr (after installing hyprland)
-5. ln -s ~/dot-files/hypr/dunstrc ~/.config/dunst/dunstrc (after installing dunst and running it)
 
 1. also look into .gitconfig for delta settings https://github.com/dandavison/delta/releases # for delta, for git diff
 [core]
