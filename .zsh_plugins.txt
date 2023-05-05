@@ -1,11 +1,9 @@
 romkatv/powerlevel10k
 mdumitru/fancy-ctrl-z
 Atlas34/fzf-plugin # need fzf package to install on linux
-Yabanahano/web-search
 Freed-Wu/zsh-command-not-found
 ael-code/zsh-colored-man-pages
 zsh-users/zsh-syntax-highlighting
-thetic/extract
 zsh-users/zsh-autosuggestions # zsh-autosuggestions
 redxtech/zsh-kitty # completion, need kitty terminal
 zsh-users/zsh-completions # completion
@@ -15,4 +13,3 @@ wfxr/forgit # delta, bat, exa need to install on linux
 jimhester/per-directory-history
 Aloxaf/fzf-tab #zstyle ':completion:*:descriptions' format '[%d]' after install, if doesnt work, look at zsh-ls-colors #zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS) after install, to force default from zshrc
 jeffreytse/zsh-vi-mode
-# djui/alias-tips

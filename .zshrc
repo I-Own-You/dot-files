@@ -323,9 +323,9 @@ function zvm_after_init() {
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-Aloxaf-SLASH-fzf-tab/fzf-tab.zsh &&
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-mdumitru-SLASH-fancy-ctrl-z/fancy-ctrl-z.zsh &&
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-jimhester-SLASH-per-directory-history/per-directory-history.zsh &&
+      source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
       bindkey "^ " autosuggest-accept      
 }
-
 # rm -rf `antidote home` or rm -rf $(antidote home)
 # rm ${ZDOTDIR:-~}/.zsh_plugins.zsh or rm ~/.zsh_plugins.zsh - remove completely
 
