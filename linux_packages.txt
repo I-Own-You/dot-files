@@ -18,3 +18,4 @@ github-cli
 ctags
 fd
 kvantum
+xdotool
