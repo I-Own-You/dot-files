@@ -2,9 +2,8 @@
 2. install the recommended font from https://github.com/romkatv/powerlevel10k
 
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
-2. move nvim.appimage to /usr/local/bin/nvim
 
-1. change bash to zsh
+1. chsh -s $(which zsh) change bash to zsh 
 
 #remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
