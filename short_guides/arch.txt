@@ -1,0 +1,88 @@
+systemctl --failed                                                (check for services that have failed)
+journal -p 3 -b                                                   (check for errors in /var/log)
+paccache -r                                                       (clear the cache, old version of packages that are cached)
+
+Installing packages and etc:
+
+pacman -Ss                                                        (Search for package(s))
+pacman -S                                                         (install a package)
+makepkg -s PKGBUILD                                               (get source pkgs and dependencies)
+pacman --print (or -p)                                            (print the targets and do nothing else)
+pacman --confirm or pacman --noconfir                             (toggle manual confirmation)
+pacman -Syu                                                       (upgrade the whole system and packages)
+pacman -Rs                                                        (remove package and all dependencies)
+pacman -Rn                                                        (remove package and all configuration files)
+pacman -Rns                                                       (-Rs and -Rn together)
+pacman -Qdtq | pacman -Rs -                                       (remove orphans; -Qdttq to also remove optional deps)
+pacman -Qmq | pacman -Rs -                                        (remove packages no longer included in any repostiroies)
+pacman -D --asexplicit                                            (mark a package installed as explicit)
+pacman -S --asdeps                                                (mark a package installed as dependency)
+pacman -Sw                                                        (only donwload the package and do nothing)
+pacman -Sc or pacman -Scc                                         (clean local cache)
+read /var/log/pacman.log                                               (pacman logs)
+see /var/lib/pacman/local                                             (whole system logs)
+
+Querying specific packages:
+
+pacman -Qi                                                        (Display local package information: Name, version, description, etc.)
+pacman -Si                                                        (Display remote package information: Name, version, description, etc.)
+pacman -Ql                                                        (Display files provided by local package)
+pacman -Fl                                                        (Display files provided by a remote package)
+pacman -Qo                                                        (Query the package which provides FILE)
+pacman -F                                                         (Search all packages to find the one which holds the specified file.)
+pacman -Qc                                                        (Show the changelog of a package)
+
+Querying package lists:
+
+pacman -Qu                              (Lists packages which have an update available)
+pacman -Sl                              (Display a list of all packages in all installation sources that are handled by the packages management.)
+pacman -Q                               (Generates a list of installed packages/List installed local packages along with version)
+pacman -Qm                              (List packages that are installed but are not available in any installation source (anymore).)
+pacman -Qs                              (Search locally installed package for names or descriptions)
+pacman -Qtt                             (List packages not required by any other package)
+pacman -Qe                              (List packages installed explicitly (not as dependencies))
+pacman -Qd                              (List packages installed automatically (as dependencies))
+
+Querying package dependencies:
+
+pacman -Si or -Qi                       (Display packages which conflict with given expression (often package).
+                                         List all packages which are required for the given package, aka show dependencies.
+                                         Display all packages that the specified packages obsoletes.)
+pacman -Sii or -Qii                     (Display packages which require X to be installed, aka show reverse dependencies.
+                                         List what the current package provides)
+
+Installation sources management:
+
+edit /etc/pacman.conf                   (Installation sources management.
+                                         Add an installation source to the system.)
+cat /etc/pacman.d/mirrorlist            (Prints a list of all installation sources including important information like URI, alias etc.)
+paclist <repo>                          (List all packages from a certain repo)
+pacman -S repo_name/package             (Download packages from a different version of the distribution than the one installed.)
+
+Overrides:
+
+edit /etc/pacman.conf modifying IgnorePkg array                    (Add a package lock rule to keep its current state from being changed.)
+edit /etc/pacman.conf removing package from IgnorePkg line         (Delete a package lock rule)
+cat /etc/pacman.conf                                               (Show a listing of all lock rules)
+edit /etc/pacman.conf modifying HoldPkg and/or IgnorePkg arrays    (Set the priority of the given package to avoid upgrade, 
+                                                                    force downgrade or to overwrite any default behavior.
+                                                                    Can also be used to prefer a package version from a certain installation source.)
+
+Verification and repair:
+
+pacman -Qk                                   (can add another k) (Verify single/all package)
+pacman -S                                    (Reinstall given package; this will reinstall the given package without dependency hassle)
+pacman -Dk                                   (Verify dependencies of the complete system; used if installation process was forcefully killed)
+
+Using package files and building packages:
+
+pacman -Qp                                    (Query a package supplied on the command line rather than an entry in the package management database)
+pacman -Qpl                                   (List the contents of a package file)
+pacman -U                                     (Install local package file, e.g. app.rpm and uses the installation sources to resolve dependencies.
+                                               Updates package(s) with local packages and uses the installation sources to resolve dependencies)
+cp package-filename /var/cache/pacman/pkg/     (Add a local package to the local package cache mostly for debugging purposes.)
+tar -xvf (extract a package)
+makepkg -seoc                                  (Install/Remove packages to satisfy build-dependencies. Uses information in the source package)
+makepkg -o                                     (Download the corresponding source package(s) to the given package name(s))
+makepkg -s                                     (Build a package)
+namcap                                         (Check for possible packaging issues, need to install namecap)
