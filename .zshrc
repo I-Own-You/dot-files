@@ -25,6 +25,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 # Created by newuser for 5.8.1
 alias s="sudo "
 alias pa="sudo pacman"
+alias pau="sudo pacman -Syu"
 alias pai="sudo pacman -S"
 alias par="sudo pacman -Rns"
 alias nzsh="cd ~/dot-files && nvim .zshrc"
