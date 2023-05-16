@@ -24,16 +24,14 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 # Created by newuser for 5.8.1
 alias s="sudo "
+alias pa="sudo pacman"
+alias pai="sudo pacman -S"
+alias par="sudo pacman -Rns"
 alias nzsh="cd ~/dot-files && nvim .zshrc"
 alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 
 # custom vars
-alias u="sudo apt update"
-alias ug="sudo apt upgrade"
-alias uu="sudo apt update && sudo apt upgrade"
-alias remove="sudo apt remove"
-alias rc="sudo apt autoremove && sudo apt autoclean"
 alias l="exa"
 alias et="exa -T --long"
 alias b="cd .."
