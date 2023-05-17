@@ -82,6 +82,7 @@ alias r="custom_rename"
 alias c="count_files"
 
 #git aliases
+alias gg='git clone'
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
