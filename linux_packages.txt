@@ -19,3 +19,19 @@ ctags
 fd
 kvantum
 xdotool
+p7zip
+unrar
+unzip
+chafa
+viu
+ueberzug
+
+#for ranger app but search for all if they are installed anyway here: https://github.com/ranger/ranger
+ranger
+mediainfo
+odt2txt
+fontforge
+openscad
+calibre (dont install if you dont need ebook support)
+sqlite3 and sql-utils (for better ui)
+draw.io (if you use draw.io)

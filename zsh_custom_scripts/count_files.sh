@@ -8,34 +8,34 @@ NOCOLOR="\033[0m"
 count_files() {
     if [[ $1 == "-fc" ]]; then
         if [[ $2 ]]; then
-            echo "Total number of files in ${GREEN}$2${NOCOLOR} is: " ${RED}$(find $2 -maxdepth 1 -type f | wc -l)${NOCOLOR}
+            echo "Total number of files in ${GREEN}$2${NOCOLOR} is: " ${RED}$(sudo fd $2 -maxdepth 1 -type f | wc -l)${NOCOLOR}
         else
           # Count all files in the current directory only
-          all_files=$(find . -maxdepth 1 -type f | wc -l)
+          all_files=$(sudo fd . -maxdepth 1 -type f | wc -l)
           echo "Total number of files in current directory ${GREEN}$PWD${NOCOLOR}: ${RED}$all_files"
         fi
     elif [[ $1 == "-dc" ]]; then
         if [[ $2 ]]; then
-            echo "Total number of directories in ${GREEN}$2${NOCOLOR} is: " ${RED}$(find $2 -maxdepth 1 -type d | wc -l)${NOCOLOR}
+            echo "Total number of directories in ${GREEN}$2${NOCOLOR} is: " ${RED}$(sudo fd $2 -maxdepth 1 -type d | wc -l)${NOCOLOR}
         else
           # Count all directories in the current directory only
-          all_dirs=$(find . -maxdepth 1 -type d | wc -l)
+          all_dirs=$(sudo fd . -maxdepth 1 -type d | wc -l)
           echo "Total number of directories in current directory ${GREEN}$PWD${NOCOLOR}: ${RED}$all_dirs"
         fi
     elif [[ $1 == "-f" ]]; then
         if [[ $2 ]]; then
-            echo "Total number of files in ${GREEN}$2${NOCOLOR} is: " ${RED}$(find $2 -type f | wc -l)${NOCOLOR}
+            echo "Total number of files in ${GREEN}$2${NOCOLOR} is: " ${RED}$(sudo fd $2 -type f | wc -l)${NOCOLOR}
         else
           # Count all files in the current directory and its subdirectories
-          all_files=$(find . -type f | wc -l)
+          all_files=$(sudo fd . -type f | wc -l)
           echo "Total number of files in ${GREEN}${PWD}${NOCOLOR}: ${RED}$all_files${NOCOLOR}"
         fi
     elif [[ $1 == "-d" ]]; then
         if [[ $2 ]]; then
-            echo "Total number of directories in ${GREEN}$2${NOCOLOR} is: " ${RED}$(find $2 -type d | wc -l)${NOCOLOR}
+            echo "Total number of directories in ${GREEN}$2${NOCOLOR} is: " ${RED}$(sudo fd $2 -type d | wc -l)${NOCOLOR}
         else
           # Count all directories in the current directory and its subdirectories
-          all_dirs=$(find . -type d | wc -l)
+          all_dirs=$(sudo fd . -type d | wc -l)
           echo "Total number of directories in ${GREEN}$2${NOCOLOR}: ${RED}$all_dirs${NOCOLOR}"
         fi
     else

@@ -33,6 +33,7 @@ alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 
 # custom vars
+alias ff="ranger"
 alias l="exa"
 alias et="exa -T --long"
 alias b="cd .."
