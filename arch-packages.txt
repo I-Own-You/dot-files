@@ -15,3 +15,6 @@ broadcom-wl # wifi driver
 3.https://aur.archlinux.org/packages/nvidia-340xx-dkms # nvidia driver second
 or nvidia-390xx-utils
 4.cp 20-nvidia.conf /etc/X11/xorg.conf.d/
+
+cppzmq (i installed it for ueberzug gui app, delete it if you are going to deleted ueberzug)
+turbo-base64(same as above)

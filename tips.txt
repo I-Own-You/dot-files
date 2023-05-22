@@ -95,6 +95,8 @@ cat packages.txt | xargs sudo apt-get install -y # install linux packages
 1. follow this guide for hyprland https://wiki.hyprland.org/Nvidia/
 
 1. follow guides from here https://github.com/cdump/ranger-devicons2 # icons for ranger
+
+1. install this, follow the links from aur https://github.com/jstkdng/ueberzugpp
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
 │‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
