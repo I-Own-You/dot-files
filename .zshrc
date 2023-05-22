@@ -77,9 +77,7 @@ alias da="django-admin"
 
 # custom scripts == ~/zsh_custom_scripts/
 alias cpwd="cpwd"
-alias e="exists"
 alias r="custom_rename"
-alias c="count_files"
 
 #git aliases
 alias gg='git clone'
@@ -310,8 +308,6 @@ antidote load
 source ~/.zsh_plugins.zsh
 
 # source ~/zsh_custom_scripts/zsh-auto-enable-py-env.sh
-source ~/zsh_custom_scripts/exists.sh
-source ~/zsh_custom_scripts/count_files.sh
 source ~/zsh_custom_scripts/cpwd.sh
 source ~/zsh_custom_scripts/custom_rename.sh
 
