@@ -326,7 +326,7 @@ class ag(Command):
         return ag.patterns[-1] if ag.patterns else ""
 
     def _quot(self, patt):
-        return patt if ag.qarg.match(patt) else shell_quote(patt)
+        return patt if ag.qarg.match(patt) else shell_quote(patt)  # type: ignore[error]
 
     def _bare(self, patt):
         return patt[1:-1] if ag.qarg.match(patt) else patt
@@ -395,7 +395,7 @@ class ag(Command):
         # filter /^rel_dir/ on lst
         # get leftmost path elements
         # make regex '^' + '|'.join(re.escape(nm)) + '$'
-        thisdir.temporary_filter = re.compile(file_with_matches)
+        thisdir.temporary_filter = re.compile(file_with_matches)  # type: ignore[error]
         thisdir.refilter()
 
         for f in thisdir.files_all:
@@ -410,9 +410,9 @@ class ag(Command):
         if self.arg(1) != "-r":
             self.fm.execute_command(cmd, flags=flags)
         else:
-            self._filter(self._catch(cmd))
+            self._filter(self._catch(cmd))  # type: ignore[error]
 
-    def tab(self):
+    def tab(self):  # type: ignore[error]
         # BAD:(:ag <prev_patt>) when input alias ':agv' and then <Tab>
         #   <= EXPL: aliases expanded before parsing cmdline
         cmd = self.arg(0)
@@ -596,5 +596,5 @@ class yank_content(Command):
         else:
             self.fm.notify('{} is not an image file or a text file.'.format(relative_path))
 
-    def tab(self, tabnum):
+    def tab(self, tabnum):  # type: ignore[error]
         return self._tab_directory_content()
