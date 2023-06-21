@@ -31,6 +31,7 @@ alias par="sudo pacman -Rns"
 alias nzsh="cd ~/dot-files && nvim .zshrc"
 alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
+alias sb="startx bspwm"
 
 # custom vars
 alias ff="ranger"
