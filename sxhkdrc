@@ -118,4 +118,23 @@ super + alt + shift + {h,j,k,l}
 
 # move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+	bspc node -v {-30 0,0 30,0 -30,30 0}
+
+# minimize a window
+super + d
+	bspc node $1 --flag sticky=on; bspc node $1 --flag hidden=on
+
+super + ctrl + d
+    $HOME/dot-files/custom_scripts/showHidden.sh
+
+alt + q
+    rofi -show drun -theme $HOME/.config/rofi/launchers/type-6/style-7.rasi
+
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+super + Print
+    flameshot gui
+
+super + BackSpace
+    betterlockscreen -l

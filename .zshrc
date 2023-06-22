@@ -32,6 +32,7 @@ alias nzsh="cd ~/dot-files && nvim .zshrc"
 alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 alias sb="startx bspwm"
+alias neo="neofetch"
 
 # custom vars
 alias ff="ranger"
