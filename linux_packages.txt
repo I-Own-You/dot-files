@@ -1,3 +1,10 @@
+alsa-utils (symlink .asoundrc to ~/)
+pipewire
+wireplumber
+pipewire-alsa
+pipewire-audio
+xf86-video-intel
+openssh
 zsh
 exa 
 bat 
@@ -31,6 +38,20 @@ mediainfo
 odt2txt
 fontforge
 openscad
-calibre (dont install if you dont need ebook support)
-sqlite3 and sql-utils (for better ui)
-draw.io (if you use draw.io)
+
+
+# wm related
+bspwm
+sxhkd
+xorg-xinit
+xorg-server
+feh
+# add in tips symlink: .xinitrc bspwmrc sxhkd picom.conf
+rofi (config auto https://github.com/adi1090x/rofi)
+flameshot
+lxappearance-gtk3
+polybar (config auto https://github.com/adi1090x/polybar-themes)
+xarchiver
+viewnior
+tumbler
+betterlockscreen (-u *image path*, -l in sxhkd)
