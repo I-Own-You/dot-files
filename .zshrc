@@ -33,6 +33,8 @@ alias szsh=". ~/dot-files/.zshrc"
 alias paliases="print -rl -- ${(k)aliases}"
 alias sb="startx bspwm"
 alias neo="neofetch"
+alias ms="makepkg -s"
+alias mi="makepkg -i"
 
 # custom vars
 alias ff="ranger"

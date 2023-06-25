@@ -1,31 +1,26 @@
+# arch specific
 alsa-utils (symlink .asoundrc to ~/)
 pipewire
 wireplumber
 pipewire-alsa
 pipewire-audio
 xf86-video-intel
+
+# general
 openssh
 zsh
 exa 
 bat 
-xclip (only xfce)
-dconf-editor (only xfce)
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
 vokoscreen (from off site)
 ipython
 fzf 
 ripgrep 
-python3-venv
-python3.11-venv
 npm 
-locate
-TimeShift
 github-cli
 ctags
 fd
-kvantum
-xdotool
 p7zip
 unrar
 unzip
@@ -46,7 +41,6 @@ sxhkd
 xorg-xinit
 xorg-server
 feh
-# add in tips symlink: .xinitrc bspwmrc sxhkd picom.conf
 rofi (config auto https://github.com/adi1090x/rofi)
 flameshot
 lxappearance-gtk3
@@ -56,6 +50,20 @@ viewnior
 tumbler
 betterlockscreen (-u *image path*, -l in sxhkd)
 
+# xorg
+xclip
+xdotool
+kvantum
+lxappearance-gtk3
 
 # wayland
-wl-clipboard (for copy/paste, especially for terminal)
+wl-clipboard
+
+# gnome
+dconf-editor
+gnome-tweaks
+gnome-browser-connector
+colorway
+https://github.com/mjakeman/extension-manager
+lxappearance-gtk3
+https://extensions.gnome.org/extension/5090/space-bar/

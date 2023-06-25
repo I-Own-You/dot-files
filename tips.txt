@@ -98,6 +98,10 @@ cat packages.txt | xargs sudo apt-get install -y # install linux packages
 1. follow guides from here https://github.com/cdump/ranger-devicons2 # icons for ranger
 
 1. install this, follow the links from aur https://github.com/jstkdng/ueberzugpp
+
+1. do it so gnome wont group application windows:
+    gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
 │‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
