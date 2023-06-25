@@ -55,3 +55,7 @@ xarchiver
 viewnior
 tumbler
 betterlockscreen (-u *image path*, -l in sxhkd)
+
+
+# wayland
+wl-clipboard (for copy/paste, especially for terminal)
