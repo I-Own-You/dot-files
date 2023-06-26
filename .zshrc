@@ -35,6 +35,8 @@ alias sb="startx bspwm"
 alias neo="neofetch"
 alias ms="makepkg -s"
 alias mi="makepkg -i"
+alias qq="shutdown now"
+alias qr="shutdown -r now"
 
 # custom vars
 alias ff="ranger"
