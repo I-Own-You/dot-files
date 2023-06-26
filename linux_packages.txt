@@ -67,3 +67,5 @@ colorway
 https://github.com/mjakeman/extension-manager
 lxappearance-gtk3
 https://extensions.gnome.org/extension/5090/space-bar/
+https://github.com/yilozt/rounded-window-corners
+https://github.com/yilozt/rounded-window-corners
