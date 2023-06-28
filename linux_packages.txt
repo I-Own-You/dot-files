@@ -70,3 +70,9 @@ https://extensions.gnome.org/extension/5090/space-bar/
 https://github.com/yilozt/rounded-window-corners
 https://extensions.gnome.org/extension/3733/tiling-assistant/
 https://extensions.gnome.org/extension/19/user-themes/
+https://extensions.gnome.org/extension/5410/grand-theft-focus/
+https://extensions.gnome.org/extension/973/switcher/
+https://extensions.gnome.org/extension/750/openweather/
+https://extensions.gnome.org/extension/3843/just-perfection/
+https://extensions.gnome.org/extension/4627/focus-changer/ (dont install, just to be)
+https://extensions.gnome.org/extension/4709/another-window-session-manager/ (dont install, just to be)
