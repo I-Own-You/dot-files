@@ -297,9 +297,9 @@ alias fgw="forgit::warn"
 
 # autoload -Uz promptinit && promptinit && prompt pure
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=fg:#4d4d4c,bg:#1E1E1E,hl:#d17013
---color=fg+:#4d4d4c,bg+:#333232,hl+:#d17013
---color=info:#4271ae,prompt:#8959a8,pointer:#d17013
+--color=fg:#4d4d4c,bg:#1E1E1E,hl:#72DEC2
+--color=fg+:#4d4d4c,bg+:#333232,hl+:#72DEC2
+--color=info:#4271ae,prompt:#8959a8,pointer:#72DEC2
 --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
 # export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias : "
 export VISUAL=nvim

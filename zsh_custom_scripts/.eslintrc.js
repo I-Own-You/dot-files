@@ -4,7 +4,6 @@ module.exports = {
     ]
 }
 
-
 // tip: eslint-disable-line
 // tip: eslint-disable-next-line
 // tip: eslint-disable-previous-line
