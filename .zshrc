@@ -359,8 +359,7 @@ function zvm_after_init() {
 # antidote update -- update itself and also plugins
 
 
-eval "`pip completion --zsh`"
-compctl -K _pip_completion pip3
+
 
 autoload -U compinit
 compinit -i
