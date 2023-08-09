@@ -1,7 +1,10 @@
 module.exports = {
-    'extends': [
-        'standart'
-    ]
+  'extends': [
+    'standart'
+  ],
+  'rules': {
+    'camelcase': 'off',
+  }
 }
 
 // tip: eslint-disable-line
