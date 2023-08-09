@@ -1,0 +1,512 @@
+1. everything runs in the main function like so func main() {}, but before, you need to define the main package like: package main
+2. importing a package liek this: import [package-name]
+3. a name is exported if it starts with a capital letter
+4. if you import something with slash, ex: "math/rand", you import the subpackage of a packakge, so, here you import the subpackage rand from main package math
+5. functions are declared as func [name](par0 [type], parN [type]) [return type] {}
+6. when the parameteres share a type, you can omit the parameter type for all, and define it on the last parametere
+7. a function can return any number of results, ex: func [name](parN [type]) (type, typeN) {}
+8. if the return type of a function contains the name of the variables defined in the function, they are defined as on top of the function and will be returned wihtout the need to specify them in the return keyword:
+func add(n int) (x, y int) {
+    x = n + 1
+    y = n + 2
+    return // here if you dont specify the returned variables, and they are defined in the return type,
+           // they will be returned automatically, called as *naked return*
+           // the naked return type must be different from the parameters name in the function because of error of redeclaration
+           // naked variables can be assigned with = operator instead of [:=] or [var]
+}
+9. the var keyword declares the variable, it can be on the package or function lvl: var [var-name] [type] or var [var0, varN] type
+10. a var declaration can include a type, but once per variable, also if the type isnt specified, then the initializers type is taken:
+       var i, j int = 1, 2 //good
+       var i int, j int = 1, 2 //wrong
+       var a, b, c = 1, 2, 3 //good, the type will be determined by the initializer
+
+11. you can define variables with := shorthand operator which type will be implied from the initializers type:
+        a,b,c := 1,2,3 //also this works only in local scopes, so everywhere but not on package lvl
+12. variables can also be goruped as with imports: var (
+                                                          a [type] [value]
+                                                          b int = 2
+                                                          c = 3
+                                                    ) // also, using var you need to specify [type] or a value to a variable
+13. basic types:
+                 bool, string, int, int(8,16,32,64), uint, uint(8,16,32,64), uintptr
+                 byte -- alias for int32, represents a unicode code point 
+                 float32, float64
+                 complex64, conplex128
+                 int, uint, uintptr -- usually are 32 bit wide on 32 bit systems and 64 as 64
+                 int -- should be used for int types unless you need specific type of it
+14. all variables get their zero value if they dont hove an explicit value, 0 - for numeric, false - for bool, "" for string
+15. [type]([value]) - conversion of value to some type, for example:
+                      so you cant give a variable of some type another value with a different type wihtout conversion
+                                                          var a int = 1
+                                                          var b float32 = float32(a) or var b = float32(a) or b := float32(a)
+16. constant variables are declared with [const] keyword, you cant define const with := operator
+    constants can be string, bool or numeric values
+17. an utyped constant takes the type by its context, so if you declare in a function the parameter type float, the const will become float for the parameter or other type we specify
+18. there is only one loop in go, for loop:
+    the [init] [condition] [post] statements are optional:             for [init statement]; [condition]; [post statement] {}
+    standard way of defining a for:                                    for i = 0; i < 10; i++ {}
+    also ; can be dropped so for becomes a while:                      for [condition] {} or for ; [condition]; {}
+    also [condition] can be dropped so it becomes an infinite loop:    for {}
+19. if doesnt require () so: if [condition] {}
+    if also has an optional [statement] before [condition] like: if a := 0; a > 0 {} // a is accesible only within if scope
+    if and else construction: if {} else {} // statement also works with if else construction 
+20. you can return different type from a function return type if the returned type can be converted to the func return type
+21. switch construction is not restricted to constants as case, also only the selected case is executed, so break form other proramming languages is automatically put for all cases:
+            switch [statement] [condition] {                switch os:=runtime.GOOS; os {  switch {} the same as switch true {}
+                case [condition]:                               case "linux":
+                    fmt.Println("a")                                fmt.Println("linux")
+                default:                                        default:
+                    fmt.Println("nothing")                          fmt.Prinltn("nothing")
+            }                                               }
+22. [defer] keyword defers the the executioin of a function untill surrounding functions returns(the return of the function also), the parameters are evaluated immediately but the funciton is deffered:
+                                        defer fmt.Println('lol') //2
+                                        fmt.Println('kek') //1
+23. defered functions are pushed onto a stack, when the function needs to return, it returns the stack in LIFO order:
+            	fmt.Println("counting")  //1
+                for i := 0; i < 10; i++ {
+                    defer fmt.Println(i)  //3  and the result printing will be: 9,8, .etc, 0
+                }
+                fmt.Println("done")  //2
+24. pointers, basically, & - means the memmory address, * - means the value of that address:
+                                                var p *int
+                                                i := 42
+                                                p = &i          // value of p is now the memmory address of i
+                                                fmt.Println(p)  // will display the memmory address of i 
+                                                fmt.Println(*p) // will display the value of i through  memmory addres of i
+                                                fmt.Println(&p) // will display the value of p itself, the memmory addrss of it
+25. a [struct] is a collection of fields:
+                                        type [name] struct {
+                                            [var-name] [type]
+                                            [var-nameN] [type]
+                                            or
+                                            [var1] [var2] [type]
+                                        }
+                                        [name].[var-name] //accessing a field
+26. pointer reference to struct:
+                                p := &[struct-name]
+                                p.X or (*p).X  // so for sugar you can just use [pointer].[filed-name]
+27. struct literal - a new struct value with its fields:
+                                    type Alo struct {
+                                        X int
+                                        Y int
+                                    }
+                                    v1 := Vertex{1,2}  //x=1,y=2
+                                    v2 := Vertex{}  //x=0,y=0
+                                    v3 := &Vertex{1,2}  //x=1,y=2, but v3 returns a pointer to the struct so that v3 = &{1 2}
+                                    v4 := Vertex{1}  //error, because struct has 2 fields, and you only give it 1
+28. an array is defined like this:
+                                var a [array-size][array-type]{items}
+                                var a [2]string
+                                var a [2]string{"a", "b"} //predefined values
+29. slices can be defined as in python but wihtout the 3rd argument, the step
+    slices are the dynamic when it comes to size, they dont store data, they get some section from an array
+    changing an element from a slice will change the element in other slices and the main array as well:
+                        	numbers := [6]int{1, 2, 3, 4, 5, 6}
+                            var s []int = primes[:] or s := primes[:]
+30. slice literals are like array literal without length:
+                                            number := []int{1,2,3} //creates the same array but references it to number
+                                            s := []struct {  // or just put an existent struct
+                                                   i int
+                                                   b bool
+                                               }{
+                                                   {2, true},
+                                                   {3, false},
+                                                   {5, true},
+                                                   {7, true},
+                                                   {11, false},
+                                                   {13, true},
+                                               }  // a more complex exmaple
+                                            a := []struct // wrong,because you must have initialize to reference to, []struct{}
+                                            a := []int{} // work
+
+31. you can resclie up to the initial lenght of the slice and keep the values
+    also the slices has 2 funcitons, len() and cap()
+    len() -- the actual language for
+    cap() -- the initial length of the slice, but if it was resliced like [1:] then the new reslice becomes the cap():
+            s := []int{2, 3, 5, 7, 11, 13}
+            s = [:2]  //s becomes [2,3] but you can access the initial slice with s = [:6] again
+            s = [:3]  // same
+            s = [:4]  // same
+            s = [2:]  // resliced so the capacity now is only 4
+            s = [:6]  //wrong because we resliced above and the capacity now is only 4, so lowering(like [1+:]) will lower the capacity as well for the amount you lower, even you had 50 capacity, and the length is 10, so [1:], the length now 9, capacity 49 because of lowering(reslicing) the slice
+32. a zero length slice has 0 length and 0 capacity so its value is nil
+33. make function can help construct slices:
+                                            a := make([]int, length, capacity) type, length, capacity
+34. append function can add elements dynamically to slices:
+                                                            s := []int
+                                                            s = append(s, [values])
+                                                            s = append(s, 5, 5, n)
+35. range form of for loop iterates over a slice or map:
+                        var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+                        func main() {
+                            for i, v := range pow { // returns 2 values, i = index, v = copy of the element at the index i
+                                fmt.Printf("2**%d = %d\n", i, v)
+                        }
+36. you can skip the second argument, or omit the first:
+                                for i := range pow {}  //gets only the index
+                                for _, v := range pow {}  //gets only the value, the index is omitted, it cant be accesed
+37. map maps keys to values:
+                        var a map[string]int  // will be nil, string here is the key, int the values
+                        a := map[string]int{} //good, initialized
+                        var a = map[string]int{} //good, initialized
+                        var a = make(map[string]int) //good, initialized
+                        a = make(map[string]int) // in case you defined it, and its nil, so this way you can initialize it or 
+                                                        a = map[string]int but its the same as when it was defined but with {}
+38. map literal is just a variable that holds the map:
+            type Vertex struct {
+                a, b int 
+                }
+            var m = map[string]Vertex {
+                "first": Vertex {1, 2}, //you can omit the Vertex name, if the literal will be the type that map values store
+                "second": Vertex {3, 4},
+            }
+39. changin/mutating maps:
+                            map[key] = [value]  //insert or update
+                            elem = map[key]  //retrieve a value
+                            delete(map, key)  //delete an element
+                            elem, ok := map[key] // if [key] in map, then ok is true and elem is the value of the [key] from
+                            map, otherwise ok is false and elem is the zero value of the map value type
+40. functions are also values so they can be passed as arguments/parameteres/function return type as well
+41. a variable can reference a function and form a closure, os it becomes a copy of the function and it has own closure so when you reference another variable to the same function, its a copy again with its closure and variables, .etc
+42. go doesnt have classes but you can define methods on types, so methods are functions with recievers:
+            type Vertex struct {
+                X, Y float64
+            }
+            func (v Vertex) Abs() float64 { // the (v Vertex) is the reciever
+                return math.Sqrt(v.X*v.X + v.Y*v.Y)
+            }
+            func main() {
+                v := Vertex{3, 4}
+                fmt.Println(v.Abs())
+            }
+43. You can declare a method on non-struct types, too.
+    Methods are simple functions, dont forget that
+    You can only declare a method with a receiver whose type is defined in the same package as the method.
+    You cannot declare a method with a receiver whose type is defined in another package 
+    (which includes the built-in types such as int):
+                                                    type MyFloat float64
+                                                    func (f MyFloat) Abs() float64 {
+                                                        if f < 0 {
+                                                            return float64(-f)
+                                                        }
+                                                        return float64(f)
+                                                    }
+                                                    func main() {
+                                                        f := MyFloat(-math.Sqrt2)
+                                                        fmt.Println(f.Abs())
+                                                    }
+
+44. pointer reciever:
+                    type Vertex struct {
+                        X, Y float64
+                    }
+
+                    func (v Vertex) Abs() (float64, float64) {
+                        return v.X, v.Y
+                    }
+
+                    func (v *Vertex) Scale(f float64) { //here, the actual object is passed, and not its copy
+                        v.X = v.X + 1  //4
+                        v.Y = v.Y + 1  //5
+                    }
+
+                    func main() {
+                        v := Vertex{3, 4}
+                        v.Scale(10)
+                        fmt.Println(v.Abs())  // 4,5, and if we remove the * from v *Vertex, then
+                                                 the copy of the object will be passed and the initial object wont be
+                                                 changed, so the result will be 3,4. 
+                                                 Also Go calls it like this: (&v).Abs()
+                    }
+45. methods and function that get values or pointers differs:
+            Functions that take a value argument must take a value of that specific type:
+            var v Vertex
+            fmt.Println(AbsFunc(v))  // OK
+            fmt.Println(AbsFunc(&v)) // Compile error!
+
+            Methods with value receivers take either a value or a pointer as the receiver when they are called:
+            var v Vertex
+            fmt.Println(v.Abs()) // OK
+            p := &v
+            fmt.Println(p.Abs()) // OK In this case, the method call p.Abs() is interpreted as (*p).Abs()
+46. methods should always have either vlues or pointer as recievers but not mix
+47. interfaces are a set of method signatures:
+                                type Abser interface {
+                                    Abs() float64
+                                }
+                                func main() {
+                                    var a Abser
+                                    f := MyFloat(1)
+                                    v := Vertex{3, 4}
+                                    a = f  // a MyFloat implements Abser
+                                    a = &v // a *Vertex implements Abser
+                                    a = v //doesnt implement, since we have the method, but with pointer implementation only
+                                          // here a is redefining, it doesnt store both f and &v mehtod implementations
+                                    fmt.Println(a.Abs())
+                                }
+                                type MyFloat float64
+                                func (f MyFloat) Abs() float64 {
+                                    if f < 0 {
+                                        return float64(-f)
+                                    }
+                                    return float64(f)
+                                }
+                                type Vertex struct {
+                                    X, Y float64
+                                }
+                                func (v *Vertex) Abs() float64 {
+                                    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+                                }
+48. interfaces are implemented implicitly. 
+A type implements an interface by implementing its methods. 
+There is no explicit declaration of intent, no "implements" keyword:
+Also, a variable of type Interface can be assigned to a type if a type implements a signature from that Interface
+also a reciever can be nil, so var i I, i = *T, and func (t *T) M() {} wont be a problem, go handles that
+an interface with no value, has nil value and type nil, like var i I
+                                            type I interface {
+                                                M()
+                                            }
+                                            type T struct {
+                                                S string
+                                            }
+                                            // This method means type T implements the interface I,
+                                            // but we don't need to explicitly declare that it does so.
+                                            func (t *T) M() {
+                                                fmt.Println(t.S)
+                                            }
+                                            func main() {
+                                                var i I = &T{"hello"}  // I isnt necessary, could be var i = T{"hello"}
+                                                i.M()
+                                            }
+49. an empty interface is an interface that implements zero methods and can hold any type of values
+    the value and type of an empty interface is both nil
+    so you can store there any type of a value:
+                                                func main() {
+                                                    var i interface{} or type some_name interface {} 
+                                                    describe(i)  //nil, nil
+                                                    
+                                                    i = 42
+                                                    describe(i)  // 42, int
+
+                                                    i = "hello"
+                                                    describe(i) // "hello", string
+                                                }
+                                                func describe(i interface{}) {
+                                                    fmt.Printf("(%v, %T)\n", i, i)
+                                                }
+
+50. you can get the interface value like this, this is called type assertions:
+                var i interface{} = "hello"
+
+                s := i.(string)
+                fmt.Println(s)
+
+                s, ok := i.(string)  // if the string type exists in the interface, the ok=true, s=[value]
+                fmt.Println(s, ok)
+
+                f, ok := i.(float64)  //doestn exist so ok=false, f=zero value of the type trying to achive
+                fmt.Println(f, ok)
+
+                f = i.(float64) // error, because the interface doesnt have the type
+                fmt.Println(f)
+51. and this is called type swtichers when you can test the type of an interface:
+                func do(i interface{}) {
+                    switch v := i.(type) {
+                    case int:
+                        fmt.Printf("Twice %v is %v\n", v, v*2)
+                    case string:
+                        fmt.Printf("%q is %v bytes long\n", v, len(v))
+                    default:
+                        fmt.Printf("I don't know about type %T!\n", v)
+                    }
+                }
+
+                func main() {
+                    do(21)
+                    do("hello")
+                    do(true)
+                }
+52. stringers(fmt has this, and executes this) - interfaces, a type that can describe itself, so it basically returns string:
+                        type Person struct {
+                            Name string
+                            Age  int
+                        }
+                        func (p Person) String() string {
+                            return fmt.Sprintf("%v (%v years)", p.Name, p.Age)
+                        }
+                        func main() {
+                            a := Person{"Arthur Dent", 42}
+                            z := Person{"Zaphod Beeblebrox", 9001}
+                            fmt.Println(a, z)
+                            fmt.Println(a.String()) or c := a.String() or var c = a.String() or var c string = a.String()
+                        }
+53. errors are interfaces, so its like stringers that fmt looks for and executes:
+                type MyError struct {
+                    When time.Time
+                    What string
+                }
+
+                func (e *MyError) Error() string {   //Erorr() here is the method signature of the error interface
+                    return fmt.Sprintf("at %v, %s",
+                        e.When, e.What)
+                }
+
+                func run() error {  // error is the interface
+                    return &MyError{ //so we throw an instnace of the structure that implements the Error() method signature
+                        time.Now(),
+                        "it didn't work",
+                    }
+                }
+
+                func main() {
+                    if err := run(); err != nil {
+                        fmt.Println(err)
+                    }
+                    or
+                    elem, err := run()
+                    if err {} //dont forget the condition must be boolean
+                }
+                this is the interface looks like builtin:
+                                                        type error interface {
+                                                            Error() string
+                                                        }
+54. The io package specifies the io.Reader interface, which represents the read end of a stream of data.
+The Go standard library contains many implementations of this interface,
+including files, network connections, compressors, ciphers, and others.
+The io.Reader interface has a Read method: func (T) Read(b []byte) (n int, err error)
+So this is an exmaple:
+        func main() {
+            r := strings.NewReader("Hello, Reader!")
+            b := make([]byte, 8)
+            for {
+                n, err := r.Read(b)  //Read method populates the data and return the number of bytes it populated, and the error
+                    fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
+                    fmt.Printf("b[:n] = %q\n", b[:n])
+                    if err == io.EOF {
+                        break
+                    }
+                }
+        }
+55. generic type parameters also called generic functions:
+func Index[T comparable](s []T, x T) int { // because of [comparable] constraint we can use == to check the values on types
+	for i, v := range s {
+		if v == x { // so here it goes v and x are T type, and [comparable] constraint so we can use v == x to check the values
+			return i
+		}
+	}
+	return -1
+}
+
+func main() {
+	si := []int{10, 20, 15, -10}
+	fmt.Println(Index(si, 15))
+
+	ss := []string{"foo", "bar", "baz"}
+	fmt.Println(Index(ss, "hello"))
+}
+
+56. generic types:
+                type List[T any] struct { //T any here allow us to implement fields of generic type
+                    next *List[T] // List field with generic type
+                    val  T // val field with genric type
+                }
+
+                func main() {
+                }
+57. goroutines - a lightweight thread managed by the Go runtime.
+    The evaluation of a method happens in the current goroutine and the execution of it happens in the new goroutine.
+    Goroutines run in the same address space, so access to shared memory must be synchronized.
+    The sync package provides useful primitives, although you won't need them much in Go as there are other primitives:
+                func say(s string) {
+                    for i := 0; i < 5; i++ {
+                        time.Sleep(100 * time.Millisecond)
+                        fmt.Println(s)
+                    }
+                }
+                func main() {
+                    go say("world")
+                    say("hello")
+                }
+    Also,keep,in mind that the current goroutine exists, and its the goroutine in which other goroutines are created and executed. So the current goroutine conitnues execution and it wont wait for the created goroutine to finish, so you must always synchronize the goroutine, if you need th result from it.
+58. channels - a typed conduit through which you can send and receive values with the channel operator, <-.
+    By default, the channel sends and receives block until the other side is ready.
+    This allows goroutines to synchronize without explicit locks or condition variables.
+            func sum(s []int, c chan int) {
+                sum := 0
+                for _, v := range s {
+                    sum += v
+                }
+                c <- sum // send sum to c
+            }
+
+            func main() {
+                s := []int{7, 2, 8, -9, 4, 0}
+
+                c := make(chan int)  //channel initialized
+                go sum(s[:len(s)/2], c)  //goroutine initialized
+                go sum(s[len(s)/2:], c) //gorouitne initialized
+                x, y := <-c, <-c // receive from c
+
+                fmt.Println(x, y, x+y) //main goroutine blocked until the x, v receives all the values from the channel c
+            }
+59. buffered channels - channels with a length.
+    Doesnt block the sender/reciever operations on channels, so it can send and recieve a bunch of values at the same time, wihtout blocking send/recieve. The block appears when the channel is full or the channel is empty:
+        func main() {
+            ch := make(chan int, 2)  // the length of the channel is the second argument of make
+            ch <- 1
+            ch <- 2
+            fmt.Println(<-ch)
+            fmt.Println(<-ch)
+        }
+60. Info about sender/reciever.
+A sender can close a channel to indicate that no more values will be sent. Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression: v, ok := <-ch
+Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
+Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a range loop:
+                func fibonacci(n int, c chan int) {
+                    x, y := 0, 1
+                    for i := 0; i < n; i++ {
+                        c <- x
+                        x, y = y, x+y
+                        if i == 2 {
+                            close(c)  // closing the channel sending values
+                        }
+                    }
+                }
+
+                func main() {
+                    c := make(chan int, 10)
+                    go fibonacci(cap(c), c)
+                    for i := range c { // the for will start no matter the channel has the values or not, it will wait anyway
+                        fmt.Println(i) // 0 1 2
+                    }
+                }
+61. select statement lets a goroutine wait on multiple communication operations.
+The default case in a select is run if no other case is ready.
+A select blocks until one of its cases can run, then it executes that case. It chooses one at random if multiple are ready:
+            func fibonacci(c, quit chan int) {
+                x, y := 0, 1
+                for {
+                    select {
+                    case c <- x: // the for is infinite but the sender will be blocked cuz the reciever wont be anymore
+                                 // based on the goroutine initialized lower
+                        x, y = y, x+y
+                    case <-quit: // will execute 1 time because of the lower for, the channel gets 1 values
+                                 // then it wants another but it is locked because there are no senders anymore
+                        fmt.Println("quit")
+                        return
+                    default:
+                        fmt.Println("    .")
+                    }
+                }
+            }
+            func main() {
+                c := make(chan int)
+                quit := make(chan int)
+                go func() {
+                    for i := 0; i < 10; i++ {
+                        fmt.Println(<-c) // it waits for 10 values consecutively becuase of the foor loop 10 times
+                    }
+                    quit <- 0 // sends a value one time
+                }()
+                fibonacci(c, quit)
+            }
