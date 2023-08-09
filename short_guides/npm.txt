@@ -1,0 +1,4 @@
+npm install -g typescript-language-server typescript
+npm init (in the root folder, where eslintrc will be, for the package.json so you could init the eslint)
+npm init @eslint/config (in the root folder, where eslintrc will be, .eslintrc file will be created)
+npm install eslint-config-standard (will downlaod and create the node_modules for eslint to work)
