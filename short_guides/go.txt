@@ -510,3 +510,4 @@ A select blocks until one of its cases can run, then it executes that case. It c
                 }()
                 fibonacci(c, quit)
             }
+62. go passes non primitive data by pointer, but functions without explicit pointer recieve only copy of the values, no matter of what you pass in that function

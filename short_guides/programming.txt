@@ -1,0 +1,2 @@
+expression - part of code that after the executino returns a value
+statement - part of code that does something, like if, for, .etc

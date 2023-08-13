@@ -1,10 +1,11 @@
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "checkJs": true
-  },
-  "exclude": [
-    "node_modules"
-  ]
-}
+// {
+//   "compilerOptions": {
+//     "module": "commonjs",
+//     "target": "es6",
+//     "checkJs": false, // Turn off type checking for JavaScript files
+//     "allowJs": true // Allow JavaScript files to be included in the project
+//   },
+//   "exclude": [
+//     "node_modules"
+//   ]
+// }
