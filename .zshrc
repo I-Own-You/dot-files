@@ -24,7 +24,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 # Created by newuser for 5.8.1
 alias s="sudo "
-alias nfzf='nvim $(fzf)' # okay so " " executes it immediately, so put '' only
+alias nf='nvim $(fzf)' # okay so " " executes it immediately, so put '' only
 alias pa="sudo pacman"
 alias pau="sudo pacman -Syu"
 alias pai="sudo pacman -S"
