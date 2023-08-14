@@ -16,7 +16,7 @@ NOCOLOR="\033[0m"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
-SAVEHIST=1000
+SAVEHIST=10000
 setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 #                                   (appendhistory - share all terminals)
 #                                   (SHARE_HISTORY) - terminals has their own when active
@@ -24,6 +24,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 
 # Created by newuser for 5.8.1
 alias s="sudo "
+alias nfzf='nvim $(fzf)' # okay so " " executes it immediately, so put '' only
 alias pa="sudo pacman"
 alias pau="sudo pacman -Syu"
 alias pai="sudo pacman -S"
