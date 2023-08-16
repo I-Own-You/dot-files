@@ -78,4 +78,5 @@ https://extensions.gnome.org/extension/750/openweather/
 https://extensions.gnome.org/extension/3843/just-perfection/
 https://extensions.gnome.org/extension/4627/focus-changer/ (dont install, just to be)
 https://extensions.gnome.org/extension/4709/another-window-session-manager/ (dont install, just to be)
+https://extensions.gnome.org/extension/3193/blur-my-shell/
 https://github.com/vinceliuice/Orchis-theme
