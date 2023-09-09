@@ -10,7 +10,8 @@ xf86-video-intel
 https://aur.archlinux.org/packages/video-trimmer
 openssh
 zsh
-exa 
+exa // unmaintained repo 
+eza
 bat 
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
