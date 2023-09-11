@@ -73,6 +73,12 @@
     hl(0, "Identifier", { fg = '', bg = 'NONE', sp = 'NONE',  })
     hl(0, "Function", { fg = '#f2b83a', bg = 'NONE' })
     hl(0, "FoldColumn", { fg = c.base0C, bg = "#101010" })
+    hl(0, "CmpItemAbbrMatch", { fg = "#ff4394", bg = "NONE" })
+    hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#ff4394", bg = "NONE" })
+    hl(0, "CmpItemKindField", { fg = "#ff4394", bg = "NONE" })
+    hl(0, "CmpItemKindProperty", { fg = "#ff4394", bg = "NONE" })
+    // github_dark
+    hl(0, "FoldColumn", { fg = c.base0C, bg = '#24292E' })
 
 1. sudo updatedb for locate to work (fzf)
 
