@@ -27,6 +27,7 @@ alias s="sudo "
 alias nf='nvim $(fzf)' # okay so " " executes it immediately, so put '' only
 alias pa="sudo pacman"
 alias pau="sudo pacman -Syu"
+alias lt="cd ~/.leetcode/ && nvim"
 alias pai="sudo pacman -S"
 alias par="sudo pacman -Rns"
 alias nzsh="cd ~/dot-files && nvim .zshrc"
