@@ -1617,6 +1617,10 @@ window.removeEventListener('click', handleMouseClick) // wont delete, becaues it
         console.log(data) // {title: "foo", body: "bar", userId: 1, id: 101}
       })
 35. modules - a file that helps with code reusability and structure
+    1. modules are visiblie in their own scope(this means that code isnt visible unless its exported, unlike regulat js files), unlike regular js files that have global scope. Also if a file has at the top import/export than its treated as a module
+    2. if a file at the top doesnt contain import/export/await, then its not a module (js, not ts)
+    3. if you import * without as alias, you cant access default export (its a js thing, not ts)
+    4. if you import without alias, just the file, the file gets evaluated, but nothing imported (could affect other objects and etc, again, js, not ts thing)
     CommonJS - a module system from NodeJS
     AMD - the oldest module system
     UMD - a universal module system
