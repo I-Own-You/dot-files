@@ -79,6 +79,8 @@
     hl(0, "CmpItemKindProperty", { fg = "#ff4394", bg = "NONE" })
     // github_dark
     hl(0, "FoldColumn", { fg = c.base0C, bg = '#24292E' })
+    //everblush
+    hl(0, "FoldColumn", { fg = c.base0C, bg = '#141B1E' })
 
 1. sudo updatedb for locate to work (fzf)
 
