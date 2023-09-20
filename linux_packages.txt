@@ -22,6 +22,7 @@ fzf
 ripgrep 
 npm 
 npm i -g vscode-langservers-extracted  # for lsps
+npm install -g tldr
 github-cli
 ctags
 fd
