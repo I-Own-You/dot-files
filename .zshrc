@@ -310,7 +310,6 @@ export EDITOR=nvim
 # export VISUAL=./nvim.appimage
 # export EDITOR=./nvim.appimage
 export FORGIT_NO_ALIASES=1
-export PATH=/usr/local/bin/node-v18.16.0-linux-x64/bin:$PATH
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
