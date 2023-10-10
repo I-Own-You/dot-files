@@ -26,6 +26,7 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 alias s="sudo "
 alias nf='nvim $(fzf)' # okay so " " executes it immediately, so put '' only
 alias cdd='fd -t=d -H | fzf | wl-copy' 
+alias nvlt='nvim leetcode.nvim'
 alias cpwf='fzf | wl-copy' 
 alias pa="sudo pacman"
 alias pau="sudo pacman -Syu"
