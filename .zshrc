@@ -30,7 +30,6 @@ alias nvlt='nvim leetcode.nvim'
 alias cpwf='fzf | wl-copy' 
 alias pa="sudo pacman"
 alias pau="sudo pacman -Syu"
-alias lt="cd ~/.leetcode/ && nvim"
 alias pai="sudo pacman -S"
 alias par="sudo pacman -Rns"
 alias nzsh="cd ~/dot-files && nvim .zshrc"
