@@ -1,6 +1,6 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
-# kitty -o include="~/.config/kitty/kitty-themes~/themes/3024_Night.conf"
+# kitty -o include="~/.config/kitty/kitty-themes~/themes/Hardcore.conf"
 
 #: Fonts {{{
 
@@ -2306,15 +2306,15 @@ map kitty_mod+; next_layout
 
 
 
-include ./theme.conf
 
-font_family      FiraCode NFM
+# font_family      MesloLGS NF
+font_family      FiraCode Nerd Font
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 
 
-font_size 13.0
+font_size 15.0
 modify_font underline_position +9
 modify_font underline_thickness 150%
 # cursor_text_color #111111
@@ -2322,16 +2322,23 @@ cursor_shape block
 cursor_blink_interval 0
 enable_audio_bell no
 
-window_border_width 3pt
+window_border_width 2pt
+# active_border_color #AA28C0 
+
 
 tab_bar_edge bottom
 tab_bar_style fade
 tab_bar_align right
 tab_switch_strategy previous
-# tab_bar_background #101010
-# background #101010
+# active_tab_foreground  #161616 
+# active_tab_background  #43F0EE 
+active_tab_font_style   bold
+# inactive_tab_foreground #ffffff
+# inactive_tab_background #000000 
+inactive_tab_font_style italic
 
-allow_remote_control no
+allow_remote_control yes
+listen_on unix:@mykitty
 KITTY_SHELL_INTEGRATION=zsh
 
 map alt+enter new_window
@@ -2343,19 +2350,39 @@ map ctrl+shift+right resize_window narrower
 map ctrl+shift+up resize_window taller
 map ctrl+shift+down resize_window shorter
 
+map alt+k scroll_line_up
+map alt+j scroll_line_down
+
 map ctrl+shift+j kitten pass_keys.py neighboring_window bottom ctrl+shift+j "^.* - nvim$"
 map ctrl+shift+k kitten pass_keys.py neighboring_window top    ctrl+shift+k "^.* - nvim$"
 map ctrl+shift+h kitten pass_keys.py neighboring_window left   ctrl+shift+h "^.* - nvim$" 
 map ctrl+shift+l kitten pass_keys.py neighboring_window right  ctrl+shift+l "^.* - nvim$"
 
+# map ctrl+f3 detach_window tab-prev # moves the window into the previously active tab
+# map ctrl+f3 detach_window tab-left # moves the window into the tab at the left of the active tab
+# map ctrl+f2 detach_window new-tab # moves the window into a new tab
+# map ctrl+f2 detach_window ask # asks which tab to move the window into
+# map ctrl+f4 detach_tab ask # asks which OS Window to move the tab into
+
+map ctrl+f2 detach_window # moves the window into a new OS window
+map ctrl+f3 detach_tab # moves the tab into a new OS window
+
+
 map kitty_mod+t new_tab
 map ctrl+alt+x close_tab
-# map ctrl+alt+x close_os_window
+# map f9 close_other_windows_in_tab
+
+
+
+
 map kitty_mod+equal  change_font_size all +1.0
 map kitty_mod+minus       change_font_size all -1.0
+# ctrl+shift+f - move windows forward
+# ctrl+shift+b - move windows backward
 
+hide_window_decorations yes
 
 # BEGIN_KITTY_THEME
-# Hardcore
+# Adwaita dark
 include current-theme.conf
 # END_KITTY_THEME
