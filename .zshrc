@@ -42,7 +42,7 @@ alias mi="makepkg -i"
 alias qq="shutdown now"
 alias qr="shutdown -r now"
 alias ql"gnome-session-quit --no-prompt"
-alias tt="cd ~/Documents/trash/ && nvim"
+alias wt="curl wttr.in"
 
 # custom vars
 alias ww="wget"
