@@ -20,6 +20,7 @@ color picker (any, gpick for example)
 vokoscreen (from off site)
 ipython
 fzf 
+pgcli
 ripgrep 
 npm 
 npm i -g vscode-langservers-extracted  # for lsps
