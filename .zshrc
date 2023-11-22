@@ -314,6 +314,7 @@ export EDITOR=nvim
 # export VISUAL=./nvim.appimage
 # export EDITOR=./nvim.appimage
 export FORGIT_NO_ALIASES=1
+export LESS="-RXF"
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
