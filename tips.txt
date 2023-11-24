@@ -46,6 +46,7 @@
 1. for gatekeeper theme.lua
     // github_dark
     hl(0, "FoldColumn", { fg = c.base0C, bg = '#24292E' })
+    hl(0, "PackageInfoOutdatedVersion", {fg = c.green, bg = c.black})
     //everblush
     hl(0, "FoldColumn", { fg = c.base0C, bg = '#141B1E' })
 
