@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Insomnia
+Exec=/home/mkc/Insomnia.Core-8.4.5.AppImage
+Icon=/home/mkc/Pictures/wallpapers/insomnia.png
+Terminal=false
+Categories=Development;

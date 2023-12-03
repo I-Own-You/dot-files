@@ -11,6 +11,7 @@
 3. ln -s ~/dot-files/zsh_custom_scripts ~/zsh_custom_scripts
 4. ln -s ~/dot-files/rc.conf ~/.config/ranger/rc.conf
 5. ln -s ~/dot-files/commands.py ~/.config/ranger/commands.py
+6. ln -sf ~/dot-files/insomania.desktop ~/.local/share/applications
 
 1. also look into .gitconfig for delta settings https://github.com/dandavison/delta/releases # for delta, for git diff
 [core]
