@@ -15,6 +15,7 @@ zsh
 exa // unmaintained repo 
 eza
 bat 
+jq
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
 vokoscreen (from off site)
