@@ -1,0 +1,17 @@
+1. cache expensive-operations/common-requests.
+    - you can cache either in-memory or using external data store
+2. rate limit of an api is the api is public so people wont abuse loading your server
+3. move long processing/blocking task to queues as much as you can:
+    - then you can split your app into:
+        - the web server
+        - the worker (they will process the long running tasks, so you wont have to scale the web server and only workers)
+4. database:
+    - put indexes in the db for better optimmization
+    - optimize queries
+    - choose wise data structure
+5. in production:
+    - monitor cpu, ram, response time, error rates (db, caching, etc)
+6. don't store session or user-specific data on the server between requests, so you could scale horizontally under heavy load
+7. configure your app to be scaled up automatically when detecting ram/cpu/.etc raises in demand, and scale down if no traffic
+8. have a good logging/tracker of your app tracing all the problems/.etc so you can better debug
+tip: 9. think about streaming the data instead of keeping all in memory, it saves a lot of ram (esp. for big downloads)
