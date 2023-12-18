@@ -303,16 +303,21 @@ alias fgss="forgit::stash::show"
 alias fgw="forgit::warn"
 
 # autoload -Uz promptinit && promptinit && prompt pure
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=fg:#4d4d4c,bg:#1E1E1E,hl:#72DEC2
---color=fg+:#4d4d4c,bg+:#333232,hl+:#72DEC2
---color=info:#4271ae,prompt:#8959a8,pointer:#72DEC2
---color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+# --color=fg:#4d4d4c,bg:#1E1E1E,hl:#72DEC2
+# --color=fg+:#4d4d4c,bg+:#333232,hl+:#72DEC2
+# --color=info:#4271ae,prompt:#8959a8,pointer:#72DEC2
+# --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
+--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+--color=fg+:#ffffff,bg+:#1a1b26,hl+:#7dcfff
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff 
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+
 # export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias : "
 export VISUAL=nvim
 export EDITOR=nvim
-# export VISUAL=./nvim.appimage
-# export EDITOR=./nvim.appimage
 export FORGIT_NO_ALIASES=1
 export LESS="-RXF"
 
