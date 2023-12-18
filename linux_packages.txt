@@ -68,6 +68,12 @@ lxappearance-gtk3
 # wayland
 wl-clipboard
 qps
+flameshot-git
+grim
+hyprland # you will need to install it and uninstall the hyprland-git that gives the hyproots github if the problem with logout occurs
+hyprpicker-git
+vlc
+obs-studio
 
 # gnome
 dconf-editor
