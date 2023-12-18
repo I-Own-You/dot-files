@@ -67,6 +67,7 @@ lxappearance-gtk3
 
 # wayland
 wl-clipboard
+qps
 
 # gnome
 dconf-editor
