@@ -74,6 +74,7 @@ hyprland # you will need to install it and uninstall the hyprland-git that gives
 hyprpicker-git
 vlc
 obs-studio
+hyprland-per-window-layout
 
 # gnome
 dconf-editor
