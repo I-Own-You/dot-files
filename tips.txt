@@ -1,9 +1,6 @@
 1. install kitty https://sw.kovidgoyal.net/kitty/binary/
-2. install the recommended font from https://github.com/romkatv/powerlevel10k
 
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
-
-1. chsh -s $(which zsh) change bash to zsh 
 
 #remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
@@ -12,31 +9,11 @@
 4. ln -s ~/dot-files/rc.conf ~/.config/ranger/rc.conf
 5. ln -s ~/dot-files/commands.py ~/.config/ranger/commands.py
 6. ln -sf ~/dot-files/insomania.desktop ~/.local/share/applications
-
-1. also look into .gitconfig for delta settings https://github.com/dandavison/delta/releases # for delta, for git diff
-[core]
-    pager = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-
-[merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default
-2. install pip reqs
-3. install linux_packs
+6. ln -sf ~/dot-files/.gitconfig ~/
 
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
 3. create a jk_switch.py in startup folder of .ipyton folder from https://ipython.readthedocs.io/en/stable/config/details.html#keyboard-shortcuts
-
-1. look into treesj plugin neovim and turn off but not leader<j>
 
 1. into zsh-vi-mode plugin
 2. ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
@@ -51,38 +28,9 @@
     //everblush
     hl(0, "FoldColumn", { fg = c.base0C, bg = '#141B1E' })
 
-1. sudo updatedb for locate to work (fzf)
-
-python3 -m pip install --user --upgrade pynvim # for pynvim
-cat packages.txt | xargs sudo apt-get install -y # install linux packages
-
-1. create tags for every project/file you need
-
-1. Install gitlab cli tool:
-2. https://docs.makedeb.org/prebuilt-mpr/getting-started/#setting-up-the-repository
-3. https://gitlab.com/gitlab-org/cli/-/blob/main/docs/installation_options.md (Prebuilt-MPR section at the end or just sudo apt install glab)
-4. glab completion -s zsh > "/usr/local/share/zsh/site-functions/_glab"
-
-1. https://github.com/mfussenegger/nvim-dap-python
-2. mkdir .virtualenvs
-   cd .virtualenvs
-   python -m venv debugpy
-   debugpy/bin/python -m pip install debugpy
-
-1. install wl-clipboard for wayland copy/paste
-
-1. follow this guide for hyprland https://wiki.hyprland.org/Nvidia/
-
 1. follow guides from here https://github.com/cdump/ranger-devicons2 # icons for ranger
 
 1. install this, follow the links from aur https://github.com/jstkdng/ueberzugpp
-
-1. do it so gnome wont group application windows:
-    gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"
-    gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
-    gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Shift><Super>Tab']"
-    gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
-gsettings set org.gnome.desktop.peripherals.touchpad middle-click-emulation true # do it in dconf-editor
 
 1. dont forget to put keybindings from dot-files to hyprdots
 2. dont forget to add "1": [] to workspaces.jsonc of waybar
