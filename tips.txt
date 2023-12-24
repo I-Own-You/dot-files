@@ -21,19 +21,7 @@
 4. ZVM_VI_HIGHLIGHT_BACKGROUND=#383737 # Hex value
 5. ZVM_VI_EDITOR=nvim
 
-1. for gatekeeper theme.lua
-    // github_dark
-    hl(0, "FoldColumn", { fg = c.base0C, bg = '#24292E' })
-    hl(0, "PackageInfoOutdatedVersion", {fg = c.green, bg = c.black})
-    //everblush
-    hl(0, "FoldColumn", { fg = c.base0C, bg = '#141B1E' })
-
 1. follow guides from here https://github.com/cdump/ranger-devicons2 # icons for ranger
-
-1. install this, follow the links from aur https://github.com/jstkdng/ueberzugpp
-
-1. dont forget to put keybindings from dot-files to hyprdots
-2. dont forget to add "1": [] to workspaces.jsonc of waybar
 
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
