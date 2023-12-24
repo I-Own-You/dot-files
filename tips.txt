@@ -27,6 +27,7 @@
 
 3. gnome tips:
 3.1 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true // to resize with win+right button mouse
+3.2 https://github.com/flameshot-org/flameshot/issues/3326#issuecomment-1837225180
 
 
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
