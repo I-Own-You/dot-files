@@ -17,6 +17,7 @@ exa // unmaintained repo
 paru //git
 eza
 bat 
+git-delta
 jq
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
@@ -84,7 +85,7 @@ dconf-editor
 gnome-tweaks
 gnome-browser-connector
 colorway
-https://github.com/mjakeman/extension-manager
+https://github.com/mjakeman/extension-manager  // seems to be in gnome 45, so dont download
 lxappearance-gtk3
 https://extensions.gnome.org/extension/5090/space-bar/
 https://github.com/yilozt/rounded-window-corners
