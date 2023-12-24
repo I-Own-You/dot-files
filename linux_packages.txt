@@ -32,6 +32,7 @@ npm install -g tldr
 github-cli
 ctags
 fd
+ueberzug //git
 p7zip
 unrar
 unzip
