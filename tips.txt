@@ -23,6 +23,8 @@
 
 1. follow guides from here https://github.com/cdump/ranger-devicons2 # icons for ranger
 
+1. https://github.com/jstkdng/ueberzugpp/issues/81#issuecomment-1623923211 fix ueberzugpp image for kitty terminal
+
 3. gnome tips:
 3.1 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true // to resize with win+right button mouse
 
