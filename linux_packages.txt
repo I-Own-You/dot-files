@@ -17,6 +17,7 @@ exa // unmaintained repo
 paru //git
 eza
 bat 
+git-delta
 jq
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
