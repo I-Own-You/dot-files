@@ -309,9 +309,11 @@ alias fgw="forgit::warn"
 # --color=info:#4271ae,prompt:#8959a8,pointer:#72DEC2
 # --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
 
+# --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+# --color=fg+:#ffffff,bg+:#1a1b26,hl+:#7dcfff
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
---color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
---color=fg+:#ffffff,bg+:#1a1b26,hl+:#7dcfff
+--color=fg:#c0caf5,hl:#bb9af7
+--color=fg+:#ffffff,hl+:#7dcfff
 --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff 
 --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
 
