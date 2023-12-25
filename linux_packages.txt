@@ -84,6 +84,7 @@ hyprland-per-window-layout
 dconf-editor
 gnome-tweaks
 gnome-browser-connector
+gdm-settings //paru
 colorway
 https://github.com/mjakeman/extension-manager  // seems to be in gnome 45, so dont download
 lxappearance-gtk3
