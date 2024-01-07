@@ -523,40 +523,20 @@ local plugins = {
 			vim.g.codeium_disable_bindings = 1
 			vim.g.codeium_enabled = true
 		end,
-		keys = {
-			{
-				"<A-l>",
-				mode = "i",
-				function()
-					return vim.fn["codeium#CycleCompletions"](1)
-				end,
-				{ expr = true },
-			},
-			{
-				"<A-h>",
-				mode = "i",
-				function()
-					return vim.fn["codeium#CycleCompletions"](-1)
-				end,
-				{ expr = true },
-			},
-			{
-				"<c-x>",
-				mode = "i",
-				function()
-					return vim.fn["codeium#Clear"]()
-				end,
-				{ expr = true },
-			},
-			{
-				"<c-cr>",
-				mode = "i",
-				function()
-					return vim.fn["codeium#Accept"]()
-				end,
-				{ expr = true },
-			},
-		},
+		config = function()
+			vim.keymap.set("i", "<A-l>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true })
+			vim.keymap.set("i", "<A-h>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true })
+			vim.keymap.set("i", "<c-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true })
+			vim.keymap.set("i", "<c-cr>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
+		end,
 	},
 
 	{
