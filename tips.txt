@@ -29,6 +29,25 @@
 3.1 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true // to resize with win+right button mouse
 3.2 https://github.com/flameshot-org/flameshot/issues/3326#issuecomment-1837225180
 
+1.nvchad help:
+1.1 "hrsh7th/cmp-cmdline", into plugins/init.lua sources (there is a list with sources)
+1.2 (into cmp plugin at the end)
+    cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+        { name = "buffer" },
+        },
+        })
+
+    cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = "path" },
+            }, {
+            { name = "cmdline" },
+            }),
+        })
+
 
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
