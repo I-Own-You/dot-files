@@ -6,14 +6,14 @@ local highlights = require("custom.highlights")
 
 M.ui = {
 	statusline = {
-		theme = "vscode_colored",
+		theme = "minimal",
 		overriden_modules = function(modules)
 			-- Insert your module at index 2:
 			table.insert(
 				modules,
-				4,
+				7,
 				(function()
-					return vim.fn["codeium#GetStatusString"]()
+					return "AI:" .. vim.fn["codeium#GetStatusString"]() .. "   "
 				end)()
 			)
 			return modules
