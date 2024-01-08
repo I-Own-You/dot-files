@@ -73,6 +73,7 @@ M.mason = {
 		-- "eslint",
 		"biome",
 		"prisma-language-server",
+		"cssmodules_ls",
 	},
 }
 
