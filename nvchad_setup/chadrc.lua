@@ -7,17 +7,17 @@ local highlights = require("custom.highlights")
 M.ui = {
 	statusline = {
 		theme = "minimal",
-		overriden_modules = function(modules)
+		-- overriden_modules = function(modules)
 			-- Insert your module at index 2:
-			table.insert(
-				modules,
-				7,
-				(function()
-					return "AI:" .. vim.fn["codeium#GetStatusString"]() .. "   "
-				end)()
-			)
-			return modules
-		end,
+			-- table.insert(
+			-- 	modules,
+			-- 	7,
+			-- 	(function()
+			-- 		return "AI:" .. vim.fn["codeium#GetStatusString"]() .. "   "
+			-- 	end)()
+			-- )
+			-- return modules
+		-- end,
 	},
 	theme = "everblush",
 	theme_toggle = { "everblush", "one_light" },

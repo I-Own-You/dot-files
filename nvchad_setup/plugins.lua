@@ -521,6 +521,7 @@ local plugins = {
 
   {
     "Exafunction/codeium.vim",
+    enabled = false,
     event = "BufReadPost",
     init = function()
       vim.g.codeium_disable_bindings = 1
