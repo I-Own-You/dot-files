@@ -358,10 +358,14 @@ local plugins = {
       -- { "<C-k>", '<cmd>lua require("smart-splits").move_cursor_up()<CR>' },
       -- { "<C-l>", '<cmd>lua require("smart-splits").move_cursor_right()<CR>' },
       -- resize buffers
-      { "<C-Left>", '<cmd>lua require("smart-splits").resize_left()<CR>' },
-      { "<C-Down>", '<cmd>lua require("smart-splits").resize_down()<CR>' },
-      { "<C-Up>", '<cmd>lua require("smart-splits").resize_up()<CR>' },
-      { "<C-Right>", '<cmd>lua require("smart-splits").resize_right()<CR>' },
+      -- { "<C-Left>", '<cmd>lua require("smart-splits").resize_left()<CR>' },
+      -- { "<C-Down>", '<cmd>lua require("smart-splits").resize_down()<CR>' },
+      -- { "<C-Up>", '<cmd>lua require("smart-splits").resize_up()<CR>' },
+      -- { "<C-Right>", '<cmd>lua require("smart-splits").resize_right()<CR>' },
+      { "qh", '<cmd>lua require("smart-splits").resize_left()<CR>' },
+      { "ql", '<cmd>lua require("smart-splits").resize_right()<CR>' },
+      { "qj", '<cmd>lua require("smart-splits").resize_down()<CR>' },
+      { "qk", '<cmd>lua require("smart-splits").resize_up()<CR>' },
       -- swapping buffers
       { "<C-Space>h", '<cmd>lua require("smart-splits").swap_buf_left()<CR>' },
       { "<C-Space>j", '<cmd>lua require("smart-splits").swap_buf_down()<CR>' },
