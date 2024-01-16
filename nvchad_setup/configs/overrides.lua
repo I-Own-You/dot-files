@@ -74,6 +74,7 @@ M.mason = {
 		"biome",
 		"prisma-language-server",
 		"cssmodules_ls",
+    "emmet_ls"
 	},
 }
 

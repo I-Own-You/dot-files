@@ -16,7 +16,9 @@ end
 lspconfig.jsonls.setup(require("custom.configs.lsp_settings.jsonls"))
 lspconfig.prismals.setup(require("custom.configs.lsp_settings.prismals"))
 -- lspconfig.tailwindcss.setup(require("custom.configs.lsp_settings.tailwindcss"))
-
 lspconfig.biome.setup({
 	filetypes = { "json", "jsonc" },
+})
+lspconfig.emmet_ls.setup({
+	filetypes = { "astro", "eruby", "html", "htmldjango", "javascriptreact", "pug", "svelte", "typescriptreact", "vue" },
 })
