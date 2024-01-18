@@ -434,16 +434,16 @@ M.devdocs = {
 			width = 75,
 		},
 	},
-	float_win = { -- passed to nvim_open_win(), see :h api-floatwin
-		relative = "editor",
-		height = 25,
-		width = 100,
-		border = "rounded",
-	},
-	wrap = false, -- text wrap, only applies to floating window
+	-- float_win = { -- passed to nvim_open_win(), see :h api-floatwin
+	-- 	relative = "editor",
+	-- 	height = 25,
+	-- 	width = 100,
+	-- 	border = "rounded",
+	-- },
+	-- wrap = false, -- text wrap, only applies to floating window
 	--  install them: html, javascript, npm, react, express, react-router, css, typescript, python, django, tailwindcss, dom
-	previewer_cmd = "glow",
-	cmd_args = { "-s", "dark", "-w", "80" },
+	-- previewer_cmd = "glow",
+	-- cmd_args = { "-s", "dark", "-w", "80" },
 	-- cmd_ignore = {}, -- ignore cmd rendering for the listed docs
 	-- picker_cmd = false, -- use cmd previewer in picker preview
 	-- picker_cmd_args = {}, -- example using glow: { "-p" }
