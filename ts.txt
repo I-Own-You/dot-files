@@ -2100,3 +2100,40 @@ namespace Color {
     // each reference to a unique symbol implies a completely unique identity that’s tied to a given declaration.
 50. type compatibilit table: https://www.typescriptlang.org/docs/handbook/type-compatibility.html#any-unknown-object-void-undefined-null-and-never-assignability
 51. jsdoc reference: https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
+
+
+tips:
+handling keys from objects:
+    1. as casting:
+        const user = {
+          name: "Daniel",
+          age: 26,
+        };
+        const keys = Object.keys(user) as Array<keyof typeof user>;
+        keys.forEach((key) => {
+          console.log(user[key]);
+        });
+        or
+        const keys = Object.keys(user);
+        krrs.forEach((key) => {
+          console.log(user[key as keyof typeof user]);
+        });
+    2. type predicates:
+        function isKey<T extends object>( x: T, k: PropertyKey): k is keyof T {
+          return k in x;
+        }
+        keys.forEach((key) => {
+          if (isKey(user, key)) {
+            console.log(user[key]);
+          }
+        });
+    3. generic funcs:
+        type User = {
+          name: string;
+          age: number;
+        };
+        function printEachKey<T extends object>(obj: T) {
+          for (const key in obj) {
+            console.log(obj[key]);
+       r  }
+        }
