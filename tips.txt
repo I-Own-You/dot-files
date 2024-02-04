@@ -3,6 +3,7 @@
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
 
 1. install go
+2. install sed
 
 #remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
