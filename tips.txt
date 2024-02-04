@@ -2,6 +2,8 @@
 
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
 
+1. install go
+
 #remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/.zshrc ~/.zshrc
 2. ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
