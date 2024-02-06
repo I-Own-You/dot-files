@@ -45,6 +45,7 @@ alias qq="shutdown now"
 alias qr="shutdown -r now"
 alias ql"gnome-session-quit --no-prompt"
 alias wt="curl wttr.in"
+alias n="nvim"
 
 # custom vars
 alias ww="wget"
