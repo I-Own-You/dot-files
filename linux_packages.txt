@@ -7,6 +7,9 @@ pipewire-audio
 xf86-video-intel
 
 # general
+go
+sed
+curl
 glow
 python-pynvim (for rnvimr plugin neovim)
 nerd-fonts
@@ -19,6 +22,7 @@ eza
 bat 
 git-delta
 jq
+tidy
 synaptic or moune pakcage manager
 color picker (any, gpick for example)
 vokoscreen (from off site)
