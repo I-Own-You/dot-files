@@ -1,0 +1,16 @@
+-- Numeric:
+    -- =, !=, <, <=, >, >= - numeric operators
+    -- between x and y - range comparison 
+    -- not between x and y - range comparison
+    -- in() - exists in a list
+    -- not in() - not exists in a list
+
+-- Text: (these operators are efficient but in a real work full text search its better to use libraries/plugins for your database becuase they offer better performance and more features)
+--     = - case sensitive exact string comparison
+--     !=, <> - case sensitive exact string inequality comparison
+--     LIKE - case insenstive exact string comparison
+--     NOT LIKE  - case insenstive exact string inequality comparison
+--     % - used in the string to match 0 or more characters, works only with LIKE, NOT LIKE; ex: LIKE "%AT%"
+--     _ - used in the string to match 0 or more characters, works only with LIKE, NOT LIKE; ex: LIKE "AT_"
+--    in() - string exists in a list
+--     not in() - string doesnt exist in a list
