@@ -9,3 +9,6 @@ SELECT column AS better_column_name, …
 FROM a_long_widgets_table_name AS mywidgets
 INNER JOIN widget_sales
   ON mywidgets.id = widget_sales.widget_id;
+
+
+-- you can also write SELECT column another_column_name instead of SELECT column as another_column_name
