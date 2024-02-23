@@ -84,6 +84,9 @@ vlc
 obs-studio
 hyprland-per-window-layout
 
+# hyprland
+gtk3 (so kitty launches)
+
 # gnome
 dconf-editor
 gnome-tweaks
