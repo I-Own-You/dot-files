@@ -59,7 +59,8 @@ xorg-xinit
 xorg-server
 feh
 rofi (config auto https://github.com/adi1090x/rofi)
-flameshot
+flameshot-git
+grim (for flameshot-git)
 lxappearance-gtk3
 polybar (config auto https://github.com/adi1090x/polybar-themes)
 xarchiver
