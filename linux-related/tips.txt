@@ -3,12 +3,13 @@
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
 
 #remark: you must be inside the dir where you symlink the file
-1. ln -s ~/dot-files/.zshrc ~/.zshrc
-2. ln -s ~/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
-3. ln -s ~/dot-files/rc.conf ~/.config/ranger/rc.conf
-4. ln -s ~/dot-files/commands.py ~/.config/ranger/commands.py
-5. ln -sf ~/dot-files/insomania.desktop ~/.local/share/applications
-6. ln -sf ~/dot-files/.gitconfig ~/
+1. ln -s ~/dot-files/dot-files/.zshrc ~/.zshrc
+2. ln -s ~/dot-files/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
+3. ln -s ~/dot-files/ranger-related/rc.conf ~/.config/ranger/rc.conf
+4. ln -s ~/dot-files/ranger-related/commands.py ~/.config/ranger/commands.py
+5. ln -sf ~/dot-files/insomnia-related/insomania.desktop ~/.local/share/applications
+6. ln -sf ~/dot-files/dot-files/.gitconfig ~/
+7. ln -s ~/dot-files/config.conf ~/.config/neofetch
 
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
