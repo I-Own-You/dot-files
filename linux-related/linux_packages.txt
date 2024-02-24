@@ -8,6 +8,8 @@ xf86-video-intel
 
 # general
 go
+neofetch
+nwg-look
 sed
 curl
 glow
@@ -87,6 +89,7 @@ hyprland-per-window-layout
 
 # hyprland
 gtk3 (so kitty launches)
+polkit-kde-agent
 
 # gnome
 dconf-editor
