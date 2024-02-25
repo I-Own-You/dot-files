@@ -7,9 +7,13 @@
 2. ln -s ~/dot-files/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
 3. ln -s ~/dot-files/ranger-related/rc.conf ~/.config/ranger/rc.conf
 4. ln -s ~/dot-files/ranger-related/commands.py ~/.config/ranger/commands.py
-5. ln -sf ~/dot-files/insomnia-related/insomania.desktop ~/.local/share/applications
-6. ln -sf ~/dot-files/dot-files/.gitconfig ~/
+5. ln -s ~/dot-files/insomnia-related/insomania.desktop ~/.local/share/applications
+6. ln -s ~/dot-files/dot-files/.gitconfig ~/
 7. ln -s ~/dot-files/config.conf ~/.config/neofetch
+8. ln -s ~/dot-files/hyprland-related/hyprland.conf ~/.config/hypr
+9. ln -s ~/dot-files/hyprland-related/hyprlock.conf ~/.config/hypr
+10. ln -s ~/dot-files/swaync/config.json ~/.config/swaync
+11. ln -s ~/dot-files/swaync/style.css ~/.config/swaync
 
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"

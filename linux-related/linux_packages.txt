@@ -1,33 +1,22 @@
-# arch specific
-alsa-utils (symlink .asoundrc to ~/)
-pipewire
-wireplumber
-pipewire-alsa
-pipewire-audio
-xf86-video-intel
+#neovim specific
+python-pynvim (for rnvimr plugin neovim)
 
 # general
+broadcom-wl
+man
 go
-neofetch
-nwg-look
 sed
 curl
-glow
-python-pynvim (for rnvimr plugin neovim)
-nerd-fonts
-https://aur.archlinux.org/packages/video-trimmer
+git
 openssh
+neofetch
 zsh
-exa // unmaintained repo 
 paru //git
 eza
 bat 
 git-delta
 jq
 tidy
-synaptic or moune pakcage manager
-color picker (any, gpick for example)
-vokoscreen (from off site)
 ipython
 fzf 
 insomnia (aur)
@@ -45,51 +34,26 @@ unrar
 unzip
 chafa
 viu
-
-#for ranger app but search for all if they are installed anyway here: https://github.com/ranger/ranger
 ranger
-mediainfo
-odt2txt
-fontforge
-openscad
-
-
-# wm related
-bspwm
-sxhkd
-xorg-xinit
-xorg-server
-feh
-rofi (config auto https://github.com/adi1090x/rofi)
-flameshot-git
-grim (for flameshot-git)
-lxappearance-gtk3
-polybar (config auto https://github.com/adi1090x/polybar-themes)
-xarchiver
-viewnior
-tumbler
-betterlockscreen (-u *image path*, -l in sxhkd)
-
-# xorg
-xclip
-xdotool
-kvantum
-lxappearance-gtk3
-
-# wayland
-wl-clipboard
-qps
-flameshot-git
-grim
-hyprland # you will need to install it and uninstall the hyprland-git that gives the hyproots github if the problem with logout occurs
-hyprpicker-git
 vlc
 obs-studio
-hyprland-per-window-layout
 
 # hyprland
 gtk3 (so kitty launches)
-polkit-kde-agent
+polkit-kde-agent (polkit for password popups)
+hyprpicker-git (color picker)
+hyprlock (lockscreen)
+hyprpaper (wallpaper setup)
+hyprlang (for hyprpaper)
+thunar (file manager)
+wpctl (audio controller)
+nwg-look (themes setup)
+wl-clipboard (wl-copy/paste)
+hyprland-per-window-layout (paru, git)
+playerctl (media control, audio pause, next, .etc)
+brightnessctl (control brightness)
+swaync (paru, aur)
+
 
 # gnome
 dconf-editor
