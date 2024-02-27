@@ -56,8 +56,6 @@ alias et="eza -T --long"
 alias b="cd .."
 alias h="cd ~"
 alias ncf="cd ~/.config/nvim && nvim"
-alias man="tldr "
-alias mman="/usr/bin/man"
 alias dff="cd ~/dot-files && nvim"
 # alias vim="nvim"
 alias ae=". env/bin/activate"
@@ -340,7 +338,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
+# zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
 unsetopt EXTENDED_GLOB
 
 function zvm_after_init() {
