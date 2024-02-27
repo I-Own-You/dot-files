@@ -12,8 +12,9 @@
 7. ln -s ~/dot-files/config.conf ~/.config/neofetch
 8. ln -s ~/dot-files/hyprland-related/hyprland.conf ~/.config/hypr
 9. ln -s ~/dot-files/hyprland-related/hyprlock.conf ~/.config/hypr
-10. ln -s ~/dot-files/swaync/config.json ~/.config/swaync
-11. ln -s ~/dot-files/swaync/style.css ~/.config/swaync
+10. ln -s ~/dot-files/hyprland-related/hyprpaper.conf ~/.config/hypr
+11. ln -s ~/dot-files/swaync/config.json ~/.config/swaync
+12. ln -s ~/dot-files/swaync/style.css ~/.config/swaync
 
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
