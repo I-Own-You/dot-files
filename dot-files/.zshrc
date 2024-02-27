@@ -30,6 +30,7 @@ alias cdd='fd -t=d -H | fzf | xclip -selection clipboard'
 alias nvlt='nvim leetcode.nvim'
 # alias cpwf='fzf | wl-copy' 
 alias cpwf='fzf | xclip -selection clipboard'
+alias tg='cd ~/Telegram && ./Telegram'
 alias pa="sudo pacman"
 alias pau="sudo pacman -Syu"
 alias pai="sudo pacman -S"
