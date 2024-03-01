@@ -17,6 +17,7 @@
 12. ln -s ~/dot-files/swaync/style.css ~/.config/swaync
 13. ln -s ~/dot-files/waybar-related/* ~/.config/waybar
 14. ln -s ~/dot-files/rofi-related/* ~/.config/rofi
+15. ln -s ~/dot-files/linux-gtk-theming/* ~/.config/.themes|.icons
 
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
