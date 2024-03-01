@@ -39,6 +39,7 @@ viu
 ranger
 vlc
 obs-studio
+qt6-wayland (for obs)
 
 # hyprland
 gtk3 (so kitty launches)
