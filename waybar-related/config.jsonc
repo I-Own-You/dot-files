@@ -59,11 +59,6 @@
   //   "on-click": "kitty --class wm-floating --title all_is_kitty --hold --detach sh -c 'pacman -Syu'",
   //   "tooltip": true,
   // },
-  "hyprland/language": {
-    "format": "{}",
-    "format-en": "EN",
-    "format-ru": "RU",
-  },
   "cpu": {
     "interval": 1,
     "format": "󰍛 {usage}%",
@@ -400,14 +395,15 @@
   //  "format-alt": "{time} {icon}",
   //  "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   //},
-  //"hyprland/language": {
-  //  "format": "󰥻 {}",
-  //  "format-en": "en",
-  //  "format-de": "de",
-  //  "format-ar": "ar",
-  //  "format-fr": "fr",
-  //  "format-tr": "tr"
-  //},
+  "hyprland/language": {
+   "format": "{}",
+   "format-en": "EN",
+   "format-ru": "RU",
+   // "format-de": "DE",
+   // "format-ar": "AR",
+   // "format-fr": "FR",
+   // "format-tr": "TR"
+  },
   //"custom/random_wall": {
   //  "format": "{}",
   //  "exec": "echo ; echo 󰟡 ",
