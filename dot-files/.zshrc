@@ -27,7 +27,9 @@ alias s="sudo "
 alias nf='nvim $(fzf)' # okay so " " executes it immediately, so put '' only
 # alias cdd='fd -t=d -H | fzf | wl-copy' 
 alias cdd='fd -t=d -H | fzf | xclip -selection clipboard'
+alias hp='Hyprland'
 alias nvlt='nvim leetcode.nvim'
+alias bp='btop'
 # alias cpwf='fzf | wl-copy' 
 alias cpwf='fzf | xclip -selection clipboard'
 alias tg='cd ~/Telegram && ./Telegram'
