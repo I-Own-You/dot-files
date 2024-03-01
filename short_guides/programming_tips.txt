@@ -15,3 +15,9 @@
 7. configure your app to be scaled up automatically when detecting ram/cpu/.etc raises in demand, and scale down if no traffic
 8. have a good logging/tracker of your app tracing all the problems/.etc so you can better debug
 tip: 9. think about streaming the data instead of keeping all in memory, it saves a lot of ram (esp. for big downloads)
+
+S-single responsibility principle(A class should have one reason to change,a class should have only one job.)
+O-open closed principle(Objects or entities should be open for extension but closed for modification.)
+L-Liskov Substitution Principle(every subclass or derived class should be substitutable for their base or parent class.)
+I-Interface segregation principle(client should implement interface that he uses, must not depend on what doesnt use)
+D-Dependency inversion principle(Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions.)
