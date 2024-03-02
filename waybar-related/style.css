@@ -220,6 +220,16 @@
   padding-right: 5px;
 }
 
+#cpu {
+  min-width: 50px;
+}
+#memory {
+  min-width: 100px;
+}
+#network {
+  min-width: 240px;
+}
+
 #memory {
   border-radius: 0px;
   margin-right: 0px;
