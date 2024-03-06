@@ -2,6 +2,7 @@
 python-pynvim (for rnvimr plugin neovim)
 
 # general
+wget
 lazygit
 qbittorent
 broadcom-wl
