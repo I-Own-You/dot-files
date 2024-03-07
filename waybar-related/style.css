@@ -134,6 +134,10 @@
   box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
 }
 
+#workspaces button.urgent {
+  color: @red;
+}
+
 #workspaces button.active {
   /*color: @surface0;
     border-radius: 1rem;

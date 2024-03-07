@@ -14,15 +14,16 @@
     // "custom/launcher",
     // "custom/updates",
     "cpu",
-    "custom/gpu",
+    // "custom/gpu",
     "memory",
     "temperature",
     "disk",
-    "network",
+    "tray"
+    // "network",
   ],
   "modules-center": [
-    "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/workspaces"
+    // "hyprland/window"
     // "hyprland/language"
   ],
   "modules-right": [
@@ -32,7 +33,6 @@
     // "battery",
     "upower",
     "custom/notifications",
-    "tray",
     "hyprland/language",
     "clock"
     // "custom/weather",
@@ -68,7 +68,7 @@
     // "format": "󰌢 {load}",
     "tooltip": false,
     "on-click": "missioncenter",
-    "on-click-right": "kitty --class wm-floating --title all_is_kitty --hold --detach sh -c 'btop'",
+    "on-click-right": "kitty --class wm-floating --title all_is_kitty --hold --detach sh -c 'btop'"
   },
   // "custom/gpu": {
   //   "interval": 1,
@@ -86,7 +86,7 @@
     "tooltip": true,
     "tooltip-format": " {used:0.1f}GB/{total:0.1f}GB",
     "on-click": "missioncenter",
-    "on-click-right": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'btop'",
+    "on-click-right": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'btop'"
   },
   "temperature": {
     "interval": 2,
@@ -97,7 +97,7 @@
       "",
       "",
       ""
-    ],
+    ]
   },
   "disk": {
     // "format": " {percentage_used}% ({free})",
@@ -107,28 +107,28 @@
     "tooltip": true,
     "on-click-right": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'ncdu'",
     // "on-click-right": "kitty --start-as=fullscreen --title all_is_kitty sh -c 'btop'",
-    "interval": 10,
+    "interval": 10
   },
-  "network": {
-    // "format": "↕️{bandwidthTotalBytes}",
-    "format": "󰹹{bandwidthTotalBytes}",
-    "format-disconnected": "No Internet⚡",
-    "format-linked": "{ifname} (No IP) ‼️",
-    // "format-alt": "⬆️ {bandwidthUpBytes} | ⬇️ {bandwidthDownBytes}",
-    "format-alt": "🌐 {ipaddr}/{cidr}", 
-    // "format-wifi": "{essid}({signalStrength}%) 🛜",
-    "format-wifi": "{essid}({signalStrength}%) 󰖩 ",
-    "format-ethernet": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
-    // "tooltip-format-wifi": "🛜 {essid}({signalStrength}%)",
-    "tooltip-format-wifi": "󰖩  {essid}({signalStrength}%)",
-    "tooltip-format-ethernet": "🌐 {ipaddr}/{cidr}",
-    // "tooltip-format-disconnected": "‼️ Disconnected",
-    "tooltip-format-disconnected": "󰖪 ",
-    "on-click-right": "nm-connection-editor",
-    "interval": 2,
-  },
+  // "network": {
+  //   // "format": "↕️{bandwidthTotalBytes}",
+  //   "format": "󰹹{bandwidthTotalBytes}",
+  //   "format-disconnected": "No Internet⚡",
+  //   "format-linked": "{ifname} (No IP) ‼️",
+  //   // "format-alt": "⬆️ {bandwidthUpBytes} | ⬇️ {bandwidthDownBytes}",
+  //   "format-alt": "🌐 {ipaddr}/{cidr}",
+  //   // "format-wifi": "{essid}({signalStrength}%) 🛜",
+  //   "format-wifi": "{essid}({signalStrength}%) 󰖩 ",
+  //   "format-ethernet": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
+  //   // "tooltip-format-wifi": "🛜 {essid}({signalStrength}%)",
+  //   "tooltip-format-wifi": "󰖩  {essid}({signalStrength}%)",
+  //   "tooltip-format-ethernet": "🌐 {ipaddr}/{cidr}",
+  //   // "tooltip-format-disconnected": "‼️ Disconnected",
+  //   "tooltip-format-disconnected": "󰖪 ",
+  //   "on-click-right": "nm-connection-editor",
+  //   "interval": 2,
+  // },
   "hyprland/workspaces": {
-    "all-outputs": false,
+    "all-outputs": true,
     "disable-scroll": false,
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "on-scroll-down": "hyprctl dispatch workspace +1",
@@ -140,25 +140,36 @@
       "default": "󰝦",
     },
     "sort-by-number": true,
+    // "format": "{name}: {icon}",
+    // "format-icons": {
+    //   "1": " ",
+    //   "2": " ",
+    //   "3": " ",
+    //   "4": " ",
+    //   "5": " ",
+    //   "active": "",
+    //   "default": "",
+    //   "urgent": "󰗖"
+    // },
+    "persistent-workspaces": {
+      "*": 10
+    }
   },
-  "hyprland/window": {
-    "format": "  {}",
-    "separate-outputs": true,
-    "max-length": 32,
-    "rewrite": {
-      "(.*)fish": "> [$1]",
-      "(.*)neovide": "neovide 󰕷 ", // doesn't seem to work
-      "(.*)Mozilla Firefox": "Firefox 󰈹",
-      "(.*)BlueMail": "BlueMail 󰊫 ",
-      "(.*)Visual Studio Code": "Code 󰨞",
-      "(.*)Dolphin": "$1 󰉋",
-      "(.*)Spotify": "Spotify 󰓇",
-      "(.*)Steam": "Steam 󰓓",
-    },
-  },
-  "persistent-workspaces": {
-    "*": 5, // 5 workspaces by default on every monitor
-  },
+  // "hyprland/window": {
+  //   "format": "  {}",
+  //   "separate-outputs": true,
+  //   "max-length": 32,
+  //   "rewrite": {
+  //     "(.*)fish": "> [$1]",
+  //     "(.*)neovide": "neovide 󰕷 ", // doesn't seem to work
+  //     "(.*)Mozilla Firefox": "Firefox 󰈹",
+  //     "(.*)BlueMail": "BlueMail 󰊫 ",
+  //     "(.*)Visual Studio Code": "Code 󰨞",
+  //     "(.*)Dolphin": "$1 󰉋",
+  //     "(.*)Spotify": "Spotify 󰓇",
+  //     "(.*)Steam": "Steam 󰓓"
+  //   },
+  // },
   "pulseaudio": {
     "format": "{icon} {volume}",
     "format-bluetooth": "{icon}  {volume}%",
@@ -177,9 +188,9 @@
         "",
         "",
         ""
-      ],
+      ]
     },
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol"
     // "on-click-right": "blueman-manager"
   },
   "backlight": {
@@ -204,13 +215,13 @@
     "states": {
       "normal": 0,
       "warning": 80,
-      "critical": 90,
+      "critical": 90
     },
     "on-click": "hyprshade toggle bluefilter",
     "on-click-right": "hyprshade toggle extradark",
     "on-scroll-down": "brightnessctl -q set 5%-",
     "on-scroll-up": "brightnessctl -q set 5%+",
-    "tooltip": false,
+    "tooltip": false
   },
   "upower": {
     "icon-size": 18,
@@ -218,7 +229,7 @@
     "tooltip": false,
     "tooltip-spacing": 20,
     "tooltip-padding": 8,
-    "on-click": "cpupower-gui",
+    "on-click": "cpupower-gui"
   },
   "custom/notifications": {
     "tooltip": false,
@@ -229,7 +240,7 @@
       // "none": "🔔",
       "none": "",
       "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
+      "dnd-none": ""
       // "dnd-notification": "🔕 <span foreground='red'><sup></sup></span>"
       // "dnd-none": "🔕"
     },
@@ -238,11 +249,11 @@
     "exec": "swaync-client -swb",
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
-    "escape": true,
+    "escape": true
   },
   "tray": {
     "icon-size": 15,
-    "spacing": 15,
+    "spacing": 15
   },
   "clock": {
     "interval": 1,
@@ -262,16 +273,16 @@
         "days": "<span color='#ecc6d9'><b>{}</b></span>",
         "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
-      },
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
     },
     "actions": {
       "on-click-right": "mode",
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
+      "on-scroll-down": "shift_down"
+    }
   },
   // "custom/weather": {
   //   "format": "{}",
@@ -396,14 +407,14 @@
   //  "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   //},
   "hyprland/language": {
-   "format": "{}",
-   "format-en": "EN",
-   "format-ru": "RU",
-   // "format-de": "DE",
-   // "format-ar": "AR",
-   // "format-fr": "FR",
-   // "format-tr": "TR"
-  },
+    "format": "{}",
+    "format-en": "EN",
+    "format-ru": "RU"
+    // "format-de": "DE",
+    // "format-ar": "AR",
+    // "format-fr": "FR",
+    // "format-tr": "TR"
+  }
   //"custom/random_wall": {
   //  "format": "{}",
   //  "exec": "echo ; echo 󰟡 ",
