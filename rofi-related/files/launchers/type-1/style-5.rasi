@@ -17,11 +17,11 @@ configuration {
     display-window:             "";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
-    font:                        "JetBrainsMono Nerd Font 15";
 }
 
 /*****----- Global Properties -----*****/
-@import                          "files/colors.rasi"
+@import                          "shared/colors.rasi"
+@import                          "shared/fonts.rasi"
 
 * {
     border-colour:               var(selected);
