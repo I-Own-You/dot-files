@@ -64,11 +64,11 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      2px solid;
+    border:                      0px solid;
     border-radius:               0px;
     border-color:                @border-colour;
     cursor:                      "default";
-    background-color:            #1A1B26;
+    background-color:            #16161E;
     height: 500px;
     //background-image:          url("/home/mkc/Pictures/wallpapers/waifu_pink.png", none);
     background-position: center;
