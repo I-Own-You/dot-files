@@ -130,7 +130,7 @@
   margin: 5px 8px;
   padding: 0px;
   /*transition: all 0.5s cubic-bezier(0.33, 1.0, 0.68, 1.0); easeInOutCubic */
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+  /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
   box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
 }
 
