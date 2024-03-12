@@ -3,7 +3,6 @@ python-pynvim (for rnvimr plugin neovim)
 
 # general
 picom-git (aur, if you will use wm)
-lazysql (tui for db)
 wget
 lazygit
 qbittorent
