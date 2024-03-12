@@ -1,0 +1,35 @@
+[headphones]:
+  [in-ear]:
+    [wireless]:
+      [cheapy]:
+      [pricey]:
+        1. airpods
+        2. airpods pro
+    [cable]:
+      [cheapy]:
+      [pricey]:
+  
+  [on-ear]:
+    [wireless]:
+      [cheapy]:
+      [pricey]:
+    [cable]:
+      [cheapy]:
+      [pricey]:
+  
+  [over-ear]:
+    [wireless]:
+      [cheapy]:
+        1. Bose Headphones 700
+      [pricey]:
+        1. Sony WH-1000XM5
+        2. Sony WH-1000XM4
+        3. sennheiser momentum 4
+        4. AirPods Max
+    [cable]:
+      [cheapy]:
+      [pricey]:
+  
+  [company-made]:
+    1. b&w
+    2. b&o

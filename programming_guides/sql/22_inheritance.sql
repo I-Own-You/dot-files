@@ -1,3 +1,4 @@
+-- more https://www.postgresql.org/docs/current/ddl-inherit.html
 CREATE TABLE capitals (
   name       text,
   population real,

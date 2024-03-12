@@ -1,0 +1,1 @@
+-- more https://www.postgresql.org/docs/current/ddl-foreign-data.html
