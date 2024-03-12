@@ -18,6 +18,8 @@
 13. ln -s ~/dot-files/waybar-related/* ~/.config/waybar
 14. ln -s ~/dot-files/rofi-related/* ~/.config/rofi
 15. ln -s ~/dot-files/linux-gtk-theming/* ~/.config/.themes|.icons
+16. ln -s ~/dot-files/dot-files/.usqlrc|usqlpass ~/
+17 ln -s ~/dot-files/nerd-fonts-linux-theming/* ~/.fonts
 
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
