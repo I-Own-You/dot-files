@@ -108,7 +108,7 @@ prompt {
 }
 textbox-prompt-colon {
     enabled:                     true;
-    padding:                     5px 0px;
+    padding:                     5px 10px;
     expand:                      false;
     str:                         "";
     background-color:            inherit;
@@ -255,7 +255,7 @@ mode-switcher{
     text-color:                  @foreground-colour;
 }
 button {
-    padding:                     5px 10px;
+    padding:                     5px 15px 5px 10px;
     border:                      0px solid;
     border-radius:               10px;
     border-color:                @border-colour;
