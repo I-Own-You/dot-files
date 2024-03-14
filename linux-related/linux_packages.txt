@@ -65,10 +65,9 @@ waybar (status bar)
 network-manager-applet( wifi gui to see)
 rofi-lbonn-wayland (application launcher)
 udiskie (manage mounting devices)
---not really using, more gui things:
 mission-center (gui, windows looking task manager, not really using)
---works bad, not really using
-hyprland-per-window-layout (paru, git, it works incorrectly)
+gimp (image editor)
+ristretto (image viewer)
 
 
 # gnome
