@@ -68,6 +68,7 @@ udiskie (manage mounting devices)
 mission-center (gui, windows looking task manager, not really using)
 gimp (image editor)
 ristretto (image viewer)
+clipse (https://github.com/savedra1/clipse?tab=readme-ov-file#installing-with-go, clipboard manager)
 
 
 # gnome
