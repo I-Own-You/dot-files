@@ -17,8 +17,7 @@
     // "custom/gpu",
     "memory",
     "temperature",
-    "disk",
-    "tray"
+    "disk"
     // "network",
   ],
   "modules-center": [
@@ -33,6 +32,7 @@
     // "battery",
     "upower",
     "custom/notifications",
+    "tray",
     "hyprland/language",
     "clock"
     // "custom/weather",
