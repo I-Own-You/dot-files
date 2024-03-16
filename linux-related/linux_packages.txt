@@ -70,6 +70,7 @@ gimp (image editor)
 ristretto (image viewer)
 clipse (https://github.com/savedra1/clipse?tab=readme-ov-file#installing-with-go, clipboard manager)
 easyeffects (plugins for pipewire apps, audio manager)
+spotify (aur)
 
 
 # gnome
