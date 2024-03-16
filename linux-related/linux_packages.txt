@@ -3,6 +3,7 @@ python-pynvim (for rnvimr plugin neovim)
 
 # general
 picom-git (aur, if you will use wm)
+zip
 usql (cli tool for db management)
 wget
 lazygit
