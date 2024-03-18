@@ -18,3 +18,7 @@ SELECT *, …
 FROM mytable
 WHERE column
     IN/NOT IN (SELECT another_column FROM another_table);
+
+-- a subquery can also be VALUES list
+;FROM (VALUES ('anne', 'smith'), ('bob', 'jones'), ('joe', 'blow'))
+     AS names(first, last)
