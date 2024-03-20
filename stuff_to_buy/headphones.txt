@@ -13,6 +13,8 @@
     [wireless]:
       [cheapy]:
       [pricey]:
+        1. Sennheiser
+        2. JBL
     [cable]:
       [cheapy]:
       [pricey]:
@@ -21,11 +23,15 @@
     [wireless]:
       [cheapy]:
         1. Bose Headphones 700
+        2. qcy h2 pro
+        3. Baseus
       [pricey]:
         1. Sony WH-1000XM5
         2. Sony WH-1000XM4
         3. sennheiser momentum 4
         4. AirPods Max
+        5. Sennheiser
+        6. JBL
     [cable]:
       [cheapy]:
       [pricey]:
