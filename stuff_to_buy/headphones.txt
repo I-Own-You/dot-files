@@ -24,7 +24,8 @@
       [cheapy]:
         1. Bose Headphones 700
         2. qcy h2 pro
-        3. Baseus
+        3. qcy h3
+        4. Baseus
       [pricey]:
         1. Sony WH-1000XM5
         2. Sony WH-1000XM4
