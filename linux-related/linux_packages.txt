@@ -2,6 +2,7 @@
 python-pynvim (for rnvimr plugin neovim)
 
 # general
+copyq (clipboard manger)
 picom-git (aur, if you will use wm)
 zip
 usql (cli tool for db management)
