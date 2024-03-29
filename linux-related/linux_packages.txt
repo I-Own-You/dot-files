@@ -32,6 +32,7 @@ npm
 npm i -g vscode-langservers-extracted  # for lsps
 npm install -g tldr
 github-cli
+glab
 ctags
 fd
 ueberzug //git
