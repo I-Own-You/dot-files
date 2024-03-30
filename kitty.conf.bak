@@ -2320,6 +2320,7 @@ font_size 15.0
 # window_padding_width 25
 modify_font underline_position +9
 modify_font underline_thickness 150%
+modify_font cell_height 5px
 # cursor_text_color #111111
 cursor_shape block
 cursor_blink_interval 0
@@ -2388,6 +2389,6 @@ hide_window_decorations yes
 ackground_opacity 0.60
 
 # BEGIN_KITTY_THEME
-# One Dark
+# Tokyo Night
 include current-theme.conf
 # END_KITTY_THEME
