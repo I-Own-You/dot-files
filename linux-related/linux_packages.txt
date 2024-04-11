@@ -76,6 +76,7 @@ gimp (image editor)
 ristretto (image viewer)
 easyeffects (plugins for pipewire apps, audio manager)
 spotify (aur)
+hourglass (timer)
 
 
 # gnome
