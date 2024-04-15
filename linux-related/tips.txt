@@ -20,6 +20,15 @@
 15. ln -s ~/dot-files/linux-gtk-theming/* ~/.config/.themes|.icons
 16. ln -s ~/dot-files/dot-files/.usqlrc|usqlpass ~/
 17 ln -s ~/dot-files/nerd-fonts-linux-theming/* ~/.fonts
+18. ln -s ~/dot-files/easy-effects-related/output/* ~/.config/easyeffects/output (if there are any presets)
+
+guide for easyeffects preset: https://www.audiosciencereview.com/forum/index.php?threads/guide-how-to-use-equalizer-apo-peq-presets-in-linux.35570/
+get config for hedphones: https://github.com/jaakkopasanen/AutoEq?tab=readme-ov-file
+1. cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire
+2. edit ~/.config/pipewire/pipewire.conf:
+2.1 #default.clock.allowed-rates = [ 48000 ] into default.clock.allowed-rates = [ 44100 48000 96000 192000 384000 ]
+2.2 reboot system
+2.3 use preset in Equalizer effect from effects and import ~/dot-files/easy-effects-related/output/clean_voice.txt into it
 
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
