@@ -334,6 +334,8 @@ source ~/.zsh_plugins.zsh
 source ~/zsh_custom_scripts/cpwd.sh
 source ~/zsh_custom_scripts/custom_rename.sh
 
+path+=('/home/mkc/.cargo/bin')
+export PATH
 
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)
