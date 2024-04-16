@@ -5,8 +5,6 @@
 #remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/dot-files/.zshrc ~/.zshrc
 2. ln -s ~/dot-files/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
-3. ln -s ~/dot-files/ranger-related/rc.conf ~/.config/ranger/rc.conf
-4. ln -s ~/dot-files/ranger-related/commands.py ~/.config/ranger/commands.py
 5. ln -s ~/dot-files/insomnia-related/insomania.desktop ~/.local/share/applications
 6. ln -s ~/dot-files/dot-files/.gitconfig ~/
 7. ln -s ~/dot-files/config.conf ~/.config/neofetch
@@ -21,7 +19,11 @@
 16. ln -s ~/dot-files/dot-files/.usqlrc|usqlpass ~/
 17 ln -s ~/dot-files/nerd-fonts-linux-theming/* ~/.fonts
 18. ln -s ~/dot-files/easy-effects-related/output/* ~/.config/easyeffects/output (if there are any presets)
+19. ln -s ~/dot-files/yazi/yazi.toml ~/.config/yazi
+20. ln -s ~/dot-files/yazi/theme.toml.toml ~/.config/yazi
+21. ln -s ~/dot-files/yazi/keymap.toml ~/.config/yazi
 
+# dont do it, the effect is not pleasant, but let it be
 guide for easyeffects preset: https://www.audiosciencereview.com/forum/index.php?threads/guide-how-to-use-equalizer-apo-peq-presets-in-linux.35570/
 get config for hedphones: https://github.com/jaakkopasanen/AutoEq?tab=readme-ov-file
 1. cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire
@@ -39,8 +41,6 @@ get config for hedphones: https://github.com/jaakkopasanen/AutoEq?tab=readme-ov-
 3. ZVM_VI_VISUAL_ESCAPE_BINDKEY=jk
 4. ZVM_VI_HIGHLIGHT_BACKGROUND=#383737 # Hex value
 5. ZVM_VI_EDITOR=nvim
-
-1. follow guides from here https://github.com/cdump/ranger-devicons2 # icons for ranger
 
 1. https://github.com/jstkdng/ueberzugpp/issues/81#issuecomment-1623923211 fix ueberzugpp image for kitty terminal
 
@@ -68,6 +68,13 @@ get config for hedphones: https://github.com/jaakkopasanen/AutoEq?tab=readme-ov-
         })
 
 1. glab completion -s zsh > _glab (into /usr/share/zsh/site-functions)
+
+1. neovim toml lsp
+1.1 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#taplo
+1.2 because npm version from mason wont work, but must be isntalled anyway
+
+1. yazi terminal theme
+1.1 https://github.com/BennyOe/tokyo-night.yazi
 
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │

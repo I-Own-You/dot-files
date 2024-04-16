@@ -53,11 +53,9 @@ alias n="nvim"
 
 # custom vars
 alias ww="wget"
-alias ff="ranger"
 alias l="eza"
 alias et="eza -T --long"
 alias b="cd .."
-alias h="cd ~"
 alias ncf="cd ~/.config/nvim && nvim"
 alias dff="cd ~/dot-files && nvim"
 # alias vim="nvim"
@@ -352,6 +350,16 @@ function zvm_after_init() {
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
       bindkey "^ " autosuggest-accept      
 }
+
+function ff() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # rm -rf `antidote home` or rm -rf $(antidote home)
 # rm ${ZDOTDIR:-~}/.zsh_plugins.zsh or rm ~/.zsh_plugins.zsh - remove completely
 
@@ -380,6 +388,8 @@ function zvm_after_init() {
 
 autoload -U compinit
 compinit -i
+
+eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
