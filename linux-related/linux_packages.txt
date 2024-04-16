@@ -17,6 +17,7 @@ man
 go
 sed
 curl
+luarocks (for rest.nvim plugin in neovim)
 git
 openssh
 neofetch
