@@ -2316,7 +2316,7 @@ bold_italic_font auto
 # bold_italic_font JetBrainsMono Nerd Font Mono Extra Bold Italic
 
 
-font_size 15.0
+font_size 16.0
 # window_padding_width 25
 modify_font underline_position +9
 modify_font underline_thickness 150%
@@ -2355,8 +2355,12 @@ map ctrl+shift+right resize_window narrower
 map ctrl+shift+up resize_window taller
 map ctrl+shift+down resize_window shorter
 
-map alt+k scroll_line_up
-map alt+j scroll_line_down
+map alt+k combine : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up : scroll_line_up
+map alt+j combine : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down : scroll_line_down
+# map alt+k remote_control scroll-window 5-
+# map alt+j remote_control scroll-window 5+
+map alt+shift+k scroll_line_up
+map alt+shift+j scroll_line_down
 
 map ctrl+shift+j kitten pass_keys.py neighboring_window bottom ctrl+shift+j "^.* - nvim$"
 map ctrl+shift+k kitten pass_keys.py neighboring_window top    ctrl+shift+k "^.* - nvim$"
@@ -2371,13 +2375,11 @@ map ctrl+shift+l kitten pass_keys.py neighboring_window right  ctrl+shift+l "^.*
 
 map ctrl+f2 detach_window # moves the window into a new OS window
 map ctrl+f3 detach_tab # moves the tab into a new OS window
-
-
+map ctrl+f4 detach_window new-tab
+map ctrl+f5 detach_window tab-left
 map kitty_mod+t new_tab
 map ctrl+alt+x close_tab
-# map f9 close_other_windows_in_tab
-
-
+map ctrl+f9 close_other_windows_in_tab
 
 
 map kitty_mod+equal  change_font_size all +1.0
@@ -2386,9 +2388,8 @@ map kitty_mod+minus       change_font_size all -1.0
 # ctrl+shift+b - move windows backward
 
 hide_window_decorations yes
-ackground_opacity 0.60
 
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Flexoki (Dark)
 include current-theme.conf
 # END_KITTY_THEME
