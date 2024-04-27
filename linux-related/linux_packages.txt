@@ -97,6 +97,7 @@ rg (installed, for file content searching)
 fzf (installed, for quick file subtree navigation)
 zoxide (for historical directories navigation)
 xclip / wl-clipboard / xsel (installed but which one? for system clipboard support)
+gnome-keyring(for vscode)
 
 
 # gnome
