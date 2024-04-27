@@ -158,9 +158,6 @@ local settings = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
-	completion = {
-		completeopt = "menu,menuone",
-	},
 	window = {
 		completion = cmp.config.window.bordered({
 			-- scrollbar = true,
