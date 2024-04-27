@@ -76,6 +76,8 @@ get config for hedphones: https://github.com/jaakkopasanen/AutoEq?tab=readme-ov-
 1. yazi terminal theme
 1.1 https://github.com/BennyOe/tokyo-night.yazi
 
+1. keyring for vscode https://code.visualstudio.com/docs/editor/settings-sync#_troubleshooting-keychain-issues
+
 ╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │                                                      │SET UP SSH KEY FOR GIT│                                                      │
 │‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
