@@ -49,6 +49,7 @@ viu
 vlc
 obs-studio
 qt6-wayland (for obs)
+visual-studio-code-bin(aur)
 
 # hyprland
 xdg-desktop-portal (for obs)
