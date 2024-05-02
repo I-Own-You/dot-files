@@ -8,7 +8,6 @@ bluez (bluetooth protocol stack, you also need to start/enable the service, http
 bluez-utils (bluetoothctl cli utility)
 picom-git (aur, if you will use wm)
 zip
-usql (cli tool for db management)
 wget
 lazygit
 qbittorent
