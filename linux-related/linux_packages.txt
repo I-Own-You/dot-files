@@ -76,7 +76,6 @@ network-manager-applet( wifi gui to see)
 blueman
 rofi-lbonn-wayland (application launcher)
 udiskie (manage mounting devices)
-mission-center (gui, windows looking task manager, not really using)
 gimp (image editor)
 ristretto (image viewer)
 easyeffects (plugins for pipewire apps, audio manager)
