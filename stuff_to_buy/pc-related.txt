@@ -1,0 +1,12 @@
+ram:
+  brands:
+    Corsair,
+    Kingston,
+    Samsung,
+    Silicon Power,
+    TeamGroup,
+    G.Skill,
+    Mushkin,
+    PNY,
+    Crucial,
+    ADATA.
