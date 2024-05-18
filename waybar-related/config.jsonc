@@ -92,12 +92,12 @@
 
 		"format-icons": {
 			"headphones": "",
-			"handsfree": "",
-			"headset": "",
+			"handsfree": "",
+			"headset": "",
 			"phone": "",
 			"portable": "",
 			"car": "",
-			"default": ["🔈", "🔉", "🔊"]
+			"default": ["", "🔈", "🔊"]
 		},
 		"on-click": "ponymix -N -t sink toggle",
 		"on-click-right": "ponymix -N -t source toggle"
