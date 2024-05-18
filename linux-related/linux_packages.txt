@@ -2,6 +2,8 @@
 python-pynvim (for rnvimr plugin neovim)
 
 # general
+otf-font-awesome
+ttf-font-awesome
 zoxide
 yazi
 bluez (bluetooth protocol stack, you also need to start/enable the service, https://wiki.archlinux.org/title/bluetooth)
