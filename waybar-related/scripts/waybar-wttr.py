@@ -134,7 +134,7 @@ for i, day in enumerate(weather['weather']):
         data['tooltip'] += "Tomorrow, "
     data['tooltip'] += f"{day['date']}</b>\n"
     data['tooltip'] += f"⬆️ {day['maxtempC']}° ⬇️ {day['mintempC']}° "
-    data['tooltip'] += f"🌅 {day['astronomy'][0]['sunrise']} 🌇 {day['astronomy'][0]['sunset']}\n"
+    data['tooltip'] += f"  {day['astronomy'][0]['sunrise']} 󰖚 {day['astronomy'][0]['sunset']}\n"
     for hour in day['hourly']:
         if i == 0:
             if int(format_time(hour['time'])) < datetime.now().hour-2:
