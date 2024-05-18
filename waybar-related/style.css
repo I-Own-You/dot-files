@@ -147,7 +147,7 @@ window#waybar {
 }
 
 #custom-weather {
-  background-color: rgba(22, 25, 37, 0.9);
+  background-color: rgba(22, 25, 37, 0.3);
   color: #f9e2af;
   box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
 }
