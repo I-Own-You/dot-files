@@ -75,7 +75,7 @@ notify-send (notification tool)
 waybar (status bar)
 network-manager-applet( wifi gui to see)
 blueman
-rofi-lbonn-wayland (application launcher)
+rofi-wayland (application launcher)
 udiskie (manage mounting devices)
 gimp (image editor)
 ristretto (image viewer)
