@@ -49,7 +49,13 @@
 		"critical-threshold": 80,
 		// "format-critical": "{temperatureC}°C {icon}",
 		"format": "<span color='#e88939'>{icon}</span> {temperatureC}°C|",
-		"format-icons": ["", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
 	},
 	"cpu": {
     "interval": 1,
