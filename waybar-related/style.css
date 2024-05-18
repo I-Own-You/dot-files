@@ -38,8 +38,8 @@ window#waybar {
 	font-weight: bold;
 }
 #workspaces button:hover {
-  background: #ffffff;
-  color: #141B1E;
+  color: #eeeeee;
+  background: #D76DBC;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
