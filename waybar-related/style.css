@@ -67,25 +67,51 @@ window#waybar {
 	background: #af005f;
 	color: #1b1d1e;
 }
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #custom-weather, #tray, #mode {
 	padding: 0 3px;
-	margin: 0 2px;
+	margin: 0 5px;
 }
 
-#custom-disk_home, #custom-disk_root {
-  color: #E5C76B;
+#custom-disk_root {
+  margin-right: 5px;
+}
+
+#custom-disk_home {
+  background: #E5C76B;
+  color:#000000;
+  border-radius: 5px 0 0 5px;
+  padding: 0 5px;
+  margin-left: 5px;
+}
+
+#custom-disk_root {
+  background: #E5C76B;
+  color:#000000;
+  border-radius: 0 5px 5px 0;
+  padding: 0 5px;
 }
 
 #clock {
-  color: #f2cdcd;
+  background: #f2cdcd;
+  color:#000000;
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-left: 0px;
 }
 
 #backlight {
-  color: #fab387;
+  background: #fab387;
+  color:#000000;
+  border-radius: 5px;
+  padding: 0 5px;
 }
 
 #battery {
-  color: #a6e3a1;
+  background: #fefefe;
+  color:#007C00;
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-left: 0px;
 }
 
 #battery icon {
@@ -115,15 +141,24 @@ window#waybar {
 }
 
 #cpu {
-  color: #f38ba8;
+  background: #f38ba8;
+  color:#fefefe;
+  border-radius: 5px;
+  margin-left: 5px;
 }
 
 #memory {
-  color: #A6E3A1;
+  background: #A6E3A1;
+  color:#000000;
+  border-radius: 5px;
+  margin-left: 0px;
 }
 
 #temperature {
-  color:#e88939;
+  background: #e88939;
+  color:#fefefe;
+  border-radius: 5px;
+  padding: 0 5px;
 }
 
 #network {
@@ -134,7 +169,10 @@ window#waybar {
 }
 
 #pulseaudio {
-  color: #cba6f7;
+  background: #cba6f7;
+  color:#000000;
+  border-radius: 5px;
+  padding: 0 5px;
 }
 
 #pulseaudio.muted {
@@ -145,18 +183,26 @@ window#waybar {
 }
 
 #tray {
+  background: #141B1E;
+  padding: 0 5px;
+  border-radius: 5px;
+  margin-left: 0px;
 }
 
 #custom-weather {
-  background-color: rgba(22, 25, 37, 0.3);
-  color: #f9e2af;
+  background-color: #f9e2af;
+  color:rgba(22, 25, 37, 1);
   box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-left: 0px;
 }
 
 #language {
   min-width: 20px;
-  padding-left: 5px;
-  padding-right: 5px;
   font-weight: 700;
-  color: #E070C6;
+  background: #E070C6;
+  color:#fefefe;
+  border-radius: 5px;
+  padding: 0 5px;
 }

@@ -7,7 +7,7 @@
 	// Choose the order of the modules
 	"modules-left": ["hyprland/workspaces"],
 	// "modules-center": ["sway/window"],
-	"modules-right": ["custom/arch_update", "custom/disk_home", "custom/disk_root","temperature", "cpu", "memory", "custom/mail", "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "tray", "custom/weather", "hyprland/language"],
+	"modules-right": ["cpu", "memory", "temperature", "custom/arch_update", "custom/disk_home", "custom/disk_root", "custom/mail", "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "tray", "custom/weather", "hyprland/language"],
 
 	// Modules configuration
 	// "sway/workspaces": {
@@ -39,7 +39,7 @@
 		"exec": "df -h --output=avail $HOME | tail -1 | tr -d ' '"
 	},
 	"custom/disk_root": {
-		"format": " {}|",
+		"format": " {}",
 		"interval": 30,
 		"exec": "df -h --output=avail / | tail -1 | tr -d ' '"
 	},
@@ -48,7 +48,7 @@
 		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
 		"critical-threshold": 80,
 		// "format-critical": "{temperatureC}°C {icon}",
-		"format": "<span color='#e88939'>{icon}</span> {temperatureC}°C|",
+		"format": "<span color='#fefefe'>{icon}</span> {temperatureC}°C",
     "format-icons": [
       "",
       "",
@@ -59,12 +59,12 @@
 	},
 	"cpu": {
     "interval": 1,
-		"format": "  {usage}%|",
+		"format": "  {usage}%",
 		"tooltip": false
 	},
 	"memory": {
     "interval": 1,
-		"format": "󰾅 {used:0.1f}G|"
+		"format": "󰾅 {used:0.1f}G"
 	},
 	/*"custom/mail": {
 		"format": "📩{}",
@@ -83,15 +83,15 @@
 	},
 	"backlight": {
 		// "device": "acpi_video1",
-		"format": "{icon} {percent}%|",
+		"format": "{icon} {percent}%",
 		"format-icons": ["󰃝","󰃠"]
 	},
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float
-		"format": "{icon} {volume}% {format_source}|",
-		"format-muted": "󰝟  {format_source}|",
-		"format-bluetooth": "{icon} {volume}% {format_source}|",
-		"format-bluetooth-muted": "🔇 {format_source}|",
+		"format": "{icon} {volume}% {format_source}",
+		"format-muted": "󰝟  {format_source}",
+		"format-bluetooth": "{icon} {volume}% {format_source}",
+		"format-bluetooth-muted": "🔇 {format_source}",
 
 		"format-source": " {volume}%",
 		"format-source-muted": "",
@@ -118,7 +118,7 @@
     "interval": 1,
     // "format-alt": "{:󰥔 %H:%M:%S 󰃭 %a %d %b}",
     // "format": "{: %I:%M:%S %p  %a %d %b %Y}",
-    "format": "{:%I:%M:%S %p %a %d %b %Y}|",
+    "format": "{:%I:%M:%S %p %a %d %b %Y}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",
@@ -148,9 +148,9 @@
 			"warning": 20,
 			"critical": 10
 		},
-		"format": "<span color='#a6e3a1'>{icon}</span> {capacity}%|",
-		"format-charging": "<span color='#e88939'> </span> {capacity}%|",
-		"format-plugged":  "<span color='#e88939'>{icon} </span> {capacity}% ({time})|",
+		"format": "<span color='#007C00'>{icon}</span> {capacity}%",
+		"format-charging": "<span color='#e88939'> </span> {capacity}%",
+		"format-plugged":  "<span color='#e88939'>{icon} </span> {capacity}% ({time})",
 		// "format-good": "", // An empty format will hide the module
 		// "format-full": "",
     "format-icons": ["", "", "", "", "", "", "", "", "", ""],
@@ -210,7 +210,7 @@
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
   "custom/weather": {
-    "format": "|{}|",
+    "format": "{}",
     "on-click": "wpaperd",
     "tooltip": true,
     "restart-interval": 300,
