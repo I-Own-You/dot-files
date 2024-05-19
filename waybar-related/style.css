@@ -29,6 +29,7 @@ window#waybar {
 	margin: 0px;
 	background: transparent;
 	color: #bebebe;
+  border-radius: 5px;
 	/*
 	color: #00afd7;
 	color: #ffffff;
