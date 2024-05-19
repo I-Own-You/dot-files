@@ -233,23 +233,27 @@
     "on-scroll-down": "hyprctl dispatch workspace +1",
     "format": "{name}", // {icon}
     "on-click": "activate",
-    "format-icons": {
+    /*"format-icons": {
       "urgent": "󰗖",
       "active": "󰝥",
       "default": "󰝦"
-    },
+    },*/
     "sort-by-number": true,
-    // "format": "{name}: {icon}",
-    // "format-icons": {
-    //   "1": " ",
-    //   "2": " ",
-    //   "3": " ",
-    //   "4": " ",
-    //   "5": " ",
-    //   "active": "",
-    //   "default": "",
-    //   "urgent": "󰗖"
-    // },
+     //"format": "{name}: {icon}",
+     "format": "{icon}",
+     //"format": "<span size='x-large' font-family=\"Font Awesome 6 Pro Regular\">{icon}</span>",
+     /*"format-icons": {
+       "1": " ",
+       "2": "󰨞 ",
+       "3": " ",
+       "7": " ",
+       "8": " ",
+       "9": " ",
+       "10": " ",
+       //"active": "",
+       "default": "",
+       "urgent": "󰗖"
+     },*/
     "persistent-workspaces": {
       "*": 10
     }
