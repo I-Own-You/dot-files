@@ -7,8 +7,7 @@
 	// Choose the order of the modules
 	"modules-left": ["hyprland/workspaces"],
 	// "modules-center": ["sway/window"],
-	"modules-right": ["cpu", "memory", "temperature", "custom/arch_update", "custom/disk_home", "custom/disk_root", "custom/mail", "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "tray", "custom/weather", "hyprland/language"],
-
+	"modules-right": ["cpu", "memory", "temperature", "custom/arch_update", "custom/disk_home", "custom/disk_root", "custom/mail", "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "custom/weather", "hyprland/language", "tray"],
 	// Modules configuration
 	// "sway/workspaces": {
 	// 	"disable-scroll": true,
