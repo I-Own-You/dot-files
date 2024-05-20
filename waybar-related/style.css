@@ -27,7 +27,7 @@ window#waybar {
 #workspaces button {
 	margin: 0px;
 	background: transparent;
-	color: #bebebe;
+	color: #CBA6F7;
   border-radius: 5px;
 	/*
 	color: #00afd7;
@@ -39,14 +39,14 @@ window#waybar {
 }
 #workspaces button:hover {
   color: #eeeeee;
-  background: #D76DBC;
+  background: #CBA6F7;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
 
 #workspaces button.active {
   color: #eeeeee;
-  background: #D76DBC;
+  background: #CBA6F7;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
