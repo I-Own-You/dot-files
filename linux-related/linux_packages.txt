@@ -2,6 +2,7 @@
 python-pynvim (for rnvimr plugin neovim)
 
 # general
+mechvibes (aur, keyboard sounds)
 otf-font-awesome
 ttf-font-awesome
 zoxide

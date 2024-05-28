@@ -2,6 +2,14 @@
 
 1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
 
+1. mechvibes sounds:
+    Banana Split Lubed by Akira
+    Kalih Box White
+    Razor Green by Akira (Blackwidow Elite)
+    Steelseries Apex Pro V2 by Akira
+    Untitled
+    Banana Split Stock by Akira
+
 #remark: you must be inside the dir where you symlink the file
 1. ln -s ~/dot-files/dot-files/.zshrc ~/.zshrc
 2. ln -s ~/dot-files/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
