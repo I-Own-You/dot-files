@@ -2,6 +2,9 @@
 python-pynvim (for rnvimr plugin neovim)
 
 # general
+losslesscut or kdenlive 
+KOLOURPAINT or gimp 
+gwenview
 mechvibes (aur, keyboard sounds)
 otf-font-awesome
 ttf-font-awesome
