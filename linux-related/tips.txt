@@ -31,15 +31,6 @@
 20. ln -s ~/dot-files/yazi/theme.toml.toml ~/.config/yazi
 21. ln -s ~/dot-files/yazi/keymap.toml ~/.config/yazi
 
-# dont do it, the effect is not pleasant, but let it be
-guide for easyeffects preset: https://www.audiosciencereview.com/forum/index.php?threads/guide-how-to-use-equalizer-apo-peq-presets-in-linux.35570/
-get config for hedphones: https://github.com/jaakkopasanen/AutoEq?tab=readme-ov-file
-1. cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire
-2. edit ~/.config/pipewire/pipewire.conf:
-2.1 #default.clock.allowed-rates = [ 48000 ] into default.clock.allowed-rates = [ 44100 48000 96000 192000 384000 ]
-2.2 reboot system
-2.3 use preset in Equalizer effect from effects and import ~/dot-files/easy-effects-related/output/clean_voice.txt into it
-
 1. ipython profile create
 2. set 'vi' mode for ipython in setting search for ".editing_mode"
 3. create a jk_switch.py in startup folder of .ipyton folder from https://ipython.readthedocs.io/en/stable/config/details.html#keyboard-shortcuts
@@ -55,25 +46,6 @@ get config for hedphones: https://github.com/jaakkopasanen/AutoEq?tab=readme-ov-
 3. gnome tips:
 3.1 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true // to resize with win+right button mouse
 3.2 https://github.com/flameshot-org/flameshot/issues/3326#issuecomment-1837225180
-
-1.nvchad help:
-1.1 "hrsh7th/cmp-cmdline", into plugins/init.lua sources (there is a list with sources)
-1.2 (into cmp plugin at the end)
-    cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-        { name = "buffer" },
-        },
-        })
-
-    cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-            { name = "path" },
-            }, {
-            { name = "cmdline" },
-            }),
-        })
 
 1. glab completion -s zsh > _glab (into /usr/share/zsh/site-functions)
 
