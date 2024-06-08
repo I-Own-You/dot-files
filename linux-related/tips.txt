@@ -1,69 +1,54 @@
-1. install kitty https://sw.kovidgoyal.net/kitty/binary/
+1. install kitty 
+2. install neovim
 
-1. Installing neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
+3. ln -s ~/dot-files/dot-files/.zshrc ~/.zshrc
+   ln -s ~/dot-files/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
+   ln -s ~/dot-files/insomnia-related/insomania.desktop ~/.local/share/applications
+   ln -s ~/dot-files/dot-files/.gitconfig ~/
+   ln -s ~/dot-files/config.conf ~/.config/neofetch
+   ln -s ~/dot-files/hyprland-related/hyprland.conf ~/.config/hypr
+   ln -s ~/dot-files/hyprland-related/hyprlock.conf ~/.config/hypr
+   ln -s ~/dot-files/hyprland-related/hyprpaper.conf ~/.config/hypr
+   ln -s ~/dot-files/swaync/config.json ~/.config/swaync
+   ln -s ~/dot-files/swaync/style.css ~/.config/swaync
+   ln -s ~/dot-files/waybar-related/* ~/.config/waybar
+   ln -s ~/dot-files/rofi-related/* ~/.config/rofi
+   ln -s ~/dot-files/linux-gtk-theming/* ~/.config/.themes|.icons
+   ln -s ~/dot-files/dot-files/.usqlrc|usqlpass ~/
+   ln -s ~/dot-files/nerd-fonts-linux-theming/* ~/.fonts
+   ln -s ~/dot-files/easy-effects-related/output/* ~/.config/easyeffects/output (if there are any presets)
+   ln -s ~/dot-files/yazi/yazi.toml ~/.config/yazi
+   ln -s ~/dot-files/yazi/theme.toml.toml ~/.config/yazi
+   ln -s ~/dot-files/yazi/keymap.toml ~/.config/yazi
 
-1. mechvibes sounds:
-    Banana Split Lubed by Akira
-    Kalih Box White
-    Razor Green by Akira (Blackwidow Elite)
-    Steelseries Apex Pro V2 by Akira
-    Untitled
-    Banana Split Stock by Akira
+4. ipython profile create (if you use python)
+   set 'vi' mode for ipython in setting search for ".editing_mode"
+   create a jk_switch.py in startup folder of .ipyton folder from https://ipython.readthedocs.io/en/stable/config/details.html#keyboard-shortcuts
 
-#remark: you must be inside the dir where you symlink the file
-1. ln -s ~/dot-files/dot-files/.zshrc ~/.zshrc
-2. ln -s ~/dot-files/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
-5. ln -s ~/dot-files/insomnia-related/insomania.desktop ~/.local/share/applications
-6. ln -s ~/dot-files/dot-files/.gitconfig ~/
-7. ln -s ~/dot-files/config.conf ~/.config/neofetch
-8. ln -s ~/dot-files/hyprland-related/hyprland.conf ~/.config/hypr
-9. ln -s ~/dot-files/hyprland-related/hyprlock.conf ~/.config/hypr
-10. ln -s ~/dot-files/hyprland-related/hyprpaper.conf ~/.config/hypr
-11. ln -s ~/dot-files/swaync/config.json ~/.config/swaync
-12. ln -s ~/dot-files/swaync/style.css ~/.config/swaync
-13. ln -s ~/dot-files/waybar-related/* ~/.config/waybar
-14. ln -s ~/dot-files/rofi-related/* ~/.config/rofi
-15. ln -s ~/dot-files/linux-gtk-theming/* ~/.config/.themes|.icons
-16. ln -s ~/dot-files/dot-files/.usqlrc|usqlpass ~/
-17 ln -s ~/dot-files/nerd-fonts-linux-theming/* ~/.fonts
-18. ln -s ~/dot-files/easy-effects-related/output/* ~/.config/easyeffects/output (if there are any presets)
-19. ln -s ~/dot-files/yazi/yazi.toml ~/.config/yazi
-20. ln -s ~/dot-files/yazi/theme.toml.toml ~/.config/yazi
-21. ln -s ~/dot-files/yazi/keymap.toml ~/.config/yazi
+5. into zsh-vi-mode plugin
+   ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+   ZVM_VI_VISUAL_ESCAPE_BINDKEY=jk
+   ZVM_VI_HIGHLIGHT_BACKGROUND=#383737 # Hex value
+   ZVM_VI_EDITOR=nvim
 
-1. ipython profile create
-2. set 'vi' mode for ipython in setting search for ".editing_mode"
-3. create a jk_switch.py in startup folder of .ipyton folder from https://ipython.readthedocs.io/en/stable/config/details.html#keyboard-shortcuts
+6. https://github.com/jstkdng/ueberzugpp/issues/81#issuecomment-1623923211 fix ueberzugpp image for kitty terminal
+   (if you need it)
 
-1. into zsh-vi-mode plugin
-2. ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-3. ZVM_VI_VISUAL_ESCAPE_BINDKEY=jk
-4. ZVM_VI_HIGHLIGHT_BACKGROUND=#383737 # Hex value
-5. ZVM_VI_EDITOR=nvim
+7. gnome tips:
+   gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true // to resize with win+right button mouse
+   https://github.com/flameshot-org/flameshot/issues/3326#issuecomment-1837225180
 
-1. https://github.com/jstkdng/ueberzugpp/issues/81#issuecomment-1623923211 fix ueberzugpp image for kitty terminal
+8. glab completion -s zsh > _glab (into /usr/share/zsh/site-functions)
 
-3. gnome tips:
-3.1 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true // to resize with win+right button mouse
-3.2 https://github.com/flameshot-org/flameshot/issues/3326#issuecomment-1837225180
+9. neovim toml lsp (if you need it)
+    https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#taplo
+    because npm version from mason wont work, but must be isntalled anyway
 
-1. glab completion -s zsh > _glab (into /usr/share/zsh/site-functions)
+10. keyring for vscode https://code.visualstudio.com/docs/editor/settings-sync#_troubleshooting-keychain-issues
+    (if you are on wm)
 
-1. neovim toml lsp
-1.1 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#taplo
-1.2 because npm version from mason wont work, but must be isntalled anyway
-
-1. yazi terminal theme
-1.1 https://github.com/BennyOe/tokyo-night.yazi
-
-1. keyring for vscode https://code.visualstudio.com/docs/editor/settings-sync#_troubleshooting-keychain-issues
-
-╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                                                      │SET UP SSH KEY FOR GIT│                                                      │
-│‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾│
-│system supports ed25519 ? ssh-keygen -t ed25519 -C "your_email@example.com" : ssh-keygen -t rsa -b 4096 -C "your_email@example.com" │
-│eval "$(ssh-agent -s)" # start ssh agent                                                                                            │
-│ssh-add ~/.ssh/id_ed25519 # add key to ssh                                                                                          │
-│cat ~/.ssh/id_ed25519.pub # go and add key to github or gitlab or whatever                                                          │
-│ssh -T git@gitlab.com # add github to allowed                                                                                       │  
-╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ssh-keygen -t ed25519 -C "your_email@example.com"
+eval "$(ssh-agent -s)" # start ssh agent                                                                                            
+ssh-add ~/.ssh/id_ed25519 # add key to ssh                                                                                          
+cat ~/.ssh/id_ed25519.pub # go and add key to github or gitlab or whatever                                                          
+ssh -T git@gitlab.com # add github to allowed                                                                                       
