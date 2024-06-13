@@ -1,0 +1,24 @@
+1. csrf
+2. error handling
+3. logging
+4. middleware
+5. background jobs 
+6. schedule tasks
+7. queue jobs: (long processing/blocking tasks must be moved to queed jobs)
+    1. web server
+    2. worker: (this typically processes [long running / blocking] tasks)
+8. auth system
+9. validation
+10. cache: (expensive operations / common requests)
+11. file storage
+12. i18n (translation)
+13. mail (email)
+14. notification
+15. rate limiting (requests and etc)
+16. database: (where you store the data)
+    1. indexes on fields for better optimization
+    2. query optimization
+    3. wise data structure
+17. analyzer software: (monitor cpu, ram, response time, error rates, db, caching, etc)
+18. automatic scaling: (it means scaling when system analizer software detects that it needs more resources and less when not needed)
+19. streaming data: (it means streaming the data instead of keeping in memory so it wont use a lot of resources ram/cpu)
