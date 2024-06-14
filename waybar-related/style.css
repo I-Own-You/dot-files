@@ -29,6 +29,7 @@ window#waybar {
 	background: transparent;
 	color: #CBA6F7;
   border-radius: 5px;
+  padding: 0 5px 0 5px;
 	/*
 	color: #00afd7;
 	color: #ffffff;
