@@ -53,6 +53,7 @@ qt6-wayland (for obs)
 visual-studio-code-bin(aur)
 
 # hyprland
+yay -S hyprwayland-scanner-git (in case hyprland-git fails)
 xdg-desktop-portal (for obs)
 xdg-desktop-portal-wlr (for obs)
 xdg-desktop-portal-hyprland (for obs)
