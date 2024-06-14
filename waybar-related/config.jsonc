@@ -33,12 +33,14 @@
 		"exec": "~/.config/i3blocks/bin/arch_update.py -b '#e4e4e4' -u '#e4e4e4' -q"
 	},*/
 	"custom/disk_home": {
-		"format": "🏠 {} ",
+		//"format": "🏠 {} ",
+		"format": "{}",
 		"interval": 30,
 		"exec": "df -h --output=avail $HOME | tail -1 | tr -d ' '"
 	},
 	"custom/disk_root": {
-		"format": " {}",
+		//"format": " {}",
+		"format": "{}",
 		"interval": 30,
 		"exec": "df -h --output=avail / | tail -1 | tr -d ' '"
 	},
@@ -47,7 +49,7 @@
 		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
 		"critical-threshold": 80,
 		// "format-critical": "{temperatureC}°C {icon}",
-		"format": "<span color='#fefefe'>{icon}</span> {temperatureC}°C",
+		"format": "<span color='#e88939'>{icon}</span> {temperatureC}°C",
     "format-icons": [
       "",
       "",
@@ -151,7 +153,7 @@
 			"warning": 20,
 			"critical": 10
 		},
-		"format": "<span color='#007C00'>{icon}</span> {capacity}%",
+		"format": "<span color='#00FA93'>{icon}</span> {capacity}%",
 		"format-charging": "<span color='#e88939'> </span> {capacity}%",
 		"format-plugged":  "<span color='#e88939'>{icon} </span> {capacity}% ({time})",
 		// "format-good": "", // An empty format will hide the module
