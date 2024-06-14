@@ -5,9 +5,9 @@
 	// "width": 1280, // Waybar width
 
 	// Choose the order of the modules
-	"modules-left": ["cpu", "memory", "temperature", "custom/disk_home", "custom/disk_root"],
+	"modules-right": ["cpu", "memory", "temperature", "custom/disk_home", "custom/disk_root"],
 	 "modules-center": ["hyprland/workspaces"],
-	"modules-right": [ "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "custom/weather", "hyprland/language", "tray"],
+	"modules-left": ["tray", "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "custom/weather", "hyprland/language"],
 	// Modules configuration
 	// "sway/workspaces": {
 	// 	"disable-scroll": true,
