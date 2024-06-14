@@ -5,9 +5,9 @@
 	// "width": 1280, // Waybar width
 
 	// Choose the order of the modules
-	"modules-left": ["hyprland/workspaces"],
-	// "modules-center": ["sway/window"],
-	"modules-right": ["cpu", "memory", "temperature", "custom/arch_update", "custom/disk_home", "custom/disk_root", "custom/mail", "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "custom/weather", "hyprland/language", "tray"],
+	"modules-left": ["cpu", "memory", "temperature", "custom/disk_home", "custom/disk_root"],
+	 "modules-center": ["hyprland/workspaces"],
+	"modules-right": [ "network", "backlight", "pulseaudio", "clock", "battery", /*"idle_inhibitor",*/ "custom/weather", "hyprland/language", "tray"],
 	// Modules configuration
 	// "sway/workspaces": {
 	// 	"disable-scroll": true,
@@ -75,9 +75,11 @@
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
 		"format-wifi": "<span color='#589df6'></span> <span color='gray'>{essid}</span> {frequency} <span color='#589df6'>{signaldBm} dB</span> <span color='#589df6'>⇵</span> {bandwidthUpBits}/{bandwidthDownBits}",
 		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-		"format-ethernet": "Connected",
+		//"format-ethernet": "Connected",
+		"format-ethernet": "UP",
 		"format-linked": "{ifname} (No IP) ",
-		"format-disconnected": "Disconnected ⚠",
+		//"format-disconnected": "Disconnected ⚠",
+		"format-disconnected": "DOWN",
 		"format-alt": "{ifname}: {ipaddr}/{cidr}",
 		"interval": 5
 	},
@@ -116,9 +118,10 @@
 	},*/
   "clock": {
     "interval": 1,
-    // "format-alt": "{:󰥔 %H:%M:%S 󰃭 %a %d %b}",
-    // "format": "{: %I:%M:%S %p  %a %d %b %Y}",
-    "format": "{:%I:%M:%S %p %a %d %b %Y}",
+     "format-alt": "{:󰥔 %H:%M:%S 󰃭 %a %d %b}",
+     "format": "{: %I:%M:%S %p  %a %d %b %Y}",
+    //"format": "{:%I:%M:%S %p %a %d %b %Y}",
+    "format": "{:%I:%M:%S}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",

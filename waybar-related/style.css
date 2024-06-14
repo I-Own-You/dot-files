@@ -4,7 +4,6 @@
 	font-family: "JetBrainsMono";
 	font-size: 17px;
 	min-height: 0;
-	margin: 0px;
 }
 
 window#waybar {
@@ -16,7 +15,7 @@ window#waybar {
 
 #window {
 	color: #e4e4e4;
-	font-weight: bold;
+	font-weight: bold; 
 }
 
 #workspaces {
@@ -27,7 +26,7 @@ window#waybar {
 #workspaces button {
 	margin: 0px;
 	background: transparent;
-	color: #CBA6F7;
+	color: #ffffff;
   border-radius: 5px;
   padding: 0 5px 0 5px;
 	/*
@@ -39,15 +38,15 @@ window#waybar {
 	font-weight: bold;
 }
 #workspaces button:hover {
-  color: #eeeeee;
-  background: #CBA6F7;
+  color: #ffffff;
+  background: #01E487;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
 
 #workspaces button.active {
-  color: #eeeeee;
-  background: #CBA6F7;
+  color: #ffffff;
+  background: #01E487;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
@@ -67,13 +66,13 @@ window#waybar {
 	background: #af005f;
 	color: #1b1d1e;
 }
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #custom-weather, #tray, #mode {
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #custom-weather, #tray, #mode, #backlight, #network, #language, #temperature, #custom-disk_home, #custom-disk_root, #workspaces {
 	padding: 0 3px;
-	margin: 0 5px;
+	margin: 5px 5px 5px 5px;
 }
 
 #custom-disk_root {
-  margin-right: 5px;
+  margin-left: 0;
 }
 
 #custom-disk_home {
@@ -82,6 +81,7 @@ window#waybar {
   border-radius: 5px 0 0 5px;
   padding: 0 5px;
   margin-left: 5px;
+  margin-right: 0;
 }
 
 #custom-disk_root {
@@ -96,7 +96,7 @@ window#waybar {
   color:#000000;
   border-radius: 5px;
   padding: 0 5px;
-  margin-left: 0px;
+  margin-left: 5px;
 }
 
 #backlight {
@@ -111,7 +111,7 @@ window#waybar {
   color:#007C00;
   border-radius: 5px;
   padding: 0 5px;
-  margin-left: 0px;
+  margin-left: 5px;
 }
 
 #battery icon {
@@ -152,7 +152,7 @@ window#waybar {
   background: #A6E3A1;
   color:#000000;
   border-radius: 5px;
-  margin-left: 0px;
+  margin-left: 5px;
 }
 
 #temperature {
@@ -166,7 +166,6 @@ window#waybar {
     background: #58A6FF;
   border-radius: 5px;
   padding: 0 5px;
-  margin: 0 5px 0 0;
 }
 
 #network.disconnected {
@@ -191,7 +190,7 @@ window#waybar {
   background: #141B1E;
   padding: 0 5px;
   border-radius: 5px;
-  margin-left: 0px;
+  margin-left: 5px;
 }
 
 #custom-weather {
