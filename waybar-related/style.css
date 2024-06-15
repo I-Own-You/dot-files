@@ -38,15 +38,15 @@ window#waybar {
 	font-weight: bold;
 }
 #workspaces button:hover {
-  color: #ffffff;
-  background: #CBA6F7;
+  color: #282E3A;
+  background: #00FA93;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
 
 #workspaces button.active {
-  color: #ffffff;
-  background: #CBA6F7;
+  color: #282E3A;
+  background: #00FA93;
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
