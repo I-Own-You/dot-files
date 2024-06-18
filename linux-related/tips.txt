@@ -49,6 +49,9 @@
 
 11. configure paccache script
 
+12. add flags for vscode in /usr/share/applications/code.desktop beofre %F: https://github.com/microsoft/vscode/issues/176192#issuecomment-2119266497 
+--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
+
 ssh-keygen -t ed25519 -C "your_email@example.com"
 eval "$(ssh-agent -s)" # start ssh agent                                                                                            
 ssh-add ~/.ssh/id_ed25519 # add key to ssh                                                                                          
