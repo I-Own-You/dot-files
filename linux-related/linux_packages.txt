@@ -3,6 +3,7 @@ python-pynvim (for rnvimr plugin neovim)
 
 # general
 mousam (git, weather app)
+bruno-git (git, rest client)
 discord
 vesktop(aur)
 zoxide
