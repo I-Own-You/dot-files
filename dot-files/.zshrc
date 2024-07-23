@@ -362,32 +362,6 @@ function ff() {
 	rm -f -- "$tmp"
 }
 
-# rm -rf `antidote home` or rm -rf $(antidote home)
-# rm ${ZDOTDIR:-~}/.zsh_plugins.zsh or rm ~/.zsh_plugins.zsh - remove completely
-
-# Options
-# The default is kind:zsh
-# The kind:path mode will just put the plugin folder in your $PATH.
-# The kind:fpath only puts the plugin folder on the fpath, doing nothing else. It can be especially useful for completion scripts that aren’t intended to be sourced directly, or for prompts that support promptinit.
-# The kind:clone only gets the plugin, doing nothing else. It can be useful for managing a package that isn’t directly used as a shell plugin.
-# The kind:defer option defers loading of a plugin. This can be useful for plugins you don’t need available right away or are slow to load. Use with caution.
-# branch:(your) You can also specify a branch to download, if you don’t want the main branch for whatever reason.
-# path:(your path)  You may specify a subfolder or a specific file if the repo you are bundling contains multiple plugins. This is especially useful for frameworks like Oh-My-Zsh.
-# use-friendly-names 'your name'  You can also change how Antidote names the plugin directories by adding this to your .zshrc 
-
-# Commands
-# antidote home -- directory of all plugins
-# antidote install user_name/repo-name --install a plugin apart
-# antidote install user_name/repo-name${ZDOTDIR:-~}/myplugins.conf --with custom directory plugins
-# antidote list -- plugins that you cloned
-# antiode load or with customp plugin directory  antidote load ${ZDOTDIR:-~}/myplugins.conf -- load and source plugins
-# antidote path user_name/repo-name  --path being used for a cloned bundle.
-# antidote purge ohmyzsh/ohmyzsh -- purge a bundle
-# antidote update -- update itself and also plugins
-
-
-
-
 autoload -U compinit
 compinit -i
 
