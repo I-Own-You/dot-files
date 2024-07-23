@@ -91,7 +91,7 @@ alias pmrsb="xo http://127.0.0.1:8000/ && python manage.py runserver"
 # alias djshell="django-admin shell --settings=$(echo "${PWD##*/}").settings -i ipython"
 alias da="django-admin"
 
-# custom scripts == ~/zsh_custom_scripts/
+# custom scripts == ~/scripts/
 alias cpwd="cpwd"
 alias r="custom_rename"
 
@@ -330,9 +330,9 @@ antidote load
 
 source ~/.zsh_plugins.zsh
 
-# source ~/zsh_custom_scripts/zsh-auto-enable-py-env.sh
-source ~/zsh_custom_scripts/cpwd.sh
-source ~/zsh_custom_scripts/custom_rename.sh
+# source ~/scripts/zsh-auto-enable-py-env.sh
+source ~/scripts/cpwd.sh
+source ~/scripts/custom_rename.sh
 
 path+=('/home/mkc/.cargo/bin')
 export PATH
