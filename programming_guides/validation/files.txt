@@ -1,0 +1,8 @@
+1. Magic Numbers: Verify the file's format using its binary signature.
+2. MIME Types: Check the MIME type to confirm the file's type.
+3. Content Analysis: Scan for malware or inspect file contents.
+4. Sanitization: Ensure file names and paths are safe.
+5. Security Measures: Implement size limits and restrict file types.
+6. Directory Permissions: like executable(and onthers) should be restricted
+7. File Permissions: like executable(and onthers) should be restricted
+8. Web Server Configuring: restrict incoming file types
