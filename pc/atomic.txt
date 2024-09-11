@@ -1,0 +1,37 @@
+The term atomic in computer science, particularly in the context of concurrency,
+refers to operations that are indivisible and uninterruptible.
+An atomic operation is one that runs completely independently of any other operations,
+ensuring that it is executed fully or not at all, without interference from other threads or processes.
+
+In concurrent programming, atomicity is crucial because:
+  it prevents race conditions,
+  where two or more threads or processes try to modify a shared resource simultaneously,
+  potentially leading to inconsistent or incorrect results.
+
+Key characteristics of atomic operations:
+  1. Indivisibility:
+                    Once started, an atomic operation runs to completion without being interrupted.
+  2. Isolation:
+                No other operations can observe the system in an intermediate or partial state during
+                the execution of the atomic operation.
+  3. Consistency:
+                  Atomic operations ensure that a shared resource's state remains consistent even
+                  when accessed concurrently.
+
+Examples of atomic operations:
+  1. Atomic variables:
+                      Some languages or libraries offer atomic data types or
+                      variables (e.g., atomic.Int32 in Go) that ensure operations like
+                      reading, writing, or updating are atomic.
+  2. Atomic instructions: 
+                  At a hardware level,
+                  modern CPUs offer atomic instructions like compare-and-swap (CAS) or test-and-set,
+                  which guarantee that specific low-level operations occur atomically.
+
+Why use atomic operations?
+  1. Performance:
+                  Atomic operations avoid the need for more complex synchronization mechanisms like,
+                  locks or mutexes, which can introduce contention and slow down a program.
+  2. Simplicity:
+                For certain operations, atomicity can reduce complexity by ensuring correctness without
+                explicit locking mechanisms.
