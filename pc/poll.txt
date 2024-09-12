@@ -1,0 +1,26 @@
+Poll:
+      typically refers to a method or system call used to monitor multiple file descriptors like
+      sockets, pipes, or other input/output sources, to see if they are ready for some kind of I/O operation like
+      reading or writing. Polling is commonly used in event-driven programming.
+
+1.System Call (poll/select):
+                             In Unix-like operating systems, poll() or select() is a system call
+                             that allows a program to monitor multiple file descriptors at once and
+                             determine which ones are ready for I/O operations.
+                             It helps manage multiple connections or streams of data without blocking on
+                             a single one.
+
+2. Polling in Event Loops:
+                          Polling can refer to periodically checking a condition or resource.
+                          For example, in an event loop, a program might poll for new events or
+                          data at regular intervals.
+                          
+3. Polling in Networking:
+                          In networking, polling may refer to repeatedly checking the status of a
+                          network connection or device to determine if there’s incoming data or
+                          if the connection is still alive.
+                            
+4. Polling in Software:
+                        Sometimes used more generally, "polling" refers to repeatedly checking the
+                        status of something (like polling a server for updates) rather than
+                        waiting for the server to push updates.
