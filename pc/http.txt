@@ -1,0 +1,76 @@
+HTTP Versions:
+  HTTP/0.9: 
+            The very first version, primarily focused on serving hypertext (HTML) without headers or metadata.
+            It was extremely simple and only supported GET requests.
+            
+  HTTP/1.0:
+            The first formalized version of HTTP (1996). It introduced headers, status codes, and
+            support for more methods (like POST).
+            
+  HTTP/1.1:
+            An enhancement of HTTP/1.0 (released in 1997 and widely adopted).
+            This version brought significant improvements, such as:
+                1. Persistent connections:
+                                          (the ability to keep a connection open for multiple requests instead of
+                                          opening a new connection for each one).
+                                          
+                2. Pipelining:
+                              (allowing multiple requests to be sent without waiting for the previous one to finish,
+                              though it wasn't widely adopted).
+                              
+                3. Chunked transfer encoding: (allowing responses to be sent in parts).
+                
+  HTTP/2.0: 
+            multiplexing in HTTP/2 allows multiple requests and responses to be sent concurrently over a single
+            TCP connection.
+            This resolves a major limitation of HTTP/1.1, where only one request could be processed at a time per
+            connection, leading to inefficiencies (known as head-of-line blocking).
+            
+            Key Features of HTTP/2 Multiplexing:
+              1. Single TCP Connection:
+                    HTTP/2 uses a single TCP connection to handle multiple requests and responses in parallel.
+                    This is much more efficient compared to HTTP/1.1,
+                    which often required multiple TCP connections to handle multiple requests concurrently.
+                    
+              2. Stream-Based:
+                    In HTTP/2, each request and response is broken down into smaller units called frames.
+                    These frames are identified by a stream ID, allowing multiple streams (requests/responses) to be
+                    interleaved and transmitted simultaneously over the same connection.
+                    
+              3. Prioritization:
+                    HTTP/2 supports the prioritization of streams,
+                    meaning a client can assign priority to certain requests,
+                    allowing the server to respond to more important requests first.
+                    
+              4. Reduced Latency:
+                    By allowing multiple requests to be sent simultaneously and out-of-order,
+                    HTTP/2 reduces latency compared to HTTP/1.1,
+                    which had to wait for each response to finish before sending another request over the same
+                    connection.
+  HTTP/3.0:
+            HTTP/3, on the other hand, replaces the underlying transport protocol.
+            Instead of using TCP like HTTP/1.x and HTTP/2, it uses QUIC (Quick UDP Internet Connections),
+            which is built on top of UDP.
+
+            Key Features of QUIC:
+              1. UDP-Based:
+                  QUIC is built on UDP (User Datagram Protocol), which is faster and more lightweight than TCP.
+                  Unlike TCP, UDP doesn't handle connection reliability by default.
+                  QUIC adds these reliability features at the protocol level,
+                  combining the speed of UDP with the reliability of TCP.
+                  
+              2. Stream Multiplexing Without Head-of-Line Blocking:
+                  Unlike TCP, which can suffer from head-of-line blocking, QUIC allows each stream to be independent.
+                  If one stream encounters packet loss,it won’t block other streams from continuing to transfer data,
+                  further reducing latency.
+                  
+              3. Faster Connection Setup (Zero-RTT Handshake):
+                  QUIC reduces the connection setup time compared to TCP.
+                  In many cases, QUIC can establish a connection without the round trips required by TCP,
+                  making the connection faster (especially in high-latency networks).
+                  
+              4. Built-in Encryption:
+                  QUIC has built-in encryption similar to TLS,
+                  which means that all connections over QUIC are secure by default.
+                  This improves both performance and security,
+                  as it combines the handshake processes for encryption and connection establishment into one.
