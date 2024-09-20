@@ -1,0 +1,34 @@
+being multiplexed on a single processor:
+        refers to the concept of time-sharing or context-switching,
+        where multiple tasks (such as processes, threads, or goroutines) are executed by a single processor in
+        an alternating fashion.
+        Even though a processor can typically only execute one instruction at a time,
+        it can rapidly switch between multiple tasks to give the illusion of parallel execution.
+
+1. Single Processor:
+      A single processor can only handle one task (one instruction) at a time.
+      It cannot truly execute two tasks simultaneously.
+      
+2. Multiplexing:
+      Multiplexing in this context means that multiple tasks share the single processor.
+      The operating system or runtime system (like Go's runtime for goroutines) will switch between these
+      tasks quickly, allocating small time slices to each task.
+      The switch happens so fast that it appears as if the tasks are running in parallel,
+      even though they are just taking turns using the processor.
+      
+3. Context Switching:
+      The processor switches between tasks through a mechanism called context switching,
+      where the state of a running task (such as its program counter, registers, and stack) is saved so the
+      processor can resume it later.
+      The state of the next task is loaded, allowing it to continue execution from where it left off.
+      
+4. Why Multiplexing Happens:
+      When you have multiple processes, threads, or goroutines but only one processor,
+      the system multiplexes them to allow each task to make progress over time.
+      This is especially common in systems with many tasks but limited hardware resources (like a single CPU core).
+      
+Summary:
+      Multiplexing on a single processor means running multiple tasks alternately on a single CPU core by
+      rapidly switching between them.
+      This is managed by the operating system or runtime, which handles task switching so that each task gets
+      some CPU time, making it seem like they are running in parallel.
