@@ -335,6 +335,7 @@ source ~/dot-files/scripts/cpwd.sh
 source ~/dot-files/scripts/custom_rename.sh
 
 path+=('/home/mkc/.cargo/bin')
+PATH=$PATH:$(go env GOPATH)/bin # another way to specify path, just for info, also: PATH=$PATH:$HOME/go/bin
 export PATH
 
 zstyle ':completion:*:descriptions' format '[%d]'
