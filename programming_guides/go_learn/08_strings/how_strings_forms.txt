@@ -1,0 +1,65 @@
+1. you have a string, like var myString = "hello"
+2. myString consists of a []byte slice
+3. that slice has numbers within it because byte is alias for uin8
+4. because your string is of simple latin utf8 characters, they have only 1 byte each
+   you can easily get the the rune(character) from a string with rune(myString[0]) or []rune(myString...)
+   or with for range structure.
+5. now, there are utf8 characters that span across multiple bytes, so now you have to retrieve not only 1 byte,
+   and it must be accurate. for range and utf8.RuneCountInString() handles it.
+
+6. How they know how to handle multiple spanned bytes character ?
+   when you have a character more than 1 byte long, for example:
+   var thaiHello = "สวัสดี" // each thai character has 3 bytes, here are 6 characters, so 18 bytes
+
+   thaiHello as a slice looks like this:
+   [11100000, 10111000, 10101010, 11100000, 10111000, 10100111, 11100000, 10111000, 10110001,
+   11100000, 10111000, 10101010, 11100000, 10111000, 10010100, 11100000, 10111000, 10110101]
+
+   If the first byte starts with 0xxxxxxx, it’s a 1-byte character (ASCII).
+   If it starts with 110xxxxx, it’s a 2-byte character. // 110 removed for combining
+   If it starts with 1110xxxx, it’s a 3-byte character. // 1110 removed for combinig
+   If it starts with 11110xxx, it’s a 4-byte character. // 11110 removed for combining
+   // the bytes that goes after the main one which tells how many they would be,
+      always have 10 at the beggining to distinguish between new bytes which are not part of a multi-byte character
+      and this 10 always gets removed alongside with the specified bits above for the main byte
+
+   then it takes the amount of bytes it need and combine it.
+   
+   how they are combined ? for each sequence of bytes you remove the placeholder for byte signal and combine them.
+   example: [11100000, 10111000, 10101010, 11100000, 10111000, 10100111]
+   1. you look at the first byte, it has 1110, so its a 3 byte as specified above, so you need 3 bytes consecutive
+   2. you take the first 3 bytes: 11100000, 10111000, 10101010
+   3. you remove the 1110(front) from the first byte 11100000 // 00000
+   3.1 you remove the 10(front) from the second byte 10111000 // 111000
+   3.2 you remove the 10(front) from the third byte 10101010  // 101010
+   4. you combine them = 0000 + 111000 + 101010 = 0000111000101010
+   5. you transform the binary format into hexadecimal (because its more readable for unicode, hexadecimal is the standard for unicode to represent)
+   6. 0000111000101010 => 0xE2A(0x0E2A,because unicode has ranges) //each hexa digit is 4 bits, here is 12 bits
+   7. U+0x0E2A => â // U+ specifically tells we look for a unicode character
+
+   also, the hexadecimal representation like U+0E2A is abstract, here 4 digits = 4*4=16, 2 bytes
+   when you convert U+0E2A into utf8, it would have 3 bytes, so dont confuse
+
+   how to reconstruct from hexa again into binary and then all bytes sequence of the character ?
+   1. 0x0E2A = 0000111000101010 // from hexa into binary again
+   2. 0000111000101010 = 00001110 00101010 // separate into bytes
+   3. recreate the bytes that represented the character before combining:
+   3.1 0x0E2A fits into 3 bytes unicode range like so U+0800 - U+FFFF
+   3.2 so the character had 3 bytes
+   3.3 the schema for 3 bytes is:
+                                  first byte:  1110xxxx
+                                  second byte: 10xxxxxx
+                                  third byte:  10xxxxxx
+   3.4 we take the first byte from 2 step which is 00001110 and prepend the first byte schema from 3.3 step
+   3.4.1 first byte:  111000000 // (1110, added in front)_0000_(1110, removed from the back)
+   3.5 we take the second byte from the  step 2 which 00101010 and prepend the second byte schema from 3.3 step
+   3.5.1 second byte: 10001010 // (10, added in front)_001010_(10, removed from the back)
+   3.6 we take again the second byte from the step 2 which is 00101010
+       and prepend the second byte schema from 3.3 step, but not for the full byte, but only for the last 6 bits,
+       because there is no 3 byte from the step 2, we again take the second byte, but because we construct
+       the third byte(which is next, logically), we take only the 6 last bits because 2 were already used by the
+       previous byte(secon byte construction).
+   3.6.1 third byte: 10101010 // (10, added in front)_101010_(we didnt remove anything because we used the 6 bits
+                                                              which means we added 2(in front) bits + 6 bits = 8)
+   3.7 combine bytes constructed from 3.4.1, 3.5.1, 3.6.1 = [11100000, 10001010, 10101010]
+   3.8 the result from 3.7 step represents the bytes that formed the character
