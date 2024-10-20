@@ -155,3 +155,16 @@ func StructureWithMethodsAndInterfaces() {
 	// }
 	// PrintAll(vals)
 }
+
+type A interface {
+	alo()
+}
+
+// this way you also can embed interfaces,
+// here B interface consists of kek() and also alo() because of A interface.
+// any function that will require parameter of type B will need to implement,
+// both B and A, alo() + kek()
+type B interface {
+	kek()
+	A
+}
