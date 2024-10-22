@@ -31,26 +31,3 @@
       7. functions: send its copy, you cant modify it, you need pointer for it
       also: maps, slices, arrays, structs, when printed with %v and &varName, will print its zero value of type with & in front, you need %p directive in fmt to show the actual memory address
       also: when you assign a method to a function, the reference to the method is copied, the pointer is not sent to the function, they are not related
-
-typical folder structure:
-  /myapp
-  ├── /cmd
-  │   └── /myapp
-  │       └── main.go        # Entry point for the main application binary
-  ├── /internal              # Private application and library code
-  │   ├── /api               # HTTP handlers, routing logic
-  │   ├── /service           # Business logic, services layer
-  │   ├── /repository        # Database interaction
-  │   ├── /config            # Application configuration files
-  │   ├── /middleware        # Middleware for the API
-  │   └── /models            # Data models, structs
-  ├── /pkg                   # Exportable libraries for external use (if any)
-  │   └── /utils             # Utility packages used across the application
-  ├── /scripts               # Bash scripts, migration files, etc.
-  ├── /web                   # Frontend static files if you are serving them with Go
-  │   └── /dist              # Built files from a frontend framework (if applicable)
-  ├── /migrations            # Database migration files
-  ├── /docs                  # Documentation for the application
-  ├── go.mod                 # Go module file
-  ├── go.sum                 # Go dependencies checksum
-  └── README.md              # Project readme file
