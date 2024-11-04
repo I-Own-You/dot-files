@@ -1,0 +1,22 @@
+body {
+    background: #32344A;
+}
+
+.conInfo {
+    position: absolute;
+    right: 50px;
+    top: 1%;
+    font-size: 40px;
+}
+
+.conOpen {
+    color: #3FB950;
+}
+
+.conClosed {
+    color: #E6221E;
+}
+
+.conData {
+    color: yellow;
+}
