@@ -1,0 +1,62 @@
+websocket:
+  1. allow for a connection between user and the server without polling.
+  2. allow browsers to send and receive data form the server without closing the connection.
+  3. connections are requested by browsers and are responded to by servers,
+     after which a connection is established, this process is often called a handshake.
+     the special kind of header requires only one handshake between a browser and server
+     for establishing a connection that will remain active throughout its lifetime.
+     3.1 HTTP Handshake:
+        A WebSocket connection starts with an HTTP request from the client to the server,
+        specifically an HTTP Upgrade request.
+        This request asks the server to switch from the HTTP protocol to the WebSocket protocol.
+        The server must accept this Upgrade request to establish a WebSocket connection.
+        Once the handshake is complete, the HTTP connection is “upgraded” to a WebSocket connection.
+     3.2 TCP Layer:
+        after the HTTP handshake, the WebSocket connection is established directly over TCP.
+        From this point onward, the WebSocket protocol runs directly on TCP,
+        bypassing any further HTTP protocol overhead.
+        WebSocket frames (messages) are sent over TCP, allowing for full-duplex,
+        bidirectional communication, which is ideal for real-time applications.
+  4. websocket protocol uses port 80 for an unsecure connection and port 443 for a secure connection.
+     websocket specification determines which uniform resource identifier schemes
+     are required for the ws (WebSocket) and wss (WebSocket Secure) protocols.
+
+The WebSocket protocol is relatively simple to implement.
+It uses the HTTP protocol for the initial handshake.
+After a successful handshake,
+a connection is established and the WebSocket essentially uses raw TCP to read/write data.
+
+This is what a client request looks like:                And here’s the server response:
+  GET /chat HTTP/1.1                                       HTTP/1.1 101 Switching Protocols
+    Host: server.example.com                               Upgrade: websocket
+    Upgrade: websocket                                     Connection: Upgrade
+    Connection: Upgrade                                    Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
+    Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==            Sec-WebSocket-Protocol: chat
+    Sec-WebSocket-Protocol: chat, superchat
+    Sec-WebSocket-Version: 13
+    Origin: http://example.com
+
+To write a simple WebSocket echo server based on the net/http library, you need to:
+    1. Initiate a handshake
+    2. Receive data frames from the client(messages)
+    3. Send data frames to the client
+    4. Close the handshake
+
+frames:
+    in websockets, frames are units of data sent over the connection.
+    each message is split into frames,
+    and these frames indicate the type (text, binary, close, ping, pong), final frame status, and payload.
+    frames enable efficient message segmentation and control signaling.
+
+in websockets, PING/PONG is:
+    a mechanism used to keep the connection alive and verify that it's still open.
+
+    Ping:
+      Sent by the server/client as a "heartbeat" message to check if the other side is still responsive.
+    Pong:
+      The other side replies with a pong message to confirm it's still active.
+
+    if no pong is received after a ping,
+    the connection may be considered closed or unresponsive,
+    allowing either side to handle disconnects gracefully.
+    This keeps long-lived WebSocket connections reliable.
