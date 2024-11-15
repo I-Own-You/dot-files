@@ -27,4 +27,15 @@ func channels() {
 	fmt.Println("msg:", msg)
 	// by default, sender and reciever will wait(block threads) each other until they both are ready,
 	// by blocking the sender and reciever until they are ready
+
+	// its not usual to define <-chan/chan<- types, this is usually,
+	// encountered in function paramater types.
+	var receiveChan <-chan any
+	var sendChan chan<- any
+	dataStream := make(chan any)
+
+	receiveChan = dataStream // dataStream here implicitly is convertedd to <-chan
+	// receiveChan <- true   // invalid since receiveChan is send channel only
+	sendChan = dataStream // dataStream here implicitly is converted to chan<-
+	// <-sendChan            // invalid since sendChan is receive channel only
 }
