@@ -88,6 +88,7 @@ hourglass (timer)
 otf-font-awesome
 ttf-font-awesome
 gnome-keyring(for vscode)
+httraqt
 
 #yazi file manager 
 yazi (file manager)
