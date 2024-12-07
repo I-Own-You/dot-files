@@ -1,0 +1,13 @@
+                        package.json                            package-lock.json
+
+Purpose                 Defines dependencies and metadata       Locks exact dependency versions
+Focus                   Direct dependencies                     Exact versions (including sub-dependencies)
+Editable                Manually edited by developers           Automatically maintained by npm
+Dependency Ranges       Uses ranges (^, ~)                      Uses exact resolved versions
+Usage                   Used by npm to fetch dependencies       Ensures consistent installations
+
+1. package.json: basically you have your project info inside package.json
+                 and also the minimum version of packages required for project to work.
+
+2. package-lock.json: at most has only info about packages and exact versions, so that your project,
+                      will install exact version instead of minimum from packages.json
