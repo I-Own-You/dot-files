@@ -1,5 +1,0 @@
-S-single responsibility principle(A class should have one reason to change,a class should have only one job.)
-O-open closed principle(Objects or entities should be open for extension but closed for modification.)
-L-Liskov Substitution Principle(every subclass or derived class should be substitutable for their base or parent class.)
-I-Interface segregation principle(client should implement interface that he uses, must not depend on what doesnt use)
-D-Dependency inversion principle(Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions.)
