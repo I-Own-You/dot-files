@@ -1,4 +1,4 @@
-1. csrf
+1. csrf, cors
 2. error handling
 3. logging
 4. middleware
