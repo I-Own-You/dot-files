@@ -208,4 +208,9 @@ func main() {
 	var l struct{}
 	fmt.Printf("l: %v\n", l)
 
+	// array
+	var arr [0]int
+
+	// slice
+	var slice []int
 }
