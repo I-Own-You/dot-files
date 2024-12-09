@@ -9,7 +9,7 @@ type A int
 type B struct{}
 
 // .etc...
-type something any
+type something any // type something interace{}, same
 
 // a generic type
 type myGenericType[K comparable, V any] map[K]V
