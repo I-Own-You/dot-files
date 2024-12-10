@@ -43,7 +43,7 @@ func StructDataStructure() {
 	fmt.Println(s.name)
 
 	// you can also assign a struct pointer to a variable and use it, the pointer is dereferences automatically,
-	sp := &s            // so you cannot use *sp
+	sp := &s
 	var _ *person = &s  // same as above but more explicit, and wihtout name so compiler wont give error
 	fmt.Println(sp.age) // no need for *(sp).age, but you can use it if you want
 
