@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-// interfaces are named collections for method signatures and type generics (since 1.20, another topic later)
+// interfaces are named collections for method signatures and (type generics (since 1.20, another topic later))
 
 // here is how you can define a basic interface of geomtry shape, interface define a shape of a method
 type Geometry interface {
