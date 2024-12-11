@@ -44,7 +44,7 @@ func mutexes() {
 		wg.Done()
 	}
 
-	// here we add 3 threads to the wait group, because lower we invoke doIncrement 3 times
+	// here we add 3 to the wait group, because lower we invoke doIncrement 3 times
 	wg.Add(3)
 	// threads use in the function the common container, but since we use a mutex it will work as expected
 	go doIncrement("a", 10000)
