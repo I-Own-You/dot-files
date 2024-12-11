@@ -4,7 +4,12 @@ import (
 	"fmt"
 	"math"
 
-	// this here wont work because you need a go.mod file, but the info from below is correct.
+	// if you dont have a .mod file, this will work because the path to the package is right,
+	// but if you had a .mod file with module name(which is the idiomatic way),
+	// you would have modName/aloha.
+	//
+	// also, if a folder is named aloha and the package it contains has the name aloha1,
+	// then you would need aloha1 "./aloha", the package is always needed.
 	"./aloha"
 )
 
