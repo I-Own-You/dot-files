@@ -111,11 +111,9 @@ gdm-settings //paru
 colorway
 lxappearance-gtk3
 https://extensions.gnome.org/extension/5090/space-bar/
-https://extensions.gnome.org/extension/973/switcher/
+https://extensions.gnome.org/extension/973/switcher/ (doesnt work on 47 version, but still let it be)
 https://extensions.gnome.org/extension/3843/just-perfection/
-https://extensions.gnome.org/extension/3193/blur-my-shell/
 https://extensions.gnome.org/extension/615/appindicator-support/
 https://extensions.gnome.org/extension/3396/color-picker/
-https://extensions.gnome.org/extension/3193/blur-my-shell/
 https://extensions.gnome.org/extension/16/auto-move-windows/
 https://extensions.gnome.org/extension/779/clipboard-indicator/
