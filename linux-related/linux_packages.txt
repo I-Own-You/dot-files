@@ -105,6 +105,7 @@ zoxide (for historical directories navigation)
 
 
 # gnome
+flameshot
 dconf-editor
 gnome-tweaks
 gnome-browser-connector
