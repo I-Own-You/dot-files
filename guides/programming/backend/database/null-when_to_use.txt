@@ -1,0 +1,79 @@
+When to use:
+
+1. Represents Missing or Unknown Data (
+    NULL is a powerful concept for representing missing, unknown, or inapplicable data
+):
+    1. Optional Fields:
+        In cases where some data is optional,
+        a NULL value can be used to indicate that the value is not provided,
+        rather than using a default or placeholder value that might be misleading
+        (e.g., using 0 for a phone number or an empty string for a name).
+    2. Unknown Values:
+        If you don't know a value yet (e.g., a user's birthdate or address),
+        using NULL is semantically correct.
+        It tells you that the data is not yet available,
+        which is better than using a default value like "Unknown" or "N/A".
+    3. Inapplicable Data:
+        For some fields, the value might not apply to all rows.
+        For instance, a "spouse" field might be NULL for single people.
+        This is more meaningful than using a placeholder value like "None" or "Not applicable."
+
+2. Flexibility in Schema Design (
+    NULL values provide flexibility in your database schema, especially when dealing with:
+):
+    1. Sparse Data:
+        When not all records have the same attributes,
+        NULL allows you to leave fields empty rather than forcing a meaningless value.
+        For example,
+        a table that tracks user preferences might have many optional fields that can be NULL if not set.
+    2. Normalization:
+        In normalized schemas,
+        NULL values can be used to indicate that certain fields are optional or
+        that certain relationships don't exist for all records.
+        This can reduce redundancy and allow for a more flexible data model.
+
+3. Efficient Storage for Optional Data (
+    Using NULL for optional data is often more efficient than
+    using placeholder values (like an empty string or 0).
+    Storing a NULL value typically uses less storage space than storing a placeholder value,
+    especially for large text or numerical fields.
+)
+
+4. Better Data Integrity (
+    By using NULL, you explicitly show that a field is not filled in,
+    as opposed to using a default value that might conflict with valid data.
+    For example, if you use 0 to represent a missing value in a "price" field,
+    it's not clear whether 0 means the item is free or the price is unknown.
+    Using NULL avoids this ambiguity.
+)
+
+5. SQL Features for NULL (
+    SQL has built-in features that allow you to handle NULL values in a flexible way
+)
+    1. IS NULL / IS NOT NULL: These operators are used to filter out NULL values when needed.
+    2. COALESCE():
+        This function returns the first non-NULL value from a list of expressions,
+        which is useful for handling NULL in queries.
+    3. NULLIF(): 
+        This function returns NULL if two expressions are equal,
+        which can be useful for avoiding specific values like 0 or empty strings.
+
+6. Clearer Logic and Intent (
+    Using NULL can make your database schema and queries clearer.
+    When you see a NULL value, it clearly indicates that something is missing or unknown,
+    whereas using a placeholder value might make it harder to distinguish between actual data and missing data.
+)
+
+When not to use:
+    1. If the data is required:
+        If a field must always have a value (e.g., email address, primary key),
+        then it should not be NULL.
+        Instead, enforce constraints like NOT NULL to ensure data integrity.
+    2. If it complicates queries:
+        Sometimes, NULL values can complicate queries, especially when aggregating data.
+        For example, calculating averages or sums can be trickier when NULL values are present.
+        However, SQL provides functions like COUNT() and SUM() that can handle NULL values correctly.
+    3. If default values are more appropriate:
+        In some cases, a default value (e.g., an empty string or 0) might be more meaningful than NULL,
+        especially if it’s clear that the value is not applicable or not yet set.
+

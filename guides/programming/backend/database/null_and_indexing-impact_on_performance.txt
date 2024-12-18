@@ -1,0 +1,55 @@
+NULL fields can have an impact on performance,
+especially when it comes to indexing and query performance:
+
+    1. Indexing and Null Values: (
+        Indexes are typically created on columns that are frequently queried,
+        When a column contains many NULL values, it can affect the efficiency of the index in the following ways
+    ):
+        1. Space Usage:
+            Indexes that include NULL values take up more space because the database needs to store information
+            about the NULL values in the index.
+            This can increase the size of the index, making it less efficient.
+        2. Index Selectivity:
+            An index is most useful when it has high "selectivity"
+            meaning that the values in the indexed column are unique or have a wide distribution.
+            If a large portion of the column contains NULL values, the index becomes less selective,
+            and the database might not use the index as effectively for query optimization.
+        3. Performance Degradation:
+            Queries that involve NULL values can be slower because the database has to handle them specially.
+            For example,
+            filtering or searching for NULL values can be less efficient than searching for non-NULL values.
+
+    2. Query Performance (
+        When you have a column with many NULL values and that column is indexed,
+        the database might perform unnecessary work to handle those NULL values
+    ):
+        1. If you're querying a column with a condition like column = NULL,
+        the database must evaluate each row to determine if the column is NULL,
+        which is less efficient than checking for a specific value.
+        2. When joining tables on columns with many NULL values, the join might become less efficient,
+        as the database has to consider how to handle the NULL values in the join condition.
+
+    3. Impact on Storage and Query Plans
+        1. Storage:
+            NULL values increase the storage requirements of the database,
+            as each NULL must be stored in the index and data pages.
+        2. Query Plans:
+            Databases might generate less efficient query plans when dealing with NULL values.
+            For example,
+            checking for NULL values in queries (e.g., column IS NULL) can result in slower execution plans
+            compared to queries that check for specific values.
+
+
+
+Optimization Techniques:
+    1. Avoid Indexing Nullable Columns:
+        If a column is mostly NULL, you might want to avoid indexing it.
+        Instead, you can index only the columns that are frequently queried and contain meaningful data.
+    2. Partial Indexes:
+        In some databases, you can create a partial index that only includes rows where the column is not NULL.
+        This way, the index only covers the rows with meaningful data, improving its selectivity and performance.
+    3. Default Values:
+        Instead of allowing NULL,
+        you could set a default value for the column (e.g., an empty string or a specific placeholder).
+        This avoids the overhead of handling NULL values and can improve performance,
+        but it might not always be suitable depending on the use case.
