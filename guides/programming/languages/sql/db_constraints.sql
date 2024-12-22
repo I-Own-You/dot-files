@@ -254,3 +254,12 @@ CREATE TABLE circles (
     -- (c WITH &&) the expression that defines the condition to exclude
     -- && used to check if two circles overlap, so when 2 circles will be compared with &&, if they overlap, it will fail
 );
+
+-- check
+-- not null
+-- unique
+-- primary key
+-- foreign key (references)
+-- exclude
+-- default
+-- index (not quite constraint, but still)
