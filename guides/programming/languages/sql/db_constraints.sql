@@ -225,6 +225,8 @@ CREATE TABLE posts (
     FOREIGN KEY (tenant_id, author_id) REFERENCES users ON DELETE SET NULL (author_id) -- tenant_id wont be set to NULL
                                                                                    -- because only author_id is specified
 );
+-- you can also define another name for foreign key constraints without letting sql autogenerate it for you:
+-- CONSTRAINT my_name FOREIGN KEY (existing_field) REFERENCES referencedTableName
 
 -- ON UPDATE has the same actions with some changes:
 -- 1. column list cannot be specified for SET NULL and SET DEFAULT, it means SET NULL/DEFAULT(col1,coln)
