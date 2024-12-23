@@ -1,0 +1,31 @@
+main barnches:
+    main    - official histories of releases with versions(tags)
+           
+    develop - combine other branches (typically feature branches)
+            - created initially from main branch
+            - it has its own origin/develop
+            - keeps all the work, main keeps only releases(merged from develop)
+            - developers usually create a branch form develop like develop/programmer_username
+
+feature branches:
+    feature/branch_name - created form develop(last commit usually)
+                     - hold actual work, like feat/db-setup, feat/backend-log-fix, .etc
+                     - after work getting done, its merged into develop
+                     - after merging into devleop, the branch is deleted
+
+release branches:
+    release/branch_name - created on the develop(last commit), means the projects is ready for a release
+                        - on this branch you cannot add more functionality to the project, but
+                            - you can fix bugs
+                            - add documentation
+                            - resolve other things not related to the functionality of the project
+                        - when release is ready, its merged into main, and a version(tag) is added to the release
+                        - after merging into main, its merged into develop
+                        - after merging into main and develop, release is deleted
+
+hotfix branches:
+    hotfix/branch_name - used for fixes
+                       - created on the main
+                       - after fix, its merged into main(given antoher new version)
+                       - after merging into main, its merged into develop or release, it depends
+                       - after merging into main and develop or release, hotfix is deleted
