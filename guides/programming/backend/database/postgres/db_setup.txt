@@ -1,0 +1,43 @@
+installation:
+    1. choose the version
+    2. install using macos/windows/linux guides.
+        2.1. paru postgresql
+        2.2. sudo -u postgres initdb -D /var/lib/postgres/data
+        2.3 systemctl start postgresql.service | systemctl enabled postgresql.service
+
+configuration:
+    1. create the database
+        1.1 psql -U postgres (if user not created yet) | psql [user_name]
+        1.2 create database 'database';
+        1.3 assign a user owner for database (if created by different user)
+        1.4 modify any other options for db as you need (locale, encoding, timezone, .etc)
+    2. set user roles (if needed) / configure users
+        2.1 create user 'user' with password 'password';
+        2.2 grant needed priviliges for user
+        2.3 modify user as you need 
+    3. adjust settings in postgresql.conf file (if needed)
+    4. adjust settings in pg_hba.conf file (if needed)
+
+security:
+    1. keep regular updates that fix vulnerabilities/bugs
+    2. implement authentication/authorization methods (ex: SSL certificate / password policies / .etc)
+    3. assign permissions based on user roles(RBCA) (if needed)
+    4. encrypt data/db while resting/transit (if needed)
+    5. adjust settings in postgresql.conf file (if needed)
+    6. restrict file system permissions (like directory permissions, deletion, .etc) where postgres files relie
+    7. log information to analyze (like connections, errors, .etc)
+
+performance optimization:
+    1. index fields that are often queried
+    2. analyze queries with EXPLAIN sql command to modify for better results
+    3. implement connection pooling to manage db connetions
+    4. adjust settings in postgresql.conf file (if needed)
+    5. modify parameters in shared_buffers and work_mem (if needed)
+
+backup/recovery:
+    1. schedule regular backups with tools like pg_dump/pg_restore, .etc
+    2. setup write-ahead logging for point-in-time recovery capabilities
+
+monitoring/maintenance:
+    1. use tools like pg_stat_statments or 3rd party solutions to monitor db performance
+    2. vacuuming, analyzing, reindexing to mainain db health
