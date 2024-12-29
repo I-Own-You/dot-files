@@ -53,6 +53,8 @@ keybind = alt+w=close_window
 # scroll lines
 keybind = alt+k=scroll_page_up
 keybind = alt+j=scroll_page_down
+keybind = alt+shift+j=jump_to_prompt:1
+keybind = alt+shift+k=jump_to_prompt:-1
 # increase font size
 keybind = ctrl+shift+plus=increase_font_size:1
 keybind = ctrl+shift+minus=decrease_font_size:1
