@@ -65,4 +65,6 @@ keybind = shift+ctrl+comma=move_tab:-1
 keybind = shift+ctrl+period=move_tab:+1
 # reload config
 keybind = ctrl+shift+f2=reload_config
+# open config
+keybind = ctrl+shift+f3=open_config
 # keybind = alt+k=scroll_page_lines:1000
