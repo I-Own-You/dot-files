@@ -1,9 +1,9 @@
 # https://ghostty.org/docs/config/reference
 # OTPIONS
 theme = GitHub Dark
-# when you buy macos, use shaders
-cursor-color = #3450ee
-
+window-decoration = false
+cursor-color = #33d17a
+#fonts
 font-family =
 font-family-bold =
 font-family-italic =
@@ -11,21 +11,20 @@ font-family-bold-italic =
 # -calt, will disable ligatures, -dlig, -liga also avaialble(will remove all features realte to ligatures)
 font-feature = 
 font-size = 16
-
+# line height
 adjust-cell-height = 7
-
+adjust-cursor-height = 7
+# mouse interaction
 mouse-hide-while-typing = true
-mouse-scroll-multiplier = 
-
+# split options
 unfocused-split-opacity = 1
-
+# window padding
 window-padding-x = 0, 0
 window-padding-y = 0, 0
 # not yet supported on linux
 window-save-state = always
-
+# clipboard options
 clipboard-paste-protection = false
-
 # only on linux with systemd, enable when you will have it
 # linux-cgroup = 
 # linux-cgroup-memory-limit = 
