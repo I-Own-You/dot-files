@@ -1,0 +1,13 @@
+Cookies: small pieces of data stored on the client (browser) by the server.
+         persist on the client and are sent automatically with requests to the same domain.
+Purpose: used to maintain state across requests (e.g., sessions, preferences).
+
+How They Work:
+    1. server sends a Set-Cookie header in the response.
+    2. browser stores the cookie and includes it in future requests to the same domain via the Cookie header.
+
+Example:
+Server response:
+    Set-Cookie: session_id=abc123; Path=/; HttpOnly
+Client request:
+    Cookie: session_id=abc123

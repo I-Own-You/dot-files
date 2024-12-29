@@ -1,0 +1,16 @@
+Definition:
+    1. key-value pairs sent with HTTP requests and responses to provide metadata.
+    2. explicit metadata sent with every HTTP request/response, not stored automatically.
+
+Purpose:
+    Used for authentication, content negotiation, caching, etc.
+    
+Types:
+    Request Headers: Sent by the client (e.g., Authorization, Content-Type).
+    Response Headers: Sent by the server (e.g., Set-Cookie, Content-Length).
+
+Example:
+Request header:
+    Authorization: Bearer <token>
+Response header:
+    Content-Type: application/json
