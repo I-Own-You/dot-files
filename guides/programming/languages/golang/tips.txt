@@ -1,0 +1,33 @@
+1. casting from upper type to lower type, overflowing gets you to the end boundary of a type.
+  example: var nr_float32 float32 = 2_147_483_648 // you can put here whatever is higher than int32, its just an example
+            var nr_int32 int32 = int32(nr_float32) // nr_int32 becomes -2_147_483_648.
+            the int32 max capacity is 2_147_483_647 so casting 2_147_483_648 into int32 returns the limit of int32 which is -2_147_483_648, becasue the range of int32 capacity is starting from 0 and goes up to 2_147_483_647 and down to -2_147_483_648(lower boundary)
+
+2. type float32 has only up to 7 decimal precision after dot. var nr_float32 flaot32 = 2.12345678, the number will be truncated to 7 decimal precision: 2.1234567, 8 is left but could stay, it really points to the fact that only 7 decimals are handled correctly
+2.1. type float64 has 15-17 decimal precision after dot. var nr_float64 flaot64 = 2.12345678901234567, the number will be truncated to 7 decimal precision: 2.123456789012345, 67 is left but could stay , it really points to the fact that only 15 decimals are handled correctly
+
+3. performing an aithmetic operation with a type where the result overflows the type, the upper boundary starts to play a role
+  example: var nr uint8 = 20, //uint8 capacity is 0(included)-255(included)
+           nr - 21 = 255 // because uint8 cant be negative so it goes from the upper bound down
+           nr - 22 = 254 // .etc
+
+4. when you create a custom type and assign it to a type, it becomes a type alias and nothing more.
+      type myNewType = int32 // myNewType is identical to int32 and they are interchangebale            
+
+5. when you create a custom type without assigning, it becomes a new distinct type with enforced type safety: this means you need explicit value conversion to use it. and you also can createe methods on this type and realize interfaces with it.
+    type myNewType int32
+    var a int32 = 1
+    var b myNewType
+    b = a // error, instead you would need b = myNewType(a)
+    a = b // error, instead you would need a = int32(b)
+
+6. variables and pointers assigning:
+      1. maps: send only its header which points to the underlying map, so it means you can modify its elements, but cant make a new map of it, you need the actual pointer for it
+      2. slices: send only its header which points to the underlying array, it means you can modify its elements, but cant make a new slice of it, you need the pointer for it
+      3. arrays: send only a copy of array, so you cant modify it at all, you need the pointer
+      4. structs: send only a copy of value, so you cant modify it, but if there is a field that has a pointer, you can modify that field and it will reflect on the original struct, in other case, you need the pointer
+      5. channels: send its copy, you cant modify it, you need a pointer
+      6. interfaces: send its copy, you cant modify it, you need a pointer for that
+      7. functions: send its copy, you cant modify it, you need pointer for it
+      also: maps, slices, arrays, structs, when printed with %v and &varName, will print its zero value of type with & in front, you need %p directive in fmt to show the actual memory address
+      also: when you assign a method to a function, the reference to the method is copied, the pointer is not sent to the function, they are not related

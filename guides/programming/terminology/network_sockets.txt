@@ -1,0 +1,42 @@
+network socket:
+  1. socket from a pc where data arrives from another device, typically another pc.
+  2. built into the OS itself which makes it easier for developers.
+  3. multiple sockets can be used simultaneously.
+  4. is created/used with a set of function calls defined by socket API.
+
+network socket types:
+  1. Datagram sockets (SOCK_DGRAM):
+      1. connectionless sockets, uses the User Datagram Protocol (UDP).
+      2. support a bidirectional flow of messages and preserve record boundaries.
+      
+  2. Stream sockets (SOCK_STREAM):
+      1. connection-oriented sockets, uses the Transmission Control Protocol (TCP), 
+      2.                              uses the Stream Control Transmission Protocol (SCTP).
+      3.                              uses the Datagram Congestion Control Protocol (DCCP). 
+      4. provide a bidirectional, reliable, sequenced, and unduplicated flow of data with no record boundaries.
+      
+  3. Raw sockets (or raw IP sockets):
+      1. are typically available in routers and other networking equipment.
+      2. usually datagram-oriented(SOCK_DGRAM), but depends on the interface provided by the protocol.
+      3. not used by most applications.
+      4. provided to support the development ofn new communication protocols.
+      5. provide access to more esoteric facilities of existing protocols.
+
+TCP (Transmission Control Protocol):
+    1. Provides reliable, ordered, and error-checked delivery of data.
+    2. Ensures that packets arrive in the order they were sent, and retransmits lost packets.
+    3. Pros: Reliable and easy to work with, as it handles packet loss and reordering.
+    4. Cons: Slower than UDP for real-time applications
+             because of the overhead for reliability (e.g., waiting for packet confirmations).
+    5. Usage: Often used for turn-based games, chat features, and in-game lobbies,
+              where message order and reliability are essential, but timing isn’t as critical.
+
+UDP (User Datagram Protocol):
+    1. Provides a connectionless, fast,
+       and efficient delivery of packets without guaranteeing order or reliability.
+    2. Pros: Low latency, faster for real-time data like movement and action updates,
+             because it doesn’t wait for acknowledgments.
+    3. Cons: No guarantee of packet delivery, order, or error-checking,
+             so the game’s networking code must handle these issues if needed.
+    4. Usage: Common in fast-paced, real-time games (e.g., FPS, racing games)
+              where speed is prioritized, and slight data loss is acceptable.

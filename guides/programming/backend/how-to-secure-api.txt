@@ -1,0 +1,10 @@
+cors (works only in browsers)
+csrf (works only in browsers)
+rate limiting
+jwt / api key (only if its enforced, if the api is public its useless since people dont need it to use the api)
+session tokens
+inspecting the agent (checking the info about the origin basically)
+recaptcha
+authentication/authorization (being login in the system is the easiest and safest method)
+2fa, mfa
+custom logic (like checking last IP user was when it accessed the site vs ip which is used to access now)

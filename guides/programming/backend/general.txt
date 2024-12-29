@@ -1,0 +1,76 @@
+1. csrf, cors
+2. error handling
+3. logging
+4. middleware
+5. background jobs 
+6. schedule tasks
+7. queue jobs: (long processing/blocking tasks must be moved to queed jobs)
+    1. web server
+    2. worker: (this typically processes [long running / blocking] tasks)
+8. auth system
+9. validation
+10. cache: (expensive operations / common requests)
+11. file storage
+12. i18n (translation)
+13. mail (email)
+14. notification
+15. rate limiting (requests and etc)
+16. database: (where you store the data)
+    1. indexes on fields for better optimization
+    2. query optimization
+    3. wise data structure
+17. analyzer software: (monitor cpu, ram, response time, error rates, db, caching, etc)
+18. automatic scaling: (it means scaling when system analizer software detects that it needs more resources and less when not needed)
+19. streaming data: (it means streaming the data instead of keeping in memory so it wont use a lot of resources ram/cpu)
+
+
+App stack:
+    1. microservices decoupling where data for each microservice is with them
+       in their DB so no need for synchronous REST api calls.
+       
+    2.use serverless (for heavy computing and reacting to events).
+    3. event driven async communications.
+    4. Dead letter queues.
+    5. say kafka (or equivalent) for async communication
+    6. use worker threads in Node for CPU bound work so its truly multithreaded,
+       utilize all cpu cores and not block the event loop.
+       
+    7. use cluster module in node to utilize all cpu cores on single EC2 instance
+       or use kubernetes for scaling both on single EC2 but beyond that horizontally.
+       
+    8. Normalize you DB with proper indexing, optimized db Queries etc.
+    9. Have your servers/db hosted as geographically close to your customers
+       as possible fir lowest latency in your backend services.
+       
+    10. User caching with Redis/memcache etc
+    11. Serve frontend using AWS CDN i.e. AWS cloudfront in front of AWS S3 for static assets.
+    12. Use service worker/caching on the frontend so you reduce unnecessary calls to backed as much as possible.
+    13. Use proper authentication/authorization so you cut out more un-necessary calls to backend.
+    14. If required, use rate limiting for costly api's
+    15. For performing user search quickly use a purpose build service say like elastic search
+        or equivalent (amazon does a lot of searching when you type in textbox or apply filters).
+        
+    16. Have Ddos prevention in place so your backend services incur as less latency as possible.
+    17. Use infrastructure as code with AWS CDK with Typescript (nice experience).
+    18. CI/CD pipeline with Circle CI/jenkins or equivalent
+        (github actions for complex projects is still challenging)
+        
+    19. BEST advantage of using fully node in the backend is code sharing
+        between fontend and backend so use monorepo with say NX (or turborepo etc)
+        
+    20. Have load testing pipeline built in CI/CD so you know before releasing your software
+        whether the backend services satisfy the SLA for the amount of traffic you expect.
+        
+    21. For obserbality (server memory, cpu etc) use datadog/prometheous/aws cloud watch etc.
+    22. For observability on errors use something like sentry.
+    23. If needed use GraphQL instead of rest to reduce overfetching/underfetching along with data loader.
+    24. REST is still faster than GraphQL for high traffic especially with caching.
+        You can also cache get rest calls in something like redis
+        and revalidating those cache after put/patch/delete/post calls
+        (NOTE: only resort to this if you already have highly optimized DB with indexing
+         and still see slowness in Restapi calls because DB is overloaded.
+         Then use a cache like redis to cache
+         Get calls - to offload DB - and that significantly improve performance but requires more work)
+        
+    25. If needed use CQRS patterns to separate read from writes,
+        again only if necessary but it would be good to spread data geographically to reduce latency.

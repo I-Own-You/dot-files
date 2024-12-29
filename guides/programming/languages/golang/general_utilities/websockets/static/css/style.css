@@ -1,0 +1,77 @@
+body {
+    background: #32344A;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat1 {
+    /*display: flex;*/
+    position: relative;
+    padding-left: 300px;
+}
+
+.chatTitle1 {
+    padding-left: 150px;
+    padding-bottom: 50px;
+    font-size: 40px;
+    color: white;
+}
+
+.opCloseBtn1 {
+    display: flex;
+}
+
+.conInfo1 {
+    font-size: 40px;
+    padding-bottom: 50px;
+    width: 400px;
+    color: white;
+}
+
+.chatMsg1 {
+    font-size: 40px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.openConBtn1, .closeConBtn1, .submitBtn1, .msgData1 {
+    font-size: 20px;
+}
+
+
+.chat2 {
+    position: relative;
+    padding-right: 400px;
+}
+
+.chatTitle2 {
+    padding-left: 150px;
+    font-size: 40px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.opCloseBtn2 {
+    display: flex;
+}
+
+.conInfo2 {
+    font-size: 40px;
+    /*padding-left: 100px;*/
+    padding-bottom: 50px;
+    color: white;
+}
+
+.chatMsg2 {
+    font-size: 40px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.openConBtn2, .closeConBtn2, .submitBtn2, .msgData2 {
+    font-size: 20px;
+}
+

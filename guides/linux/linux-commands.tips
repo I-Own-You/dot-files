@@ -1,0 +1,38 @@
+sudo
+mkdir
+rmdir
+touch
+mv
+cp
+pwd
+cd
+su
+kill, killall
+jobs,fg
+chown
+chmod
+rm
+
+man
+less
+uname
+history
+du, df, lsblk
+
+ping
+wget
+
+rg, grep
+fd, find
+head
+tail
+wc
+locate
+cat
+ls, exa
+echo
+|, >, >>
+
+7z
+zip, unzip
+tar

@@ -1,0 +1,2998 @@
+typeof [variable/value] -- will give the type of the variable/value
+typeof [variable/value] === '[type]' -- return true/false
+[variable/value] instanceof [type] -- return true/false
+ECMAscript - a specification of rules/recommendations
+transpilation - the process of converting one language to another/or the same. Babel for example
+instruments for automatization and assembly. They usually help to create a project in a predefined way. Gulp or Webpack for example
+1. variables can be  created with: var let const
+examples:
+    let a = 1, b, c
+    let a; let b = 2
+    let d
+    const b = 2
+    let a = 'a'
+    let b = 'b'
+    let c = a + b or a + ' ' + b
+1.1 all variables are initialized by default and put at the start of the file, its called variable hoisting. So if you have 3 vars declared, they are created at the top of the file so they will have a temporary value in chorme/safari undefined, and in firefox unitialized. When the script arrives at the lines where variables are given a value, then the value of the variable changes from undefnied/unitialized to the given value.
+1.2 let and const has TDZ(temporary dead zone), it means that you cannot access them above their initialization untill you use them inside some code that will be run after the intialization of let and const:
+  function foo() {
+    console.log('from foo', a)  //used before intialization
+  }
+  let a = 10
+  foo() //ok because the code is running after intialization of let a
+1.3 Clsses also have TDZ(even thought they are functions under the hood):
+    console.log(Foo) // error
+    class Foo {
+      constructor(bar) {
+        this.bar = bar
+      }
+    }
+1.4 simple functions do not have TDZ, so you can use them above their intialization:
+    console.log(Foo) // ok, it will be executed
+    function Foo() {
+      this.bar = 1
+    }
+1.5 let and const have block scope, so you cannot accesss them in the outer scope:
+    if (true) {
+      let a = 5
+      const b = 10
+      console.log(a) //ok, since its in the scope 
+      console.log(b) //ok, since its in the scope
+    }
+    console.log(a) //error, not defined  
+    console.log(b) //error, not defined
+1.6 variables of the same name can be defined, untill its in different block scope
+1.7 let variables can be assigned new values
+1.8 const variables cant be reassigned with new values
+1.8.1 const objects can be mutated since the changes wont affect the memmory address that const points to
+1.9 var variabless are undefined if no values was given
+1.9.1 var variables has function scope so if it is defined in fuctions, you cant use them outside:
+    if (true) {
+      var a = 5
+    }
+    function foo() {
+      var b = 10
+    }
+    console.log(a) // ok since var a is in if block, and not functin block scope
+    console.log(b) // error because var b is defined in function scope
+1.9.2 var variables can be accessed with window.var_name if it is global scope defined, and not in function
+1.9.3 var variables can be accessed before their initialization but they will be undefined anyway
+1.9.4 var variables can be reassigned with var_name = value or var var_name = value
+2. if else:
+if (condition) {
+
+} else {
+
+}
+if (conditon) {}
+if (condiotn) {
+
+} else if (conditoin) {
+
+}
+if (conditoin) ...some code without {}
+2.1 if conditoin is always converted to boolean
+2.1.1 values thtat always are false: false
+                                   0
+                                  -0
+                                   ''
+                                   null
+                                   undefined
+                                   NaN
+                                   0n (BigInt type)
+2.1.2 you can use &&, ||, ?? shorthands for different things: 'aaa' && fun_name(), let var_name = condition || 42, let var_name = conditoin ?? 42(here var_name can be false values, also but not undefined and null, unless ||)
+2.2. switch case:
+let discount
+switch (memberStatus) {
+  case 'vip':
+    {
+      const a = 2; // if you want to define a variable here, you need scope block so {}
+    }
+    discount = 0.25
+    break  // if you dont put break statement then all cases down below will run untill break is achieved or switch ended
+  case 'diamond':
+    discount = 0.2
+    break
+  case 'gol': //you can tie 2 cases, so if the cae is 'gol' the 'silve' case will run, and if the case is 'silve' the it will run also
+  case 'silve':
+    discount = 0.1
+    break
+  default:
+    discount = 0
+    break
+}
+2.3 while:
+    while (conditon) {
+
+    }
+2.3.1 do while:
+    do {
+
+    } while (condition)
+2.4 for:
+    for (initialization; condiition; step) { // you can also skip initialization and step and it will be infinite loop
+
+    }
+2.4.1 you can also label block of code and jump ot it, but only if the label is above the execute of the jump:
+    outer: for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        let input = prompt(`(${i},${j})`, '');
+        if (!input) break outer; // (*)
+      }
+    }
+    label: {
+      // ...
+      break label; // work
+      // ...
+    }
+2.5 you can use break or continue inside to break out of loop or start the next iteratioin of the loop
+2.6 statements can be split with ';':
+    if (5 < 10) {};
+    if (5 > 10) {};
+2.7 expressions can be split with ','(comma operator, it evaluates all the statements on one line):
+    function x() {
+      return 1
+    }
+    function z() {
+      return 2
+    }
+    x(), z()
+2.7.1 x() and z() will execute form left to right but only the last will return the result
+2.8 primitive values are compared by its values
+2.9 objects are compared by the memmory address they poses(object, functions, arrays, classes - are objects)
+2.9.1 objects are passed by and compared by reference
+2.9.2 mutation of the objects that share common memmory address will add/change/delete in all shared objects
+2.9.3 copying an object has 2 ways: let var_name = Object.assign = ({}, object_name) or let var_name = {...object_name}(... - is called spread operator)
+2.9.3.1 but copying will occure only on the first lvl, so if you have objects lower than first volume of attributes, than they will be copied by reference, and not value
+      const original = {
+        b: {
+          c: 1,
+        },
+      }
+      const copy = { ...original }
+      copy.b.c = 2
+      console.log(original) // { b: { c: 2 }}
+2.9.4 you can make changes when copying an object:
+      const cat = {
+        name: 'felix',
+        color: 'blac',
+        isHomeless: false,
+      }
+      const catInBoots = {
+        ...cat, // be aware that if you put ...cat below the attributes that were supposed to rewrite the attributes from ...cat then ...cat will rewrite them
+        name: 'kekl',
+        hasBoots: true,
+      }
+      console.log(catInBoots) // {name: 'Пушок', color: 'чёрный', isHomeless: false, hasBoots: true }
+      const redCat = Object.assign(cat, { color: 'рыжий', name: 'Борис' })
+      console.log(redCat) // {name: 'Борис', color: 'рыжий', isHomeless: false }
+2.9.5 function arguments are also passed by reference if its an object
+2.9.6 functions can be created in different ways:
+2.9.6.1 function declaration: (this way the function is hoisted and we can use it above its initialization)
+                      hell('a') //ok
+                      function hello(name) {
+                        alert(`hello ${name} 😊`)
+                      }
+2.9.6.2 function expression: (this way we would get an error if we used it above its initialization)
+                      hello('a') // error
+                      const hello = function(name) {
+                        alert(`hello ${name} 😊`)
+                      }
+
+3.9.6.3 anonymous:
+                  function() {} // harder to debug because they dont have name, and only numbers of lines will be displayed
+3.9.6.4 arrow functions: (they do not have function context)
+        const divider = (number) => number / 2 //you can get rid of paranthesis of argument if its one
+        const divider = number => {
+          return number / 2
+        }
+        const divider = (numerator, denominator) => {
+          const result = numerator / denominator
+          return result
+        }
+3.9.6.4 IIFE (immediately invoked function expression, they have its own scope, so no conflicts can be made):
+      (function () {
+          let name = "a";
+          console.log(name);
+      })()
+      (function () {
+          let name = "a";
+          alert(name);
+      })()
+      let result = (function () { // the return value is assigned and not the function
+          let name = "a";
+          return name;
+      })();
+console.log(result); //a
+3.9.6.5 to return an object you must put it in ():
+    const arrowFunc5 = () => ({ cat: 'alo' })
+3.9.6.6 you can also pass functions as arguments in other functions:
+      function makeCouple(recipe) {
+        const gree = '🍏'
+        const re = '🍎'
+        return recipe(gree, re)
+      }
+      const result = makeCouple(function(one, two) { return one + two })
+      console.log(result)
+3.9.6.7 a variable that is assigned with a function that returns nothing is undefined:
+    function A () {}
+    let a = A() // a = undefined
+3.9.6.8 functions are (first class object/citizen) because it can be passed as argument to a function, it can be assigned to a variable and returned within a function
+4. this - reference to an object. 
+4.1 Inside a function declaration this would be the global object(main object of the program, in broweser it is window, in node js it is global) or undefined in 'use strict'
+4.2 in anonymous function this is also global object
+4.3 in strict mode, this is not global or window, but undefined
+4.4 method of an object:
+      const user = {
+        name: 'Alex',
+        greet() { // it becomes a method of the object
+          console.log(`Hello, my name is ${this.name}`) // this becomes the object in this case 'user'
+        },
+      }
+      user.greet() // Hello, my name is Alex
+      const greet = user.greet
+      greet() // this becomes global, so this.name refers to window/global.name
+      const greet = user
+      greet.greet() // will print as usual, becomes greet now has the reference of the use, and this.name now works
+4.5 constructor - a function tht helps creating new objects
+    function User() { // function constructor
+    //this = {}
+      this.name = 'Alex' // this becomes the User object
+    //return this
+    }
+
+    const firstUser = new User() //User { name: 'Alex'}, new keyword is responsible for creating
+    const firstUser = User() //undefined, different from new User(), now firstUser is window global object and the fields of User() became the window fields
+    firstUser.name === 'Alex'
+    firstUser instanceof User // true
+    //check if was constructed with new keyword, variant 1
+    function User() {
+      if (!(this instanceof User)) {
+        throw Error('Error: Incorrect invocation!')
+      }
+      this.name = 'Alex'
+    }
+
+    //variant 2
+    function User() {
+      if (!new.target) {
+        throw Error('Error: Incorrect invocation!')
+      }
+      this.name = 'Alex'
+    }
+    const secondUser = User() // Error: Incorrect invocation!
+4.6 indirect call with call() and apply(), their first argument is this(so they can setup the context outside explicitly):
+    function greet() {
+      console.log(`Hello, ${this.name}`)
+    }
+    const user1 = { name: 'Alex' }
+    const user2 = { name: 'Ivan' }
+    greet.call(user1) // Hello, Alex
+    greet.call(user2) // Hello, Ivan
+    greet.apply(user1) // Hello, Alex
+    greet.apply(user2) // Hello, Ivan
+4.7 difference between call() and apply() is that call() takes arguments as a list with commas, apply() take an array of arguments:
+function greet(greetWord, emoticon) {
+  console.log(`${greetWord} ${this.name} ${emoticon}`)
+}
+const user1 = { name: 'Alex' }
+const user2 = { name: 'Ivan' }
+greet.call(user1, 'Hello,', ':-)') // Hello, Alex :-)
+greet.call(user2, 'Good morning,', ':-D') // Good morning, Ivan :-D
+greet.apply(user1, ['Hello,', ':-)']) // Hello, Alex :-)
+greet.apply(user2, ['Good morning,', ':-D']) // Good morning, Ivan :-D
+4.8 tie forever a context with bind() method:
+      function greet() {
+        console.log(`Hello, ${this.name}`)
+      }
+      const user1 = { name: 'Alex' }
+      const greetAlex = greet.bind(user1) //returns the function with the user1 context, so this will work, even though greetAlex is a simple function here
+      greetAlex() // Hello, Alex
+
+      function getAge() {
+        console.log(this.age);
+      }
+      const howOldAmI = getAge.bind({age: 20}).bind({age: 30})
+      howOldAmI(); //20, because the first bind was {age: 20}, so its impossible to rebind
+4.9 arrow functions dont have context so they look for near context in the hierarchy:
+      function greetWaitAndAgain() {
+        console.log(`Hello, ${this.name}!`)
+        setTimeout(() => {
+          console.log(`Hello again, ${this.name}!`)
+        }.bind(this)) //.bind(this) would be needed if it would be a function declaration and not arrow, also you could use apply/call methods when executing the method with other context
+      }
+      const user = { name: 'Alex' }
+      user.greetWaitAndAgain = greetWaitAndAgain;
+      user.greetWaitAndAgain()
+      // Hello, Alex!
+      // Hello again, Alex!
+4.9 return with primitive value in funciton constructor will be ignored, and this will be returned instead. return with an object will return the object and not this of the current function constructor
+5. window - a global object in browser, you can think of a browser itself as window, or global in nodejs 
+5.1 you can access variables defnied with var like this: var a = 1, window.a, but you cant access let and const like this
+6. functions crete their own scopes so if a function inside another function will create a variable, we cant access it from outside:
+      function outer() {
+        function inner() {
+          const a = 42
+        }
+        console.log(a) // Reference error
+      }
+6.1 {} - creats a block scope
+6.2 closure: (we can hide values and operate with it from functions, because we can access it. Also we can assign the return result to multiple variables and they will have all copies of the closure, so the value and functions will be separate from all variables)
+    function counter() {
+      let state = 0
+      function increase() {
+        state++
+      }
+      function decrease() {
+        state--
+      }
+      function valueOf() {
+        console.log(state)
+      }
+
+      return {
+        increase,
+        decrease,
+        valueOf,
+      }
+      const tick1 = counter()
+      const tick2 = counter()
+      tick1.valueOf() // 0
+      tick2.valueOf() // 0
+      tick1.increase()
+      tick1.valueOf() // 1
+      tick2.valueOf() // 0
+      tick1.increase()
+      tick1.valueOf() // 2
+      tick2.valueOf() // 0
+      tick2.increase()
+      tick1.valueOf() // 2
+      tick2.valueOf() // 1
+      tick2.decrease()
+      tick1.valueOf() // 2
+      tick2.valueOf() // 0
+    }
+6.3 variables that were declared without var or let or const, are automatically hoisted:
+      function scope() {
+        a = 42 // this goes at the top and: var a
+        var b = 43
+      }
+      scope()
+      console.log(a) // 42
+      console.log(b) // Reference error
+7. if you dont specify an argument for a parameter in a function, it will work, but the type of the argument will be nothing
+8. arguments - a way to achieve all the parameters when they were passed as an array, it is used only in es5 or older:
+      function joinStrings() {
+        const strings = []
+        for (let i = 0; i < arguments.length; i++) {
+          if (typeof arguments[i] === 'string') {
+            strings.push(arguments[i])
+          }
+        }
+        return strings.join(' ')
+      }
+      const result = joinStrings('hello', 12, 'world', false, null)
+      console.log(result) // hello world
+8.1 you can call a function without parameters, but pass arguments to it and call them with arguments keyword
+8.2 arrow funcitons doesnt have arguments keyword passed into them
+8.3 arguments is an array like object, it has .length method, you can access its elements by index also
+8.4 also you can destructurize an array like this:
+    function myHandler(...[, second, third]) {
+      console.log(`number = ${second}`)
+      console.log(`number = ${third}`)
+    }
+    myHandler(1, 2, 3)
+    // number 2
+    // number 3
+    also you can create variables like this:
+    let [a,b,c] = [1,2,3] //destructurizing the array [a,b,c] into variables
+9. arrays:
+    const array_name = []
+    const array_name = [2,23,23,23,23]
+9.1 array has .length property:
+9.1.1 .length can be resized and the array will be changed. If you increase the size, the right part of the array will be increasez with empty cells(if you call the index of them, it will be undefined). If you decrease the size then the right part of the array will remove the elements of decreased size. Also if you traverse the array with for methods and not standart for, then elements wont be traversed and skipped
+9.2 accessing index that is not in the array wont cause an IndexOutOfRange, and the returned value will be undefined, also defining an index out of the array will create that index and assing a value in the array, but the gap between array.length and array[newindex] will be populated with undefined values
+9.3 push() - adds elements to the end, unshift() - adds elements at the start, they both return the length of the array after adding the elemnts
+9.4 indexOf() - finds the index of the value
+9.5 includes() - checks if a value is within an array
+9.6 slice() - copies the array, so you wont modify the original array because of the reference assignment
+9.7 destructurizing an array into variables:
+    const catProfile = [
+      'Maru',
+      'Scottish Fold',
+      true,
+      'https://youtu.be/ChignoxJHXc'
+    ]
+    const catName = catProfile[0]   //old way   
+    const catBreed = catProfile[1]  //old way
+    const [name, breed] = catProfile //modern way
+9.8 skipping elements:
+    const a = [, 2, 3] // the first element will be undefined
+    const [b, c] = a // b - undefined, c - 2
+    const [b, ...c] = a // b - undefined, c - array with remainig elements
+9.9 forEach() - apply a callback function to all elements of an array without changing the array:
+    const numbers = [1, 2, 3, 4]
+        numbers.forEach((num) => {
+          const square = num * num
+          console.log('Квадрат числа равен: ' + square)
+        })
+    number.forEach((num) => {
+          const square = num * num
+          console.log('Квадрат числа равен: ' + square)
+        }) // so it also can be called directly
+9.9.1 the callback function takes 3 parameters:
+    numbers.forEarch((item, index, arr) {// item - the current element in the iteration of the array, index - the index of the current item, arr - the array itself
+          ...
+        })
+9.9.2 without arguments, forEach() takes all 3 paramters:
+    food.forEach(
+      console.log // will print all 3 parameters
+    )
+9.9.3 break, return, continue - dont work in forEach()
+9.9.4 forEach() takes all elements from the start of array, we cant start in reverse order
+9.9.5 forEach() - doesnt return anything, but you can return if you want:
+    const empty = []
+    const someNums = [1, 2, 3]
+    function pushElements (nr) {
+      empty.push(nr)
+    }
+    someNums.forEach((item) => {
+      return pushElements(item)
+    })
+    console.log(empty)
+9.10 map() - also takes a callback function that will operate on the items of an array, then all the elements will end up in a new array, but it will not change the original
+      const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      const squares = nums.map(function (num) {
+        return num * num
+      })
+      console.log(squares) //[1, 4, 9, 16, 25, 36, 49, 64, 81]
+9.10.1 map() callback also takes 3 arguments map((item, index, arr){}) item - the current element in the iteration of the array, index - the index of the current item, arr - the array itself
+9.10.2 elements of the array are handled consecutively, so if you dont return the actual changed element, it will be undefined in the newly created array:
+      const nums = [1, 2, 3, 4, 5]
+      const transformed = nums.map(function (num) {
+        if (num <= 3) {
+          return "less"
+        }
+        //no return
+      })
+      console.log(transformed) // ['less', 'less', 'less', undefined, undefine
+9.10.3 the length of the old array is equal to the newly created
+9.10.4 map() also has second parameter, it is passed as the context for callback function:
+    const nums = [1, 2, 3]
+    const otherData = { delta: 5 }
+    const transformed = nums.map(function (num) {
+      return num + this.delta // otherData.delta
+    }, otherData)
+    console.log(transformed) // [ 6, 7, 8 ]
+9.10.5 arrow functions still dont get the context, even if you pass the context for the map
+9.11 reduce() convert an array into a value, it also takes a callback function and as a second parameter the initial starting value, callback also takes 4 arguments reduce((acc, item, index, arr){}) item - the current element in the iteration of the array, index - the index of the current item, arr - the array itself
+    const nums = [1, 2, 3, 4, 5, 6, 7, 8]
+    function findAverage(acc, item, index, arr) {
+      const sum = acc + item
+      if (index === arr.length - 1) {
+        return sum / arr.length
+      }
+      return sum
+    }
+    const average = nums.reduce(findAverage, 0) // 4.5
+9.11.1 reduce() must always return the value
+9.11.2 if you dont specify the second paramter for reduce() then the initial value will be the first element of the array, if the array is empty, an error is thrown
+9.12 filter() also takes a callback function that based on a conditoin decides if the element should be included in the newly returned array
+9.12.1 the return value of the filter() must be a boolean, so a true means the element will be included in the returned array at the end, false - means it will not be included
+9.12.2 callback function also takes 3 parameteres filter((item, index, arr){}) item - element itself, index - index of the element int the array, arr - the array itself
+9.12.3 you could also pass a callback like Boolean constructor, so elements of the array automatically will be paramters to Boolean() constructor, and which converts to true, will be included
+9.12.3.1 the constructor or any function can be passed by its name only, and the elements will atuomatically be passed as parameters to it
+9.13 find() finds the element and returns the first occurence if exists, if doesnt exist - returns undefined
+9.13.1 find() also takes a callback with 3 parameters, find((item, index, arr){}) item - the array element, index - the index of the element, arr- the array itself
+9.13.2 find() also must return a boolean, thats how it decides, was the item found or not
+9.14 findIndex() returns the index of the first occurence of the element we searched, if no occurences have found, then -1 is returned
+9.14.1 it also takes a callback function with 3 parameters findIndex((item, index, arr){})
+9.14.2 findIndex() must also return a boolean, thats how it understands to return the found elements index or not
+9.15 flat() returns new array with 1 nested array less inside the main array:
+const nested = [
+  'первый уровень',
+  'первый уровень',
+  [
+    'второй уровень',
+    'второй уровень',
+    [
+      'третий уровень',
+      'третий уровень'
+    ]
+  ]
+]
+const flat = nested.flat()
+console.log(flat) 
+// result
+const nested = [
+  'первый уровень',
+  'первый уровень',
+  'второй уровень',
+  'второй уровень',
+    [
+      'третий уровень',
+      'третий уровень'
+    ]
+]
+9.15.1 the default depth for removing nesting is 1, Infinity - for all
+9.16 flatMap() will flat the map element automatically without using .flat() on .map():
+const orders = [
+    {
+        id: 1,
+        products: [
+            { name: 'Чизкейк', price: 1.99 },
+            { name: 'Бисквит', price: 4.99 },
+        ]
+    },
+    {
+        id: 2,
+        products: [
+            { name: 'Шоколад', price: 5.59 },
+            { name: 'Зефир', price: 8.99 },
+        ]
+    }
+]
+orders.map(
+  (order) => order.products.map(product => product.name)
+) // [['Чизкейк', 'Бисквит'], ['Шоколад', 'Зефир']]
+orders
+  .map((order) => order.products.map((product) => product.name))
+  .flat() // ['Чизкейк', 'Бисквит', 'Шоколад', 'Зефир']
+orders.flatMap(
+  (order) => order.products.map(product => product.name)
+) // ['Чизкейк', 'Бисквит', 'Шоколад', 'Зефир']
+9.16.1 it also takes  a callback function with 3 parameters flatMap((item, index, arr))
+9.17 every() returns boolena value if all elements convert to true based on the callback function logic
+9.17.1 it also take a callback function with 3 parameteres every((item, index, arr))
+9.17.2 the return value is a boolean
+9.17.3 every() method on an empty array will always return true
+9.18 some() returns boolean value if atleast 1 element convert to true based on the callback function logic
+9.18.1 the return value is a boolean
+9.18.2 some() method on an empty array will always return false
+9.19 reverse() changes the array by reversing it, returning memmory address to the array
+9.20 includes() checks if an element is within an array, returing true if yes, false otherwise. For string, checks if a substring is within the string
+9.21 indexOf() returns the index of an element
+9.21.1 it also takes a callback wiht 3 parameters indexOf((item, index, arr){})
+9.21.2 the second parameter of indexOf() is the index from which starts the searching
+9.21.3 the return value will be the index or -1 if the element isnt in array
+9.22 lastIndexOf() returns the index of an element, starting from the end of an array, like reversed, also takes second parameter to start from which index
+9.23 Array.from() returns a new array from the object we pass. The object must be array-like object, like a string, arguments from functions, Set or Map
+9.23.1 Arra.from() takes 3 parameters, the object itself, callback function that will do something with each element from first paramter and return it, third paramter will be 'this' context for the callback funciton we specify as 2 parameter for the Array.from()
+    const arr = Array.from('abcd')
+    console.log(arr) // ['a', 'b', 'c', 'd']
+
+    const uniqueNumbers = new Set()
+    uniqueNumbers.add(1)
+    uniqueNumbers.add(2)
+    uniqueNumbers.add(3)
+    const arr = Array.from(uniqueNumbers) // [1, 2, 3]
+
+    const linkElements = document.getElementsByTagName('a')
+    const arrLinks = Array.from(linkElements, function(a) { return a.href })
+9.23.2 array-like object is the object that has .length attribute and can access its elements by index: arguments from functinos, NodeList, HTMLCollection, objects that realize Iterable interface(Set, Map)
+9.23.3 Array.from() makes a shallow copy so if the object contains some other objects, they wont be copied, but memmory address will be, so changes to the newly created array to the objects within will affects these objects in other places aswell
+9.23.4 also you can create arrays with this quirk:
+    const nums = Array.from({length: 4}, function(value, index) {
+      return index * 2 // value will be undefined because we use an ojbect syntax to create an array
+    })
+    console.log(nums) // [0, 2, 4, 6]
+9.24 Array.of() static method that returns an array from all the arguments passed ot
+    Array.of('🐱', 0b001, document.createElement('div')); // ['🐱', 1, div]
+    Array.of(3); // [3]
+9.24.1 Array() works the same except if you pass only one argument and its a number, then it will return an array with that length of empty values
+9.25 Array.isArray() return true if the element is an array, no matter how it was created(a lot of ways with [] and Array), but not array-like objects and also typed arrays like Uint8Array() .etc
+10. object - a set of attribues with its values, the attribute can be number, string, symbol, the value can be whatever
+    const a = {} -- simple object
+    const book = { 
+      title: 'heelo', 
+      kittens: ['Беляш', 'Михаил', 'Чарли'],
+      favoriteToy: {
+      name: 'мячик',
+      size: 'маленький',
+      meow: function () {
+        console.log('мяу мяу')
+      },
+    },
+  }-- object with predefined attributes
+10.1 you can add object attributes and after initialization of the object:
+      const cat = {}
+      cat.name = 'Simon'
+      cat.gender = 'male'
+      cat.color = 'brown'
+      cat.age = 2
+      cat.adorable = true
+10.2 you can create an object with new Object():
+      const book = new Object({ title: 'a', author: 'b' }) -- same object as if it would be created with const book = { ... }
+10.3 you can access the object attribute by a dot '.' or by ['attribute-name']:
+    const a = {hellen:2}
+    a.hellen or a['hellen']
+10.3.1 if you have a number as the attribute, you can access it only with ['attribute_name']
+10.4 accessing an attribute that object doesnt contain will restult in undefined
+10.5 adding/updating the object attribute value is the same, object.attribute = value. If attribute exists, it will be updated, if not, created
+10.6 removing an attribute involves delete keyword:
+    const book = { title: 'a', author: 'b', }
+    delete book.title
+    console.log(book.title) // undefined
+10.7 deleting an attribute is not common, so the main approach is to set the attribute as undefined
+10.8 if the attribute of the objects isnt a string or symbol, then toString() is called on the attribute and converted to string representation:
+    const obj = {}
+    const key = {}
+    obj[key] = 'value for the object key'
+    console.log(obj) // { '[object Object]': 'value for the object key' }
+10.9 if the attribute of an object has space character, then [''] notation must be used to access it
+10.10 comparing 2 objects will result in comparing objects memmory address, so it will always be false, untill we compare 2 variables that point to the same object
+10.11 the new way of declaring a function that belongs to the object(in fact method):
+    const cat = {
+      name: 'Том',
+      meow() { //without the function keyword
+        console.log('a')
+      },
+    }
+10.12 the new way of declaring attributes as variable names that exists in the program:
+    const firstName = 'a'
+    const username = 'b'
+    const user = {
+      firstName: firstName,  // old way
+      username: username     // old way
+    }
+    console.log(user) // { firstName: 'a', username: 'b' }
+
+    const firstName = 'a'
+    const username = 'b'
+    const user = {
+      firstName, // new way
+      username   // new way
+    }
+    console.log(user) // { firstName: 'a', username: 'b' }
+10.13 if an attribute is contained inside a variable, you can use [''] notation no access the attribute
+        const user = {
+          firstName: 'a',
+          username: 'a'
+        }
+        const prop = 'firstName'
+        console.log(user[prop]) // a
+10.14 to check if an attribute is in object, use in keyword:
+        const user = {
+          firstName: 'a',
+          username: 'b'
+        }
+        console.log('firstName' in user) // true
+        console.log('age' in user) // false
+        // to check all the attributes, use for in method
+10.15 toString() method returns the string notation of the object we used on, most of the time it will be liek [object Object], Object - is the actual type, it can be redefined so it will show something else
+class Book {
+  title = ''
+  author = ''
+  constructor(title, author) {
+    this.title = title
+    this.author = author
+  }
+  toString() { // redefining
+    return `hello`
+  }
+}
+const book = new Book('Палата №6', 'А. П. Чехов')
+console.log(`hey ${book}`) // hey hello
+10.16 toString() is called automatically in code where an object must be shown as string, like console.log(array)
+10.17 you can also redefine this method if you use function constructors, with prototype attribute:
+      function Book(title, author) {
+        this.title = title
+        this.author = author
+      }
+      Book.prototype.toString = function() {
+        return `hey`
+      }
+      const book = new Book('a')
+      console.log(`hey ${book}`) // hey hey
+      // prototype way is the same as class way, behind the scenes class is made with prototypes anyway
+10.18 you can create attributes(properties also called) on an object with Ojbect.defineProperty() which takes 3 parameters, the object on which we will create the attribute on, the name of the attribute, and an object which defines also 4 attributes: the value of the attribute, and the remainig 3 are descriptors:
+    const laptop = {}
+    Object.defineProperty(laptop, 'os', {
+      value: 'MacOS', //value
+      writable: false, // modifiable or not
+      enumerable: true, // can be seen in array, etc.
+      configurable: true // can be reconfigured with Object.defineProperty()
+    })
+10.19 the default creation of objects sets descriptors to true by defualt
+10.20 to reconfigure the descriptors you can use Object.defineProperty() again, if configurable = true and also if its only a decriptor of data or descriptor of access
+10.21 if you dont write some descriptor explicitly, it will be set to false
+10.22 data descriptor - if only value and writable attributes are specified. If you try to update the data of an attribute which descriptor = false, the data will simply not be updated, this wont cause an error thought, but not in 'use strict' case, there, the error will be thrown
+10.23 access descriptr - defines the attribute through get() and set() functions:
+      const animal = { _hiddenName : 'a' }
+      Object.defineProperty(animal, 'name', {
+          get: function() { return this._hiddenName } // here is 1 problem thought, even though we defined the get() function, the set() function isnt defined, so its set false as default, so we cant updaate the attribute value, its imposiblle for now
+      })
+      const animal2 = {
+        name: 'b',
+      }
+      console.log(animal.name) // a
+      console.log(animal2.name) // b
+
+      const animal = { _hiddenName : 'a' }
+      Object.defineProperty(animal, 'name', {
+          get: function() { return this._hiddenName },
+          set: function(value){ this._hiddenName = value } // now, we can update the value of the attribute
+      })
+      animal.name = 'b'
+      console.log(animal.name) // b
+10.22/23.1 as get() and set() is a common way to write, a special syntax for them was created:
+        const animal = {
+          get name() {
+            return this._name
+          },
+          set name(value) {
+            this._name = value
+          }
+        }
+        console.log(animal.name) // undefined
+        animal.name = 'a'
+        console.log(animal.name) // a
+10.24 if you set configurable to false, you cant set it to true after, its impossible. Also if configurable = false, you cant set writable to false, if it was true, but not otherwise
+10.25 you also cant delete the attribute which has configurable = false, it wont cause an error, but the attribute wont be deleted
+10.26 to check the objects descriptors for an attribute, you can use Object.getOwnPropertyDescriptor(object_name, attribute_name)
+10.27 you can prevent access to an object with writable/configurable attributes from Object.defineProperty(), Object.preventExtensions(), Object.seal(), Object.freeze() // these are the most ways to achive object immutability
+10.27.1 Object.preventExtensions() restricts adding new attributes to an object but doesnt affect current attributes of the object, in 'use strict' it will cause an error though:
+      const laptop = {
+          displaySize: 15
+      }
+      Object.preventExtensions(laptop)
+      laptop.storage = 256
+      console.log(laptop.storage) // undefined
+10.27.2 Object.seal() locks the objects so that you cant add new attributes to it and you cant configure the current ones of the object but values can be changed, so its like Object.preventExtensions() but also configurable=false:
+10.27.3 Object.freeze() freezes the object so that you cant add new attributes and cant change the values of the current attributes, so like Object.preventExtensions() and writable=false for current values
+10.27.3.1 if freezed object had an object inside, then it can be still mutated, so you might need deepFreeze() method to freeze all objects inside as well
+10.27.3.2 but you cant make immutable Date, Map, Set
+10.27.4 Object.seal(), Object.freeze(), Object.preventExtensions() return the memmory address of the object they were passed into them:
+    const foo = {}
+    const bar = Object.freeze(foo)
+    foo === bar // true
+10.28 to defined more than one attribute with descriptors you must use the static method Object.defineProperties():
+      const laptop = {}
+      Object.defineProperties(laptop, {
+        os: {
+          value: 'MacOS',
+          enumerable: true
+        },
+        age: {
+          value: 10,
+          enumerable: false
+        }
+      })
+      const result = Object.keys(laptop)
+      console.log(result) // ['os']
+10.29 to get descriptors for all attributes of an object you can use Object.getOwnPropertyDescriptors()
+10.29.1 if Object.getOwnPropertyDescriptor/s() was passed an empty object, the return value will be {} 
+10.30 Object.isFrozen() checks if an object was freezed, returns true if adding/updating attributes is restricted and configurable=false, wirtable=false is set for the current attributes
+10.31 everything in javascript is an object, except for primitive values, that means they extend Object, and they have methods from Object
+10.31.1 console.dir() will show you a tree view of the object with its relations
+10.31.2 function are also objects, so you can assign attribute to it as well:
+      function sum(a, b) {
+        return a + b
+      }
+      sum.arguments // можно вызвать свойство функции
+      sum.someField = 'value' // можно присвоить значение в поле
+      console.dir(sum) // [Function: sum] { someField: 'value' }
+10.31.3 when you declare a primitive value, it is autoboxed into its constructor type by default, like String, Number, Boolean, but this way, they dont become objects(so setting attributes to it will restult in nothing, but not error), they just have some methods to operate on them for convenience
+10.31.3.1 but new String/Number/Boolean/etc() will result in an object, because its an explicit way of defining an object with [new] keyword
+10.31.4 you can access methods of constructors that autoboxes the value of a variable on the value itself, mostly on all of them:
+      true.toString()
+      Infinity.toString()
+      'hello world'.toString()
+      Symbol('tag').toString()
+      9007199254740991n.toString()
+      32.toString() // will cause an error because '.' is part of a number syntax
+      32..toString or (32).toString() or Number(32).toString() // now works
+10.31.5 null and undefined cant call constructor mehods because they are not wrapped by such constructors that will give them methods
+11. Set - collection of unique data, you cant access data through index, the collection can be iterated
+11.1 Set methods (the most used ones):
+    add() — adds element, and returns the new collection
+    delete() — removes an element, and returns true if an element has been found and deleted, false - if not
+    has() — checks if an element is in Set, returns true or false
+    clear() — remove all elements from Set, returns undefined
+    forEach() — do something with each element of Set, like array style, but the 2 paramter of callback function isnt an index, but a value like 1 parameter, for copatibiliy mode
+    size - attriubte, like length on array
+    values() - method that return an iterator which you can use in for..of or transform in array with [...iterator_name], it is not used because Set can be iterated with for..of, .etc
+    keys() - method which returns an iterator to iterate through keys, but Set doesnt have keys, so for compatibility mode it returns iterator of values, better use values(), its more logic related
+    entries() - method which returns an iterator of [key, value] pairs, but Set doesnt have key, so for compatibility mode returns [value, value], not recommended
+
+    const uniqueIds = new Set()
+    uniqueIds.add(123)
+    uniqueIds.add(456)
+    uniqueIds.add(111)
+    uniqueIds.add(123)
+    console.log(uniqueIds.size) // 3
+    console.log(uniqueIds.has(111)) // true
+    uniqueIds.delete(111)
+    console.log(uniqueIds.size) // 2
+    uniqueIds.clear()
+    console.log(uniqueIds.size) // 0
+11.2 you can predefine data in Set with an iterable, array for example:
+    const filled = new Set([1, 2, 3, 3, 3, 'hello'])
+    console.log(filled.size) // 4
+11.3 when you iterate a Set, the data will appear in order that items were added or predefined
+11.4 one way to  create an array from Set:
+    const nonUnique = [1, 2, 3, 4, 5, 4, 5, 1, 1]
+    const uniqueValuesArr = [...new Set(nonUnique)]
+    console.log(uniqueValuesArr) // [1, 2, 3, 4, 5]
+12. error handling:
+    try {
+      someFunction()
+      anotherFunction()
+    } catch (err) {
+      console.log('Поймали ошибку! Вот она: ', err.message)
+    }
+12.1 you can always execute some code no matter of try and catch code with finally:
+    try {
+      webSocket.connect('ws://....')
+      callMayThrowError()
+    } catch (err) {
+      // Здесь тоже может возникнуть ошибка
+      doSomeWithError(err)
+    } finally { // will execute no matter what
+      // Выполнится всегда
+      webSocket.disconnect('ws://....')
+    }
+
+    try {
+      webSocket.connect('ws://....')
+      callMayThrowError()
+    } finally { // can be used without catch block
+      // Выполнится всегда
+      webSocket.disconnect('ws://....')
+    }
+12.2 you can also throw errors by yourself:
+    class ParsingError extends Error {
+      ...
+    }
+    function parse(data) {
+      try {
+        parseData(data)
+      } catch (err) {
+        if (err.name !== 'ParsingError') {
+          // Другой тип ошибок пробрасываем дальше
+          throw err // throw error, and the outside catch will take it, if an outside catch exists
+        }
+        logError(err)
+      }
+    }
+12.3 works in synchronic way, so you cant catch async code, untill try catch is itself in sync function like async/await:
+    try {
+      // no errors
+      Promise.reject('err')
+    } catch (e) {
+      // the errro wont be catched
+      console.log('Ошибка', e)
+    }
+    try {
+      // no errors
+      setTimeout(() => {
+        throw Error('ошибка')
+      }, 1000)
+    } catch (e) {
+      // error from setTimeout wont be catched here
+      console.log('Ошибка', e)
+    }
+
+    async function handlePromise() {
+      try {
+        // promise will return error
+        await Promise.reject('err')
+      } catch (e) {
+        // the error will be catched
+        console.log('error:', e) // err
+      }
+    }
+    handlePromise()
+12.4 Error - common error constructor, returns an object with 2 attributes:
+    message - human readable error info
+    name - the class error name
+
+    const commonError = new Error('my error')
+    console.log(commonError.message) // 'my error'
+    console.log(commonError.name) // 'Error'
+12.5 buitin errors: SyntaxError, ReferenceError, TypeError, RangeError, URIError, EvalError(deprecated, compatibility mode), InternalError(its a engine js error, not used by programmers)
+12.6 you can create your own errors:
+    class WrongDataTypeForSumError extends Error {
+      constructor(message) {
+        super(message)
+        this.name = 'WrongDataTypeForSumError'
+      }
+    }
+    const myCustomError = new WrongDataTypeForSumError('my error')
+
+    //throw our error:
+    function sum(a, b) {
+      if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new WrongDataTypeForSumError('my error')
+      }
+      return a + b
+    }
+    console.log(sum('1', 2))
+    // VM840:3 Uncaught WrongDataTypeForSumError: my error
+    // at sum (<anonymous>:3:11)
+    // at <anonymous>:9:13
+    // WrongDataTypeForSumError @ VM830:3
+    // sum @ VM840:3
+    // (anonymous) @ VM840:9
+13. Math - object with useful attributes and methods for math and other things
+13.1 some methods:
+    round() - rounding number upwards(with rules, like 1.49 wont become 2, 1.5 will become 2)
+    floor() - rounding number downwards
+    ceil() - rounding number upwards
+    trunc() - get rid of numbers after '.', like 15.2 becomes 15
+14. 'use strict' - turns on the strict regime so that javascript gets less error prone and less confuse
+14.1 it must be put on the first line of the file, cant be turned off after it
+14.2 can be put also in functions, or other blocks to turn it on on specific scope
+14.3 in strict mode you cant:
+    declare a variable without let, const, var
+    delete an attribute of an object, if it doesnt exist
+    reassign a value to an attribute of an object if it has writable=false descriptor
+    cant use the same name for paramteres in functions
+    this is no longer attached to global/window object
+    cant use some reserved keys like: import, yield, let, .etc
+14.4 you can use 'use strict' after some code, it wont turn on the strict mode, above 'use strict' can be placed only comments
+15. ternary operator - a shorthand for inline if else
+    condition ? value(if true) : value(if false)
+15.1 use case:
+    const num = 5
+    console.log(num === 5 ? 'a' : 'b') // a
+
+    const num = 10
+    const result = num > 10 ? 'more than 10' : 'less then 10'
+    console.log(result)
+15.2 nested ternary operators:
+    const num = 10
+    const result =  num > 10 ? 'more than 10' : num === 10 ? 'number equals 10' : 'number less than 10' // check first, then second, like if else if else
+    console.log(result)
+    // 'number equals 10'
+16. spread syntax ... - used to make an array in function parameters, copy objects inside another, copy an array, destructurizing  an array:
+    function multiplyThreeNumbers(a, b, c) {
+      return a * b * c
+    }
+    const nums = [1, 2, 3]
+    console.log(multiplyThreeNumbers(...nums)) // 6
+
+    const donor = ['a', 'b', 'c']
+    const newArray = [...donor, 'd', 'e', 'f']
+    console.log(newArray) // ['a', 'b', 'c', 'd', 'e', 'f']
+
+    const persona = { name: 'a', lastName: 'b'}
+    const userData = { ...persona, username: 'killer3000' } // be aware, if you put ...persona after the attributes you defined, they will be redefined with the attributes from ...persona(if it has them)
+
+    console.log(userData)
+    // {
+    //    name: 'a',
+    //    lastName: 'b',
+    //    username: 'killer3000'
+    // }
+
+    function multiplyThreeNumbers(a, b, c) {
+      return a * b * c
+    }
+    const nums = [1, 2, 3, 5, 6]
+    console.log(multiplyThreeNumbers(...nums)) // 6, because the funciton only has 3 parameters
+16.1 the copy process is only on the first lvl, so if there are objects nested, they wont be copied but their memory address will, so be aware
+17. for..in - iterate through attributes of an object that were explicitly assigned by a programmer, and if they are iterable, and also attributes from prototype and its chain
+    const cat = {
+      name: 'a',
+      color: 'redd',
+      age: 8
+    }
+    for (const key in cat) {
+      console.log(`${key} – ${cat[key]}`)
+    }
+    // name – 'a',
+    // color – 'red',
+    // age – 8
+17.1 if you add an attribute while bieng in for..in, its not guaranateed that it will be in for..in
+17.2 if you delete an attribute while being in for..in, the for..in wont include that attribute
+18. javascript copies elements only on one level(shallow copy), it doesnt have tools to deep copy
+18.1 one way to deep copy in nodejs is structuredClone(items):
+    const deep = structuredClone(itemsInCart)
+    console.log(itemsInCart[1] === deep[1]) // false
+18.2 another way to deep copy is lodash library:
+    import cloneDeep from 'lodash.clonedeep'
+    const deep = cloneDeep(itemsInCart)
+    console.log(itemsInCart[1] === deep[1]) // false
+18.3 another way is making a json format and then parse it: // but it has some restrictions like(undefined, funciton, Symbol cant be jsoned. For arrays, the values will become null, for objects values wont be at all, and if a key is [symbol] type, it will be ignored)
+    const deep = JSON.parse(JSON.stringify(itemsInCart))
+    console.log(itemsInCart[1] === deep[1]) // false
+19. iterator - an object that can access a collection element one time, and it also remembers its place in that collection 
+19.1 returns an iterator, which can access .next() method which will return the next element
+19.2 .next() method also has 2 attributes, value - the current element returning, done - boolean value meaning if all elements were returned
+    function makeIterator(array) {
+      let nextIndex = 0
+      return {
+        next: function () {
+          if (nextIndex < array.length) {
+            const result = { value: array[nextIndex], done: false }
+            nextIndex++
+            return result
+          } else {
+            return { done: true }
+          }
+        }
+      }
+    }
+    let iterator = makeIterator(['Hello', 'world'])
+    console.log(iterator.next().value) // 'Hello'
+    console.log(iterator.next().value) // 'world'
+    console.log(iterator.next().done) // true
+19.3 for an object to be iterable, it must implement @@iterator method, it means that object itself or an object through prototype chain must have Symbol.iterator attribute
+    const person = {
+      name: 'Mark',
+      age: 30,
+      gender: 'male',
+      interests: ['music', 'fishing'],
+    }
+    person[Symbol.iterator] = function () {
+      const properties = Object.keys(this)
+      let count = 0
+      return {
+        next() {
+          if (count < properties.length) {
+            const key = properties[count]
+            let result = { done: false, value: person[key] }
+            count++
+            return result
+          } else {
+            return { done: true }
+          }
+        },
+      }
+    }
+    for (let x of person) { // we can use now person with for..of because its iterable now
+      console.log(x)
+      // Mark, 30, male, ['music', 'fishing']
+    }
+19.4 where it is used ?
+    when destructurizing an array into variables, iterator is used to access the elements from array
+    Array.from() uses it to get elements from an iterable and construct an array
+    spread operator also uses iterator 
+    Map/Set
+20. Date - class to work with timezone and display date, date starts from 1 january 1970(unix timestamp)
+    const currentDate = new Date('August 14, 2022 14:15:30')
+    console.log(currentDate.getDay()) // 0
+    console.log(currentDate.getHours()) // 14
+    console.log(currentDate.getTime()) // 1660475730000
+    console.log(currentDate.getFullYear()) // 2022
+    console.log(currentDate.toISOString()) // 2022-08-14T11:15:30.000Z
+
+    currentDate.setMonth(0, 1)
+    console.log(currentDate.toLocaleDateString()) // 01.01.2022
+
+    const utcDate = new Date(Date.UTC(2022, 8, 14, 14, 15, 30))
+    console.log(utcDate.toISOString()) // 2022-09-14T14:15:30.000Z
+20.1 some useful methods:
+    getFullYear() — year
+    getMonth() — month, from 0 to 11
+    getDate() — day, from 1 to 31
+    getDay() — day, from 0 to 6
+    getHours() — hours, form 0 to 23
+    getMinutes() - minutes, from 0 to 59
+    getSeconds() - seconds, from 0 to 59
+    getMilliseconds() - milliseconds, from 0 to 999
+    // all this methods return the value for the current timezone, to use UTC, you must use UTC methods instead
+
+    getTime() // returns milliseconds passed from unix timestamp
+    getTimezoneOffset() // returns the difference between UTC and your current timezone in minutes
+
+    setFullYear(y, m, d) sets the year, rest is opt
+    setMonth(m, d) sets month, rest is opt
+    setDate(d) sets day of the month
+    setHours(h, m, s, ms) sets hours, rest is opt
+    setMinutes(m, s, ms) - sets minutse, rest is opt
+    setSeconds(s, ms) sets seconds, rest is opt
+    setMilliseconds(ms) - sets ms
+    //all these methods use for current timezone, UTC versions must be used for UTC versions
+
+    setTime()  //sets milliseconds, starting from unix timestamp
+20.2 parsing a string as a date format:
+    console.log(Date.parse('2022-11-30T21:00:00.000Z')) //returns ms passed since unix timestamp
+    // 1669842000000
+20.3 to get a date in specific format you can use toLocaleDateString(locale, options):
+    const currentDate = new Date('August 14, 2022 14:15:30')
+    const options = {
+      hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'long'
+    }
+    console.log(currentDate.toLocaleDateString('ru-RU', options)) // 14.08.2022, 14:15:30 Москва, стандартное время
+    console.log(currentDate.toLocaleDateString('en-US', options)) // 8/14/2022, 2:15:30 PM Moscow Standard Time
+20.4 you can get current time without creating a class object with Date.new() - returns ms passed from unix timestamp
+20.5 you can use math operation on dates, but you must use it on UTC dates, becuase only them take accountability of summer shift time:
+    const utcDateOne = new Date(Date.UTC(2022, 0, 1, 0, 0, 0))
+    const utcDateTwo = new Date(Date.UTC(2022, 11, 31, 0, 0, 0))
+    console.log(utcDateOne.toUTCString()) // Sat, 01 Jan 2022 00:00:00 GMT
+    console.log(utcDateTwo.toUTCString()) // Sat, 31 Dec 2022 00:00:00 GMT
+    const result = utcDateTwo - utcDateOne
+    console.log(result) // 31449600000 ms
+    console.log(result / (1000 * 60 * 60 * 24)) // 364
+20.6 Date class can autocorrect the input so if you put for example 32 for december, it will just add one day to 31 december(since only 31 december can be, and it will become a new year then)
+20.7 instead of toLocaleDateString() you can use Intl.DateTimeFormat:
+    const currentDate = new Date('August 14, 2022 14:15:30')
+    const options = {
+      year: 'numeric', month: 'numeric', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', second: 'numeric',
+      timeZoneName: 'long'
+    }
+    console.log(new Intl.DateTimeFormat('ru-RU', options).format(currentDate)) // 14.08.2022, 14:15:30 Москва, стандартное время
+    console.log(new Intl.DateTimeFormat('en-US', options).format(currentDate)) // 8/14/2022, 2:15:30 PM Moscow Standard Time
+20.8 if Date class and Intl.DateTimeFormat() isnt enough, you can choose a library to work with dates
+21. numbers in js have only number type, it includes all types 
+    const a = .2 // 0.2
+    const b = 2.2 // 2.2 
+    const c = 2 // 2
+    const d = NaN
+    const e = Infinity or const e = -Infinity
+    const f = 1e6 // 10 ** 6
+21.1 numbers can also be represented in 2, 8 and 16 bits:
+    const a = 0b11 // 3
+    const b = 0o77 // 63
+    const c = 0xFF // 255
+21.2 because of the way computers handle fraction numbers, there are side effects:
+    console.log(0.2 + 0.7)
+    // 0.8999999999999999
+21.2.1 so to avoid things like that, you must truncate, ceil or round them, or restrict the fraction numbers to avoid to many operations with it
+    const priceInCents = 15650
+    const discount = priceInCents * 0.33
+    const total = (priceInCents - discount) / 100
+    console.log(total.toFixed(2)) // 104.86
+21.2.2 also a side effect of comparing a smaller and bigger numbers, but because of the rounding of the numbers, 0 is left, and the numbers become identical:
+    const small = 0.11111111111111111
+    const smaller = 0.11111111111111110
+    console.log(small.toFixed(20)) // 0.11111111111111110494
+    console.log(smaller.toFixed(20)) // 0.11111111111111110494
+    console.log(small === smaller) // true
+21.3 NaN is a special value which defines that a result of an opertion is not a number:
+21.3.1 parseInt('ads') //NaN because method want a number, and not a string
+21.3.2 a mathematical operation
+21.3.3 one operand is NaN: 5 + NaN
+21.3.4 the result isnt a number: undefined + undefined
+21.3.5 a mathematical operation with string(except adding): 'a' * 5
+21.3.6 NaN === NaN // false
+21.3.7 to check if something is NaN, use Number.isNan()
+21.3.8 to check if the result of somehting is a number and not a special value(Infinity, -Infinity, NaN), use Number.isFinite()
+21.4 ** exponent operator also works: 10 ** 6, same as 1e6
+21.5 you can also put '_' between number digits to achieve more readable number:
+    const integer = 1_234_567_890
+    const float = 0.123_456_789
+    const binary = 0b0101_1111_0001
+    const hex = 0x12_AB_34_CD
+    const bigInt = 1_234_567_890n
+21.6 parseInt(string, decimal_system) takes a string and the system into which will be string parsed, default is 10:
+    parseInt('12', 10) // 12
+    parseInt('absa', 10) // NaN
+    parseInt('   12', 10) // 12 пробелы в начале игнорируются
+21.6.1 return NaN if string is only symbols or the first symbol isnt a number which can be parsed, whitespaces are ignored
+21.6.2 parseInt() works the same as Number.parseInt()
+21.7 parseFloat() same as parseInt() but for float numbers
+21.8 Number() constructor has more methods and constant than a variable that is wrapped by it
+21.8 toString() methods isnt used automatically as it is used for objects
+21.9 isNaN transform the value into a number, then it checks if its NaN, so it can produce different results than Number.isNaN()
+22. string
+22.1 can be constructed with '', "", ``(this is the pattern strings in which you can include variables like `${var_name}`)
+22.2 you can access string symbols by index, it also has .length attribute
+22.3 patter strings `` can include ", ' in them without using \:
+    const doubleQuotes = `"Я вам запрещаю!" – Джейсон Стэтхем.`
+22.3.1 you also can add new lines without \, and they will be saved:
+    const str = `a
+    b
+    d
+
+    e
+    `
+22.3.2 you can also include variables in it:
+    const host = 'google.com'
+    const query = 'template%20strings'
+    const url = `https://${host}/?search=${query}`
+22.3.3 there also exists pattern functions that lets you access the string and variables in this strin:
+    function loggerTag(strings, ...expressionValues) {
+      console.log(strings)
+      console.log(...expressionValues)
+    }
+
+    loggerTag`Булевых значений всего ${2}: они бывают либо ${true} либо ${false}`
+    // ['Булевых значений всего ', ': они бывают либо ', ' либо ', '']
+    // 2 true false
+23. Boolean
+23.1 you can turn a value into its false state with ! operator:
+    const a = true/1/'sd' or whatever is true
+    const b = !a // b will be false
+    const c = !!a // make a false, then true again, its like making Boolean(a)
+23.2 && - and, || - or, ! - not
+23.3 also there is a use case with & and |, so that a && b will check b only if a is true, and a || b will check b only if a is false, but a & b and a | b will always check both side
+24. == - used to check values, === - used to check values and types also
+25. BigInt - type of number that is bigger than primitive one:
+    const biggy = 9997000254740991n
+    const alsoBig = BigInt(9997000254999999)
+25.1 BigInt cant be serialized wiht JSON
+26. Symbol - unique primitive data, can be used as object attribute
+    const sym = Symbol('sad') // 'sad' will only be visible in debugging mode
+    const symTwo = Symbol()
+    console.log(sym === symTwo) // false
+26.1 it is useful to create an hidden object attribute, that is unique:
+    const secondaryId = Symbol()
+    const user = {
+      'id': 193,
+      'name': 'a',
+      [secondaryId]: 'olga-1'
+    }
+    for (const prop in user) {
+      console.log(prop, user[prop])
+    }
+    // id 193
+    // name a
+    console.log(user[secondaryId]) // olga-1
+26.2 for..in doesnt see object attribute created with symbol
+26.3 global registry symbols is responsible for all symbols in the program:
+    Symbol.for(key) — returns the symbol that refers to the key, if no symbol exists, it will be created automatically
+    Symbol.keyFor(symbol) — returns key which hold the symbol, undefined if not
+27. Map - a collection of keys, value pairs, keys and values can be anything(NaN, undefined, null, .etc, also key values are not type checked, so 1 is not '1')
+27.1 some useful methods:
+    set(ключ, значение) — sets a key, value pair
+    get(ключ) — gets value
+    has(ключ) — check for key  // returns true or false
+    values() — returns an iterator of all elements in the collection
+    keys() — returns an iterator of all keys in the collection
+    entries() — returns an iterator of key,value pair
+    delete(ключ) — deletes a key, and its value also // returns true or false
+    clear() — clears the collection
+    forEach(callback) — iterates through key,value pairs // callback(value, key, map)
+
+    const someData = new Map()
+    someData.set('1', '1')
+    someData.set(1, 1)
+    someData.set(true, 'fds')
+    console.log(someData.size) // 3
+    console.log(someData.get(1)) // 1
+    console.log(someData.get('1')) // '1'
+    console.log(someData.has(true)) // true
+    someData.clear()
+    console.log(someData.size) // 0
+27.2 you can predefined data in Map also:
+    const map = new Map([['js', 'JavaScript'], ['css', 'Cascading Style Sheets']])
+    console.log(map.size) // 2
+    console.log(map.get('js')) // JavaScript
+28. depending on the browser, they all give some funcionalities to javascript, BOM(broweser object model):
+    navigator - info about browser
+    screen - info about the screen of the browser
+    location - info about the current page and do actions with it, go to another page, for example
+    fetch() - make requests to the server
+    history - history of the browser which is restricted to the current page we are in, go back or forward for example
+    localStorage - a special browser storage to store some data across some time
+    sessionStorage - a special storage to store some data while we are in the browser, and deleting it once we close it
+29. DOM - document object model, it is created by the browser on page load(through DOMContentLoad event), its content is a tree containing all the nested html tags, and put into document variable. It is used to add, delete, change, style the html elements
+29.1 it contains node elements, and textual nodes, node elements are the tags and all the info about it and within it, textual elements are nodes that dont have continuation
+29.2 there are a lot of methods, attributes, wondt include it here
+29.3 adding events:
+    element.addEventListener('click', function (event) { // event is the name of the event
+      alert('anonymous function')
+    })
+
+    element.addEventListener('click', (event) => {
+      alert('anonymous function')
+    })
+
+    const element = document.querySelector('button')
+    function handleClickFunction(event) {
+      alert('function expression')
+    }
+    element.addEventListener('click', handleClickFunction)
+29.3.1 anonymous functions are faster to write, also they cant be used on multiple elements because you would rewrite it, also you cant remove them
+29.3.2 funciton expressions that are created before the event is assigned to an element, can be assigned to multiple elements, also they can be removed with element.removeEvenListener()
+29.3.3 signature of the event:
+    element.addEventListener(eventType, handler, options)
+
+    element — any elment on the dom
+    eventType — event name, like 'click', 'submit'
+    handler — function which will be executed
+    options/capture — optional parameter that describes some states:
+        capture — true/false, will event work on element and then on the inner elements of it
+        options: { capture: bool, passive: bool, once: bool } — при передаче объекта аргумент будет распознан как объект настроек, так можно установить больше параметров.
+            passive – means event.preventDefault() wont be executed in handler, and will trigger a warning on use
+            once – means the event will work only once
+    
+    function handleMouseClick(event) {
+      console.log('you clicked', event.target)
+    }
+
+    window.addEventListener('click', handleMouseClick)
+    window.addEventListener('click', handleMouseClick, true)
+    window.addEventListener('click', handleMouseClick, false)
+    window.addEventListener('click', handleMouseClick, {
+      passive: true,
+      capture: false,
+    })
+29.3.4 you must put same argumetns for .addEventListener() and .removeEvenListener() because if not, the event wont be deleted:
+function handleMouseClick(event) {
+  console.log('Вы нажали на элемент:', event.target)
+}
+window.addEventListener('click', handleMouseClick, true)
+window.removeEventListener('click', handleMouseClick) // wont delete, becaues it doesnt have 3 arguemnt, true, it is undefined
+29.4 script that are put above html content, wont see whats below, so it must be put at the end of body, after body, or execute after DOMContentLoad event
+29.5 also be aware writing loops on htmlcollection, they are aliveo objects, and they update if dom adds an element that can be added dynamically in your htmlcollection you searched for: getElementsByTagName() and getElementsByClassName()
+30. document.cookie (this way you can work with cookie)
+31. window.localStorage (this way you can work with localstorage)
+32. window.sessionStorage (this way you can work with sessionStorage)
+33. Events
+33.1 there are also .on[event-name] methods, but they can be assigned one time, so they are not suitable to use if you need more than 1 event, to remove them set .on[event-name] = null
+33.2 event bubbling - the way event are triggered, so if you click on child event, it will execute, and then the event will bubble up, meaning that the parent of the child will execute its event(if it has) and so on:
+  event.stopPropagation() - will stop the event bubbling on the element on which was executed stopPropagation()
+33.3 you can also access the element on which the events are happening with [this] keyword
+33.4 event object from the callback function in the addEventListener() is an object which is reponsible and holds information about the event triggered and some useful methods
+33.5 you can create your own event:
+    const myEvent = new CustomEvent('my-event', {
+        detail: {
+                spicy: 123,
+            },
+    })
+    window.addEventListener('my-event', function(evt) {
+      console.log('field spicy:', evt.detail.spicy)
+    })
+    window.dispatchEvent(myEvent)
+33.6 if you have a form for example, an input and a button with 'click' event on it, if you press enter, the browser will trigger the events on the button if no event is attached to the submit input type
+33.7 DOMContentLoaded event occurs when browser finished to parse the page and made the dom-tree. If you need the page to fully load, then 'load' event might be better
+33.7.1 DOMContentLoaded occurs earlier than load, so you can work with dom safely, but not styles, images, etc
+33.8 load event is like DOMContentLoaded but guarantees taht page is fully loaded with styles, images, .etc, so you can work fully with the page
+33.9 unload event is when user leaves the page, but it wont catch all the methods user can use to leave the page, so be aware
+33.9.1 navigator.sendBeacon() - non blocking method to send some data (async), but it is not that safe in some circumstances(if user visits the page on the phone, if user changes active app, if user closes browser through app manager)
+33.9.2 visibilitychange() - better approach than navigator.sendBeacon()
+33.10 beforeunload - event that occurs before you leave the page
+33.10.1 you can also use window.onbeforeunload method, its the same
+30.11 event.preventDefault() - prevents the default event on an element, like <a> going to another link
+31. setTimeout() - is a webAPI tool in the browser, and not a full thing from js
+32. Event Loop is responsilbe for the fact that when will an event occur and how and where it will put it. For example:
+    function main() {
+      setTimeout(function greet() { // stack: setTimeout, main. After setTimeout leaves stack, setTimeout(greet) is placed in webAPI
+        console.log('Hello!') 
+      }, 2000)
+      console.log('Bye!') // executes it, then stack is:console.log('Bye!'), main. webAPI is still setTimeout(greet)
+    }
+    main() // stack: main
+           // when main() finishes, thes stack is empty, but webAPI is still setTimeout(greet)
+           // 2000 ms passed, now greet() form setTimeout is passed to the task order. So stack is empty, webAPI is empty, task order: greet()
+           // task order now puts greet into stack order
+           // stack order is now: console.log('Hello!'), greet()
+           // after console.log() is executed, and greet is left, the stack is empty
+           // this is how async code is possible through just simple callback(but its bad because of the callback hell, when a functino calls another and so on)
+33 Promise - object wrapper for async code(promise is the same as callback in the event loop)
+33.1 it has states, the first state is 'pending', then 'fulfilled' for successfully executed or 'rejected' for executed but with errors:
+    function request(url) {
+      return new Promise(function (resolve, reject) {
+        let responseFromServer
+        /*...*/
+        resolve(responseFromServer)
+      })
+    }
+    request('/api/users/1')
+      .then((user) => user.id) // you can actually return a simple value, and not a promise, it will autoconver into a promise and will send itself to the next promise
+      .then((user) => request(`/api/photos/${user.id}/`))
+      .then((photo) => request(`/api/crop/${photo.id}/`))
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error)) // you can catch here the error from the promise chain, so if an error occurs, the programm wont stop, and you will catch it
+33.2 async functions - functions that return promises:
+    async function request() {}
+    const req = async () => {}
+    class SomeClass {
+      async request() {}
+    }
+33.3 async function will always return promises, even if we dont return it:
+    async function request() {}
+    request().then(() => {}) // will work
+33.4 .then() isnt the only way to work with promises and call them:
+    async function loadPosts() {
+      const response = await fetch('/api/posts/') // await is just the same as if we would call .then() on chain
+      const data = await response.json()
+      return data
+    }
+33.5 in async\await you can use try catch to catch errors from await funcitons that we called there, and from sync code also. The .catch() on .then() isnt as powerful
+33.6 we cant use for loops to work with async data, so there is for await .. of:
+    async function* removeDataGenerator() {
+      for (const url of urls) {
+        const response = await fetch(url)
+        const data = await response.json()
+        yield data
+      }
+    }
+    ;(async () => {
+      for await (const item of removeDataGenerator()) {
+        console.log(item)
+      }
+    })()
+33.7 the state of the 'pending' can be changed only once into 'fulfilled' or 'rejected':
+    const promise = new Promise(function (resolve, reject) {
+      const data = getData() // make an async request
+      resolve(data) // transfer the promise state into fullfilled, the return value will be data
+    })
+    const errorPromise = new Promise(function (resolve, reject) {
+      reject(new Error('error')) // transfer the state of the promise into rejected. The return will be the error object
+    })
+33.8 .catch() - will catch every then before it, if after catch are .then() - their errors wont be catched
+33.9 if you need to create a promise from a known data, you can use Promise.resolve():
+    const happyDog = Promise.resolve('🐶')
+    happyDog.then(function (dog) {
+      console.log(dog) // 🐶
+    })
+33.10 if you need .catch() on a well known, then Promise.reject():
+    const sadDog = Promise.reject('🐶')
+    sadDog.catch(function (dog) { // the sadDog promise has fullfilled status
+      console.log(dog) // 🐶
+    })
+33.11 this way you can create a promise:
+    function earnAllMoney() {
+      return new Promise(function (resolve, reject) {
+        const result = tryEarnAllMoney() // async operation
+        if (result.ok) {
+          resolve(result) // success, transfer into fulfilled and return
+        } else {
+          reject(new Error(result)) // error, transfer promise into rejected
+        }
+      })
+    }
+33.12 if some async funciton works by callbacks, it will be better to wrap it into a promise:
+    function getData(onSuccess, onError) {
+      setTimeout(function () {
+        const result = Math.random()
+        if (result > 0.5) {
+          onSuccess(result)
+        } else {
+          onError(new Error('some erros'))
+        }
+      }, 1000)
+    }
+    //into this
+    function promisifiedGetData() {
+      return new Promise(function (resolve, reject) {
+        const result = getData(
+          function (result) {
+            resolve(result)
+          },
+          function (error) {
+            reject(error)
+          }
+        )
+      })
+    }
+    // now we can use it
+    promisifiedGetData()
+      .then(function () {
+        console.log('success')
+      })
+      .catch(function (err) {
+        console.error(err.message)
+      })
+33.13 promises can join together with this technique:
+    const promise = Promise.resolve(Promise.resolve(Promise.resolve('🐶'))) // Promise {<fulfilled>: '🐶'}
+    promise.then(console.log) // 🐶
+33.14 .then() - method used on promise that changed its state
+33.14.1 takes 2 callback function: onFullfill() - will be executed if state of the promise will be fullfilled, it has 1 parameter that is the returned value
+                                   onReject() - will be executed if the promise state will be rejected, also takes a callback function and 1 parameter that is the info about the error
+    // the reject part isnt used often, only the first part, the errors are more catched in .catch()
+    getPasswords().then(
+      function (result) {
+        console.log('Все пароли:' + result)
+      },
+      function (err) {
+        console.error(err.message)
+      }
+    )
+    // another example
+    fetch('https://www.anapioficeandfire.com/api/houses')
+      .then(function (response) {
+        // will run when the response from the api is given
+        // start the json parsing
+        return response.json() // return the parsed json when its ready
+      })
+      .then(function (houses) {
+        // will run when the json is parsed from above and returned
+        return fetch(houses[0].overlord) // request some data
+      })
+      .then(function (response) {
+        // will run when the fetched data is returned
+        return response.json()
+      })
+      .then(function (overlord) {
+        console.log(overlord.name)
+      })
+33.14.2 .then() always return a promise
+33.15 .catch() - method to process the errors from promises:
+33.15.1 takes a callbacck with 1 parameter: onReject(), will be triggered if the promise state will be rejected:
+    getPasswords()
+      .then(function (result) {
+      })
+      .catch(function (err) {
+        alert(err.message)
+      })
+      // a tricky example
+    const throwInSecond = new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        throw new Error('time has passed')
+      }, 1000)
+    })
+    throwInSecond.catch(function (err) {
+      console.error(err.message)
+      // 'time has passed'
+    })
+    // here, .catch() actually has .then(undefined, onReject) -> .catch(), this is because .then() is the head of the chain, of this promise processing
+33.15.2 always .catch() errors from promises, because if some got errors, and they are not catched, then an error is thrown and they stop working
+33.16 .finally() - will be called when a promise is either fullfilled or rejected
+33.16.1 takes a callback function(onDone) that will be triggered:
+    getPasswords().finally(function () {
+      console.log('hehe')
+    })
+33.16.2 under the hood, .finally() is just a .then() where paramters are (onDone, onDone) like .then(onDone, onDone), just like .catch() is a .then() with (undefined, onReject)
+33.17 all() - a static method of Promise object that runs in parallel some promises and wait till they all are done:
+33.17.1 takes an iterable collection of promises(like promies in array) and returns a new promise in an iterable-like argument or rejected if at least 1 promise failed
+33.17.2 doesnt run promises in order, but returns the value in order
+33.17.3 if you pass an empty array of promises, the Promise.all() will be executed instantly
+    const promise1 = new Promise(resolve => setTimeout(() => resolve(1), 5000))
+    const promise2 = new Promise(resolve => setTimeout(() => resolve(2), 2000))
+    const promise3 = new Promise(resolve => setTimeout(() => resolve(3), 1000))
+    Promise.all([promise1, promise2, promise3])
+      .then(([response1, response2, response3]) => {
+        console.log(response1) // 1
+        console.log(response2) // 2
+        console.log(response3) // 3
+      })
+33.17.4 if you pass not a promise into the array, it will anyway be executed with Promise.resolve():
+    const promise1 = new Promise(resolve => setTimeout(() => resolve(1), 5000))
+    const number = 2
+    const obj = {key: 'value'}
+    Promise.all([promise1, number, obj])
+      .then(([response1, response2, response3]) => {
+        console.log(response1) // 1
+        console.log(response2) // 2
+        console.log(response3.key) // 'value'
+      })
+33.18 allSettled() - a static method of Promise object that runs in parallel some promises and wait till they all are done no matter of success or error status:
+33.18.1 takes an iterable collection of promises(like promies in array) and returns a new promise in an iterable-like argument
+33.18.2 doesnt run promises in order, but returns the value in order
+    const promises = [
+      new Promise(resolve => setTimeout(() => resolve(1), 3000)),
+      new Promise((resolve, reject) => setTimeout(() => reject('error'), 2000)),
+      new Promise(resolve => setTimeout(() => resolve(3), 1000))
+    ]
+    Promise.allSettled(promises)
+      .then(([response1, response2, response3]) => {
+        console.log(response1) // { status: 'fulfilled', value: 3 }
+        console.log(response2) // { status: 'rejected', reason: 'error' }
+        console.log(response3) // { status: 'fulfilled', value: 1 }
+    })
+33.19 any() - a static method of Promise object that runs in parallel some promises and wait till one of them is done, and returns it, if no one successed, then the error occurs. No matter how many will fail, it will wait just for at least one to success and returns it
+33.19.1 takes an iterable collection of promises(like promies in array) and returns a new promise with first promise that succeded
+33.19.2 an empty array of promises will result in error
+33.20 race() - a static method of Promise object that runs in parallel some promises and wait till one of them is done, no matter of success or failure, and returns it
+33.20.1 takes an iterable collection of promises(like promies in array) and returns a new promise with first promise that was faster
+33.20.2 an empty array of promises will result in state being in 'pending' state
+33.21 async/await - just a sugar syntax for promise:
+    async function getStarWarsMovie(id) {
+      const response = await fetch(`https://swapi.dev/api/films/${id}/`)
+      console.log("rsponse", response) // *1
+      return response.json()
+    }
+    const movies = getStarWarsMovie(1).then((movie) => {
+      console.log(movie.title)
+    }) // *2
+    console.log("result:", movies) // *3
+33.21.1 you cant use await for non async code
+33.21.2 you can also mix the code, but it isnt that readable:
+    const [user, news] = await Promise.all([
+      getUser(),
+      getNews()
+    ])
+34. fetch() - function to send/get request from/to a server
+34.1 its a browser helper
+34.2 returns a promise with Response object that has 2 important attributes: .ok(true or false) for the success of the operation, .json() returns the data as json format
+    fetch('http://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((data) => data)
+34.3 it takes 2 parameters, the url and the options(optional):
+    fetch('http://jsonplaceholder.typicode.com/posts') //the default operation is a get request 
+34.4 the 404 error and error related code like that wont result in .catch() because it fullfilled, the only way to get an error is fetching being disturbed somehow or canceled
+    fetch('https://jsonplaceholder.typicode.com/there-is-no-such-route')
+      .then((response) => {
+        if (!response.ok) { // check if fetch succeeded
+          throw new Error('Error occurred!') // if not, throw an error
+        }
+
+        return response.json()
+      })
+      .catch((err) => { // got here because we threw an error
+        console.log(err)
+      }) // Error: Error occurred!
+34.5 options paramter has everyting you need to get/pass data to/from the server, an example:
+    const newPost = {
+      title: 'foo',
+      body: 'bar',
+      userId: 1,
+    }
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify(newPost), 
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data) // {title: "foo", body: "bar", userId: 1, id: 101}
+      })
+35. modules - a file that helps with code reusability and structure
+    1. modules are visiblie in their own scope(this means that code isnt visible unless its exported, unlike regulat js files), unlike regular js files that have global scope. Also if a file has at the top import/export than its treated as a module
+    2. if a file at the top doesnt contain import/export/await, then its not a module (js, not ts)
+    3. if you import * without as alias, you cant access default export (its a js thing, not ts)
+    4. if you import without alias, just the file, the file gets evaluated, but nothing imported (could affect other objects and etc, again, js, not ts thing)
+    CommonJS - a module system from NodeJS
+    AMD - the oldest module system
+    UMD - a universal module system
+    ES-Modules - the builtin javascript module system
+35.1 ES-Modules:
+    // module1.js
+    export function sum(a, b) {
+      return a + b
+    }
+
+    export const SOME_SETTINGS_FLAG = false
+    export const user = {}
+    export const books = ['a', 'b']
+
+    // module2.js
+    import { sum } from './module1.js'
+
+    import { user, books } from './module1.js'
+
+    import { user as admin } from './module1.js' //change the name
+
+    import { books as library, SOME_SETTINGS_FLAG as turnedOn } from './module1.js'
+
+    const user = {}
+    export { user }
+
+    const user = {}
+    export { user as admin } // also change the name
+35.2 we can also export as 'default', it means that the module that will import it, will need to name it:
+    // sum.js
+    export default function (a, b) {
+      return a + b
+    }
+
+    // other-module.js
+
+    import sum from './sum.js'
+
+    import superCoolSummator from './sum.js'
+35.3 modules are always in strict mode
+35.4 the code from the module that is imported will execute once while importing:
+    // module1.js
+    export const user = { name: 'Alex' }
+    console.log(user.name)
+
+    // module2.js
+    import { user } from './module1.js' // 'Alex'.
+    import { user } from './module1.js' // nothing will be logged
+35.4.1 so importing code, for example an object, can be changed by others, so be aware:
+    // module1.js
+    export const user = { name: 'Alex' }
+
+    // module2.js
+    import { user } from './module1.js'
+    console.log(user.name) // 'Alex'
+
+    delete user.name
+
+    // module3.js
+    import { user } from './module1.js'
+
+    console.log(user.name) // undefined'
+
+
+    // module1.js, a better approach
+    export function createUser() {
+      return { name: 'Alex' }
+    }
+
+    // module2.js
+    import { createUser } from './module1.js'
+
+    const user = createUser()
+    delete user.name
+
+    // module3.js
+    import { createUser } from './module1.js'
+
+    const user = createUser()
+    console.log(user.name) // 'Alex'
+35.5 modules in the browser:
+    <body>
+      <script src="module1.js" type="module"></script>
+      <script src="module2.js" type="module"></script>
+    </body>
+35.5.1 the modules wont execute untill the DOM is loaded, the order is preserved
+35.5.2 modules wont execute more than 1 time if it was declared more than 1 time
+35.6 the path must be or realtive or absolute:
+    import user from 'user' // wrong
+    import user from 'https://some-site.com/js/user.js'
+    import user from './user.js'
+35.7 you can also import and export at the same time:
+    export { user } from './user.js' //same as below
+    import { user } from './user.js'; export { user }
+35.8 dynamic imports:
+    let modulePath = prompt("which module to load?");
+    import(modulePath)
+      .then(obj => <object of the module>)
+      .catch(err => <error, for example no such module>)
+35.8.1 import() loads the module and returns a promis which value will be all the exports of the module
+35.8.2 
+    // 📁 say.js
+    export function hi() {
+      alert(`Привет`);
+    }
+    export function bye() {
+      alert(`Пока`);
+    }
+    // another file
+    let {hi, bye} = await import('./say.js');
+    hi();
+    bye();
+35.8.3 if a module has export default, then:
+    // 📁 say.js
+    export default function() {
+      alert("Module loaded (export default)!");
+    }
+
+    let obj = await import('./say.js');
+    let say = obj.default;
+    say();
+36. window.geolocation api - works with the users location
+37. window.matchMedia() api - get access to media query and not only
+38. URLSearchParams - api to make paramteres for url more easier
+39. performace - api to measure things with high precision
+40. alert() - api to show a modal info at the top center of the browser(will block the browser)
+41. prompt() - same as alert() but will take an input and return it, blocks browser as well
+42. confirm() - api to display a modal with 'ok' and 'cancel' buttons, returns boolean, also blocks the browser
+43. queueMicrotask() - api to execute a function in microtasks, only after the tasks stack is empy
+44. setTimeout() - api to execute a function in async mode(but he function itself will be sync):
+    takes function, duration(ms), argument1, argument2(paramters taht will be used in function, no matter how many)
+    setTimeout(function(greeting) {
+      console.log(`Через секунду напечатаю «${greeting}»`)
+    }, 1000, 'Привет')
+44.1 returns the duration it was set to
+44.2 it will always wait for the sync code from the main thread to execute, then it will execute itself
+45. clearTimeout() - removes the time used for setTimeout() os that the function in setTimeout() wont execute, takes the paramter that is the duration of the setTimeout()
+46. setInterval() - same as setTimeout() but will execute forever with that interval and not only 1 time, be aware, its a tricky function, for example if it executes longer that its interval was set, then it will execute on and on without the interval, so setTimeout() could be better
+47. clearInterval() - same as clearTimeout()
+48. window.print() - runs the printer
+49. window.open() - opens a new link, takes 3 param(url, target, options)
+50. Intersection Observer - api, detects an element that crosses with its parent or some scope in async way
+51. ?., ?.(), ?.[] optional checking and returning undefined if the left part doesnt exist:
+    let user = {}
+    alert( user?.address?.street ) // undefined
+
+    let user = null;
+    let x = 0;
+    user?.sayHi(x++); // no executing because user is null
+    alert(x); // 0
+
+    let userAdmin = {
+      admin() {
+        alert("Я админ");
+      }
+    };
+
+    let userGuest = {};
+    userAdmin.admin?.(); // will work
+    userGuest.admin?.(); // wont work,  this method doesnt exist, as object as well
+
+    let key = "firstName";
+    let user1 = {
+      firstName: "John"
+    };
+    let user2 = null;
+    alert( user1?.[key] ); // John
+    alert( user2?.[key] ); // undefined 
+
+    delete user?.name; // will delete the attribute if user object exist
+52. destructurizing variables:
+    let guest = "Jane";
+    let admin = "Pete";
+    [guest, admin] = [admin, guest];
+
+    let [name = prompt('name?'), surname = prompt('surname?')] = ["Julius"];
+    alert(name);    // Julius
+    alert(surname); // result from prompt
+
+    let options = {
+      title: "Menu",
+      width: 100,
+      height: 200
+    };
+    let {title, width, height} = options;
+    alert(title);  // Menu
+    alert(width);  // 100
+    alert(height); // 200
+
+    let {height, width, title} = { title: "Menu", height: 200, width: 100 } // the order doesnt matter
+
+    // change the name of vars
+    let {width: w, height: h, title} = options;
+    // width -> w
+    // height -> h
+    // title -> title
+    alert(title);  // Menu
+    alert(w);      // 100
+    alert(h);      // 200
+
+    //default values
+    let options = {
+      title: "Menu"
+    };
+    let {width = 100, height = 200, title} = options;
+    alert(title);  // Menu
+    alert(width);  // 100
+    alert(height); // 200
+
+    // change name and give default values
+    let options = {
+      title: "Menu"
+    };
+    let {width: w = 100, height: h = 200, title} = options;
+    alert(title);  // Menu
+    alert(w);      // 100
+    alert(h);      // 200
+
+    //if you only need one option from an object, you can get it
+    let { title } = options;
+    console.log(title); // Menu
+
+    // you can also take 1 attribute and other attributes will form another object
+    let {title, ...rest} = options;
+    alert(rest.height);  // 200
+    alert(rest.width);   // 100
+
+    //if you destructurize below the let/const, then you need () to put, because of the {} executing apart
+    let title, width, height;
+    ({title, width, height} = {title: "Menu", width: 200, height: 100});
+    alert( title ); // Menu
+
+    // you can construct more complex one, with nested objects
+    let options = {
+      size: {
+        width: 100,
+        height: 200
+      },
+      items: ["Cake", "Donut"],
+      extra: true
+    };
+
+    let {
+      size: { 
+        width,
+        height
+      },
+      items: [item1, item2],
+      title = "Menu" 
+    } = options;
+    alert(title);  // Menu
+    alert(width);  // 100
+    alert(height); // 200
+    alert(item1);  // Cake
+    alert(item2);  // Donut
+
+    //you can also destructurize variable in a function signature, so you could call the variable name in the function call(the nested objects can be here as well):
+    function showMenu ({ title = 'Untitled', width = 200, height = 100, items = [] }) {
+      console.log(title, width, height, items)
+    }
+    showMenu({ width: 'a' })
+53. __proto__ - deprecated thing, but used to set/get things:
+    let animal = {
+      eats: true
+    };
+    let rabbit = {
+      jumps: true
+    };
+    rabbit.__proto__ = animal;
+    alert( rabbit.eats ); // true 
+    alert( rabbit.jumps ); // true
+    //
+    let animal = {
+      eats: true,
+      walk() {
+        alert("Animal walk");
+      }
+    };
+    let rabbit = {
+      jumps: true,
+      __proto__: animal
+    };
+    rabbit.walk(); // Animal walk
+    //
+    let animal = {
+      eats: true,
+      walk() {
+        alert("Animal walk");
+      }
+    };
+    let rabbit = {
+      jumps: true,
+      __proto__: animal
+    };
+    let longEar = {
+      earLength: 10,
+      __proto__: rabbit
+    };
+    longEar.walk(); // Animal walk
+    alert(longEar.jumps); // true 
+    //
+    let animal = {
+      eats: true,
+      walk() {
+        /*   */
+      }
+    };
+    let rabbit = {
+      __proto__: animal
+    };
+    rabbit.walk = function() {
+      alert("Rabbit! Bounce-bounce!");
+    };
+    rabbit.walk(); // Rabbit! Bounce-bounce!
+    //
+    let user = {
+      name: "John",
+      surname: "Smith",
+      set fullName(value) {
+        [this.name, this.surname] = value.split(" ");
+      },
+      get fullName() {
+        return `${this.name} ${this.surname}`;
+      }
+    };
+    let admin = {
+      __proto__: user,
+    };
+    alert(admin.fullName); // John Smith (*)
+    admin.fullName = "Alice Cooper"; // (**)
+    alert(admin.name); // Alice
+    alert(admin.surname); // Cooper
+    //
+    let animal = {
+      walk() {
+        if (!this.isSleeping) {
+          alert(`I walk`);
+        }
+      },
+      sleep() {
+        this.isSleeping = true;
+      }
+    };
+    let rabbit = {
+      name: "whhite Rabbit",
+      __proto__: animal
+    };
+    rabbit.sleep();
+    alert(rabbit.isSleeping); // true
+    alert(animal.isSleeping); // undefined 
+    //
+    let animal = {
+      eats: true
+    };
+    let rabbit = {
+      jumps: true,
+      __proto__: animal
+    };
+    alert(Object.keys(rabbit)); // jumps
+    for(let prop in rabbit) alert(prop); // jumps, eats
+    //
+    let animal = {
+      eats: true
+    };
+    let rabbit = {
+      jumps: true,
+      __proto__: animal
+    };
+    for(let prop in rabbit) {
+      let isOwn = rabbit.hasOwnProperty(prop);
+      if (isOwn) {
+        alert(`Our: ${prop}`); // Our: jumps
+      } else {
+        alert(`Inherited: ${prop}`); // Inherited: eats
+      }
+    }
+54. prototype - method to work with objects(used in past)
+    let animal = {
+      eats: true
+    };
+    function Rabbit(name) {
+      this.name = name;
+    }
+    Rabbit.prototype = animal;
+    let rabbit = new Rabbit("Whhite Rabbit"); //  rabbit.__proto__ == animal
+    alert( rabbit.eats ); // true
+54.1 if .prototype changes, then the new object will have the new object from it, the old ones will still be with the old object
+    function Rabbit() {} // Rabbit.prototype = { constructor: Rabbit }
+    alert( Rabbit.prototype.constructor == Rabbit ); // true
+    //
+    function Rabbit() {} // Rabbit.prototype = { constructor: Rabbit }
+    let rabbit = new Rabbit(); 
+    alert(rabbit.constructor == Rabbit); // true 
+    //
+    function Rabbit(name) {
+      this.name = name;
+      alert(name);
+    }
+    let rabbit = new Rabbit("White Rabbit");
+    let rabbit2 = new rabbit.constructor("Black Rabbit");
+    //
+    function Rabbit() {}
+    Rabbit.prototype = {
+      jumps: true
+    };
+    let rabbit = new Rabbit();
+    alert(rabbit.constructor === Rabbit); // false (constructor doesnt always guarantee the owner, so look below)
+
+    function Rabbit() {}
+    Rabbit.prototype.jumps = true
+
+    Rabbit.prototype = {
+      jumps: true,
+      constructor: Rabbit
+    };
+54.2 obj = {} same as new Object(), obj.__proto__ === Obj.prototype
+    let arr = [1, 2, 3];
+    alert( arr.__proto__ === Array.prototype ); // true
+    alert( arr.__proto__.__proto__ === Object.prototype ); // true
+    alert( arr.__proto__.__proto__.__proto__ ); // null
+54.3 you can also define new methods/attributes for major constructors:
+    String.prototype.show = function() {
+      alert(this);
+    };
+    "BOOM!".show(); // BOOM!
+54.4 we can also mix mehtods/attributes (like sharing):
+    let obj = {
+      0: "Hello",
+      1: "world!",
+      length: 2,
+    };
+    obj.join = Array.prototype.join; (we could make obj.__proto__ = Array.prototype, and obj would have everything form Array)
+    alert( obj.join(',') ); // Hello,world!
+54.5 the new approach for __proto__ is Object.create(), Object.getPrototypeOf(), Object.setPrototypeOf():
+    let animal = {
+      eats: true
+    };
+    let rabbit = Object.create(animal);
+    alert(rabbit.eats); // true
+    alert(Object.getPrototypeOf(rabbit) === animal);
+    Object.setPrototypeOf(rabbit, {}); // new prototype
+    //
+    let animal = {
+      eats: true
+    };
+    let rabbit = Object.create(animal, {
+      jumps: {
+        value: true
+      }
+    });
+    alert(rabbit.jumps); // true
+    //cloning the object
+    let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
+54.6 changing prototypes and setting them is very cost time, so be aware
+54.7 creating an object without prototype - let obj = Object.create(null);
+55. class:
+    class MyClass {
+      constructor() { ... }
+      method1() { ... }
+      method2() { ... }
+      method3() { ... }
+      ...
+    }
+
+    class User {
+      constructor(name) {
+        this.name = name;
+      }
+      sayHi() {
+        alert(this.name);
+      }
+    let user = new User("Иван");
+    user.sayHi();
+55.1 code inside class is automatically 'use strict' mode
+55.2 methods of the class have enumerable = false so you cant see them in for..in
+55.3 class expression, same as function expression, it can have a name that is only seen inside the class:
+    let User = class {
+      sayHi() {
+        alert("Привет");
+      }
+    };
+
+    let User = class MyClass {
+      sayHi() {
+        alert(MyClass); // will work, its inside the class
+      }
+    };
+
+    new User().sayHi(); 
+
+    alert(MyClass); // wont work
+55.4 you can also create classes dynamically:
+    function makeClass(phrase) {
+      return class {
+        sayHi() {
+          alert(phrase);
+        };
+      };
+    }
+    let User = makeClass("a");
+    new User().sayHi(); // a
+55.5 getter/setter:
+    class User {
+      constructor(name) {
+        // calls setter
+        this.name = name;
+      }
+      get name() {
+        return this._name;
+      }
+      set name(value) {
+        if (value.length < 4) {
+          alert("Имя слишком короткое.");
+          return;
+        }
+        this._name = value;
+      }
+    }
+    let user = new User("Иван");
+    alert(user.name); // Иван
+    user = new User(""); // wont work
+    // under the hood this is happening:
+    Object.defineProperties(User.prototype, {
+      name: {
+        get() {
+          return this._name
+        },
+        set(name) {
+          // ...
+        }
+      }
+    });
+55.6 a trick with string as a name for the method:
+  class User {
+    ['say' + 'Hi']() {
+      alert("Привет");
+    }
+  }
+  new User().sayHi();
+55.7 classes can have attributes also, they are created before the constructor is called, so its an attribute on the object(class iself):
+    class User {
+      name = "anonym";
+      sayHi() {
+        alert(`hi, ${this.name}!`);
+      }
+    }
+    new User().sayHi();
+55.8 so class basically is a function constructor, the methods and get/set are created on its prototype
+55.9 classes can extend another classes(only one at the time):
+    class Animal {
+      constructor(name) {
+        this.speed = 0;
+        this.name = name;
+      }
+      run(speed) {
+        this.speed = speed;
+        alert(`${this.name}${this.speed}.`);
+      }
+      stop() {
+        this.speed = 0;
+        alert(`${this.name} `);
+      }
+    }
+    let animal = new Animal("a");
+    class Rabbit extends Animal { // extends - the keyword with which you can extend another class
+      hide() {
+        alert(`${this.name}!`);
+      }
+    }
+    let rabbit = new Rabbit("Белый кролик");
+    rabbit.run(5);
+    rabbit.hide();
+55.10 you can write any expression after [extends] keyword:
+    function f(phrase) {
+      return class {
+        sayHi() { alert(phrase); }
+      };
+    }
+    class User extends f("hi") {}
+    new User().sayHi(); // hi
+55.11 we can call methods from clases that we extended with [super] keyword:
+    class Animal {
+      constructor(name) {
+        this.speed = 0;
+        this.name = name;
+      }
+      run(speed) {
+        this.speed = speed;
+        alert(`${this.name}${this.speed}.`);
+      }
+      stop() {
+        this.speed = 0;
+        alert(`${this.name}`);
+      }
+    }
+    class Rabbit extends Animal {
+      hide() {
+        alert(`${this.name}`);
+      }
+      stop() {
+        super.stop(); // call .stop() method from the parent class
+        this.hide(); // now do something else
+      }
+    }
+    let rabbit = new Rabbit("a");
+    rabbit.run(5); 
+    rabbit.stop();
+55.12 arrow funcitons dont have super(), so they take it from outside scope
+    class Rabbit extends Animal {
+      stop() {
+        setTimeout(() => super.stop(), 1000); //will work
+        setTimeout(function() { super.stop() }, 1000); //wont work
+      }
+    }
+55.13 if a class doesnt have its constructor but it extends from another class, automatically is inherited the parent constructor class:
+    class Rabbit extends Animal {
+      constructor(...args) {
+        super(...args);
+      }
+    }
+55.14 you must call super() if you extend a class, also if you dont put super() the object isnt created for [this]:
+    class Animal {
+      constructor(name) {
+        this.speed = 0;
+        this.name = name;
+      }
+    }
+    class Rabbit extends Animal {
+      constructor(name, earLength) {
+        this.speed = 0;
+        this.name = name; // here we need to call the super(name)
+        this.earLength = earLength;
+      }
+    }
+    let rabbit = new Rabbit("a", 10); // Error: this is not defined.
+    //
+    class Animal {
+      constructor(name) {
+        this.speed = 0;
+        this.name = name;
+      }
+    }
+    class Rabbit extends Animal {
+      constructor(name, earLength) {
+        super(name); // now works
+        this.earLength = earLength;
+      }
+    }
+    let rabbit = new Rabbit("a", 10);
+    alert(rabbit.name); // a
+    alert(rabbit.earLength); // 10
+55.15 when it comes to attributes, they are created before class constructors for the parent class, and after super() for the childs:
+    class Animal {
+      name = 'animal';
+      constructor() {
+        alert(this.name); // 
+      }
+    }
+    class Rabbit extends Animal {
+      name = 'rabbit';
+    }
+    new Animal(); // animal
+    new Rabbit(); // animal
+55.16 for objects, to make super() work and to create [HomeObject] you need method() and not name: method_name():
+    let animal = {
+      eat: function() {
+        // ...
+      }
+    };
+    let rabbit = {
+      __proto__: animal,
+      eat: function() {
+        super.eat();
+      }
+    };
+    rabbit.eat();  // error
+55.17 the super keyword works with [HomeObject] and not with this.__proto__(this doesnt work, becaue all the calling will be with the first object used, and the method isnt tied to its object)
+55.18 you can define static methods:
+    lass User {
+      static staticMethod() {
+        alert(this === User);
+      }
+    }
+    User.staticMethod(); // true
+    //its roughly the same as:
+    class User { }
+    User.staticMethod = function() {
+      alert(this === User);
+    };
+55.19 the static method is a method for class, and not objects(for example)
+    class Article {
+      constructor(title, date) {
+        this.title = title;
+        this.date = date;
+      }
+      static compare(articleA, articleB) {
+        return articleA.date - articleB.date;
+      }
+    }
+    let articles = [
+      new Article("HTML", new Date(2019, 1, 1)),
+      new Article("CSS", new Date(2019, 0, 1)),
+      new Article("JavaScript", new Date(2019, 11, 1))
+    ];
+    articles.sort(Article.compare);
+55.20 static methods cant be accessed by objects
+55.21 you can also cretat static attribute of class:
+    class Article {
+      static publisher = "a";
+    }
+    alert( Article.publisher ); // a
+55.22 static attriubtes/methods are also inherited:
+    class Animal {
+      constructor(name, speed) {
+        this.speed = speed;
+        this.name = name;
+      }
+      run(speed = 0) {
+        this.speed += speed;
+        alert(`${this.name}${this.speed}.`);
+      }
+      static compare(animalA, animalB) {
+        return animalA.speed - animalB.speed;
+      }
+    }
+    class Rabbit extends Animal {
+      hide() {
+        alert(`${this.name}!`);
+      }
+    }
+    let rabbits = [
+      new Rabbit("a", 10),
+      new Rabbit("b", 5)
+    ];
+    rabbits.sort(Rabbit.compare); //yes you can call just he function signature
+    rabbits[0].run(); 
+55.23 there is a convention between programmers so that _var-name becomes protected, and it should not be accessed outside the class(but it can be accessed in a child class)
+55.24 there are times when you want to set a value and never change it:
+    class CoffeeMachine {
+      constructor(power) {
+        this._power = power; this._power is another variable here, so if we dont have a getter, then it would not have put the value with new CoffeeMachine(100)
+      }
+      get power() {
+        return this._power;
+      }
+    }
+    let coffeeMachine = new CoffeeMachine(100);
+    alert(`power: ${coffeeMachine.power}W`); // power: 100W
+    coffeeMachine.power = 25; // Error (no setter)
+55.25 a private attribute/method would require '#' before its name:
+    class CoffeeMachine {
+      #waterLimit = 200;
+      #checkWater(value) {
+        if (value < 0) throw new Error("Отрицательный уровень воды");
+        if (value > this.#waterLimit) throw new Error("Слишком много воды");
+      }
+    }
+    let coffeeMachine = new CoffeeMachine();
+    coffeeMachine.#checkWater(); // Error
+    coffeeMachine.#waterLimit = 1000; // Error
+55.26 we can also have a public and a private variable wiht same name, they dont conflict:
+    class CoffeeMachine {
+      #waterAmount = 0;
+      get waterAmount() {
+        return this.#waterAmount;
+      }
+      set waterAmount(value) {
+        if (value < 0) throw new Error("a");
+        this.#waterAmount = value;
+      }
+    }
+    let machine = new CoffeeMachine();
+    machine.waterAmount = 100;
+    alert(machine.#waterAmount); // Error
+55.27 you can also extend builtin classes:
+    class PowerArray extends Array {
+      isEmpty() {
+        return this.length === 0;
+      }
+    }
+    let arr = new PowerArray(1, 2, 5, 10, 50); // arr here will be PowerArray type, so that why you can continue to use methods on it, like .filter/map() on it
+    alert(arr.isEmpty()); // false
+    let filteredArr = arr.filter(item => item >= 10);
+    alert(filteredArr); // 10, 50
+    alert(filteredArr.isEmpty()); // false
+    //
+      static get [Symbol.species]() { // if we put this in the class, the result of the above arr would be an Array, and the methods of our class would stop working
+        return Array;
+      }
+55.28 builtin classes dont inherit static methods/attributese
+55.29 instanceof can help us to check if a certain object pretends to be some class type:
+    let arr = [1, 2, 3];
+    alert( arr instanceof Array ); // true
+55.30 we can also manually remake the functionality:
+    class Animal {
+      static [Symbol.hasInstance](obj) {
+        if (obj.canEat) return true;
+      }
+    }
+    let obj = { canEat: true };
+    alert(obj instanceof Animal); // true: Animal[Symbol.hasInstance](obj)
+55.31 this is how checking works:
+    class Animal {}
+    class Rabbit extends Animal {}
+    let rabbit = new Rabbit();
+    alert(rabbit instanceof Animal); // true
+    // rabbit.__proto__ === Animal.prototype // no matching
+    // rabbit.__proto__.__proto__ === Animal.prototype // matched!
+55.32 mixins:
+    let sayHiMixin = {
+      sayHi() {
+        alert(`Привет, ${this.name}`);
+      },
+      sayBye() {
+        alert(`Пока, ${this.name}`);
+      }
+    };
+    class User {
+      constructor(name) {
+        this.name = name;
+      }
+    }
+    Object.assign(User.prototype, sayHiMixin); // copied all the methods
+    new User("Вася").sayHi(); // Привет, Вася!
+55.33 mixins can also have their prototypes hierarchy:
+    let sayMixin = {
+      say(phrase) {
+        alert(phrase);
+      }
+    };
+    let sayHiMixin = {
+      __proto__: sayMixin, 
+      sayHi() {
+        super.say(`Привет, ${this.name}`); // (*)
+      },
+      sayBye() {
+        super.say(`Пока, ${this.name}`); // (*)
+      }
+    };
+    class A {
+      a = 2
+    }
+    class User extends A { // so we extend and also have the mixins methods as we copy them below
+      constructor(name) {
+        this.name = name;
+      }
+    }
+    Object.assign(User.prototype, sayHiMixin);
+    new User("Вася").sayHi(); // Привет, Вася!
+55.34 EventMixins - a way to control browser events:
+    let eventMixin = {
+      /**
+       * menu.on('select', function(item) { ... }
+       */
+      on(eventName, handler) {
+        if (!this._eventHandlers) this._eventHandlers = {};
+        if (!this._eventHandlers[eventName]) {
+          this._eventHandlers[eventName] = [];
+        }
+        this._eventHandlers[eventName].push(handler);
+      },
+      /**
+       * menu.off('select', handler)
+       */
+      off(eventName, handler) {
+        let handlers = this._eventHandlers?.[eventName];
+        if (!handlers) return;
+        for (let i = 0; i < handlers.length; i++) {
+          if (handlers[i] === handler) {
+            handlers.splice(i--, 1);
+          }
+        }
+      },
+      /**
+       * this.trigger('select', data1, data2);
+       */
+      trigger(eventName, ...args) {
+        if (!this._eventHandlers?.[eventName]) {
+          return; // обработчиков для этого события нет
+        }
+        this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
+      }
+    };
+    // 
+    class Menu {
+      choose(value) {
+        this.trigger("select", value);
+      }
+    }
+    Object.assign(Menu.prototype, eventMixin);
+    let menu = new Menu();
+    menu.on("select", value => alert(`Выбранное значение: ${value}`));
+    menu.choose("123"); // Выбранное значение: 123
+56. generators - a way to generate and return values one by one, rather than all ot once:
+    function* generateSequence() {
+      yield 1;
+      yield 2;
+      return 3;
+    }
+    let generator = generateSequence(); // generator - becomes an object of generator with 2 attributes { value: any, done: booleans}
+    let one = generator.next() // {value: 1, done: false}
+56.1 function* a() is the same as function *a(), but the first variant is better
+56.2 make an generator from an iterator:
+    let range = {
+      from: 1,
+      to: 5,
+      *[Symbol.iterator]() { // [Symbol.iterator]: function*()
+        for(let value = this.from; value <= this.to; value++) {
+          yield value;
+        }
+      }
+    };
+    alert( [...range] ); // 1,2,3,4,5
+56.3 you can use for..of for to get all the items, becaue generator is an iterable as well:
+    function* generateSequence() {
+      yield 1;
+      yield 2;
+      return 3;
+    }
+    let generator = generateSequence();
+    for(let value of generator) {
+      alert(value); // 1, 2, but not 3, because return 3 has already done: true, so you need to change from return to yield 3 to work
+    }
+56.4 you can also have a composition of generators, basically waitning for a generator to finish execuiton inside a generator:
+    function* generateSequence(start, end) {
+      for (let i = start; i <= end; i++) yield i;
+    }
+    function* generatePasswordCodes() {
+      yield* generateSequence(48, 57); // 0..9
+      yield* generateSequence(65, 90); // A..Z
+      yield* generateSequence(97, 122); // a..z
+      // same as
+      // for (let i = 48; i <= 57; i++) yield i;
+      // for (let i = 65; i <= 90; i++) yield i;
+      // for (let i = 97; i <= 122; i++) yield i;
+    }
+    let str = '';
+    for(let code of generatePasswordCodes()) {
+      str += String.fromCharCode(code);
+    }
+    alert(str); // 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+56.5 we can also pass arguments to our generators, and to do something with it within:
+    function* gen() {
+      let result = yield "2 + 2 = ?"; // (*)
+      alert(result);
+    }
+    let generator = gen();
+    let question = generator.next().value; // "2 + 2 = ?"
+    generator.next(4); // here wont be something, but in the generator will be alert(4), because the result = yield 4
+
+    // another one, more complex
+    function* gen() {
+      let ask1 = yield "2 + 2 = ?";
+      alert(ask1); // 4
+      let ask2 = yield "3 * 3 = ?"
+      alert(ask2); // 9
+    }
+    let generator = gen();
+    alert( generator.next().value ); // "2 + 2 = ?"
+    alert( generator.next(4).value ); // "3 * 3 = ?"
+    alert( generator.next(9).done ); // true
+56.6 you can also throw errors into generators like values:
+    function* gen() {
+      try {
+        let result = yield "2 + 2 = ?"; // (1)
+        alert("the code wont reach here because the error will be passed above to yield, so it goes to catch section");
+      } catch(e) {
+        alert(e); // will execute
+      }
+    }
+    let generator = gen();
+    let question = generator.next().value;
+    generator.throw(new Error("Ответ не найден в моей базе данных")); // (2)
+56.7 asynchronous iterators:
+    let range = {
+      from: 1,
+      to: 5,
+      // for await..of executes one time this method
+      [Symbol.asyncIterator]() { // (1)
+        // returns an iterable object
+        // then for..of works with this object, requestin the next value with next()
+        return {
+          current: this.from,
+          last: this.to,
+
+          // next() is called on each iteration of for..of
+          async next() { // (2)
+            // must return value like {done:.., value :...}
+            // (it converts into a promise automatically because of the async, so we dont need to return a promise by ourself)
+            // we can use await because of the async
+            await new Promise(resolve => setTimeout(resolve, 1000)); // (3)
+            if (this.current <= this.last) {
+              return { done: false, value: this.current++ };
+            } else {
+              return { done: true };
+            }
+          }
+        };
+      }
+    };
+
+    (async () => {
+      for await (let value of range) { // (4)
+        alert(value); // 1,2,3,4,5
+      }
+    })()
+56.7.1 we dont need async/await, its just easier because it converts the next() method into a promise automatically, and we can use await, you dont need async/await or promise eiter
+56.8 asynchronous generators:
+    async function* generateSequence(start, end) {
+      for (let i = start; i <= end; i++) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        yield i;
+      }
+    }
+    (async () => {
+      let generator = generateSequence(1, 5);
+      for await (let value of generator) {
+        alert(value); 
+      }
+    })();
+56.8.1 also generator.next() now is async, so we need await for it, like: const result = await generator.next()
+56.8.2 async generator form iterator:
+    let range = {
+      from: 1,
+      to: 5,
+      async *[Symbol.asyncIterator]() { // samae as [Symbol.asyncIterator]: async function*()
+        for(let value = this.from; value <= this.to; value++) {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          yield value;
+        }
+      }
+    };
+    (async () => {
+      for await (let value of range) {
+        alert(value); // 1, потом 2, потом 3, потом 4, потом 5
+      }
+    })();
+57. Proxy - a way to wrap the object and maniupalte its state thorugh the proxy:
+57.1 get trap for exaple:
+    let numbers = [0, 1, 2];
+    numbers = new Proxy(numbers, { // new Proxy created a new variable, it must be used everywhere instead of the original one, no one needs to point to the original object because it will be very confusing
+      get(target, prop) {
+        if (prop in target) {
+          return target[prop];
+        } else {
+          return 0; // default value
+        }
+      }
+    });
+    alert( numbers[1] ); // 1
+    alert( numbers[123] ); // 0
+57.2 set trap for example:
+    let numbers = [];
+    numbers = new Proxy(numbers, { // (*)
+      set(target, prop, val) {
+        if (typeof val == 'number') {
+          target[prop] = val;
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+    numbers.push(1)
+    numbers.push(2)
+    alert("length: " + numbers.length); // 2
+    numbers.push("тест"); // TypeError
+57.3 Reflect - an object wrapper that can make proxy easier by accessign the modifiers not from proxy, but outside, but form proxy as well, the reflect will work on the object itself, while proxy not(its a transition)
+    let user = {
+      name: "a",
+    };
+    user = new Proxy(user, {
+      get(target, prop, receiver) {
+        alert(`GET ${prop}`);
+        return Reflect.get(target, prop, receiver); // (1)
+      },
+      set(target, prop, val, receiver) {
+        alert(`SET ${prop}=${val}`);
+        59. currying - a technique to execute 
+        return Reflect.set(target, prop, val, receiver); // (2)
+      }
+    });
+    let name = user.name; // "GET name"
+    user.name = "Петя"; // "SET name=a"
+58. eval - can execute code within a string: let value = eval('let i = 0; ++i'); alert(value); // 1
+59. currying:
+    function curry(f) { 
+      return function(a) {
+        return function(b) {
+          return f(a, b);
+        };
+      };
+    }
+    function sum(a, b) {
+      return a + b;
+    }
+    let curriedSum = curry(sum);
+    alert( curriedSum(1)(2) ); // 359. currying:
+60. regexp work through RegExp and they are also integrated into string methods
+    regexp = new RegExp("patterns", "flags"); or
+    regexp = /pattern/ // same object RegExp, the difference is, in /.../ you cant put variables, so its static, and not dynamic, its when we surely now what regexp we want
+    regexp = /pattern/gmi // smae object as RegExp, the difference is, in /.../ you cant put variables , its when we surely now what regexp we want
+60.1 flags - 
+    i - case insensitive
+    g - search for all occurences
+    m - multi line regim
+    s - 'dotall' regim where '.' can be \n symbol
+    u - turn on full unicode support 
+    y - regime of searching where you can search on specific place in the string
+    d - the result of a regexp is put into an array, that has more info about the regexp beside regexp one
+60.2 some examples of regexp methods(they return an object with different useful attributes):
+    let str = "Hello, amigo, hello!";
+    alert( str.match(/hello/gi) ); // array of 2 values: Hello,hello
+60.2.1 .match() method returns null if no matches occur
+60.3 .replace()
+    alert( "We will, we will".replace(/we/i, "I") ); // I will, we will
+    alert( "We will, we will".replace(/we/ig, "I") ); // I will, I will
+60.3.1 there are special symbols also:
+    $&	puts all the found occurence
+    $`	puts data untill occurence
+    $'	puts data after ocurence
+    $n	if n is 1-2 length value, puts the data of n-th () group of the regexp
+    $<name>	puts the data of () group with the name $<name>
+    $$	inserts the $ symbol
+    // example
+    alert( "like HTML".replace(/HTML/, "$& and JavaScript") ); // Люблю HTML и JavaScript
+60.4 regexp.test() tests if there is at least 1 match:
+    let str = "I like javascript";
+    let regexp = /like/i;
+    alert( regexp.test(str) ); // true
+60.5 class symbols(just a few of them):
+    \d – digits.
+    \D – non digits.
+    \s – spaces, tabs, new lines
+    \S – everythin except \s
+    \w – latin symbols, digits, underscore '_'.
+    \W – everythin except \w
+    . – every symbol but except \n, but if flag \s is present, then \n becomes '.' as well
+60.5.1 some examples:
+    let str = "+7(903)-123-45-67";
+    let regexp = /\d/;
+    alert( str.match(regexp) ); // 7
+    //
+    let str = "+7(903)-123-45-67";
+    let regexp = /\d/g;
+    alert( str.match(regexp) ); // 7,9,0,3,1,2,3,4,5,6,7
+    alert( str.match(regexp).join('') ); // 79031234567
+    //
+    let str = "is it CSS4?";
+    let regexp = /CSS\d/
+    alert( str.match(regexp) ); // CSS4
+    //
+    alert( "I love HTML5!".match(/\s\w\w\w\w\d/) ); // ' HTML5'
+    //
+    let str = "+7(903)-123-45-67";
+    alert( str.replace(/\D/g, "") ); // 79031234567
+    //
+    alert( "asdfw".match(/./) ); // a
+    //
+    let regexp = /CS.4/;
+    alert( "CSS4".match(regexp) ); // CSS4
+    alert( "CS-4".match(regexp) ); // CS-4
+    alert( "CS 4".match(regexp) ); // CS 4
+    //
+    alert( "CS4".match(/CS.4/) ); // null(because '.' means anything, not nothing)
+    //
+    alert( "A\nB".match(/A.B/) ); // null
+    alert( "A\nB".match(/A.B/s) ); // A\nB
+    //
+    alert( "1 - 5".match(/\d-\d/) ); // null
+    alert( "1 - 5".match(/\d - \d/) ); // 1 - 5
+    alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5
+60.6 u flag and \p class can be used when you need unicode symbols
+    let regexp = /\p{Sc}\d/gu;
+    let  str = `prices: $2, €1, ¥9`;
+    alert( str.match(regexp) ); // $2,€1,¥9
+60.7 ^ and $ checks weather it starts or ends with the specified text:
+    let str1 = "Mary had a little lamb";
+    alert( /^Mary/.test(str1) ); // true
+    let str1 = "it's fleece was white as snow";
+    alert( /snow$/.test(str1) ); // true
+60.7.1 there are methods endsWith and startsWith that will check this as well, regular expressions are used when a more complex logic is needed
+60.8 flag m, is used to affect the ^ and $, now ^ means the start of the line but also start of the line of all text, $ as well
+    let str = `1st place: hello
+    2st place: hi
+    3st place: ho`;
+    console.log( str.match(/^\d/gm) ); // 1, 2, 3
+    console.log( str.match(/^\d/g) ); // 1
+    //
+    let str = `hello: 1
+    hi: 2
+    ho: 3`;
+    console.log( str.match(/\d$/gm) ); // 1,2,3
+    //
+    let str = `hello: 1
+    hi: 2
+    ho: 3`;
+    console.log( str.match(/\d\n/g) ); // 1\n,2\n
+60.8.1 so, the multiline regime where ^ and $ works, means that the next line(and every) is when \n comes
+60.9 boundaries of a word with \b pattern:
+    alert( "Hello, Java!".match(/\bJava\b/) ); // Java
+    alert( "Hello, JavaScript!".match(/\bJava\b/) ); // null
+    //
+    alert( "1 23 456 78".match(/\b\d\d\b/g) ); // 23,78
+    alert( "12,34,56".match(/\b\d\d\b/g) ); // 12,34,56
+60.9.1 the finding works like this: the start of a word must be \w, after it must be \w or not, and the ending of the word must be \w
+60.10 special symbols for surplus complexity: [ ] \ ^ $ . | ? * + ( )
+60.10.1 some exaples:
+    alert( "book 5.1".match(/\d\.\d/) ); // 5.1
+    alert( "book 511".match(/\d\.\d/) ); // null
+    //
+    alert( "function g()".match(/g\(\)/) ); // "g()"
+    //
+    alert( "1\\2".match(/\\/) ); // '\'
+    //
+    alert( "/".match(/\//) ); // '/', you only need to '\/' only if you use /***/ regexp, but not new RegExp()
+60.10.1 new RegExp eats the '\' symbol in the string, so you must double it:
+    let regexp = new RegExp("\d\.\d");
+    alert( "Глава 5.1".match(regexp) ); // null
+    // do this instead
+    let regStr = "\\d\\.\\d";
+    alert(regStr); // \d\.\d
+    let regexp = new RegExp(regStr);
+    alert( "Глава 5.1".match(regexp) ); // 5.1
+60.11.1 set of chars to choose from []:
+    alert( "Hello Hylla".match(/[ey]l/gi) ); // "el", "yl"
+60.11.1.1 so, it basically means, find e and l, or find y and l
+60.11.2 ranges [n-n]:
+    alert( "Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g) ); // xAF
+60.11.2.1 you can also include class symbols, [\w\s] and other ranges
+60.11.2.3 ranges that exclude, like [^abcde]:
+    alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ и .
+60.11.3 you can also include special symbols and not exclude them with \:
+    . + ( ) - without \ in the []
+    '-' - without \ if its at the start\end in the []
+    ^ - without if its not at the start in the []
+    ] - only with \ in the []
+    // but you can still exlude them with \, it wont harm the program
+    //examples
+    let regexp = /[-().^+]/g;
+    alert( "1 + 2 - 3".match(regexp) ); // +
+    let regexp = /[\-\(\)\.\^\+]/g;
+    alert( "1 + 2 - 3".match(regexp) ); // +, -
+60.12 Quantifires - search for multiple symbols, class symbols, [] groups with {n}:
+    alert( "i have 12345 years".match(/\d{5}/) ); //  "12345"
+60.12.1 we can also find {n, m} at least n till m included:
+    alert( "i dont have 12, a 1234 years".match(/\d{3,5}/) ); // "1234"
+60.12.2 we can also find {n, } at least n untill infinity:
+    alert( "i dont have 12, a 345678 years".match(/\d{3,}/) ); // "345678"
+    // example
+    let str = "+7(903)-123-45-67";
+    let numbers = str.match(/\d{1,}/g);
+    alert(numbers); // 7,903,123,45,67
+60.12.3 + same as {1,}:
+    let str = "+7(903)-123-45-67";
+    alert( str.match(/\d+/g) ); // 7,903,123,45,67
+60.12.3.1 ? same as {0, 1}:
+    let str = "color or colour";
+    alert( str.match(/colou?r/g) ); // color, colour
+60.12.3.2 * same as {0,}
+    alert( "100 10 1".match(/\d0*/g) ); // 100, 10, 1
+60.12.3.3 weak quantifiers, so by putting '?' in front of a qunatifier, even ? itself, will become weak quantifier:
+    let regexp = /".+"/g;
+    let str = 'a "witch" and her "broom" is one';
+    alert( str.match(regexp) ); // "witch" and her "broom", so this is not what we want, it basically goes to the end of the text becaue of the .+, and then shifts one symbol backward till " is found
+    // now with ?
+    let regexp = /".+?"/g;
+    let str = 'a "witch" and her "broom" is one';
+    alert( str.match(regexp) ); // witch, broom
+    //
+    alert( "123 456".match(/\d+ \d+?/) ); // 123 4alert( "123 456".match(/\d+ \d+?/) ); // 123 4
+    // so basically, it checks if \d fulfilled its duty, if yes, the search is over
+    // mainly its done for optimization, because the default search is greedy
+    // it can also be done with grouping []
+    let regexp = /"[^"]+"/g;
+    let str = 'a "witch" and her "broom" is one';
+    alert( str.match(regexp) ); // witch, broom
+60.13 groups with (), can help to use quantifiers on a whole group:
+    alert( 'Gogogo now!'.match(/(go)+/ig) ); // "Gogogo"
+60.13.1 groups can be nested:
+    let str = '<span class="my">';
+    let regexp = /<(([a-z]+)\s*([^>]*))>/;
+    let result = str.match(regexp);
+    alert(result[0]); // <span class="my">
+    alert(result[1]); // span class="my"
+    alert(result[2]); // span
+    alert(result[3]); // class="my"
+60.13.2 if () are not required, '?' used on them for example, they will be anyway in the array of results, but undefined:
+    let match = 'a'.match(/a(z)?(c)?/);
+    alert( match.length ); // 3
+    alert( match[0] ); // a
+    alert( match[1] ); // undefined
+    alert( match[2] ); // undefined
+    //
+    let match = 'ac'.match(/a(z)?(c)?/)
+    alert( match.length ); // 4
+    alert( match[1] ); // ac
+    alert( match[2] ); // undefined 
+    alert( match[3] ); // c
+    //
+    const str = '<h1> <h2>'
+    const tags = str.match(/<(.*?)>/g)
+    console.log(tags) // <h1>, <h2>
+60.13.3 matchAll() can be used also, to find all occurences
+    let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
+    alert(results); // [object RegExp String Iterator]
+    alert(results[0]); // undefined (*)
+    results = Array.from(results); 
+    alert(results[0]); // <h1>,h1
+    alert(results[1]); // <h2>,h2
+    // you could also use for..of instead of Array.from
+    // or even let [a, b] = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
+    // matchAll() doesnt seek all occurences, it searches for n times we ask, so for example it has 1k occurences, but we had a for of 10, so it gave us 10 search/occurences and the ohter were not searched
+60.13.4 named groups:
+    let dateRegexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/;
+    let str = "2019-04-30";
+    let groups = str.match(dateRegexp).groups;
+    alert(groups.year); // 2019
+    alert(groups.month); // 04
+    alert(groups.day); // 30
+    // a more complex example
+    let dateRegexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g;
+    let str = "2019-10-30 2020-01-01";
+    let results = str.matchAll(dateRegexp);
+    for(let result of results) {
+      let {year, month, day} = result.groups;
+      alert(`${day}.${month}.${year}`);
+      //  30.10.2019
+      //  01.01.2020
+    }
+60.13.5 we can replace text with groups with $n:
+    let str = "John Bull";
+    let regexp = /(\w+) (\w+)/;
+    alert( str.replace(regexp, '$2, $1') ); // Bull, John
+    // for named groups it will be like this
+    let regexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g;
+    let str = "2019-10-30, 2020-01-01";
+    alert( str.replace(regexp, '$<day>.$<month>.$<year>') ); // 30.10.2019, 01.01.2020
+60.13.6 we can exclude a group from the result array as group name and group number with ?:
+    let str = "Gogogo John!";
+    let regexp = /(?:go)+ (\w+)/i;
+    let result = str.match(regexp);
+    alert( result[0] ); // Gogogo John
+    alert( result[1] ); // John
+    alert( result.length ); // 2
+60.13.7 we can call the data from the first found group again by \n:
+    let str = `He said: "She's the one!".`;
+    let regexp = /(['"])(.*?)\1/g; // here, the first group will find ', and then \1 will address to ', as well, \2 will address to the next group, that is ", and so on
+    alert( str.match(regexp) ); // "She's the one!"
+60.13.8 to call the data from the first found group and all others, we can call the name of it with \k<name>:
+    let str = `He said: "She's the one!".`;
+    let regexp = /(?<quote>['"])(.*?)\k<quote>/g;
+    alert( str.match(regexp) ); // "She's the one!
+60.14 logical OR in regexp with |:
+    let regexp = /html|css|java(script)?/gi;
+    let str = "we have found the Java, then HTML, then JavaScript";
+    alert( str.match(regexp) ); // Java,HTML,JavaScript
+    //its more powerful then [] group, it can be used with () and so on
+60.15 lookahead assertion ?=:
+    let str = "1 индейка стоит 30€";
+    alert( str.match(/\d+(?=€)/) ); // 30, it checks for \d+, if found, then checks if € goes after it, if goes, then \d+ is found, and returns it, the value checked is not included
+60.15.1 negative lookahead assertion ?!:
+    let str = "2 индейки стоят 60€";
+    alert( str.match(/\d+(?!€)/) ); // 2, now it will look that € doesnt go after the \d+
+60.15.2 lookbehind assertion:
+    let str = "1 индейка стоит $30";
+    alert( str.match(/(?<=\$)\d+/) ); // 30, now it looked for the \d+, and checked that before it, goes ? symbol
+60.15.3 negative lookbehind assertion:
+    let str = "2 индейки стоят $60";
+    alert( str.match(/(?<!\$)\d+/) ); // 2, now it looked that before \d+ there is not $ symbol
+60.15.4 the lookahead/lookbehind assertion are not captured, but we can capture it if we put it in ():
+    let str = "1 индейка стоит 30€";
+    let regexp = /\d+(?=(€|kr))/
+    alert( str.match(regexp) ); // 30, €
+60.16 some operations take long time because of human factor such as like (\d+)* and .etc, so take time to examine and be more specific to not get a lot of results

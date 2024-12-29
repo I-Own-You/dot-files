@@ -1,0 +1,2139 @@
+types in ts beside js:
+any - allow anything(its not type checked by compiler)
+1. typescript can infer types from the variable value:
+    let hello = "alo" // here hello variable is of type string, so it inferred the value type
+    let hello: string = "alo" // would be the same
+2. sometimes it will be difficult for ts to infer the type like here:
+    const user = {
+      name: "Hayes",
+      id: 0,
+    };
+2.1 so you could describe the object with an *interface*:
+    interface User {
+      name: string;
+      id: number;
+    }
+2.2 now you could use this form, to explicitly confirm that the shape of the object is like our interface:
+    const user: User = {
+      name: "Hayes",
+      id: 0,
+    };
+2.3 and now, if our object has some things that do not belong to our interface, an error will be thrown:
+    const user: User = {
+      username: "Hayes", //error, our interface doesnt have 'username' property
+      id = 0,
+    }
+2.4 you can even use classes with interface:
+    class UserAccount {
+      name: string; // now, in ts we need to specify the variables that we create in constructor
+      id: number;
+      constructor(name: string, id: number) {
+        this.name = name;
+        this.id = id;
+      }
+    }
+    const user: User = new UserAccount("Murphy", 1);
+2.5 you can also annotate function parameters or return type of a function:
+    function deleteUser(user: User) {
+      // ...
+    }
+    function getAdminUser(): User {
+      //...
+    }
+2.6 when builind types, the interface is preferred, types are used when specific features are needed
+3. in ts, you can compose types by combining simple ones, there are 2 popular ways: unions and generics
+3.1 Union(you can declare that a type can be either something or another or .etc):
+    type MyBool = false | true
+    type WindowStates = "open" | "closed" | "minimized";
+    type LockStates = "locked" | "unlocked";
+    type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
+    function getLength(obj: string | string[]) {
+      return obj.length;
+    }
+3.2 generic type(can be anyting):
+    type StringArray = Array<string>;
+    type NumberArray = Array<number>;
+    type ObjectWithNameArray = Array<{ name: string }>;
+3.2.1 you can declare your own type that uses generic:
+    interface Backpack<Type> {
+      add: (obj: Type) => void;
+      get: () => Type;
+    }
+    // This line is a shortcut to tell TypeScript there is a
+    // constant called `backpack`, and to not worry about where it came from.
+    declare const backpack: Backpack<string>;
+    // object is a string, because we declared it above as the variable part of Backpack.
+    const object = backpack.get();
+    // Since the backpack variable is a string, you can't pass a number to the add function.
+    backpack.add(23);
+4. Structural Type System, STS (type checkin focuses on the shape of the values, it means if 2 objs have same shape they are of both type):
+    interface Point {
+      x: number;
+      y: number;
+    }
+    function logPoint(p: Point) { // point is not of type Point, but code passes because point var has the same shape as Point interface
+      console.log(`${p.x}, ${p.y}`);
+    }
+    const point = { x: 12, y: 26 };
+    logPoint(point);
+4.1 the object can have other values, beside a shape, the only rule is it must implement the shape, the rest is not important:
+    const point3 = { x: 12, y: 26, z: 89 }; //ok, has x,y from Point
+    logPoint(point3); // logs "12, 26"
+    const rect = { x: 33, y: 3, width: 30, height: 80 }; //ok, has x,y form Point
+    logPoint(rect); // logs "33, 3"
+    const color = { hex: "#87ABF" }; // error, Point doesnt have hex attribute
+    logPoint(color);
+4.2 it also doesnt matter how the shape is constructed:
+    class VirtualPoint {
+      x: number;
+      y: number;
+      constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+      }
+    }
+    const newVPoint = new VirtualPoint(13, 56);
+    logPoint(newVPoint); // logs "13, 56"
+5. its better to note annotate the type of a variable if the system will infer the type from the value anyway, like here: let msg = 'alo'
+6. any type is not checked by the type checker, it also means the variable can literally be anyting you want:
+
+let obj: any = { x: 0 }
+    obj.foo()       // no error
+    obj()           // no error
+    obj.bar = 100   // no error
+    obj = 'hello'   // no error
+7. if you dont have types on parameters in the function, the ts will still check that the number of arguments passed are the same as parameters
+8. the function return type isnt necessarily specified, because its also infered from return statement most of the time, but in case you want:
+    async function getFavoriteNumber(): Promise<number> { // promise that returns number
+      return 26;
+    }
+9. sometimes, parameters types are infered by *contextual typing*:
+    const names = ["Alice", "Bob", "Eve"];
+    names.forEach(function (s) { // here s is inferred as string, because of the forEach, also the body where .toUpperCase()is used
+      console.log(s.toUpperCase());
+    });
+    names.forEach((s) => { // here s is string as well
+      console.log(s.toUpperCase());
+    });
+10. object type:
+    function printCoord(pt: { x: number, y: number }) { // types are optional, if not specified, *any* will be set
+      console.log("The coordinate's x value is " + pt.x);
+      console.log("The coordinate's y value is " + pt.y);
+    }
+    printCoord({ x: 3, y: 7 });
+10.1 you can also specify that an attribute of the object is optional:
+    function printName(obj: { first: string; last?: string }) { // but you will need to check for undefined\null if its optional
+      // ...
+    }
+    // Both OK
+    printName({ first: "Bob" });
+    printName({ first: "Alice", last: "Alisson" });
+11. the operations on union types are allowed only if they work for all the types:
+    function printId(id: number | string) {
+      console.log(id.toUpperCase()); // error, because .toUpperCase() is only available for string. So you must check with typeof === string, for example, and there do this
+    }
+12. type aliases - a way to create an alias for a type with a different name:
+    type Point = {
+      x: number;
+      y: number;
+    };
+    function printCoord(pt: Point) {
+      console.log("The coordinate's x value is " + pt.x);
+      console.log("The coordinate's y value is " + pt.y);
+    }
+    printCoord({ x: 100, y: 100 });
+    // another example
+    type ID = number | string;
+    // another complex example
+    type UserInputSanitizedString = string;
+    function sanitizeInput(str: string): UserInputSanitizedString {
+      return sanitize(str);
+    }
+    let userInput = sanitizeInput(getInput());
+    userInput = "new input"; // can still be string because the type alias itself points to a string type
+13. interface - another way to name an object type
+    interface Point {
+      x: number;
+      y: number;
+    }
+    function printCoord(pt: Point) {
+      console.log("The coordinate's x value is " + pt.x);
+      console.log("The coordinate's y value is " + pt.y);
+    }
+    printCoord({ x: 100, y: 100 });
+14. type and interface are very similar, almost every feature of interface are avaiable in type.
+    the main difference is that type cant be reopened to add new properties, but interface can be extended
+    //example
+    // extending interface:
+    interface Animal {
+      name: string;
+    }
+    interface Bear extends Animal {
+      honey: boolean;
+    }
+    const bear = getBear();
+    bear.name;
+    bear.honey;
+    // extending type via intersections:
+    type Animal = {
+      name: string;
+    }
+    type Bear = Animal & { 
+      honey: boolean;
+    }
+    const bear = getBear();
+    bear.name;
+    bear.honey;
+    //adding new fields to an existing interface:
+    interface Window {
+      title: string;
+    }
+    interface Window {
+      ts: TypeScriptAPI;
+    }
+    const src = 'const a = "Hello World"';
+    window.ts.transpileModule(src, {});
+    // but a type cant be changed after  being created:
+    type Window = {
+      title: string;
+    }
+    type Window = { // Error: Duplicate identifier 'Window'.
+      ts: TypeScriptAPI;
+    }
+15. you can use a type assertioin if you know you will get some kind of value, but the ts dont knwo about it:
+    const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+    // also you can use the < > syntax, but not in .tsx
+    const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+15.1 the type assertions are removed at compile time as type annotations so if the type assertion is wrong, so there is no runtime checking, no error will be thrown or null generation
+15.2 type assertion must also be more specific or less specific version of type, for example:
+    const x = "hello" as number; // string as number, error
+    const a = expr as any as T; // its a trick to have some type that ts thinks its error, using any
+16. literal types is basically some primitive value:
+    let x: "hello" = "hello";
+    x = "hello";
+    x = "howdy"; // error, "hello" only
+    //
+    function printText(s: string, alignment: "left" | "right" | "center") {
+      // ...
+    }
+    printText("Hello, world", "left");
+    printText("G'day, mate", "centre"); // error
+    //
+    function compare(a: string, b: string): -1 | 0 | 1 {
+      return a === b ? 0 : a > b ? 1 : -1;
+    }
+    // you can even combine them with non literal types
+    interface Options {
+      width: number;
+    }
+    function configure(x: Options | "auto") {
+      // ...
+    }
+    configure({ width: 100 });
+    configure("auto");
+    configure("automatic"); // error
+17. literal interface trick:
+    declare function handleRequest(url: string, method: "GET" | "POST"): void;
+    const req = { url: "https://example.com", method: "GET" };
+    handleRequest(req.url, req.method); // error for req.method, because it can be assigned another value between the function call and req creation
+    // workarounds:
+    const req = { url: "https://example.com", method: "GET" as "GET" }; //1. make method be always "GET"
+    handleRequest(req.url, req.method as "GET"); //2. make req.method "GET" for current funciton call
+    const req = { url: "https://example.com", method: "GET" } as const; //3. now, the whole req object will be assigned as const, it means the url and method attributes now act as literal types, instead of string(primitive), or whatever type you could put
+    handleRequest(req.url, req.method);
+18. you also can remove null/undefined type so no error will cause(but only if you are sure that null/undefined wont be there):
+    function liveDangerously(x?: number | null) {
+      console.log(x!.toFixed()); // so you dont have to narrow the check for null/undefined
+    }
+19. you could use in keyword to narrow a check as with if/esle:
+    type Fish = { swim: () => void };
+    type Bird = { fly: () => void };
+    function move(animal: Fish | Bird) {
+      if ("swim" in animal) {
+        return animal.swim();
+      }
+      return animal.fly();
+    }
+    //
+    type Fish = { swim: () => void };
+    type Bird = { fly: () => void };
+    type Human = { swim?: () => void; fly?: () => void };
+    function move(animal: Fish | Bird | Human) {
+      if ("swim" in animal) {
+        animal; (parameter) animal: Fish | Human
+      } else {
+        animal; (parameter) animal: Bird | Human
+      }
+    }
+20. type guard - a way to provide a type checking: typeof, instanceof, in
+21. narrowing - a way to get a type more precisely
+22. also an example of type inferring:
+    let x = Math.random() < 0.5 ? 10 : "hello world!";
+    // let x = number | string
+    // x = 2
+    // x = 'a'
+23. based on control flow analysis, ts can narrow the type at some point, or regain them again:
+    function padLeft(padding: number | string, input: string) {
+      if (typeof padding === "number") { // here, the type is only number, so string is left
+        return " ".repeat(padding) + input;
+      }
+      // here type is only string, number is left
+      return padding + input;
+    }
+    //another complex example:
+    function example() {
+      let x: string | number | boolean;
+      x = Math.random() < 0.5;
+      console.log(x); let x: boolean
+      if (Math.random() < 0.5) {
+        x = "hello";
+        console.log(x); let x: string
+      } else {
+        x = 100;
+        console.log(x); let x: number
+      }
+      return x; let x: string | number
+    }
+24. to have more precise control over types, you can use a type predicate(also called user defined type guard):
+    function isFish(pet: Fish | Bird): pet is Fish { // pet is Fish is a predicate that tells the function body that pet must be a Fish, and if not, then its a Bird
+      return (pet as Fish).swim !== undefined;
+    }
+    let pet = getSmallPet();
+    if (isFish(pet)) { // here in the if, pet is Fish
+      pet.swim();
+    } else { // here pet is Bird
+      pet.fly();
+    }
+    //another more complex example
+    const zoo: (Fish | Bird)[] same as Array<Fish | Bird> = [getSmallPet(), getSmallPet(), getSmallPet()];
+    const underWater1: Fish[] = zoo.filter(isFish); // same as bellow one
+    const underWater2: Fish[] = zoo.filter(isFish) as Fish[]; // same as above one
+    // The predicate may need repeating for more complex examples
+    const underWater3: Fish[] = zoo.filter((pet): pet is Fish => {
+      if (pet.name === "sharkey") return false;
+      return isFish(pet);
+    });
+25. discriminated unions:
+    interface Shape {
+      kind: 'circle' | 'square'
+      radius?: number
+      sideLength?: number
+    }
+    function getArea (shape: Shape): number | undefined {
+      return Math.PI * shape.radius ** 2 // error, radius could be undefined, we could put ! after it, but its not a good approach
+    }
+    getArea({ kind: 'circle' })
+    //
+    function getArea(shape: Shape) {
+      if (shape.kind === "circle") {
+        return Math.PI * shape.radius ** 2; // still error, narrowing doesnt help
+      }
+    }
+    // new approach
+    interface Circle {
+      kind: "circle";
+      radius: number;
+    }
+    interface Square {
+      kind: "square";
+      sideLength: number;
+    }
+    type Shape = Circle | Square;
+    function getArea(shape: Shape) {
+      return Math.PI * shape.radius ** 2; // still error, because radius doesnt exist on Square
+    }
+    // but now
+    function getArea(shape: Shape) {
+      if (shape.kind === "circle") { // because of this, now, kind is strictly an object that is circle instead of a previous 'union'. 
+        return Math.PI * shape.radius ** 2; // works
+      }
+    }
+    // both Circle and Square, because of the property kind(discriminant property now) now are considered a discriminated unions, and can narrow down the properties of it 
+    // you can also use switch for this, it suits discriminant unions
+    function getArea(shape: Shape) {
+      switch (shape.kind) {
+        case "circle":
+          return Math.PI * shape.radius ** 2; (parameter) shape: Circle
+        case "square":
+          return shape.sideLength ** 2; (parameter) shape: Square
+      }
+    }
+25.1 using never type, never can be assigned to every type, but not otherwise:
+     interface Triangle {
+      kind: "triangle";
+      sideLength: number;
+    }
+    type Shape = Circle | Square | Triangle
+    function getArea(shape: Shape) {
+      switch (shape.kind) {
+        case "circle":
+          return Math.PI * shape.radius ** 2;
+        case "square":
+          return shape.sideLength ** 2;
+        default:
+          const _exhaustiveCheck: never = shape; // it will cause an error, because Triangle type cant be never type
+          return _exhaustiveCheck;
+      }
+26. this way you can describe a function expression:
+    function greeter(fn: (a: string) => void) { // the parameter is required, because if we would have (string) it would mean string: any
+      fn("Hello, World");
+    }
+    function printToConsole(s: string) {
+      console.log(s);
+    }
+    greeter(printToConsole);
+    // a type can be used to describe it also:
+    type GreetFunction = (a: string) => void;
+    function greeter(fn: GreetFunction) {
+      // ...
+    }
+26.1 call signature, a way to describe a function that has property beside parameters:
+    type DescribableFunction = {
+      description: string;
+      (someArg: number): boolean;
+    };
+    function doSomething(fn: DescribableFunction) {
+      console.log(fn.description + " returned " + fn(6));
+    }
+    function myFunc(someArg: number) {
+      return someArg > 3;
+    }
+    myFunc.description = "default description";
+    doSomething(myFunc);
+26.2 construct signatures, you can create functions constructors with [new] keyword:
+    type SomeConstructor = {
+      new (s: string): SomeObject;
+    };
+    function fn(ctor: SomeConstructor) {
+      return new ctor("hello");
+    }
+27. generic functions, generics usually means the connection between input/output, or the fact that you get one type, and return the same type:
+    function firstElement<Type>(arr: Type[]): Type | undefined {
+      return arr[0];
+    }
+    const s = firstElement(["a", "b", "c"]);
+    const n = firstElement([1, 2, 3]);
+    const u = firstElement([]);
+    // map implementation for example, the Type was inferred by the ts automatically
+    function map<Input, Output>(arr: Input[], func: (arg: Input) => Output): Output[] {
+      return arr.map(func);
+    }
+    // Parameter 'n' is of type 'string'
+    // 'parsed' is of type 'number[]'
+    const parsed = map(["1", "2", "3"], (n) => parseInt(n));
+27.1 constraining a type:
+    function longest<Type extends { length: number }>(a: Type, b: Type) {
+      if (a.length >= b.length) {
+        return a;
+      } else {
+        return b; // we could want to return { length: 5}, but we cant, because here, we must return the Type we recieved
+      }
+    }
+    const longerArray = longest([1, 2], [1, 2, 3]);
+    const longerString = longest("alice", "bob");
+    const notOK = longest(10, 100); // error, number doesnt have .length property
+27.2 manually specifying a type:
+    function combine<Type>(arr1: Type[], arr2: Type[]): Type[] {
+      return arr1.concat(arr2);
+    }
+    const arr = combine([1, 2, 3], ["hello"]); // error, the return type Type[] would be number[] but we got .concat and now we have numbers and strings
+    const arr = combine<string | number>([1, 2, 3], ["hello"]); // manually specifying that it can have number or string
+27.3 function overloads:
+    function makeDate(timestamp: number): Date; // overload signature, without implementation 
+    function makeDate(m: number, d: number, y: number): Date; // overload signature, without implementation 
+    function makeDate(mOrTimestamp: number, d?: number, y?: number): Date { // implementatoin for the signature with 1 or 3 paramter, we cant call it with 2 paramters because we dont have a signature for it
+      if (d !== undefined && y !== undefined) {
+        return new Date(y, mOrTimestamp, d);
+      } else {
+        return new Date(mOrTimestamp);
+      }
+    }
+    const d1 = makeDate(12345678);
+    const d2 = makeDate(5, 5, 5);
+    const d3 = makeDate(1, 3); // error, there are no func signatures with 2 paramters
+27.3.1 we cant call a funciton overload for a value that has a state between like this:
+    function len(s: string): number;
+    function len(arr: any[]): number;
+    function len(x: any) {
+      return x.length;
+    }
+    len(""); // OK
+    len([0]); // OK
+    len(Math.random() > 0.5 ? "hello" : [0]); // here the result is either string or number[], the overload only addresses to one signature at a time
+    //a better approach
+    function len(x: any[] | string) { // always prefer unions over overloads
+      return x.length;
+    }
+27.4 [this] cant be used as name paramter, but you can assign it a type:
+    interface DB {
+      filterUsers(filter: (this: User) => boolean): User[]; // here this is User type, not the name this as a paramter but the actual this keyword
+    }
+    const db = getDB();
+    const admins = db.filterUsers(function (this: User) { 
+      return this.admin;
+    });
+    const admins = db.filterUsers(() => this.admin); // you also cant use this in arrow function because this is captured from global state
+28. types in detail:
+ object type - non primitive type, differnet from empty object {}, and also different from global object Object, so use object instead of Object
+ void - its automatically infered if funciton returns nothing(return;) or undefined(no return at all or return undefined). Its not the same as undefined thought. In function with void type, you can return anything, but the void type will be retained anyway
+    function f2(): void {
+      // @ts-expect-error // force error on return type != void
+      return true;
+    }
+    const f3 = function (): void {
+      // @ts-expect-error // force error on return type != void
+      return true;
+    };
+ unknown - ensure that you declare the type if you use it, like any but you cant do anything with a variable of unknown untill you declare a type on it
+    function safeParse(s: string): unknown {
+      return JSON.parse(s);
+    }
+    const obj = safeParse(someRandomString); // you cant use it thought, untill you set a type on it
+ never - this type cant happen (usually means the programm has terminated or thrown an error, it also can happen if a union doesnt have options any more, in if/else for example)
+    function fail(msg: string): never {
+      throw new Error(msg);
+    }
+    function fn(x: string | number) {
+      if (typeof x === "string") {
+        // do something
+      } else if (typeof x === "number") {
+        // do something else
+      } else {
+        x; // has type 'never'!
+      }
+    }
+  Function - global type Function, with properties like bind, call, apply and etc.
+    function doSomething(f: Function) {
+      return f(1, 2, 3); // it has type return type of any, its not safe so () => void is safer
+    }
+29. rest paramter:
+    function multiply(n: number, ...m: number[]) {
+      return m.map((x) => n * x);
+    }
+    const a = multiply(10, 1, 2, 3, 4);
+    // ...m type is automatically of type any[], so Array<T>, T[], or tuples are allowed
+29.1 some trick:
+    const args = [8, 5];
+    const angle = Math.atan2(...args); // error, because args is of type number[] and not specifically 2 numbers
+    //fix
+    const args = [8, 5] as const; // turn them into literals
+    const angle = Math.atan2(...args);
+30. object types:
+30.1 we can define readonly properties that can be read, but cant be reassigned:
+    interface SomeType {
+      readonly prop: string;
+    }
+    function doSomething(obj: SomeType) {
+      console.log(`prop has the value '${obj.prop}'.`);
+      obj.prop = "hello"; // error
+    }
+    // but with aliasing, we can reassign it:
+    interface Person {
+      name: string;
+      age: number;
+    }
+    interface ReadonlyPerson {
+      readonly name: string;
+      readonly age: number;
+    }
+    let writablePerson: Person = {
+      name: "Person McPersonface",
+      age: 42,
+    };
+    let readonlyPerson: ReadonlyPerson = writablePerson; // it points now to antoher object that is modifiable, it works because the shape is the same
+    console.log(readonlyPerson.age); // prints '42'
+    writablePerson.age++;
+    console.log(readonlyPerson.age); // prints '43'
+30.2 index signature - a way to set the return type when accessing index of some type:
+    interface StringArray {
+      [index: string]: number; // means the return type must be string when we access an index number
+      length: string, // error, because the index returns string(i index would be of type number, and returned string, it would be ok, because the return type of properties must be string or its subtype), all property now should return string. To make property return string or number you could use a unioin  [index: string]: number | string;
+      age: number 
+    }
+    const myArray: StringArray = getStringArray();
+    const secondItem = myArray[1]; // like here
+30.2.1 the types allowed for index signature is number, string, symbol, template string patterns, union types consisting of the earlier
+30.2.2 index signatures can also be readonly, so you cant assign to them:
+    interface ReadonlyStringArray {
+      readonly [index: number]: string;
+    }
+    let myArray: ReadonlyStringArray = getReadOnlyStringArray();
+    myArray[2] = "Mallory"; // error
+30.3 we can also support more than one return type for index signature:
+    interface Dog {
+      name: string
+    }
+    interface Animal extends Dog {
+      breed: string
+    }
+    interface NotOkay {
+      [x: number]: Animal // this works because the numeric type returned a type that is subtyped of a string
+      [x: string]: Dog
+      // this wouldn work
+      [x: number]: Dog  // error, Dog is not a subtype, its the parent for Animal
+      [x: string]: Animal
+    }
+30.4 object literals have more checking under the hood for exmaple:
+    interface SquareConfig {
+      color?: string;
+      width?: number;
+    }
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+      return {
+        color: config.color || "rod",
+        area: config.width ? config.width * config.width : 20,
+      };
+    }
+    let mySquare = createSquare({ colour: "rod", width: 100 }); // error, 'colour' doesnt exist on SquareConfig
+    // a workaround is using type assertion
+    let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig); // this works because at least 1 property is defined that exists in SquareConfig
+    let squareOptions = { colour: "rod", width: 100 };
+    let mySquare = createSquare(squareOptions); // works because variable dont get checking like object literals, and also the variable object has at least 1 property that is defined in SquareConfig
+    // if you would want to let programmers know that it has other property for whatever reason you can do:
+    [propName string]: any
+30.5 we can extend types to cut down the boilerplate:
+    interface BasicAddress {
+      name?: string;
+      street: string;
+      city: string;
+      country: string;
+      postalCode: string;
+    }
+    interface AddressWithUnit {
+      name?: string;
+      unit: string;
+      street: string;
+      city: string;
+      country: string;
+      postalCode: string;
+    }
+    // can be now like this:
+    interface BasicAddress {
+      name?: string;
+      street: string;
+      city: string;
+      country: string;
+      postalCode: string;
+    }
+    interface AddressWithUnit extends BasicAddress {
+      unit: string;
+    }
+    // you can extend from multiple interfaces as well:
+    interface Colorful {
+      color: string;
+    }
+    interface Circle {
+      radius: number;
+    }
+    interface ColorfulCircle extends Colorful, Circle {}
+    const cc: ColorfulCircle = {
+      color: "rod",
+      radius: 42,
+    };
+30.6 you can also use intersection to combine objects from interfaces:
+    interface Colorful {
+      color: string;
+    }
+    interface Circle {
+      radius: number;
+    }
+    type ColorfulCircle = Colorful & Circle;
+    function draw(circle: Colorful & Circle) {
+      console.log(`Color was ${circle.color}`);
+      console.log(`Radius was ${circle.radius}`);
+    }
+    draw({ color: "boue", radius: 42 });  //ok
+    draw({ color: "rod", raidus: 42 });   //error
+30.6.1 the difference between interface extends and interface intersections is the handling of conflicts
+30.7 generic objects:
+    interface Box<Type> {
+      contents: Type;
+    }
+    let box: Box<string>;
+    // Type can be substituted with anything so
+    interface Box<Type> {
+      contents: Type;
+    }
+    interface Apple {
+      // ....
+    }
+    type AppleBox = Box<Apple>; //{ contents: Apple }
+    // and also this
+    function setContents<Type>(box: Box<Type>, newContents: Type) {
+      box.contents = newContents;
+    }
+30.8 interfaces and types can also be generic:
+    interface Box<Type> {
+      contents: Type;
+    }
+    type Box<Type> = {
+      contents: Type;
+    };
+    // also madness like this is possible
+    type OrNull<Type> = Type | null;
+    type OneOrMany<Type> = Type | Type[];
+    type OneOrManyOrNull<Type> = OrNull<OneOrMany<Type>>;
+    type OneOrManyOrNull<Type> = OneOrMany<Type> | null
+    type OneOrManyOrNullStrings = OneOrManyOrNull<string>;
+    type OneOrManyOrNullStrings = OneOrMany<string> | null
+30.9 so string[], number[] and all others are just shorthands for Array<Type> like Array<string>. So Array itslef is a generic interface
+30.10 ReadonlyArray - a type that specifies an array that cant be modified, its not a constructor, its just a type:
+    function doStuff(values: ReadonlyArray<string>) {
+      const copy = values.slice();
+      console.log(`The first value is ${values[0]}`);
+      values.push("hello!"); // error
+    }
+    new ReadonlyArray("rd", "geen", "ble"); // error, its not a constructor, just a type
+    const roArray: ReadonlyArray<string> = ["rd", "geen", "lue"]; // ok
+    // readonly string[] also works, just a shorthand to not type ReadonlyArray<string> and etc
+    // also, assigning something to a readonly array wont change it
+    let x: readonly string[] = []
+    let y: string[] = []
+    x = y // x is still readonly string[]
+    y = x // error, we cant assign readonly string[] to string[]
+30.11 tuple type - sort of fixed array length with knwon types:
+    type StringNumberPair = [string, number];
+    //
+    function doSomething(pair: [string, number]) {
+      const a = pair[0];
+    const a: string
+      const b = pair[1];
+    const b: number
+      // ...
+    }
+    doSomething(["hello", 42]);
+    //you also cant access out of range like in other arrays, it will give you error:
+    function doSomething(pair: [string, number]) {
+      const c = pair[2];
+    }
+    //we also can destructurize them
+    function doSomething(stringHash: [string, number]) {
+      const [inputString, hash] = stringHash;
+      console.log(inputString);
+      console.log(hash);
+    }
+    // we also can have an optional properties, and the length now wont be fix, it will be length: length -1 | length
+    type Either2dOr3d = [number, number, number?];
+    function setCoordinate(coord: Either2dOr3d) {
+      const [x, y, z] = coord;
+      console.log(`Provided coordinates had ${coord.length} dimensions`);
+    }
+    // tuples can also have rest elements:
+    type StringNumberBooleans = [string, number, ...boolean[]];
+    type StringBooleansNumber = [string, ...boolean[], number];
+    type BooleansStringNumber = [...boolean[], string, number];
+    // an example of the same logic
+    function readButtonInput(...args: [string, number, ...boolean[]]) {
+      const [name, version, ...input] = args;
+    } // same as bellow
+    function readButtonInput(name: string, version: number, ...input: boolean[]) {
+      // ...
+    }
+30.11.1 tuples can also be readonly, they often arent modified, so its good to make them explicilty readonly
+    function doSomething(pair: readonly [string, number]) {
+      // ...
+    }
+    // this means you cant modify them
+    function doSomething(pair: readonly [string, number]) {
+      pair[0] = "hello!"; // error
+    }
+    // also, doesnt matter if the function changes or not the content, if a tuple is readonly, you cant pass it to a function that takes a tuple that is not readonly:
+    let point = [3, 4] as const;
+    function distanceFromOrigin([x, y]: [number, number]) {
+      return Math.sqrt(x ** 2 + y ** 2);
+    }
+    distanceFromOrigin(point); // erorr, point is readonly because of the 'as const', it infers automaticcaly readonly when used
+30.12 as with generic types in general, there are 2 ways to pass a type:
+    function identity<Type>(arg: Type): Type {
+      return arg;
+    }
+    let output = identity<string>("myString"); // in < >
+    let output = identity("myString"); // or let the compiler infer the type, but be aware that compiler wont infer it everytime, so you will need to provide it sometimes
+    // here are some exmaples of defining the type of our function
+    let myIdentity: <Type>(arg: Type) => Type = identity;
+    let myIdentity: { <Type>(arg: Type): Type } = identity; // this works because remember that { } describes only the shape
+30.13 some generic interface
+    interface GenericIdentityFn {
+      <Type>(arg: Type): Type;
+    }
+    function identity<Type>(arg: Type): Type {
+      return arg;
+    }
+    let myIdentity: GenericIdentityFn = identity;
+    // now convert this interface that holds a generic function to a generic interface
+    interface GenericIdentityFn<Type> {
+      (arg: Type): Type;
+    }
+    function identity<Type>(arg: Type): Type {
+      return arg;
+    }
+    let myIdentity: GenericIdentityFn<number> = identity;
+30.14 generic classes:
+    class GenericNumber<NumType> {
+      zeroValue: NumType;
+      add: (x: NumType, y: NumType) => NumType;
+    }
+    let myGenericNumber = new GenericNumber<number>();
+    myGenericNumber.zeroValue = 0;
+    myGenericNumber.add = function (x, y) {
+      return x + y;
+    };
+    // actually you need to put the attributes in a constructor or initialize it, but for you to know you can have signatures in class and assign to them values after
+
+30.14.1 static members of class cant use class generic type, so be aware
+30.14.2 class types in generics:
+    function create<Type>(c: { new (): Type }): Type {
+      return new c();
+    }
+    //
+    class BeeKeeper {
+      hasMask: boolean = true;
+    }
+    class ZooKeeper {
+      nametag: string = "Mikle";
+    }
+    class Animal {
+      numLegs: number = 4;
+    }
+    class Bee extends Animal {
+      numLegs = 6;
+      keeper: BeeKeeper = new BeeKeeper();
+    }
+    class Lion extends Animal {
+      keeper: ZooKeeper = new ZooKeeper();
+    }
+    function createInstance<A extends Animal>(c: new () => A): A {
+      return new c();
+    }
+    createInstance(Lion).keeper.nametag;
+    createInstance(Bee).keeper.hasMask;
+30.15 constructors and static member do not affect types of 2 classes
+30.16 if super class or child class has private/protected properties, they must have both, otherwise types are affected
+31. generic paramter defualts:
+    declare function create(): Container<HTMLDivElement, HTMLDivElement[]>;
+    declare function create<T extends HTMLElement>(element: T): Container<T, T[]>;
+    declare function create<T extends HTMLElement, U extends HTMLElement>(
+      element: T,
+      children: U[]
+    ): Container<T, U[]>; // a bunch of signatures with different possible ways of executing
+    // now lets give them default type paramters
+    declare function create<T extends HTMLElement = HTMLDivElement, U = T[]>(
+      element?: T,
+      children?: U
+    ): Container<T, U>;
+    const div = create(); // const div: Container<HTMLDivElement, HTMLDivElement[]>
+    const p = create(new HTMLParagraphElement()); // const p: Container<HTMLParagraphElement, HTMLParagraphElement[]>
+32. keyof type operator produces a string or number of all keys of the object:
+    type Point = { x: number; y: number };
+    type P = keyof Point; // Point is same as 'x' | 'y'
+    // complex example
+    function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+      return obj[key];
+    }
+    let x = { a: 1, b: 2, c: 3, d: 4 };
+    getProperty(x, "a");
+    getProperty(x, "m"); // m key doesnt exist on x
+32.1 if a type has string or number signature, then keyof will return that type instead
+    type Arrayish = { [n: number]: unknown };
+    type A = keyof Arrayish; // A is of type number
+    //
+    type Mapish = { [k: string]: boolean };
+    type M = keyof Mapish; // type of M here is string | number, because object keys are coercd to string in js, so objg[0] is same as obj['0']
+33. you can use typeof to create types also:
+    let s = "hello";
+    let n: typeof s; // n of type string
+33.1 you can use predefined type RerturnType to take a function type and return the return type:
+    type Predicate = (x: unknown) => boolean;
+    type K = ReturnType<Predicate>; // K of type boolean
+    //
+    function f() {
+      return { x: 10, y: 3 };
+    }
+    type P = ReturnType<f>; // error, f is not a function type, its a funciton itself
+    type P = ReturnType<typeof f>; // will work, P = { x: number, y:number }
+33.2 you can use typeof only on identifiers (like variable names, property names, etc)
+34. indexed access type - a way to look up a property of an object to set a type:
+    type Person = { age: number; name: string; alive: boolean };
+    type Age = Person["age"]; // Age is now of type number
+    // another examples using unions, keyof, type itself
+    type I1 = Person["age" | "name"]; // type I1 = string | number
+    type I2 = Person[keyof Person]; // type I2 = string | number | boolean
+    type AliveOrName = "alive" | "name";
+    type I3 = Person[AliveOrName]; // type I3 = string | boolean
+    type I1 = Person["alve"]; // error, this property does not exist
+    // some constructions
+    const MyArray = [
+      { name: "Alice", age: 15 },
+      { name: "Bob", age: 23 },
+      { name: "Eve", age: 38 },
+    ];
+    type Person = typeof MyArray[number]; // Person { name: string; age: number; }
+    type Age = typeof MyArray[number]["age"]; // type Age = number
+    type Age2 = Person["age"]; //type Age2 = number
+    const key = "age";
+    type Age = Person[key]; // error, cant use const literals for this
+35. conditional types
+    interface Animal {
+      live(): void;
+    }
+    interface Dog extends Animal {
+      woof(): void;
+    }
+    type Example1 = Dog extends Animal ? number : string; // type Example1 = number
+    type Example2 = RegExp extends Animal ? number : string; // type Example2 = string
+    // complex example
+    interface IdLabel {
+      id: number /* some fields */;
+    }
+    interface NameLabel {
+      name: string /* other fields */;
+    }
+    function createLabel(id: number): IdLabel;
+    function createLabel(name: string): NameLabel;
+    function createLabel(nameOrId: string | number): IdLabel | NameLabel;
+    function createLabel(nameOrId: string | number): IdLabel | NameLabel {
+      throw "unimplemented";
+    }
+    // a lot of code could be done with conditional checking:
+    type NameOrId<T extends number | string> = T extends number ? IdLabel : NameLabel;
+    function createLabel<T extends number | string>(idOrName: T): NameOrId<T> {
+      throw "unimplemented";
+    }
+35.1 conditional type constraint:
+    type MessageOf<T> = T extends { message: unknown } ? T["message"] : never;
+    interface Email {
+      message: string;
+    }
+    interface Dog {
+      bark(): void;
+    }
+    type EmailMessageContents = MessageOf<Email>; //type EmailMessageContents = string
+    type DogMessageContents = MessageOf<Dog>; //type DogMessageContents = never
+    // another exmaple of getting type of an array or leaving it 
+    type Flatten<T> = T extends any[] ? T[number] : T; // [number] gets the type of the array elements
+    type Str = Flatten<string[]>; // type Str = string
+    type Num = Flatten<number>; //type Num = number
+35.2 we also can infer the type not in the true branch of conditional types but on the condition itself:
+    type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
+    type Str = Flatten<string[]>; // type Str = string
+    type Num = Flatten<number>; //type Num = number
+    // complex example
+    type GetReturnType<Type> = Type extends (...args: never[]) => infer Return // here Return is a new generic type that will be inferred as a return type for a function
+      ? Return
+      : never;
+    type Num = GetReturnType<() => number>; //type Num = number
+    type Str = GetReturnType<(x: string) => string>; //type Str = string, also, the (x: string) works because of the STS, it actually looks at the function structre that looks at parameter types and return type, so return type can be grabbed in a conditional type, so it will pass
+    type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>; //type Bools = boolean[]
+    // also with call signatures, inferring from them, infers the last signature type
+    declare function stringOrNum(x: string): number;
+    declare function stringOrNum(x: number): string;
+    declare function stringOrNum(x: string | number): string | number;
+    type T1 = ReturnType<typeof stringOrNum>; //type T1 = string | number
+35.3 distributive conditional types - when you pass a union to a conditional type that acts on generic type, it becomes a union itself:
+    type ToArray<Type> = Type extends any ? Type[] : never;
+    type StrArrOrNumArr = ToArray<string | number>; //type StrArrOrNumArr = string[] | number[]
+    // we can actually make a union then to assign it as a an array type:
+    type ToArrayNonDist<Type> = [Type] extends [any] ? Type[] : never;
+    type StrArrOrNumArr = ToArrayNonDist<string | number>; //type StrArrOrNumArr = (string | number)[], so it means an array that can have either strings or numbers
+36. mapped types - are constructed with index signature:
+    type OnlyBoolsAndHorses = {
+      [key: string]: boolean | Horse;
+    };
+    const conforms: OnlyBoolsAndHorses = {
+      del: true,
+      rodney: false,
+    };
+36.1 generic mapped type:
+    type OptionsFlags<Type> = {
+      [Property in keyof Type]: boolean;
+    };
+    type Features = {
+      darkMode: () => void;
+      newUserProfile: () => void;
+    };
+    type FeatureOptions = OptionsFlags<Features>;
+    // type FeatureOptions = {
+    //     darkMode: boolean;
+    //     newUserProfile: boolean;
+    // }
+36.2 mapped types have 2 modifiers, readonly and ? for mutability and optionality, you cal also prefix it with - or +, - means removing the attribute explicitly, and + is the default one:
+    type CreateMutable<Type> = {
+      -readonly [Property in keyof Type]: Type[Property]; // just to show
+      [Property in keyof Type]-?: Type[Property]; // just to show
+    };
+    type LockedAccount = {
+      readonly id: string;
+      readonly name: string;
+    };
+    type UnlockedAccount = CreateMutable<LockedAccount>;
+    // type UnlockedAccount = {
+    //     id: string;
+    //     name: string;
+    // }
+36.3 you can remap keys with 'as' keyword:
+    type Getters<Type> = {
+        [Property in keyof Type as `get${Property}`]: () => Type[Property]
+    interface Person {
+        name: string;
+        age: number;
+        location: string;
+    }
+    type LazyPerson = Getters<Person>;
+    // type LazyPerson = {
+    //     getName: () => string;
+    //     getAge: () => number;
+    //     getLocation: () => string;
+    // }
+    // you can also use literal types to build something complex
+    type RemoveKindField<Type> = {
+        [Property in keyof Type as Exclude<Property, "kind">]: Type[Property] // Exclude< > is a builtin interface
+    };
+    interface Circle {
+        kind: "circle";
+        radius: number;
+    }
+    type KindlessCircle = RemoveKindField<Circle>;
+    // type KindlessCircle = {
+    //     radius: number;
+    // }
+    // another complex example of a union of diff type rather than primitive ones:
+    type EventConfig<Events extends { kind: string }> = {
+        [E in Events as E["kind"]]: (event: E) => void;
+    }
+    type SquareEvent = { kind: "square", x: number, y: number };
+    type CircleEvent = { kind: "circle", radius: number };
+    type Config = EventConfig<SquareEvent | CircleEvent>
+    type Config = {
+        square: (event: SquareEvent) => void;
+        circle: (event: CircleEvent) => void;
+    }
+    // mapped type with conditional types:
+    type ExtractPII<Type> = {
+      [Property in keyof Type]: Type[Property] extends { pii: true } ? true : false;
+    };
+    type DBFields = {
+      id: { format: "incrementing" };
+      name: { type: string; pii: true };
+    };
+    type ObjectsNeedingGDPRDeletion = ExtractPII<DBFields>;
+    type ObjectsNeedingGDPRDeletion = {
+        id: false;
+        name: true;
+    }
+37. template lietral types are constructed from literal types used in stirng interpolation with unions:
+    type World = "world";
+    type Greeting = `hello ${World}`;
+    type Greeting = "hello world"
+    // complex example
+    type EmailLocaleIDs = "welcome_email" | "email_heading";
+    type FooterLocaleIDs = "footer_title" | "footer_sendoff";
+    type AllLocaleIDs = `${EmailLocaleIDs | FooterLocaleIDs}_id`;
+    // type AllLocaleIDs = "welcome_email_id" | "email_heading_id" | "footer_title_id" | "footer_sendoff_id"
+    // and even more complex
+    type AllLocaleIDs = `${EmailLocaleIDs | FooterLocaleIDs}_id`;
+    type Lang = "en" | "ja" | "pt";
+    type LocaleMessageIDs = `${Lang}_${AllLocaleIDs}`;
+    // type LocaleMessageIDs = "en_welcome_email_id" | "en_email_heading_id"  |
+                               "en_footer_title_id"  | "en_footer_sendoff_id" |
+                               "ja_welcome_email_id" | "ja_email_heading_id"  |
+                               "ja_footer_title_id"  | "ja_footer_sendoff_id" |
+                               "pt_welcome_email_id" | "pt_email_heading_id"  |
+                               "pt_footer_title_id"  | "pt_footer_sendoff_id"
+    // its ok to do such things with small amount of string literals, but bad with more
+    // a complex example:
+    type PropEventSource<Type> = {
+        on(eventName: `${string & keyof Type}Changed`, callback: (newValue: any) => void): void;
+    };
+    declare function makeWatchedObject<Type>(obj: Type): Type & PropEventSource<Type>;
+    const person = makeWatchedObject({
+      firstName: "Saoirse",
+      lastName: "Ronan",
+      age: 26
+    });
+    person.on("firstNameChanged", () => {}); // no error
+    person.on("firstName", () => {}); // error,
+    person.on("frstNameChanged", () => {}); // error
+    // now the same function as above but infering the type making the method generic
+    type PropEventSource<Type> = {
+        on<Key extends string & keyof Type> // pulled the string literal into Key generic type
+            (eventName: `${Key}Changed`, callback: (newValue: Type[Key]) => void): void;
+    };
+    declare function makeWatchedObject<Type>(obj: Type): Type & PropEventSource<Type>;
+    const person = makeWatchedObject({
+      firstName: "Saoirse",
+      lastName: "Ronan",
+      age: 26
+    });
+    person.on("firstNameChanged", newName => { //(parameter) newName: string
+        console.log(`new name is ${newName.toUpperCase()}`);
+    });
+    person.on("ageChanged", newAge => { //(parameter) newAge: number
+        if (newAge < 0) {
+            console.warn("warning! negative age");
+        }
+    })
+37.1 there are intrisinc string literal manipulation for performance, basically changing string with builtin types:
+    // Uppercase<T>
+    type Greeting = "Hello, world"
+    type ShoutyGreeting = Uppercase<Greeting> //type ShoutyGreeting = "HELLO, WORLD"
+    type ASCIICacheKey<Str extends string> = `ID-${Uppercase<Str>}`
+    type MainID = ASCIICacheKey<"my_app"> //type MainID = "ID-MY_APP"
+    // Lowercase<T>
+    type Greeting = "Hello, world"
+    type QuietGreeting = Lowercase<Greeting> //type QuietGreeting = "hello, world"
+    type ASCIICacheKey<Str extends string> = `id-${Lowercase<Str>}`
+    type MainID = ASCIICacheKey<"MY_APP"> //type MainID = "id-my_app"
+    // Capitalize<T>
+    type LowercaseGreeting = "hello, world";
+    type Greeting = Capitalize<LowercaseGreeting>; //type Greeting = "Hello, world"
+    // Uncapitalize<T>
+    type UppercaseGreeting = "HELLO WORLD";
+    type UncomfortableGreeting = Uncapitalize<UppercaseGreeting>; //type UncomfortableGreeting = "hELLO WORLD"
+    // under the hood it uses js runtime so it just becomes string.toLowerCase() and etc
+38. classes:
+    class Point {
+      a // here is how you declare properties for object
+      b // the type is also any, its implicit if you dont define it
+      c: number // explicitly defined type
+      d: 0 // type is inferred from the value
+    }
+    const pt = new Point()
+    pt.x = 0
+    pt.y = 0
+38.1 --strictPropertyInitialization // with this option in tsconfig, the properties must be initialized with a value or initialized in the constructor
+38.2 you can use the '!' modifier to not get an error if you have --strictPropertyInitialization set:
+    class OKGreeter {
+      name!: string; // no error
+    }
+38.3 properties can have 'readonly' modifier, it means that property can be assigned value only in constructor:
+    class Greeter {
+      readonly name: string = "world";
+      constructor(otherName?: string) {
+        if (otherName !== undefined) {
+          this.name = otherName;
+        }
+      }
+      err() {
+        this.name = "not ok"; // error
+      }
+    }
+    const g = new Greeter();
+    g.name = "also not ok"; // error
+38.4 constructors in class are similar to funcitons so you can do what you do with functions but there are some limitations:
+    // you cant have generic constructors
+    // you cant have a return type
+38.4.1 constructors can be overloaded:
+    class Point {
+      constructor(x: number, y: string);
+      constructor(s: string);
+      constructor(xs: any, y?: any) {
+        // TBD
+      }
+    }
+38.5 methods in a class are the same as in js, nothing new
+38.6 get/set is the same but with some differences:
+    // if get exists, and set not, the property becomes readonly
+    // if the type of the value in set is not specified, it is inferred from the return type of get
+    // since 4.3 ts, we can have diff types for value in get/set, but the return type will still be from get, because this is the method used to return the value
+    // get and set must have the same visibility member (public, protected, .etc)
+38.7 classes can have index signatures, but its not that common and not really useful:
+    class MyClass {
+      [s: string]: boolean | ((s: string) => boolean);
+      check (s: string) {
+        return this[s] as boolean
+      }
+    }
+    const myInstance = new MyClass()
+    myInstance.property1 = true
+    myInstance.property2 = (str) => str === 'test'
+38.8 classes can implement interfaces:
+    interface Pingable {
+      ping(): void;
+    }
+    class Sonar implements Pingable {
+      ping() {
+        console.log("ping!");
+      }
+    }
+    class Ball implements Pingable {
+      pong() { // error
+        console.log("pong!");
+      }
+    }
+38.8.1 classes can also implement more than one interface like: class A implements B, C, n {}
+38.8.2 implements clause doesnt change the class type, it only checks if class can be treated as an interface:
+    interface Checkable {
+      check(name: string): boolean;
+    }
+    class NameChecker implements Checkable {
+      check(s) { // error, because the interface requires string type
+        return s.toLowerCase() === "ok"; // no error, becasue class is still a class
+      }
+    }
+    // also, creating a property with '?' optionality, doesnt create that property in class, accessign it, will result in an error
+38.9 if target is es2022, or useDefineForClassFields = true, class fields are initialized after the parent class constructor completes, overwritting any value that parent class set, it can be bad if we only want to change the type of the property, so we can use 'declare' keyword to achieve that:
+    interface Animal {
+      dateOfBirth: any;
+    }
+    interface Dog extends Animal {
+      breed: any;
+    }
+    class AnimalHouse {
+      resident: Animal;
+      constructor(animal: Animal) {
+        this.resident = animal;
+      }
+    }
+    class DogHouse extends AnimalHouse {
+      declare resident: Dog; // resident is now Dog, but didnt change the value that constructor from parent class set
+      constructor(dog: Dog) {
+        super(dog);
+      }
+    }
+38.10 inheriting the builtin classes is tricky: https://www.typescriptlang.org/docs/handbook/2/classes.html#inheriting-built-in-types
+38.11 member visiblity - you can make a property/method public/protected/private:
+38.11.1 public - can be accessed anywhere, its the default one, just an explicit way of defining
+    class Greeter {
+      public greet() { 
+        console.log("hi!");
+      }
+    }
+    const g = new Greeter();
+    g.greet();
+38.11.2 protected - only visibly to subclasses and the class itself:
+    class Greeter {
+      public greet() {
+        console.log("Hello, " + this.getName());
+      }
+      protected getName() {
+        return "hi";
+      }
+    }
+    class SpecialGreeter extends Greeter {
+      public howdy() {
+        console.log("Howdy, " + this.getName());
+      }
+    }
+    const g = new SpecialGreeter();
+    g.greet(); // OK
+    g.getName(); // error, its protected
+38.11.2.1 but if we redefine the variable in the subclass without the protected modifier, it becomes public, so be aware:
+    class Base {
+      protected m = 10;
+    }
+    class Derived extends Base {
+      m = 15;
+    }
+    const d = new Derived();
+    console.log(d.m); // OK
+38.11.2.2 also, we cant access a protected method thorugh a base class:
+    class Base {
+      protected x: number = 1;
+    }
+    class Derived1 extends Base {
+      protected x: number = 5;
+    }
+    class Derived2 extends Base {
+      f1(other: Derived2) {
+        other.x = 10;
+      }
+      f2(other: Derived1) {
+        other.x = 10; // error, Derived1.x can be accessed only within Derived1 and its subclasses, Derived2 isnt one of them.
+      }
+    }
+38.11.3 private - like protected but cant access it in subclassess
+38.11.3.1 we can access the private properties of different objects of the same class:
+    class A {
+      private x = 10;
+      public sameAs(other: A) {
+        return other.x === this.x; // no error
+      }
+    }
+38.11.4 protected and private modifiers are enforced only on type checking, so in js runtime, we can still access them:
+    class MySafe {
+      private secretKey = 12345;
+    }
+    const s = new MySafe();
+    console.log(s.secretKey);
+38.11.5 private property can be accessed with ['property'], so its kind of more 'soft private' than actually private:
+    console.log(s['secretKey']) // no error
+38.11.6 but you can use '#' notation from js, to enforce hard private, they dont allow ['property'] accessing
+38.11.7 if js is compiled in es2021 or less, then WeakMaps are used instead of '#' modifier:
+38.11.8 bear in mind that by adding different mechanism for private fields, like closures, WeakMaps, private fields, it affects performance
+38.12 static members of class can also have visibility modifiers:
+    class MyClass {
+      static x = 0;
+      static printX() {
+        console.log(MyClass.x);
+      }
+    }
+    console.log(MyClass.x);
+    MyClass.printX();
+38.12.1 static members are also inherited:
+    class Base {
+      static getGreeting() {
+        return "Hello world";
+      }
+    }
+    class Derived extends Base {
+      myGreeting = Derived.getGreeting();
+    }
+38.12.2 you cant use some static names that are builtin, classes themselves are Functions that can be invoked with new:
+    class S {
+      static name = "S!"; // error
+    }
+38.12.3 you can have static blocks of code inside a class, where you can use private fields that are static as well:
+    class Foo {
+        static #count = 0;
+        get count() {
+            return Foo.#count;
+        }
+        static {
+            try {
+                const lastInstances = loadLastInstances();
+                Foo.#count += lastInstances.length;
+            }
+            catch {}
+        }
+    }
+38.13 classes can use generic and all its funcitonality as well:
+    class Box<Type> {
+      contents: Type;
+      constructor(value: Type) {
+        this.contents = value;
+      }
+    }
+    const b = new Box("hello!");
+38.13.1 static member cannot refer to a generic type:
+    class Box<Type> {
+      static defaultValue: Type; // error, because at runtime types are erased, and if we would have Box<string> and Box<number> as well, changing one, changes another
+    }
+38.14 this at runtime:
+    class MyClass {
+      name = "MyClass";
+      getName() {
+        return this.name;
+      }
+    }
+    const c = new MyClass();
+    const obj = {
+      name: "obj",
+      getName: c.getName,
+    };
+    console.log(obj.getName()); // obj, because this bind to the scope within it was called
+    // to fix this, we have to call arrow functions
+    class MyClass {
+      name = "MyClass";
+      getName = () => {
+        return this.name;
+      };
+    }
+    const c = new MyClass();
+    const g = c.getName;
+    console.log(g()); // MyClass, now its correct, but it has some notes
+    //1. this will be correct even for code that ts didnt chec
+    //2. this will use more memory because each class instance will have a copy of function
+    //3. you cant use super.getName in a child class because there is no entry for base class to feth from
+38.14.1 this paramters are erased during compilation, they dont create a paramter named this, they check if the current function is executed with the right context:
+    class MyClass {
+      name = "MyClass";
+      getName(this: MyClass) {
+        return this.name;
+      }
+    }
+    const c = new MyClass();
+    c.getName();
+    const g = c.getName;
+    console.log(g()); // error
+    // here are also some notes:
+    //1. JavaScript callers might still use the class method incorrectly without realizing it
+    //2. Only one function per class definition gets allocated, rather than one per class instance
+    //3. Base method definitions can still be called via super.
+38.14.2 this types - refers dynamically to the type of the current class
+    class Box {
+      contents: string = "";
+      set(value: string) {
+        this.contents = value;
+        return this;
+      }
+    }
+    class ClearableBox extends Box {
+      clear() {
+        this.contents = "";
+      }
+    }
+    const a = new ClearableBox();
+    const b = a.set("hello"); // const b: ClearableBox
+    // now lets check what will happen, when we use this as a type
+    class Box {
+      content: string = "";
+      sameAs(other: this) { // not same as other:Box, it would allow derived classes
+        return other.content === this.content;
+      }
+    }
+    class DerivedBox extends Box {
+      otherContent: string = "?";
+    }
+    const base = new Box();
+    const derived = new DerivedBox();
+    derived.sameAs(base); // error, Box is not assignable to DerivedBox
+38.14.3 this can also be used in type guards for constructing predicats:
+  class Box<T> {
+    value?: T;
+    hasValue(): this is { value: T } {
+      return this.value !== undefined;
+    }
+  }
+  const box = new Box();
+  box.value = "Gameboy";
+  box.value; //(property) Box<unknown>.value?: unknown
+  if (box.hasValue()) {
+    box.value; // (property) value: unknown
+  }
+38.15 paramter properties - a way to define properties inside a constructor and not in class, by assigning at least one of the modifiers (readonly, public, protected, private):
+    class Params {
+      constructor(
+        public readonly x: number,
+        protected y: number,
+        private z: number
+        readonly h: number
+      ) { } // you dont need a body either
+    }
+    const a = new Params(1, 2, 3, 5);
+    console.log(a.x); // no error
+    console.log(a.z); // error
+38.16 class expressions, they dont need a name, but you can put it if you want:
+    const someClass = class<Type> {
+      content: Type;
+      constructor(value: Type) {
+        this.content = value;
+      }
+    };
+    const m = new someClass("Hello, world");
+38.17 constructor signatures, using a utility type like InstanceTyp< >, you can assign a class type, without creating an object with new
+    class Point {
+      createdAt: number;
+      x: number;
+      y: number
+      constructor(x: number, y: number) {
+        this.createdAt = Date.now()
+        this.x = x;
+        this.y = y;
+      }
+    }
+    type PointInstance = InstanceType<typeof Point>
+    function moveRight(point: PointInstance) {
+      point.x += 5;
+    }
+    const point = new Point(3, 4);
+    moveRight(point);
+    point.x; // => 8
+38.18 classes, methods, fields can be abstract.
+    // an abstract field or method must be in an abstract class that cant be instanciated, they simply dont have an implementation
+    // an abstract class serve as a base class for subclasses which will implement all the abstract members
+    // if a class doesnt have abstract members, its called 'concrete class'
+    abstract class Base {
+      abstract getName(): string;
+      printName() {
+        console.log("Hello, " + this.getName());
+      }
+    }
+    const b = new Base(); // error, we cant initialize this class
+    // now with a derived class
+    class Derived extends Base {
+      getName() { // if we would not implment it, we would get an error
+        return "world";
+      }
+    }
+    const d = new Derived();
+    d.printName(); // we also can access the non abstract method
+38.18.1 abstract construct signatures:
+    function greet(ctor: typeof Base) { // its ok, its not an error, but it should be, becaue Base is abstract, this is ridiculous
+      const instance = new ctor(); // here the error is of course cautght, but we want to caught it in the function paramter
+      instance.printName();
+    }
+    greet(Base) // no error, bad!
+    // so instead we use an abstrat construct signature
+    function greet(ctor: new () => Base) {
+      const instance = new ctor();
+      instance.printName();
+    }
+    greet(Derived);
+    greet(Base); // error, nice
+38.19 realtionship between classes, the classes are compared structurally:
+    class Point1 {
+      x = 0;
+      y = 0;
+    }
+    class Point2 {
+      x = 0;
+      y = 0;
+    }
+    const p: Point1 = new Point2(); // no error, STS works
+38.19.1 subtype realtions also work:
+    class Person {
+      name: string;
+      age: number;
+    }
+    class Employee {
+      name: string;
+      age: number;
+      salary: number;
+    }
+    const p: Person = new Employee(); // work, because Employee() has all the properties needed for Person
+38.19.2 also, an empty class has no members, its considered a supertype of everything, so be aware:
+    class Empty {}
+    function fn(x: Empty) {
+      // can't do anything with 'x', so I won't
+    }
+    fn(window); //ok
+    fn({}); //ok
+    fn(fn); //ok
+39. modules:
+39.1 types can be exported with js syntax:
+    // @filename: animal.ts
+    export type Cat = { breed: string; yearOfBirth: number };
+    export interface Dog {
+      breeds: string[];
+      yearOfBirth: number;
+    }
+    // @filename: app.ts
+    import { Cat, Dog } from "./animal.js";
+    type Animals = Cat | Dog;
+39.2 if you use import type, then you cant use it as a value:
+    // @filename: animal.ts
+    export type Cat = { breed: string; yearOfBirth: number };
+    export type Dog = { breeds: string[]; yearOfBirth: number };
+    export const createCatName = () => "fluffy";
+    // @filename: valid.ts
+    import type { Cat, Dog } from "./animal.js";
+    export type Animals = Cat | Dog;
+    // @filename: app.ts
+    import type { createCatName } from "./animal.js";
+    const name = createCatName(); // error, createCatName was imported as a type
+39.3 you can also include type in {} to explicitly show that it is imported as a type, but others not:
+    // @filename: app.ts
+    import { createCatName, type Cat, type Dog } from "./animal.js";
+    export type Animals = Cat | Dog;
+    const name = createCatName();
+39.4 CommonJS syntax:
+39.4.1 Identifiers are exported via setting the exports property on a global called module:
+    function absolute(num: number) {
+      if (num < 0) return num * -1;
+      return num;
+    }
+    module.exports = {
+      pi: 3.14,
+      squareTwo: 1.41,
+      phi: 1.61,
+      absolute,
+    };
+39.4.2 importing it:
+    const maths = require("./maths");
+    maths.pi;
+    // or you can use the destructurizing method
+    const { squareTwo } = require("./maths");
+    squareTwo;
+40. utility types, like buitin helpers for type transformations: https://www.typescriptlang.org/docs/handbook/utility-types.html
+41. dcortor - special kind of declaration that can be attached to: class, method of class, accessor, property, paramter.
+    @expression - expression is a function that will be called at runtime
+    function sealed(target) { // sealed is our decorated, target is the construction we attached to decorator
+      // do something with 'target' ...// do something with 'target' ...
+    }
+41.1 decorator factory - modifies the decoartor itself, by adding paramters or something else:
+    function color(value: string) {
+      // this is the decorator factory, it sets up
+      // the returned decorator function
+      return function (target) { // the decorator
+        // we can do something with target and value
+      };
+    }
+41.2 applying decoartors:
+    @f @g x - on a single line
+    //
+    @f
+    @g
+    x - on mulitple lines
+41.3. the evaluation is from top to bottom, but the execution of the decorator is bottom to top
+    function first() {
+      console.log("1");
+      return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        console.log("4");
+      };
+    }
+    function second() {
+      console.log("2");
+      return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        console.log("3");
+      };
+    }
+    class ExampleClass {
+      @first()
+      @second()
+      method() {}
+    }
+    // the output would be:
+    1, 2, 3, 4
+41.4 decorator evaluation in term of class:
+    Parameter Decorators, followed by Method, Accessor, or Property Decorators are applied for each instance member.
+    Parameter Decorators, followed by Method, Accessor, or Property Decorators are applied for each static member.
+    Parameter Decorators are applied for the constructor.
+    Class Decorators are applied for the class.
+41.5 class decorator:
+    //is applied to the constructor of the class, it can observe, modify, repalce class definition
+    //it cannot be used in a declaration file, or in ambient context
+    //at runtime the decorator will be invoked as a funciton with only one argument, the class constructor
+    //if class decorator returns a value, it will replace the class declaration with the provided constructor function
+
+    function reportableClassDecorator<T extends new (...args: any[]) => {}> (constructor: T) {
+      return class extends constructor {
+        reportingURL = 'http://www...'
+      }
+    }
+    @reportableClassDecorator
+    class BugReport {
+      type = 'report'
+      title: string
+
+      constructor (t: string) {
+        this.title = t
+      }
+    }
+    const bug = new BugReport('Needs dark mode')
+    console.log(bug.title) // Prints "Needs dark mode"
+    console.log(bug.type) // Prints "report"
+    bug.reportingURL // error, class doesnt have this property, ts system doesnt know about it, so you either create it in class, or implement an interface that has it
+41.6 method decorator:
+    //applies to property descriptor, can be used to observe, modify or replace method definiton
+    //it cannot be used in a declaration file, or in ambient context
+    //at runtime, the expression will be called with 3 arguments:
+        //1. constructor function of the class for static member or the prototype of the class for an instance member
+        //2. the name of the member
+        //3. the property descriptor for the member // if target is under es5, descriptor is undefined
+    //if method decorator returns a value, it will be used as the property descriptor for the method //undefined if target lower than es5
+    class Greeter {
+      greeting: string;
+      constructor(message: string) {
+        this.greeting = message;
+      }
+      @enumerable(false)
+      greet() {
+        return "Hello, " + this.greeting;
+      }
+    }
+    function enumerable(value: boolean) {
+      return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        descriptor.enumerable = value;
+      };
+    }
+41.7 accessor decorators:
+    //applies to the property descriptor that can observe, modify or replace accessor definiton
+    //it cannot be used in a declaration file, or in ambient context
+    //decorator must be set either to get or set, but not both, because the decorator will apply to both descriptors
+    //at runtime, the expression will be called with 3 arguments:
+        //1. constructor function of the class for static member or the prototype of the class for an instance member
+        //2. the name of the member
+        //3. the property descriptor for the member // if target is under es5, descriptor is undefined
+    class Point {
+      private _x: number;
+      private _y: number;
+      constructor(x: number, y: number) {
+        this._x = x;
+        this._y = y;
+      }
+      @configurable(false)
+      get x() {
+        return this._x;
+      }
+      @configurable(false)
+      get y() {
+        return this._y;
+      }
+    }
+    function configurable(value: boolean) {
+      return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        descriptor.configurable = value;
+      };
+    }
+41.8 property decorators:
+    //it cannot be used in a declaration file, or in ambient context
+    //return value of the paramter is ignored
+    //at runtime, the expression will be called with 3 arguments:
+        //1. constructor function of the class for static member or the prototype of the class for an instance member
+        //2. the name of the member
+    @decorator_name
+    property_name: type
+41.9 paramter decorators:
+    //applies to function for class constructor or method declaration
+    //it cannot be used in a declaration file, or in ambient context
+    //a paramter decorator can only observe that a paramter has been declared on a method
+    //return value of the paramter is ignored
+    //at runtime, the expression will be called with 3 arguments:
+        //1. constructor function of the class for static member or the prototype of the class for an instance member
+        //2. the name of the member
+        //3. the ordinal index of the paramter in the functions paramater list
+    function a(@decorator_name var_name: type)
+42. declaration merging is basically a way to merge types together so they have both shape:
+interface Box {
+  height: number;
+  width: number;
+}
+interface Box {
+  scale: number;
+}
+let box: Box = { height: 5, width: 6, scale: 10 };
+//
+interface Cloner {
+  clone(animal: Animal): Animal;
+}
+interface Cloner {
+  clone(animal: Sheep): Sheep;
+}
+interface Cloner {
+  clone(animal: Dog): Dog;
+  clone(animal: Cat): Cat;
+}
+// transforms to:
+interface Cloner {
+  clone(animal: Dog): Dog;
+  clone(animal: Cat): Cat;
+  clone(animal: Sheep): Sheep;
+  clone(animal: Animal): Animal;
+}
+//
+interface Document {
+  createElement(tagName: any): Element;
+}
+interface Document {
+  createElement(tagName: "div"): HTMLDivElement;
+  createElement(tagName: "span"): HTMLSpanElement;
+}
+interface Document {
+  createElement(tagName: string): HTMLElement;
+  createElement(tagName: "canvas"): HTMLCanvasElement;
+}
+// because of the string literals, they go above all, then in normal way, its the only exception:
+interface Document {
+  createElement(tagName: "canvas"): HTMLCanvasElement;
+  createElement(tagName: "div"): HTMLDivElement;
+  createElement(tagName: "span"): HTMLSpanElement;
+  createElement(tagName: string): HTMLElement;
+  createElement(tagName: any): Element;
+}
+// merging namespaces
+namespace Animals {
+  export class Zebra {}
+}
+namespace Animals {
+  export interface Legged {
+    numberOfLegs: number;
+  }
+  export class Dog {}
+}
+// transforms to(the latter namespace goes above):
+namespace Animals {
+  export interface Legged {
+    numberOfLegs: number;
+  }
+  export class Zebra {}
+  export class Dog {}
+}
+// non exported members are not visible to other namespaces/declarations:
+namespace Animal {
+  let haveMuscles = true;
+  export function animalsHaveMuscles() {
+    return haveMuscles;
+  }
+}
+namespace Animal {
+  export function doAnimalsHaveMuscles() {
+    return haveMuscles; // Error, because haveMuscles is not accessible here
+  }
+}
+// another example of non exported member
+class Album {
+  label: Album.AlbumLabel;
+}
+namespace Album {
+  export class AlbumLabel {}
+}
+// function properties in a typescript way with namespaces instead of dot notation:
+function buildLabel(name: string): string {
+  return buildLabel.prefix + name + buildLabel.suffix;
+}
+namespace buildLabel {
+  export let suffix = "";
+  export let prefix = "Hello, ";
+}
+console.log(buildLabel("Sam Smith"));
+// enums:
+enum Color {
+  ed = 1,
+  reen = 2,
+  lue = 4,
+}
+namespace Color {
+  export function mixColor(colorName: string) {
+    if (colorName == "yllow") {
+      return Color.re + Color.gren;
+    } else if (colorName == "whie") {
+      return Color.re + Color.gren + Color.bue;
+    } else if (colorName == "mageta") {
+      return Color.re + Color.lue;
+    } else if (colorName == "yan") {
+      return Color.green + Color.lue;
+    }
+  }
+}
+42.1 not all merges are allowed: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#disallowed-merges
+42.2 js doesnt support module merging, but its possible: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
+43. enums - not a type lvl extension of ts. you can define a set of named constants. They can be string or number type
+43.1 numreic enums:
+    enum Direction {
+      Up = 1, // the lower constants will be auto incremented, if we would left the variable without any value, it would be 0 and the rest would be auto incremented
+      Down,  // 2
+      Left,  // 3
+      Right, // 4
+    }
+43.2 using enums:
+    enum UserResponse {
+      No = 0,
+      Yes = 1,
+    }
+    function respond(recipient: string, message: UserResponse): void {
+      // ...
+    }
+    respond("Princess Caroline", UserResponse.Yes); // you can access it through '.'
+43.3 you can mix the type in an enum, but empty variables must be at the top, or after a numberic variable:
+    enum E {
+      A = getSomeValue(),
+      B, // error, or give it a value, or define a new variable above it with a number
+    }
+43.4 string enums:
+    enum Direction {
+      Up = "UP", // they must have a string literal or another string enum as its value, empty is not allowed
+      Down = "DOWN",
+      Left = "LEFT",
+      Right = "RIGHT",
+    }
+43.5 computed and constant members:
+43.5.1 an enum member is a constant if:
+    1. It is the first member in the enum and it has no initializer, in which case it’s assigned the value 0
+    2. It does not have an initializer and the preceding enum member was a numeric constant.
+    3. The enum member is initialized with a constant enum expression.(subset of ts expression that can be evaluated at compile time):
+        1.a literal enum expression (basically a string literal or a numeric literal)
+        2. a reference to previously defined constant enum member (which can originate from a different enum)
+        3. a parenthesized constant enum expression
+        4. one of the +, -, ~ unary operators applied to constant enum expression
+        5. +, -, *, /, %, <<, >>, >>>, &, |, ^ binary operators with constant enum expressions as operands
+43.6 if value of an enum member is evaluated to NaN or Infinity - it is considered a compile time error
+43.7 Union enums and enum member types:
+    enum ShapeKind {
+      Circle, // member becomes type itself
+      Square, // member becomes type itself
+    }
+    interface Circle {
+      kind: ShapeKind.Circle;
+      radius: number;
+    }
+    interface Square {
+      kind: ShapeKind.Square;
+      sideLength: number;
+    }
+    let c: Circle = {
+      kind: ShapeKind.Square, // error,
+      radius: 100,
+    };
+43.8. enums are real objects at runtime:
+    enum E {
+      X,
+      Y,
+      Z,
+    }
+    function f(obj: { X: number }) {
+      return obj.X;
+    }
+    f(E);
+43.9 the enum itself as a type
+    enum LogLevel {
+      ERROR,
+      WARN,
+      INFO,
+      DEBUG,
+    }
+    type LogLevelStrings = keyof typeof LogLevel; // 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
+43.10 reverse mappings (only for numeric enums):
+    enum Enum {
+      A,
+    }
+    let a = Enum.A;
+    let nameOfA = Enum[a]; // "A"
+43.11 const enums:
+    const enum Enum {
+      A = 1,
+      B = A * 2,
+    }
+    const enum Direction {
+      Up,
+      Down,
+      Left,
+      Right,
+    }
+    let directions = [
+      Direction.Up,
+      Direction.Down,
+      Direction.Left,
+      Direction.Right,
+    ];
+    // generated code will be:
+    "use strict";
+    let directions = [
+        0 /* Direction.Up */,
+        1 /* Direction.Down */,
+        2 /* Direction.Left */,
+        3 /* Direction.Right */,
+    ];
+43.11.1 const enums can only use constant enum expressions(no computed values), and they are removed during compile time, unlike regular enums that are kept as objects
+43.11.2 const enum have some pitfalls: https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls
+43.11.3 do not use const enums at all for no problems with them
+43.12 ambient enums (they describe the shape of already existing enum types):
+    declare enum Enum {
+      A = 1,
+      B, // the difference is here, if a member doesnt have a value, it is considered always computed, unlike in regular enums where it is constant if the preciding member is constant. If its constant and ambient, then this rule doesnt apply
+      C = 2,
+    }
+43.13 objects vs enums(you dont need enums in modern ts, you can use 'as const' easiy):
+    const enum EDirection {
+      Up,
+      Down,
+      Left,
+      Right,
+    }
+    const ODirection = {
+      Up: 0,
+      Down: 1,
+      Left: 2,
+      Right: 3,
+    } as const;
+     
+    function walk(dir: EDirection) {}
+     
+    type Direction = typeof ODirection[keyof typeof ODirection];
+    function run(dir: Direction) {}
+     
+    walk(EDirection.Left);
+    run(ODirection.Right);
+43.14 variable of some enum type cant be assigned to another enum type
+44. generators and iterators:
+    function toArray<X> (xs: Iterable<X>): X[] { // you can use this builtin interface Interable<T> to obtain all of the iterable elements
+      return [...xs]
+    }
+45. jsx - https://www.typescriptlang.org/docs/handbook/jsx.html
+46. mixins: https://www.typescriptlang.org/docs/handbook/mixins.html
+    const Pausable = (target: typeof Player) => {
+      return class Pausable extends target {
+        shouldFreeze = false;
+      };
+    };
+    @Pausable
+    class Player {
+      x = 0;
+      y = 0;
+    }
+    const player = new Player();
+    player.shouldFreeze;
+    type FreezablePlayer = Player & { shouldFreeze: boolean }; // the preceding approaches was to imlement an interface or define the property on class, this approach shows '&' that you can intersect 2 types to get 1
+    const playerTwo = (new Player() as unknown) as FreezablePlayer;
+    playerTwo.shouldFreeze;
+    // also, static members cant be generic, right ? heres a workaround:
+    function base<T>() {
+      class Base {
+        static prop: T;
+      }
+      return Base;
+    }
+    function derived<T>() {
+      class Derived extends base<T>() {
+        static anotherProp: T;
+      }
+      return Derived;
+    }
+    class Spec extends derived<string>() {}
+    Spec.prop; // string
+    Spec.anotherProp; // string
+47. modules in nodejs: https://www.typescriptlang.org/docs/handbook/esm-node.html
+                       https://www.typescriptlang.org/docs/handbook/modules.html
+                       https://www.typescriptlang.org/docs/handbook/module-resolution.html
+48. namespaces (like modules):
+    interface StringValidator {
+      isAcceptable(s: string): boolean;
+    }
+    let lettersRegexp = /^[A-Za-z]+$/;
+    let numberRegexp = /^[0-9]+$/;
+    class LettersOnlyValidator implements StringValidator {
+      isAcceptable(s: string) {
+        return lettersRegexp.test(s);
+      }
+    }
+    class ZipCodeValidator implements StringValidator {
+      isAcceptable(s: string) {
+        return s.length === 5 && numberRegexp.test(s);
+      }
+    }
+    // Some samples to try
+    let strings = ["Hello", "98052", "101"];
+    // Validators to use
+    let validators: { [s: string]: StringValidator } = {};
+    validators["ZIP code"] = new ZipCodeValidator();
+    validators["Letters only"] = new LettersOnlyValidator();
+    // Show whether each string passed each validator
+    for (let s of strings) {
+      for (let name in validators) {
+        let isMatch = validators[name].isAcceptable(s);
+        console.log(`'${s}' ${isMatch ? "matches" : "does not match"} '${name}'.`);
+      }
+    }
+    // works fine, but as we expand, we need to give new names to not collide with the existent
+    // but we can have a builtin module that will keep it in a scope:
+    namespace Validation {
+      export interface StringValidator {
+        isAcceptable(s: string): boolean;
+      }
+      const lettersRegexp = /^[A-Za-z]+$/;
+      const numberRegexp = /^[0-9]+$/;
+      export class LettersOnlyValidator implements StringValidator {
+        isAcceptable(s: string) {
+          return lettersRegexp.test(s);
+        }
+      }
+      export class ZipCodeValidator implements StringValidator {
+        isAcceptable(s: string) {
+          return s.length === 5 && numberRegexp.test(s);
+        }
+      }
+    }
+    // Some samples to try
+    let strings = ["Hello", "98052", "101"];
+    // Validators to use
+    let validators: { [s: string]: Validation.StringValidator } = {};
+    validators["ZIP code"] = new Validation.ZipCodeValidator();
+    validators["Letters only"] = new Validation.LettersOnlyValidator();
+    // Show whether each string passed each validator
+    for (let s of strings) {
+      for (let name in validators) {
+        console.log(
+          `"${s}" - ${
+            validators[name].isAcceptable(s) ? "matches" : "does not match"
+          } ${name}`
+        );
+      }
+    }
+48.1 we can split them a cross file and combine into one:
+    //Validation.ts
+    namespace Validation {
+      export interface StringValidator {
+        isAcceptable(s: string): boolean;
+      }
+    }
+    //LettersOnlyValidator.ts
+    /// <reference path="Validation.ts" />
+    namespace Validation {
+      const lettersRegexp = /^[A-Za-z]+$/;
+      export class LettersOnlyValidator implements StringValidator {
+        isAcceptable(s: string) {
+          return lettersRegexp.test(s);
+        }
+      }
+    }
+    //ZipCodeValidator.ts
+    /// <reference path="Validation.ts" />
+    namespace Validation {
+      const numberRegexp = /^[0-9]+$/;
+      export class ZipCodeValidator implements StringValidator {
+        isAcceptable(s: string) {
+          return s.length === 5 && numberRegexp.test(s);
+        }
+      }
+    }
+    //Tests.ts
+    /// <reference path="Validation.ts" />
+    /// <reference path="LettersOnlyValidator.ts" />
+    /// <reference path="ZipCodeValidator.ts" />
+    // Some samples to try
+    let strings = ["Hello", "98052", "101"];
+    // Validators to use
+    let validators: { [s: string]: Validation.StringValidator } = {};
+    validators["ZIP code"] = new Validation.ZipCodeValidator();
+    validators["Letters only"] = new Validation.LettersOnlyValidator();
+    // Show whether each string passed each validator
+    for (let s of strings) {
+      for (let name in validators) {
+        console.log(
+          `"${s}" - ${
+            validators[name].isAcceptable(s) ? "matches" : "does not match"
+          } ${name}`
+        );
+      }
+    }
+    // now, we can combine them into one file with: tsc --outFile sample.js Test.ts
+    // or we can specify all files: tsc --outFile sample.js Validation.ts LettersOnlyValidator.ts ZipCodeValidator.ts Test.ts
+    // if we choose the per-file compilation, we would need to put all files in a script:
+                                                    <script src="Validation.js" type="text/javascript" />
+                                                    <script src="LettersOnlyValidator.js" type="text/javascript" />
+                                                    <script src="ZipCodeValidator.js" type="text/javascript" />
+                                                    <script src="Test.js" type="text/javascript" />
+
+    // we can aslo use aliases: 
+    namespace Shapes {
+      export namespace Polygons {
+        export class Triangle {}
+        export class Square {}
+      }
+    }
+    import polygons = Shapes.Polygons; // its not common js modules, its just a syntax for namespace aliases
+    let sq = new polygons.Square(); // Same as 'new Shapes.Polygons.Square()'
+49. symbols: https://www.typescriptlang.org/docs/handbook/symbols.html
+    declare const sym1: unique symbol; // you can use unique symbol type, its a subtype of symbol
+    // its procudec only from Symbol()/Symbol.for() or from excplicit type annotations
+    // works only on const variables or readonly static properties
+    // to reference to a specfici unique symbol you need to use typeof: let sym3: typeof sym1 = sym1;
+    // each reference to a unique symbol implies a completely unique identity that’s tied to a given declaration.
+50. type compatibilit table: https://www.typescriptlang.org/docs/handbook/type-compatibility.html#any-unknown-object-void-undefined-null-and-never-assignability
+51. jsdoc reference: https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
+
+
+tips:
+handling keys from objects:
+    1. as casting:
+        const user = {
+          name: "Daniel",
+          age: 26,
+        };
+        const keys = Object.keys(user) as Array<keyof typeof user>;
+        keys.forEach((key) => {
+          console.log(user[key]);
+        });
+        or
+        const keys = Object.keys(user);
+        krrs.forEach((key) => {
+          console.log(user[key as keyof typeof user]);
+        });
+    2. type predicates:
+        function isKey<T extends object>( x: T, k: PropertyKey): k is keyof T {
+          return k in x;
+        }
+        keys.forEach((key) => {
+          if (isKey(user, key)) {
+            console.log(user[key]);
+          }
+        });
+    3. generic funcs:
+        type User = {
+          name: string;
+          age: number;
+        };
+        function printEachKey<T extends object>(obj: T) {
+          for (const key in obj) {
+            console.log(obj[key]);
+       r  }
+        }

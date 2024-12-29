@@ -1,0 +1,89 @@
+core:
+      is the physical unit within a processor (CPU) that executes instructions and performs computational tasks.
+      Each core can be thought of as an independent "mini-processor" that can run its own thread of execution.
+      Modern processors often have multiple cores,
+      which allows them to execute multiple tasks (or threads) simultaneously,
+      improving performance for parallel workloads.
+
+What a Core Is:
+  1. Execution Unit:
+      1. Each core has its own set of execution units that perform arithmetic operations, logic operations,
+      and handle memory access.
+      These include components like the Arithmetic Logic Unit (ALU) and Floating Point Unit (FPU).
+      
+      2. When a thread is running on a core,
+      the core processes the instructions in that thread using these execution units.
+      
+  2. Registers:
+      A core has its own set of registers,
+      which store data like the current state of execution (program counter, stack pointer, etc.).
+      These are necessary for the core to keep track of the thread it is executing.
+      
+  3. Cache:
+      Each core typically has its own small, high-speed memory called the L1 cache,
+      which helps speed up data access for the currently running thread.
+      Larger caches (L2 and sometimes L3) are either shared between cores or dedicated to each core,
+      depending on the processor architecture.
+      
+  4. Control Logic:
+      Each core has its own control unit that interprets and directs the execution of instructions.
+      This allows the core to fetch instructions from memory, decode them, and execute them.
+  
+Relationship Between Cores and Threads:
+    1. Single-core processors:
+          In early CPUs, there was only one core, which meant the processor could only execute one thread at a time.
+          If there were multiple tasks,
+          the operating system would use context switching to rapidly alternate between them,
+          giving the illusion of multitasking.
+          
+    2. Multicore processors:
+          Modern processors have multiple cores, each capable of running its own thread.
+          For example, a quad-core CPU can run four threads concurrently, one on each core,
+          without needing to switch between tasks as frequently.
+          This allows true parallelism, where multiple tasks can run simultaneously, improving performance.
+          
+    3. Threads:
+          A thread is the smallest unit of execution that a core can run.
+          In a multithreaded application, multiple threads can run in parallel if the CPU has multiple cores,
+          or they can time-share a single core if there are more threads than cores.
+
+Hyper-Threading (Simultaneous Multithreading - SMT):
+    Some cores support Hyper-Threading or Simultaneous Multithreading (SMT),
+    which allows a single core to run more than one thread at the same time.
+    This doesn’t double the performance but allows better utilization of the core by keeping it busy when
+    one thread is stalled (e.g., waiting for data from memory).
+
+    1. Without SMT/Hyper-Threading:
+          A core can only handle one thread at a time.
+          If the thread is waiting (e.g., for I/O), the core stays idle.
+          
+    2. With SMT/Hyper-Threading:
+          The core can switch between two threads more efficiently, improving resource usage.
+          A dual-core processor with Hyper-Threading can handle four threads concurrently (two per core).
+          
+Core in Relation to Multithreading:
+    1. If a system has multiple cores:
+          each core can run a thread independently, so a 4-core CPU can run 4 threads at the same time.
+          
+    2. If there are more threads than cores:
+          the operating system will perform context switching to share cores among threads.
+          While this still allows multiple threads to "run," they take turns on the cores,
+          reducing efficiency compared to true parallel execution.
+          
+Practical Example:
+    1.  In a quad-core CPU, each core can run one thread.
+        If you're running a multithreaded program with four threads, each thread can be assigned to a different core,
+        and all four threads can execute simultaneously.
+    
+    2. If you're running eight threads on the same quad-core CPU,
+    the operating system will assign two threads per core, and the cores will switch between them,
+    time-sharing the CPU resources.
+    
+Summary:
+    1. A core is the fundamental unit within a processor that executes instructions and runs threads.
+    
+    2. Multicore processors can run multiple threads at the same time,
+    improving performance for applications that can utilize parallelism.
+    
+    3. Hyper-Threading allows a core to manage more than one thread simultaneously,
+    although with diminishing returns compared to adding more physical cores.

@@ -1,0 +1,60 @@
+# https://ghostty.org/docs/config/reference
+# OTPIONS
+theme = GitHub Dark
+# when you buy macos, use shaders
+cursor-color = #3450ee
+
+font-family =
+font-family-bold =
+font-family-italic =
+font-family-bold-italic =
+# -calt, will disable ligatures, -dlig, -liga also avaialble(will remove all features realte to ligatures)
+font-feature = 
+font-size = 16
+
+adjust-cell-height = 7
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 
+
+unfocused-split-opacity = 1
+
+window-padding-x = 0, 0
+window-padding-y = 0, 0
+# not yet supported on linux
+window-save-state = always
+
+clipboard-paste-protection = false
+
+# only on linux with systemd, enable when you will have it
+# linux-cgroup = 
+# linux-cgroup-memory-limit = 
+# linux-cgroup-processes-limit = 
+# linux-cgroup-hard-fail = 
+
+# KEYMAPS
+# create splits
+keybind = alt+enter>l=new_split:right
+keybind = alt+enter>h=new_split:left
+keybind = alt+enter>k=new_split:up
+keybind = alt+enter>j=new_split:down
+# resize splits
+keybind = ctrl+shift+left=resize_split:left,50
+keybind = ctrl+shift+right=resize_split:right,50
+keybind = ctrl+shift+up=resize_split:up,50
+keybind = ctrl+shift+down=resize_split:down,50
+# move through splits
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+# close split
+keybind = alt+w=close_window
+# scroll lines
+keybind = alt+k=scroll_page_up
+keybind = alt+j=scroll_page_down
+# increase font size
+keybind = ctrl+shift+plus=increase_font_size:1
+keybind = ctrl+shift+minus=decrease_font_size:1
+keybind = ctrl+shift+0=reset_font_size
+# keybind = alt+k=scroll_page_lines:1000

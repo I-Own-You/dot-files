@@ -1,0 +1,163 @@
+2. when performing bulk updates or bulk creates the save() method and pre/post save signals aren't called
+3. when performing bulk deletes the method delete() is not necessarily called, to call it you can use pre/save delete signals, so if you have custom logic in delete() method or pre_post delete then you must call .delete() method on each objects individually
+4. when subclassing a class, django automatically creates a one-to-one fied with parent_link=True on it, and the objects created by the child will be stored in the child class but will be available in both classes
+5. if you want a common class with common field, abstract class is the way
+6. if you want each model to have its table in an inheritance relationship, look at 4 rule.
+7. if you want to change the python behaviour of a model and not the model itself you can create a proxy class then, it helps when you need different behaviour of the same model but it will reside in another model
+8. abstract classes are not created in the db, nor can they be instantiaded, its fields just go to their childs, like common fields
+9. child class inherits the Meta class, if it want to extend it, then: class Meta(ParentClass.Meta): other code. the first Meta class will be inherited by the child class so if you want to inherit all the Meta classes from all parent classes you must specify it: class Meta(Parent1.Meta, ParentN.Meta):
+10. if use foreignkey or manytomany field on a abstract base class then you must specify related_name or related_query_name because it can have a lot of child and the name should not conflict: related_name="%(app_label)s_%(class)s_related", related_query_name="%(app_label)s_%(class)ss"
+11. if the child doesnt inherit from an abstract class, only 2 fields are accessible from parents Meta: ordering and get_latest_by, also Meta class is applied only on parent, not the child.
+12. if a child class added a foreign key or manytomany field, it must specify a related_name to it because of one-to-one field created automatically, check 4 rule.
+13. proxy models inherit Meta class ar normal models
+14. proxy models must inherit only one non-abstract class, they can inherit n abstract classes wihtout model fields, they can inherit other proxy models that share common non-abstract model
+15. if you define a custom Manager() on a proxy class it becomes default, the parent class Manager is available also, if you want a custom Manager() without becoming default there is workaround
+16. inheriting from multiple classes with a commond id(like primary key), will rainse an error, if you need to do so, create custom primary keys insteaf of djangos auto id, or create a base parent class and subclass it on models, creating a foreign key to it, then in your class that you want to subclass those 2 classes, you can do it.
+17. you can remove a field form an abstract parent class wiht field_name = None
+18. you cannot override a model field(Field class) from parent class that is not abstract
+19. field names restrictions: cant be a python reserved key, cannot have more than 1 underscore in a name, also cant end in underscore because of looup technique
+20. you can define custom field types
+21. when calling save() method to create an object, behind the scenes it makes INSERT sql into database, returns nothing
+22. when calling save() method on an object to change it, behind the scenes UPDATE sql into database is made
+23. to create and save the object in a signle step you can use create() method
+24. to update a manytomany field, use add() method, it works wiht single or more args
+25. queryset - a collection of objects from a model
+26. manager - interface through which database query operations are provided to Django models
+27. managers are accessible only from models class and not instances of the class to separate table and record operations
+28. manager is the main source for obtaining a queryset
+29. .all() method returns all the objects from a database
+30. .filer() method returns all the objects based on a condition
+31. .exclude() method exclude all the objects based on a condition
+32. you can chain queryset mehtods, like so: .filter().exluce()
+33. querysets that are chained like in 32 rule, everytime return a new queryset, so they are not bounded to previous result
+34. querysets arent evaluated untill you ask it, like print(queryset) or something siimilar, so stroing a queryset in a variable wont do any operations on database
+35. limiting queryset(slicing like [n:n]) doesnt evaluate the queryset also, but when you introduce the step, it will be evaluated [n:n:n], also any other methods like .all, .filter, .exlclude, .etc arent gonna work on sliced querysets because they dont translate well into sql, negative indexes are not supported
+36. when you call repr(queryset), it will evaluate immediately because oh how repr() work in python
+37. when you call len(queryset), the queryset is evaluated as well, but .count() would be more efficient just for number of records
+38. when you call list(queryset), the queryset is force evaluated
+39. when you call bool(queryset) or using it with and,or,if,in -  the queryset will be evaluated. If at least 1 record is present for bool(queryset) the reuslt will be true, so .exists() is more efficient
+40. .get() method will return the object itself, and will raise an error if there are no results, unlike .all() .filter() .exclude(), .etc
+41. the condition in methods performed on a manager of a model hold inside a lookup expression, a keyword arguments like field__lookuptype=value(date_created__year=2005)
+42. in case with foreign key, you can pass modelName_id in lookuptype, like .filter(blod_id=5)
+43. if you dont provide a lookuptype, then the exact lookuptype is used, like .get(id__exact=15) is the same as .get(id=15)
+44. __iexact = case insensitive lookup 
+45. contains = case sensitive containment
+46. icontains = case insensitive containment
+47. startswith = case sensitive
+48. endswith = case sensitive
+49. istartwith = case insensitive
+50. iendswith = case insensitive
+51. lookups can be any deep, like modelName__modelNameN__fieldn, reverse lookups also work, modelName__fieldN
+52. if lookup finds nothing, it doesnt raise an error, it treats it as empty valuee(NULL), like field or lookup chain(51 rule) doesnt exist at all, the only exception is __isnull=True, this will return objects that field is empty but also in case of modelName__anotherModel__name__isnull=True, will return also if anotherModel is empty for modelName, if you dont want that, in your lookup expression you must specify it like so: modelName__anotherModel__isnull=False, modelName__anotherModel__name__isnull=True
+53. if we perform a lookup exression on a model which we have a foreign key, the result with filter() method depends, so if we operate on the same model with only fields, the result will be always on the same objects from previous querysets for example: Car.objects.filter(name='mercedes').filter(serial_number=21), here the second filter always operates on the previous. But another case will be Car.objects.filter(motorModel__name='alo').filter(motorModel__year=2020), here is the tricky thing: the first filter will give us a queryset according to lookup expression, but the second filter will operate on it, and it may or may not have objects that operated on the first filter, or give new objects based on the second filter because we operate on the model level relationship and not on the field name of a single model.
+The same works with exclude() mehtod, the tricky part is that if we have something like .exclude(motorModel__name='a',motorModel__year=2002), it will exclude both entries that have motormodel name 'a' and then objects that have motorModel__year 2020, and not objects that have both condition satisfied, the opposite of .filter(). So we would have to use .exclude(motoModel__in=motorModel.objects.filter(motorModel__name='a',motorModel__year=2020))
+55. F() expressions can be used to reference to a models field in a lookup expression as value, examples: .filter(age__gt=F("year")), it also support +,-,/,*,% and power arithmetic wiht F() expressions or constants like numbers, F('year')+2, F('year')*F('year'). You can also use models field foreign key or manytomany field in any depth F('modelName__name'). Also an example would be with date like: F('year')+timedelta(year=1), also F() expressions support bitwise operations on it like methods. There are also others transormations like F() expressions
+56. the % and _ symbols are autoescaped in for LIKE statements in sql
+57. each queryset has a cache to minimize database access, the newly created querysets cache is empty, the first time queryset is evaluated and a db query happens django saves the query results in querysets cache and returns the results that has been explicitly requested, subsequent evaluations of the queryset reuse the cached results
+58. queryset is not cached in all circumstances, if only part of the queryset is evaluated then the cache is checked but it is not populated so not cached. For exmaple slicing a queryset is not evaluating all queryset result so the result are not cached, for example: 
+queryset = modelName.objects.all()
+print(queryset[index]) querys the db
+print(queryset[index]) querys the db again
+and another example:
+queryset = modelName.objects.all()
+[obj for obj in queryset] querys the db
+print(queryset[index]) uses cache
+print(queryset[index]) uses cache
+also print(queryset) wont populate the cache of the queryset because __repr__() only returns a slice of the entire queryset
+59. you can use async query
+60. also .filter() method wont reevaluate a queryset that was evaluated on which .filter() is called, instead it modifies the queryset and returns a new one
+61. aggregation methods reevaluate queryset even though cache exists for the queryset
+62. iterating over a query in a for statement will end up blocking database query because django loads the results at iteration time, the async for is a better way, async for can be used in comprehension
+63. .get() and .first() method reevaluate the queryset
+64. iterating through queryset the first time will evaluate the queryset
+65. being simple, the methods on querysets that do not have "a" prefixed, likely block the db query, not returning a new quersets and they have "a" prefixed methods for async way to not block the db query. If they do not have "a" prefix methods, then its ok to use them and they also return new querysets
+66. transactions are not supported with async querys and updates but you can write custom orm in a separate sync code function and then call it with sync_to_async
+67. you can store scalar null to json field like data=Value(None, JsonField()), but it is not recommended, and scalar null is accessed in lookup by data=None, the sql null is data=None, and accessed as data__isnull=True. If really want scalar null, then make sure null=True field option is set and a default value like default=dict is given. Also you can access the json data in lookups by: field__key__keyn__0__keyn, where constants(numbers) will convert to indexes of an array, to check if a key is missing you type: field__key__isnull=True
+68. contains on jsonfield is overriden and looks for key=value like: field__contains={key:value} and it must be on the same level of search
+69. contained_by on json field will find objects which have a subset from given key=value pair
+70. has_key on jsonfield will return the object which has the specified key, on the same search lvl
+71. has_keys on jsonfiled the same as 70 rule but you can include more than 1 key
+72. has_any_keys on jsonfield will return objects that has either of the keys specified
+73. you can use Q() objects that represents an sql condition that can be used in database-related operations, its like F() expression, the main point is that you can define and reuse conditions like so: .filter(Q(question__name='1') | Q(question__year=2002)) it supports also &(and bitwise), ^(bitwise xor) and |(bitwise or), also the condition can be more than one like Q(field__lokuptype=value, fieldn__lookuptypen=valuen, ...), also the Q() expression can be negated by putting a tilda in front of it like: ~Q(lookup expression). Also if you use .filter(Q(), Q()), or any other method with this expression, it will act like AND operation in sql between Q expressions, but the inside of Q() remains the same as described above. You can use Q() expressions with simple field lookup expressions but Q() expressions must be first, like: .filter(Q(), fieldn__lookuptypen=valuen), the other way is invalid
+74. when comparing objects of models with ==, the object.id == anotherObject.id is called, if the id is not the primary key then the primary key name is called, so whatever name is primary, it will be caled anyway, so obj == obj is the same as obj.primary_key == anotherObj.primary_key
+75. delete() method on object deletes an object, it can be used on a queryset as well, returns how many objects were deleted and a dictionary with deletions per object type
+76. if performing delete on a foreign key, the on_delete default method is CASCADE which will delete the related model object as well, it can be changed with on_delete field option on a foreign key, .delete() method is not a method from Manager class model because of the safety reason, to call it on a queryset you must excplicit it, for example .filter().delete()
+77. copying model instances cant be done with a builtin method but there is workaround like so: object.pk = None, object._state.adding = True, object.save(). If its a object that has subclassed a class, then child_object.pk = NOne, child_object.id = NOne, child_object._state.adding = True, child_object.save(), but it doesnt copy the related fields that arent part of the model like many to many: object = Model.objects.all()[0], new_objects_from_related_field = object.realted_field.all(), object.pk = None, object._state.adding = True, object.save(), object.related_field.set(new_objects_from_related_field). With one to one field you must duplicate the realted object and assign it to new copied field, object = Model.objects.all()[0], object.pk = NOne, object._state.adding = True, object.realted_one_to_one_field = object_that_will_point_to_one-to-one-field
+78. update() method can update a queryset that will operate on all objects within it, only non-related fields nad foreign key can be updated like that, returns the number of rows the query matched that can be different from the number of rows updated because they can have the new value already. Also you cant update the realted_field fields, only the models tables fields which we operate on, update() basically is a raw sql code, it doesnt trigger auto_now field on date fields, also you can use F() expressions but remember that update() only can update models fields so lookups to another models in F() expression will trigger an error
+79. you can access a realted field from the model like field.related_name, or from the model which you point(backward) like object.model_set.all()
+80. if a foreign key has null=True, then you can assign it to None so the relation is removed
+81. forward access to related field cached the result first time it is accessed, so the second time it uses the cache, like: 
+obj = Model.objects.get(id=2)
+print(object.related_field) retrieve the associated object from the db
+print(object.related_field) uses the cache
+82. the select_related() method recursively prepopulates the cache of all one-to-many relationships ahead of time
+object = Mode.object.select_related().get(id=2)
+print(object.related_field) uses the cache
+print(object.related_field) uses the cache
+83. you can specify a related_name field option on a related field of a model to change the name of model_set for backward accessing related_fields
+84. RelatedManager is used for backward accessing related fields, its a subclass from Manager, the default of a model, you can define a custom one
+85. many to many related fields are accessed as well as foreign key, forward: obj.realated_field, backward: obj.model_set, it also has related_name and unlike foreign key it accepts primary keys in add, set, remove methods on related fields methods, so .set([e1,e2]), same as .set([e1.pk,e2.pk])
+86. one to one related fields acts the same but with different backwrd accessing, it has obj.modelname without _set and its a single object rather than a collection, raises error if there are not objects if accessed from backward way
+87. the backward relationship is possible because every app from installed_apps are imported then models module in each application, for this reason its important to keep apps in installed_apps so the relationship to work properly
+88. querys of related fields follow the same rules as normal querys on simple model fields, so for example: .filter(blog=b) same as .filter(blog=b.id) same as .filter(blog=5) (directly using the id), blog here is the related field
+Aggregation:
+89. .count() returns the total number of objects
+90. .aggregate(Avg("field_name")) returns the average value of all fields
+91. .aggregate(Max("field_name")) return max value of all fields
+92. .aggregate(price_dif=Max("field_name") - Avg("field_name")) as a result returns a dictionary {'price_dif':result of aggregation}
+93. .annotate(new_name=Count('field_name')) returns objects with a new attribute that can be accessed as queryset_name.new_name
+94. you can also create the aggregation separate and then use it:
+separate_aggregation = Coun('field_name', filter=Q(lookup expression))
+.annotate(new_name=separate_aggregation)
+95. also you can chain the aggregation and query methods: .annotate(Count('field_name')).order_by('field_name')
+96. the name of aggregation is computed so if the field name is 'alo' for exmaple, and the aggregate functioin is Max, the dictionary name that would be returned is: {'alo__max': result}, to specify a custom name, the first argument of aggregation function must be: name=aggregate expression
+97. you can also include in an aggregate function more than 1 aggregate expression like so: .aggregate(Avg(), Max(), Count())
+98. when using .annotate() aggregation, every object will be annotated with the aggregation result like object.annotated_name = result, its a per-object summarise, so it returns the queryset, unlike .aggregate() that return only a dictionary with key:value
+99. using multiple aggregate expressions in .annotate() will lead to wrong results: .annotate(Max(),Count()) for example, the Count() aggregate expression has a distinct=True option that can help, but only Count() has it
+100. you can also youse __ for deep lookup through related fields like in lookup expression,F(),Q() .etc, like: .annotate(Count('related_filed_name__field_name')), it also work with .aggregate(Count('related_filed_name__field_name'))
+101. filter argument of an aggregation expression both on .annotate or .aggregate must be avoided if its used only for one conditioinal in an aggregate expression, you must use .filter() on queryset instead, or the aggregate expression must have 2 or more conditional in aggregation function like:
+highly_rated = Count("book", filter=Q(book__rating__gte=7))
+Author.objects.annotate(num_books=Count("book"), highly_rated_books=highly_rated) its ok because of 2 conditionals
+102. you can inspect the sql of query like so: str(queryset.query)
+103. if .annotate is used on .values() method, the .values() returns group of all objects combined together, and if there are unique data in the field_name that was specified in .values() then their data from the field specified form annotated expression within .annotate() function will be merged and annotation will be applied on both or all unique data merged as one field, for example:
+Author.objects.annotate(average_rating=Avg('book__rating')) all objects from author will have average_rating no matter of unique data
+Author.objects.values("name").annotate(average_rating=Avg("book__rating")) the objects with unique book__rating will be merged and act like 1 field from .values('name') group
+104. the name provided by aggregate expression or custom name from aggregate function as argument can be included after in other methods as .filter(), .values(), .etc because the annotation will put like an attribute to the objects from queryset given by .annotate()
+106. each database in django has its own module where it has some aggregate function and tools for better and wider functionality, it relays in django.contrib.db_name
+107. Manager() class is the default models class through which the model can access db data with different methods like .filter() .etc
+108. default manager of a model is auto given to models, and its called objects, you can change it in the models class by doing: field_name = models.Manager()
+109. you can attach as many Managers as you want in django
+Optimization
+110. attributed of an model instance is cached as well but not in all circumstances:
+obj.attribute - query db for attribute
+obj.attribute - cached version used
+if you implement a custom attribute, its up to you to implement cache for that
+111. {% with %} template tag help with cache
+112. iterator() help when you have a lot of objects cached that results in a lot of memory used
+113. explain() gives you detailed information about how the database executes a query, including indexes and joins that are used
+114. filter() and exclude() works great for most basic filtering in the database
+115. F() expression work great for using the fields of the same model
+116. .annotate() and .aggregate() works great for aggregation in the database
+117. RawSQL expression works great if neither help you with your task
+118. raw sql works at the end if really neither helped you
+119. retrieve individual objects that are unique and indexed, like primary keys, .get(id=10) is faster than .get(name='alaa')
+120. retrieveing everything at once might be more efficient than querying n times for small parts
+121. select_related(), prefetch_related(), prefetch_related_objects() must be used when and where needed
+122 .values() and .list() are more efficient than retrieving whole objects from db, at least if it has the needed attributes
+123. defer() and only() must be used when needed, its best when you dont need a column in most cases, but if you will, the use of defer() andm only() can happen to be a inneficcient way because a separate query will be done to retrieve that column, its best for text data or processing fields
+124. .contains() best for checking if a obj is in queryset, rather than if obj in queryset
+125. count() best when only the counter needed, isntead of len()
+126. exists() best for checking if at elast 1 obj exists rather than if queryset
+127. dont overuse contains(), count(), exists() because they all evaluate, if you need them all, better will be to store all objects in a variable and use that variable with len, if, in, it will do 0 querys is .all() is false, or 1 query to retrieve objects, and then cache will be used
+128. bulk update() and delete() is a good usage because of clean sql, but keep in mind it doesnt call .save(),.delete() and pre/post signals for them
+129. using a foreign key value from the model itself is faster than through the objects: obj.related_field_id faster than obj.related_field.id
+130. dont order objects if you dont need it, so if the db has an ordering set, remove it if you dont need it in particular with .order_by(), adding index can improve the performance of ordering of a db
+131. use bulk methods to reduce the number of sql methods: bulk_create(),bulk_update().But there are caveats to these mehtods so read about it before
+132. when inserting objs into m2m fields, use add() with multiple objs to reduce the sql query
+133. when inserting different pair of objs into m2m fields or if through= custom field is defined, use bulk_create(), there are caveats so read about them before
+134. when removing objs from m2m fields use remove() with multiple objs, reduce the sql querys
+135. when removing different pairs of objs from m2m fields use delete() on a Q() expression with multiple through model instances
+136. fixture - collection of files that contain the serialized contents of the database, you can use it to populate a dataabase with data. Django looks into fixtures dir of every app, in any dir included in FIXTURE_DIRS in the settings, in the path named by the fixture, fixture has different types, fixtures are saved in the db without .save() method, and pre/post signals will be called with raw=True, if you omit the fixture extension that it will look for the first fixture with the given name, but if the fixtures are compressed the db will revert changes and abort the operation if only the name was given but in the dir were many with different extensions
+python manage.py dumpdata - serialize data
+137. view - a function that takes a request and returns a response
+138. middleware - a low level plugin like a hook for altering request/response of djano, all middlewares are called on view before response is given. Middlewares are run form top to bottom when processing requests, and from bottom to top when giving the response so if one gives an exception, process or template response, the above middlewares will do nothing 

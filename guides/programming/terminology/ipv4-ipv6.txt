@@ -1,0 +1,100 @@
+IPv4:
+  1. addresses consist of two things: (network address and host address)
+  2. stands for Internet Protocol version four.
+  3. was introduced in 1981 by DARPA.
+  4. was the first deployed version in 1982 for production on SATNET and on the ARPANET in January 1983.
+  5. is 32-bit integers length that have to be expressed in decimal notation.
+  6. it is represented by 4 numbers separated by dots in the range of 0-255,
+     which have to be converted to 0 and 1, to be understood by computers, example: 189.123.123.90
+
+drawbacks of IPv4:
+  1. limited address space:
+    IPv4 has a limited number of addresses,
+    which is not enough for the growing number of devices connecting to the internet.
+    
+  2. complex configuration:
+    IPv4 often requires manual configuration or DHCP to assign addresses,
+    which can be time-consuming and prone to errors.
+    
+  3. less efficient routing:
+    The IPv4 header is more complex, which can slow down data processing and routing.
+    
+  4. security issues:
+    IPv4 does not have built-in security features,
+    making it more vulnerable to attacks unless extra security measures are added.
+  
+  5. limited support for quality of service (QoS):
+    IPv4 has limited capabilities for prioritizing certain types of data,
+    which can affect the performance of real-time applications like video streaming and VoIP.
+    
+  6. fragmentation:
+    IPv4 allows routers to fragment packets,
+    which can lead to inefficiencies and increased chances of data being lost or corrupted.
+    
+  7. broadcasting overhead:
+    IPv4 uses broadcasting to communicate with multiple devices on a network,
+    which can create unnecessary network traffic and reduce performance.
+
+
+IPv6:
+  1. based on IPv4 and stands for Internet Protocol version 6.
+  2. was first introduced in December 1995 by Internet Engineering Task Force.
+  3. new version of Internet Protocol, better than IPv4 in terms of complexity and efficiency.
+  4. is written as a group of 8 hexadecimal numbers separated by colon (:).
+  5. it can be written as 128 bits of 0s and 1s. 
+  6. example: ABCD:EF01:2345:6789:ABCD:B201:5482:D023
+
+benefits of IPv6:
+  1. larger address space:
+    IPv6 has a greater address space than IPv4, which is required for expanding the IP Connected Devices.
+    IPv6 has 128 bit IP Address rather and IPv4 has a 32-bit Address.
+    
+  2. improved security:
+    IPv6 has some improved security which is built in with it.
+    IPv6 offers security like Data Authentication, Data Encryption, etc.
+    Here, an Internet Connection is more Secure.
+    
+  3. simplified header format:
+      As compared to IPv4, IPv6 has a simpler and more effective header Structure,
+      which is more cost-effective and also increases the speed of Internet Connection.
+      
+  4. prioritize:
+    IPv6 contains stronger and more reliable support for QoS features,
+    which helps in increasing traffic over websites and increases audio and video quality on pages.
+    
+  5. improved support for mobile devices:
+    IPv6 has increased and better support for Mobile Devices.
+    It helps in making quick connections over other Mobile Devices and in a safer way than IPv4.
+
+switching from IPv4 to IPv6:
+  1. dual stacking:
+    Devices can use both IPv4 and IPv6 at the same time.
+    This way, they can talk to networks and devices using either version.
+    
+  2. tunneling:
+    This method allows IPv6 users to send data through an IPv4 network to reach other IPv6 users.
+    Think of it as creating a “tunnel” for IPv6 traffic through the older IPv4 system.
+    
+  3. network address translation (NAT):
+    NAT helps devices using different versions of IP addresses (IPv4 and IPv6)
+    to communicate with each other by translating the addresses so they understand each other.
+
+
+differences between IPv4 and IPv6:
+  1.  IPv4 has a 32-bit address length                                                                              1. IPv6 has a 128-bit address length
+  2.  It Supports Manual and DHCP address configuration                                                             2. It supports Auto and renumbering address configuration
+  3.  In IPv4 end to end, connection integrity is Unachievable                                                      3. In IPv6 end-to-end, connection integrity is Achievable
+  4.  It can generate 4.29×10 9 address space                                                                       4. The address space of IPv6 is quite large it can produce 3.4×10 38 address space
+  5.  The Security feature is dependent on the application                                                          5. IPSEC is an inbuilt security feature in the IPv6 protocol
+  6.  Address representation of IPv4 is in decimal                                                                  6. Address representation of IPv6 is in hexadecimal
+  7.  Fragmentation performed by Sender and forwarding routers                                                      7. In IPv6 fragmentation is performed only by the sender
+  8.  In IPv4 Packet flow identification is not available                                                           8. In IPv6 packet flow identification are Available and uses the flow label field in the header
+  9.  In IPv4 checksum field is available                                                                           9. In IPv6 checksum field is not available
+  10. It has a broadcast Message Transmission Scheme                                                                10. In IPv6 multicast and anycast message transmission scheme is available
+  11. In IPv4 Encryption and Authentication facility not provided                                                   11. In IPv6 Encryption and Authentication are provided
+  12. IPv4 has a header of 20-60 bytes.                                                                             12. IPv6 has a header of 40 bytes fixed
+  13. IPv4 can be converted to IPv6                                                                                 13. Not all IPv6 can be converted to IPv4
+  14. IPv4 consists of 4 fields which are separated by addresses dot (.)                                            14. IPv6 consists of 8 fields, which are separated by a colon (:)
+  15. IPv4’s  IP addresses are divided into five different classes. Class A , Class B, Class C, Class D , Class E. 	15. IPv6 does not have any classes of the IP address.
+  16. IPv4 supports VLSM( Variable Length subnet mask ).                                                            16. IPv6 does not support VLSM.
+  17. Example of IPv4:  66.94.29.13                                                                                 17. Example of IPv6: 2001:0000:3238:DFE1:0063:0000:0000:FEFB 

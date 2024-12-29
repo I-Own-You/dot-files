@@ -1,0 +1,1 @@
+-- more info: https://www.postgresql.org/docs/current/ddl-priv.html

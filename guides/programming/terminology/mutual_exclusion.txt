@@ -1,0 +1,8 @@
+mutual exclusion:
+                  is a property of concurrency control,
+                  which is instituted for the purpose of preventing race conditions.
+                  
+                  It is the requirement that one thread of execution never enters a critical section while,
+                  a concurrent thread of execution is already accessing said critical section,
+                  which refers to an interval of time during which a thread of execution accesses,
+                  a shared resource or shared memory.

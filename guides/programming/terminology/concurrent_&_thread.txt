@@ -1,0 +1,59 @@
+Concurrency:
+1. Definition:
+      Concurrency refers to the ability of a system to handle multiple tasks
+      or processes at the same time by interleaving their execution.
+      It is about dealing with lots of things at once, but not necessarily executing them simultaneously.
+2. Goal:
+      The main goal of concurrency is to manage multiple tasks efficiently,
+      which may involve task switching or time-sharing.
+3. Example:
+      A single-core CPU running multiple threads or processes where each task is given a slice of time to execute.
+      For instance, a web server handling multiple requests by switching between them,
+      even if only one request is being processed at a time.
+
+Parallelism: 
+1. Definition:
+      Parallelism refers to the simultaneous execution of multiple tasks or processes.
+      It involves executing multiple operations at the same time, typically on multiple cores or processors.
+2. Goal:
+      The main goal of parallelism is to speed up processing
+      by leveraging multiple processing units to perform tasks simultaneously.
+3. Example:
+      A multi-core CPU executing multiple threads or processes at the exact same time.
+      For example, a video rendering application using all available cores
+      to process different parts of the video simultaneously.
+
+Key Differences:
+  1. Execution:
+      1. Concurrency:
+          Tasks may be interleaved or managed in a way that gives the illusion of simultaneous execution.
+          It's about managing multiple tasks, but not necessarily executing them at the same time.
+      2. Parallelism:
+          Tasks are actually executed simultaneously, leveraging multiple processing units.
+  2.Hardware Utilization:
+      1. Concurrency:
+          Can be achieved on a single-core CPU by rapidly switching between tasks.
+          It does not require multiple processors or cores.
+      2. Parallelism:
+          Requires multiple cores or processors to execute tasks simultaneously.
+  3. Scope:
+      1. Concurrency:
+          Applies to task management and scheduling,
+          ensuring that multiple tasks can be handled effectively over time.
+      2. Parallelism:
+          Applies to actual simultaneous execution of tasks,
+          focusing on performance improvement through concurrent execution.
+
+Example Scenarios:
+    1. Concurrency Example:
+        An online ticket booking system where multiple users are booking tickets at the same time.
+        The system handles multiple booking requests by interleaving their processing,
+        ensuring that each request gets handled in an efficient manner.
+    2. Parallelism Example:
+        A scientific computation application that performs calculations on large datasets,
+        using multiple CPU cores to process different parts of the dataset simultaneously.
+
+Integration:
+    Many modern systems use both concurrency and parallelism.
+    For instance, a web server might handle multiple incoming requests concurrently and,
+    within each request, perform parallel computations to improve performance.

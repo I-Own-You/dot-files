@@ -1,0 +1,54 @@
+Core:
+  1. Definition:
+    1. A core is an individual processing unit within a CPU.
+    Each core is capable of executing its own set of instructions independently of the others.
+  2. Functionality:
+    1. Parallel Processing:
+          Multiple cores allow a CPU to perform multiple tasks simultaneously,
+          which is known as parallel processing.
+          For example, a quad-core processor can handle four tasks at the same time.
+    2. Performance:
+          More cores generally mean better performance,
+          especially for multitasking and applications designed to utilize multiple cores
+          (like video editing software, 2D rendering, and some games).
+
+Thread:
+  1.Definition:
+      A thread is the smallest sequence of programmed instructions
+      that can be managed independently by a scheduler, which is typically a part of the operating system.
+  2. Functionality:
+      1.Hyper-Threading/Simultaneous Multithreading (SMT):
+          Modern CPUs can split a single physical core into multiple threads
+          (usually two), effectively allowing each core to perform two tasks simultaneously.
+          This is often referred to as Hyper-Threading (in Intel CPUs) or
+          Simultaneous Multithreading (SMT) (in AMD CPUs).
+      2. Logical vs. Physical Cores:
+          Threads are sometimes referred to as logical cores because they aren't physical processing units
+          like cores but virtual ones created by the CPU to handle more tasks concurrently.
+
+Core vs. Thread:
+  1. Cores are the physical hardware units on the CPU that process instructions.
+     More cores generally improve performance in multi-core applications.
+  2. Threads are the virtual units that split the work done by a single core.
+     A CPU with Hyper-Threading can handle more tasks simultaneously,
+     but each thread shares the resources of a single core,
+     so it's not as powerful as having more physical cores.
+
+Example:
+  A quad-core CPU with Hyper-Threading can handle 8 threads simultaneously (4 cores x 2 threads per core).
+  This setup allows the CPU to manage more tasks concurrently than a quad-core CPU without Hyper-Threading,
+  but it still has only 4 physical cores doing the work.
+
+Performance Consideration:
+  1. Multithreaded Applications:
+      Applications designed to use multiple threads will benefit significantly
+      from both more cores and more threads.
+  2. Single-Threaded Applications:
+      These applications won’t benefit as much from additional cores or threads
+      because they are limited to using one thread at a time.
+
+Summary:
+    Cores represent the physical hardware, determining the number of tasks that can be run in parallel.
+    Threads represent the ability to run multiple processes on a single core,
+    effectively increasing the number of concurrent tasks,
+    although with less impact than having additional physical cores.

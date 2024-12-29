@@ -1,0 +1,11 @@
+# type: ignore  (ignore type checking for a specific line/code block)
+# type: <type>  (excliplicit type hints), ex: # type: List[int], .etc
+# type: ignore[return-value]  (tells type checker to ignore the return value of the function), ex: result = some_func(), some_func() result type is ignored
+# type: ignore[no-redef] (ignore type checking when a func/class is redefined)
+# type: ignore[error] (ignore type checking errors for a specific line/code block)
+# type: ignore[assignment] (ignore type checking for specific assignment)
+# type: ignore[misc] (ignore type checking for every error possible)
+# type: ignore[attr] (ignore type checking for attribute class)
+# type: ignore[union-attr] (ignore type checking for union types and attribute access)
+# type: ignore[override] (ignore type checking for method overrides)
+# type: ignore[arg-type] (ignore type checking for arguments in func/methods)

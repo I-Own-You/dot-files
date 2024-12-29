@@ -1,0 +1,89 @@
+The limit of threads on a single processor is influenced by several factors,
+including hardware and operating system limitations.
+While there isn’t a hard universal limit that applies in every case,
+several constraints determine how many threads can run effectively on a single processor.
+
+1. Hardware Constraints (Logical Cores):
+      1. Single-core Processor:
+            On a physical core, only one thread can execute at any given moment.
+            If you have a single-core processor, it can only execute one thread at a time.
+            However, through context switching, the operating system can give the appearance
+            of running multiple threads by rapidly switching between them.
+
+      2. Multicore Processor:
+            1. Modern processors have multiple cores, and each core can handle one or more threads.
+               Some processors also support Hyper-Threading or Simultaneous Multithreading (SMT),
+               where each core can execute multiple threads simultaneously.
+               For example,
+               a processor with 4 cores and Hyper-Threading might handle 8 threads concurrently (2 threads per core).
+
+            2. Logical processors:
+                    A core with Hyper-Threading appears to the operating system as two "logical processors" but
+                    still shares physical resources.
+                    This means you can run more threads simultaneously,
+                    but the performance may not scale linearly with the number of threads.
+                    
+2. Operating System Constraints:
+      1. Thread Limits in the OS:
+            Operating systems have limits on how many threads can be created.
+            These limits are based on system resources like memory and scheduling capacity.
+            
+            1. On Linux:
+                  the default limit for the number of threads per process can be high,
+                  sometimes over 10,000, but this can vary depending on configuration and available resources.
+
+            2. On Windows:
+                  the number of threads is similarly constrained by system resources, but there is no fixed limit.
+                  The practical limit might be around a few thousand threads per process.
+                  
+            The operating system has to manage scheduling, memory allocation, and other overhead for each thread,
+            so performance will degrade if too many threads are created.
+            
+3. Context Switching Overhead:
+         Even though you can create thousands of threads,
+         a single processor can only execute one thread at a time (per core).
+         The operating system switches between threads,
+         saving and restoring the thread state (registers, program counter, etc.).
+         This context switching introduces overhead, and as the number of threads increases,
+         the time spent switching between them increases too,
+         which can lead to inefficiency if too many threads are created.
+         
+4. Memory Constraints:
+        Each thread requires stack memory (usually between 1MB to 8MB by default, depending on the OS).
+        If you create too many threads,
+        you can run out of memory or encounter performance degradation due to excessive memory consumption.
+        
+5. Application and Design Constraints:
+        In practice, applications that create too many threads often experience diminishing returns.
+        This is why frameworks and languages (like Go with goroutines) prefer lightweight abstractions
+        that are more efficient than traditional threads.
+        
+Practical Limits:
+      1. Single-core systems:
+            On a single-core system,
+            the practical limit is often around a few thousand threads due to the overhead of context switching and
+            memory usage.
+            
+      2. Multicore systems:
+            On multicore systems,
+            the effective number of threads you can run concurrently increases,
+            but it’s still limited by the number of physical cores and logical processors.
+            Typically, each core might handle 2 to 4 threads concurrently with hyper-threading,
+            but the practical limit depends on workload and system resources.
+            
+Efficient Alternatives to Threads:
+      Languages like Go use goroutines (which are more lightweight than threads)
+      to avoid the heavy overhead of context switching and memory usage.
+      Goroutines are multiplexed onto a smaller number of actual OS threads by the Go runtime,
+      making them more scalable than traditional threads.
+      
+Summary:
+      1. The number of threads that can be run on a single processor is constrained by hardware
+      (number of cores and threads per core), the operating system (thread limits), and memory usage.
+      
+      2. A single core can execute only one thread at a time,
+      and the number of threads a processor can handle effectively depends on how well the operating system manages
+      context switching and scheduling.
+      
+      3. The practical thread limit for modern systems is often several thousand, but in practice,
+      creating too many threads can degrade performance due to context switching overhead.

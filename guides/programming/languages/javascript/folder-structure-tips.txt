@@ -1,0 +1,34 @@
+src/ - root folder
+components/ - all custom components within its folders: components/user/*.tsx, .etc
+              ui/
+              layout/
+              forms/
+              .etc
+lib/ - general code for whole project usability: cookies, integrations, configurations, .etc
+utils/ or helpers/ - utility functions and helper methods
+hooks/ - custom hooks
+context/ - react context definitions and providers: ThemeContext, AuthContext, .etc
+types/ or interfaces/ - type definitions and interfaces: User.ts, ApiReponse.ts
+styles/ - global styles and theme definitions
+config/ - configuration files and environment variables: constants.js, env.js, .etc
+services/ or api/ - api service layers or external service integrations: userService.js, paymentApi.js, .etc
+models/ - if using an ORM or working directly with data models: User.js, Product.js, .etc
+middleware/ - (if supported for many) custom middleware functions: authMiddleware, logginMiddleware, .etc
+store/ - if using Redux or similar state management, global state management: reducers, actions, store configs
+
+src/
+│
+├── components/
+│   ├── ui/
+│   └── layout/
+├── lib/
+├── utils/
+├── hooks/
+├── context/
+├── types/
+├── styles/
+├── config/
+├── services/
+├── models/
+├── middleware/
+└── store/
