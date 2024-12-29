@@ -1,0 +1,40 @@
+1. Storage
+    Session:
+        Stores user data on the server (e.g., in memory, database).
+        A session ID is sent to the client as a cookie to identify the user.
+    JWT: 
+        Stores user data directly in the token, which is sent to the client.
+        The client sends the token back with each request (e.g., in headers).
+2. Scalability
+    Session:
+        Less scalable, as the server must manage session storage for all users.
+        Requires synchronization in distributed systems.
+    JWT: 
+        More scalable, as the server doesn’t store user data.
+        Tokens are self-contained and can be verified without extra storage.
+3. Data
+    Session: Only the session ID is sent to the client; actual user data stays on the server.
+    JWT: Encodes user data (e.g., user ID, roles) in the token itself, typically as a signed payload.
+4. State
+    Session: 
+        Stateful. The server needs to maintain session state for each user.
+    JWT: 
+        Stateless. The server only verifies the token and does not need to track user state.
+5. Security
+    Session:
+        More secure if implemented properly since sensitive data stays on the server.
+    JWT: 
+        Can be less secure if the token is exposed (XSS, local storage compromise, .etc), as it contains user data.
+6. Revocation
+    Session:
+        Easy to revoke by clearing the session on the server.
+    JWT: 
+        Harder to revoke because tokens are self-contained.
+        Revocation often requires a blacklist or short token expiration.
+7. Use Cases
+    Session:
+        Best for traditional web apps where the server handles most of the logic.
+    JWT:
+        Ideal for APIs, microservices, and stateless architectures where scalability is key.
+
+(Session keeps user data on the server, while JWT pushes user data to the client in a token.)
