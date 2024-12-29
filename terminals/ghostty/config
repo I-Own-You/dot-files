@@ -59,4 +59,11 @@ keybind = alt+shift+k=jump_to_prompt:-1
 keybind = ctrl+shift+plus=increase_font_size:1
 keybind = ctrl+shift+minus=decrease_font_size:1
 keybind = ctrl+shift+0=reset_font_size
+# toggle tab overview
+keybind = ctrl+shift+o=toggle_tab_overview
+# move tabs
+keybind = shift+ctrl+comma=move_tab:-1
+keybind = shift+ctrl+period=move_tab:+1
+# reload config
+keybind = ctrl+shift+f2=reload_config
 # keybind = alt+k=scroll_page_lines:1000
