@@ -1,0 +1,212 @@
+{
+    "features": {
+        "inline_completion_provider": "none"
+    },
+
+    // ui related
+    "ui_font_size": 17,
+    "ui_font_weight": 300,
+    "ui_font_family": "JetBrainsMono Nerd Font",
+    "buffer_font_size": 21,
+    "buffer_font_weight": 300,
+    "buffer_font_family": "JetBrainsMono Nerd Font",
+    "buffer_line_height": { "custom": 1.7 },
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "One Dark"
+    },
+    "current_line_highlight": "all",
+    "cursor_blink": false,
+    "file_finder": { "modal_max_width": "large" },
+    "preferred_line_length": 80,
+    "show_whitespaces": "selection",
+    "soft_wrap": "none",
+    "tab_size": 4,
+    "unnecessary_code_fade": 0.3,
+
+    // telemtetry
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    },
+
+    // extensions
+    "auto_install_extensions": {},
+
+    // save
+    "autosave": "off",
+    "ensure_final_newline_on_save": true,
+    "remove_trailing_whitespace_on_save": true,
+
+    // format
+    "format_on_save": "on",
+    // you can also perform format with custom commands
+    // you can also use more than 1 formatter consecutively
+    // https://zed.dev/docs/configuring-zed#formatter
+    // tip: this is the default formatter for eveyrhting, so better setup formatters for each
+    // kind of filetype with "languages" option.
+    // it also has code_actions inside, but anyway better to setup for each language separately.
+    "formatter": "auto",
+
+    // sessioin restoration
+    "restore_on_startup": "last_session",
+
+    // updates
+    "auto_update": true,
+
+    // completions
+    // "inline_completions": {
+    // "disabled_globs": [".env"]
+    // },
+    // "show_completions_on_input": true,
+    // "show_completion_documentation": true,
+    // "show_inline_completions": true,
+
+    // lsp settings
+    "enable_language_server": true,
+    "lsp_highlight_debounce": 75,
+    // lsp setup
+    // "lsp": {
+    // "your-language-server": {
+    // "initialization_options": {}, // options can be set only during startup
+    // "settings": {} // options can be set during runtime
+    // },
+    // },
+    "languages": {
+        "JavaScript": {
+            "enable_language_server": true
+        }
+    },
+
+    // editor scrollbar
+    "scrollbar": {
+        "show": "auto",
+        "cursors": true,
+        "git_diff": true,
+        "search_results": true,
+        "selected_symbol": true,
+        "diagnostics": true,
+        "axes": {
+            "horizontal": true,
+            "vertical": true
+        }
+    },
+    // editor tab bar
+    "tab_bar": {
+        "show": true,
+        "show_nav_history_buttons": false
+    },
+    // editor tabs (all tabs, not the tab bar where tabs are placed)
+    "tabs": {
+        "close_position": "right",
+        "file_icons": false,
+        "git_status": false,
+        "activate_on_close": "history",
+        "always_show_close_button": false
+    },
+    // "preview_tabs": {},
+    // editor toolbar
+    "toolbar": {
+        "breadcrumbs": true,
+        "quick_actions": true
+    },
+
+    // automatically close matching (, [, {, ', "
+    "use_autoclose": true,
+    "always_treat_brackets_as_autoclosed": false,
+
+    // search
+    // "search": {
+    //   "case_sensitive": false,
+    //   "include_ignored": false,
+    //   "regex": false,
+    //   "whole_word": false
+    // },
+
+    // exclude files
+    // skipped during files scan, files search, hidden from project file tree
+    "file_scan_exclusions": [
+        // default settings are needed because if i specify without the default settings,
+        // it will overwrite them.
+        "**/.git",
+        "**/.svn",
+        "**/.hg",
+        "**/.jj",
+        "**/CVS",
+        "**/.DS_Store",
+        "**/Thumbs.db",
+        "**/.classpath",
+        "**/.settings",
+        // my files
+        "**/node_modules"
+    ],
+
+    // file types
+    // you can change its interpreted extensions
+    // "file_types": {
+    //   "C++": ["c"],
+    //   "TOML": ["MyLockFile"],
+    //   "Dockerfile": ["Dockerfile*"]
+    // },
+
+    // git
+    "git": {
+        // "git_gutter": "tracked_files",
+        // "gutter_debounce": null,
+        "inline_blame": {
+            // "enabled": true,
+            // "delay_ms": 0,
+            // "min_column": 0,
+            "show_commit_summary": true
+        }
+    },
+
+    // indentation
+    "indent_guides": {
+        // "enabled": true,
+        // "active_line_width": 1,
+        // "background_coloring": "disabled",
+        // "line_width": 1,
+        "coloring": "indent_aware"
+    },
+
+    // vim
+    "vim_mode": true,
+    "vim": {
+        // "custom_digraphs": {},
+        // "highlight_on_yank_duration": 0,
+        // "toggle_relative_line_numbers": true,
+        "use_system_clipboard": "always"
+        // "use_multiline_find": false,
+        // "use_smartcase_find": false,
+    },
+    "hover_popover_enabled": true
+
+    // inlay hints
+    // additional settings may require in "lsp"
+    // "inlay_hints": {
+    // "edit_debounce_ms": 700,
+    // "enabled": false,
+    // "scroll_debounce_ms": 50,
+    // "show_background": false,
+    // "show_other_hints": true,
+    // "show_parameter_hints": true,
+    // "show_type_hints": true
+    // },
+
+    // terminal: https://zed.dev/docs/configuring-zed#terminal
+    // "terminal": {},
+
+    // project panel (file tree) https://zed.dev/docs/configuring-zed#project-panel
+    // "project_panel": {},
+    //
+    // assistant panel https://zed.dev/docs/configuring-zed#assistant-panel
+    // "assistant":{},
+
+    // outline panel (symbols) https://zed.dev/docs/configuring-zed#outline-panel
+    // "outline_panel": {},
+
+    // calls https://zed.dev/docs/configuring-zed#calls
+    // "calls": {},
+}
