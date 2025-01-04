@@ -90,6 +90,7 @@ ttf-font-awesome
 gnome-keyring(for vscode)
 httraqt
 keepassxc
+zed
 
 #yazi file manager 
 yazi (file manager)
