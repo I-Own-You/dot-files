@@ -2,7 +2,6 @@
     "features": {
         "inline_completion_provider": "none"
     },
-
     // ui related
     "ui_font_size": 17,
     "ui_font_weight": 300,
@@ -10,7 +9,9 @@
     "buffer_font_size": 21,
     "buffer_font_weight": 300,
     "buffer_font_family": "JetBrainsMono Nerd Font",
-    "buffer_line_height": { "custom": 1.7 },
+    "buffer_line_height": {
+        "custom": 1.7
+    },
     "theme": {
         "mode": "system",
         "light": "One Light",
@@ -18,29 +19,27 @@
     },
     "current_line_highlight": "all",
     "cursor_blink": false,
-    "file_finder": { "modal_max_width": "large" },
+    "file_finder": {
+        "modal_max_width": "large"
+    },
     "preferred_line_length": 80,
     "show_whitespaces": "selection",
     "soft_wrap": "none",
     "tab_size": 4,
     "unnecessary_code_fade": 0.3,
-
     // telemtetry
     "telemetry": {
         "diagnostics": false,
         "metrics": false
     },
-
     // extensions
     "auto_install_extensions": {},
-
     // save
     "autosave": "off",
     "ensure_final_newline_on_save": true,
     "remove_trailing_whitespace_on_save": true,
-
     // format
-    "format_on_save": "on",
+    "format_on_save": null,
     // you can also perform format with custom commands
     // you can also use more than 1 formatter consecutively
     // https://zed.dev/docs/configuring-zed#formatter
@@ -48,13 +47,10 @@
     // kind of filetype with "languages" option.
     // it also has code_actions inside, but anyway better to setup for each language separately.
     "formatter": "auto",
-
     // sessioin restoration
-    "restore_on_startup": "last_session",
-
+    // "restore_on_startup": "last_session",
     // updates
     "auto_update": true,
-
     // completions
     // "inline_completions": {
     // "disabled_globs": [".env"]
@@ -62,60 +58,85 @@
     // "show_completions_on_input": true,
     // "show_completion_documentation": true,
     // "show_inline_completions": true,
-
     // lsp settings
     "enable_language_server": true,
     "lsp_highlight_debounce": 75,
     // lsp setup
-    // "lsp": {
-    // "your-language-server": {
-    // "initialization_options": {}, // options can be set only during startup
-    // "settings": {} // options can be set during runtime
-    // },
-    // },
+    "lsp": {
+        "typescript-language-server": {
+            "initialization_options": {
+                // "preferences": {
+                //     "strictNullChecks": true,
+                //     "target": "ES2020"
+                // }
+            },
+            "settings": {}
+        },
+        "eslint": {
+            "settings": {
+                "codeActionOnSave": {
+                    "rules": ["import/order"]
+                }
+            }
+        }
+    },
     "languages": {
         "JavaScript": {
-            "enable_language_server": true
+            "enable_language_server": true,
+            "format_on_save": "on",
+            "formatter": "prettier"
+            // "code_actions_on_format": {
+            //     "source.fixAll.eslint": true
+            // }
+        },
+        "TypeScript": {
+            "enable_language_server": true,
+            "format_on_save": "on",
+            "formatter": "prettier"
+            // "code_actions_on_format": {
+            //     "source.fixAll.eslint": true
+            // }
+        },
+        "Python": {
+            "enable_language_server": true,
+            "language_servers": ["pyright", "pylsp", "..."]
         }
     },
-
     // editor scrollbar
-    "scrollbar": {
-        "show": "auto",
-        "cursors": true,
-        "git_diff": true,
-        "search_results": true,
-        "selected_symbol": true,
-        "diagnostics": true,
-        "axes": {
-            "horizontal": true,
-            "vertical": true
-        }
-    },
+    // "scrollbar": {
+    //     "show": "auto",
+    //     "cursors": true,
+    //     "git_diff": true,
+    //     "search_results": true,
+    //     "selected_symbol": true,
+    //     "diagnostics": true,
+    //     "axes": {
+    //         "horizontal": true,
+    //         "vertical": true
+    //     }
+    // },
     // editor tab bar
     "tab_bar": {
-        "show": true,
+        // "show": true,
         "show_nav_history_buttons": false
     },
     // editor tabs (all tabs, not the tab bar where tabs are placed)
-    "tabs": {
-        "close_position": "right",
-        "file_icons": false,
-        "git_status": false,
-        "activate_on_close": "history",
-        "always_show_close_button": false
-    },
+    // "tabs": {
+    //     "close_position": "right",
+    //     "file_icons": false,
+    //     "git_status": false,
+    //     "activate_on_close": "history",
+    //     "always_show_close_button": false
+    // },
     // "preview_tabs": {},
     // editor toolbar
-    "toolbar": {
-        "breadcrumbs": true,
-        "quick_actions": true
-    },
-
+    // "toolbar": {
+    //     "breadcrumbs": true,
+    //     "quick_actions": true
+    // },
     // automatically close matching (, [, {, ', "
-    "use_autoclose": true,
-    "always_treat_brackets_as_autoclosed": false,
-
+    // "use_autoclose": true,
+    // "always_treat_brackets_as_autoclosed": false,
     // search
     // "search": {
     //   "case_sensitive": false,
@@ -123,7 +144,6 @@
     //   "regex": false,
     //   "whole_word": false
     // },
-
     // exclude files
     // skipped during files scan, files search, hidden from project file tree
     "file_scan_exclusions": [
@@ -139,9 +159,8 @@
         "**/.classpath",
         "**/.settings",
         // my files
-        "**/node_modules"
+        "**/.node_modules"
     ],
-
     // file types
     // you can change its interpreted extensions
     // "file_types": {
@@ -149,7 +168,6 @@
     //   "TOML": ["MyLockFile"],
     //   "Dockerfile": ["Dockerfile*"]
     // },
-
     // git
     "git": {
         // "git_gutter": "tracked_files",
@@ -161,15 +179,16 @@
             "show_commit_summary": true
         }
     },
-
     // indentation
     "indent_guides": {
-        // "enabled": true,
+        "enabled": false,
         // "active_line_width": 1,
         // "background_coloring": "disabled",
         // "line_width": 1,
         "coloring": "indent_aware"
     },
+    // keymaps
+    "base_keymap": "VSCode",
 
     // vim
     "vim_mode": true,
@@ -181,8 +200,7 @@
         // "use_multiline_find": false,
         // "use_smartcase_find": false,
     },
-    "hover_popover_enabled": true
-
+    "hover_popover_enabled": false,
     // inlay hints
     // additional settings may require in "lsp"
     // "inlay_hints": {
@@ -194,19 +212,72 @@
     // "show_parameter_hints": true,
     // "show_type_hints": true
     // },
-
     // terminal: https://zed.dev/docs/configuring-zed#terminal
     // "terminal": {},
-
     // project panel (file tree) https://zed.dev/docs/configuring-zed#project-panel
-    // "project_panel": {},
-    //
+    "project_panel": {
+        // "auto_fold_dirs": true,
+        // "auto_reveal_entries": true,
+        // "button": true,
+        // "default_width": 240,
+        // "dock": "left",
+        // "file_icons": true,
+        // "folder_icons": true,
+        // "git_status": true,
+        "indent_guides": {
+            "show": "never"
+        },
+        // "indent_size": 20,
+        "scrollbar": {
+            "show": "never"
+        }
+        // "show_diagnostics": "all"
+    },
     // assistant panel https://zed.dev/docs/configuring-zed#assistant-panel
-    // "assistant":{},
-
+    "assistant": {
+        "enabled": false,
+        "version": "2",
+        "button": false
+        // "default_height": 320,
+        // "default_width": 640,
+        // "dock": "right",
+        // "enable_experimental_live_diffs": false
+        // "default_model": {
+        //     "model": "",
+        //     "provider": ""
+        // },
+        // "inline_alternatives": [
+        //     {
+        //         "model": "",
+        //         "provider": ""
+        //     }
+        // ]
+    },
     // outline panel (symbols) https://zed.dev/docs/configuring-zed#outline-panel
-    // "outline_panel": {},
-
+    "outline_panel": {
+        // "auto_fold_dirs": true,
+        // "auto_reveal_entries": true,
+        // "button": true,
+        "default_width": 280,
+        // "dock": "left",
+        // "file_icons": true,
+        // "folder_icons": true,
+        "git_status": false,
+        "indent_guides": {
+            "show": "never"
+        },
+        // "indent_size": 20,
+        "scrollbar": {
+            "show": "never"
+        }
+    },
     // calls https://zed.dev/docs/configuring-zed#calls
-    // "calls": {},
+    "calls": {
+        "mute_on_join": true
+        // "share_on_join": false
+    },
+    // collab panel(devs of zed)
+    "collaboration_panel": {
+        "button": false
+    }
 }

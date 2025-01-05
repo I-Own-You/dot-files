@@ -1,0 +1,103 @@
+[
+    // non vim keybindings
+    {
+        "bindings": {}
+    },
+
+    // vim keybindings
+    {
+        "context": "vim_mode == normal",
+        "bindings": {
+            "+": "vim::Increment",
+            "-": "vim::Decrement"
+        }
+    },
+    {
+        "context": "vim_mode == visual",
+        "bindings": {
+            ">": "editor::Indent",
+            "<": "editor::Outdent"
+        }
+    },
+    {
+        "context": "vim_mode == normal || vim_mode == visual",
+        "bindings": {
+            ";": "command_palette::Toggle"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal",
+        "bindings": {
+            "space v v": "pane::SplitRight",
+            "space x x": "pane::SplitDown",
+            "space x t": "editor::CopyPath",
+            "space e": "project_panel::ToggleFocus"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            "j k": ["workspace::SendKeystrokes", "escape"]
+        }
+    },
+    {
+        "context": "Editor && (vim_mode == normal || vim_mode == insert || vim_mode == visual)",
+        "bindings": {
+            "alt-j": "editor::MoveLineDown",
+            "alt-k": "editor::MoveLineUp"
+        }
+    },
+    {
+        "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+        "bindings": {
+            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+            "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+            "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+            "space b o": "pane::CloseInactiveItems"
+        }
+    },
+    {
+        "context": "VimControl && !menu",
+        "bindings": {
+            "q": null,
+            "tab": "pane::ActivateNextItem",
+            "shift-tab": "pane::ActivatePrevItem",
+            "ctrl-[": "vim::NextMethodStart",
+            "ctrl-]": "vim::PreviousMethodStart",
+            "ctrl-e": [
+                "workspace::SendKeystrokes",
+                "ctrl-e ctrl-e ctrl-e ctrl-e ctrl-e"
+            ],
+            "ctrl-y": [
+                "workspace::SendKeystrokes",
+                "ctrl-y ctrl-y ctrl-y ctrl-y ctrl-y"
+            ]
+        }
+    },
+    {
+        "context": "Editor && mode == full && vim_mode == normal",
+        "bindings": {
+            "space w w": "editor::ToggleSoftWrap",
+            "space n h": "buffer_search::Dismiss"
+        }
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "alt-f": "file_finder::Toggle"
+        }
+    },
+    {
+        "context": "FileFinder",
+        "bindings": {
+            "alt-f": "menu::Cancel"
+        }
+    },
+    {
+        "context": "ProjectPanel && not_editing",
+        "bindings": {
+            "space e": "workspace::ToggleLeftDock"
+        }
+    }
+]
