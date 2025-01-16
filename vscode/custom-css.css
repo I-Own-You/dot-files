@@ -1,0 +1,141 @@
+/* explorer */
+/* background */
+.monaco-workbench {
+  --vscode-sideBar-background: var(--vscode-editor-background) !important;
+  --vscode-editorRuler-foreground: rgba(255, 255, 255, 0.08) !important;
+}
+.file-icon {
+  display: flex !important;
+  align-items: center !important;
+}
+._notif._in {
+  display: none !important;
+}
+/* header */
+.composite.title {
+  display: none !important;
+}
+.pane > .pane-header.actions {
+  display: none !important;
+}
+/* left border */
+.part.sidebar.right.pane-composite-part {
+  border-left: none !important;
+  background: #16171d !important;
+}
+/* list row, it also affects all list rows in vscode, command pallete where fils belong, for exmaple, or results */
+.monaco-list-row {
+  color: #b4b4b7 !important;
+}
+.monaco-list-row.focused {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+/* scrollbar */
+.pane-body .monaco-scrollable-element .visible.scrollbar {
+  display: none;
+}
+/* search files tooltip */
+.monaco-tree-type-filter {
+  top: 93% !important;
+  width: 100px !important;
+  border: 2px solid #00acc1;
+  border-radius: 5px !important;
+}
+.monaco-tree-type-filter .monaco-tree-type-filter-grab {
+  display: none !important;
+} /* gran icon */
+.monaco-tree-type-filter .monaco-tree-type-filter-actionbar {
+  display: none !important;
+} /* close icon */
+
+/* sidebar left border */
+.part.sidebar {
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* tooltip box style (when you hover you see it) */
+.monaco-editor-hover,
+.monaco-hover {
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.45) !important;
+  padding: 5px !important;
+  background-image: linear-gradient(#16171d 0%, #2a2b38 100%) !important;
+  backdrop-filter: blur(3px) !important;
+  border-radius: 5px !important;
+  border: none !important;
+}
+
+/* command palette */
+/* ".quick-input-widget": "transform: translateY(-50%) !important; top: 50% !important; box-shadow: 0px 8px 20px rgba(0, 0, 0, .45) !important; padding: 10px 10px 18px 10px !important; background-image: linear-gradient(#2a2b38 0%, #16171D 100%) !important; backdrop-filter: blur(3px) !important; border-radius: 8px !important;", */
+.quick-input-widget {
+  top: 20% !important;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.45) !important;
+  padding: 10px 10px 18px 10px !important;
+  background-image: linear-gradient(#2a2b38 0%, #16171d 100%) !important;
+  backdrop-filter: blur(3px) !important;
+  border-radius: 8px !important;
+}
+/* related, remove bg from lists */
+.monaco-list-rows {
+  background: transparent !important;
+}
+/* text input */
+.quick-input-filter .monaco-inputbox {
+  border-radius: 5px !important;
+  padding: 8px !important;
+  border: none !important;
+  font-size: 18px !important;
+  margin-bottom: 16px !important;
+}
+/* input box placeholder */
+/* ".monaco-inputbox input::placeholder": "color: rgba(255, 255, 255, .3) !important;", */
+/* file results -> file in which you are */
+.monaco-list-rows
+  .monaco-list-row
+  .quick-input-list-rows
+  .monaco-icon-label.italic
+  .label-name
+  .monaco-highlighted-label {
+  color: #fafafa !important;
+  text-decoration: underline !important;
+}
+
+/* vim statusbar, be sure vim is the only activated at left, if you will need something else, you would probably need css and js extension as there you can use the id css selector */
+.statusbar-item.left.first-visible-item {
+  max-width: 100% !important;
+}
+
+/* errors popup */
+.overlayWidgets .zone-widget {
+  display: none;
+}
+
+/* pretty ts errors hack */
+.codicon-none {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+div.monaco-hover-content:has(.codicon-none) > .hover-row:first-child {
+  display: none !important;
+}
+div.monaco-hover-content:has([style="color:#f96363;"])
+  > .hover-row:first-child {
+  display: none !important;
+}
+.monaco-hover .monaco-hover-content {
+  display: flex;
+  flex-direction: column;
+}
+.monaco-hover .monaco-hover-content .hover-row {
+  order: 2;
+}
+.monaco-hover .monaco-hover-content .hover-row:has(.codicon-none) {
+  order: 1;
+}
+.monaco-hover .monaco-hover-content .hover-row:has([style="color:#f96363;"]) {
+  order: 1;
+}
+
+/* explorer bottom part */
+.split-view-view.visible {
+  background: #16171d;
+}
