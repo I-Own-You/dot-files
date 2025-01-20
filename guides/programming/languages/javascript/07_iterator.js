@@ -78,7 +78,8 @@ let asyncRange = {
       async next() {
         // (2)
         // must return value like {done:.., value :...}
-        // (it converts into a promise automatically because of the async, so we dont need to return a promise by ourself)
+        // (it converts into a promise automatically because of the async,
+        // so we dont need to return a promise by ourself)
         // we can use await because of the async
         await new Promise((resolve) => setTimeout(resolve, 1000)) // (3)
         if (this.current <= this.last) {
