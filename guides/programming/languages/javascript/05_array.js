@@ -41,7 +41,7 @@ myNumb.forEach((num, index, array) => {
   console.log('a ' + square)
 })
 
-// break, return, continue - dont work in forEach()
+// break, continue - dont work in forEach()
 
 // forEach() - doesnt return anything, but you can return if you want:
 const empty = []
