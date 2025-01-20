@@ -68,3 +68,10 @@ for (const key in cat) {
 //
 // if you add an attribute while being in for..in, its not guaranateed that it will be in for..in
 // if you delete an attribute while being in for..in, the for..in wont include that attribute
+
+// for...of Loop
+// iterates over iterable objects (e.g., arrays, strings, maps, sets).
+const arr = [1, 2, 3]
+for (const value of arr) {
+  console.log(value) // 1, 2, 3
+}
