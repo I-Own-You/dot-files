@@ -353,8 +353,8 @@ console.log(objectA) // a.toString()
 // this - reference to an object.
 //
 // inside a function declaration this would be the
-//  global object(main object of the program, in broweser it is window, in node js it is global)
-//  or undefined in 'use strict'
+// global object(main object of the program, in broweser it is window, in node js it is global)
+// or undefined in 'use strict'
 
 // in anonymous function this is also global object
 
