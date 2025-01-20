@@ -63,7 +63,8 @@ function* gen() {
 }
 let otherGenerator = gen()
 let myQuestion = otherGenerator.next().value // "2 + 2 = ?"
-otherGenerator.next(4) // here wont be something, but in the generator will be alert(4), because the result = yield 4
+// here wont be something, but in the generator will be alert(4), because the result = yield 4
+otherGenerator.next(4)
 
 // another one, more complex
 function* gen() {
