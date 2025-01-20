@@ -723,5 +723,5 @@ reflectUser = new Proxy(reflectUser, {
     return Reflect.set(target, prop, val, receiver) // (2)
   },
 })
-let reflectName = user.name // "GET name"
-user.name = 'Петя' // "SET name=a"
+let reflectName = reflectUser.name // "GET name"
+reflectUser.name = 'Петя' // "SET name=a"
