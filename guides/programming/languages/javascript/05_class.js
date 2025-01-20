@@ -86,7 +86,7 @@ class User {
 new User().sayHi()
 
 // classes can have attributes also, they are created before the constructor is called,
-// so its an attribute on the object(class iself):
+// so its an attribute on the object
 class User {
   name = 'anonym'
   sayHi() {
