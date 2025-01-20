@@ -290,7 +290,7 @@ Infinity.toString()
 'hello world'.toString()
 Symbol('tag').toString()
 9007199254740991n.toString()
-// 32.2.toString() // will cause an error because '.' is part of a number syntax
+;(32.2).toString()
 ;(32)
   .toString(
     // good
