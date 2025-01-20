@@ -55,7 +55,7 @@ let a = A() // a = undefined
 // because it can be passed as argument to a function,
 // it can be assigned to a variable and returned within a function
 
-// function arguments are also passed by reference if its an object
+// function arguments are also passed by reference
 
 // functions crete their own scopes, if a function inside another function will create a variable,
 // we cant access it from outside:
