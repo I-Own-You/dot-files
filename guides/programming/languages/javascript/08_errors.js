@@ -45,7 +45,7 @@ function parse(data) {
 }
 
 // works in synchronic way,
-// so you cant catch async code, untill try catch is itself in sync function like async/await:
+// so you cant catch async code, untill try catch is itself in async function like async/await:
 try {
   // no errors
   Promise.reject('err')
