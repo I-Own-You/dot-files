@@ -1,4 +1,4 @@
-// Promise - object wrapper for async code(promise is the same as callback in the event loop)
+// Promise - object wrapper for async code
 
 // it has states,
 // 1. 'pending'
