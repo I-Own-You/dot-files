@@ -218,7 +218,7 @@ alert(stillAnotherRabbit.earLength) // 10
 class Animal {
   name = 'animal'
   constructor() {
-    alert(this.name) //
+    console.log(this.name) //
   }
 }
 class Rabbit extends Animal {
