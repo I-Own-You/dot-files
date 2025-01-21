@@ -96,7 +96,8 @@ import user from 'https://some-site.com/js/user.js'
 import user from './user.js'
 
 // you can also import and export at the same time:
-export { user } from './user.js' // same as below
+export { user } from './user.js'
+// same as below
 import { user } from './user.js'
 export { user }
 
@@ -121,6 +122,7 @@ bye()
 // export default function() {
 //   alert("Module loaded (export default)!");
 // }
+// anotherFile.js
 let obj = await import('./say.js')
 let say = obj.default
 say()
