@@ -28,7 +28,8 @@ const myPromise = new Promise(function (resolve, reject) {
   resolve(data) // transfer the promise state into fullfilled, the return value will be data
 })
 const errorPromise = new Promise(function (resolve, reject) {
-  reject(new Error('error')) // transfer the state of the promise into rejected, return will be the error object
+  // transfer the state of the promise into rejected, return will be the error object
+  reject(new Error('error'))
 })
 
 // .catch() - will catch every then before it,
