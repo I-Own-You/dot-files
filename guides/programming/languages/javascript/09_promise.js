@@ -166,7 +166,8 @@ getPasswords().finally(function () {
 // under the hood, .finally() is just a .then() where paramters are (onDone, onDone)
 // like .then(onDone, onDone), just like .catch() is a .then() with (undefined, onReject)
 
-// all() - a static method of Promise object that runs in parallel some promises and wait till they all are done:
+// Promise.all() - a static method of Promise object that runs in parallel some promises and
+// wait till they all are done,
 //
 // takes an iterable collection of promises(like promies in array) and
 // returns a new promise in an iterable-like argument or rejected if at least 1 promise failed.
@@ -197,7 +198,7 @@ Promise.all([promise1, number, obj]).then(
   }
 )
 
-// allSettled() - a static method of Promise object that runs in parallel some promises and
+// Promise.allSettled() - a static method of Promise object that runs in parallel some promises and
 // wait till they all are done no matter of success or error status:
 //
 // takes an iterable collection of promises(like promies in array) and
@@ -215,7 +216,7 @@ Promise.allSettled(promises).then(([response1, response2, response3]) => {
   console.log(response3) // { status: 'fulfilled', value: 1 }
 })
 
-// 33.19 any() - a static method of Promise object
+// Promise.any() - a static method of Promise object
 //
 // runs in parallel some promises and // wait till one of them is done, and returns it.
 // if no one successed, then the error occurs.
@@ -226,7 +227,7 @@ Promise.allSettled(promises).then(([response1, response2, response3]) => {
 //
 // an empty array of promises will result in error
 
-// race() - a static method of Promise object
+// Promise.race() - a static method of Promise object
 //
 // runs in parallel some promises and wait till one of them is done,
 // no matter of success or failure, and returns it
