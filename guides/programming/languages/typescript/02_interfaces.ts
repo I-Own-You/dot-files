@@ -26,14 +26,18 @@ function getBear(): MyBear {
 const myBear = getBear();
 myBear.name;
 myBear.honey;
-// same as below
+
+// we can extend interfaces by redefinig them
 interface MyWindow {
   title: string;
 }
 interface MyWindow {
-  c: string;
+  category: string;
 }
-
+// MyWindow  = {title: string, category: string}
+//
+// another example
+//
 // we can extend types to cut down the boilerplate:
 interface BasicAddress {
   name?: string;
@@ -63,7 +67,7 @@ const cc: aColorfulCircle = {
   radius: 42,
 };
 //
-// you can also use intersection to combine objects from interfaces:
+// you can also create types by using intersection of interfaces:
 interface Colorful {
   color: string;
 }
@@ -71,6 +75,7 @@ interface Circle {
   radius: number;
 }
 type ColorfulCircle = Colorful & Circle;
+// here you could do circle: ColorfulCircle, it would be the same
 function draw(circle: Colorful & Circle) {
   console.log(`Color was ${circle.color}`);
   console.log(`Radius was ${circle.radius}`);
@@ -79,7 +84,7 @@ draw({ color: "boue", radius: 42 }); //ok
 draw({ color: "rod", raidus: 42 }); //error
 // the difference between interface extends and interface intersections is the handling of conflicts
 
-// interfaces and types can also be generic:
+// interfaces can also be generic:
 interface cBox<Type> {
   contents: Type;
 }
