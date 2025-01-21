@@ -64,10 +64,10 @@ interface yetBox<Type> {
   contents: Type;
 }
 interface Apple {
-  // ....
+  kek: string;
 }
 type AppleBox = yetBox<Apple>; //{ contents: Apple }
 // and also this
-function setContents<Type>(box: Box<Type>, newContents: Type) {
+function setContents<Type>(box: yetBox<Type>, newContents: Type) {
   box.contents = newContents;
 }
