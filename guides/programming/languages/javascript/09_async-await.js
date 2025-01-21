@@ -20,10 +20,7 @@ const [user, news] = await Promise.all([getUser(), getNews()])
 async function request() {}
 const req = async () => {}
 req().then(() => {})
-
-// async function will always return promises, even if we dont return it:
-async function request() {}
-request().then(() => {}) // will work
+request().then(() => {})
 
 // .then() isnt the only way to work with promises and call them:
 async function loadPosts() {
@@ -32,20 +29,3 @@ async function loadPosts() {
   const data = await response.json()
   return data
 }
-
-// in async\await you can use try catch to catch errors from await funcitons that
-// we called there, and from sync code also.  // the .catch() on .then() isnt as powerful
-
-// we cant use for loops to work with async data, so there is for await .. of:
-async function* removeDataGenerator() {
-  for (const url of ['http://first-site.com', 'http://first-site.com']) {
-    const response = await fetch(url)
-    const data = await response.json()
-    yield data
-  }
-}
-;(async () => {
-  for await (const item of removeDataGenerator()) {
-    console.log(item)
-  }
-})()
