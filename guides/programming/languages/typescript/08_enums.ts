@@ -31,7 +31,7 @@ enum E {
 
 // string enums:
 enum zDirection {
-  Up = "UP", // they must have a string literal or another string enum as its value, empty is not allowed
+  Up = "UP",
   Down = "DOWN",
   Left = "LEFT",
   Right = "RIGHT",

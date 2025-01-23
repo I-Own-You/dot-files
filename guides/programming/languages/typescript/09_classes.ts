@@ -1,15 +1,21 @@
 // classes:
 class Point {
-  a; // here is how you declare properties for object
-  b; // the type is also any, its implicit if you dont define it
-  c: number; // explicitly defined type
-  d: 0; // type is inferred from the value
+  // here is how you declare properties for object
+  // the type is also any, its implicit if you dont define it
+  a;
+  b;
+  // explicitly defined type
+  c: number;
+  // type is inferred from the value
+  d: 0;
+  //
+  // --strictPropertyInitialization // with this option in tsconfig,
+  // properties must be initialized with a value or initialized in the constructor
 }
 const pt = new Point();
-// --strictPropertyInitialization // with this option in tsconfig,
-// the properties must be initialized with a value or initialized in the constructor
 pt.x = 0;
 pt.y = 0;
+
 // you can use the '!' modifier to not get an error if you have --strictPropertyInitialization set:
 class OKGreeter {
   name!: string; // no error
@@ -50,7 +56,7 @@ class myPoint {
 
 // get/set is the same but with some differences:
 // if get exists, and set not, the property becomes readonly
-// if the type of the value in set is not specified, it is inferred from the return type of get
+// if type of value in set is not specified, it is inferred from the return type of get
 //
 // since 4.3 ts, we can have diff types for value in get/set,
 // but the return type will still be from get, because this is the method used to return the value
@@ -83,22 +89,28 @@ class Ball implements Pingable {
     console.log("pong!");
   }
 }
+
 // classes can also implement more than one interface like: class A implements B, C, n {}
 // implements clause doesnt change the class type, it only checks if class can be treated as an interface:
 interface Checkable {
   check(name: string): boolean;
 }
 class NameChecker implements Checkable {
+  // also, creating a property with '?' optionality, doesnt create that property in class,
+  // it just makes the variable be undefined as an option beside its value type.
+  //
+  // accessing it wihout initializing will result in an error.
+  myVar?: string;
+
   check(s) {
-    // error, because the interface requires string type
     return s.toLowerCase() === "ok"; // no error, becasue class is still a class
   }
 }
-// also, creating a property with '?' optionality, doesnt create that property in class, accessign it, will result in an error
 
 // if target is es2022, or useDefineForClassFields = true,
 // class fields are initialized after the parent class constructor completes,
-// overwritting any value that parent class set,
+// overwritting any value that parent class set.
+//
 // it can be bad if we only want to change the type of the property,
 // so we can use 'declare' keyword to achieve that:
 interface Animal {
@@ -121,7 +133,8 @@ class DogHouse extends AnimalHouse {
   }
 }
 
-// inheriting the builtin classes is tricky: https://www.typescriptlang.org/docs/handbook/2/classes.html#inheriting-built-in-types
+// inheriting the builtin classes is tricky:
+// https://www.typescriptlang.org/docs/handbook/2/classes.html#inheriting-built-in-types
 
 // member visiblity - you can make a property/method public/protected/private:
 //
@@ -178,7 +191,7 @@ class Derived2 extends zBase {
     other.x = 10;
   }
 }
-// private - like protected but cant access it in subclassess
+// private - accessed only within its class
 // we can access the private properties of different objects of the same class:
 class A {
   private x = 10;
@@ -186,12 +199,14 @@ class A {
     return other.x === this.x; // no error
   }
 }
+
 // protected and private modifiers are enforced only on type checking,
 // so in js runtime, we can still access them:
 class MySafe {
   private secretKey = 12345;
 }
 const s = new MySafe();
+// here error
 console.log(s.secretKey);
 // private property can be accessed with ['property'],
 // so its kind of more 'soft private' than actually private:
@@ -227,7 +242,7 @@ class S {
   static name = "S!"; // error
 }
 // you can have static blocks of code inside a class,
-// where you can use private fields that are static as well:
+// where you can use private static fields:
 class Foo {
   static #count = 0;
   get count() {
@@ -249,12 +264,29 @@ class zBox<Type> {
   }
 }
 const b = new zBox("hello!");
+
 // static member cannot refer to a generic type:
 class rBox<Type> {
   // error, because at runtime types are erased,
   // and if we would have Box<string> and Box<number> as well, changing one, changes another
   static defaultValue: Type;
 }
+// but there is a workaround thought:
+function zbase<T>() {
+  class Base {
+    static prop: T;
+  }
+  return Base;
+}
+function zderived<T>() {
+  class Derived extends zbase<T>() {
+    static anotherProp: T;
+  }
+  return Derived;
+}
+class Spec extends zderived<string>() {}
+Spec.prop; // string
+Spec.anotherProp; // string
 
 // this at runtime:
 class yMyClass {
@@ -281,10 +313,10 @@ const ge = ccc.getName;
 console.log(ge()); // MyClass, now its correct, but it has some notes
 // 1. this will be correct even for code that ts didnt chec
 // 2. this will use more memory because each class instance will have a copy of function
-// 3. you cant use super.getName in a child class because there is no entry for base class to feth from
-//
-// this paramters are erased during compilation,
-// they dont create a paramter named this,
+// 3. you cant use super.getName in a child class because there is no entry for base class to fetch from
+
+// [this] paramter are erased during compilation,
+// they dont create a paramter named [this],
 // they check if the current function is executed with the right context:
 class MyClass {
   name = "MyClass";
@@ -296,6 +328,7 @@ const c1 = new MyClass();
 c1.getName();
 const g1 = c1.getName;
 console.log(g1()); // error
+//
 // here are also some notes:
 //1. JavaScript callers might still use the class method incorrectly without realizing it
 //2. Only one function per class definition gets allocated, rather than one per class instance
@@ -408,20 +441,6 @@ class Derived extends Base {
 }
 const d = new Derived();
 d.printName(); // we also can access the non abstract method
-// abstract construct signatures:
-function greet2(ctor: typeof Base) {
-  // its ok, its not an error, but it should be, becaue Base is abstract, this is ridiculous
-  const instance = new ctor(); // here the error is of course cautght, but we want to caught it in the function paramter
-  instance.printName();
-}
-greet2(Base); // no error, bad!
-// so instead we use an abstrat construct signature
-function greet(ctor: new () => Base) {
-  const instance = new ctor();
-  instance.printName();
-}
-greet2(Derived);
-greet2(Base); // error, nice
 
 // realtionship between classes, the classes are compared structurally:
 class Point1 {
@@ -463,11 +482,6 @@ myGenericNumber.zeroValue = 0;
 myGenericNumber.add = function (x, y) {
   return x + y;
 };
-// actually you need to put the attributes in a constructor or initialize it,
-// but for you to know you can have signatures in class and assign to them values after
-//
-// static members of class cant use class generic type, so be aware
-//
 // class types in generics:
 function create<Type>(c: { new (): Type }): Type {
   return new c();
@@ -479,14 +493,14 @@ class BeeKeeper {
 class ZooKeeper {
   nametag: string = "Mikle";
 }
-class noMyAnimal {
+class Animal {
   numLegs: number = 4;
 }
-class Bee extends noMyAnimal {
+class Bee extends Animal {
   numLegs = 6;
   keeper: BeeKeeper = new BeeKeeper();
 }
-class Lion extends noMyAnimal {
+class Lion extends Animal {
   keeper: ZooKeeper = new ZooKeeper();
 }
 function createInstance<A extends Animal>(c: new () => A): A {

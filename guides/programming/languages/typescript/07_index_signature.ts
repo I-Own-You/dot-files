@@ -2,18 +2,18 @@
 interface myStringArray {
   // means the return type must be string when we access an index number
   [index: string]: number;
-  // error, because the index returns string
-  // (i index would be of type number, and returned string, it would be ok,
-  // because the return type of properties must be string or its subtype),
-  // all property now should return string.
-  // To make property return string or number you could use a unioin  [index: string]: number | string;
+  //
+  // error, because the [index] returns number
+  // but length property returns string, we cant have different things to return,
+  // to have different types to return you could use union: [index; string]: number | string
   length: string;
   age: number;
 }
 const mmyArray: myStringArray = getStringArray();
 const secondItem = mmyArray[1]; // like here
-// the types allowed for index signature is number, string, symbol, template string patterns,
-// union types consisting of the earlier.
+// the types allowed for index signature are:
+// number, string, symbol, template string patterns, union types consisting of the earlier.
+
 // index signatures can also be readonly, so you cant assign to them:
 interface ReadonlyStringArray {
   readonly [index: number]: string;
@@ -32,7 +32,10 @@ interface NotOkay {
   // this works because the numeric type returned a type that is subtyped of a string
   [x: number]: heyAnimal;
   [x: string]: Dog;
-  // this wouldn work
+  // this wouldn work, because under the hood, numeric keys are converted into string, like
+  // obj[123] == obj["123"], so numeric index signature must be a subtype of string index signature,
+  // which in this case we return Dog which is parent of heyAnimal, not subtype.
+  //
   // [x: number]: Dog  // error, Dog is not a subtype, its the parent for Animal
-  // [x: string]: Animal
+  // [x: string]: heyAnimal
 }

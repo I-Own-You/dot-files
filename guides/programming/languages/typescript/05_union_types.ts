@@ -11,7 +11,9 @@ function getLength(obj: string | string[]) {
 
 // the operations on union types are allowed only if they work for all the types:
 function printId(id: number | string) {
-  // error, because .toUpperCase() is only available for string. So you must check with typeof === string,
+  // error, because .toUpperCase() is only available for string.
+  //
+  // so you must check with typeof === string,
   // for example, and there do this
   console.log(id.toUpperCase());
 }

@@ -8,7 +8,7 @@ export interface Dog1 {
   yearOfBirth: number;
 }
 // @filename: app.ts
-import { Cat1, Dog1 } from "./animal.js";
+import { Cat1, Dog1 } from "./animal.ts";
 type Animals1 = Cat | Dog;
 
 // if you use import type, then you cant use it as a value:

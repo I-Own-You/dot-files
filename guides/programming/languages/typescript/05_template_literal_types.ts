@@ -17,9 +17,11 @@ type LocaleMessageIDs = `${Lang}_${AllLocaleIDs}`;
 //  "ja_footer_title_id"  | "ja_footer_sendoff_id" |
 //  "pt_welcome_email_id" | "pt_email_heading_id"  |
 //  "pt_footer_title_id"  | "pt_footer_sendoff_id"
+//
 // its ok to do such things with small amount of string literals, but bad with more
+
 // a complex example:
-type mPropEventSource<Type> = {
+type PropEventSource<Type> = {
   on(
     eventName: `${string & keyof Type}Changed`,
     callback: (newValue: any) => void
@@ -36,17 +38,18 @@ const myPerson = makeWatchedObject({
 myPerson.on("firstNameChanged", () => {}); // no error
 myPerson.on("firstName", () => {}); // error,
 myPerson.on("frstNameChanged", () => {}); // error
+//
 // now the same function as above but infering the type making the method generic
-type PropEventSource<Type> = {
+type mPropEventSource<Type> = {
   on<Key extends string & keyof Type>( // pulled the string literal into Key generic type
     eventName: `${Key}Changed`,
     callback: (newValue: Type[Key]) => void
   ): void;
 };
-declare function makeWatchedObject<Type>(
+declare function zmakeWatchedObject<Type>(
   obj: Type
-): Type & PropEventSource<Type>;
-const person = makeWatchedObject({
+): Type & mPropEventSource<Type>;
+const person = zmakeWatchedObject({
   firstName: "Saoirse",
   lastName: "Ronan",
   age: 26,

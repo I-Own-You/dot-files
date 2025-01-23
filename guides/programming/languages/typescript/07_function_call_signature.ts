@@ -26,6 +26,7 @@ function myFunc(someArg: number) {
 }
 myFunc.description = "default description";
 doSomething(myFunc);
+
 // construct signatures, you can create functions constructors with [new] keyword:
 type SomeConstructor = {
   new (s: string): SomeObject;

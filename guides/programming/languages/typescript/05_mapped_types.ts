@@ -1,4 +1,5 @@
 // mapped types - are constructed with index signature:
+type Horse = number;
 type OnlyBoolsAndHorses = {
   [key: string]: boolean | Horse;
 };
@@ -24,8 +25,22 @@ type FeatureOptions = OptionsFlags<Features>;
 // mapped types have 2 modifiers, readonly and ? for mutability and optionality,
 // you can also prefix it with - or +, - means removing the attribute explicitly, and + is the default one:
 type CreateMutable<Type> = {
-  readonly [Property in keyof Type]: Type[Property]; // just to show
-  // [Property in keyof Type]-?: Type[Property]; // just to show
+  // adds optionality, you can assign undefined as property value
+  [Property in keyof Type]?: Type[Property];
+  //
+  // adds optionality, you can assign undefined as property value
+  // [Property in keyof Type]?: Type[Property];
+  //
+  // removes optionality, you can assign undefined as property value
+  // [Property in keyof Type]-?: Type[Property];
+  //
+  // adds readonly, you can mutate the property value
+  // readonly [Property in keyof Type]: Type[Property];
+  //
+  // removes readonly, you can mutate the property value
+  // -readonly [Property in keyof Type]: Type[Property];
+  //
+  // you can combine mutability and optionality.
 };
 type LockedAccount = {
   readonly id: string;
@@ -39,7 +54,9 @@ type UnlockedAccount = CreateMutable<LockedAccount>;
 
 // you can remap keys with 'as' keyword:
 type Getters<Type> = {
-  [Property in keyof Type as `get${Property}`]: () => Type[Property];
+  [Property in keyof Type as Property extends string
+    ? `get${Capitalize<Property>}`
+    : never]: () => Type[Property];
 };
 interface Person {
   name: string;
@@ -47,7 +64,7 @@ interface Person {
   location: string;
 }
 type LazyPerson = Getters<Person>;
-// type LazyPerson = {
+// LazyPerson = {
 //     getName: () => string;
 //     getAge: () => number;
 //     getLocation: () => string;
@@ -72,10 +89,11 @@ type EventConfig<Events extends { kind: string }> = {
 type SquareEvent = { kind: "square"; x: number; y: number };
 type CircleEvent = { kind: "circle"; radius: number };
 type Config = EventConfig<SquareEvent | CircleEvent>;
-type mConfig = {
-  square: (event: SquareEvent) => void;
-  circle: (event: CircleEvent) => void;
-};
+// Config = {
+//   square: (event: SquareEvent) => void;
+//   circle: (event: CircleEvent) => void;
+// };
+
 // mapped type with conditional types:
 type ExtractPII<Type> = {
   [Property in keyof Type]: Type[Property] extends { pii: true } ? true : false;
@@ -84,8 +102,8 @@ type DBFields = {
   id: { format: "incrementing" };
   name: { type: string; pii: true };
 };
-type mObjectsNeedingGDPRDeletion = ExtractPII<DBFields>;
-type ObjectsNeedingGDPRDeletion = {
-  id: false;
-  name: true;
-};
+type ObjectsNeedingGDPRDeletion = ExtractPII<DBFields>;
+// ObjectsNeedingGDPRDeletion = {
+//   id: false;
+//   name: true;
+// };

@@ -111,9 +111,10 @@ for (let s of strings) {
   }
 }
 // now, we can combine them into one file with: tsc --outFile sample.js Test.ts
-// or we can specify all files: tsc --outFile sample.js Validation.ts LettersOnlyValidator.ts ZipCodeValidator.ts Test.ts
-// if we choose the per-file compilation, we would need to put all files in a script:
+// or we can specify all files:
+// tsc --outFile sample.js Validation.ts LettersOnlyValidator.ts ZipCodeValidator.ts Test.ts
 //
+// if we choose the per-file compilation, we would need to put all files in a script:
 // <script src="Validation.js" type="text/javascript" />
 // <script src="LettersOnlyValidator.js" type="text/javascript" />
 // <script src="ZipCodeValidator.js" type="text/javascript" />
@@ -138,14 +139,6 @@ namespace Animals {
     numberOfLegs: number;
   }
   export class zDog {}
-}
-// transforms to(the latter namespace goes above):
-namespace Animals {
-  export interface Legged {
-    numberOfLegs: number;
-  }
-  export class Zebra {}
-  export class Dog {}
 }
 // non exported members are not visible to other namespaces/declarations:
 namespace Animal {
@@ -181,19 +174,6 @@ enum Color {
   ed = 1,
   reen = 2,
   lue = 4,
-}
-namespace Color {
-  export function mixColor(colorName: string) {
-    if (colorName == "yllow") {
-      return Color.re + Color.gren;
-    } else if (colorName == "whie") {
-      return Color.re + Color.gren + Color.bue;
-    } else if (colorName == "mageta") {
-      return Color.re + Color.lue;
-    } else if (colorName == "yan") {
-      return Color.green + Color.lue;
-    }
-  }
 }
 // not all merges are allowed:
 // https://www.typescriptlang.org/docs/handbook/declaration-merging.html#disallowed-merges

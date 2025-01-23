@@ -39,7 +39,7 @@ interface Dog {
 type EmailMessageContents = MessageOf<Email>; //type EmailMessageContents = string
 type DogMessageContents = MessageOf<Dog>; //type DogMessageContents = never
 // another exmaple of getting type of an array or leaving it
-type Flatten<T> = T extends any[] ? T[number] : T; // [number] gets the type of the array elements
+type Flatten<T> = T extends any[] ? T[number] : T; // could be any or T
 type Str = Flatten<string[]>; // type Str = string
 type Num = Flatten<number>; //type Num = number
 
@@ -52,13 +52,14 @@ type myNum = Flatten<number>; //type Num = number
 type GetReturnType<Type> = Type extends (...args: never[]) => infer Return
   ? Return
   : never;
-// type Num = number
-type sNum = GetReturnType<() => number>;
-// type Str = string, also, the (x: string) works because of the STS,
+type sNum = GetReturnType<() => number>; // number
+//
+// type sStr = string, also, the (x: string) works because of the STS,
+//
 // it actually looks at the function structre that looks at parameter types and return type,
 // so return type can be grabbed in a conditional type, so it will pass
 type sStr = GetReturnType<(x: string) => string>;
-type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>; //type Bools = boolean[]
+type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>; // Bools = boolean[]
 // also with call signatures, inferring from them, infers the last signature type
 declare function stringOrNum(x: string): number;
 declare function stringOrNum(x: number): string;
@@ -67,10 +68,11 @@ type T1 = ReturnType<typeof stringOrNum>; //type T1 = string | number
 
 // distributive conditional types - when you pass a union to a conditional type that acts on generic type,
 // it becomes a union itself:
+//
 type ToArray<Type> = Type extends any ? Type[] : never;
-// type StrArrOrNumArr = string[] | number[]
+// type mStrArrOrNumArr = string[] | number[]
 type mStrArrOrNumArr = ToArray<string | number>;
-// we can actually make a union then to assign it as a an array type:
+// we can actually make a union then assign it as an array type:
 type ToArrayNonDist<Type> = [Type] extends [any] ? Type[] : never;
 // type StrArrOrNumArr = (string | number)[], so it means an array that can have either strings or numbers
 type StrArrOrNumArr = ToArrayNonDist<string | number>;

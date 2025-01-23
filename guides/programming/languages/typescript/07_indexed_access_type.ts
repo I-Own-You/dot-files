@@ -1,12 +1,14 @@
 // indexed access type - a way to look up a property of an object to set a type:
 type Person = { age: number; name: string; alive: boolean };
 type Age = Person["age"]; // Age is now of type number
+
 // another examples using unions, keyof, type itself
-type I1 = Person["age" | "name"]; // type I1 = string | number
+type I12 = Person["age" | "name"]; // type I1 = string | number
 type I2 = Person[keyof Person]; // type I2 = string | number | boolean
 type AliveOrName = "alive" | "name";
 type I3 = Person[AliveOrName]; // type I3 = string | boolean
-type I1 = Person["alve"]; // error, this property does not exist
+type I13 = Person["alve"]; // error, this property does not exist
+
 // some constructions
 const MyArray = [
   { name: "Alice", age: 15 },

@@ -1,10 +1,14 @@
 // constraining a type:
-function longest<Type extends { length: number }>(a: Type, b: Type) {
+function longest<Type extends { length: number }>(a: Type, b: Type): Type {
   if (a.length >= b.length) {
     return a;
   } else {
-    // we could want to return { length: 5},
-    // but we cant, because here, we must return the Type we recieved
+    // we could return { length: 5},
+    // but we cant, because here, we must return the Type, because the functioin has a,b which
+    // both have Type, and functino specifically returns Type, and if you return any object literal,
+    // its not guaranteed taht it will mathc type of a or b, if you call the function with
+    // string[], number[], and string[] gets longer, funciton must return string[] Type, but you return,
+    // {length: 5}.
     return b;
   }
 }

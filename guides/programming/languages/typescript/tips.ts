@@ -22,20 +22,12 @@ function liveDangerously(x?: number | null) {
 // symbols in ts have some differences between js: https://www.typescriptlang.org/docs/handbook/symbols.html
 
 // types in detail:
-//  object type - non primitive type, differnet from empty object {},
+//  Object type - non primitive type, differnet from empty object {} or object,
 //                and also different from global object Object, so use object instead of Object
 //  void - its automatically infered if funciton returns nothing(return;) or
 //         undefined(no return at all or return undefined).
 //         its not the same as undefined thought.
 //         in function with void type, you can return anything, but the void type will be retained anyway
-function f2(): void {
-  // @ts-expect-error // force error on return type != void
-  return true;
-}
-const f3 = function (): void {
-  // @ts-expect-error // force error on return type != void
-  return true;
-};
 //  unknown - ensure that you declare the type if you use it,
 //            like any but you cant do anything with a variable of unknown untill you declare a type on it
 function safeParse(s: string): unknown {

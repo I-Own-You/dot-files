@@ -36,17 +36,17 @@ function padLeft(padding: number | string, input: string) {
 function example() {
   let myX: string | number | boolean;
   myX = Math.random() < 0.5;
-  console.log(myX);
   // x: boolean
+  console.log(myX);
   if (Math.random() < 0.5) {
+    // x: string;
     myX = "hello";
     console.log(myX);
-    // x: string;
   } else {
     // x: number
     myX = 100;
     console.log(myX);
   }
-  return myX;
   // x: string | number;
+  return myX;
 }
