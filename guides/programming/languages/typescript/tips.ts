@@ -86,5 +86,86 @@ function f() {
 }
 type P = ReturnType<f>; // error, f is not a function type, its a funciton itself
 type PP = ReturnType<typeof f>; // will work, P = { x: number, y:number }
-
 // you can use typeof only on identifiers (like variable names, property names, etc)
+
+// impicit coercion type, it lets you weak verify(==, !=) a value, and if its type is union,
+// it can be both.
+function check(value: string | number) {
+  if (value == "42") {
+    // value is string | number
+  }
+}
+
+// const type parameters
+//
+// preserves literal types for stricter type safety
+//
+function createPair<const T extends string>(
+  key: T,
+  value: number
+): [T, number] {
+  return [key, value];
+}
+const pair = createPair("hello", 42);
+// pair inferred as ["hello", 42], not [string, number]
+//
+
+// satisfies keyword
+//
+// ensures an object conforms to a type without altering its inferred type.
+//
+type Config2 = { id: number; name: string }; // { id: number; name: string; extra: boolean }
+const config = { id: 1, name: "Test", extra: true } satisfies Config2;
+
+// linked this type
+//
+// improves chaining support by allowing this to refer to the current instance's type.
+//
+class Builder {
+  private data: string[] = [];
+
+  // return type is this
+  add(item: string): this {
+    this.data.push(item);
+    return this;
+  }
+
+  build(): string {
+    return this.data.join(", ");
+  }
+}
+
+const builder = new Builder().add("one").add("two").build();
+// Returns "one, two"
+
+// using keyword
+//
+// provides resource management for objects with destructors (e.g., cleanup logic).
+//
+class Resource {
+  dispose() {
+    console.log("Resource disposed");
+  }
+}
+
+function example() {
+  using resource = new Resource();
+  console.log("Using resource");
+}
+example()
+// Resource is automatically disposed at the end of the scope.
+
+// accessor keyword
+//
+// allows defining getters and setters with accessor, simplifying property definitions.
+//
+class User {
+  accessor name: string; // ecmascript2015 required
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+const user = new User("Alice");
+console.log(user.name); // "Alice"
+user.name = "Bob";
