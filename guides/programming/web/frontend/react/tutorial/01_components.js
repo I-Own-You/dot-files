@@ -28,7 +28,8 @@ export default function MyArticle() {
 }
 
 // single usage of the component
-<MyArticle></MyArticle>;
+<MyArticle>{/* here you can put childrens */}</MyArticle>;
+<MyArticle />
 
 // nesting component in another component
 export function EmbeddedArticles() {

@@ -4,7 +4,7 @@
 // interactions like: clicking, hovering, focusing, .etc so they are perfect for side effects.
 export default function Button() {
   // 1. are defined inside component where its used, but also can be passed as prop for children to use
-  // 2. event handlers usually start with word hanel[Action]
+  // 2. event handlers usually start with word handel[Action]
   function handleClick() {
     alert('You clicked me!')
   }

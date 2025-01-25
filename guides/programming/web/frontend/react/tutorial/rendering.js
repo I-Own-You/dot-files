@@ -97,15 +97,8 @@ export default function Clock({ time }) {
 
 // 4. BROWSER PAINT
 //
-// after rendering is done and React updated the DOM,
+// after rendering is done and React commited to the DOM,
 // the browser will repaint the screen.
 // 
 // (actually rerender is the right term, not repaint,
 // but repaint is used to not confuse wiht react render)
-
-
-// tips:
-// 1. when you update a component during rendering,
-//    react throws away the returned JSX and immediately retries rendering. 
-// 2. updating a state from component A inside component B during rendering inside component B, 
-//    will throw an erorr.

@@ -115,13 +115,13 @@ export default function Counter() {
   return (
     <>
       {/*
-                 * here, number will be 1, not 3, even though we called setNumber() 3 times
-                 * 
-                 * the reason is that when you trigger a rerender, it prepares, not renders right away,
-                 * this is needed so that react could queue renders or start a new render when it needs.
-                 * 
-                 * so the code looks like setNumber(0 + 1) 3 times in a row.
-            */}
+          * here, number will be 1, not 3, even though we called setNumber() 3 times
+          * 
+          * the reason is that when you trigger a rerender, it prepares, not renders right away,
+          * this is needed so that react could queue renders or start a new render when it needs.
+          * 
+          * so the code looks like setNumber(0 + 1) 3 times in a row.
+      */}
       <h1>{number}</h1>
       <button onClick={() => {
         setNumber(number + 1);

@@ -7,8 +7,8 @@
 //    in their code, will rerender if context changes.
 // 5. skipping rerenders with memo doesnt prevent child components from receiving new context provider value,
 //    it means if you have a parent component which reads some context value and it has a child component,
-//    wrapped in memo(), but it also reads that context value, it will anyway receive new updated context value,
-//    and will rerender.
+//    wrapped in memo(), but it also reads that context value,
+//    it will anyway receive new updated context value, and will rerender.
 // 6. you can nest providers on above each other to provide more than 1 value, the lowest takes precedence,
 //    in case of the same provider
 // 7. the component which reads a context value, will lookup the context provider up in the component tree,
@@ -25,8 +25,8 @@
 //     if a condition is below all the Hook calls, adding an early return leads to restart of rendering
 // 11. if a state is updated with the same value, it wont trigger a rerender
 // 12. hooks can be called only inside component/hooks at the top level,
-//     (and also dont dynamically mutate hooks, they must be as static as possible, but inside them you handle,
-//     the logic), (also dont pass hooks by props)
+//     (and also dont dynamically mutate hooks, they must be as static as possible,
+//     but inside them you handle, the logic), (also dont pass hooks by props)
 
 // react code tips:
 //
@@ -38,7 +38,3 @@
 // 4. as of react 19, accessing context values is done with use() directive
 // 5. you should not mutate data that existed before component
 // 6. values that are passed to jsx, must not be mutated, mutation must occur before they are passing,
-//    to the jsx, ex: you have <style> element which you pass as style attribute to some component which,
-//    you assign to a variable, then, on the next line you mutate the style object wich you gave to that component,
-//    thorugh its object, dont do that becuase the ui is already outdated and react doesnt now that,
-//    so it wont rerender it.

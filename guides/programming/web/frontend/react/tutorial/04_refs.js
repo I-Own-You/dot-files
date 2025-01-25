@@ -3,9 +3,9 @@
 // when you want a component to “remember” some information,
 // but you don’t want that information to trigger new renders, you can use a ref.
 
-const ref = useRef(0)
 // under the hood its just an object
-// 0 being the initialValue
+
+const ref = useRef(0)
 ref == { current: initialValue }
 // you can mutate a ref anytimie you want(unlike state) and anywhere
 // except dont use it to determine how a rerender is done,
@@ -100,12 +100,13 @@ export default function CatFriends() {
           {catList.map((cat) => (
             <li
               key={cat}
-              // this is an ref callback
+              // this is a ref callback
               // 1. (node) is the dom node for the current render.
               // 2. when dom node is removed, react will call the cleanup function returned
               //    from the callback, if you dont return a cleanup function, it will call,
               //    the callback with null value as (node) but this behaviour will be removed,
-              //    in future upgrades so you should always return a cleanup function.
+              //    in future upgrades so you should always return a cleanup function,
+              //    if the cleanup is possible or is needed.
               // 3. react will also call ref callback whenever you pass a different ref callback.
               //    (node) => { ... } is a different function on every render.
               // 4. when component re-renders,

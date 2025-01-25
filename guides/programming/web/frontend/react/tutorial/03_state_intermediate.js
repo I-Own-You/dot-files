@@ -147,20 +147,20 @@ function submitForm(answer) {
 
 // structure of the state
 //
-// 1. goruup related structure:
-//                              1. if the state can satisfy more than 1 state variable (if you can),
-//                              2. when you deal with state which holds objects, you cant update only 1 property,
-//                              you need to update both(by copying or creating a new object)
+// 1. group related structure:
+//       1. if the state can satisfy more than 1 state variable (if you can),
+//       2. when you deal with state which holds objects, you cant update only 1 property,
+//       you need to update both(by copying or creating a new object)
 // 2. avoid contradictions:
-//                         1. no state should contradict with other state, ex: while you type, input cant be disabled
+//       1. no state should contradict with other state, ex: while you type, input cant be disabled
 // 3. avoid state state that can be calculated:
-//                                              1. if you have a state and you need its false boolean,
-//                                                 you should just calculate it like value = !state
+//                   1. if you have a state and you need its false boolean,
+//                      you should just calculate it like value = !state
 // 4. avoid duplication in state:
-//                               1. a state which holds some objects and another state which holds the same object
-//                                  inside the first state
+//            1. a state which holds some objects and another state which holds the same object
+//               inside the first state
 // 5. avoid deeplny nested states:
-//                                1. deep states are verbose to update
+//        1. deep states are verbose to update
 //
 // aslo, dont use props as state value if you want future updates,
 // because it will only set on the first render, on future renders, messageColor will update,
@@ -196,9 +196,9 @@ export default function App() {
   return (
     <div>
       {/*
-                conceptually same on all 4 lines, state is separate for all
-                updating one component state wont affect the other 
-            */}
+        conceptually same on all 4 lines, state is separate for all
+        updating one component state wont affect the other 
+      */}
       {counter}
       {counter}
       <Counter />
@@ -212,11 +212,11 @@ export default function App() {
     <div>
       {someCondition && <Counter />}
       {/*
-                becaue the second Counter is always rendered, its state will be preserved even
-                if the first Counter will render and then will be destroyed(even if the second component
-                gets lifted(somehow) above of the first component), so if both components
-                are the same, it doesnt matter, only the place in the UI tree matter
-            */}
+          becaue the second Counter is always rendered, its state will be preserved even
+          if the first Counter will render and then will be destroyed(even if the second component
+          gets lifted(somehow) above of the first component), so if both components
+          are the same, it doesnt matter, only the place in the UI tree matter
+      */}
       <Counter />
     </div>
   );
@@ -228,9 +228,9 @@ export default function App() {
       {someCondition && <Counter />}
       {!someCondition && <Counter />}
       {/*
-                because both of the components can be destroyed, and none of them has stable place,
-                in the UI tree, the state wont be preserved for any of them if 1 of them gets moved, lifted, .etc
-            */}
+        because both of the components can be destroyed, and none of them has stable place,
+        in the UI tree, the state wont be preserved for any of them if 1 of them gets moved, lifted, .etc
+      */}
       <Counter />
     </div>
   );
@@ -265,10 +265,10 @@ export default function App({ isTrue }) {
   return (
     <div>
       {/* 
-                here, because of the p tag, state for Counter wont be preserved, even though,
-                there is another Counter above supposed to be on the same level, but they are not,
-                becaue the second Counter is wrapped with p tag.
-            */}
+        here, because of the p tag, state for Counter wont be preserved, even though,
+        there is another Counter above supposed to be on the same level, but they are not,
+        becaue the second Counter is wrapped with p tag.
+      */}
       <p><Counter /></p>
     </div>
   );
@@ -292,13 +292,13 @@ export default function App({ isTrue }) {
     return (
       <div>
         {/*
-                    becaue of different keys of both Counter componnets(even though they are on the same level),
-                    the components do not share the state, they are basically destroyed and recreated,
-                    if the first gets toggled, the second gets destroyed, first created
-                    if the second gets toggled, the first gets destroyed, second created.
-                    remember: keys are a way to tell react to distinguish between components,
-                              and if they diverge, they simply gets destroyed.
-                */}
+          becaue of different keys of both Counter componnets(even though they are on the same level),
+          the components do not share the state, they are basically destroyed and recreated,
+          if the first gets toggled, the second gets destroyed, first created
+          if the second gets toggled, the first gets destroyed, second created.
+          remember: keys are a way to tell react to distinguish between components,
+                    and if they diverge, they simply gets destroyed.
+        */}
         <Counter key={someKey} />
       </div>
     );
@@ -366,10 +366,12 @@ const initialTasks = [
 //     1. Move from setting state to dispatching actions.
 //     2. Write a reducer function.
 //     3. Use the reducer from your component.
+//
 // basically, now, you need to tell react what the user did(like an aciton) instead of what to do
+//
 // 1. moving from setting state to dispatch
 function handleAddTask(text) {
-  // aciton object, anything can be inside, but usually its the info you need to perform actions,
+  // action object, anything can be inside, but usually its the info you need to perform actions,
   // and the most importatn the action-type that happened.
   dispatch({
     type: 'added',
@@ -448,6 +450,7 @@ const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 //
 // the great thing about it, if you pass another value to the context provider, it will rerender,
 // all the components that use it, this is why its often used with state/reducer.
+//
 // app.js
 export default function Page() {
   return (
@@ -524,10 +527,10 @@ export default function Section({ level, children }) {
   return (
     <section className="section">
       {/*
-                here, you need to wrap component that will use the context down below .
-                notice the {level}, level here is the prop that you will provide when using 
-                the component. (below in App.js)
-            */}
+        here, you need to wrap component that will use the context down below .
+        notice the {level}, level here is the prop that you will provide when using 
+        the component. (below in App.js)
+      */}
       <LevelContext.Provider value={level}>
         {children}
       </LevelContext.Provider>
@@ -567,11 +570,11 @@ export default function Section({ children }) {
   return (
     <section className="section">
       {/* 
-                here, any component however nested it would be donw below, it will look for a provider above,
-                if it finds one, it uses the value of the provider and increment it by 1, and it goes,
-                like this for all components.
-                this works because the value is kept for all the providers on all levels.
-            */}
+        here, any component however nested it would be donw below, it will look for a provider above,
+        if it finds one, it uses the value of the provider and increment it by 1, and it goes,
+        like this for all components.
+        this works because the value is kept for all the providers on all levels.
+      */}
       <LevelContext.Provider value={level + 1}>
         {children}
       </LevelContext.Provider>
@@ -681,8 +684,3 @@ export function useTasksDispatch() {
 }
 const tasks = useTasks();
 const dispatch = useTasksDispatch();
-
-// tips:
-// 1. inside event handlers, state updates behave like snapshots,
-//    which means if you have a lot of state updates there, it will,
-//    chaint them so react wont make uneccessary rerenders.

@@ -4,6 +4,7 @@
 //
 // react custom hooks name must start with lower "use" followed by a capital letter,
 // like: "useSomething".
+//
 // even though the naming convention isnt strict about the fact that,
 // you can create a cusotm hook and use no hooks inside it, react linter will complaint, but
 // its not a compilation erorr, but as a good rule, if you have a custom hook, you must always,
@@ -17,54 +18,54 @@
 //    also, so it must be pure, its like a part of the component itself, and if the custom hook is rerendering,
 //    the component will do so.
 export function useOnlineStatus() {
-  const [isOnline, setIsOnline] = useState(true)
+  const [isOnline, setIsOnline] = useState(true);
   useEffect(() => {
     function handleOnline() {
-      setIsOnline(true)
+      setIsOnline(true);
     }
     function handleOffline() {
-      setIsOnline(false)
+      setIsOnline(false);
     }
-    window.addEventListener('online', handleOnline)
-    window.addEventListener('offline', handleOffline)
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
     return () => {
-      window.removeEventListener('online', handleOnline)
-      window.removeEventListener('offline', handleOffline)
-    }
-  }, [])
-  return isOnline
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+  return isOnline;
 }
 function StatusBar() {
   // here you use the custom hook, all its state is local to the StatusBar, so it will trigger,
   // the rerenders of StatusBar too.
-  const isOnline = useOnlineStatus()
-  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>
+  const isOnline = useOnlineStatus();
+  return <h1>{isOnline ? "✅ Online" : "❌ Disconnected"}</h1>;
 }
 
 // another useful example of custom hook
 function useData(url) {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null);
   useEffect(() => {
     if (url) {
-      let ignore = false
+      let ignore = false;
       fetch(url)
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
           if (!ignore) {
-            setData(json)
+            setData(json);
           }
-        })
+        });
       return () => {
-        ignore = true
-      }
+        ignore = true;
+      };
     }
-  }, [url])
-  return data
+  }, [url]);
+  return data;
 }
 function ShippingForm({ country }) {
-  const cities = useData(`/api/cities?country=${country}`)
+  const cities = useData(`/api/cities?country=${country}`);
   // has no implementation, just an example of how it would be
-  const [city, setCity] = useState(null)
-  const areas = useData(city ? `/api/areas?city=${city}` : null)
-  return <div></div>
+  const [city, setCity] = useState(null);
+  const areas = useData(city ? `/api/areas?city=${city}` : null);
+  return <div></div>;
 }
