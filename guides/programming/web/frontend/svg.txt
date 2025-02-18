@@ -1,0 +1,83 @@
+1. Importing SVG as a React Component
+    1. You can import SVG files directly as React components.
+    2. It allows you to manipulate the SVG with props, such as changing colors or sizes,
+    3. Best for dynamic use cases but requires bundling tools like Webpack or Vite.
+    4. no http request needed (bundled in bundle tool like vite)
+        
+    import { ReactComponent as MyIcon } from './my-icon.svg';
+
+    function MyComponent() {
+      return <MyIcon width="50" height="50" fill="blue" />;
+    }
+    
+1.1. Using a Third-Party Library (e.g., React Icons)
+    1. Libraries like React Icons allow you to use SVGs as components.
+    2. It simplifies the usage of popular icon libraries and integrates well with React.
+    3. Good for quick access to popular icons but may increase bundle size.
+    4. no http request needed (bundled in bundle tool like vite)
+    
+    import { FaBeer } from 'react-icons/fa';
+
+    function MyComponent() {
+      return <FaBeer size={50} color="blue" />;
+    }
+    
+    
+
+2. Using SVG as an <img>
+    1. You can use an SVG file as the source of an <img> element, just like any other image format.
+    2. If you need a static image without the need for interaction or manipulation, this is a simple solution.
+    3. Simple, but you lose the ability to style the SVG easily.
+    4. http request needed since the svg is referenced via src attribute
+        
+    function MyComponent() {
+      return <img src="/path/to/my-icon.svg" alt="My Icon" />;
+    }
+
+3. Inline SVG
+    1. You can include the entire SVG markup directly within your React component.
+    2. It allows you to manipulate the SVG with CSS or JavaScript, just like any other JSX element.
+    3. Best for flexibility and manipulation, but may clutter your JSX.
+    4. no http reqest needed (svg is part of jsx)
+
+    function MyComponent() {
+      return (
+        <svg width="50" height="50" fill="blue">
+          <circle cx="25" cy="25" r="20" />
+        </svg>
+      );
+    }
+
+4. Using a CSS Background Image
+    1. You can set the SVG as a background image in your CSS or inline style.
+    2. This is useful if you need to apply the SVG as a background to an element and
+       don't need to manipulate it directly in your React code.
+    3. Easy to implement but doesn't provide flexibility for interaction.
+    4. http request needed since the svg is referenced via url
+    
+    function MyComponent() {
+      return (
+        <div
+          style={{
+            backgroundImage: 'url(/path/to/my-icon.svg)',
+            width: '50px',
+            height: '50px',
+          }}
+        />
+      );
+    }
+    
+5. Using use Tag with <svg>
+    1. If you have an SVG sprite (a single SVG file containing multiple icons),
+       you can use the <use> element to reference specific parts of the sprite.
+    2. It's efficient when you have a collection of SVGs and want to reference them without loading separate files.
+    3. Efficient for managing multiple SVGs but requires a sprite.
+    4. http request usually need unless cached or in bundle
+    
+    function MyComponent() {
+      return (
+        <svg width="50" height="50">
+          <use href="/icons/sprite.svg#my-icon" />
+        </svg>
+      );
+    }  
