@@ -22,8 +22,6 @@
       return <FaBeer size={50} color="blue" />;
     }
     
-    
-
 2. Using SVG as an <img>
     1. You can use an SVG file as the source of an <img> element, just like any other image format.
     2. If you need a static image without the need for interaction or manipulation, this is a simple solution.
