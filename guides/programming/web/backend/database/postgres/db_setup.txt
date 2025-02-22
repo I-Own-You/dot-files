@@ -3,6 +3,9 @@ installation:
     2. install using macos/windows/linux guides.
         2.1. paru postgresql
         2.2. sudo -u postgres initdb -D /var/lib/postgres/data
+        2.2.1. (in case theres an error like cant create folder)
+            sudo mkdir -p /var/lib/postgres
+            sudo chown -R postgres:postgres /var/lib/postgres
         2.3 systemctl start postgresql.service | systemctl enabled postgresql.service
 
 configuration:
