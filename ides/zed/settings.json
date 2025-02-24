@@ -189,7 +189,6 @@
     },
     // keymaps
     "base_keymap": "VSCode",
-
     // vim
     "vim_mode": true,
     "vim": {
