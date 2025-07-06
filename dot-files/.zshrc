@@ -350,7 +350,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 unsetopt EXTENDED_GLOB
 
 function zvm_after_init() {
-  source /usr/share/fzf/key-bindings.zsh && source /usr/share/fzf/completion.zsh &&
+  source /home/linuxbrew/.linuxbrew/Cellar/fzf/0.63.0/shell/key-bindings.zsh &&
+  source /home/linuxbrew/.linuxbrew/Cellar/fzf/0.63.0/shell/completion.zsh &&
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-Aloxaf-SLASH-fzf-tab/fzf-tab.zsh &&
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-mdumitru-SLASH-fancy-ctrl-z/fancy-ctrl-z.zsh &&
       source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-jimhester-SLASH-per-directory-history/per-directory-history.zsh &&
