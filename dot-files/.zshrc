@@ -325,7 +325,10 @@ export EDITOR=nvim
 export FORGIT_NO_ALIASES=1
 export LESS="-RXF"
 
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+source /home/linuxbrew/.linuxbrew/opt/antidote/share/antidote/antidote.zsh
+#source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
 antidote load
 
