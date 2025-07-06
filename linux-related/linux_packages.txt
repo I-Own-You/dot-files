@@ -45,6 +45,7 @@ obs-studio(gnome store)
 keepassxc(gnome store)
 yazi(brew)
 extensions(gnome center)
+pinta(gnome center)
 
 # gnome
 flameshot(off site, appimg)
