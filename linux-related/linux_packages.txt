@@ -2,6 +2,7 @@
 git(apt|brew)
 zsh(apt|brew)
 brew(off site)
+btop(brew)
 kitty(off site)
 ueberzugpp(jstkdng/programs/ueberzugpp:brew)
 neovim(brew)
