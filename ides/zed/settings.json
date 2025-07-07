@@ -278,5 +278,11 @@
     // collab panel(devs of zed)
     "collaboration_panel": {
         "button": false
+    },
+    //diagnostics
+    "diagnostics": {
+        "inline": {
+            "enabled": true
+        }
     }
 }
