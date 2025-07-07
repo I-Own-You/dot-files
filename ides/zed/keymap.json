@@ -84,7 +84,8 @@
             "space r e": "editor::Rename",
             "g e": "editor::GoToDiagnostic",
             "g E": "editor::GoToPreviousDiagnostic",
-            "space l s": "editor::ShowSignatureHelp"
+            "space l s": "editor::ShowSignatureHelp",
+            "ctrl-/": "workspace::ToggleZoom"
         }
     },
     {
