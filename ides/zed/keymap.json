@@ -63,8 +63,8 @@
             "space b l": "git::Blame",
             "space m t": "git_panel::ToggleFocus",
             "space g b b": "git::Branch",
-            "space o o": "outline::Toggle",
-            "space t t": "project_symbols::Toggle",
+            // "g s": "outline::Toggle",
+            // "g S": "project_symbols::Toggle",
             "space k a": "editor::ToggleCodeActions",
             "space l w": "diagnostics::Deploy",
             "space space": "pane::DeploySearch",
@@ -77,13 +77,13 @@
             "ctrl-space j": "workspace::SwapPaneDown",
             "ctrl-space k": "workspace::SwapPaneUp",
             "g r": "editor::FindAllReferences",
-            "g i": "editor::GoToImplementation",
-            "space D": "editor::GoToTypeDefinition",
+            "g I": "editor::GoToImplementation",
+            "g Y": "editor::GoToTypeDefinition",
             "g D": "editor::GoToDeclaration",
             "g d": "editor::GoToDefinition",
-            "space r e": "editor::Rename",
-            "g e": "editor::GoToDiagnostic",
-            "g E": "editor::GoToPreviousDiagnostic",
+            // "space r e": "editor::Rename", // c-d now
+            // "] d": "editor::GoToDiagnostic",
+            // "[ d": "editor::GoToPreviousDiagnostic",
             "space l s": "editor::ShowSignatureHelp",
             "ctrl-/": "workspace::ToggleZoom"
         }
@@ -173,8 +173,6 @@
             "f": "project_panel::NewFile",
             "space e": "project_panel::ToggleFocus",
             "r": "project_panel::Rename",
-            "g e": "project_panel::SelectNextGitEntry",
-            "g E": "project_panel::SelectPrevGitEntry",
             "[": "project_panel::SelectNextDirectory",
             "]": "project_panel::SelectPrevDirectory"
         }
