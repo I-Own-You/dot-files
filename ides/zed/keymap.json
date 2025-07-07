@@ -123,8 +123,7 @@
             "ctrl-j": "workspace::ActivatePaneDown",
             "ctrl-k": "workspace::ActivatePaneUp",
             "ctrl-h": "workspace::ActivatePaneLeft",
-            "ctrl-l": "workspace::ActivatePaneRight",
-            "space b o": "pane::CloseInactiveItems"
+            "ctrl-l": "workspace::ActivatePaneRight"
         }
     },
     {
@@ -168,7 +167,7 @@
     {
         "context": "ProjectPanel && not_editing",
         "bindings": {
-            // "space e": "workspace::ToggleLeftDock",
+            "q": "workspace::ToggleLeftDock",
             ";": "command_palette::Toggle",
             "f": "project_panel::NewFile",
             "space e": "project_panel::ToggleFocus",
