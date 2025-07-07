@@ -1,4 +1,5 @@
 {
+    "icon_theme": "Material Icon Theme",
     "features": {
         "edit_prediction_provider": "none"
     },
@@ -15,7 +16,7 @@
     "theme": {
         "mode": "system",
         "light": "One Light",
-        "dark": "One Dark"
+        "dark": "Everblush"
     },
     "current_line_highlight": "all",
     "cursor_blink": false,
