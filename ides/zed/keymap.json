@@ -50,10 +50,10 @@
     {
         "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
         "bindings": {
-            "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-            "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-            "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-            "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
             "space b o": "pane::CloseInactiveItems"
         }
     },
@@ -62,7 +62,7 @@
         "bindings": {
             "q": null,
             "tab": "pane::ActivateNextItem",
-            "shift-tab": "pane::ActivatePrevItem",
+            "shift-tab": "pane::ActivatePreviousItem",
             "ctrl-[": "vim::NextMethodStart",
             "ctrl-]": "vim::PreviousMethodStart",
             "ctrl-e": [
