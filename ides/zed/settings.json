@@ -5,10 +5,10 @@
     // ui related
     "ui_font_size": 17,
     "ui_font_weight": 300,
-    "ui_font_family": "JetBrainsMono Nerd Font",
+    "ui_font_family": "CommitMono",
     "buffer_font_size": 21,
     "buffer_font_weight": 300,
-    "buffer_font_family": "JetBrainsMono Nerd Font",
+    "buffer_font_family": "CommitMono",
     "buffer_line_height": {
         "custom": 1.7
     },
