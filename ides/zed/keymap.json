@@ -1,7 +1,15 @@
 [
     // non vim keybindings
+    // terminal
     {
-        "bindings": {}
+        "context": "Workspace",
+        "bindings": {
+            "alt-t": "terminal_panel::ToggleFocus"
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": { "alt-t": "terminal_panel::ToggleFocus" }
     },
 
     // vim keybindings
@@ -26,18 +34,80 @@
         }
     },
     {
+        // only while an editor has focus and you’re in Normal or Visual mode
+        "context": "Editor && (vim_mode == normal || vim_mode == visual)",
+        "bindings": {
+            "space p h": "editor::ToggleSelectedDiffHunks", // show / hide inline diff of the hunk under the cursor
+            "space s h": "git::ToggleStaged",
+            "space r b b": "git::RestoreFile",
+            "space s b": "git::StageAll",
+            "space r b i": "git::UnstageAll",
+            "space r h": "git::Restore"
+        }
+    },
+    {
+        "context": "GitPanel",
+        "bindings": {
+            "q": "git_panel::Close"
+        }
+    },
+    {
         "context": "Editor && vim_mode == normal",
         "bindings": {
             "space v v": "pane::SplitRight",
             "space x x": "pane::SplitDown",
-            "space x t": "editor::CopyPath",
-            "space e": "project_panel::ToggleFocus"
+            "space x t": "workspace::CopyPath",
+            "space e": "project_panel::ToggleFocus",
+            "space g c": "git::Commit",
+            "space g p": "git::Push",
+            "space b l": "git::Blame",
+            "space m t": "git_panel::ToggleFocus",
+            "space g b b": "git::Branch",
+            "space o o": "outline::Toggle",
+            "space t t": "project_symbols::Toggle",
+            "space k a": "editor::ToggleCodeActions",
+            "space l w": "diagnostics::Deploy",
+            "space space": "pane::DeploySearch",
+            "alt-shift-h": "vim::ResizePaneLeft",
+            "alt-shift-l": "vim::ResizePaneRight",
+            "alt-shift-j": "vim::ResizePaneDown",
+            "alt-shift-k": "vim::ResizePaneUp",
+            "ctrl-space h": "workspace::SwapPaneLeft",
+            "ctrl-space l": "workspace::SwapPaneRight",
+            "ctrl-space j": "workspace::SwapPaneDown",
+            "ctrl-space k": "workspace::SwapPaneUp",
+            "g r": "editor::FindAllReferences",
+            "g i": "editor::GoToImplementation",
+            "space D": "editor::GoToTypeDefinition",
+            "g D": "editor::GoToDeclaration",
+            "g d": "editor::GoToDefinition",
+            "space r e": "editor::Rename",
+            "g e": "editor::GoToDiagnostic",
+            "g E": "editor::GoToPreviousDiagnostic",
+            "space l s": "editor::ShowSignatureHelp"
+        }
+    },
+    {
+        "context": "!ContextEditor > Editor && mode == full",
+        "bindings": {
+            "alt-n": "editor::GoToHunk",
+            "alt-p": "editor::GoToPreviousHunk"
         }
     },
     {
         "context": "Editor && vim_mode == insert",
         "bindings": {
-            "j k": ["workspace::SendKeystrokes", "escape"]
+            "j k": ["workspace::SendKeystrokes", "escape"],
+            "ctrl-l": "editor::ShowSignatureHelp"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == insert && showing_completions || (Editor && showing_code_actions)",
+        "bindings": {
+            "ctrl-e": "editor::Cancel",
+            "ctrl-c": "editor::Cancel",
+            "tab": "editor::ContextMenuNext",
+            "shift-tab": "editor::ContextMenuPrevious"
         }
     },
     {
@@ -79,7 +149,8 @@
         "context": "Editor && mode == full && vim_mode == normal",
         "bindings": {
             "space w w": "editor::ToggleSoftWrap",
-            "space n h": "buffer_search::Dismiss"
+            "space n h": "buffer_search::Dismiss",
+            "space b o": "pane::CloseInactiveItems"
         }
     },
     {
@@ -97,7 +168,15 @@
     {
         "context": "ProjectPanel && not_editing",
         "bindings": {
-            "space e": "workspace::ToggleLeftDock"
+            // "space e": "workspace::ToggleLeftDock",
+            ";": "command_palette::Toggle",
+            "f": "project_panel::NewFile",
+            "space e": "project_panel::ToggleFocus",
+            "r": "project_panel::Rename",
+            "g e": "project_panel::SelectNextGitEntry",
+            "g E": "project_panel::SelectPrevGitEntry",
+            "[": "project_panel::SelectNextDirectory",
+            "]": "project_panel::SelectPrevDirectory"
         }
     }
 ]
