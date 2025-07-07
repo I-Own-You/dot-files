@@ -85,22 +85,34 @@
         "JavaScript": {
             "enable_language_server": true,
             "format_on_save": "on",
-            "formatter": "prettier"
+            "formatter": "prettier",
             // "code_actions_on_format": {
             //     "source.fixAll.eslint": true
             // }
+            "tab_size": 4
         },
         "TypeScript": {
             "enable_language_server": true,
             "format_on_save": "on",
-            "formatter": "prettier"
+            "formatter": "prettier",
             // "code_actions_on_format": {
             //     "source.fixAll.eslint": true
             // }
+            "tab_size": 4
         },
         "Python": {
             "enable_language_server": true,
-            "language_servers": ["pyright", "pylsp", "..."]
+            "language_servers": ["pyright", "pylsp", "..."],
+            "tab_size": 4
+        },
+        "HTML": {
+            "enable_language_server": true,
+            "formatter": "prettier",
+            "tab_size": 4
+        },
+        "Go": {
+            "enable_language_server": true,
+            "tab_size": 4
         }
     },
     // editor scrollbar
