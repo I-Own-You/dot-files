@@ -1,6 +1,6 @@
 {
     "features": {
-        "inline_completion_provider": "none"
+        "edit_prediction_provider": "none"
     },
     // ui related
     "ui_font_size": 17,
@@ -233,7 +233,7 @@
         // "show_diagnostics": "all"
     },
     // assistant panel https://zed.dev/docs/configuring-zed#assistant-panel
-    "assistant": {
+    "agent": {
         "enabled": false,
         "version": "2",
         "button": false
