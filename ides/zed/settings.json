@@ -61,7 +61,7 @@
     // "show_inline_completions": true,
     // lsp settings
     "enable_language_server": true,
-    "lsp_highlight_debounce": 75,
+    "lsp_highlight_debounce": 999999999999, // workaround to disable highlight of every same word
     // lsp setup
     "lsp": {
         "typescript-language-server": {
@@ -186,7 +186,7 @@
         // "git_gutter": "tracked_files",
         // "gutter_debounce": null,
         "inline_blame": {
-            // "enabled": true,
+            "enabled": false,
             // "delay_ms": 0,
             // "min_column": 0,
             "show_commit_summary": true
