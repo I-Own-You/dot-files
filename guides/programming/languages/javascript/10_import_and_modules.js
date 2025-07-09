@@ -3,10 +3,10 @@
 //    (this means that code isnt visible unless its exported, unlike regulat js files),
 //    unlike regular js files that have global scope.
 //    if a file has at the top import/export than its treated as a module.
-// 2. if a file at the top doesnt contain import/export/await, then its not a module (js, not ts)
-// 3. if you import * without as alias, you cant access default export (its a js thing, not ts)
+// 2. if a file at the top doesnt contain import/export/await, then its not a module 
+// 3. if you import * without as alias, you cant access default export 
 // 4. if you import without alias, just the file, the file gets evaluated,
-//    but nothing imported (could affect other objects and etc, again, js, not ts thing)
+//    but nothing imported (could affect other objects and etc)
 
 // CommonJS - a module system from NodeJS
 // AMD - the oldest module system
@@ -126,3 +126,8 @@ bye()
 let obj = await import('./say.js')
 let say = obj.default
 say()
+
+// each file without import/export/await at the top(so being a module) has all top namings,
+// variables, classes, functions, .etc merges into a global scope, so it means they will conflict,
+// to make them not conflict, define import/export/await a the top, a dummy one also works exprt {},
+// or use ts compiler options.
