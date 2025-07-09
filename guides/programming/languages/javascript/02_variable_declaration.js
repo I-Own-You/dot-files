@@ -1,11 +1,11 @@
 // variables can be  created with: var, let, const
 let exampleA = 1,
-  exampleB,
-  exampleC
+    exampleB,
+    exampleC
 let anotherExampleA
 let anotherExampleB = 2
 const anotherExampleC = 2
-let cExample = exampleA + exampleB // same as exampleA + ' ' + exampleB
+let cExample = exampleA + exampleB
 
 // all variables are initialized by default and put at the start of the file,
 // its called variable hoisting.
@@ -19,7 +19,7 @@ let cExample = exampleA + exampleB // same as exampleA + ' ' + exampleB
 // it means that you cannot access them above their initialization
 // untill you use them inside some code that will be run after the intialization of let and const:
 function foo() {
-  console.log('from foo', tdzA) // used before intialization
+    console.log('from foo', tdzA) // used before intialization
 }
 let tdzA = 10
 foo() // ok because the code is running after intialization
@@ -27,23 +27,23 @@ foo() // ok because the code is running after intialization
 // Clsses also have TDZ(even thought they are functions under the hood):
 console.log(Foo) // error
 class Foo {
-  constructor(bar) {
-    this.bar = bar
-  }
+    constructor(bar) {
+        this.bar = bar
+    }
 }
 
 // simple functions do not have TDZ, so you can use them above their intialization:
 console.log(Foo) // ok, it will be executed
 function Foo() {
-  this.bar = 1
+    this.bar = 1
 }
 
 // let and const have block scope, so you cannot accesss them in the outer scope:
 if (true) {
-  let scopeA = 5
-  const scopeB = 10
-  console.log(scopeA) // ok, since its in the scope
-  console.log(scopeB) // ok, since its in the scope
+    let scopeA = 5
+    const scopeB = 10
+    console.log(scopeA) // ok, since its in the scope
+    console.log(scopeB) // ok, since its in the scope
 }
 console.log(scopeA) // error, not defined
 console.log(scopeB) // error, not defined
@@ -60,10 +60,10 @@ console.log(scopeB) // error, not defined
 
 // var variables have function scope so if it is defined in fuctions, you cant use them outside:
 if (true) {
-  var varA = 5
+    var varA = 5
 }
 function foo() {
-  var varB = 10
+    var varB = 10
 }
 console.log(varA) // ok since var a is in if block, and not functin block scope
 console.log(varB) // error because var b is defined in function scope
@@ -76,7 +76,7 @@ console.log(varB) // error because var b is defined in function scope
 
 // var variables without var keyword are hoistd even though their scope is functional
 function showHoist() {
-  hoistA = 2
+    hoistA = 2
 }
 showHoist()
 console.log(hoistA)
@@ -96,9 +96,9 @@ alert(myName) // Julius
 alert(mySurname) // result from prompt, = propmt() is like a default value
 //
 let myOptions = {
-  myTitleTitle: 'Menu',
-  myTitleWidth: 100,
-  myTitleHeight: 200,
+    myTitleTitle: 'Menu',
+    myTitleWidth: 100,
+    myTitleHeight: 200,
 }
 // variable names must be identic to object properties
 let { myTitleTitle, myTitleWidth, myTitleHeight } = myOptions
@@ -108,9 +108,9 @@ alert(height) // 200
 //
 // the order doesnt matter
 let { anotherMyHeight, anotherMyWidth, anotherMyTitle } = {
-  anotherMyTitle: 'Menu',
-  anotherMyHeight: 200,
-  anotherMyWidth: 100,
+    anotherMyTitle: 'Menu',
+    anotherMyHeight: 200,
+    anotherMyWidth: 100,
 }
 // change the name of vars
 let { width: changedWidth, height: changedHeight } = myOptions
@@ -121,14 +121,14 @@ alert(changedWidth) // 100
 alert(changedHeight) // 200
 //default values
 let someOtherOptions = {
-  someOtherTitle: 'Menu',
-  someOtherWidth: 200,
-  someOtherHeight: 300,
+    someOtherTitle: 'Menu',
+    someOtherWidth: 200,
+    someOtherHeight: 300,
 }
 let {
-  someOtherWidth = 100,
-  someOtherHeight = 200,
-  someOtherTitle,
+    someOtherWidth = 100,
+    someOtherHeight = 200,
+    someOtherTitle,
 } = someOtherOptions
 alert(someOtherTitle) // Menu
 alert(someOtherHeight) // 300
@@ -136,9 +136,9 @@ alert(someOtherWidth) // 200
 
 // change name and give default values
 let {
-  myTitleHeight: h = 100,
-  myTitleWidth: w = 200,
-  myTitleTitle: t,
+    myTitleHeight: h = 100,
+    myTitleWidth: w = 200,
+    myTitleTitle: t,
 } = myOptions
 alert(t) // Menu
 alert(w) // 100
@@ -156,29 +156,29 @@ let myA, myB, myC
 
 // you can construct more complex one, with nested objects
 let nestedObjects = {
-  size: {
-    width: 100,
-    height: 200,
-  },
-  items: ['Cake', 'Donut'],
-  extra: true,
+    size: {
+        width: 100,
+        height: 200,
+    },
+    items: ['Cake', 'Donut'],
+    extra: true,
 }
 //
 let {
-  size: { width, height },
-  items: [item1, item2],
-  title = 'Menu',
+    size: { width, height },
+    items: [item1, item2],
+    title = 'Menu',
 } = nestedObjects
 
 // you can also destructurize variable in a function signature,
 // so you could call the variable name in the function call
 // (the nested objects can be here as well):
 function showMenu({
-  title = 'Untitled',
-  width = 200,
-  height = 100,
-  items = [],
+    title = 'Untitled',
+    width = 200,
+    height = 100,
+    items = [],
 }) {
-  console.log(title, width, height, items)
+    console.log(title, width, height, items)
 }
 showMenu({ width: 'a' })

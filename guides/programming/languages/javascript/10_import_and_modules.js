@@ -16,7 +16,7 @@
 // ES-Modules:
 // module1.js
 export function sum(a, b) {
-  return a + b
+    return a + b
 }
 export const SOME_SETTINGS_FLAG = false
 export const someUser = {}
@@ -38,7 +38,7 @@ export { module2UesrAnother as admin } // also change the name
 //
 // sum.js
 export default function (a, b) {
-  return a + b
+    return a + b
 }
 // other-module.js
 import sum from './sum.js'
@@ -69,7 +69,7 @@ console.log(user.name) // undefined'
 //
 // module1.js
 export function createUser() {
-  return { name: 'Alex' }
+    return { name: 'Alex' }
 }
 // module2.js
 import { createUser } from './module1.js'
@@ -107,16 +107,16 @@ import(modulePath) // its a promise under the hood, so .then, .catch can be used
 // import() loads the module and returns a promis which value will be all the exports of the module
 // 📁 say.js
 export function hi() {
-  alert(`Привет`)
+    alert(`Привет`)
 }
 export function bye() {
-  alert(`Пока`)
+    alert(`Пока`)
 }
 // another file
 let { hi, bye } = await import('./say.js')
 hi()
 bye()
-// if a module has export default, then:
+// if a module has export default without name, then:
 // 📁 say.js
 // commented, because prettier formatter complains about second default export
 // export default function() {

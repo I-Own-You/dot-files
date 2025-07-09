@@ -3,15 +3,15 @@
 // value can be whatever
 const anObject = {}
 const bookObject = {
-  title: 'heelo',
-  kittens: ['Беляш', 'Михаил', 'Чарли'],
-  favoriteToy: {
-    name: 'мячик',
-    size: 'маленький',
-    meow: function () {
-      console.log('мяу мяу')
+    title: 'heelo',
+    kittens: ['Беляш', 'Михаил', 'Чарли'],
+    favoriteToy: {
+        name: 'мячик',
+        size: 'маленький',
+        meow: function () {
+            console.log('мяу мяу')
+        },
     },
-  },
 }
 
 // you can add object attributes and after initialization of the object:
@@ -57,42 +57,42 @@ console.log(obj) // { '[object Object]': 'value for the object key' }
 
 // the new way of declaring a function that belongs to the object(in fact method):
 const showCatObj = {
-  name: 'Том',
-  meow() {
-    // without the function keyword
-    console.log('a')
-  },
+    name: 'Том',
+    meow() {
+        // without the function keyword
+        console.log('a')
+    },
 }
 
 // the new way of declaring attributes as variable names that exists in the program:
 const oldFirstName = 'a'
 const oldUsername = 'b'
 const oldUser = {
-  oldFirstName: oldFirstName, // old way
-  oldUsername: oldUsername, // old way
+    oldFirstName: oldFirstName, // old way
+    oldUsername: oldUsername, // old way
 }
 console.log(oldUser) // { firstName: 'a', username: 'b' }
 //
 const newFirstName = 'a'
 const newUsername = 'b'
 const newUser = {
-  newFirstName, // new way
-  newUsername, // new way
+    newFirstName, // new way
+    newUsername, // new way
 }
 console.log(newUser) // { firstName: 'a', username: 'b' }
 
 // if an attribute is contained inside a variable, you can use [''] notation no access the attribute
 const attrUser = {
-  firstName: 'a',
-  username: 'a',
+    firstName: 'a',
+    username: 'a',
 }
 const propAttr = 'firstName'
 console.log(user[propAttr]) // a
 
 // to check if an attribute is in object, use in keyword:
 const user = {
-  firstName: 'a',
-  username: 'b',
+    firstName: 'a',
+    username: 'b',
 }
 console.log('firstName' in user) // true
 console.log('age' in user) // false
@@ -102,16 +102,16 @@ console.log('age' in user) // false
 // most of the time it will be like [object Object],
 // Object - is the actual type, it can be redefined so it will show something else
 class Book {
-  title = ''
-  author = ''
-  constructor(title, author) {
-    this.title = title
-    this.author = author
-  }
-  toString() {
-    // redefining
-    return `hello`
-  }
+    title = ''
+    author = ''
+    constructor(title, author) {
+        this.title = title
+        this.author = author
+    }
+    toString() {
+        // redefining
+        return `hello`
+    }
 }
 const myBook = new Book('Палата №6', 'А. П. Чехов')
 console.log(`hey ${myBook}`) // hey hello
@@ -120,11 +120,11 @@ console.log(`hey ${myBook}`) // hey hello
 
 // you can also redefine this method if you use function constructors, with prototype attribute:
 function Book(title, author) {
-  this.title = title
-  this.author = author
+    this.title = title
+    this.author = author
 }
 Book.prototype.toString = function () {
-  return `hey`
+    return `hey`
 }
 const book = new Book('a')
 console.log(`hey ${book}`) // hey hey
@@ -138,10 +138,10 @@ console.log(`hey ${book}`) // hey hey
 //    3.1 value of the attribute, and the remainig 3 are descriptors:
 const laptop = {}
 Object.defineProperty(laptop, 'os', {
-  value: 'MacOS', //value
-  writable: false, // modifiable or not
-  enumerable: true, // can be seen in array, etc.
-  configurable: true, // can be reconfigured with Object.defineProperty()
+    value: 'MacOS', //value
+    writable: false, // modifiable or not
+    enumerable: true, // can be seen in array, etc.
+    configurable: true, // can be reconfigured with Object.defineProperty()
 })
 
 // the default creation of objects sets descriptors to true by defualt
@@ -160,39 +160,39 @@ Object.defineProperty(laptop, 'os', {
 // access descriptr - defines the attribute through get() and set() functions:
 const animal = { _hiddenName: 'a' }
 Object.defineProperty(animal, 'name', {
-  // here is a problem thought,
-  // even though we defined the get() function,
-  // the set() function isnt defined,
-  // so its set false as default, so we cant updaate the attribute value, its imposiblle for now
-  get: function () {
-    return this._hiddenName
-  },
+    // here is a problem thought,
+    // even though we defined the get() function,
+    // the set() function isnt defined,
+    // so its set false as default, so we cant updaate the attribute value, its imposiblle for now
+    get: function () {
+        return this._hiddenName
+    },
 })
 const animal2 = {
-  name: 'b',
+    name: 'b',
 }
 console.log(animal.name) // a
 console.log(animal2.name) // b
 
 const animal = { _hiddenName: 'a' }
 Object.defineProperty(animal, 'name', {
-  get: function () {
-    return this._hiddenName
-  },
-  set: function (value) {
-    this._hiddenName = value
-  }, // now, we can update the value of the attribute
+    get: function () {
+        return this._hiddenName
+    },
+    set: function (value) {
+        this._hiddenName = value
+    }, // now, we can update the value of the attribute
 })
 animal.name = 'b'
 console.log(animal.name) // b
 // as get() and set() is a common way to write, a special syntax for them was created:
 const animal = {
-  get name() {
-    return this._name
-  },
-  set name(value) {
-    this._name = value
-  },
+    get name() {
+        return this._name
+    },
+    set name(value) {
+        this._name = value
+    },
 }
 console.log(animal.name) // undefined
 animal.name = 'a'
@@ -214,7 +214,7 @@ console.log(animal.name) // a
 // Object.preventExtensions() restricts adding new attributes to an object but
 // doesnt affect current attributes of the object, in 'use strict' it will cause an error though:
 const laptop = {
-  displaySize: 15,
+    displaySize: 15,
 }
 Object.preventExtensions(laptop)
 laptop.storage = 256
@@ -242,14 +242,14 @@ foo === bar // true
 // you must use the static method Object.defineProperties():
 const laptop = {}
 Object.defineProperties(laptop, {
-  os: {
-    value: 'MacOS',
-    enumerable: true,
-  },
-  age: {
-    value: 10,
-    enumerable: false,
-  },
+    os: {
+        value: 'MacOS',
+        enumerable: true,
+    },
+    age: {
+        value: 10,
+        enumerable: false,
+    },
 })
 const result = Object.keys(laptop)
 console.log(result) // ['os']
@@ -269,10 +269,10 @@ console.log(result) // ['os']
 
 // function are also objects, so you can assign attribute to it as well:
 function sum(a, b) {
-  return a + b
+    return a + b
 }
-sum.arguments // можно вызвать свойство функции
-sum.someField = 'value' // можно присвоить значение в поле
+sum.arguments // can call function property
+sum.someField = 'value' // can assign value to a field
 console.dir(sum) // [Function: sum] { someField: 'value' }
 
 // when you declare a primitive value, // it is autoboxed into its constructor type by default,
@@ -292,11 +292,11 @@ Symbol('tag').toString()
 9007199254740991n.toString()
 ;(32.2).toString()
 ;(32)
-  .toString(
-    // good
-    32
-  )
-  .toString() // good
+    .toString(
+        // good
+        32,
+    )
+    .toString() // good
 Number(32).toString() // good
 
 // null and undefined cant call constructor methods because
@@ -311,9 +311,9 @@ let sampleObject = {}
 // copying occure only on the first lvl, if you have objects lower than first level,
 // then they will be copied by reference, and not value
 const original = {
-  b: {
-    c: 1,
-  },
+    b: {
+        c: 1,
+    },
 }
 const copy = { ...original }
 copy.b.c = 2
@@ -321,17 +321,17 @@ console.log(original) // { b: { c: 2 }}
 
 // you can make changes when copying an object:
 const cat = {
-  name: 'felix',
-  color: 'blac',
-  isHomeless: false,
+    name: 'felix',
+    color: 'blac',
+    isHomeless: false,
 }
 const catInBoots = {
-  ...cat,
-  // name, hasBoots will rewrite any name properties from cat object that has same name properties
-  name: 'kekl',
-  hasBoots: true,
-  // this will overwrite any properties above if property name is the same
-  ...cat,
+    ...cat,
+    // name, hasBoots will rewrite any name properties from cat object that has same name properties
+    name: 'kekl',
+    hasBoots: true,
+    // this will overwrite any properties above if property name is the same
+    ...cat,
 }
 console.log(catInBoots) // {name: 'kekl', color: 'blac', isHomeless: false, hasBoots: true }
 const redCat = Object.assign(cat, { color: 'red', name: 'iara' })
@@ -360,12 +360,12 @@ console.log(objectA) // a.toString()
 
 // method of an object:
 const someUser = {
-  name: 'Alex',
-  // greet becomes a method of the object someUser
-  greet() {
-    // this.name becomes the object in this case 'Alex'
-    console.log(`Hello, my name is ${this.name}`)
-  },
+    name: 'Alex',
+    // greet becomes a method of the object someUser
+    greet() {
+        // this.name becomes the object in this case 'Alex'
+        console.log(`Hello, my name is ${this.name}`)
+    },
 }
 someUser.greet() // Hello, my name is Alex
 const greetFunc = someUser.greet
@@ -377,10 +377,10 @@ greetVar.greet()
 
 // constructor - a function that helps creating new objects
 function User() {
-  // function constructor
-  // this = {}
-  this.name = 'Alex' // this becomes the User object
-  // return this
+    // function constructor
+    // this = {}
+    this.name = 'Alex' // this becomes the User object
+    // return this
 }
 // User { name: 'Alex'}, new keyword is responsible for creating
 const firstObjUser = new User()
@@ -391,24 +391,24 @@ firstObjUser.name === 'Alex'
 firstObjUser instanceof User // true, checks if firstObjUser was instaniated by User
 // variant 1, check if it was constructed with new keyword
 function User() {
-  if (!(this instanceof User)) {
-    throw Error('Error: Incorrect invocation!')
-  }
-  this.name = 'Alex'
+    if (!(this instanceof User)) {
+        throw Error('Error: Incorrect invocation!')
+    }
+    this.name = 'Alex'
 }
 //variant 2
 function User() {
-  if (!new.target) {
-    throw Error('Error: Incorrect invocation!')
-  }
-  this.name = 'Alex'
+    if (!new.target) {
+        throw Error('Error: Incorrect invocation!')
+    }
+    this.name = 'Alex'
 }
 const secondUser = User() // Error: Incorrect invocation!
 
 // indirect call with call() and apply(),
 // their first argument is this(so they can setup the context outside explicitly):
 function greetSome() {
-  console.log(`Hello, ${this.name}`)
+    console.log(`Hello, ${this.name}`)
 }
 const userOne = { name: 'Alex' }
 const userTwo = { name: 'Ivan' }
@@ -420,7 +420,7 @@ greetSome.apply(userTwo) // Hello, Ivan
 // call() takes arguments as a list with commas,
 // apply() takes an array of arguments:
 function greetSomeSome(greetWord, emoticon) {
-  console.log(`${greetWord} ${this.name} ${emoticon}`)
+    console.log(`${greetWord} ${this.name} ${emoticon}`)
 }
 const userOneOne = { name: 'Alex' }
 const userTwoTwo = { name: 'Ivan' }
@@ -431,7 +431,7 @@ greetSomeSome.apply(userTwoTwo, ['Good morning,', ':-D']) // Good morning, Ivan 
 
 // tie forever a context with bind() method:
 function greetBind() {
-  console.log(`Hello, ${this.name}`)
+    console.log(`Hello, ${this.name}`)
 }
 const userBind = { name: 'Alex' }
 // returns the function with the userBind context,
@@ -440,17 +440,17 @@ const greetBindAlex = greetBind.bind(userBind)
 greetBindAlex() // Hello, Alex
 // another example
 function getAge() {
-  console.log(this.age)
+    console.log(this.age)
 }
 const howOldAmI = getAge.bind({ age: 20 }).bind({ age: 30 })
 howOldAmI() //20, because the first bind was {age: 20}, so its impossible to chain rebind
 
 // arrow functions dont have context so they look for near context in the hierarchy:
 function greetWaitAndAgain() {
-  console.log(`Hello, ${this.name}!`)
-  setTimeout(() => {
-    console.log(`Hello again, ${this.name}!`)
-  })
+    console.log(`Hello, ${this.name}!`)
+    setTimeout(() => {
+        console.log(`Hello again, ${this.name}!`)
+    })
 }
 const userContext = { name: 'Alex' }
 userContext.greetWaitAndAgain = greetWaitAndAgain
@@ -463,70 +463,70 @@ userContext.greetWaitAndAgain() // Hello, Alex! \n Hello again, Alex!
 
 // __proto__ - deprecated thing, but used to set/get things:
 let animal = {
-  eats: true,
+    eats: true,
 }
 let rabbit = {
-  jumps: true,
+    jumps: true,
 }
 rabbit.__proto__ = animal
 alert(rabbit.eats) // true
 alert(rabbit.jumps) // true
 //
 let animal = {
-  eats: true,
-  walk() {
-    alert('Animal walk')
-  },
+    eats: true,
+    walk() {
+        alert('Animal walk')
+    },
 }
 let rabbit = {
-  jumps: true,
-  __proto__: animal,
+    jumps: true,
+    __proto__: animal,
 }
 rabbit.walk() // Animal walk
 //
 let animal = {
-  eats: true,
-  walk() {
-    alert('Animal walk')
-  },
+    eats: true,
+    walk() {
+        alert('Animal walk')
+    },
 }
 let rabbit = {
-  jumps: true,
-  __proto__: animal,
+    jumps: true,
+    __proto__: animal,
 }
 let longEar = {
-  earLength: 10,
-  __proto__: rabbit,
+    earLength: 10,
+    __proto__: rabbit,
 }
 longEar.walk() // Animal walk
 alert(longEar.jumps) // true
 //
 let animal = {
-  eats: true,
-  walk() {
-    /*   */
-  },
+    eats: true,
+    walk() {
+        /*   */
+    },
 }
 let rabbit = {
-  __proto__: animal,
+    __proto__: animal,
 }
 rabbit.walk = function () {
-  alert('Rabbit! Bounce-bounce!')
+    alert('Rabbit! Bounce-bounce!')
 }
 rabbit.walk() // Rabbit! Bounce-bounce!
 //
 let protUer = {
-  name: 'John',
-  surname: 'Smith',
-  set fullName(value) {
-    ;[this.name, this.surname] = value.split(' ')
-  },
-  get fullName() {
-    return `${this.name} ${this.surname}`
-  },
+    name: 'John',
+    surname: 'Smith',
+    set fullName(value) {
+        ;[this.name, this.surname] = value.split(' ')
+    },
+    get fullName() {
+        return `${this.name} ${this.surname}`
+    },
 }
 let admin = {
-  __proto__: protUer,
+    __proto__: protUer,
 }
 alert(admin.fullName) // John Smith (*)
 admin.fullName = 'Alice Cooper' // (**)
@@ -534,55 +534,55 @@ alert(admin.name) // Alice
 alert(admin.surname) // Cooper
 //
 let animal = {
-  walk() {
-    if (!this.isSleeping) {
-      alert(`I walk`)
-    }
-  },
-  sleep() {
-    this.isSleeping = true
-  },
+    walk() {
+        if (!this.isSleeping) {
+            alert(`I walk`)
+        }
+    },
+    sleep() {
+        this.isSleeping = true
+    },
 }
 let rabbit = {
-  name: 'whhite Rabbit',
-  __proto__: animal,
+    name: 'whhite Rabbit',
+    __proto__: animal,
 }
 rabbit.sleep()
 alert(rabbit.isSleeping) // true
 alert(animal.isSleeping) // undefined
 //
 let animal = {
-  eats: true,
+    eats: true,
 }
 let rabbit = {
-  jumps: true,
-  __proto__: animal,
+    jumps: true,
+    __proto__: animal,
 }
 alert(Object.keys(rabbit)) // jumps
 for (let prop in rabbit) alert(prop) // jumps, eats
 //
 let animal = {
-  eats: true,
+    eats: true,
 }
 let rabbit = {
-  jumps: true,
-  __proto__: animal,
+    jumps: true,
+    __proto__: animal,
 }
 for (let prop in rabbit) {
-  let isOwn = rabbit.hasOwnProperty(prop)
-  if (isOwn) {
-    alert(`Our: ${prop}`) // Our: jumps
-  } else {
-    alert(`Inherited: ${prop}`) // Inherited: eats
-  }
+    let isOwn = rabbit.hasOwnProperty(prop)
+    if (isOwn) {
+        alert(`Our: ${prop}`) // Our: jumps
+    } else {
+        alert(`Inherited: ${prop}`) // Inherited: eats
+    }
 }
 
 // prototype - method to work with objects(used in past)
 let animal = {
-  eats: true,
+    eats: true,
 }
 function Rabbit(name) {
-  this.name = name
+    this.name = name
 }
 Rabbit.prototype = animal
 let rabbit = new Rabbit('Whhite Rabbit') //  rabbit.__proto__ == animal
@@ -598,15 +598,15 @@ let rabbit = new Rabbit()
 alert(rabbit.constructor == Rabbit) // true
 //
 function Rabbit(name) {
-  this.name = name
-  alert(name)
+    this.name = name
+    alert(name)
 }
 let rabbit = new Rabbit('White Rabbit')
 let rabbit2 = new rabbit.constructor('Black Rabbit')
 //
 function Rabbit() {}
 Rabbit.prototype = {
-  jumps: true,
+    jumps: true,
 }
 let rabbit = new Rabbit()
 // false (constructor doesnt always guarantee the owner, so look below)
@@ -616,8 +616,8 @@ function Rabbit() {}
 Rabbit.prototype.jumps = true
 
 Rabbit.prototype = {
-  jumps: true,
-  constructor: Rabbit,
+    jumps: true,
+    constructor: Rabbit,
 }
 
 // obj = {} same as new Object(), obj.__proto__ === Obj.prototype
@@ -628,15 +628,15 @@ alert(arr.__proto__.__proto__.__proto__) // null
 
 // you can also define new methods/attributes for major constructors:
 String.prototype.show = function () {
-  alert(this)
+    alert(this)
 }
 'BOOM!'.show() // BOOM!
 
 // we can also mix mehtods/attributes (like sharing):
 let obj = {
-  0: 'Hello',
-  1: 'world!',
-  length: 2,
+    0: 'Hello',
+    1: 'world!',
+    length: 2,
 }
 // (we could make obj.__proto__ = Array.prototype, and obj would have everything form Array)
 obj.join = Array.prototype.join
@@ -644,7 +644,7 @@ alert(obj.join(',')) // Hello,world!
 
 // the new approach for __proto__ is Object.create(), Object.getPrototypeOf(), Object.setPrototypeOf():
 let animal = {
-  eats: true,
+    eats: true,
 }
 let rabbit = Object.create(animal)
 alert(rabbit.eats) // true
@@ -652,18 +652,18 @@ alert(Object.getPrototypeOf(rabbit) === animal)
 Object.setPrototypeOf(rabbit, {}) // new prototype
 //
 let animal = {
-  eats: true,
+    eats: true,
 }
 let rabbit = Object.create(animal, {
-  jumps: {
-    value: true,
-  },
+    jumps: {
+        value: true,
+    },
 })
 alert(rabbit.jumps) // true
 // cloning the object
 let clone = Object.create(
-  Object.getPrototypeOf(obj),
-  Object.getOwnPropertyDescriptors(obj)
+    Object.getPrototypeOf(obj),
+    Object.getOwnPropertyDescriptors(obj),
 )
 
 // changing prototypes and setting them is very cost time, so be aware
@@ -677,13 +677,13 @@ let someProxyNumber = [0, 1, 2]
 // new Proxy created a new variable, it must be used everywhere instead of the original one,
 // no one needs to point to the original object because it will be very confusing
 someProxyNumber = new Proxy(someProxyNumber, {
-  get(target, prop) {
-    if (prop in target) {
-      return target[prop]
-    } else {
-      return 0 // default value
-    }
-  },
+    get(target, prop) {
+        if (prop in target) {
+            return target[prop]
+        } else {
+            return 0 // default value
+        }
+    },
 })
 alert(someProxyNumber[1]) // 1
 alert(someProxyNumber[123]) // 0
@@ -691,15 +691,15 @@ alert(someProxyNumber[123]) // 0
 // set trap for example:
 let numbers = []
 numbers = new Proxy(numbers, {
-  // (*)
-  set(target, prop, val) {
-    if (typeof val == 'number') {
-      target[prop] = val
-      return true
-    } else {
-      return false
-    }
-  },
+    // (*)
+    set(target, prop, val) {
+        if (typeof val == 'number') {
+            target[prop] = val
+            return true
+        } else {
+            return false
+        }
+    },
 })
 numbers.push(1)
 numbers.push(2)
@@ -710,18 +710,18 @@ numbers.push('тест') // TypeError
 // but outside, but form proxy as well, the reflect will work on the object itself,
 // while proxy not(its a transition)
 let reflectUser = {
-  name: 'a',
+    name: 'a',
 }
 reflectUser = new Proxy(reflectUser, {
-  get(target, prop, receiver) {
-    alert(`GET ${prop}`)
-    return Reflect.get(target, prop, receiver) // (1)
-  },
-  set(target, prop, val, receiver) {
-    alert(`SET ${prop}=${val}`)
-    // currying - a technique to execute
-    return Reflect.set(target, prop, val, receiver) // (2)
-  },
+    get(target, prop, receiver) {
+        alert(`GET ${prop}`)
+        return Reflect.get(target, prop, receiver) // (1)
+    },
+    set(target, prop, val, receiver) {
+        alert(`SET ${prop}=${val}`)
+        // currying - a technique to execute
+        return Reflect.set(target, prop, val, receiver) // (2)
+    },
 })
 let reflectName = reflectUser.name // "GET name"
 reflectUser.name = 'Петя' // "SET name=a"

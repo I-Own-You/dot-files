@@ -25,10 +25,6 @@ myController.abort()
 // window.addEventListener('resize', listener)
 // window.removeEventListener('resize', listener)
 //
-const elController = new AbortController()
-window.addEventListener('resize', () => {}, { signal: controller.signal })
-elController.abort()
-//
 // you can pass controller anywhere taht is responsible for aborting.
 //
 // you can use a single signal to remove multiple event listeners:
@@ -137,7 +133,7 @@ await transaction(
 // you can pass the reason of abort
 const reasonController = new AbortController()
 reasonController.signal.addEventListener('abort', () => {
-  console.log(controller.signal.reason) // "user cancellation"
+  console.log(reasonController.signal.reason) // "user cancellation"
 })
 // here, you can pass any values, strings, errors, objects, .etc
 reasonController.abort('user cancellation')
@@ -145,5 +141,5 @@ reasonController.abort('user cancellation')
 // you can check if a signal is aborted
 console.log(reasonController.signal.aborted === true)
 
-// you can thow an error explicitly if a signal was aborted
+// you can throw an error explicitly if a signal was aborted
 reasonController.signal.throwIfAborted()

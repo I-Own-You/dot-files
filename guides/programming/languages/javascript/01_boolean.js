@@ -26,13 +26,13 @@ const alsoBig = BigInt(999700025499999)
 
 // values that are always false:
 console.log(
-  0 == false,
-  -0 == false,
-  '' == false,
-  Boolean(null) == false, // null is absence of something, but its not false, use with Boolean(null)
-  Boolean(undefined) == false, // undefined means not there at all, use with Boolean(undefined)
-  Boolean(NaN) == false, // NaN means not a number, use with Boolean(NaN)
-  0n == false
+    0 == false,
+    -0 == false,
+    '' == false,
+    Boolean(null) == false, // null is absence of something, but its not false, use with Boolean(null)
+    Boolean(undefined) == false, // undefined means not there at all, use with Boolean(undefined)
+    Boolean(NaN) == false, // NaN means not a number, use with Boolean(NaN)
+    0n == false,
 )
 
 // ternary operator - a shorthand for inline if else
@@ -48,9 +48,9 @@ console.log(result)
 // nested ternary operators:
 const num = 10
 const result =
-  num > 10
-    ? 'more than 10'
-    : num === 10
-    ? 'number equals 10'
-    : 'number less than 10' // check first, then second, like if else if else
+    num > 10
+        ? 'more than 10'
+        : num === 10
+          ? 'number equals 10'
+          : 'number less than 10' // check first, then second, like if else if else
 console.log(result) // 'number equals 10'

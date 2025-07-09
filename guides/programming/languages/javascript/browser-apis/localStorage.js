@@ -41,4 +41,4 @@ window.localStorage
 // so if you have other data type, you must convert it into strings first to use it as key/value
 
 // limit for localStorage is around 5mb,
-// then, content is removed byt least recently used data.
+// then, content is removed by least recently used data.

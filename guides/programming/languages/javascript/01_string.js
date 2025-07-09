@@ -24,8 +24,8 @@ const integrateSomeString = `${someString} + myText` // 'ABCD + myText'
 // this is called [pattern functions],
 // they are kind of strange but they let you access string and variables this way:
 function loggerTag(strings, ...expressionValues) {
-  console.log(strings)
-  console.log(...expressionValues)
+    console.log(strings)
+    console.log(...expressionValues)
 }
 loggerTag`booleans are ${2} types: they are either ${true} or ${false}`
 // ['booleans are ', ' types: they are either ', ' or ', '']

@@ -26,8 +26,8 @@ console.log(someData.size) // 0
 
 // you can predefined data in Map also:
 const map = new Map([
-  ['js', 'JavaScript'],
-  ['css', 'Cascading Style Sheets'],
+    ['js', 'JavaScript'],
+    ['css', 'Cascading Style Sheets'],
 ])
 console.log(map.size) // 2
 console.log(map.get('js')) // JavaScript

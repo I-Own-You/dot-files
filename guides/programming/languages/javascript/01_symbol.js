@@ -6,12 +6,12 @@ console.log(sym === symTwo) // false
 // it is useful to create an hidden object attribute, that is unique:
 const secondaryId = Symbol()
 const user = {
-  id: 193,
-  name: 'a',
-  [secondaryId]: 'olga-1',
+    id: 193,
+    name: 'a',
+    [secondaryId]: 'olga-1',
 }
 for (const prop in user) {
-  console.log(prop, user[prop])
+    console.log(prop, user[prop])
 }
 // id 193
 // name a

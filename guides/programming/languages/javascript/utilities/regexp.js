@@ -1,6 +1,6 @@
 // regexp work through RegExp and they are also integrated into string methods
 regexp = new RegExp('patterns', 'flags')
-or
+// or
 // same object RegExp,
 // the difference is, in /.../ you cant put variables, so its static, and not dynamic,
 // its when we surely now what regexp we want
@@ -28,7 +28,6 @@ alert(someStr.match(/hello/gi)) // array of 2 values: Hello,hello
 // .replace()
 alert('We will, we will'.replace(/we/i, 'I')) // I will, we will
 alert('We will, we will'.replace(/we/gi, 'I')) // I will, I will
-
 // there are special symbols also:
 // $&	puts all the found occurence
 // $`	puts data untill occurence
@@ -167,8 +166,8 @@ alert('alice15@gmail.com'.match(/[^\d\sA-Z]/gi)) // @ и .
 // you can also include special symbols and not exclude them with \:
 // . + ( ) - without \ in the []
 // '-' - without \ if its at the start\end in the []
-// ^ - without if its not at the start in the []
-// ] - only with \ in the []
+// ^ - without \ if its not at the start in the []
+// [ ] - only with \ in the []
 //
 // but you can still exlude them with \, it wont harm the program
 //
@@ -201,7 +200,7 @@ alert('100 10 1'.match(/\d0*/g)) // 100, 10, 1
 // even ? itself, will become weak quantifier:
 let weakQuantReg = /".+"/g
 let weakQuantSTr = 'a "witch" and her "broom" is one'
-// "witch" and her "broom", so this is not what we want,
+// [ "witch" and her "broom" ], so this is not what we want,
 // it basically goes to the end of the text becaue of the .+,
 // and then shifts one symbol backward till " is found
 // now with ?
@@ -270,10 +269,10 @@ let dateRegexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g
 let anotherMyStr = '2019-10-30 2020-01-01'
 let results = anotherMyStr.matchAll(dateRegexp)
 for (let result of results) {
-  let { year, month, day } = result.groups
-  alert(`${day}.${month}.${year}`)
-  //  30.10.2019
-  //  01.01.2020
+    let { year, month, day } = result.groups
+    alert(`${day}.${month}.${year}`)
+    //  30.10.2019
+    //  01.01.2020
 }
 // we can replace text with groups with $n:
 let textGrStr = 'John Bull'
@@ -317,7 +316,7 @@ let negStr = '2 индейки стоят 60€'
 alert(negStr.match(/\d+(?!€)/)) // 2, now it will look that € doesnt go after the \d+
 // lookbehind assertion:
 let lobStr = '1 индейка стоит $30'
-alert(lobStr.match(/(?<=\$)\d+/)) // 30, now it looked for the \d+, and checked that before it, goes ? symbol
+alert(lobStr.match(/(?<=\$)\d+/)) // 30, now it looked for the \d+, and checked that before it, goes $ symbol
 // negative lookbehind assertion:
 let negLStr = '2 индейки стоят $60'
 alert(negLStr.match(/(?<!\$)\d+/)) // 2, now it looked that before \d+ there is not $ symbol

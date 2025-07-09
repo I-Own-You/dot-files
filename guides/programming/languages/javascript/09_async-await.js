@@ -1,11 +1,11 @@
 // async/await - just a sugar syntax for promise:
 async function getStarWarsMovie(id) {
-  const response = await fetch(`https://swapi.dev/api/films/${id}/`)
-  console.log('rsponse', response) // 1
-  return response.json()
+    const response = await fetch(`https://swapi.dev/api/films/${id}/`)
+    console.log('rsponse', response) // 1
+    return response.json()
 }
 const movies = getStarWarsMovie(1).then((movie) => {
-  console.log(movie.title)
+    console.log(movie.title)
 }) // 2
 console.log('result:', movies) // 3
 
@@ -24,8 +24,8 @@ request().then(() => {})
 
 // .then() isnt the only way to work with promises and call them:
 async function loadPosts() {
-  // await is just the same as if we would call .then() on chain
-  const response = await fetch('/api/posts/')
-  const data = await response.json()
-  return data
+    // await is just the same as if we would call .then() on chain
+    const response = await fetch('/api/posts/')
+    const data = await response.json()
+    return data
 }

@@ -43,5 +43,5 @@ window.sessionStorage
 // 1. it doesnt fire for sessionStorage
 // 2. it dosent fire for page where changes are made(so, only other page on the same domain can use it)
 window.addEventListener('storage', (e) => {
-  console.log(Object.defineProperties(e))
+    console.log(Object.defineProperties(e))
 })

@@ -20,10 +20,10 @@ console.log(arrayName.length)
 
 // destructurizing an array into variables:
 const catProfile = [
-  'Maru',
-  'Scottish Fold',
-  true,
-  'https://youtu.be/ChignoxJHXc',
+    'Maru',
+    'Scottish Fold',
+    true,
+    'https://youtu.be/ChignoxJHXc',
 ]
 const catName = catProfile[0] // old way
 const catBreed = catProfile[1] // old way
@@ -37,8 +37,8 @@ const [desrBB, ...destrCC] = destrA // b - undefined, c - [2, 3]
 // forEach() - apply a callback function to all elements of an array without changing the array:
 const myNumb = [1, 2, 3, 4] // you could call it here, anyway, but forEach returns nothing, so
 myNumb.forEach((num, index, array) => {
-  const square = num * num
-  console.log('a ' + square)
+    const square = num * num
+    console.log('a ' + square)
 })
 
 // break, continue - dont work in forEach()
@@ -47,11 +47,11 @@ myNumb.forEach((num, index, array) => {
 const empty = []
 const someNums = [1, 2, 3]
 function pushElements(nr) {
-  empty.push(nr)
+    empty.push(nr)
 }
 someNums.forEach((item) => {
-  // return wont break forEach
-  return pushElements(item)
+    // return wont break forEach
+    return pushElements(item)
 })
 console.log(empty)
 
@@ -59,10 +59,10 @@ console.log(empty)
 // if you dont return the element, undefined will be returned as a value instead
 const mapNums = [1, 2, 3, 4, 5]
 const transformedNums = mapNums.map(function (num, index, array) {
-  if (num <= 3) {
-    return 'less'
-  }
-  // no return
+    if (num <= 3) {
+        return 'less'
+    }
+    // no return
 })
 console.log(transformedNums) // ['less', 'less', 'less', undefined, undefined]
 
@@ -70,7 +70,7 @@ console.log(transformedNums) // ['less', 'less', 'less', undefined, undefined]
 const mapThisNums = [1, 2, 3]
 const otherData = { delta: 5 }
 const transformedThisNums = mapThisNums.map(function (num) {
-  return num + this.delta // otherData.delta
+    return num + this.delta // otherData.delta
 }, otherData)
 console.log(transformedThisNums) // [ 6, 7, 8 ]
 
@@ -79,22 +79,22 @@ console.log(transformedThisNums) // [ 6, 7, 8 ]
 // reduce() convert an array into a value, (check the signature for more info)
 const reduceSomenUms = [1, 2, 3, 4, 5, 6, 7, 8]
 function findAverage(acc, item, index, arr) {
-  const sum = acc + item
-  if (index === arr.length - 1) {
-    return sum / arr.length
-  }
-  return sum
+    const sum = acc + item
+    if (index === arr.length - 1) {
+        return sum / arr.length
+    }
+    return sum
 }
 const average = reduceSomenUms.reduce(findAverage, 0) // 4.5
 
 // filter() - returns a new array
 const filterArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 filterArray.filter((value, index, array) => {
-  if (value % 2 == 0) {
-    return true // means the element will be included, you must return boolean for filter()
-  } else {
-    return false
-  }
+    if (value % 2 == 0) {
+        return true // means the element will be included, you must return boolean for filter()
+    } else {
+        return false
+    }
 })
 
 // find() - finds the first occurent of the value and returns it
@@ -102,10 +102,10 @@ const findArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 findArray.find(2)
 // here, find was given a custom function that will handler the find logic
 findArray.find((val, index, array) => {
-  if (val % 4 == 0) {
-    return true
-  }
-  return false
+    if (val % 4 == 0) {
+        return true
+    }
+    return false
 })
 
 // findIndex() - return the index of the first occurence of an element, -1 if not found
@@ -113,45 +113,45 @@ const findIndexArr = [2, 4, 5, 6, 7]
 findIndexArr.findIndex(6) // 3
 // here, findIndex was given a custom function that will handler the find logic
 findArray.find((val, index, array) => {
-  if (val == 2) {
-    return true
-  }
-  return false
+    if (val == 2) {
+        return true
+    }
+    return false
 }) // 2
 
 // flat() returns new array with 1 nested array less inside the main array:
 const nestedArr = [
-  'первый уровень',
-  'первый уровень',
-  ['второй уровень', 'второй уровень', ['третий уровень', 'третий уровень']],
+    'первый уровень',
+    'первый уровень',
+    ['второй уровень', 'второй уровень', ['третий уровень', 'третий уровень']],
 ]
 // the default depth for removing nesting is 1, Infinity - for all
 const nestedArrFlat = nestedArr.flat()
 console.log(nestedArrFlat)[
-  // result
-  ('первый уровень',
-  'первый уровень',
-  'второй уровень',
-  'второй уровень',
-  ['третий уровень', 'третий уровень'])
+    // result
+    ('первый уровень',
+    'первый уровень',
+    'второй уровень',
+    'второй уровень',
+    ['третий уровень', 'третий уровень'])
 ]
 
 // flatMap() will flat the map element automatically without using .flat() on .map():
 const orders = [
-  {
-    id: 1,
-    products: [
-      { name: 'Чизкейк', price: 1.99 },
-      { name: 'Бисквит', price: 4.99 },
-    ],
-  },
-  {
-    id: 2,
-    products: [
-      { name: 'Шоколад', price: 5.59 },
-      { name: 'Зефир', price: 8.99 },
-    ],
-  },
+    {
+        id: 1,
+        products: [
+            { name: 'Чизкейк', price: 1.99 },
+            { name: 'Бисквит', price: 4.99 },
+        ],
+    },
+    {
+        id: 2,
+        products: [
+            { name: 'Шоколад', price: 5.59 },
+            { name: 'Зефир', price: 8.99 },
+        ],
+    },
 ]
 orders.map((order) => order.products.map((product) => product.name)) // [['Чизкейк', 'Бисквит'], ['Шоколад', 'Зефир']]
 orders.map((order) => order.products.map((product) => product.name)).flat() // ['Чизкейк', 'Бисквит', 'Шоколад', 'Зефир']
@@ -193,7 +193,7 @@ const arr = Array.from(uniqueNumbers) // [1, 2, 3]
 //
 const linkElements = document.getElementsByTagName('a')
 const arrLinks = Array.from(linkElements, function (a) {
-  return a.href
+    return a.href
 })
 
 // array-like object is the object that has .length attribute and
@@ -207,7 +207,7 @@ const arrLinks = Array.from(linkElements, function (a) {
 
 // also you can create arrays with this quirk:
 const nums = Array.from({ length: 4 }, function (value, index) {
-  return index * 2 // value will be undefined because we use an ojbect syntax to create an array
+    return index * 2 // value will be undefined because we use an ojbect syntax to create an array
 })
 console.log(nums) // [0, 2, 4, 6]
 

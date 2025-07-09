@@ -1,7 +1,7 @@
 if (Math.random() > 0.5) {
-  console.log(true, 1)
+    console.log(true, 1)
 } else {
-  console.log(false, 2)
+    console.log(false, 2)
 }
 
 // if clause allow you one line of code without { }, but if you have more

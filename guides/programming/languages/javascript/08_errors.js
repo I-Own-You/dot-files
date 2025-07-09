@@ -1,76 +1,76 @@
 // error handling:
 try {
-  someFunction()
-  anotherFunction()
+    someFunction()
+    anotherFunction()
 } catch (err) {
-  console.log('Поймали ошибку! Вот она: ', err.message)
+    console.log('Поймали ошибку! Вот она: ', err.message)
 }
 
 // you can always execute some code no matter of try and catch code with finally:
 try {
-  webSocket.connect('ws://....')
-  callMayThrowError()
+    webSocket.connect('ws://....')
+    callMayThrowError()
 } catch (err) {
-  // catch error
-  doSomeWithError(err)
+    // catch error
+    doSomeWithError(err)
 } finally {
-  // will execute no matter what
-  // always executes
-  webSocket.disconnect('ws://....')
+    // will execute no matter what
+    // always executes
+    webSocket.disconnect('ws://....')
 }
 
 try {
-  webSocket.connect('ws://....')
-  callMayThrowError()
+    webSocket.connect('ws://....')
+    callMayThrowError()
 } finally {
-  // can be used without catch block
-  // always executes
-  webSocket.disconnect('ws://....')
+    // can be used without catch block
+    // always executes
+    webSocket.disconnect('ws://....')
 }
 
 // you can also throw errors by yourself:
 class ParsingError extends Error {
-  //
+    //
 }
 function parse(data) {
-  try {
-    parseData(data)
-  } catch (err) {
-    if (err.name !== 'ParsingError') {
-      // another type of error so we rethrow
-      throw err // throw error, and the outside catch will take it, if an outside catch exists
+    try {
+        parseData(data)
+    } catch (err) {
+        if (err.name !== 'ParsingError') {
+            // another type of error so we rethrow
+            throw err // throw error, and the outside catch will take it, if an outside catch exists
+        }
+        logError(err)
     }
-    logError(err)
-  }
 }
 
 // works in synchronic way,
 // so you cant catch async code, untill try catch is itself in async function like async/await:
 try {
-  // no errors
-  Promise.reject('err')
+    // no errors
+    Promise.reject('err')
 } catch (e) {
-  // the errro wont be catched
-  console.log('Ошибка', e)
+    // the errro wont be catched
+    console.log('Ошибка', e)
 }
 try {
-  // no errors
-  setTimeout(() => {
-    throw Error('ошибка')
-  }, 1000)
+    // no errors
+    setTimeout(() => {
+        throw Error('ошибка')
+    }, 1000)
 } catch (e) {
-  // error from setTimeout wont be catched here
-  console.log('Ошибка', e)
+    // error from setTimeout wont be catched here
+    console.log('Ошибка', e)
 }
 //
 async function handlePromise() {
-  try {
-    // promise will return error
-    await Promise.reject('err')
-  } catch (e) {
-    // the error will be catched
-    console.log('error:', e) // err
-  }
+    try {
+        // promise will return error
+        await Promise.reject('err')
+    } catch (e) {
+        // the error will be catched
+        console.log('error:', e) // err
+    }
 }
 handlePromise()
 
@@ -87,18 +87,18 @@ console.log(commonError.name) // 'Error'
 
 // you can create your own errors:
 class WrongDataTypeForSumError extends Error {
-  constructor(message) {
-    super(message)
-    this.name = 'WrongDataTypeForSumError'
-  }
+    constructor(message) {
+        super(message)
+        this.name = 'WrongDataTypeForSumError'
+    }
 }
 const myCustomError = new WrongDataTypeForSumError('my error')
 //throw created error:
 function sum(a, b) {
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    throw new WrongDataTypeForSumError('my error')
-  }
-  return a + b
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new WrongDataTypeForSumError('my error')
+    }
+    return a + b
 }
 console.log(sum('1', 2))
 // VM840:3 Uncaught WrongDataTypeForSumError: my error

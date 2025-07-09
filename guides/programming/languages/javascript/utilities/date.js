@@ -42,10 +42,10 @@ console.log(Date.parse('2022-11-30T21:00:00.000Z')) // returns ms passed since u
 // to get a date in specific format you can use toLocaleDateString(locale, options):
 const antoherCurrentDate = new Date('August 14, 2022 14:15:30')
 const anotherOptions = {
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-  timeZoneName: 'long',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    timeZoneName: 'long',
 }
 console.log(currentDate.toLocaleDateString('ru-RU', options)) // 14.08.2022, 14:15:30
 console.log(currentDate.toLocaleDateString('en-US', options)) // 8/14/2022, 2:15:30 PM
@@ -69,13 +69,13 @@ console.log(result / (1000 * 60 * 60 * 24)) // 364
 // instead of toLocaleDateString() you can use Intl.DateTimeFormat:
 const currentDate = new Date('August 14, 2022 14:15:30')
 const options = {
-  year: 'numeric',
-  month: 'numeric',
-  day: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-  timeZoneName: 'long',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    timeZoneName: 'long',
 }
 console.log(new Intl.DateTimeFormat('ru-RU', options).format(currentDate)) // 14.08.2022, 14:15:30
 console.log(new Intl.DateTimeFormat('en-US', options).format(currentDate)) // 8/14/2022, 2:15:30

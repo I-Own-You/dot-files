@@ -7,12 +7,12 @@ console.log(2 === '2') // false
 
 // expressions can be split with ','(comma operator, it evaluates all the statements on one line):
 function x() {
-  return 1
+    return 1
 }
 function z() {
-  return 2
+    return 2
 }
-x(), z() // 2
+;(x(), z()) // 2
 // x() and z() will execute form left to right but only the last will return the result
 
 // window - a global object in browser, you can think of a browser itself as window, or global in nodejs
@@ -32,7 +32,7 @@ x(), z() // 2
 // spread syntax ... - used to make an array in function parameters,
 // copy objects inside another, copy an array, destructurizing an array
 function multiplyThreeNumbers1(a, b, c) {
-  return a * b * c
+    return a * b * c
 }
 const multipleNums = [1, 2, 3]
 console.log(multiplyThreeNumbers1(...multipleNums)) // 6
@@ -77,9 +77,9 @@ anotherOptUser?.sayHi(x++) // no executing because user is null, wihtout ? would
 alert(x) // 0
 //
 let userAdmin = {
-  admin() {
-    alert('Я админ')
-  },
+    admin() {
+        alert('Я админ')
+    },
 }
 //
 let userGuest = {}
@@ -88,7 +88,7 @@ userGuest.admin?.() // wont work,  this method doesnt exist, as object as well
 //
 let key = 'firstName'
 let user1 = {
-  firstName: 'John',
+    firstName: 'John',
 }
 let user2 = null
 alert(user1?.[key]) // John

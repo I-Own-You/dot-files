@@ -11,14 +11,14 @@
 // adding events:
 const element = document.querySelector('button')
 element.addEventListener('click', function (event) {
-  // event is the name of the event
-  alert('anonymous function')
+    // event is the name of the event
+    alert('anonymous function')
 })
 element.addEventListener('click', (event) => {
-  alert('anonymous function')
+    alert('anonymous function')
 })
 function handleClickFunction(event) {
-  alert('function expression')
+    alert('function expression')
 }
 element.addEventListener('click', handleClickFunction)
 
@@ -43,7 +43,7 @@ element.addEventListener('click', handleClickFunction)
 // you must put same arguments for .addEventListener() and .removeEvenListener() because
 // if not, the event wont be deleted:
 function handleMouseClick(event) {
-  console.log('Вы нажали на элемент:', event.target)
+    console.log('Вы нажали на элемент:', event.target)
 }
 window.addEventListener('click', handleMouseClick, true)
 window.removeEventListener('click', handleMouseClick)
@@ -77,12 +77,12 @@ window.removeEventListener('click', handleMouseClick)
 //
 // you can create your own event:
 const myEvent = new CustomEvent('my-event', {
-  detail: {
-    spicy: 123,
-  },
+    detail: {
+        spicy: 123,
+    },
 })
 window.addEventListener('my-event', function (evt) {
-  console.log('field spicy:', evt.detail.spicy)
+    console.log('field spicy:', evt.detail.spicy)
 })
 window.dispatchEvent(myEvent)
 //
