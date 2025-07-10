@@ -2,24 +2,24 @@
 //
 // we can define readonly properties that can be read, but cant be reassigned:
 interface SomeType {
-  readonly prop: string;
+    readonly prop: string;
 }
 function myDoSomething(obj: SomeType) {
-  console.log(`prop has the value '${obj.prop}'.`);
-  obj.prop = "hello"; // error
+    console.log(`prop has the value '${obj.prop}'.`);
+    obj.prop = "hello"; // error
 }
 // but with aliasing, we can reassign it:
 interface Person {
-  name: string;
-  age: number;
+    name: string;
+    age: number;
 }
 interface ReadonlyPerson {
-  readonly name: string;
-  readonly age: number;
+    readonly name: string;
+    readonly age: number;
 }
 let writablePerson: Person = {
-  name: "Person McPersonface",
-  age: 42,
+    name: "Person McPersonface",
+    age: 42,
 };
 // it points now to antoher object that is modifiable, it works because the shape is the same
 let readonlyPerson: ReadonlyPerson = writablePerson;
@@ -33,14 +33,14 @@ const a: myObj = { hey: 2, kek: 2 };
 
 // object literals have more checking under the hood for exmaple:
 interface SquareConfig {
-  color?: string;
-  width?: number;
+    color?: string;
+    width?: number;
 }
 function createSquare(config: SquareConfig): { color: string; area: number } {
-  return {
-    color: config.color || "rod",
-    area: config.width ? config.width * config.width : 20,
-  };
+    return {
+        color: config.color || "rod",
+        area: config.width ? config.width * config.width : 20,
+    };
 }
 // error, 'colour' doesnt exist on SquareConfig
 let hmySquare = createSquare({ colour: "rod", width: 100 });
@@ -54,20 +54,5 @@ let mySquare = createSquare(squareOptions);
 // if you would want to let programmers know that it has other property for whatever reason you can do:
 // [propName string]: any
 
-// generic objects:
-interface myBox<Type> {
-  contents: Type;
-}
-let box: myBox<string>;
-// Type can be substituted with anything so
-interface yetBox<Type> {
-  contents: Type;
-}
-interface Apple {
-  kek: string;
-}
-type AppleBox = yetBox<Apple>; //{ contents: Apple }
-// and also this
-function setContents<Type>(box: yetBox<Type>, newContents: Type) {
-  box.contents = newContents;
-}
+// just so namings from ohter .ts file wont conflict
+export {};

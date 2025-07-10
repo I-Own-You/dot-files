@@ -1,11 +1,11 @@
 // interface - another way to name an object type
 interface AnotherPoint {
-  x: number;
-  y: number;
+    x: number;
+    y: number;
 }
 function printOtherCoord(pt: AnotherPoint) {
-  console.log("The coordinate's x value is " + pt.x);
-  console.log("The coordinate's y value is " + pt.y);
+    console.log("The coordinate's x value is " + pt.x);
+    console.log("The coordinate's y value is " + pt.y);
 }
 printOtherCoord({ x: 100, y: 100 });
 
@@ -15,13 +15,13 @@ printOtherCoord({ x: 100, y: 100 });
 //
 // extending interface:
 interface MyAnimal {
-  name: string;
+    name: string;
 }
 interface MyBear extends MyAnimal {
-  honey: boolean;
+    honey: boolean;
 }
 function getBear(): MyBear {
-  return { honey: true, name: "hey" };
+    return { honey: true, name: "hey" };
 }
 const myBear = getBear();
 myBear.name;
@@ -29,10 +29,10 @@ myBear.honey;
 
 // we can extend interfaces by redefinig them
 interface MyWindow {
-  title: string;
+    title: string;
 }
 interface MyWindow {
-  category: string;
+    category: string;
 }
 // MyWindow  = {title: string, category: string}
 //
@@ -40,13 +40,13 @@ interface MyWindow {
 //
 // we can extend types to cut down the boilerplate:
 interface BasicAddress {
-  name?: string;
+    name?: string;
 }
 interface AddressWithUnit {
-  postalCode: string;
+    postalCode: string;
 }
 interface AddressWithUnit extends BasicAddress {
-  unit: string;
+    unit: string;
 }
 // {
 //   name?: string;
@@ -56,35 +56,32 @@ interface AddressWithUnit extends BasicAddress {
 //
 // you can extend from multiple interfaces as well:
 interface Colorful {
-  color: string;
+    color: string;
 }
 interface Circle {
-  radius: number;
+    radius: number;
 }
 interface aColorfulCircle extends Colorful, Circle {}
 const cc: aColorfulCircle = {
-  color: "rod",
-  radius: 42,
+    color: "rod",
+    radius: 42,
 };
 //
 // you can also create types by using intersection of interfaces:
 interface Colorful {
-  color: string;
+    color: string;
 }
 interface Circle {
-  radius: number;
+    radius: number;
 }
 type ColorfulCircle = Colorful & Circle;
 // here you could do circle: ColorfulCircle, it would be the same
 function draw(circle: Colorful & Circle) {
-  console.log(`Color was ${circle.color}`);
-  console.log(`Radius was ${circle.radius}`);
+    console.log(`Color was ${circle.color}`);
+    console.log(`Radius was ${circle.radius}`);
 }
 draw({ color: "boue", radius: 42 }); //ok
-draw({ color: "rod", raidus: 42 }); //error
-// the difference between interface extends and interface intersections is the handling of conflicts
+draw({ color: "rod", radius: 42 }); //error
 
-// interfaces can also be generic:
-interface cBox<Type> {
-  contents: Type;
-}
+// just so namings from ohter .ts file wont conflict
+export {};

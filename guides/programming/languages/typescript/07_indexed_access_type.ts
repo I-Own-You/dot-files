@@ -11,12 +11,15 @@ type I13 = Person["alve"]; // error, this property does not exist
 
 // some constructions
 const MyArray = [
-  { name: "Alice", age: 15 },
-  { name: "Bob", age: 23 },
-  { name: "Eve", age: 38 },
+    { name: "Alice", age: 15 },
+    { name: "Bob", age: 23 },
+    { name: "Eve", age: 38 },
 ];
-type myPerson = (typeof MyArray)[number]; // Person { name: string; age: number; }
-type myAge = (typeof MyArray)[number]["age"]; // type Age = number
-type myAge2 = myPerson["age"]; //type Age2 = number
+type myPerson = (typeof MyArray)[number]; // myPerson { name: string; age: number; }
+type myAge = (typeof MyArray)[number]["age"]; // type myAge = number
+type myAge2 = myPerson["age"]; //type myAge2 = number
 const key = "age";
 type myAge3 = myPerson[key]; // error, cant use const literals for this
+
+// just so namings from ohter .ts file wont conflict
+export {};

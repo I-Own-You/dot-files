@@ -1,40 +1,40 @@
 // conditional types
 interface Animal {
-  live(): void;
+    live(): void;
 }
 interface Dog extends Animal {
-  woof(): void;
+    woof(): void;
 }
 type Example1 = Dog extends Animal ? number : string; // type Example1 = number
 type Example2 = RegExp extends Animal ? number : string; // type Example2 = string
 // complex example
 interface IdLabel {
-  id: number /* some fields */;
+    id: number /* some fields */;
 }
 interface NameLabel {
-  name: string /* other fields */;
+    name: string /* other fields */;
 }
 function createLabel(id: number): IdLabel;
 function createLabel(name: string): NameLabel;
 function createLabel(nameOrId: string | number): IdLabel | NameLabel;
 function createLabel(nameOrId: string | number): IdLabel | NameLabel {
-  throw "unimplemented";
+    throw "unimplemented";
 }
 // a lot of code could be done with conditional checking:
 type NameOrId<T extends number | string> = T extends number
-  ? IdLabel
-  : NameLabel;
+    ? IdLabel
+    : NameLabel;
 function createLabel2<T extends number | string>(idOrName: T): NameOrId<T> {
-  throw "unimplemented";
+    throw "unimplemented";
 }
 
 // conditional type constraint:
 type MessageOf<T> = T extends { message: unknown } ? T["message"] : never;
 interface Email {
-  message: string;
+    message: string;
 }
 interface Dog {
-  bark(): void;
+    bark(): void;
 }
 type EmailMessageContents = MessageOf<Email>; //type EmailMessageContents = string
 type DogMessageContents = MessageOf<Dog>; //type DogMessageContents = never
@@ -50,11 +50,9 @@ type myNum = Flatten<number>; //type Num = number
 // complex example
 // here Return is a new generic type that will be inferred as a return type for a function
 type GetReturnType<Type> = Type extends (...args: never[]) => infer Return
-  ? Return
-  : never;
+    ? Return
+    : never;
 type sNum = GetReturnType<() => number>; // number
-//
-// type sStr = string, also, the (x: string) works because of the STS,
 //
 // it actually looks at the function structre that looks at parameter types and return type,
 // so return type can be grabbed in a conditional type, so it will pass

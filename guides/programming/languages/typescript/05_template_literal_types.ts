@@ -22,47 +22,46 @@ type LocaleMessageIDs = `${Lang}_${AllLocaleIDs}`;
 
 // a complex example:
 type PropEventSource<Type> = {
-  on(
-    eventName: `${string & keyof Type}Changed`,
-    callback: (newValue: any) => void
-  ): void;
+    on(
+        eventName: `${string & keyof Type}Changed`,
+        callback: (newValue: any) => void,
+    ): void;
 };
 declare function makeWatchedObject<Type>(
-  obj: Type
+    obj: Type,
 ): Type & PropEventSource<Type>;
 const myPerson = makeWatchedObject({
-  firstName: "Saoirse",
-  lastName: "Ronan",
-  age: 26,
+    firstName: "Saoirse",
+    lastName: "Ronan",
+    age: 26,
 });
 myPerson.on("firstNameChanged", () => {}); // no error
 myPerson.on("firstName", () => {}); // error,
-myPerson.on("frstNameChanged", () => {}); // error
 //
 // now the same function as above but infering the type making the method generic
 type mPropEventSource<Type> = {
-  on<Key extends string & keyof Type>( // pulled the string literal into Key generic type
-    eventName: `${Key}Changed`,
-    callback: (newValue: Type[Key]) => void
-  ): void;
+    on<Key extends string & keyof Type>( // pulled the string literal into Key generic type
+        eventName: `${Key}Changed`,
+        callback: (newValue: Type[Key]) => void,
+    ): void;
 };
 declare function zmakeWatchedObject<Type>(
-  obj: Type
+    obj: Type,
 ): Type & mPropEventSource<Type>;
 const person = zmakeWatchedObject({
-  firstName: "Saoirse",
-  lastName: "Ronan",
-  age: 26,
+    firstName: "Saoirse",
+    lastName: "Ronan",
+    age: 26,
 });
 person.on("firstNameChanged", (newName) => {
-  //(parameter) newName: string
-  console.log(`new name is ${newName.toUpperCase()}`);
+    //(parameter) newName: string
+    console.log(`new name is ${newName.toUpperCase()}`);
 });
 person.on("ageChanged", (newAge) => {
-  //(parameter) newAge: number
-  if (newAge < 0) {
-    console.warn("warning! negative age");
-  }
+    //(parameter) newAge: number
+    if (newAge < 0) {
+        console.warn("warning! negative age");
+    }
 });
 
 // there are intrisinc string literal manipulation for performance,

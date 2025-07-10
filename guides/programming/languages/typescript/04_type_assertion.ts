@@ -8,5 +8,4 @@ const myMyCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
 // the type assertions are removed at compile time as type annotations so if the type assertion is wrong,
 // there is no runtime checking, no error will be thrown or null generation
 
-// type assertion must also be more specific or less specific version of type, for example:
 const x = "hello" as number; // string as number, error

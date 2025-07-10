@@ -4,8 +4,8 @@
 // @filename: animal.ts
 export type Cat1 = { breed: string; yearOfBirth: number };
 export interface Dog1 {
-  breeds: string[];
-  yearOfBirth: number;
+    breeds: string[];
+    yearOfBirth: number;
 }
 // @filename: app.ts
 import { Cat1, Dog1 } from "./animal.ts";
@@ -28,22 +28,3 @@ const name1 = createCatName2(); // error, createCatName was imported as a type
 import { createCatName, type Cat, type Dog } from "./animal.js";
 export type Animals = Cat | Dog;
 const name = createCatName();
-
-// CommonJS syntax:
-// Identifiers are exported via setting the exports property on a global called module:
-function absolute(num: number) {
-  if (num < 0) return num * -1;
-  return num;
-}
-module.exports = {
-  pi: 3.14,
-  squareTwo: 1.41,
-  phi: 1.61,
-  absolute,
-};
-// importing it:
-const maths = require("./maths");
-maths.pi;
-// or you can use the destructurizing method
-const { squareTwo } = require("./maths");
-squareTwo;

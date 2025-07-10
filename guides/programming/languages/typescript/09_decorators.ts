@@ -6,7 +6,6 @@
 // function simpleDecorator() {
 //   console.log('---hi I am a decorator---')
 // }
-
 // @simpleDecorator
 // class A {}
 
@@ -28,12 +27,11 @@
 // }
 
 function decoratorF(C) {
-  console.log("apply decorator");
-  return C;
+    console.log("apply decorator");
+    return C;
 }
 @decoratorF
 class ItsMyClass {}
-// applay decorator will be logged when class when decorator will apply to it,
 // first, ItsMyClass is passed as C to decoratorF,
 // then its modified(kind of),to print "apply decorator",
 // then class ItsMyClass is returned.
@@ -44,36 +42,36 @@ class ItsMyClass {}
 //
 // the evaluation order of different types of decorators is well-defined:
 //
-// 1. parameter decorators, followed by method, accessor, or
+// 1. method parameters decorators, followed by method, accessor, or
 //    property decorators are applied for each instance member.
 //
-// 2. parameter decorators, followed by method, accessor, or
+// 2. method parameters decorators, followed by method, accessor, or
 //    property decorators are applied for each static member.
 //
-// 3. parameter decorators are applied for the constructor.
+// 3. method parameters decorators are applied for the constructor.
 //    class decorators are applied for the class.
 function f(key: string): any {
-  console.log("evaluate: ", key);
-  return function () {
-    console.log("call: ", key);
-  };
+    console.log("evaluate: ", key);
+    return function () {
+        console.log("call: ", key);
+    };
 }
 //
 @f("Class Decorator")
 class C {
-  @f("Static Property")
-  static prop?: number;
+    @f("Static Property")
+    static prop?: number;
 
-  @f("Static Method")
-  static method(@f("Static Method Parameter") foo) {}
+    @f("Static Method")
+    static method(@f("Static Method Parameter") foo) {}
 
-  constructor(@f("Constructor Parameter") foo) {}
+    constructor(@f("Constructor Parameter") foo) {}
 
-  @f("Instance Method")
-  method(@f("Instance Method Parameter") foo) {}
+    @f("Instance Method")
+    method(@f("Instance Method Parameter") foo) {}
 
-  @f("Instance Property")
-  prop?: number;
+    @f("Instance Property")
+    prop?: number;
 }
 //
 // the code above will print the following messages:
@@ -102,16 +100,16 @@ class C {
 // here it works like rules says, even though the first parameter is higher.
 //
 function f(key: string) {
-  console.log("evaluate: ", key);
-  return function () {
-    console.log("call: ", key);
-  };
+    console.log("evaluate: ", key);
+    return function () {
+        console.log("call: ", key);
+    };
 }
 
 class CC {
-  @f("Outer Method")
-  @f("Inner Method")
-  method() {}
+    @f("Outer Method")
+    @f("Inner Method")
+    method() {}
 }
 // the code above will print the following messages:
 //
@@ -124,7 +122,7 @@ class CC {
 //
 // type annotation:
 type ClassDecorator2 = <TFunction extends Function>(
-  target: TFunction
+    target: TFunction,
 ) => TFunction | void;
 // @Params:
 // target: The constructor of the class.
@@ -138,17 +136,17 @@ type ClassDecorator2 = <TFunction extends Function>(
 type Consturctor = { new (...args: any[]): any };
 //
 function toString<T extends Consturctor>(BaseClass: T) {
-  return class extends BaseClass {
-    toString() {
-      return JSON.stringify(this);
-    }
-  };
+    return class extends BaseClass {
+        toString() {
+            return JSON.stringify(this);
+        }
+    };
 }
 //
 @toString
 class CCC {
-  public foo = "foo";
-  public num = 24;
+    public foo = "foo";
+    public num = 24;
 }
 //
 console.log(new CCC().toString());
@@ -159,9 +157,9 @@ declare function Blah<T>(target: T): T & { foo: number };
 //
 @Blah
 class Foo2 {
-  bar() {
-    return this.foo; // Property 'foo' does not exist on type 'Foo2'
-  }
+    bar() {
+        return this.foo; // Property 'foo' does not exist on type 'Foo2'
+    }
 }
 //
 new Foo2().foo; // Property 'foo' does not exist on type 'Foo2'
@@ -171,14 +169,14 @@ new Foo2().foo; // Property 'foo' does not exist on type 'Foo2'
 declare function Blah<T>(target: T): T & { foo: number };
 //
 class Base2 {
-  foo: number;
+    foo: number;
 }
 //
 @Blah
 class Foo3 extends Base2 {
-  bar() {
-    return this.foo;
-  }
+    bar() {
+        return this.foo;
+    }
 }
 new Foo3().foo;
 
@@ -186,8 +184,8 @@ new Foo3().foo;
 //
 // type annotation:
 type myPropertyDecorator = (
-  target: Object,
-  propertyKey: string | symbol
+    target: Object,
+    propertyKey: string | symbol,
 ) => void;
 // @Params:
 // 1. target: either the constructor function of the class for a static member, or
@@ -202,30 +200,30 @@ type myPropertyDecorator = (
 // for example, we can write a decorator to add the ability to listen changes on some properties.
 //
 function capitalizeFirstLetter(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 //
 function observable(target: any, key: string): any {
-  // prop -> onPropChange
-  const targetKey = "on" + capitalizeFirstLetter(key) + "Change";
+    // prop -> onPropChange
+    const targetKey = "on" + capitalizeFirstLetter(key) + "Change";
 
-  target[targetKey] = function (fn: (prev: any, next: any) => void) {
-    let prev = this[key];
-    Reflect.defineProperty(this, key, {
-      set(next) {
-        fn(prev, next);
-        prev = next;
-      },
-    });
-  };
+    target[targetKey] = function (fn: (prev: any, next: any) => void) {
+        let prev = this[key];
+        Reflect.defineProperty(this, key, {
+            set(next) {
+                fn(prev, next);
+                prev = next;
+            },
+        });
+    };
 }
 //
 class C2 {
-  @observable
-  foo = -1;
+    @observable
+    foo = -1;
 
-  @observable
-  bar = "bar";
+    @observable
+    bar = "bar";
 }
 //
 const c2 = new C2();
@@ -242,9 +240,9 @@ c2.bar = "sing"; // -> prev: baz, next: sing
 //
 // type annotation:
 type MethodDecorator2 = <T>(
-  target: Object,
-  propertyKey: string | symbol,
-  descriptor: TypedPropertyDescriptor<T>
+    target: Object,
+    propertyKey: string | symbol,
+    descriptor: TypedPropertyDescriptor<T>,
 ) => TypedPropertyDescriptor<T> | void;
 // @Params:
 // 1. target: either the constructor function of the class for a static member,
@@ -259,25 +257,25 @@ type MethodDecorator2 = <T>(
 //
 // for example, we can add logger for some method to log out the input and output:
 function logger(
-  target: any,
-  propertyKey: string,
-  descriptor: PropertyDescriptor
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
 ) {
-  const original = descriptor.value;
+    const original = descriptor.value;
 
-  descriptor.value = function (...args) {
-    console.log("params: ", ...args);
-    const result = original.call(this, ...args);
-    console.log("result: ", result);
-    return result;
-  };
+    descriptor.value = function (...args) {
+        console.log("params: ", ...args);
+        const result = original.call(this, ...args);
+        console.log("result: ", result);
+        return result;
+    };
 }
 //
 class C3 {
-  @logger
-  add(x: number, y: number) {
-    return x + y;
-  }
+    @logger
+    add(x: number, y: number) {
+        return x + y;
+    }
 }
 //
 const c3 = new C3();
@@ -305,28 +303,28 @@ c3.add(1, 2);
 //
 // for example, we can make the property immutable by a decorator:
 function immutable(
-  target: any,
-  propertyKey: string,
-  descriptor: PropertyDescriptor
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
 ) {
-  const original = descriptor.set;
+    const original = descriptor.set;
 
-  descriptor.set = function (value: any) {
-    return original.call(this, { ...value });
-  };
+    descriptor.set = function (value: any) {
+        return original.call(this, { ...value });
+    };
 }
 //
 class C4 {
-  private _point = { x: 0, y: 0 };
+    private _point = { x: 0, y: 0 };
 
-  @immutable
-  set point(value: { x: number; y: number }) {
-    this._point = value;
-  }
+    @immutable
+    set point(value: { x: number; y: number }) {
+        this._point = value;
+    }
 
-  get point() {
-    return this._point;
-  }
+    get point() {
+        return this._point;
+    }
 }
 
 const c4 = new C4();
@@ -340,9 +338,9 @@ console.log(c4.point === point);
 //
 // type annotation:
 type ParameterDecorator3 = (
-  target: Object,
-  propertyKey: string | symbol,
-  parameterIndex: number
+    target: Object,
+    propertyKey: string | symbol,
+    parameterIndex: number,
 ) => void;
 // @Params:
 // 1. target: either the constructor function of the class for a static member,
@@ -367,3 +365,6 @@ type ParameterDecorator3 = (
 // 6. Runtime type validation.
 // 7. Auto serialization and deserialization.
 // 8. Dependency Injection.
+
+// just so namings from ohter .ts file wont conflict
+export {};

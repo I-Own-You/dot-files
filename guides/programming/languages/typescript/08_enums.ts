@@ -4,37 +4,37 @@
 
 // numreic enums:
 enum mDirection {
-  // the lower constants will be auto incremented,
-  // if we would left the variable without any value,
-  // it would be 0 and the rest would be auto incremented
-  Up = 1,
-  Down, // 2
-  Left, // 3
-  Right, // 4
+    // the lower constants will be auto incremented,
+    // if we would left the variable without any value,
+    // it would be 0 and the rest would be auto incremented
+    Up = 1,
+    Down, // 2
+    Left, // 3
+    Right, // 4
 }
 
 // using enums:
 enum UserResponse {
-  No = 0,
-  Yes = 1,
+    No = 0,
+    Yes = 1,
 }
 function respond(recipient: string, message: UserResponse): void {
-  // ...
+    // ...
 }
 respond("Princess Caroline", UserResponse.Yes); // you can access it through '.'
 
 // you can mix the type in an enum, but empty variables must be at the top, or after a numberic variable:
 enum E {
-  A = getSomeValue(),
-  B, // error, or give it a value, or define a new variable above it with a number
+    A = getSomeValue(),
+    B, // error, or give it a value, or define a new variable above it with a number
 }
 
 // string enums:
 enum zDirection {
-  Up = "UP",
-  Down = "DOWN",
-  Left = "LEFT",
-  Right = "RIGHT",
+    Up = "UP",
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = "RIGHT",
 }
 
 // computed and constant members:
@@ -57,71 +57,71 @@ enum zDirection {
 
 // Union enums and enum member types:
 enum ShapeKind {
-  Circle, // member becomes type itself
-  Square, // member becomes type itself
+    Circle, // member becomes type itself
+    Square, // member becomes type itself
 }
 interface Circle {
-  kind: ShapeKind.Circle;
-  radius: number;
+    kind: ShapeKind.Circle;
+    radius: number;
 }
 interface Square {
-  kind: ShapeKind.Square;
-  sideLength: number;
+    kind: ShapeKind.Square;
+    sideLength: number;
 }
 let c: Circle = {
-  kind: ShapeKind.Square, // error,
-  radius: 100,
+    kind: ShapeKind.Square, // error,
+    radius: 100,
 };
 
 // enums are real objects at runtime:
 enum E {
-  X,
-  Y,
-  Z,
+    X,
+    Y,
+    Z,
 }
 function f(obj: { X: number }) {
-  return obj.X;
+    return obj.X;
 }
 f(E);
 
 // the enum itself as a type
 enum LogLevel {
-  ERROR,
-  WARN,
-  INFO,
-  DEBUG,
+    ERROR,
+    WARN,
+    INFO,
+    DEBUG,
 }
 type LogLevelStrings = keyof typeof LogLevel; // 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
 
 // reverse mappings (only for numeric enums):
 enum rEnum {
-  A1,
+    A1,
 }
 let a = rEnum.A1;
 let nameOfA = rEnum[a]; // "A"
 
 // const enums:
 const enum zEnum {
-  A = 1,
-  B = A * 2,
+    A = 1,
+    B = A * 2,
 }
 const enum bDirection {
-  Up,
-  Down,
-  Left,
-  Right,
+    Up,
+    Down,
+    Left,
+    Right,
 }
 let zdirections = [
-  bDirection.Up,
-  bDirection.Down,
-  bDirection.Left,
-  bDirection.Right,
+    bDirection.Up,
+    bDirection.Down,
+    bDirection.Left,
+    bDirection.Right,
 ];
 // generated code will be:
 ("use strict");
 let directions = [
-  0 /* Direction.Up */, 1 /* Direction.Down */, 2 /* Direction.Left */,
-  3 /* Direction.Right */,
+    0 /* Direction.Up */, 1 /* Direction.Down */, 2 /* Direction.Left */,
+    3 /* Direction.Right */,
 ];
 // 1. const enums can only use constant enum expressions(no computed values),
 // 2. and they are removed during compile time, unlike regular enums that are kept as objects
@@ -130,27 +130,27 @@ let directions = [
 
 // ambient enums (they describe the shape of already existing enum types):
 declare enum Enum {
-  A = 1,
-  // the difference is here, if a member doesnt have a value,
-  // it is considered always computed,
-  // unlike in regular enums where it is constant if the preciding member is constant.
-  // if its constant and ambient, then this rule doesnt apply
-  B,
-  C = 2,
+    A = 1,
+    // the difference is here, if a member doesnt have a value,
+    // it is considered always computed,
+    // unlike in regular enums where it is constant if the preciding member is constant.
+    // if its constant and ambient, then this rule doesnt apply
+    B,
+    C = 2,
 }
 
 // objects vs enums(you dont need enums in modern ts, you can use 'as const' easiy):
 const enum EDirection {
-  Up,
-  Down,
-  Left,
-  Right,
+    Up,
+    Down,
+    Left,
+    Right,
 }
 const ODirection = {
-  Up: 0,
-  Down: 1,
-  Left: 2,
-  Right: 3,
+    Up: 0,
+    Down: 1,
+    Left: 2,
+    Right: 3,
 } as const;
 
 function walk(dir: EDirection) {}
@@ -162,3 +162,6 @@ walk(EDirection.Left);
 run(ODirection.Right);
 
 // variable of some enum type cant be assigned to another enum type
+
+// just so namings from ohter .ts file wont conflict
+export {};
