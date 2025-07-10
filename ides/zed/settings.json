@@ -248,7 +248,6 @@
     // assistant panel https://zed.dev/docs/configuring-zed#assistant-panel
     "agent": {
         "enabled": false,
-        "version": "2",
         "button": false
         // "default_height": 320,
         // "default_width": 640,
