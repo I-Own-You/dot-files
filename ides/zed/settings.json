@@ -1,7 +1,7 @@
 {
     "icon_theme": "Material Icon Theme",
     "features": {
-        "edit_prediction_provider": "none"
+        "edit_prediction_provider": "supermaven"
     },
     // ui related
     "ui_font_size": 17,
