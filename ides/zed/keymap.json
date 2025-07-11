@@ -99,7 +99,9 @@
         "context": "Editor && vim_mode == insert",
         "bindings": {
             "j k": ["workspace::SendKeystrokes", "escape"],
-            "ctrl-l": "editor::ShowSignatureHelp"
+            "ctrl-l": "editor::ShowSignatureHelp",
+            "ctrl-e": "editor::LineDown",
+            "ctrl-y": "editor::LineUp"
         }
     },
     {
