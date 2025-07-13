@@ -79,17 +79,6 @@
                     "rules": ["import/order"]
                 }
             }
-        },
-        "golangci-lint": {
-            "initialization_options": {
-                "command": [
-                    "golangci-lint",
-                    "run",
-                    "--out-format",
-                    "json",
-                    "--issues-exit-code=1"
-                ]
-            }
         }
     },
     "languages": {
@@ -123,8 +112,7 @@
         },
         "Go": {
             "enable_language_server": true,
-            "tab_size": 4,
-            "language_servers": ["gopls", "golangci-lint"]
+            "tab_size": 4
         }
     },
     // editor scrollbar
