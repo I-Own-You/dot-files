@@ -16,8 +16,8 @@
     {
         "context": "VimControl && !menu",
         "bindings": {
-            "n": ["workspace::SendKeystrokes", "n z z"],
-            "N": ["workspace::SendKeystrokes", "N z z"]
+            // "n": ["workspace::SendKeystrokes", "n z z"],
+            // "N": ["workspace::SendKeystrokes", "N z z"]
         }
     },
     {
