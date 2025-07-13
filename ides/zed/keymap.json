@@ -14,6 +14,13 @@
 
     // vim keybindings
     {
+        "context": "VimControl && !menu",
+        "bindings": {
+            "n": ["workspace::SendKeystrokes", "n z z"],
+            "N": ["workspace::SendKeystrokes", "N z z"]
+        }
+    },
+    {
         "context": "vim_mode == normal",
         "bindings": {
             "+": "vim::Increment",
