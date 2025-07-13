@@ -131,7 +131,6 @@ export default function Tree() {
 // 1.here, { person, size } are the properties passed down when <Avatar /> where used with,
 //   person, size attributes(peroperties), this is also used with object destructuring { prop1, prop2, .etc }.
 // 2. you can also give default values as in js(remember it still is a js function so js features apply),
-//    undefine / or value not defined will set size to 100, but 0 or null wont.
 function Leaf({ person, size = 100 }) {
   const anotherPerson = person + ' 2'
   const anotherSize = size + 2
@@ -448,7 +447,7 @@ export default function TeaGathering() {
 //      2. if some data changes in a middle of deep component tree, react will simply restart rendering
 //         without waiting for the old render to finish.
 
-// 1. react model UI as a tree (but only the component, not simple tags from html(dom))
+// 1. react is a model UI as a tree (but only the component, not simple tags from html(dom))
 // 2. browsers use tree structures to model HTML (DOM) and CSS (CSSOM).
 // 3. mobile platforms also use trees to represent their view hierarchy.
 // 4. usually, the top components handle all the logic, while the lower components rerender based on their,

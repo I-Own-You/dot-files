@@ -2,7 +2,7 @@
 //
 // when you want a component to “remember” some information,
 // but you don’t want that information to trigger new renders, you can use a ref.
-
+//
 // under the hood its just an object
 
 const ref = useRef(0)
@@ -56,15 +56,7 @@ export default function Form() {
 // if you have a lot of nodes taht you would like to have refs on, you cant just assign it,
 // in a loop, because useRef cant be called inside a loop, and also if you will give the ref,
 // that you created at the top of the component, the ref will hold only the last node assigned.
-<ul>
-  {items.map((item) => {
-    const ref = useRef(null);
-    return <li ref={ref} />;
-  })}
-  {items.map((item) => {
-    return <li ref={ref} />;
-  })}
-</ul>
+//
 // 1. one approach would be to use .querySelector/All, or something similar, but if dom structure changes, its bad.
 // 2. the approach to have a lot of refs with multiple elements is to create a map which will store,
 //    the nodes as values and keys as ids or whatever and call a [ref callback] when assinging a ref.
@@ -103,9 +95,7 @@ export default function CatFriends() {
               // this is a ref callback
               // 1. (node) is the dom node for the current render.
               // 2. when dom node is removed, react will call the cleanup function returned
-              //    from the callback, if you dont return a cleanup function, it will call,
-              //    the callback with null value as (node) but this behaviour will be removed,
-              //    in future upgrades so you should always return a cleanup function,
+              //    from the callback, you should always return a cleanup function,
               //    if the cleanup is possible or is needed.
               // 3. react will also call ref callback whenever you pass a different ref callback.
               //    (node) => { ... } is a different function on every render.
@@ -180,7 +170,7 @@ export default function Form() {
     </>
   );
 }
-// there is a way to make react commit updates to a dom right after state update, because if you remember, 
+// there is a way to make react commit updates to a dom right after state update, because if you remember,
 // react state updates are queued, and there can be timing problems like below;
 export default function TodoList() {
   const listRef = useRef(null);
@@ -236,11 +226,13 @@ for (let i = 0; i < 20; i++) {
     text: 'Todo #' + (i + 1)
   });
 }
+
 // also, its important to know that managing react dom nodes manually is prohibited,
 // it affects the dom that react is constructing itself beside the real dom which it commits to
 //
 // but this only affects dom nodes that react manages, if there are nodes that react doesnt manage,
 // its safe to manually change them, with browser api for example.
+//
 // so if there are like empty <div></div> that are always empty, you could modify its children,
 // if react doesnt update this div or its childs, but better stick to the react dom nodes, instead,
 // of manually modifying it.

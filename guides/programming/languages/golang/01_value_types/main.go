@@ -209,6 +209,7 @@ func main() {
 	fmt.Printf("l: %v\n", l)
 
 	// array
+
 	var arr [0]int
 
 	// slice

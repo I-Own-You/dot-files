@@ -28,7 +28,7 @@ import { createRoot } from 'react-dom/client'
 const root = createRoot(document.getElementById('root'))
 root.render(<Image />)
 // 2. components (or one of its ancestors) state has been updated.
-// 
+//
 // once the component has been initially rendered,
 // you can trigger further renders by updating its state with the set function.
 // updating your components state automatically queues a render.
@@ -82,7 +82,7 @@ root.render(<Gallery />);
 // initial render: react will use the appendChild() DOM API to put all the DOM nodes it has created on screen.
 // re-renders: react will apply the minimal necessary operations (calculated while rendering!)
 //             to make the DOM match the latest rendering output.
-// 
+//
 // react only changes the DOM nodes if there’s a difference between renders.
 export default function Clock({ time }) {
   return (
@@ -99,6 +99,6 @@ export default function Clock({ time }) {
 //
 // after rendering is done and React commited to the DOM,
 // the browser will repaint the screen.
-// 
+//
 // (actually rerender is the right term, not repaint,
 // but repaint is used to not confuse wiht react render)

@@ -42,7 +42,7 @@ return <button onClick={handleClick}></button>
 return <button onClick={handleClick()}></button>
 // same rule apply for arrow functions or any function
 return <button onClick={() => alert('...')}></button>
-return <button onClick={alert('...')}></button>
+return <button onClick={() => alert('...')()}></button>
 
 // passing event handlers as props
 function Button({ onClick, children }) {
@@ -126,17 +126,10 @@ function Toolbar({ onPlayMovie, onUploadImage }) {
     </div>
   );
 }
-function Button({ onClick, children }) {
-  return (
-    <button onClick={onClick}>
-      {children}
-    </button>
-  );
-}
 
 // event propagation
 // 1. event handlers will also catch events from any children your component might have.
-// 2. an event “bubbles” or “propagates” up the tree: 
+// 2. an event “bubbles” or “propagates” up the tree:
 //    1. it starts with where the event happened
 //    2. and then goes up the tree.
 export default function Toolbar() {
@@ -145,12 +138,12 @@ export default function Toolbar() {
       alert('You clicked on the toolbar!');
     }}>
       {
-        /* 
+        /*
          * when you click this button:
          * 1. its event will fire
          * 2. then the event will propage up the tree
          * 3. if it finds another same event (onClick=onClick), it will fire also
-         * 
+         *
          * in react, all events propagte except onScroll, it works only on the jsx tag attached.
          * */
       }
@@ -201,7 +194,7 @@ export default function Toolbar() {
 // 1. button is clicked, capture phase starts from the root element untill the button is found,
 // 2. onClickCapture event is fired,
 // 3. button event is fired
-// 4. since button called e.stopPropagation(), it doesnt bubble up, so 
+// 4. since button called e.stopPropagation(), it doesnt bubble up, so
 //    onClick of the <div> wont happen.
 <div onClickCapture={() => { /* this runs first */ }} onClick={someFuncion}>
   <button onClick={e => e.stopPropagation()} />

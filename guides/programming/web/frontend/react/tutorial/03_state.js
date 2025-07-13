@@ -1,4 +1,4 @@
-// state 
+// state
 //
 // components need to “remember” things:
 //      the current input value,
@@ -50,7 +50,6 @@ import { sculptureList } from './data.js';
 export default function Gallery() {
   // 1. index will retain the state between rerendres
   // 2. setIndex is a function which can update index which triggers the rerender
-  // [index, setIndex] = is called array destructuring
   // the convention is to call const [someData, setSomeData] = useState(initialValue).
   // under the hood, useState() keeps state in an array, each time storing new state as a pair:
   // [(someValue, setSomeValue), (anotherValue, setSomeValue), (.etc)]
@@ -96,8 +95,7 @@ export default function Gallery() {
 //    you can’t call Hooks inside conditions, loops, or other nested functions.
 
 // 1. state is isolated for the component where its defined(local to the place where its defined on the screen)
-// 2. state is private for the component where its defined, parent components dont even know, or can change it
-// 3. if you would want both Gallery components to share a state you would need to remove state form both
+// 2. if you would want both Gallery components to share a state you would need to remove state form both
 //    Gallery components and add it to their parent Page
 import Gallery from './Gallery.js';
 export default function Page() {
@@ -109,17 +107,17 @@ export default function Page() {
   );
 }
 
-// setting state, caveats 
+// setting state, caveats
 export default function Counter() {
   const [number, setNumber] = useState(0);
   return (
     <>
       {/*
           * here, number will be 1, not 3, even though we called setNumber() 3 times
-          * 
+          *
           * the reason is that when you trigger a rerender, it prepares, not renders right away,
           * this is needed so that react could queue renders or start a new render when it needs.
-          * 
+          *
           * so the code looks like setNumber(0 + 1) 3 times in a row.
       */}
       <h1>{number}</h1>
@@ -150,15 +148,15 @@ export default function Counter() {
 }
 
 // queue state updates
-// 
+//
 // setting a state variable will queue another render.
 // but sometimes you might want to perform multiple operations on the value before queueing the next render.
 //
-// react waits until all code in the event handlers run before processing state updates, like in example above,
-// with setNumber(0 + 1) 3 times, but there is a way to batch all calls to a set functions,
-// inside an event handler(since react will wait untill all code inside an event has executed), this way
-// react can save performance wihtout making unecessary (half)updates.
-// 
+// react waits until all code in the event handlers run before processing state updates,
+// there is a way to batch all calls to a set function, inside an event handler
+// (since react will wait untill all code inside an event has executed),
+// this way react can save performance wihtout making unecessary (half)updates.
+//
 // but react wont batch multiple updates from multiple event handlers even if they are of the same origin,
 // like onClick, if a click has happened and it did something, it really did, and an update(render) has happened,
 // the second click will be a separate click, separate render(update).
@@ -244,7 +242,7 @@ export default function Counter() {
 //    mutating it could break new react features.
 // 4. requirement changes:
 //    some application features, like implementing Undo/Redo, showing a history of changes,
-//    or letting the user reset a form to earlier values, are easier to do when nothing is mutated.  
+//    or letting the user reset a form to earlier values, are easier to do when nothing is mutated.
 // 5. react does not rely on mutation, so dont you
 // 6. you could get away with mutation of objects in a state, but dont.
 
@@ -323,7 +321,7 @@ export default function Form() {
   // you could also define one handler for all fields using [ ] inside { } with event information
   function handleChange(e) {
     setPerson({
-      // be cautious, the spread operator(...), only copies the first level, 
+      // be cautious, the spread operator(...), only copies the first level,
       // so its up to you to handle nested objects.
       ...person,
       [e.target.name]: e.target.value
@@ -415,7 +413,7 @@ function handleImageChange(e) {
 }
 
 // updating arrays in state
-// 
+//
 // arrays are mutable in JavaScript,
 // but you should treat them as immutable when you store them in state.
 // just like with objects, when you want to update an array stored in state,
@@ -476,7 +474,7 @@ export default function List() {
           <li key={artist.id}>
             {artist.name}{' '}
             <button onClick={() => {
-              // this is good, .filter() returns new array, so we dont 
+              // this is good, .filter() returns new array, so we dont
               // mutate the original one.
               setArtists(
                 artists.filter(a =>
@@ -492,270 +490,477 @@ export default function List() {
     </>
   );
 }
-// get a new array
-let initialShapes = [
-  { id: 0, type: 'circle', x: 50, y: 100 },
-  { id: 1, type: 'square', x: 150, y: 100 },
-  { id: 2, type: 'circle', x: 250, y: 100 },
-];
-export default function ShapeEditor() {
-  const [shapes, setShapes] = useState(
-    initialShapes
+
+// dont use props as state value if you want future updates,
+// because it will only set on the first render, on future renders, messageColor will update,
+// but color state variable will remain with the initial value, so you can use it as
+// default/initial value only.
+function Message({ messageColor }) {
+  const [color, setColor] = useState(messageColor);
+}
+// instead use a simple variable for this, it will update on rerenders unlike state
+function Message({ messageColor }) {
+  const color = messageColor;
+}
+// also, dont forget to remove things that you no longer need inside state, since state is kept in memory,
+// it can clutter the system, so optimize as more as you can.
+
+// sharing state between components
+//
+// one of the common way of making 2 react components work together, is by lifting their state up to a common
+// parent, and pass it as a prop, or pass an event handler which will change it. For example,
+// if you would have 2 components with each state inside them, they would operate seaprately,
+// but if you would need both of them to work together, you would lift state up by 1 parent(create it if needed)
+// this is often called "lifting state up"
+
+// preserve and reset state
+//
+// 1. state is isolated between components.
+// 2. react keeps track of state of which belongs to which component based on their place in the UI tree.
+// 3. you actually can control manually when to preserver/reset state in between renders.
+// 4. functions also gets recreated(rendere for example) within a function, so storing it within is bad,
+//    also its state gets destroyed too, if parent is destroyed.
+export default function App() {
+  const counter = <Counter />;
+  return (
+    <div>
+      {/*
+        conceptually same on all 4 lines, state is separate for all
+        updating one component state wont affect the other
+      */}
+      {counter}
+      {counter}
+      <Counter />
+      <Counter />
+    </div>
   );
-  function handleClick() {
-    // everytime you get new array where circle objects gets more 50px after button was clicked
-    const nextShapes = shapes.map(shape => {
-      if (shape.type === 'square') {
-        // No change
-        return shape;
-      } else {
-        // Return a new circle 50px below
-        return {
-          ...shape,
-          y: shape.y + 50,
-        };
-      }
-    });
-    // Re-render with the new array
-    setShapes(nextShapes);
+}
+// another exmaple
+export default function App() {
+  return (
+    <div>
+      {someCondition && <Counter />}
+      {/*
+          becaue the second Counter is always rendered, its state will be preserved even
+          if the first Counter will render and then will be destroyed(even if the second component
+          gets lifted(somehow) above of the first component), so if both components
+          are the same, it doesnt matter, only the place in the UI tree matter
+      */}
+      <Counter />
+    </div>
+  );
+}
+// another example
+export default function App() {
+  return (
+    <div>
+      {someCondition && <Counter />}
+      {!someCondition && <Counter />}
+      {/*
+        because both of the components can be destroyed, and none of them has stable place,
+        in the UI tree, the state wont be preserved for any of them if 1 of them gets moved, lifted, .etc
+      */}
+      <Counter />
+    </div>
+  );
+}
+// another examaple
+export default function App({ isTrue }) {
+  // even if JSX code is on different levels for components, the only factor for react is UI tree,
+  // which react uses to check if thery are on the same level.
+  // so state will be preserved for both of components(depending on what changes, for example css, prop)
+  if (isTrue) {
+    return (
+      <div>
+        <Counter />
+      </div>
+    );
+  }
+  return (
+    <div>
+      <Counter />
+    </div>
+  );
+}
+// another exmaple
+export default function App({ isTrue }) {
+  if (isTrue) {
+    return (
+      <div>
+        <Counter />
+      </div>
+    );
+  }
+  return (
+    <div>
+      {/*
+        here, because of the p tag, state for Counter wont be preserved, even though,
+        there is another Counter above supposed to be on the same level, but they are not,
+        becaue the second Counter is wrapped with p tag.
+      */}
+      <p><Counter /></p>
+    </div>
+  );
+}
+// another example
+export default function App({ isTrue }) {
+  if (isTrue) {
+    return (
+      // state gets destroyed because below there is not Counter component on the same level,
+      // but there is div.
+      <Counter />
+    );
+  }
+  return (
+    <div> </div>
+  );
+}
+// another example
+export default function App({ isTrue }) {
+  if (isTrue) {
+    return (
+      <div>
+        {/*
+          becaue of different keys of both Counter componnets(even though they are on the same level),
+          the components do not share the state, they are basically destroyed and recreated,
+          if the first gets toggled, the second gets destroyed, first created
+          if the second gets toggled, the first gets destroyed, second created.
+          remember: keys are a way to tell react to distinguish between components,
+                    and if they diverge, they simply gets destroyed.
+        */}
+        <Counter key={someKey} />
+      </div>
+    );
+  }
+  return (
+    <div>
+      <Counter key={anotherSomeKey} />
+    </div>
+  );
+}
+// but if you want still to preserve the state, you can either:
+//     1. hide other things with css(bad if there are a lot of components, performance issue)
+//     2. lift state up and preserve for all components the state
+//     3. preserve state information somewehre else(localStorage, indexDB, cookies, .etc)
+
+// extracting state logic into a reducer
+//
+// you can consolidate all the state update logic outside your component in
+// a single function, called a reducer.
+export default function TaskApp() {
+  const [tasks, setTasks] = useState(initialTasks);
+  function handleAddTask(text) {
+    setTasks([
+      ...tasks,
+      {
+        id: nextId++,
+        text: text,
+        done: false,
+      },
+    ]);
+  }
+  function handleChangeTask(task) {
+    setTasks(
+      tasks.map((t) => {
+        if (t.id === task.id) {
+          return task;
+        } else {
+          return t;
+        }
+      })
+    );
+  }
+  function handleDeleteTask(taskId) {
+    setTasks(tasks.filter((t) => t.id !== taskId));
   }
   return (
     <>
-      <button onClick={handleClick}>
-        Move circles down!
-      </button>
-      {shapes.map(shape => (
-        <div
-          key={shape.id}
-          style={{
-            background: 'purple',
-            position: 'absolute',
-            left: shape.x,
-            top: shape.y,
-            borderRadius: shape.type === 'circle' ? '50%' : '',
-            width: 20,
-            height: 20,
-          }} />
-      ))}
-    </>
-  );
-}
-// replacing items in an array
-let initialCounters = [
-  0, 0, 0
-];
-export default function CounterList() {
-  const [counters, setCounters] = useState(
-    initialCounters
-  );
-  function handleIncrementClick(index) {
-    const nextCounters = counters.map((c, i) => {
-      // basically you give the index(
-      // li element position and check if its the same as
-      // value position in the counters array
-      // )
-      if (i === index) {
-        return c + 1;
-      } else {
-        return c;
-      }
-    });
-    setCounters(nextCounters);
-  }
-  return (
-    <ul>
-      {counters.map((counter, i) => (
-        <li key={i}>
-          {counter}
-          <button onClick={() => {
-            handleIncrementClick(i);
-          }}>+1</button>
-        </li>
-      ))}
-    </ul>
-  );
-}
-// insert into an array
-let nextId = 3;
-const initialArtists = [
-  { id: 0, name: 'Marta Colvin Andrade' },
-  { id: 1, name: 'Lamidi Olonade Fakeye' },
-  { id: 2, name: 'Louise Nevelson' },
-];
-export default function List() {
-  const [name, setName] = useState('');
-  const [artists, setArtists] = useState(
-    initialArtists
-  );
-  function handleClick() {
-    const insertAt = 1; // Could be any index
-    const nextArtists = [
-      // Items before the insertion point:
-      ...artists.slice(0, insertAt),
-      // New item:
-      { id: nextId++, name: name },
-      // Items after the insertion point:
-      ...artists.slice(insertAt)
-    ];
-    setArtists(nextArtists);
-    setName('');
-  }
-  return (
-    <>
-      <h1>Inspiring sculptors:</h1>
-      <input
-        value={name}
-        onChange={e => setName(e.target.value)}
+      <h1>Prague itinerary</h1>
+      <AddTask onAddTask={handleAddTask} />
+      <TaskList
+        tasks={tasks}
+        onChangeTask={handleChangeTask}
+        onDeleteTask={handleDeleteTask}
       />
-      <button onClick={handleClick}>
-        Insert
-      </button>
-      <ul>
-        {artists.map(artist => (
-          <li key={artist.id}>{artist.name}</li>
-        ))}
-      </ul>
     </>
   );
 }
-// reversing an array (event though there is a new method in js for this with copying)
-export default function List() {
-  const [list, setList] = useState(initialList);
-  function handleClick() {
-    // jsut creat a new array with spread operator, and thats it
-    const nextList = [...list];
-    nextList.reverse();
-    setList(nextList);
-  }
-  return (
-    <>
-      <button onClick={handleClick}>
-        Reverse
-      </button>
-      <ul>
-        {list.map(artwork => (
-          <li key={artwork.id}>{artwork.title}</li>
-        ))}
-      </ul>
-    </>
-  );
-}
-// be cautious when you have shared state as objects,arrays, because mutating,
-// in one or another will affect the other, it can lead to bugs, for example you have a component
-// which is rendered 2 times, but they both have 2 props with different states but that state share
-// single object/array, if some component rerenders and updatess that shared array/object,
-// it can lead to changes applying to the second component also.
 let nextId = 3;
-const initialList = [
-  { id: 0, title: 'Big Bellies', seen: false },
-  { id: 1, title: 'Lunar Landscape', seen: false },
-  { id: 2, title: 'Terracotta Army', seen: true },
+const initialTasks = [
+  { id: 0, text: 'Visit Kafka Museum', done: true },
+  { id: 1, text: 'Watch a puppet show', done: false },
+  { id: 2, text: 'Lennon Wall pic', done: false },
 ];
-export default function BucketList() {
-  const [myList, setMyList] = useState(initialList);
-  const [yourList, setYourList] = useState(
-    initialList
-  );
-  function handleToggleMyList(artworkId, nextSeen) {
-    const myNextList = [...myList];
-    const artwork = myNextList.find(
-      a => a.id === artworkId
-    );
-    // here you mutate a property from an object which is placed in both states myList, yourList
-    artwork.seen = nextSeen;
-    // instead
-    setMyList(myList.map(artwork => {
-      if (artwork.id === artworkId) {
-        // Create a *new* object with changes
-        return { ...artwork, seen: nextSeen };
-      } else {
-        // No changes
-        return artwork;
-      }
-    }));
-    // of this
-    setMyList(myNextList);
+// this can be easily transformed into a reducer(because actions are similar):
+//     1. Move from setting state to dispatching actions.
+//     2. Write a reducer function.
+//     3. Use the reducer from your component.
+//
+// basically, now, you need to tell react what the user did(like an aciton) instead of what to do
+//
+// 1. moving from setting state to dispatch
+function handleAddTask(text) {
+  // action object, anything can be inside, but usually its the info you need to perform actions,
+  // and the most importatn the action-type that happened.
+  dispatch({
+    type: 'added',
+    id: nextId++,
+    text: text,
+  });
+}
+function handleChangeTask(task) {
+  dispatch({
+    type: 'changed',
+    task: task,
+  });
+}
+function handleDeleteTask(taskId) {
+  dispatch({
+    type: 'deleted',
+    id: taskId,
+  });
+}
+// 2. creating a reducer function
+//     1. first argument is usually the state
+//     2. second argument is the action performed
+//     3. and the return value is the next state
+function tasksReducer(tasks, action) {
+  // you could write it in if/else, whatever
+  switch (action.type) {
+    case 'added': {
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
+    }
+    case 'changed': {
+      return tasks.map((t) => {
+        if (t.id === action.task.id) {
+          return action.task;
+        } else {
+          return t;
+        }
+      });
+    }
+    case 'deleted': {
+      return tasks.filter((t) => t.id !== action.id);
+    }
+    default: {
+      throw Error('Unknown action: ' + action.type);
+    }
   }
-  function handleToggleYourList(artworkId, nextSeen) {
-    const yourNextList = [...yourList];
-    const artwork = yourNextList.find(
-      a => a.id === artworkId
-    );
-    // here you mutate a property from an object which is placed in both states myList, yourList
-    artwork.seen = nextSeen;
-    // instead
-    setMyList(myList.map(artwork => {
-      if (artwork.id === artworkId) {
-        // Create a *new* object with changes
-        return { ...artwork, seen: nextSeen };
-      } else {
-        // No changes
-        return artwork;
-      }
-    }));
-    // of this
-    setYourList(yourNextList);
-  }
+}
+// 3. change the useState into useReducer
+const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+// often reduers are put inside another js file to let component be clean
+//
+// useState vs userReducer
+// 1. code size is less with useState
+// 2. readablity is cleaner with useState
+// 3. debugging usually better with useReducer
+// 4. testing usually better with userReducer
+// 5. personal preference(it really just matter what you feel is better)
+//
+// 2 importantt aspects when working with reducers:
+//      1. reducers must be pure, as components are
+//      2. each reducer action must prescribe only 1 action, even if more than 1 change happens.
+//
+// so, you choose what to use, if there are a lot of event handlers that have similar code,
+// you could use reducers, but who cares, just pick what you/team likes more.
+
+// context
+//
+// 1. typically, you need context when some data is needed deep below components
+// 2. you dont want to pass props down below even if some components on the way wont use them
+// 3. you cant pass children as components and must use props
+//
+// the great thing about it, if you pass another value to the context provider, it will rerender,
+// all the components that use it, this is why its often used with state/reducer.
+//
+// app.js
+export default function Page() {
   return (
-    <>
-      <h1>Art Bucket List</h1>
-      <h2>My list of art to see:</h2>
-      <ItemList
-        artworks={myList}
-        onToggle={handleToggleMyList} />
-      <h2>Your list of art to see:</h2>
-      <ItemList
-        artworks={yourList}
-        onToggle={handleToggleYourList} />
-    </>
+    <Section>
+      {/* this looks very verbose */}
+      <Heading level={1}>Title</Heading>
+      <Heading level={2}>Heading</Heading>
+      <Heading level={3}>Sub-heading</Heading>
+      <Heading level={4}>Sub-sub-heading</Heading>
+      <Heading level={5}>Sub-sub-sub-heading</Heading>
+      <Heading level={6}>Sub-sub-sub-sub-heading</Heading>
+    </Section>
   );
 }
-function ItemList({ artworks, onToggle }) {
+// section.js
+export default function Section({ children }) {
   return (
-    <ul>
-      {artworks.map(artwork => (
-        <li key={artwork.id}>
-          <label>
-            <input
-              type="checkbox"
-              checked={artwork.seen}
-              onChange={e => {
-                onToggle(
-                  artwork.id,
-                  e.target.checked
-                );
-              }}
-            />
-            {artwork.title}
-          </label>
-        </li>
-      ))}
-    </ul>
+    <section className="section">
+      {children}
+    </section>
   );
 }
-// with immer this could be easier, you can use it for arrays also
-export default function BucketList() {
-  const [myList, updateMyList] = useImmer(
-    initialList
-  );
-  const [yourList, updateYourList] = useImmer(
-    initialList
-  );
-  function handleToggleMyList(id, nextSeen) {
-    updateMyList(draft => {
-      const artwork = draft.find(a =>
-        a.id === id
-      );
-      // the copy property from copy object is updated
-      artwork.seen = nextSeen;
-    });
-  }
-  function handleToggleYourList(artworkId, nextSeen) {
-    updateYourList(draft => {
-      const artwork = draft.find(a =>
-        a.id === artworkId
-      );
-      artwork.seen = nextSeen;
-    });
+// heading.js
+export default function Heading({ level, children }) {
+  switch (level) {
+    case 1:
+      return <h1>{children}</h1>;
+    case 2:
+      return <h2>{children}</h2>;
+    case 3:
+      return <h3>{children}</h3>;
+    case 4:
+      return <h4>{children}</h4>;
+    case 5:
+      return <h5>{children}</h5>;
+    case 6:
+      return <h6>{children}</h6>;
+    default:
+      throw Error('Unknown level: ' + level);
   }
 }
+// this looks more verbose
+export default function Page() {
+  return (
+    <Section>
+      <Heading level={1}>Title</Heading>
+      <Section>
+        <Heading level={2}>Heading</Heading>
+        <Heading level={2}>Heading</Heading>
+        <Heading level={2}>Heading</Heading>
+        <Section>
+          <Heading level={3}>Sub-heading</Heading>
+          <Heading level={3}>Sub-heading</Heading>
+          <Heading level={3}>Sub-heading</Heading>
+          <Section>
+            <Heading level={4}>Sub-sub-heading</Heading>
+            <Heading level={4}>Sub-sub-heading</Heading>
+            <Heading level={4}>Sub-sub-heading</Heading>
+          </Section>
+        </Section>
+      </Section>
+    </Section>
+  );
+}
+// how could we make it more cleaner ?
+// LevelContext.js
+export const LevelContext = createContext(1);
+// Heading.js
+// you need to add this instead of level prop, it will use the LevelContext constant,
+// from LevelContext.js
+const level = useContext(LevelContext);
+// Section.js
+export default function Section({ level, children }) {
+  return (
+    <section className="section">
+      {/*
+        here, you need to wrap component that will use the context down below .
+        notice the {level}, level here is the prop that you will provide when using
+        the component. (below in App.js)
+      */}
+      <LevelContext.Provider value={level}>
+        {children}
+      </LevelContext.Provider>
+    </section>
+  );
+}
+// App.js
+export default function Page() {
+  return (
+    {/* here, {level} is the prop that is used as identifier for LevelContext.Provider above */ }
+    < Section level = { 1} >
+            <Heading>Title</Heading>
+            <Section level={2}>
+                <Heading>Heading</Heading>
+                <Heading>Heading</Heading>
+                <Heading>Heading</Heading>
+                <Section level={3}>
+                    <Heading>Sub-heading</Heading>
+                    <Heading>Sub-heading</Heading>
+                    <Heading>Sub-heading</Heading>
+                    <Section level={4}>
+                        <Heading>Sub-sub-heading</Heading>
+                        <Heading>Sub-sub-heading</Heading>
+                        <Heading>Sub-sub-heading</Heading>
+                    </Section>
+                </Section>
+            </Section>
+        </Section >
+    );
+}
+// actually, you could remove the prop {level}, because provider is given by Section component,
+// we can increase it everytime another Section is used, wether inside or
+// outside(in this case it wont see the old value).
+// Section.js
+export default function Section({ children }) {
+  const level = useContext(LevelContext);
+  return (
+    <section className="section">
+      {/*
+        here, any component however nested it would be donw below, it will look for a provider above,
+        if it finds one, it uses the value of the provider and increment it by 1, and it goes,
+        like this for all components.
+        this works because the value is kept for all the providers on all levels.
+      */}
+      <LevelContext.Provider value={level + 1}>
+        {children}
+      </LevelContext.Provider>
+    </section>
+  );
+}
+// now, App.js doesnt need the {level} prop, because it now can rely on the value of the provider,
+export default function Page() {
+  return (
+    {/* no level needed */ }
+    < Section >
+            <Heading>Title</Heading>
+            <Section>
+                <Heading>Heading</Heading>
+                <Heading>Heading</Heading>
+                <Heading>Heading</Heading>
+                <Section>
+                    <Heading>Sub-heading</Heading>
+                    <Heading>Sub-heading</Heading>
+                    <Heading>Sub-heading</Heading>
+                    <Section>
+                        <Heading>Sub-sub-heading</Heading>
+                        <Heading>Sub-sub-heading</Heading>
+                        <Heading>Sub-sub-heading</Heading>
+                    </Section>
+                </Section>
+            </Section>
+        </Section >
+    );
+}
+
+// combining reducer and context
+// this way, you can actuaally give to the lower componets the ability to use/update the state
+export const TasksContext = createContext(null);
+export const TasksDispatchContext = createContext(null);
+//
+const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+//
+return (
+  <TasksContext.Provider value={tasks}>
+    <TasksDispatchContext.Provider value={dispatch}>
+      <h1>Day off in Kyoto</h1>
+      {/* this way, AddTask and TaskList can use both tasks and dispatch method, and all components below */}
+      <AddTask />
+      <TaskList />
+    </TasksDispatchContext.Provider>
+  </TasksContext.Provider>
+);
+// also, this are called custom hooks because the funciotn name starts with lowercase "use",
+// the main point is that a custom hook(function) lets you use other hooks inside it(state, reducer, .etc)
+export function useTasks() {
+  return useContext(TasksContext);
+}
+
+export function useTasksDispatch() {
+  return useContext(TasksDispatchContext);
+}
+const tasks = useTasks();
+const dispatch = useTasksDispatch();
