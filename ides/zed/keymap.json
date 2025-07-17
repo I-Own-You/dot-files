@@ -46,6 +46,7 @@
         "bindings": {
             "space p h": "editor::ToggleSelectedDiffHunks", // show / hide inline diff of the hunk under the cursor
             "space s h": "git::ToggleStaged",
+            "space u s h": "git::UnstageAndNext",
             "space r b b": "git::RestoreFile",
             "space s b": "git::StageAll",
             "space r b i": "git::UnstageAll",
@@ -183,7 +184,20 @@
             "space e": "project_panel::ToggleFocus",
             "r": "project_panel::Rename",
             "[": "project_panel::SelectNextDirectory",
-            "]": "project_panel::SelectPrevDirectory"
+            "]": "project_panel::SelectPrevDirectory",
+            "x": "project_panel::Cut",
+            "y": "project_panel::Copy",
+            "p": "project_panel::Paste",
+            "space x t": "workspace::CopyPath",
+            "shift-d": ["project_panel::Trash", { "skip_prompt": false }],
+            "z M": "project_panel::CollapseAllEntries"
+        }
+    },
+    {
+        "context": "vim_mode == insert && showing_signature_help && !showing_completions || (vim_mode == normal && showing_signature_help && !showing_completions)",
+        "bindings": {
+            "ctrl-k": "editor::SignatureHelpPrevious",
+            "ctrl-j": "editor::SignatureHelpNext"
         }
     }
 ]
