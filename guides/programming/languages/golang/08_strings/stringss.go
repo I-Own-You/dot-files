@@ -10,18 +10,17 @@ func stringss() {
 	// go treats strings as containers of text encoded in utf8.
 	// in other languages strings are treated as characters, for example.
 	// in go, a character is called a 'rune',
-	// rune - an integer that represents a unicode code point.
+	// rune - a decimal integer that represents a unicode code point.
 
 	const s = "สวัสดี"
 
 	// len(string) gives you the total raw bytes, not the length of the actual characters,
-	// it means each character has a byte, and those bytes are counted, and returned
+	// it means each character has  byte(s), and those bytes are counted, and returned
 	// in this case thai letters have 3 bytes, there are 6 letters, 3 * 6 = 18 bytes,
 	fmt.Println("Len:", len(s)) // 18
 
 	// it also means you can index the string up to 17 element, from 0(included) to 18(excluded),
 	// since byte is alias for uint8, each element will be an unsigned number like [102, 103, 110, n],
-	// but some chaarcters can span multiple bytes, so more than 1 byte can make a character
 	for i := 0; i < len(s); i++ {
 		fmt.Printf("%x ", s[i])
 	}
@@ -39,7 +38,8 @@ func stringss() {
 	// runeValue itself is rune type (int32), so a number, to get the unicode code point the %#U in Printf is used
 	for idx, runeValue := range s {
 		fmt.Printf("%#U starts at %d\n", runeValue, idx) // ส starts at 0, ว starts at 3 .etc
-		fmt.Println("runeValue:", runeValue)             // ส starts at 0, ว starts at 3 .etc
+		fmt.Println("runeValue:", runeValue)             // a decimal number will be printed, which holds
+		//                                                  the hexadecimal representation of rune
 	}
 
 	// same as above with range but using the utf8.DecodeLastRuneInString() method

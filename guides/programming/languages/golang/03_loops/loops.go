@@ -46,7 +46,6 @@ func main() {
 	// here is a slice, arrays will also work
 	nums := []int{2, 3, 4}
 	// we can specify 2 variables instead of one, first is the index, seconds the value
-	// here index is omitted
 	for index, value := range nums {
 		fmt.Printf("index: %d, value: %d.", index, value)
 	}

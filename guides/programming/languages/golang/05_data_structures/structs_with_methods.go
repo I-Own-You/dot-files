@@ -14,10 +14,6 @@ func (r *rectt) area() int {
 	return r.width * r.height
 }
 
-// this will automatically assign methods for rectt struct, because this function has:
-// 1. no traditional name: func (r rect)
-// 2. has a reciever (r rect) or (r *rect) // this is the main point, it must have a reciever to become a mehtod
-// 3. name after the enclosed reciever perim()
 func (r rectt) perim() int {
 	return 2*r.width + 2*r.height
 }
@@ -41,10 +37,7 @@ func StructsWithMethods() {
 	// remember go automatically dereferences the pointer, no need to use *rp,
 	rp := &r
 	fmt.Println("area: ", rp.area())  // (*rp).area() would be the same
-	fmt.Println("perim:", rp.perim()) // but this method doesnt recieve a pointer, it recieves a shallow copy
-	//                                   of our struct.
-	//									 It works because go automatically handles conversion
-	//                                   between values and pointers for method calls.
+	fmt.Println("perim:", rp.perim()) // works because it dereferences the pointer automatically
 
 	// important!
 	// methods cant be defined for types that comes from external packages, they must be local to type definition

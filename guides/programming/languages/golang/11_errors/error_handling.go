@@ -36,11 +36,12 @@ func makeTea(arg int) error {
 		// its like A wraps B which wraps C, .etc, you can use this trick with functions like errors.Is, errors.As
 		// one of way to wrap the error is using %w directive of fmt.Errorf().
 		// under the hood %w adds an Unwrap() method to Errorf() that will return an error, Unwrap() is a deault,
-		// method for unwrapping nested/erorrs on chaing, the rest of functionality is the same as %v
+		// method for unwrapping nested/erorrs on chain, the rest of functionality is the same as %v
 		return fmt.Errorf("making tea: %w", ErrPower)
 
 		// you could also just pass the text from an error to the newly created error
-		// instead of creating a new nested one.
+		// instead of creating a new nested one but you lose the chain so,
+		// method like errors.Is(myError, ErrPower) will give false
 		// return fmt.Errorf("making tea: %v", ErrPower)
 	}
 	return nil

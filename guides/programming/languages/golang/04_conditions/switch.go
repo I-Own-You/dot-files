@@ -8,14 +8,13 @@ import (
 func SwitchCondition() {
 	// case values can be any value, constants are not mandatory
 
-	// basic switch, case statements must be constant values
 	i := 2
 	fmt.Print("Write ", i, " as ")
 	switch i {
 	case 1:
 		fmt.Println("one")
 		// fallthrough // this is a special keyword that lets you fallthrough to the next case
-		//                because in go switch exists after first returned value / executed statement
+		//                because in go, switch exits after first returned value / last executed statement
 	case 2:
 		fmt.Println("two")
 	case 3:
@@ -24,8 +23,8 @@ func SwitchCondition() {
 
 	switch time.Now().Weekday() {
 	// you can separate by comma multiple expressions in a case statement
-	// you can also you more than 1 value to group possible variants, in this case it will check against both values
-	case time.Saturday, time.Sunday:
+	// you can also have more than 1 value to group possible variants, in this case it will check against both values
+	case time.Saturday, time.Sunday, 2:
 		fmt.Println("It's the weekend")
 		// fallthrough // this would fall into next case, which is the default one
 	default:
@@ -36,7 +35,6 @@ func SwitchCondition() {
 	// switch without initial value, acts like a if/else
 	// it defaults to switch true
 	switch {
-	// here case value is also not constant
 	case t.Hour() < 12:
 		fmt.Println("It's before noon")
 	default:

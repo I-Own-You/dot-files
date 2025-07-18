@@ -2,35 +2,6 @@ package main
 
 import "fmt"
 
-// this is a custom defined type, the underlying type is int
-type A int
-
-// also custom type, underlying type is struct{}
-type B struct{}
-
-// .etc...
-type something any // type something interace{}, same
-
-// a generic type
-type myGenericType[K comparable, V any] map[K]V
-
-// error, type paramteres cant be used as types for a type itself
-// type genericType[A any] A
-
-type iceCream string
-
-// this is called an alias type which is fully equal to its right hand type, iceCream == aliasIceCream,
-// if we defined: type aliasIceCream iceCream, aliasIceCream would be unique type and distinct from iceCream.
-type aliasIceCream = iceCream
-
-// type aliases provide a easy way to define same types from different packages, as an example.
-// type TFromDiffPkg = somePkg.TypeName
-// type MapFromDiffPkg[K comparable, V any] = someOtherPkg.MapType       // not yet supported, look below
-// type MapFromDiffPkg[K comparable, V any] = someOtherPkg.MapType[K, V] // not yet supported, look below
-
-// this will be available in february 2025, generic type aliasess are not yet supported
-// type aliasMyGenericType[K comparable, V any] = myGenericType[K, V]
-
 func main() {
 	//capacity: 1 byte
 	//possible values: true/false
@@ -45,22 +16,10 @@ func main() {
 	//the size of a string in Go is composed of two parts:
 	//
 	//1. Header: contains a pointer to the string data and its length.
-	//on most systems, this header is 16 bytes (8 bytes for the pointer and 8 bytes for the length) in
-	//a 64-bit architecture.
 	//2. Data: The actual string data. In your example, "a" is 1 byte in length if encoded in UTF-8.
 	//
-	//var ourString = "a"
-	//the total memory allocated for the string "a" would be 17 bytes (16 bytes for the header + 1 byte for the data).
-	//
-	//The 16 bytes header is the overhead used by the Go runtime to manage the string.
-	//this is why even very short strings like "a" use more than just the byte for the actual character data.
-	//
-	//var a string, var b = "a", var c = ""
-	//here, all the variables, even initialized or not, they all have allocated memory for the header,
-	//and only the b variable would have the data part counted because of the "a".
-	//
-	//capacity: 4 for 32bit systems, 8 bytes for 64bit systems, the limitation is about pc memory and OS limitations.
 	//posible values: raw literal string, interpreted literal string.
+	//
 	//default value: ""
 	var b string
 	fmt.Printf("b: %v\n", b)
@@ -84,14 +43,14 @@ func main() {
 
 	//6-7 decimal digits precision. (typically 7)
 	//capacity: 4 bytes
-	//possible values: (1.4e-45 ~ 3.4e+38)
+	//possible values: (1.4 * 10^-45 ~ 3.4 * 10^38)
 	//default value: 0
 	var e float32
 	fmt.Printf("e: %v\n", e)
 	//
 	//15-17 decimal digits precision. (typically 15)
 	//capacity: 8 bytes
-	//possible values: (5.0e-324 ~ 1.8e+308)
+	//possible values: (5.0 * 10^-324 ~ 1.8 * 10^308)
 	//default value: 0
 	var e1 float64
 	fmt.Printf("e1: %v\n", e1)
@@ -187,6 +146,7 @@ func main() {
 	fmt.Printf("g10: %v\n", g10)
 
 	//any is alias for interface{}, basically means any type
+	//default value: nil
 	var h any
 	fmt.Printf("h: %v\n", h)
 	// same as
@@ -194,24 +154,47 @@ func main() {
 	fmt.Printf("m: %v\n", m)
 
 	//a channel fo type int, you can have here any channel type
+	//default value: nil
 	var i chan int
 	fmt.Printf("i: %v\n", i)
 
 	//a map type [key:value] of int key and int value, also can have any type for key:value
+	//default value: map[]
 	var j map[int]int
 	fmt.Printf("j: %v\n", j)
 
 	//again, you can have any signature of the function, with parameters, its types, return values, and its types
+	//default value: nil
 	var k func()
 	fmt.Printf("k: %v\n", k)
 
+	//default value: {}
+	// if it would have values, it would be {0, , false}, default values for fields, as example
 	var l struct{}
 	fmt.Printf("l: %v\n", l)
 
 	// array
-
+	// default value: []
+	// if it would have a length, it would be [0, 0, .etc]
 	var arr [0]int
 
 	// slice
+	// default value: []
+	// if it would have a length, it would be [0, 0, .etc]
 	var slice []int
 }
+
+// this is a custom defined type, the underlying type is int
+type A int
+
+// also custom type, underlying type is struct{}
+type B struct{}
+
+// .etc...
+type something any // type something interace{}, same
+
+type iceCream string
+
+// this is called an alias type which is fully equal to its right hand type, iceCream == aliasIceCream,
+// if we defined: type aliasIceCream iceCream, aliasIceCream would be unique type and distinct from iceCream.
+type aliasIceCream = iceCream

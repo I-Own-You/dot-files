@@ -22,8 +22,7 @@ func ArrayDataStructure() {
 	// returns the length of the array
 	fmt.Println("len:", len(a))
 
-	// same as a variable initialization and giving a value but here you must insert the type.
-	// within { } comes the values for the array
+	// same as a variable initialization, within { } comes the values for the array
 	b := [5]int{1, 2, 3, 4, 5}
 	fmt.Println("dcl:", b)
 

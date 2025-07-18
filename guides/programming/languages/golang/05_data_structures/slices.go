@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"regexp"
 	"slices"
 )
 
@@ -30,7 +32,7 @@ func SlicesDataStructure() {
 	// its mainly for optimization, so now the capacity is 10, and length 3,
 	// it means when you surpass the capacity, and append one more element,
 	// the slice is reallocated and copied to a new memmory adddress,
-	// the element is appended and the capacity is doubled, so be cautious
+	// the element is appended and the capacity is increased, so be cautious
 	s1 = make([]string, 3, 10) // ["", "", ""], even though the capacity is 10
 	fmt.Println("emp:", s1, "len:", len(s1), "cap:", cap(s1))
 
@@ -44,7 +46,7 @@ func SlicesDataStructure() {
 	// returns the length of a slice
 	fmt.Println("len:", len(s)) // 3
 
-	// append() function appends a new element to a slice and returns the slice,
+	// append() function appends a new element to a slice and returns a new slice,
 	// it could be 1, 2 elements or a slice with [slice_name]... form.
 	// if the slice has enough capacity it will be resliced to have the new elements,
 	// if it doesnt, the slice is reallocated, copied, elements/slice added and capacity increased.
@@ -59,8 +61,7 @@ func SlicesDataStructure() {
 	var b1 = []byte{byte('h')}
 	var byte_slice = append(b1, "world"...)
 
-	// []byte("hello") converts "hello" into byte slice, ... operator unpacks a string/slice
-	// its also called an anonymous slice, like []int{1,2,3}
+	// []byte("hello") converts "hello" into byte slice, its also called an anonymous slice, like []int{1,2,3}
 	var byte_slice1 = append([]byte("hello"), "world"...)
 	fmt.Printf("slice: %v\n", byte_slice)
 	fmt.Printf("byte_slice1: %v\n", byte_slice1)
@@ -71,8 +72,7 @@ func SlicesDataStructure() {
 	fmt.Println("cpy:", c)
 
 	// copy also returns the number of elements copied.
-	// copy doesnt reallocate and copy new slice into another memmory address (variable).
-	// it only rewrites the existing data with the data given, if the data length is smaller,
+	// copy doesnt reallocate, it rewrites the existing data with the data given, if the data length is smaller,
 	// the rest elements will be zeroed of its type
 	copy(c, s[len(s)-1:])
 	fmt.Println("cpy:", c)
@@ -149,7 +149,6 @@ func SlicesDataStructure() {
 
 	// there is also a technique but dont use it because its kind of easy to screw
 	origS := []int{0, 1, 2, 3, 4} // [0, 1, 2, 3, 4]
-
 	// you kind of make the capacity smaller for a new slice but the referencing is still the same,
 	// but as you see below, [1:3:3], the length is 3, capacity also 3, which is kind of ugly,
 	// knowning the fact that the slice has only 2 elements instead of 3, becaus of [1:3].
@@ -159,23 +158,24 @@ func SlicesDataStructure() {
 	moreTricksAboutSlicesHere := "https://go.dev/wiki/SliceTricks"
 	fmt.Println(moreTricksAboutSlicesHere)
 
-	//
-	// var digitRegexp = regexp.MustCompile("[0-9]+")
-	// func FindDigits(filename string) []byte {
-	// 	b, _ := os.ReadFile(filename)
-	// 	return digitRegexp.Find(b) // its bad, it returns a slice that points to the underlying array b,
+}
+
+var digitRegexp = regexp.MustCompile("[0-9]+")
+
+func FindDigits(filename string) []byte {
+	b, _ := os.ReadFile(filename)
+	return digitRegexp.Find(b) // its bad, it returns a slice that points to the underlying array b,
 	//                                where b points to the underlying array
 	//                                of os.ReadFile() which could be very big
 	//                                and garbage collector wont free it because its pointed by our return
-	// }
-	// fix this:
-	// func CopyDigits(filename string) []byte {
-	//     b, _ := ioutil.ReadFile(filename)
-	//     b = digitRegexp.Find(b)
-	//     c := make([]byte, len(b))
-	//     copy(c, b) // now you have a new slice which points to its array
-	//                   rather than the original os.ReadFile() array which could be very big
-	//     return c
-	// }
+}
 
+// fix this:
+func CopyDigits(filename string) []byte {
+	b, _ := os.ReadFile(filename)
+	b = digitRegexp.Find(b)
+	c := make([]byte, len(b))
+	copy(c, b) // now you have a new slice which points to its array
+	//                   rather than the original os.ReadFile() array which could be very big
+	return c
 }

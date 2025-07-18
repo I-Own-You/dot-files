@@ -58,15 +58,14 @@ func fact(n int) int {
 	return n * fact(n-1)
 }
 
-// named functions inside another named functioins are not allowed
-func myFunc() int {
-	func myFunc2() {}
-    // but anonymous function assigned to variables are allowed
-    a := func () {}
-    // you could return it
-    return a
-    // or you could return the anonymous function itself without variable
-    return func () {}
+func myFunc() func() {
+	// func myFunc2() {} // function inside function is not allowed
+	// but anonymous function assigned to variables are allowed
+	a := func() {}
+	// you could return it
+	return a
+	// or you could return the anonymous function itself without variable
+	return func() {}
 }
 
 func main() {

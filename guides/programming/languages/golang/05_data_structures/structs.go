@@ -42,14 +42,16 @@ func StructDataStructure() {
 	// this way you access its fields
 	fmt.Println(s.name)
 
-	// you can also assign a struct pointer to a variable and use it, the pointer is dereferences automatically,
+	// you can also assign a struct pointer to a variable and use it, the pointer is dereferenced automatically,
+	// meaing you can access the struct fields without using the (*s).fieldName syntax
 	sp := &s
 	var _ *person = &s  // same as above but more explicit, and wihtout name so compiler wont give error
-	fmt.Println(sp.age) // no need for *(sp).age, but you can use it if you want
+	fmt.Println(sp.age) // no need for (*sp).age, but you can use it if you want
 
 	// structs are mutable when referenced by memory, the s also changes because the sp hold a pointer to s
 	// if it would be sp := s, sp would hove a copy of struct s, so different memory would mean they cant,
-	// change each other.
+	// change each other, but if struct has a pointer field, the pointer fields will have a pointer copy,
+	// so you can mutate data among all structs that are related.
 	sp.age = 51
 	fmt.Println(sp.age)
 

@@ -53,15 +53,14 @@ func StringFormatting() {
 	// it puts quotes around the whole string and escape special characters like newline, tabs, quotes, .etc
 	fmt.Printf("str2: %q\n", "\"string\"")
 
-	// %x renders a string in base16, 2 output characters per byte of input
-	// it basically concatenates the decimal representation of each byte symbol
+	// %x renders a string in base16, it basically concatenates the decimal representation of each byte symbol
 	fmt.Printf("str3: %x\n", "hex this")
 
 	// %p you can see the representation of a pointer, nil or  memmoery address
 	// if you would omit the & in p, it would print the source code snippet of GO for struct
 	fmt.Printf("pointer: %p\n", &p)
 
-	// you can specify width of representation by adding a number after %{n}verb
+	// you can specify width of representation by adding a number between % and format verb
 	// the value will be aligned to right and the left if remains will be padded with spaces
 	fmt.Printf("width1: |%6d|%6d|\n", 12, 345)
 

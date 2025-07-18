@@ -2,6 +2,21 @@ package main
 
 import "fmt"
 
+// a generic type
+// also, when you use it, you must instantiate it, you cant infer like in a function
+type myGenericType[K comparable, V any] map[K]V
+
+// error, type paramteres cant be used as types for a type itself
+// type genericType[A any] A
+
+// type aliases provide a easy way to define same types from different packages, as an example.
+type TFromDiffPkg = somePkg.TypeName
+type MapFromDiffPkg1[K comparable, V any] = someOtherPkg.MapType
+type MapFromDiffPkg2[K comparable, V any] = someOtherPkg.MapType[K, V]
+
+// generic type aliasess
+type aliasMyGenericType[K comparable, V any] = myGenericType[K, V]
+
 // a function with generic type
 func GenericMin[T int | float32 | float64](x, y T) T {
 	if x < y {
@@ -45,10 +60,14 @@ func (t *Tree[T]) Lookup(x T) *Tree[T] {
 // here is a variable of generic struct type
 var stringTree Tree[string]
 
-// here is a union of types constructed with interface, its a new syntax added from go
+// here is a union of types constructed with interface
+// also called: type constraint
 type Number interface {
-	int8 | int32 | ~string // ~string means here that any type which underlying type is string,
-	//                         so any custom types, like type myString string will also pass
+	int8 | int32 | ~string
+	// ~string means that any type which underlying type is string,
+	// so any custom types, like type myString string will also pass.
+	// but ~ can be used only in type sets,
+	// so only in interfaces composing a type constraint.
 }
 
 // you can also inline interface types constraint
@@ -104,7 +123,8 @@ type myInterface interface {
 type myStruct struct{}
 type myStruct2 struct{}
 
-func (ms myStruct) A() {}
+func (ms myStruct) A()  {} // implements myInterface
+func (ms myStruct2) A() {} // doesnt implement myInterface
 
 // also an example with primitive type in interface
 type myInterface2 interface {
@@ -116,3 +136,18 @@ type myInterface2 interface {
 type myStruct3 int32
 
 func (ms myStruct3) B() {}
+
+// generic interface
+type Adder[T any] interface {
+	Add(T) T
+}
+
+func Sum[T Adder[T]](a, b T) T {
+	return a.Add(b)
+}
+
+type AA int
+
+func (a AA) Add(b AA) AA {
+	return a + b
+}

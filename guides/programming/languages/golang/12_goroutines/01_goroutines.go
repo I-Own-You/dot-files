@@ -32,6 +32,7 @@ func goroutines() {
 	time.Sleep(time.Second)
 	fmt.Println("done")
 	// the results here would be first everyting from sync code at first, but if it takes too long and the
-	// async code (in another threads) are done, they would be returned earlier than sync code,
+	// async code (in another threads) are done, they would be returned earlier than sync code, only,
+	// if async code is above sync code.
 	// so its a concurrent execution, all processes are interleaved and returned on ready state
 }

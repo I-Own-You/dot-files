@@ -53,7 +53,8 @@ func StructureWithMethodsAndInterfaces() {
 	measure(c)
 
 	// you can also have anonymous interfaces as parameters, return values, assigned to variables.
-	// one note: if a method implements with a reciever pointer and it is guarded by an interface,
+	//
+	// if a method implements with a reciever pointer and it is guarded by an interface,
 	// you must return the memmory address instead, not the struct, it wont handle for you as before,
 	// becasue of the interface.
 	//
@@ -80,7 +81,7 @@ func StructureWithMethodsAndInterfaces() {
 	//		age() int
 	//	}) { }
 	//
-	// interface as anonymous type
+	// interface as anonymous type:
 	//
 	// type display struct{}
 	// func (d *display) Display() string {
@@ -130,6 +131,7 @@ func StructureWithMethodsAndInterfaces() {
 	// example:
 	// (a struct methods) and (the struct itself)
 	// (other types methods, if any) and (the value itself of other types) like builtin types or custom
+	//
 	// func DoSomething(v interface{}) {
 	// 	fmt.Printf("v: %v\n", v) // 2
 	// }
@@ -145,7 +147,7 @@ func StructureWithMethodsAndInterfaces() {
 	// 	}
 	// }
 	// names := []string{"stanley", "david", "oscar"}
-	// PrintAll(name) // error
+	// PrintAll(names) // error
 	//
 	// so you would need to convert it specifically
 	//

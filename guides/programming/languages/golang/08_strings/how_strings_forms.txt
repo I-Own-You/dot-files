@@ -24,7 +24,7 @@
       and this 10 always gets removed alongside with the specified bits above for the main byte
 
    then it takes the amount of bytes it need and combine it.
-   
+
    how they are combined ? for each sequence of bytes you remove the placeholder for byte signal and combine them.
    example: [11100000, 10111000, 10101010, 11100000, 10111000, 10100111]
    1. you look at the first byte, it has 1110, so its a 3 byte as specified above, so you need 3 bytes consecutive
