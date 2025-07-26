@@ -17,9 +17,12 @@ https://github.com/jstkdng/ueberzugpp/issues/81#issuecomment-1623923211
 gnome tips:
 // to resize with win+right button mouse
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
+
 // stop ibus from remapping keymaps
 ibus-setup in terminal, remove emoji picker
+
 // change/remove all keybindings inside dconf-editor
+
 // change keybinding for always-on-top inside dconf-editor
 
 dconf-editor:
