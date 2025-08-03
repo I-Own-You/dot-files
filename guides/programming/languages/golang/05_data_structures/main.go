@@ -5,7 +5,8 @@ func main() {
 	// slices_data_structure()
 	// maps_data_structure()
 	// structs_data_structure()
+	// structs_with_methods()
+	// EmbeddedStructure()
 	// structs_with_methods_and_interfaces()
-	// enums_data_structure()
-	EmbeddedStructure()
+	EnumsDataStructure()
 }

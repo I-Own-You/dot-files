@@ -11,7 +11,7 @@ func NonBlockingChannelOperations() {
 
 	// here, if messages channel is ready to receive, case  will take it, if not, the default case is executed
 	select {
-	case msg := <-messages: // here it would be blocked without select
+	case msg := <-messages:
 		fmt.Println("received message", msg)
 	default:
 		fmt.Println("no message received") // this will execute since messages doesnt have values to return
@@ -19,7 +19,7 @@ func NonBlockingChannelOperations() {
 
 	msg := "hi"
 	select {
-	case messages <- msg: // here it would be blocked without select
+	case messages <- msg:
 		fmt.Println("sent message", msg) // this will execute since msg can return into messages, because its empty
 	default:
 		fmt.Println("no message sent")

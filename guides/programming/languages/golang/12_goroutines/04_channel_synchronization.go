@@ -16,7 +16,7 @@ func workerr(done chan bool) {
 
 func ChannelSynchronization() {
 
-	done := make(chan bool, 1)
+	done := make(chan bool, 1) // actually this implementation would work without 1 length
 	go workerr(done)
 
 	// here you also block until you get a value into channel, since above we have go worker(done),

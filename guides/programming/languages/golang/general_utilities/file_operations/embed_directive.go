@@ -4,7 +4,7 @@ import (
 	"embed"
 )
 
-// go can embed a file into a variable/byte/FS type variable,
+// go can embed a file into a string/byte/embed.FS type variable,
 // at compile tiime with embed directive: https://pkg.go.dev/embed - more details
 
 //go:embed a.txt

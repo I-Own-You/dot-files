@@ -50,7 +50,7 @@ func StringFormatting() {
 	fmt.Printf("str1: %s\n", "\"string\"")
 
 	// double quote strings as in GO source, %q
-	// it puts quotes around the whole string and escape special characters like newline, tabs, quotes, .etc
+	// it puts quotes around the whole string and preserve special characters like newline, tabs, quotes, .etc
 	fmt.Printf("str2: %q\n", "\"string\"")
 
 	// %x renders a string in base16, it basically concatenates the decimal representation of each byte symbol

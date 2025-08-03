@@ -40,4 +40,6 @@ func SelectGoroutines() {
 	// an empty select{} bolock a goroutine without returning value since it has no choices and awaits forever,
 	// its like a for {} in some way or sleeping, but it must not block the thread,
 	// so its kind of a trick construction.
+	// its mainly needed when you want to hang a program so other goroutines do something but with no CPU usage,
+	// things like for {}, because select{} uses no cpu.
 }

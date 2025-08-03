@@ -43,8 +43,5 @@ func closeFile(f *os.File) {
 		os.Exit(1)
 	}
 
-	// values that will be worked on by a defer call are evaluated when the defer is executing,
-	// not when first encountered
-
 	// multiple defers in a program are executing from bottom up, so 10 liens of defer will start from the bottom
 }

@@ -12,7 +12,7 @@ func f(from string) {
 }
 
 func goroutines() {
-	// a goroutine is a lightweight thread execution
+		// a goroutine is a lightweight thread execution
 	// the thread management is done thourgh golang builtin scheduler that relies on a limited small os threads
 
 	// this is executed in the main thread of the application

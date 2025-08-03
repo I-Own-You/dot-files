@@ -45,3 +45,9 @@ func ClosingChannels() {
 	_, ok := <-jobs
 	fmt.Println("received more jobs:", ok)
 }
+
+// tip:
+// 1. if you close a buffered channel, you STILL can receive all values and then v, ok := <-chan
+// will give you the zeroed value of channel type and ok will be false.
+// 2. if you close an unbuffered channel while the value is sent into it in some goroutine,
+// then go will panic because you cant send values into channels which are closed.

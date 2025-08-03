@@ -14,7 +14,7 @@ func ping(pings chan<- string, msg string) {
 // pongs parameter is for sending values, otherwise panic
 func pong(pings <-chan string, pongs chan<- string) {
 	msg := <-pings
-	pongs <- msg
+	pongs <- msg // pongs <- <-pings, would work also
 }
 
 func ChannelDirections() {

@@ -38,7 +38,7 @@ func WriteToFiles() {
 
 	// when data is written to a file,
 	// the OS often keeps data in memory for performance reason and update it when it thinks,
-	// its the best(it writes fast but not sometimes instatntly).
+	// its the best(it writes fast but sometimes not instatntly).
 	//
 	// .Sync() method ensures the data from OS in memory buffer is written on the disk,
 	// from the memory(flushes), it also impacts performance,

@@ -77,9 +77,9 @@ func StructureWithMethodsAndInterfaces() {
 	//
 	// type myStruct struct{}
 	// func (r myStruct) age() {}
-	//	func myFunc(interface {
+	// func myFunc(interface {
 	//		age() int
-	//	}) { }
+	// }) { }
 	//
 	// interface as anonymous type:
 	//
@@ -96,22 +96,6 @@ func StructureWithMethodsAndInterfaces() {
 	// }); ok {
 	// 	fmt.Println(d.Display())
 	// }
-	//
-	// another way of definig struct/interface contract
-	//
-	// type Stringer interface {
-	// 		String() string
-	// }
-	// type Person struct {
-	// 		Name string
-	// 		Age  int
-	// }
-	// func (p Person) String() string {
-	// 		return fmt.Sprintf("Name: %s, Age: %d", p.Name, p.Age)
-	// }
-	// p := Person{Name: "Alice", Age: 30}
-	// var s Stringer = p // see, a variable of type interface that assigns a struct that implements it
-	// fmt.Println(s.String()) // Outputs: Name: Alice, Age: 30
 
 	// you can also have a slice of type interface with structs in it
 	// Geometry(rect{5,10}) is done automatically, when placing values of Geomtry type interface,

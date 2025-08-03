@@ -24,8 +24,9 @@ func recoverr() {
 	}()
 
 	// here program panics, defered function activates because main() finished with a panic,
-	// recover() handles, in this case prints something, then code goes as normal above mayPanic()
+	// recover() handles, in this case prints something, then program ends
 	willPanic()
 
+	// wont reach, because the panic happened inside main because of willPanic()
 	fmt.Println("After mayPanic()")
 }

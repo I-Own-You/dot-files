@@ -159,7 +159,7 @@ func main() {
 	fmt.Printf("i: %v\n", i)
 
 	//a map type [key:value] of int key and int value, also can have any type for key:value
-	//default value: map[]
+	//default value: nil
 	var j map[int]int
 	fmt.Printf("j: %v\n", j)
 
@@ -179,7 +179,7 @@ func main() {
 	var arr [0]int
 
 	// slice
-	// default value: []
+	// default value: nil
 	// if it would have a length, it would be [0, 0, .etc]
 	var slice []int
 }

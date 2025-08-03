@@ -25,6 +25,15 @@ func headers(w http.ResponseWriter, req *http.Request) {
 	for name, headers := range req.Header {
 		for _, h := range headers {
 			fmt.Fprintf(w, "%v: %v\n", name, h)
+			// here, it doesnt mean the server is sending response everytime it writes to w,
+			// it actually stores what it writes into internal buffer and sends data when:
+			// 1. handler returns or
+			// 2. internal buffer is full or
+			// 3. explicitly flush with http.Flusher
+			//
+			// even if you dont explicitly return from a http handler, it will still
+			// send the response because exiting the http handler means the handler is done,
+			// so it can send response now.
 		}
 	}
 }
@@ -45,7 +54,7 @@ func HttpServer() {
 	http.HandleFunc("/hello", hello)
 	http.HandleFunc("/headers", headers)
 
-	http.Handle("/kek", myHandler{}) // you can assign a variable before, or just throw myHandler{}
+	http.Handle("/kek", myHandler{}) // you can assign a variable before, or just instantiate myHandler{}
 
 	// finally, we call the ListenAndServe with the port and a handler.
 	// nil tells it to use the default router we’ve just set up: "/hello", "/headers", "/kek"

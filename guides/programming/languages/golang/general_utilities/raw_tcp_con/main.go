@@ -20,9 +20,6 @@ func main() {
 }
 
 func clientTCP() {
-	// The client resolves "127.0.0.1:3000" to a *net.TCPAddr.
-	// this address represents localhost on port 3000 for TCP connections.
-	//
 	// This function converts a string-based IP address and port (like "127.0.0.1:3000")
 	// into a *net.TCPAddr structure that Go can work with.
 	//

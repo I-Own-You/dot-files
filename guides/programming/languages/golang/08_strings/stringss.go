@@ -34,7 +34,7 @@ func stringss() {
 	fmt.Println("Rune count:", utf8.RuneCountInString(s))
 
 	// using range over strings will decode into runes(characters unicode code unit) so, a number.
-	// you can also have the index at which the new rune starts, without it, only the decoded rune is present
+	// you can also have the index at which the new rune starts, without it, only the decoded rune is present.
 	// runeValue itself is rune type (int32), so a number, to get the unicode code point the %#U in Printf is used
 	for idx, runeValue := range s {
 		fmt.Printf("%#U starts at %d\n", runeValue, idx) // ส starts at 0, ว starts at 3 .etc
@@ -67,7 +67,7 @@ func stringss() {
 	// raw string literals: store text as it is, wihtout interpreting it.
 	// raw string literals also always store valid utf8 sequences of bytes,
 	// the sequence represents the unicode code points like U+02EA(hexadecimal representation) called rune,
-	// rune - a unicode code point.
+	// rune - a unicode code point of decimal type
 	//example:
 	// here the variable will be: Hello
 	//                            World

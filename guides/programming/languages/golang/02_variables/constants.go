@@ -15,7 +15,7 @@ func constants() {
 	fmt.Println(s)
 
 	const (
-		e  = iota // 0, iota is reset to 0 if it encounters a constant block declaration and increasez by 1
+		e  = iota // 0, iota is reset to 0 if it encounters a constant declaration and increasez by 1
 		e1        // 1
 		e2        // 2
 	)

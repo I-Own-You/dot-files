@@ -18,7 +18,7 @@ func vals() (int, int) {
 	return 3, 7
 }
 
-// you can define variables inside return braces, their default values will be its zered type, they are like,
+// you can define variables inside return braces, their default values will be its zeroed type, they are like,
 // regular variables defined inside a function, but not so convenient in real world.
 // usually you return when 2+ values are returned and also for better naming for clarity.
 func anotherFunc() (a int, b int) {

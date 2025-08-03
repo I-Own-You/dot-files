@@ -42,8 +42,8 @@ func main() {
 	mylog.Println("from mylog") // my:2023/08/22 10:45:16 from mylog
 
 	// you can set prefixes on custom and standard logger, here we change the custom one
-	mylog.SetPrefix("ohmy:")    // ohmy:2023/08/22 10:45:16 from mylog
-	mylog.Println("from mylog") // from buflog:buf:2023/08/22 10:45:16 hello
+	mylog.SetPrefix("ohmy:")
+	mylog.Println("from mylog") // ohmy:2023/08/22 10:45:16 from mylog
 
 	// logger can have custom output targets, any io.Writer works
 	var buf bytes.Buffer

@@ -21,8 +21,7 @@ func channels() {
 	go func() { messages <- "ping" }()
 	time.Sleep(time.Second * 5)
 
-	// here with the syntax someVariableThatHoldsValue <- channel we can recieve the value from a channel from,
-	// a goroutine
+	// here with the syntax someVariableThatHoldsValue <- channel we can recieve the value from a channel from
 	msg := <-messages
 	fmt.Println("msg:", msg)
 	// by default, sender and reciever will wait(block threads) each other until they both are ready,

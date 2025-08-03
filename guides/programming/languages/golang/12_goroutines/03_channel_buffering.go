@@ -6,7 +6,7 @@ import (
 
 func ChannelBuffering() {
 
-	// a buffered channel with a capacity means no more than 2 values can be hold before the thred is blocked
+	// a buffered channel with a capacity means no more than (N) values can be hold before the thred is blocked
 	messages := make(chan string, 2)
 
 	messages <- "buffered"

@@ -7,7 +7,7 @@ import (
 
 // flag package provides some utilities for cli flags
 
-func CommandLineFlags() {
+func main() {
 
 	wordPtr := flag.String("word", "foo", "a string")
 	numbPtr := flag.Int("numb", 42, "an int")

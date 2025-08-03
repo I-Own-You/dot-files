@@ -104,7 +104,7 @@ func EqSeq[E comparable](s1, s2 iter.Seq[E]) bool {
 	// next1 will return value/signal if there are valueus left
 	// stop1 will cancel the future pulling of values even if there are values to retrieve
 	next1, stop1 := iter.Pull(s1)
-	defer stop1()
+	defer stop1() // will explain the defer keyword later
 	next2, stop2 := iter.Pull(s2)
 	defer stop2()
 	for {

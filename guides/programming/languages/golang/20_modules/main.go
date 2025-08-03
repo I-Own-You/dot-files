@@ -6,9 +6,6 @@ package main
 // module is defined by a go.mod file that tracks the modules that provide those packages/modules.
 // that go.mod file stays with your code, including in your source code repository.
 //
-// to enable dependency tracking for your code by creating a go.mod file, run the [go mod init {name}] command,
-// giving it the name of the module your code will be in. The name is the module's module path.
-//
 // in actual development,
 // the module path will typically be the repository location where your source code will be kept.
 // for example, the module path might be github.com/mymodule.
@@ -23,9 +20,6 @@ package main
 // so you cannot import modules in each other if they are not published,
 // but you can define them in go.mod manually with the [replace] directive,
 // and then you will be able to import them.
-
-// when you need a functionality that someone could made either from stdlib or github or whatever,
-// you find the link to it, you paste it, like below:
 
 import (
 	"fmt"

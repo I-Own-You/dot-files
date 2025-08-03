@@ -9,13 +9,13 @@ type myGenericType[K comparable, V any] map[K]V
 // error, type paramteres cant be used as types for a type itself
 // type genericType[A any] A
 
+// generic type aliasess
+type aliasMyGenericType[K comparable, V any] = myGenericType[K, V]
+
 // type aliases provide a easy way to define same types from different packages, as an example.
 type TFromDiffPkg = somePkg.TypeName
 type MapFromDiffPkg1[K comparable, V any] = someOtherPkg.MapType
 type MapFromDiffPkg2[K comparable, V any] = someOtherPkg.MapType[K, V]
-
-// generic type aliasess
-type aliasMyGenericType[K comparable, V any] = myGenericType[K, V]
 
 // a function with generic type
 func GenericMin[T int | float32 | float64](x, y T) T {
@@ -67,7 +67,6 @@ type Number interface {
 	// ~string means that any type which underlying type is string,
 	// so any custom types, like type myString string will also pass.
 	// but ~ can be used only in type sets,
-	// so only in interfaces composing a type constraint.
 }
 
 // you can also inline interface types constraint
