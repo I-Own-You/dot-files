@@ -1,0 +1,5 @@
+[[language]]
+name = "go"
+formatter = { command = "goimports" }
+
+# [[language]]

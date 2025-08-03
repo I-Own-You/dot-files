@@ -1,0 +1,74 @@
+theme = "everblush"
+
+[editor]
+scrolloff=3
+line-number = "relative"
+default-yank-register = "+"
+mouse = false
+# cursorline = true
+continue-comments = false
+completion-timeout = 5
+completion-trigger-len = 1
+color-modes = true
+end-of-line-diagnostics = "hint"
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["primary-selection-length","read-only-indicator","file-name", "file-modification-indicator", "diagnostics", "workspace-diagnostics"]
+right = ["selections", "position", "total-line-numbers", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+diagnostics = ["hint", "info", "warning", "error"]
+workspace-diagnostics = ["hint", "info", "warning", "error"]
+
+[editor.lsp]
+# enable = true
+# display-messages = true
+# display-progress-messages = false
+# auto-signature-help	=	true
+# display-inlay-hints	= false
+# inlay-hints-length-limit
+# display-color-swatches = true
+# display-signature-help-docs = true
+# snippets = true
+# goto-reference-include-declaration = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+
+# [editor.whitespace]
+# render = "all"
+
+# [editor.whitespace.render]
+# space = "all"
+# tab = "all"
+# nbsp = "none"
+# nnbsp = "none"
+# newline = "none"
+
+# [editor.whitespace.characters]
+# space = "·"
+# nbsp = "⍽"
+# nnbsp = "␣"
+# tab = "→"
+# newline = "⏎"
+# tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "hint"
