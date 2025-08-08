@@ -1,0 +1,72 @@
+art direction - cropped images based on specific criteria
+resolution switching - multiple images chosed based on specific criteria
+
+1. images on different screen sizes look different, you can solve this with a cropped image or giving multiple images,
+    and let browser choose what it needs based on some criteria.
+2. vector images could fix the issue of needing a specific image size because it scales well, its small in size and it,
+    adapts to different screen sizes but they are suitable only for simple images, not complex like images
+3. css has better tools for handling responsive images than html, but it dependens if you need images set on css side. (usually not)
+
+4. handling art direction:
+    <img src="elva-fairy-800w.jpg" alt="Elva dressed as a fairy" />,
+    but we can use some attributes to help:
+        <img
+        srcset="elva-fairy-480w.jpg 480w, elva-fairy-800w.jpg 800w"
+        sizes="(width <= 600px) 480px,
+                800px" 
+        src="elva-fairy-800w.jpg" 
+        alt="Elva dressed as a fairy"
+        />,
+    4.1 scrset defines a set of images a browser should take from and which size the image is, each set of image + size is,
+        separataed by a comma:
+            1. filename - elva-fairy-480w.jpg
+            2. space
+            3. real size of an image(right click, properties of image on os)
+    4.2 sizes defines a set of media conditions and indicates what imagge size would be best to choose if media condition,
+        is satisfied:
+            1. a media condition - (width <= 600px)
+            2. space
+            3. the width of the slot the image will fill when media condition is satisfied - 480px,
+               size can be in any unit you want except "%", so 480px is valid, 480vw, .etc
+    4.3 how browser will work it:
+        4.3.1 Look at screen size, pixel density, zoom level, screen orientation, and network speed.
+        4.3.2 Work out which media condition in the sizes list is the first one to be true.
+        4.3.3 Look at the slot size given to that media query.
+        4.3.4 Load the image referenced in the srcset list that has the same size as the slot.
+              If there isn't an exact match for the display size,
+              the browser will choose the first image that is bigger than the chosen slot size and scale it down to fit.
+    4.4 an older browser which dont support the srcset/sizes combo will jsut load the image from src attribute
+5. handling resolution switching:
+    if you have an image that has the same size for all devices then, you can provide a higher resolution image for,
+    devices with higher resolution but the same physical size:
+        <img
+        srcset="elva-fairy-320w.jpg, elva-fairy-480w.jpg 1.5x, elva-fairy-640w.jpg 2x"
+        src="elva-fairy-640w.jpg"
+        alt="Elva dressed as a fairy" 
+        />,
+        1. here, you dont need sizes attributes
+        2. the real size of an image is set with [n]x:
+            filename - elva-fairy-480w.jpg, size - 1.5x
+        so even though the physical size of the image is the same for all devices, on higher resolution devices, the
+        1.5x will increase the resolution of the image so it will look sharper, it works by browser checking the
+        device pixel ratio, so if the device has 1 pixel ratio where 1 css pixel == 1 physical pixel then it takes
+        first image, if its a device with high resolution such as retina, then it could be 2 or 3 physical pixel per 1 css pixel,
+        and it chooses the right image as we defined with 1.5x, 2x, .etc
+6. with art direction problem, we could use <picture> which helps with showing images cropped, like some part of image,
+    that we need as detail instead of image being scalled down and the detail becoming less noticeable:
+        <picture>
+            <source media="(width < 800px)" srcset="elva-480w-close-portrait.jpg" />
+            <source media="(width >= 800px)" srcset="elva-800w.jpg" />
+            <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva" />
+        </picture>,
+        <pitcture> wraps several <source> that provide different sources for browser to choose, followed by the,
+        <img> which is the most important:
+            1. <source> - includes media attribute that has a media condition, if satisfied then it shows the source from srcset
+            2. scrset - contains the path to the iamge to display, it could conatin multiple images with its sizes and also
+                sizes attribute with its media conditions.
+            3. <img> at the end must be set as default or no image will be shown
+
+when browser starts loading the page, it pre-downloads images before any css/js is parsed, so its useful to think and,
+fix the document loading time issue, this is why css/js cant be involved in fixing it, because images will already download.        
+
+

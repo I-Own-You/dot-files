@@ -1,0 +1,37 @@
+1. browser viewport - are of the window in which web content can be seen.
+2. usually web content is larger, so browser provides scrollbars, both vertical and horizontal
+3. some devices can render in a virtual window/viewport which can be larger than screen size, then shrinks to the screen size,
+    its usually made because some web pages are not mobile friendly so it renders at a higher viewport and then user can
+    increase/decrease with toes to see everything on the page, this is why <meta> is helpful
+4. viewport is a comma separated list of feature and value pairs, a website which is optimized for mobile usually has:
+    <meta name="viewport" content="width=device-width, initial-scale=1" />:
+        width - minimum size of viewport width, it can have numbers as pixels or device-width as physical size of device in pixels (set in wh)
+        height - minimum size of viewport height, it can have numbers as pixels or device-height as physical size of device in pixels (set in wh)
+        initial-scale - zoom level at first load of page
+        minimum-scale - how much zoom out is allowed on page
+        maximum-scale - how much zoom in is allowed on page
+        user-scalable - allow zoom in/out
+        interactive-widget - which effects interactive UI widgets(virtual keyboard) affects viewport
+5. a device with a high dpi, will need images or anything related at a higher pixels than what css will provide,
+    it means if a device has 1000 physical pixels, css would have only 500 if device pixel ratio is 2, so an iamge,
+    with 500 initial width would look worse than 1000 one, so you need an original image with 1000 pixel but rendered
+    with css as 500, something like <img href="..." width="500" />, it works because the device has 1000 pixel, and
+    the css pixel(logical also called) is usually bigger than device one depending on device pixel ration, in our case
+    is 2, so browser downscales it internally to 500 width, but because the css pixel is larger than physical one,
+    phone gets that 500 width image and interprets it like 500*2=1000, but be aware than dowscaling image in css,
+    does not reduce its original weight downloaded from the server.
+6. if some site sets the width in some pixel to fit some screen, it will cause problems rendering on a device with
+    much larger device scree, so when width of viewport is set in content attribute, the browser will expand further,
+    if it sees that it can an device is larger than that width to please it.
+7. interactive ui widgets also affect viewport, for example the virtual keyboard can affect the viewport by its properties,
+    so interactive-widget property in content attribute must be set if you want browser to behave in some way 
+
+ppi - pixel per inch(density), sqrt(width^2 + height^2) / device_diagonal ?
+dpi - printer resolution (how many innk dots printer can place in one inch) 
+pixel - a physical dot on screen(for physical device and logical for css)
+dpr - device pixel ratio(ppi/150)
+viewport - css based pixel width/height which web content needs
+screen size - actual physical size dimensions of a physical device
+
+for example a phone with 1080x1920 means 1080 physical dots on each line of phone width, and 1920 physical dots on each,
+line from top to bottom of phone height. the same goes to any display device(pc, tablet, washing machine, .etc)

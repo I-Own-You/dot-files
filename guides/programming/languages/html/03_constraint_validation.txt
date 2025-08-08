@@ -1,0 +1,6 @@
+1. validation of elements can be done thorugh:
+    1. attributes:
+        when you put an attribute with its value, its checked by the browser which checks the standard rules
+    2. Constraint Validation API(js):
+        this goes to the developer logic
+https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation

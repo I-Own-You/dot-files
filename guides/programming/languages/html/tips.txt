@@ -1,0 +1,54 @@
+fast loading html pages:
+    1. reduce page weight(its the most important), it consists of:
+         1. removing whitespace/comments
+         2. moving script/css files outside html page
+    2. minimizing the number of files:
+        more files - more http connections to download them
+    3. use cdn:
+        it basicaly works by storing a cache version of the web page close to the user reducing the latency
+    4. reduce domain lookups:
+        when you have different links inside css/html/js it means more dns lookups (its usually not that practicle,
+        so thinking about is just for knowledge purpose)
+    5. reusing cached content:
+        cache everything that can be cacheable is a good option to prevent bandwidth, using headers of http,
+        ex: Last-Modified also helps checking cache, but it works only with static content, dynamic content,
+        which generates data on the fly is harder to cache, there should be involved more techniques.
+    6. optimally order the component on the page:
+        user should get the info from the server right away so he coul already see whatever on his screen and then
+        wait for anything other like css/js so he wont wait on content on the web page
+    7. reduce the number of inline scripts:
+        when browser encounters an inline script it thinks it could modify the content so he could spend time,
+        waiting for the script, this is why reducing it could improve the web page load time, also using document.write()
+        can also impact performance in a bad way, using DOM API is better in this case than using document.write()
+    8. using modern css and valid markup:
+        modern css could swap some images of styled text which have more weight, also
+        valid markup doesnt have to programmaticaly change user inputs or error correction of html elements
+        you could use some tools to erase some whitespace and ending tags if your document consists of valid markup
+    9. chunking data can help:
+        nested tables could affect performance, instead you could use float/flex/grid/position or just divs
+    10. minifying and compressing svg:
+        svgs often include metadata which is not neccessary so it could be removed and proccessed by the server
+    11. minifying and compressing images:
+        large images are heavy to download, so they could be downloaded small(both mified and encoded) by a tool on the server,
+        and then decoded on the fly by the browser
+    12. specifying sizes for images/tables:
+        if size is specified ahead, its easier to show web content then to change it increasing the speed of page loading,
+        1. height/width should be specified for images when possible 
+        2. tables should use table-layout: fixed in css and specify width of columns using the <col> and <colgroup>
+    13. using lazy load for images:
+        by default, images are loaded eagerly, so if html encountered an image, it downloads and renders it,
+        all images loaded are rendered before window load event is sent,
+        setting images to be load lazily tells browser to load image only when its needed to be draw in the visual viewport
+
+        here, loading attribute with "lazy" value enables lazy load for this specific image:
+            <img src="./images/footerlogo.jpg" loading="lazy" alt="MDN logo" />
+
+        lazily loaded image may not be available when the load event is fired, to check if the image is loaded,
+        by checking the images property "complete" in js
+    14. using async/defer when possible:
+        js scripts should be compatible with async/defer attributes if possible escpecially if there are many
+
+        for a document to be fully loaded scripts also need to be fully loaded so putting a script inside <head> means,
+        making the document slower on load, so there should be things needed while document loads and all other scripts
+        related to interactivity rf things after document content loaded, needs to be put at the end of <body>
+        

@@ -1,0 +1,114 @@
+1. html tags are case insensitive,so <html> same as <HtML>, <htML>, .etc
+2. most of elements are part of content categories (these group elements that share common characteristics)
+    2.1 it doesnt bond any element, its just on words only but they help with understanding a gorup behaviour and rules
+    2.2 it forms the content model of elements (what each element can take as a child), (for example <p> - should take phrases, <div> - flow content)
+    2.3 there are 7 main content categroies:
+        2.3.1 flow
+            all elements that can go into <body> element, including hading, sectioning, phrasin, embedding, interactive and form relatd elements, 
+            and also text nodes but those that have something beside whitespace in them,
+            elements:
+                <a> <abbr> <address> <article> <aside> <audio> <b> <bdi> <bdo> <blockquote> <br> <button> <canvas> 
+                <cite> <code> <data> <datalist> <del> <details> <dfn> <dialog> <div> <dl> <em> <embed> <fieldset> <figure>
+                <footer> <form> <h1>-<h6> <header> <hgroup> <hr> <i> <iframe> <img> <input> <ins> <kbd> <label> <main> <map>
+                <mark> <math> <menu> <meter> <nav> <noscript> <object> <ol> <output> <p> <picture> <pre> <progress> <q>
+                <ruby> <s> <samp> <script> <search> <section> <select> <slot> <small> <span> <strong> <sub> <sup> <svg>
+                <table> <template> <textarea> <time> <u> <ul> <var> <video> <wbr> Autonomous custom elements and Plain text,
+                and some elements that meet certain conditions:
+                    <area>, if it is a descendant of a <map> element
+                    <link>, if the itemprop attribute is present
+                    <meta>, if the itemprop attribute is present
+        2.3.2 heading
+            subset of flow content, defines the title of the section, it applies to explicitly marked section elements or
+            implicit ones like <h1>-<h6> and <hgroup>, it treats everything after <h1>Alo</h1> as section Alo,
+            alos, <heading> can itself contain heading content, but is not, a heading itself
+        2.3.3 sectioning
+            subset of flow content, creates a section in the current outline(html starts a new part of the logical structure of the document),
+            it also defines the scope of <header> and <footer> so if they are inside a section, then header/footer inside them are scoped to its article.
+            elements:
+                <article>, <aside>, <nav>, <section>
+        2.3.4 metadata:
+            modify the presentation or the behavior of the rest of the document, the <head> element includes:
+            <title>, <link>, <script>, <style>, <meta>, <noscript>, <template>, <base>(rarely used), which is metadata content,
+            some of them can be tied to more than 1 content category
+        2.3.5 interactive
+            subset of flow content, elements that are designed specifically for user interaction
+            elements:
+                <button> <details> <embed> <iframe> <label> <select> <textarea>,
+                some elements taht meet specific criteria:
+                        <a>, if the href attribute is present
+                        <audio>, if the controls attribute is present
+                        <img>, if the usemap attribute is present
+                        <input>, if the type attribute is not in the hidden state
+                        <object>, if the usemap attribute is present
+                        <video>, if the controls attribute is present
+        2.3.6 embedded
+            subset of flow content, imports another resource or inserts anther content from another markup langauge or namespace
+            elements:
+                <audio> <canvas> <embed> <iframe> <img> <math> <object> <picture> <svg> <video>
+        2.3.7 phrasing (this is the last one, below is mostly abstract)
+            subset of flow content, refers to the text and markup within a document, sequences of these make up phrases.
+            elements:
+                <abbr> <audio> <b> <bdi> <bdo> <br> <button> <canvas> <cite> <code> <data> <datalist> <dfn> <em> <embed> <i>
+                <iframe> <img> <input> <kbd> <label> <mark> <math> <meter> <noscript> <object> <output> <picture> <progress>
+                <q> <ruby> <s> <samp> <script> <select> <slot> <small> <span> <strong> <sub> <sup> <svg> <template> <textarea>
+                <time> <u> <var> <video> <wbr> Autonomous custom elements and Plain text,
+                also elements that meet certain conditions:
+                    <a>, if it contains only phrasing content
+                    <area>, if it is a descendant of a <map> element
+                    <del>, if it contains only phrasing content
+                    <ins>, if it contains only phrasing content
+                    <link>, if the itemprop attribute is present
+                    <map>, if it contains only phrasing content
+                    <meta>, if the itemprop attribute is present
+        2.3.8 palpable
+            content taht is not empty/hidden, the content is rendered and independent, such content doesnt define,
+            content model, but a rule: elements taht can have any flow or phrasing content should have at least,
+            one node that its palpable and doesnt have hidden attribute
+            elements:
+                <a> <abbr> <address> <article> <aside> <b> <bdi> <bdo> <blockquote> <button> <canvas> <cite> <code>
+                <data> <del> <details> <dfn> <div> <em> <embed> <fieldset> <footer> <figure> <form> <iframe> <img>
+                <ins> <kbd> <label> <main> <map> <mark> <math> <meter> <nav> <object> <p> <picture> <pre> <progress> <q>
+                <ruby> <s> <samp> <search> <section> <select> <small> <span> <strong> <sub> <sup> <svg> <table>
+                <textarea> <time> <u> <var> <video>
+                Autonomous custom elements and Plain text that is not inter-element whitespace
+                some elements taht meet criteria:
+                    <audio>, if the controls attribute is present
+                    <dl>, if the element's children include at least one name-value group
+                    <input>, if the type attribute is not in the hidden state
+                    <ol>, if it's children include at least one <li> element
+                    <ul>, if it's children include at least one <li> element
+        2.3.9 script supporting elements:
+            they dont directly contribute to document rendering output, they serve to support script by,
+            containing/specifying script code directly or by specifying data that will be used by scripts.
+            most elements can contain script supporting elements
+            elements:
+                <script>
+                <template>
+        2.3.10 form-associated content:
+            subset of flow content comprising elements that have a form owner and can be used everywhere flow content
+            is expected.
+            a form owner is <form> or <form> whose id is specified in the elements form attribute, so it means,
+            that you either have a <form> with its content inside or a <form> maybe empty maybe partial empty,
+            and its associated form fileds are somewhere else in the document but they have form attribute with,
+            forms id.
+            elements:
+                <button> <fieldset> <input> <object> <output> <select> <textarea> <img> <label> <option> <meter> <progress>
+            there are also sub categories:
+                1. listed (they appear in .elements of <form>/<fieldset>):
+                    <button>, <fieldset>, <input>, <object>, <output>, <select>, <textarea>
+                2. submitable (its content is sent when form submits):
+                    <button>, <input>, <select>, <textarea>
+                3. resettable (its affected by a form reset):
+                    <input>, <output>, <select>, <textarea>
+                4. autocapitalize/autocorrect attribute (inherits these attributes from owner):
+                    <button>, <fieldset>, <input>, <output>, <select>, <textarea>
+                5. labelable (can be connected with a label):
+                    <button>, <input> (except type="hidden"), <meter>, <output>, <progress>, <select>, <textarea>
+        2.3.11 transparent content model:
+            if an element is transparent content model, its content must be constructed in a valid html, even if 
+            the transparent element were removed and replaced by the child elements.
+            meaning:
+                if you have ul wrapping <del> and it wrapping some <li> elements, then, if you remove <del>,
+                it must result in a valid html anyway, so only <li> remains which is valid for <ul>
+
+

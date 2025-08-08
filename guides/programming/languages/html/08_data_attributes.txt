@@ -1,0 +1,15 @@
+data attributes - helps with associating some data with an element that has no meaning, stored on html elements as attributes,
+                  data-*
+        <main>
+        <article
+            id="electric-cars"
+            data-columns="3" 
+            data-index-number="12314"
+            data-parent="cars">
+            <!-- Electric car content -->
+        </article>
+        </main>
+
+1. you can read data-* values with js
+2. you can get data-* vlues inside css or use them as css selectors
+3. data-* are bad for accessibility if the info is important and its meaning was to be on document rendered

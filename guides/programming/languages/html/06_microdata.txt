@@ -1,0 +1,20 @@
+1. microdtaa - used to nest metadata within content on web pages
+2. microdata can be exctracted and proccessed by search engines and web crawlers from a web page and use it to provide,
+better brwoser experience for users.
+3. search engines benefit from microdata by providing more relevant results to users by understand the information on a web page
+4. microdtaa uses a supportive vocabularity to describe an item and name-value pairs to assign values to its properties:
+    a group of name-value pairs -> groups are called items -> name-value pair is called a property -> items+properties called regular elements,
+    to create an item, itemscope attribute is used,
+    to add a property to an item, itemprop attribute is used on one of items descendants
+5. microdata is a way of providing a declarative way of annotating HTML elements with machine-readable tags
+6. global attributes:
+    itemid - unique, global identifier of an item
+    itemprop - add property of an item, every html element can have an itemprop attribute
+    itemref - provides a list of elements ids(not itemid) with additional properties from the entire document,
+              these properties must not be descendants of an element with the itemscope attribute
+    itemscope - atteibute, usually with itemtype to speciy that html contained in a block is about a particular item.
+                creates the Item and defines the scope of the itemtype associated with.
+                its also a valid URL of a vocabulary(ex: schema.org) that describes the item and its properties context
+    itemtype - specifies the URL of the vocabulary that will be used to define itemprop's in the data structure.
+
+schema.org is a popular vocabular for this case which most search engines rely on.

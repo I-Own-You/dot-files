@@ -1,0 +1,11 @@
+1. comments in html start with <!-- and ends in -->, so <!-- -->
+2. you can have text inside <!-- my text -->
+3. comments allow browser to not interpret these text blocks, they are not visible in the document
+4. you can span comments on multiple lines
+5. comment can be used:
+    1. before/after <doctype>
+    2. before/after <html>
+    3. in most elements except:
+        <script>, <style>, <title>, <textarea>, because they interpret their content as raw text
+6. comments are allowed only as content, they can be inside elements tag < >
+7. comment is not an html element
