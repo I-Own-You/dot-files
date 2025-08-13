@@ -5,7 +5,7 @@ import "fmt"
 func ArrayDataStructure() {
 
 	// in Go, an array is a numbered sequence of elements of a specific length
-	// slices thought are more common, arrays are useful in specific scenarios
+	// slices thought are more common, so arrays are useful in specific scenarios
 
 	// basic array of fixed 5 length with default values for the array type,
 	// [5]int so array will be [0,0,0,0,0]

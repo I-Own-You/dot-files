@@ -7,8 +7,7 @@ import "fmt"
 // this function panics
 func willPanic() {
 	panic("a problem")
-	// you could define here a defer and recover and it would be handled here.
-	// its possible to recover from a function that panics but it will anyway exit.
+	// you could define here a defer and recover and it would be handled here, but the function will anyway exit.
 }
 
 func recoverr() {

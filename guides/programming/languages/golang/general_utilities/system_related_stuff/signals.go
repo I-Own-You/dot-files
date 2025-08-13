@@ -9,9 +9,7 @@ import (
 
 func signals() {
 
-	// actually,
-	// channel could be empty,
-	// but .Notify need at least 1 capacity because at least 1 signal is expected
+	// channel could be empty, but .Notify need at least 1 capacity because at least 1 signal is expected
 	sigs := make(chan os.Signal, 1)
 
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)

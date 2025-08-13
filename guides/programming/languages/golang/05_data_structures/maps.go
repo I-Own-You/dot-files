@@ -29,6 +29,13 @@ func MapsDataStructure() {
 	v3 := m["k3"]
 	fmt.Println("v3:", v3)
 
+	// you can check if a key was present when retrieved a value by adding a second argument of type bool.
+	// the _ identifier will contain the value which we skip here and the isKeyPresent will be a boolean which will hold,
+	// the presence of a key in the map, its useful to distinguish between a presence and zeroed value of a type,
+	// when you retrieve by a key.
+	_, isKeyPresent := m["k2"]
+	fmt.Println("prs:", isKeyPresent)
+
 	// len(map) returns the key/value pairs
 	fmt.Println("len:", len(m))
 
@@ -39,13 +46,6 @@ func MapsDataStructure() {
 	// clear removes all key/value pairs from a map you
 	clear(m)
 	fmt.Println("map:", m)
-
-	// you can check if a key was present when retrieved a value by adding a second argument of type bool.
-	// the _ identifier will contain the value which we skip here and the isKeyPresent will be a boolean which will hold,
-	// the presence of a key in the map, its useful to distinguish between a presence and zeroed value of a type,
-	// when you retrieve by a key.
-	_, isKeyPresent := m["k2"]
-	fmt.Println("prs:", isKeyPresent)
 
 	// you can declare and initialize on the same line also
 	n := map[string]int{"foo": 1, "bar": 2}

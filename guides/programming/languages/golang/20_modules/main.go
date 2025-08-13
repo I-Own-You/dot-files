@@ -35,7 +35,8 @@ import (
 	//
 	// instead of example it would be utils, to be consistent, but nice to know names can be different.
 	// utils is an alternative name, you can have there any name, it will work, but its confusing, so
-	// example would be utils because submodule/example has utils package
+	// example would be utils because submodule/example has utils package,
+	// actually, you can even leave the name of utils, but formatter will try to either put it back or remove module/package, bad
 	"modules/example/myPkg"
 	utils "submodule/example"
 	myPkgg "submodule/example/myPkgg"

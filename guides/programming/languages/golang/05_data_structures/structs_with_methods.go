@@ -36,8 +36,8 @@ func StructsWithMethods() {
 
 	// remember go automatically dereferences the pointer, no need to use *rp,
 	rp := &r
-	fmt.Println("area: ", rp.area())  // (*rp).area() would be the same
-	fmt.Println("perim:", rp.perim()) // works because it dereferences the pointer automatically
+	fmt.Println("area: ", rp.area())
+	fmt.Println("perim:", rp.perim()) // (*rp).perim() would be the same
 
 	// important!
 	// methods cant be defined for types that comes from external packages, they must be local to type definition

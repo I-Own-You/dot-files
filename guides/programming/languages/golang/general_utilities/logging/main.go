@@ -36,8 +36,7 @@ func main() {
 	log.Println("with file/line") // 2023/08/22 10:45:16 logging.go:40: with file/line
 
 	// it may be useful to create a custom logger and pass it around.
-	// when creating a new logger,
-	// we can set a prefix to distinguish its output from other loggers.
+	// when creating a new logger, we can set a prefix to distinguish its output from other loggers.
 	mylog := log.New(os.Stdout, "my:", log.LstdFlags)
 	mylog.Println("from mylog") // my:2023/08/22 10:45:16 from mylog
 

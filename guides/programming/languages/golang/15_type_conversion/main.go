@@ -12,4 +12,11 @@ func main() {
 	var f float64 = math.Sqrt(float64(x*x + y*y)) // int -> float64
 	var z uint = uint(f)                          // float64 -> uint
 	fmt.Println(x, y, z)
+
+	// type conversion to a custom type is also possible, yes
+	check(F(func(int, int) int { return 2 }))
 }
+
+type F func(int, int) int
+
+func check(F) {}

@@ -54,7 +54,7 @@ func StructureWithMethodsAndInterfaces() {
 
 	// you can also have anonymous interfaces as parameters, return values, assigned to variables.
 	//
-	// if a method implements with a reciever pointer and it is guarded by an interface,
+	// if a method implements with a reciever pointer and it is guarded by an anonymous interface,
 	// you must return the memmory address instead, not the struct, it wont handle for you as before,
 	// becasue of the interface.
 	//
@@ -110,7 +110,7 @@ func StructureWithMethodsAndInterfaces() {
 	// an empty interface is implemented by all types
 	// the actual value is converted for us by go to become an interface.
 	// the interface points to 2 things:
-	// 1. a table of methods for the underlying values type (the methods table is cached), the type
+	// 1. the type: a table of methods for the underlying values type (the methods table is cached)
 	// 2. the actual data held by that value
 	// example:
 	// (a struct methods) and (the struct itself)

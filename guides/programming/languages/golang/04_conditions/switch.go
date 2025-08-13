@@ -53,7 +53,7 @@ func SwitchCondition() {
 			fmt.Println("I'm an int")
 			fmt.Printf("t: %T\n", t)   // will print the type, int
 			fmt.Printf("t: %v\n", t*2) // so here will be the value, not the type
-			fmt.Printf("t: %v\n", t)   // the value, not the type
+			//                            if formatted as %T, but put t*2, t*2 is dropped, becasue type is not a value
 		default:
 			fmt.Printf("Don't know type %T\n", t)
 		}

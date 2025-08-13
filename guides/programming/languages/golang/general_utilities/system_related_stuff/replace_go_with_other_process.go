@@ -7,8 +7,7 @@ import (
 )
 
 // sometimes we just want to completely replace the current Go process,
-// with another (perhaps non-Go) one,
-// to do this we’ll use Go’s implementation of the classic exec function.
+// with another (perhaps non-Go) one, to do this we’ll use Go’s implementation of the classic exec function.
 
 func ReplaceGoWithOtherProcess() {
 

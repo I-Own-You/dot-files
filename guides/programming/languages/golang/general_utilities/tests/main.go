@@ -48,9 +48,8 @@ func TestIntMinTableDriven(t *testing.T) {
 	for _, tt := range tests {
 
 		testname := fmt.Sprintf("%d,%d", tt.a, tt.b)
-		// t.Run enables running subtests,
-		// one for each table entry as we are in a range of tests entries, they are shown,
-		// separately in command line, so the main test execution and all the nested r.Run() ones
+		// t.Run enables running subtests, one for each table entry as we are in a range of tests entries,
+		// they are shown, separately in command line, so the main test execution and all the nested t.Run() ones
 		t.Run(testname, func(t *testing.T) {
 			ans := IntMin(tt.a, tt.b)
 			if ans != tt.want {
@@ -61,15 +60,15 @@ func TestIntMinTableDriven(t *testing.T) {
 }
 
 // benchmarking typically is also in a Benchmark(some_name)_test.go file
+//
 // testing runner executes each benchmark function several times,
-// increasing b.N on each run until it collects,
-// a precise measurement.
+// increasing b.N on each run until it collects, a precise measurement.
 //
 // benchmarks are runned with: go test -bench=. //bench flag filters function names starting with bench
 // other tests are runned with: go test -v
 func BenchmarkIntMin(b *testing.B) {
 
-	for i := 0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ { // a modern way would be for b.Loop() { }
 		// typically the benchmark runs a function b.N times
 		IntMin(1, 2)
 	}

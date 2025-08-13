@@ -2,9 +2,8 @@ package main
 
 import "fmt"
 
-var a, b = 1, 2
+var a, b = 1, true
 var c, d int = 3, 4
-var e, f, g = true, false, 1
 
 var (
 	a1 int
@@ -17,7 +16,7 @@ func example1() {
 }
 
 func example2() {
-	a := 1000                // you can shadow the global variable
+	var a = 1000             // you can shadow the global variable
 	fmt.Printf("a: %v\n", a) // 1000
 }
 

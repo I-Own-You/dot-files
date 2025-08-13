@@ -14,7 +14,6 @@ func SlicesDataStructure() {
 	// slice is a descriptor to the underlying array: pointer to the array, length, capacity
 	// capacity is the length of the underlying array, which is reallocated if its surpassed
 
-	// slices are typed only by the elements within, and not by the number of elements
 	// unitialized slices equals nil, and has length = 0
 	// initial slice capacity is equal to its length, here is 0
 	// it means you cant work with it until intialzied or with make
@@ -104,7 +103,7 @@ func SlicesDataStructure() {
 	var slice1 = arr1[:]
 	fmt.Printf("slice1: %v\n", slice1)
 
-	// you can declare and initialize a slice also, like array but without length number [number] or [...]
+	// you can declare and initialize a slice also
 	t := []string{"g", "h", "i"}
 	fmt.Println("dcl:", t)
 

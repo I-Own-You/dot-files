@@ -1,14 +1,13 @@
+// every go programm is made up of packages.
+// the start of the programm is always in the main package,
+// so you can have a lot of packages but where all happens and
+// executes is main function of a package(preferably named main also)
 package main
 
 import (
 	"fmt"
 	"math/rand" // the last name is the package name you can start using, here its rand, "/" is a delimeter
 )
-
-// every go programm is made up of packages.
-// the start of the programm is always in the main package,
-// so you can have a lot of packages but where all happens and
-// executes is main function in the main package.
 
 func main() {
 	fmt.Println("My favorite number is", rand.Intn(10))

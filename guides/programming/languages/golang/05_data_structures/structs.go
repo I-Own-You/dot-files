@@ -10,7 +10,7 @@ type person struct {
 }
 
 // constructs a new person with name, age fields
-// its also called *constructor function*, just a name which represents functions that create structs
+// its also called *constructor function*
 func newPerson(name string) *person {
 
 	p := person{name: name}
@@ -45,7 +45,7 @@ func StructDataStructure() {
 	// you can also assign a struct pointer to a variable and use it, the pointer is dereferenced automatically,
 	// meaing you can access the struct fields without using the (*s).fieldName syntax
 	sp := &s
-	var _ *person = &s  // same as above but more explicit, and wihtout name so compiler wont give error
+	var _ *person = &s  // same as above but more explicit
 	fmt.Println(sp.age) // no need for (*sp).age, but you can use it if you want
 
 	// structs are mutable when referenced by memory, the s also changes because the sp hold a pointer to s

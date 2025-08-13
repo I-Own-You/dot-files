@@ -39,11 +39,6 @@ func CustomSorting() {
 		})
 	fmt.Println(people)
 
-	// sort package provides a broader range of functionality for sorting
-	sort.Slice(people, func(i, j int) bool {
-		return people[i].age < people[j].age
-	})
-
 	// convert array into slice to use sort.Slice()
 	// this type of sorting are easy for simple sorting
 	arr := [5]int{4, 2, 3, 1, 5}

@@ -13,7 +13,6 @@ func main() {
 
 	// you can have more than one variable defined, but
 	// in this case you cant do things like i++, j++.
-	// because the last part of the for must be an expression or a single statement
 	for i, j := 0, 1; j < 3; i, j = i+1, j+1 {
 		fmt.Println(j)
 	}
@@ -69,14 +68,15 @@ func main() {
 
 	// you can also iterate over unicode points, here is the string
 	// i = index, c = unicode number
-	// string under the hood are []string slice, if here would be some symbols that are outside ascii, like unicode,
+	// string under the hood are []byte slice, if here would be some symbols that are outside ascii, like unicode,
 	// range can handle those and the index might be different, like +2 or +3 becuase some symbols can span 2-4 bytes.
 	for i, c := range "go" {
 		fmt.Println("i=", i, "c=", c) // 0 103, 1 111
 	}
 
 	// here 'g' will be the number version of 'g' because the '{symbol}' which is a rune which is an alias for
-	// int32, which is itself a number which points to a unicode character.
+	// int32, which is itself a number which points to a unicode character, but only with literals like 'g', with
+	// variables it wont work like that, it will interpret it like a symbol, no 0,1,2,3, .etc, but 'g' and thats it.
 	for c := range 'g' {
 		fmt.Println(c) // 0, 1, 2, n, 102
 	}

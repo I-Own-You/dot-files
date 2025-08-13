@@ -55,7 +55,7 @@ func main() {
 	a.m[1] = struct{}{}
 	a.m[2] = struct{}{}
 	a.m[3] = struct{}{}
-	// its not the usual construction, its not at all, just for the sake of explanation.
+	// its not the usual construction, just for the sake of explanation.
 	// a.All()( /* here would be the function that would have the logic which would return true/false */ )
 	// PrintAllElements(a)
 

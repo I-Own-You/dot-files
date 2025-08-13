@@ -8,6 +8,7 @@ import (
 // constants are defined at compile time, so they are immutable
 
 // constant can be character, string, numeric, boolean types
+// character is 'a' with ' ', but its a rune, concept defined in strings lesson
 const s string = "constant"
 const number = 0
 

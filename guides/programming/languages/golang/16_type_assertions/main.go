@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// type assertion provides access to an interfaces value underlying concrete value
+// type assertion provides access to an interfaces value, other types beside interface/any are not allowed
 
 var S string = "hello"
 

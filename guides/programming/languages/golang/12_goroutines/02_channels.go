@@ -12,7 +12,7 @@ func channels() {
 	// this way you create a channel with make(), if size is omitted or 0, the channel is unbuffered,
 	// an unbuffered channel means it will block when send/receive values.
 	// if the buffer has capacity,
-	// it wont block the thread untill the channel is full(sending values into) or empty(receiving values from)
+	// it wont block the thread untill the channel is full(no more space for values to store) or empty(no more values to retrieve from)
 	messages := make(chan string)
 
 	fmt.Printf("messages: %v\n", messages)
