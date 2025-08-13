@@ -1,8 +1,4 @@
-#https://github.com/sxyazi/yazi/tree/latest/yazi-config/preset
-#https://yazi-rs.github.io/docs/configuration/theme
-# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
-# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+# do this: ya pkg add yazi-rs/flavors:dracula
 
 [flavor]
-use = "tokyo-night"
+dark = "dracula"
