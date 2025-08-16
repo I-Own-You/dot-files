@@ -71,8 +71,7 @@ func SlicesDataStructure() {
 	fmt.Println("cpy:", c)
 
 	// copy also returns the number of elements copied.
-	// copy doesnt reallocate, it rewrites the existing data with the data given, if the data length is smaller,
-	// the rest elements will be zeroed of its type
+	// copy doesnt reallocate, it rewrites the existing data with the data given,
 	copy(c, s[len(s)-1:])
 	fmt.Println("cpy:", c)
 

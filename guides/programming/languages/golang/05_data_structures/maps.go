@@ -7,6 +7,7 @@ import (
 
 func MapsDataStructure() {
 	// you can use make to create a map, map([key-type]value-type)
+	// keys of maps can be only of comparable type
 	m := make(map[string]int)
 
 	// you can also have a declaration only, its nil by default (the zeroed value of map is nil),
@@ -67,3 +68,6 @@ func MapsDataStructure() {
 		fmt.Println("nice")
 	}
 }
+
+// map doesnt guarantee the order of keys, so printing key/value pairs wont be ordered,
+// you need separate data struture in order to achieve this, like a slice with ordered keys.

@@ -6,6 +6,7 @@ import (
 )
 
 // an http server is easy to write using net/http
+// each incoming request to a server is handled in a seaprate gorotuine
 
 // a fundamental concept in net/http servers is handlers.
 // a handler is an object implementing the http.Handler interface.
