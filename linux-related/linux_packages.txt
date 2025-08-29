@@ -46,7 +46,6 @@ obs-studio
 keepassxc
 
 # gnome
-extensions
 flameshot(off site, appimg)
 dconf-editor(gnome store)
 gnome-tweaks(gnome store)
