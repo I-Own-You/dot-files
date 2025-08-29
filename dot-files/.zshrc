@@ -17,6 +17,7 @@ NOCOLOR="\033[0m"
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+bindkey -e
 setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 #                                   (appendhistory - share all terminals)
 #                                   (SHARE_HISTORY) - terminals has their own when active
@@ -325,10 +326,7 @@ export EDITOR=nvim
 export FORGIT_NO_ALIASES=1
 export LESS="-RXF"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-source /home/linuxbrew/.linuxbrew/opt/antidote/share/antidote/antidote.zsh
-#source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
 antidote load
 
@@ -339,25 +337,29 @@ source ~/dot-files/scripts/cpwd.sh
 source ~/dot-files/scripts/custom_rename.sh
 
 path+=('/home/mkc/.cargo/bin')
-PATH=$PATH:$(go env GOPATH)/bin # another way to specify path, just for info, also: PATH=$PATH:$HOME/go/bin
+#PATH=$PATH:$(go env GOPATH)/bin # another way to specify path, just for info, also: PATH=$PATH:$HOME/go/bin
 export PATH
 
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)
-
+#zstyle :compinstall filename '/home/mkc/.zshrc'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 # zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
 unsetopt EXTENDED_GLOB
 
 function zvm_after_init() {
-  source /home/linuxbrew/.linuxbrew/Cellar/fzf/0.64.0/shell/key-bindings.zsh &&
-  source /home/linuxbrew/.linuxbrew/Cellar/fzf/0.64.0/shell/completion.zsh &&
-      source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-Aloxaf-SLASH-fzf-tab/fzf-tab.zsh &&
-      source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-mdumitru-SLASH-fancy-ctrl-z/fancy-ctrl-z.zsh &&
-      source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-jimhester-SLASH-per-directory-history/per-directory-history.zsh &&
-      source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &&
-      bindkey "^ " autosuggest-accept      
-}
+	source /usr/share/fzf/key-bindings.zsh &&
+	source /usr/share/fzf/completion.zsh &&
+	source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-Aloxaf-SLASH-fzf-tab/fzf-tab.zsh &&
+	source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-mdumitru-SLASH-fancy-ctrl-z/fancy-ctrl-z.zsh &&
+	source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-jimhester-SLASH-per-directory-history/per-directory-history.zsh &&
+	source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	}
+
+#bindkey '^[[1;3C' forward-word  # Alt + →
+#bindkey '^[[C' autosuggest-accept  # Right arrow
+bindkey '\el' forward-word
+
 
 function ff() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

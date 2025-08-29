@@ -1,34 +1,16 @@
 ln -sf ~/dot-files/dot-files/.zshrc ~/.zshrc
 ln -sf ~/dot-files/dot-files/.zsh_plugins.txt ~/.zsh_plugins.txt
 ln -sf ~/dot-files/dot-files/.gitconfig ~/.gitconfig
-ln -sf ~/dot-files/yazi/yazi.toml ~/.config/yazi/yazi.toml
-ln -sf ~/dot-files/yazi/theme.toml ~/.config/yazi/theme.toml
-ln -sf ~/dot-files/yazi/keymap.toml ~/.config/yazi/keymap.toml
-
-zsh-vi-mode plugin:
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-ZVM_VI_VISUAL_ESCAPE_BINDKEY=jk
-ZVM_VI_HIGHLIGHT_BACKGROUND=#383737 # Hex value
-ZVM_VI_EDITOR=nvim
- 
-fix ueberzugpp image for kitty terminal:
-https://github.com/jstkdng/ueberzugpp/issues/81#issuecomment-1623923211
+ln -sf ~/dot-files/dot-files/yazi ~/.config/yazi
 
 gnome tips:
-// to resize with win+right button mouse
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
-
-// stop ibus from remapping keymaps
-ibus-setup in terminal, remove emoji picker
-
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true  // to resize with win+right button mouse
+ibus-setup in terminal, remove emoji picker // stop ibus from remapping keymaps
 // change/remove all keybindings inside dconf-editor
-
 // change keybinding for always-on-top inside dconf-editor
 
 dconf-editor:
-// icons form dock raise/minimize 
-/org/gnome/shell/extensions/dash-to-dock/click-action -> 'minimize'
-
+/org/gnome/shell/extensions/dash-to-dock/click-action -> 'minimize' // icons form dock raise/minimize 
 flameshot: (if needed)
 https://github.com/flameshot-org/flameshot/issues/3326#issuecomment-1837225180
 

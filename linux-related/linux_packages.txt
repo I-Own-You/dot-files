@@ -1,56 +1,52 @@
 # general
-git(apt|brew)
-zsh(apt|brew)
-brew(off site)
-antidote(brew)
-btop(brew)
+git
+zsh
+antidote(off site)
+btop
 kitty(off site)
-ueberzugpp(jstkdng/programs/ueberzugpp:brew)
-neovim(brew)
-zed(off site)
-google-chrome(off site)
+ueberzugpp(?)
+neovim
+google-chrome(aur)
 telegram(off site)
-discord(gnome store)
-zoxide(brew)
-yazi(brew)
-zip(brew)
-wget(brew)
-qbittorent(gnome store)
+discord
+zoxide
+yazi
+zip
+wget
+qbittorent
 (
-xclip(apt)
-wl-clipboard(it lags, apt)
+xclip
+wl-clipboard
 xsel
-)
-golang(brew)
-eza(brew)
-bat(brew)
-git-delta(brew)
-jq(brew)
+)(?)
+golang
+eza
+bat
+git-delta
+jq
 ipython
-fzf(brew)
-insomnia(off site)
-ripgrep(brew)
-npm(brew)
-github-cli(gh:brew)
-glab(brew)
-ctags(brew)
-fd(brew)
-p7zip(brew)
-unrar(apt)
-unzip(brew)
-vlc(gnome store)
-easyeffects(apt) (plugins for pipewire apps, audio manager)
+fzf
+insomnia
+ripgrep
+npm
+github-cli
+glab
+ctags
+fd
+p7zip
+unrar
+unzip
+vlc
+easyeffects (plugins for pipewire apps, audio manager)
 lsp-plugins (for easyeffects)
 calf (for easy effects)
 zam-plugins (for easy effects)
-spotify(gnome store)
-obs-studio(gnome store)
-keepassxc(gnome store)
-yazi(brew)
-extensions(gnome center)
-pinta(gnome center)
+spotify
+obs-studio
+keepassxc
 
 # gnome
+extensions
 flameshot(off site, appimg)
 dconf-editor(gnome store)
 gnome-tweaks(gnome store)
