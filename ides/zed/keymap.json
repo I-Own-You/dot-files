@@ -160,7 +160,7 @@
         "bindings": {
             "space w w": "editor::ToggleSoftWrap",
             "space n h": "buffer_search::Dismiss",
-            "space b o": "pane::CloseInactiveItems"
+            "space b o": "pane::CloseOtherItems"
         }
     },
     {
