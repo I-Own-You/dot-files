@@ -45,6 +45,9 @@ spotify
 obs-studio
 keepassxc
 
+# package for bluetooth to work on my old laptop
+bcm43142a0-firmware(AUR)
+
 # gnome
 flameshot(off site, appimg)
 dconf-editor(gnome store)
