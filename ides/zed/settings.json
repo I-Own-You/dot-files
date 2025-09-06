@@ -17,7 +17,7 @@
     "theme": {
         "mode": "system",
         "light": "One Light",
-        "dark": "Github Dark Dimmed"
+        "dark": "One Dark"
     },
     "current_line_highlight": "all",
     "cursor_blink": false,
@@ -103,7 +103,7 @@
         },
         "Python": {
             "enable_language_server": true,
-            "language_servers": ["pyright", "pylsp", "..."],
+            "language_servers": ["pyright"],
             "tab_size": 4
         },
         "HTML": {
