@@ -145,47 +145,17 @@ function module.apply_to_config(config)
 			{
 				key = "Tab",
 				mods = "CTRL|SHIFT",
-				action = action.ShowLauncherArgs({
-					flags = "FUZZY|WORKSPACES",
-				}),
+				action = action.ActivateKeyTable({ name = "workspace_actions", one_shot = true }),
 			},
-			{
-				key = "a",
-				mods = "CTRL|SHIFT",
-				action = action.PromptInputLine({
-					description = wezterm.format({
-						{ Attribute = { Intensity = "Bold" } },
-						{ Foreground = { AnsiColor = "Fuchsia" } },
-						{ Text = "Enter name for new workspace" },
-					}),
-					action = wezterm.action_callback(function(window, pane, line)
-						if line then
-							window:perform_action(
-								action.SwitchToWorkspace({
-									name = line,
-								}),
-								pane
-							)
-						end
-					end),
-				}),
-			},
-
 			{
 				key = "p",
 				mods = "ALT",
-				action = action.ActivateKeyTable({
-					name = "pane_table_commands",
-					one_shot = false,
-				}),
+				action = action.ActivateKeyTable({ name = "pane_table_commands", one_shot = false }),
 			},
 			{
 				key = "r",
 				mods = "ALT",
-				action = action.ActivateKeyTable({
-					name = "resize_pane",
-					one_shot = false,
-				}),
+				action = action.ActivateKeyTable({ name = "resize_pane", one_shot = false }),
 			},
 
 			{ key = "c", mods = "CTRL", action = "PopKeyTable" },
@@ -219,6 +189,37 @@ function module.apply_to_config(config)
 				mods = "",
 				action = action.PaneSelect({
 					mode = "MoveToNewWindow",
+				}),
+			},
+		},
+
+		workspace_actions = {
+			{
+				key = "l",
+				mods = "",
+				action = action.ShowLauncherArgs({
+					flags = "FUZZY|WORKSPACES",
+				}),
+			},
+			{
+				key = "a",
+				mods = "",
+				action = action.PromptInputLine({
+					description = wezterm.format({
+						{ Attribute = { Intensity = "Bold" } },
+						{ Foreground = { AnsiColor = "Fuchsia" } },
+						{ Text = "Enter name for new workspace" },
+					}),
+					action = wezterm.action_callback(function(window, pane, line)
+						if line then
+							window:perform_action(
+								action.SwitchToWorkspace({
+									name = line,
+								}),
+								pane
+							)
+						end
+					end),
 				}),
 			},
 		},
