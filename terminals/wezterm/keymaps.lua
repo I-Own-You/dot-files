@@ -131,12 +131,12 @@ function module.apply_to_config(config)
 			{ key = "s", mods = "", action = action.QuickSelect },
 			{ key = "x", mods = "CTRL", action = action.ActivateCopyMode },
 
-			{ key = "k", mods = "", action = action.ScrollByPage(-1) },
-			{ key = "j", mods = "", action = action.ScrollByPage(1) },
+			{ key = "k", mods = "ALT", action = action.ScrollByPage(-1) },
+			{ key = "j", mods = "ALT", action = action.ScrollByPage(1) },
 			{ key = "k", mods = "SHIFT", action = action.ScrollByLine(-1) },
 			{ key = "j", mods = "SHIFT", action = action.ScrollByLine(1) },
-			{ key = "k", mods = "ALT", action = action.ScrollToPrompt(-1) },
-			{ key = "j", mods = "ALT", action = action.ScrollToPrompt(1) },
+			{ key = "k", mods = "CTRL", action = action.ScrollToPrompt(-1) },
+			{ key = "j", mods = "CTRL", action = action.ScrollToPrompt(1) },
 
 			{ key = "t", mods = "ALT", action = action.SpawnTab("CurrentPaneDomain") },
 			{ key = "n", mods = "ALT", action = action.SpawnWindow },
