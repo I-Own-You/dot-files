@@ -39,6 +39,9 @@ func (c circle) perim() float64 {
 // here, its a general interface that can call any method from any struct that implements it
 func measure(g Geometry) {
 	fmt.Println(g)
+	// one thing you must remember that interface is valueless but when it decouples (takes the object) it works on
+	// and proceeds to its method it now needs access to the object data, which means an memory allocation happens
+	// becaue now no interface is working, the object itself is.
 	fmt.Println(g.area())
 	fmt.Println(g.perim())
 }

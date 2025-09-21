@@ -18,6 +18,11 @@ func (r rectt) perim() int {
 	return 2*r.width + 2*r.height
 }
 
+func (r rectt) change() int {
+	r.width = 20
+	return r.width + r.height
+}
+
 func StructsWithMethods() {
 	// assigning a sruct to another variable wihtout & will make a shallow copy,
 	// so modifying one wont modify another.
@@ -39,6 +44,26 @@ func StructsWithMethods() {
 	fmt.Println("area: ", rp.area())
 	fmt.Println("perim:", rp.perim()) // (*rp).perim() would be the same
 
-	// important!
-	// methods cant be defined for types that comes from external packages, they must be local to type definition
+	// myFunc points to 2 things:
+	// 1. a copy of .perim() method
+	// 2. a copy of r object data (heigh, weight)
+	// why its important ?
+	// 1. because now those 2 copies of method/data goes into the heap and not the stack,
+	//    because it needs to be held by garbage collector and follow + free memory at some point
+	// 2. if you would have a parameter in a receiver and changed there a property, then you would not work,
+	//    on a copy of that data, but on the original object, but it could still allocate memory because of how
+	//    golang garbage collector escape analysis works, so decoupling shoul be avoid unless needed
+	myFunc := r.change
+	myFunc()
+	fmt.Printf("r.width: %v\n", r.width) // not 20, still 10
+	// if receiver method would be a pointer, then it would operate on the original pointer which output 20
+
 }
+
+// important!
+// methods cant be defined for types that comes from external packages, they must be local to type definition
+
+// never mix value and pointer receivers
+// you can go as exception from value to pointer, but you cannot go from pointer to value, as a rule (respect it)
+
+// in go, you should never write get/set methods(receivers), because API should provide something, and get/set doesnt.

@@ -71,3 +71,8 @@ func MapsDataStructure() {
 
 // map doesnt guarantee the order of keys, so printing key/value pairs wont be ordered,
 // you need separate data struture in order to achieve this, like a slice with ordered keys.
+
+// structs as values inside map dont have to pass the struct name, only map[string]sruct{}{"my-key": { }}
+
+// if you have struct type as value, you cant take memory address of it, you need to put it somewhere,
+// like a variable or something, do what you need, and then reassign it to the key of the map

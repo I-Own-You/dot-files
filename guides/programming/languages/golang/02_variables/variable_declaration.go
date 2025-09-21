@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+// var declarations are typyically used for variables which need to be initialized with default value of its type
+// := declarations are typically used for variables that have explicit values defined
+
 var a, b = 1, true
 var c, d int = 3, 4
 

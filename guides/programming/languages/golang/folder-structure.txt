@@ -1,15 +1,17 @@
 typical folder structure:
   /myapp
-  ├── /cmd
+  ├── /cmd                   # this folder contains all the executable folders (which contains executables)
   │   └── /myapp
   │       └── main.go        # Entry point for the main application binary
-  ├── /internal              # Private application and library code
+  ├── /internal              # Private application and library code (go builtin rule for folder exists)
   │   ├── /api               # HTTP handlers, routing logic
   │   ├── /service           # Business logic, services layer
   │   ├── /repository        # Database interaction
   │   ├── /config            # Application configuration files
   │   ├── /middleware        # Middleware for the API
   │   └── /models            # Data models, structs
+  ├── /vendor                # vendor code if any (go builtin rule for folder exists)
+  ├── /platform              # platform code if any
   ├── /pkg                   # Exportable libraries for external use (if any)
   │   └── /utils             # Utility packages used across the application
   ├── /scripts               # Bash scripts, migration files, etc.
@@ -17,6 +19,15 @@ typical folder structure:
   │   └── /dist              # Built files from a frontend framework (if applicable)
   ├── /migrations            # Database migration files
   ├── /docs                  # Documentation for the application
+  ├── /cfg                   # global configuration files
+  ├── /log                   # logging code
+  ├── /examples              # example code
+  ├── /pool                  # pool code
+  ├── /tcp                   # connection code
+  ├── /timezone              # time related code
+  ├── /udp                   # connection code
   ├── go.mod                 # Go module file
   ├── go.sum                 # Go dependencies checksum
-  └── README.md              # Project readme file
+  ├── README.md              # Project readme file
+  ├── LICENSE
+  └── CONTRIBUTORS

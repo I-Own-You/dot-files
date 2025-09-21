@@ -51,3 +51,14 @@ func AtomicOperations() {
 	//
 	// moreover if we would execute our program with -race flag we would get the race condition error
 }
+
+// there is a problem with atomic work or even work on a shared value between cores, its that even if you use,
+// the atomic operations, they have cache on their own, and when they change the value, they signal other,
+// cores that the value on their cache is now dirty, and they should go to L3 cache, get it, which is slow,
+// this could be fixed by giving a local variabl to each goroutie, which will ease a bit but in the end,
+// you will anyway need to add the local variable to the global shared variable
+
+// remember:
+// L1 - cache of single thread from core(fast)
+// L2 - cache for all threads on the same core (half fast)
+// L3 - cache for all cores which means all threads (slowest)

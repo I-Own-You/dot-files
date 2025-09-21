@@ -2,6 +2,14 @@ package main
 
 import "fmt"
 
+// also, when you see a number after a type it basically means the amount of bits, so
+// int32 = 32 bits = 4 bytes ( 1 byte == 8 bits)
+// float64 = 64 bits = 8 bytes
+// .etc
+
+// default value of a type basically means the compiler initializes the memory for that variable,
+// but it will be zero of its type, string = "", int = 0, map[str]int = nil, .etc
+
 func main() {
 	// capacity:        1 byte
 	// default:         false

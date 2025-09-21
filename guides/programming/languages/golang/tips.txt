@@ -10,6 +10,8 @@
       6. interfaces: send its copy, you cant modify it, you need a pointer for that
       7. functions: send its copy, you cant modify it, you need pointer for it
 
+      remember: everythin in golang passes by value.
+
 2. if you need a folder that has code which other modules cannot access you can use "internal" name which will allow importing,
    code from it only for folders on the same level as "internal" folder.
 3. if you have more than 1 program that executes code and does something, its better to include each program(main.go ?) into

@@ -7,6 +7,9 @@ import (
 
 // in go, assignment of some type to another requires explicit conversion: T(v)
 
+// also, its not casting like in other languages where compiler can assign new memmory near the actual one,
+// instead it just takes the value you convert and assign to a new block of memory which produces less bugs.
+
 func main() {
 	var x, y int = 3, 4
 	var f float64 = math.Sqrt(float64(x*x + y*y)) // int -> float64

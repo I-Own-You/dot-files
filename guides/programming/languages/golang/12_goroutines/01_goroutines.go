@@ -5,6 +5,29 @@ import (
 	"time"
 )
 
+// 1. go has its own thread scheduler which works on os thread scheduler (without us)
+//    in fact, it has a thread pool which reuses goroutines so our programm could stay more efficient because
+//    every goroutine costs resources(memory) + context switch time,
+// 2. it basically works with network pool,
+//    but when it comes to file, then, it probably will create a separate real OS thread since only networl pool
+//    async work is imiplemented by the operating systems, (windows probably has for files), but the thead will,
+//    anyway go to the thread pool again to be reused
+// 3. therad pools is also named (local runing queue) for go thread and (global runing queue) for real OS threads
+// 4. if a core from cpu no longer has goroutines to work, it could steal some from other core which has some,
+//    and help it with work, or it could steal from (global os threads if there are goroutines)
+// 5. context switch happens at go program level(go scheduler), not on pc hardware, so our cpu thinks we are,
+//    doing CPU bound work, but its really an IO bound work, so this means we dont really need a lot of OS threads,
+//    we can have little but a lot in go app because of the go scheduler which does io bound work,
+//    which means we have go scheduler at go application level which does all the work which minimizes the need of,
+//    real OS threads and real OS context switches, this is why golang is ideal for IO bound operations.
+// 6. how threads change priority and switches the context ? its through system events
+
+// each gorouitne has a default of 2kylobytes of stack on its own, if goroutine surpasses this,
+// the stack will grow, it means if in your goroutines you have for example a lot of variables which,
+// surapssed 2kb of memory, stack will grow.
+
+// os threads for example have a default of 1mb of default stack memory
+
 func f(from string) {
 	for i := 0; i < 3; i++ {
 		fmt.Println(from, ":", i)

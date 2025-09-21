@@ -53,4 +53,20 @@ func ArrayDataStructure() {
 	}
 	fmt.Println("2d: ", twoD)
 
+	// IMPORTANT:
+	// you are iterating over a for VALUE version not POINTER one, what does it mean ?
+	// 1. here, nums is a copy of original nums, not real one, so if you would nums[index] = someValue,
+	// 2. then inside this for loop would try if nums[index] == someValue, it would not work, because,
+	// 3. it changed the copy index of nums slice, not original one.
+	// 4. but outside loop, changes are applied
+	nums := [3]int{0, 1, 2}
+	for i, v := range nums {
+		nums[1] = 10
+		if i == 1 {
+			// 1, not 10
+			fmt.Printf("v: %v\n", v)
+		}
+		// at the next iteration, the nums[1] will be 10, so when i = 2, nums[1] == 10
+		// it works on both slices and arrays
+	}
 }

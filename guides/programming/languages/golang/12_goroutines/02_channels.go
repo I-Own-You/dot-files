@@ -37,4 +37,7 @@ func channels() {
 	// receiveChan <- true   // invalid since receiveChan is send channel only
 	sendChan = dataStream // dataStream here implicitly is converted to chan<-
 	// <-sendChan            // invalid since sendChan is receive channel only
+
+	// also, receive happens nanoseconds before send, not the other way around, so it means if you see,
+	// somehwere above a send, and somewhere below receive then, receive will happen earlier anyway.
 }
