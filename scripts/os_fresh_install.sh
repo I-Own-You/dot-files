@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
+mkdir -p "$HOME/.config" "$HOME/Pictures"
+
+echo  "[*] Cloning repositories..."
+
+git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
+git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
+git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
+
 echo "[*] Installing packages..."
 
 paru git zsh btop neovim discord zoxide yazi zip wget qbittorent golang eza bat git-delta jq ipyhton fzf ripgrep npm github-cli glab ctags fd p7zip unrar unzip vlc spotify obs-studio keepassxc keyd 
@@ -10,8 +18,6 @@ echo "[*] Installing antidote..."
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
 echo "[*] Setting up dotfiles..."
-
-mkdir -p ~/.config
 
 ln -sf "$HOME/dot-files/dot-files/.zshrc" "$HOME/.zshrc"
 ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
