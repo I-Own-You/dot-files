@@ -20,7 +20,7 @@ function module.apply_to_config(config)
 	config.font_size = 16
 	config.command_palette_font_size = 20
 
-	config.line_height = 1.2
+	config.line_height = 1.1
 	-- config.cell_width = 1.0
 
 	config.window_padding = {

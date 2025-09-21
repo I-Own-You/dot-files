@@ -1,0 +1,13 @@
+ibus-setup in terminal, remove emoji picker // stop ibus from remapping keymaps
+// change/remove all keybindings inside dconf-editor
+// change keybinding for always-on-top inside dconf-editor
+
+// vlc
+if vlc has h264 problem, try install ffmpeg plugin for vlc (vlc-plugin-ffmpeg?)
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
+eval "$(ssh-agent -s)" # start ssh agent                                                                                            
+ssh-add ~/.ssh/id_ed25519 # add key to ssh                                                                                          
+cat ~/.ssh/id_ed25519.pub # go and add key to github or gitlab or whatever                                                          
+ssh -T git@gitlab.com # add gitlab to allowed                                                                                       
+ssh -T git@github.com # add github to allowed                                                                                       
