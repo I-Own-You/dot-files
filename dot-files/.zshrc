@@ -27,7 +27,8 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 alias s="sudo "
 alias btr="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | rg state"
 alias nf='nvim $(fzf)' # okay so " " executes it immediately, so put '' only
-# alias cdd='fd -t=d -H | fzf | wl-copy' 
+alias vi='nvim'
+alias vv='neovide --frame none'
 alias cdd='fd -t=d -H | fzf | xclip -selection clipboard'
 alias hexit='hyprctl dispatch exit'
 alias hp='Hyprland'
