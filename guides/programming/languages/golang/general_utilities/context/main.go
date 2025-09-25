@@ -41,7 +41,8 @@ func WithCancel(parent Context) (ctx Context, cancel CancelFunc)
 type CancelFunc func()
 
 // WithTimeout returns:
-//  1. a copy of parent whose Done channel is closed as soon as parent.Done is closed, cancel is called, or timeout elapses.
+//  1. a copy of parent whose Done channel is closed as soon as parent.Done is closed,
+//     cancel is called, or timeout elapses.
 func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
 
 // WithValue:
@@ -49,15 +50,16 @@ func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
 //  2. returns a copy of parent whose Value method returns val for key.
 func WithValue(parent Context, key any, val any) Context
 
-// so as far as you understood, WithCancel and WithTimeout creates a stack from previous context and are cancelled/timeout
-// if any of its parent is cancelled/timed out which is handy.
+// so as far as you understood,
+// WithCancel and WithTimeout creates a stack from previous context and are cancelled/timeout,
+// if any of its parent is cancelled/timed out or they do it themselves
 
 // non http example:
 type ctxKey string
 
 func main() {
-	// nonHttpExample()
-	httpExample()
+	nonHttpExample()
+	// httpExample()
 }
 
 func nonHttpExample() {
@@ -86,8 +88,9 @@ func nonHttpExample() {
 		fmt.Println("Work finished successfully")
 	}(ctxTimeout)
 
-	time.Sleep(2 * time.Second)
-	// cancel() // uncomment to test parent cancel
+	// uncomment to test parent cancel
+	// time.Sleep(2 * time.Second)
+	// cancel()
 
 	time.Sleep(5 * time.Second)
 	fmt.Println("Main function exiting")
@@ -150,16 +153,21 @@ func processHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // 1. contexts should not be stored inside a struct type, but instead passed to each function that needs it
-// 2. but if you need, in rare cases, you can store it in struct, for compatibility mode or whatever, but anyway,
+//    but if you need, in rare cases, you can store it in struct, for compatibility mode or whatever, but anyway,
 //    if you add a context in struct you will still assign the context from a function parameter to it (you better do),
 //	  so context in a struct is really better not used, because a context for a struct could be accessed from anywhere,
 //    in the code, which makes it less versatile and even dangerous to break something.
-// 3. you should always cancel context to retrieve resources from it, even if context was created locally inside a gorotuine,
+// 2. you should always cancel context to retrieve resources from it,
+//    even if context was created locally inside a gorotuine,
 //    GC wont cleanup until its closed/timedout, so if you close it right away, GC gets resources and free it,
-//    if you did it with WithTimeout and exit earlier, the timeout still exists and GC will only free resources after that timeout
-// 4. the key from the context value is safe, but the actual value is NOT, it means:
-//    1. ctx := WithValue(context.Background(), "myKey", myMap), it means "myKey" is safe to access in different goroutines,
-// 	  but myMap is NOT, you should make it safe with synching, .etc. the key/value can be of any type: WithValue(ctx, myStruct, mySlice),
-//    2. use custom types for keys to avoid collisions: type myPrivate string, const a myPrivate = "myKey", WithValue(ctx, a, "myVal"),
-// 		 the evading technique here is that even if 2 people use "myVal" it wont collied because myPrivate("myVal") != string("myVal")
+//    if you did it with WithTimeout and exit earlier,
+//    the timeout still exists and GC will only free resources after that timeout
+// 3. the key from the context value is safe, but the actual value is NOT, it means:
+//    1. ctx := WithValue(context.Background(), "myKey", myMap),
+//       it means "myKey" is safe to access in different goroutines,
+// 	     but myMap is NOT, you should make it safe with synching, .etc.
+//       the key/value can be of any type: WithValue(ctx, myStruct, mySlice),
+//    2. use custom types for keys to avoid collisions: type myPrivate string, const a myPrivate = "myKey",
+//       WithValue(ctx, a, "myVal"), the evading technique here is that even if 2 people use "myVal"
+//       it wont collied because myPrivate("myVal") != string("myVal")
 //    3. KEY must be of COMPARABLE type: int,string,pointer, struct(which fields are all of comparable type)

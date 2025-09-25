@@ -58,8 +58,7 @@ func StructureWithMethodsAndInterfaces() {
 	// you can also have anonymous interfaces as parameters, return values, assigned to variables.
 	//
 	// if a method implements with a reciever pointer and it is guarded by an anonymous interface,
-	// you must return the memmory address instead, not the struct, it wont handle for you as before,
-	// becasue of the interface.
+	// you must return the memmory address instead, not the struct copy, it wont handle for you as before.
 	//
 	// interface as return types:
 	//

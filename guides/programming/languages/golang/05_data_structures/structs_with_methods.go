@@ -24,15 +24,6 @@ func (r rectt) change() int {
 }
 
 func StructsWithMethods() {
-	// assigning a sruct to another variable wihtout & will make a shallow copy,
-	// so modifying one wont modify another.
-	// but if struct has a pointer field, the pointer fields will have a pointer copy,
-	// so you can mutate data among all structs that are related.
-	var person1 = person{name: "Ala", age: 15}
-	var person2 = person1                // shallow copy
-	person2.age = 20                     // person1 wont be modified, person2 will be
-	fmt.Printf("person1: %v\n", person1) // {name: "Ala", age: 15}
-	fmt.Printf("person2: %v\n", person2) // {name: "Ala", age: 20}
 
 	r := rectt{width: 10, height: 5}
 	// since method needs pointer receiver you could also do (&r).area() but go did this automatically
@@ -45,14 +36,14 @@ func StructsWithMethods() {
 	fmt.Println("perim:", rp.perim()) // (*rp).perim() would be the same
 
 	// myFunc points to 2 things:
-	// 1. a copy of .perim() method
+	// 1. a copy of .change() method
 	// 2. a copy of r object data (heigh, weight)
 	// why its important ?
 	// 1. because now those 2 copies of method/data goes into the heap and not the stack,
 	//    because it needs to be held by garbage collector and follow + free memory at some point
-	// 2. if you would have a parameter in a receiver and changed there a property, then you would not work,
-	//    on a copy of that data, but on the original object, but it could still allocate memory because of how
-	//    golang garbage collector escape analysis works, so decoupling shoul be avoid unless needed
+	// 2. if you would have a parameter in a receiver and changed there a property, then it would not work,
+	//    on a copy of that data, but on the original object would, but it could still allocate memory because of how
+	//    golang garbage collector escape analysis works, so decoupling should be avoid unless needed
 	myFunc := r.change
 	myFunc()
 	fmt.Printf("r.width: %v\n", r.width) // not 20, still 10

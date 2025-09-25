@@ -11,7 +11,7 @@ func MapsDataStructure() {
 	m := make(map[string]int)
 
 	// you can also have a declaration only, its nil by default (the zeroed value of map is nil),
-	// it means you cant work with it untill intialized either with map literal or make.
+	// it means you cant work with it until intialized either with map literal or make.
 	var nilMap map[int]int
 	fmt.Println("nil_map", nilMap, "nil?:", nilMap == nil)
 

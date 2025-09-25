@@ -5,7 +5,8 @@ import (
 	"reflect"
 )
 
-// reflection(in computing): ability of a program to examine its own structure, particularly through types, kind of metaprogramming
+// reflection(in computing): ability of a program to examine its own structure, particularly through types,
+// kind of metaprogramming
 //
 // reflection and interfaces are closely related.
 
@@ -19,18 +20,19 @@ func main() {
 
 	var xType float64 = 3.4
 	fmt.Println("value:", reflect.ValueOf(xType).String()) // value: <float64 Value>
-	// .String() was called because the fmt.Println() would shows the concrete value(3.4), because fmt always gets the unerllying value
+	// .String() was called because the fmt.Println() would shows the concrete value(3.4), because
+	//  fmt always gets the unerllying value
 
 	var xKind float64 = 3.4
 	vKind := reflect.ValueOf(xKind)
 	fmt.Println("type:", vKind.Type())                               // type: float64
 	fmt.Println("kind is float64:", vKind.Kind() == reflect.Float64) // kind is float64: true
-	//                                                                  .Kind() always return the original type(dropping static one)
-	//                                                                  static one is any custom, like type MyType int, MyType is cutsom
+	//                                                 .Kind() always return the original type(dropping static one)
+	//                                                 static one is any custom, like type MyType int, MyType is cutsom
 	fmt.Println("value:", vKind.Float()) // value: 3.4
 
 	// reflection goes from interface values to reflection objects and back again
-	// .Interface() is a way to go back from reflect.Value to go value
+	// .Interface() is a way to go back from reflect.Value to value
 	yTh := vKind.Interface().(float64) // y will have type float64.
 	fmt.Println(yTh)                   // 3.4
 
@@ -51,7 +53,7 @@ func main() {
 
 	// Struct example with reflect
 	type T struct {
-		A int // they are exporte because only exported fields of a structure is settable
+		A int // they are exported because only exported fields of a structure is settable
 		B string
 	}
 	t := T{23, "skidoo"}
@@ -71,4 +73,5 @@ func main() {
 }
 
 // reflection goes from interface values to reflection objects and back again,
-// this is the most important thing to understand, you can go back and forth, this is why you can get value/type, in any situatin
+// this is the most important thing to understand,
+// you can go back and forth, this is why you can get value/type, in any situatin

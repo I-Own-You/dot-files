@@ -14,8 +14,9 @@ func timers() {
 	// and it provides a channel that will be notified when to execute
 	timer1 := time.NewTimer(2 * time.Second)
 
-	// this line will block the thread in which its executing and deblock it when the timer finishes and,
-	// continues the execution of the program, in main thread not that handy but in ohter goroutines,
+	// this line will block the thread in which its executing and unblock it when the timer finishes and,
+	// continues the execution of the program.
+	// in main thread not that handy but in ohter goroutines,
 	// it can delay some action without touching other goroutines and the main thread
 	<-timer1.C
 	fmt.Println("Timer 1 fired")

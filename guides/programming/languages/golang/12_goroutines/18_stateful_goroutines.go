@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// mutex and atomic operations from sync/atomic are good for managing state in goroutines,
-// but we could also do complex state management with only goroutines and channels
+// mutex and atomic operations from sync/atomic are good for managing state in goroutines
+// but they still are constructed on top of channels.
 
 type readOp struct {
 	key  int

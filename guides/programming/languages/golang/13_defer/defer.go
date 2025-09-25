@@ -7,7 +7,7 @@ import (
 
 // defer is used when you need to execute something as a cleanup or at the end of function scope,
 // bear in mind that it will wait for all functions or processes inside the functioin scope defer is used.
-// defer arguments are evaluated immediately, though, so if you have a function inside your main deferrred function,
+// defer arguments are evaluated immediately, so if you have a function inside your main deferrred function,
 // then it will be executed immediately.
 // os.exit() will stop defer from working.
 

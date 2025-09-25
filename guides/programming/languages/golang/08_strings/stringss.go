@@ -62,9 +62,9 @@ func stringss() {
 
 	// there are 2 types of string literals in go, interpreted string literals and raw string literals.
 	// the difference is:
-	// interpreted string literals: can include escape sequences or any form of sequence,
-	// that will lead to an interpretation of the string (construct) at runtime.
-	// raw string literals: store text as it is, wihtout interpreting it.
+	// 1. interpreted string literals: can include escape sequences or any form of sequence,
+	//    that will lead to an interpretation of the string (construct) at runtime.
+	// 2. raw string literals: store text as it is, wihtout interpreting it.
 	// raw string literals also always store valid utf8 sequences of bytes,
 	// the sequence represents the unicode code points like U+02EA(hexadecimal representation) called rune,
 	// rune - a unicode code point of decimal type
@@ -92,8 +92,12 @@ func stringss() {
 	// but if its not, you retain its memory bloating the memory itself instead of using the new string created,
 	// from the original.
 	myString := "abcdefg"
-	_ = myString[0:2] // "ab", where "ab" is shared between myString and myS internally
+	_ = myString[0:2] // "ab", where "ab" is shared between myString and _ internally
 	//                      but _ still points to the underlying full string of myString
+
+	// concatenate a string
+	myString2 := "a" + "b"
+	myString3 := "a" + myString
 }
 
 func examineRune(r rune) {
@@ -105,3 +109,5 @@ func examineRune(r rune) {
 		fmt.Println("found so sua")
 	}
 }
+
+// be aware that string(2365) will give the unicode code point of 2365 and not the string "2365" in go.

@@ -5,7 +5,7 @@ import "fmt"
 // basic receive/send on channels are blocking
 // but with select and default case, we can implement non-blocking sends/receives and multi-way selects
 
-func NonBlockingChannelOperations() {
+func main() {
 	messages := make(chan string)
 	signals := make(chan bool)
 
@@ -20,9 +20,9 @@ func NonBlockingChannelOperations() {
 	msg := "hi"
 	select {
 	case messages <- msg:
-		fmt.Println("sent message", msg) // this will execute since msg can return into messages, because its empty
+		fmt.Println("sent message", msg)
 	default:
-		fmt.Println("no message sent")
+		fmt.Println("no message sent") // this will fire since messges doesnt recieve after value was sent into it
 	}
 
 	// also, a multi way select with non-blocking channel operations are also available
@@ -32,6 +32,6 @@ func NonBlockingChannelOperations() {
 	case sig := <-signals:
 		fmt.Println("received signal", sig)
 	default:
-		fmt.Println("no activity")
+		fmt.Println("no activity") // this will fire since messages/singals are empty
 	}
 }

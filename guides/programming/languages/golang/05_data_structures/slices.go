@@ -16,7 +16,7 @@ func SlicesDataStructure() {
 
 	// unitialized slices equals nil, and has length = 0
 	// initial slice capacity is equal to its length, here is 0
-	// it means you cant work with it until intialzied or with make
+	// it means you cant work with it until intialzied or created thorugh make() function
 	var s []string
 	fmt.Println("uninit:", s, s == nil, len(s) == 0)
 

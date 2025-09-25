@@ -23,14 +23,14 @@ func main() {
 	//	   2. Data: The actual string data.
 	// default: ""
 	// possible values:
-	//     1. raw string: `example\n`, here \n wont be parsed, it goes as it it, and \,n are seaparte bytes also
-	//     2. interpreted string: "fadsfads", "%s al", "\x02", .etc.
+	//     1. raw string: `example\n`, here \n wont be parsed, it goes as it is, and \,n are seaparte bytes
+	//     2. interpreted string: "fadsfads", "%s al", "\x02", "\n" .etc.
 	var b string
 	fmt.Printf("b: %v\n", b)
 
 	// 1. rune is an alias for int32 in all ways.
 	// 2. its used to distinguish between rune types and int32 values.
-	// 3.rune types are decimal values that denote hexadecimal unicode code point of a symbol.
+	// 3. rune types are decimal values that denote hexadecimal unicode code point of a symbol.
 	// capacity:         4 byte
 	// default value:    0
 	// possible values: -2_147_483_648 ~ 2_147_483_647   (-2^31 ~ 2^31 - 1)
@@ -145,13 +145,12 @@ func main() {
 	var g10 uint64
 	fmt.Printf("g10: %v\n", g10)
 
-	// alias for interface{}, basically means any type
 	// default: nil
-	var h any
-	fmt.Printf("h: %v\n", h)
-	// same as
 	var m interface{}
 	fmt.Printf("m: %v\n", m)
+	// any is alias for interface{}
+	var h any
+	fmt.Printf("h: %v\n", h)
 
 	// 1. channel of type int
 	// default: nil
@@ -168,8 +167,8 @@ func main() {
 	var k func()
 	fmt.Printf("k: %v\n", k)
 
-	// 1. if it would have values, it would be {0, , false}, default values for fields, as example
 	// default value: {}
+	// capacity: 0
 	var l struct{}
 	fmt.Printf("l: %v\n", l)
 

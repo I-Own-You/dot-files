@@ -6,9 +6,9 @@ import "fmt"
 
 type person struct {
 	// in memory, the struct is just a contiguous block of memory which has its length for every filed like:
-	// name will take 8 bits (since my pc is 64 bit)
-	// age will take 8 bits (since my pc is 64 bit)
-	// overall size of struct is 16bits, but because of alignment of memory it could take more.
+	// name will take 8 bytes (since my pc is 64 bit)
+	// age will take 8 bytes (since my pc is 64 bit)
+	// overall size of struct is 16 bytes, but because of alignment of memory it could take more.
 	name string // field
 	age  int    // field
 	//
@@ -104,7 +104,7 @@ func StructDataStructure() {
 	// if a struct type is only used for a single value, we don’t have to give it a name.
 	// the value can have an anonymous struct type.
 	//
-	// also, you cant assign a struct to toher struct even if they both are identical, but,
+	// also, you cant assign a struct to another struct even if they both are identical, but,
 	// 1. you can if you convert them like struct1(struct2)
 	// 2. assign an anonymous struct to it with identical structure (but better dont do this)
 	dog := struct {

@@ -26,7 +26,6 @@ func SwitchCondition() {
 	// you can also have more than 1 value to group possible variants, in this case it will check against both values
 	case time.Saturday, time.Sunday, 2:
 		fmt.Println("It's the weekend")
-		// fallthrough // this would fall into next case, which is the default one
 	default:
 		fmt.Println("It's a weekday")
 	}

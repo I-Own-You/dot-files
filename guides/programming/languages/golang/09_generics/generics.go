@@ -15,7 +15,7 @@ type aliasMyGenericType[K comparable, V any] = myGenericType[K, V]
 // type aliases provide a easy way to define same types from different packages, as an example.
 type TFromDiffPkg = somePkg.TypeName
 type MapFromDiffPkg1[K comparable, V any] = someOtherPkg.MapType // will only work if its a regular type, not generic
-type MapFromDiffPkg2[K comparable, V any] = someOtherPkg.MapType[K, V]
+type MapFromDiffPkg2[K comparable, V any] = someOtherPkg.MapTypeGeneric[K, V]
 
 // a function with generic type
 func GenericMin[T int | float32 | float64](x, y T) T {

@@ -2,7 +2,7 @@ package main
 
 // when there are imports inside ( ), its called a factored import statement.
 import (
-	_ "bytes" // this way you can import a package but not use it so compiler wont complain,
+	_ "bytes" // this way, by putting "_" in front, you can import a package but not use it so compiler wont complain,
 	//           its mainly used for side effects when other package use it
 	"fmt"
 	"math"

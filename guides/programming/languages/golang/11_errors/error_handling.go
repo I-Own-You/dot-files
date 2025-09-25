@@ -9,7 +9,7 @@ import (
 // or whatever, so its very simple to handle them
 
 // by convention, error is the last value returned with type error(builtin interface)
-func ff(arg int) (int, error) {
+func ff2(arg int) (int, error) {
 	if arg == 42 {
 
 		// errors.New() constructs basic errors with a message
@@ -35,8 +35,8 @@ func makeTea(arg int) error {
 		// and ErrPower is the lower level error
 		// its like A wraps B which wraps C, .etc, you can use this trick with functions like errors.Is, errors.As
 		// one of way to wrap the error is using %w directive of fmt.Errorf().
-		// under the hood %w adds an Unwrap() method to Errorf() that will return an error, Unwrap() is a deault,
-		// method for unwrapping nested/erorrs on chain, the rest of functionality is the same as %v
+		// under the hood %w adds an Unwrap() method to Errorf() that will return an error,
+		// Unwrap() - deault method for unwrapping nested erorrs on chain, the rest of functionality is the same as %v
 		return fmt.Errorf("making tea: %w", ErrPower)
 
 		// you could also just pass the text from an error to the newly created error
@@ -50,7 +50,7 @@ func makeTea(arg int) error {
 func ErrorHandling() {
 	for _, i := range []int{7, 42} {
 		// its common to check errors inline, if is one of them
-		if r, e := ff(i); e != nil {
+		if r, e := ff2(i); e != nil {
 			fmt.Println("f failed:", e)
 		} else {
 			fmt.Println("f worked:", r)

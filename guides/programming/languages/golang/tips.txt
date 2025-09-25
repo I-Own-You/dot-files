@@ -12,37 +12,44 @@
 
       remember: everythin in golang passes by value.
 
-2. if you need a folder that has code which other modules cannot access you can use "internal" name which will allow importing,
-   code from it only for folders on the same level as "internal" folder.
+2. if you need a folder that has code which other modules cannot access you can use "internal"
+   name which will allow importing, code from it only for folders on the same level as "internal" folder.
 3. if you have more than 1 program that executes code and does something, its better to include each program(main.go ?) into
    its folder name and this folder name into "cmd" folder, so cmd/my-program-1, cmd/my-program-2, .etc
    
 4. when you want future compatibility in code, you should think about these things:
    1. adding variadic parameter to functions,
    2. creating new functions with old signature + new paramteres
-   3. adding a strucutre as a paramter to a function and let users set nil if they dont need it or open the struct and overwrite
-      settings they need, func(my_param1, my_param2, &config.Config{}) 
+   3. adding a strucutre as a paramter to a function and let users set nil if they dont need it or
+      open the struct and overwrite settings they need, func(my_param1, my_param2, &config.Config{}) 
    4. creating different structs with different methods with old+new logic
-   5. for interfaces, you could create new interfaces with old methods + new methods and change all code where this interface,
-      is needed and check if its the old/new interface and perform different actions
-   6. for structs, you could add properties with unexported names that users cant touch so making code unbreakable for future 
-   7. a struct having comparable fields means it can be copared by == or !=, so you could break users code if adding non,
-      comparable filds, so either add them since start or dont at all, non comparable type: funcs, slices, maps 
+   5. for interfaces, you could create new interfaces with old methods + new methods and change all code where
+      this interface is needed and check if its the old/new interface and perform different actions
+   6. for structs, you could add properties with unexported names that users cant touch so making code unbreakable
+      for future 
+   7. a struct having comparable fields means it can be copared by == or !=,
+      so you could break users code if adding non-comparable fields,
+      so either add them since start or dont at all, non comparable type: funcs, slices, maps 
 
-5. defining package names are lowercase without _ and camelCase
-6. package content names should not be verbose like if package is http, then a struct of server is Server, not HttpServer
-7. package methods verbs names like New() often return new type of that pacakge, Server.New() would return http.Server
-8. variable/constants names are lower case and camelCase without _: var myVar int
-9. enum constants are PascalCase: cosnt (StatusOK = 200 StatusNotFound = 404)
-10. function names are defined as camel case: func myFunc() {}, func MyFunc() {} if exported
-11. structs/inteface are PascalCase: type MyStruct struct{}, type MyInterface interface {} , unless exported, make it lowercase
-12. custom types are camelCase: type myType int
-12. exported names are names written with Capital letter, so func Mine() is exported, func mine() is not, it goes to everything in go
+5.
+  1. defining package names are lowercase without _ and camelCase
+  2. package content names should not be verbose like if package is http, then a struct of server is Server,
+     not HttpServer
+  3. package methods verbs names like New() often return new type of that pacakge, Server.New() would return http.Server
+  4. variable/constants names are lower case and camelCase without _: var myVar int
+  5. enum constants are PascalCase: cosnt (StatusOK = 200 StatusNotFound = 404)
+  6. function names are defined as camel case: func myFunc() {}, func MyFunc() {} if exported
+  7. structs/interface are camelCase: type myStruct struct{}, type myInterface interface {},
+     if exported, then PascalCase
+  8. custom types are camelCase: type myType int
+  9. exported names are names written with Capital letter, so func Mine() is exported,
+     func mine() is not, it goes to everything in go
+    
+14. conversion into a byte of a rune literal that overflows it is forbidden, but if it comes from a variable,
+    compiler doesnt complain
 
-13. conversion into a byte of a rune literal that overflows it is forbidden, but if it comes from a variable, compiler doesnt complain
+15. comprable types are: string, numeric, boolean, pointer, channel, interface, structs,
+    arrays of comparable types in it, slices/map/functions - ARE NOT COMPARABLE TYPES
 
-14. comprable types are: string, numeric, boolean, pointer, channel, interface, structs, arrays of comparable types in it,
-    slices/map/functions - ARE NOT COMPARABLE TYPES
-
-15. if elseif else are typically replaced with switch/case for if/else, else is replaced with return from the function,
+16. if elseif else are typically replaced with switch/case for if/else, else is replaced with return from the function,
     so there are only ifs inside a program

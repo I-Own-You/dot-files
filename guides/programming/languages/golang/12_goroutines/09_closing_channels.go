@@ -41,7 +41,7 @@ func ClosingChannels() {
 
 	// when you receive from a closed channel,
 	// the first argument will be zero value of channel type, the second argument a bool false.
-	// so any receiving from a closed channel wont block the thread because its closedd, no values and empty
+	// so any receiving from a closed channel wont block the thread because its closed, no values and empty
 	_, ok := <-jobs
 	fmt.Println("received more jobs:", ok)
 }

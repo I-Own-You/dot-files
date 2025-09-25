@@ -43,14 +43,14 @@ func main() {
 
 	// you can also use range to iterate over builtin structures
 	// here is a slice, arrays will also work
-	nums := []int{2, 3, 4}
+	nums := [3]int{2, 3, 4}
 	// we can specify 2 variables instead of one, first is the index, seconds the value
 	for index, value := range nums {
 		fmt.Printf("index: %d, value: %d.", index, value)
 	}
 
 	// same as above using slice literal
-	for index, value := range []int{2, 3, 4} {
+	for index, value := range [3]int{2, 3, 4} {
 		fmt.Printf("index: %d, value: %d.", index, value)
 	}
 
@@ -67,7 +67,7 @@ func main() {
 	}
 
 	// you can also iterate over unicode points, here is the string
-	// i = index, c = unicode number
+	// i = index, c = byte of the character
 	// string under the hood are []byte slice, if here would be some symbols that are outside ascii, like unicode,
 	// range can handle those and the index might be different, like +2 or +3 becuase some symbols can span 2-4 bytes.
 	for i, c := range "go" {

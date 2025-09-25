@@ -26,10 +26,7 @@ func (c *Container) inc(name string) {
 }
 
 func mutexes() {
-	// zeroed value of the mutex is also usable, no need for initialization
-	c := Container{
-		counters: map[string]int{"a": 0, "b": 0},
-	}
+	c := Container{counters: map[string]int{"a": 0, "b": 0}}
 
 	// create a wait group
 	var wg sync.WaitGroup

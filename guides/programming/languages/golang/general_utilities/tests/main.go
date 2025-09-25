@@ -21,7 +21,7 @@ func IntMin(a, b int) int {
 // a test is written by writing the first word Test,
 // and then the function being tested and some suffixes if needed,
 // the test file would also be in another folder like tests/,
-// and the file name starting with the function being test,
+// and the file name starting with the function name and _test being the ending,
 // like intutils(the filename) and the ending _test so it would be intutils_test.go
 func TestIntMinBasic(t *testing.T) {
 	ans := IntMin(2, -2)
@@ -59,16 +59,17 @@ func TestIntMinTableDriven(t *testing.T) {
 	}
 }
 
-// benchmarking typically is also in a Benchmark(some_name)_test.go file
+// benchmarking typically is also in a benchmark(some_name)_test.go file
 //
 // testing runner executes each benchmark function several times,
 // increasing b.N on each run until it collects, a precise measurement.
+// you can change for how long the benchmark will work in cli
 //
 // benchmarks are runned with: go test -bench=. //bench flag filters function names starting with bench
 // other tests are runned with: go test -v
 func BenchmarkIntMin(b *testing.B) {
 
-	for i := 0; i < b.N; i++ { // a modern way would be for b.Loop() { }
+	for b.Loop() { // a modern way would be for b.Loop() { }
 		// typically the benchmark runs a function b.N times
 		IntMin(1, 2)
 	}

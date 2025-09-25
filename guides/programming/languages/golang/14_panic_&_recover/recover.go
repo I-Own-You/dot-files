@@ -10,11 +10,11 @@ func willPanic() {
 	// you could define here a defer and recover and it would be handled here, but the function will anyway exit.
 }
 
-func recoverr() {
+func main() {
 
 	// recover() must be called inside a deferred function, be it anonymous or not
-	// when the programm panics, defer is activated and recover() handles(catch) the panic.
-	// if recover() is called outside defered function, it returns nil, or if no panic occurs, also nil.
+	// when the programm panics, defer is activated and recover() handles the panic.
+	// if recover() is called outside defered function, it always returns returns nil
 	defer func() {
 		if r := recover(); r != nil {
 

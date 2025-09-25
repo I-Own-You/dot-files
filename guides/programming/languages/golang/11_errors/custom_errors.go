@@ -40,10 +40,11 @@ func ff(arg int) (int, error) {
 	return arg + 3, nil
 }
 
-func CustomErrors() {
+func main() {
 
 	_, err := ff(42)
 	var ae *argError
+	fmt.Printf("ae: %v\n", (*ae))
 	// here errors.As finds the first error in err's tree that matches target, and if one is found,
 	// sets target to that error value and returns true. otherwise, it returns false.
 	// target must be a non-nil pointer to an error type or interface

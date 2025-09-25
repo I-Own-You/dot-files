@@ -17,7 +17,7 @@ func ServeStaticFiles() {
 	fs := http.FileServer(http.Dir("/home/mkc/assets/"))
 
 	// here,
-	// in the .Handle("/static/") its importatnt no note that "/static" without final slash wouldnt work,
+	// in the .Handle("/static/") its importatnt to note that "/static" without final slash wouldnt work,
 	// because "/static" would work as an exact match, but static files require /static/, because,
 	// you need to acess files after it: /static/[myFileName].
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
