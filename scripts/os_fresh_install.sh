@@ -11,7 +11,7 @@ git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers
 
 echo "[*] Installing packages..."
 
-paru git zsh btop neovim discord zoxide yazi zip wget qbittorent golang eza bat git-delta jq ipyhton fzf ripgrep npm github-cli glab ctags fd p7zip unrar unzip vlc spotify obs-studio keepassxc keyd krita rnote
+paru git zsh btop neovim discord zoxide yazi zip wget qbittorent golang eza bat git-delta jq ipyhton fzf ripgrep npm github-cli glab ctags fd p7zip unrar unzip vlc spotify obs-studio keepassxc keyd krita
 
 echo "[*] Installing antidote..."
 
