@@ -1,0 +1,38 @@
+Network & token generation
+     1. Generate session IDs with a secure RNG (≥128 bits; 256 bits recommended).
+     2. Use HTTPS site-wide (HSTS).
+     3. Use a WAF and rate limiting on auth/session endpoints.
+     
+Cookie flags & storage
+     1. HttpOnly cookie (prevents JS access).
+     2. Secure cookie (only over HTTPS).
+     3. SameSite=Lax or Strict (reduce CSRF risk).
+     
+Session lifetime & rotation
+     1. Reasonable session expiry (e.g., hours — sliding expiration if needed).
+     2. Rotate session ID on privilege change and on login (prevents fixation).
+     3. Support explicit logout → delete server session immediately.
+     
+Server-side session handling
+     1. Store sessions server-side (DB/Redis); never store sensitive info client-side.
+     2. Short TTL and automatic cleanup.
+     3. Allow user/admin to revoke sessions / list active sessions.
+     
+Detect & respond
+     1. Rate limit failed session lookups and login attempts.
+     2. Block or throttle IPs with suspicious activity.
+     3. Log anomalies and alert (many invalid session attempts, new geo location, etc.).
+     
+Harden client & app
+     1. Strong XSS protections (CSP, proper escaping, no innerHTML with untrusted data).
+     2. Avoid sending session IDs in URLs (use cookies).
+     3. Don’t log tokens or include them in debug dumps.
+     
+Extra security for sensitive actions
+     1. Require re-authentication / password prompt or MFA for critical operations.
+     2. Enforce MFA for privileged accounts.
+     
+Operational best practices
+     1. Keep servers and dependencies patched.
+     2. Use least-privilege for admin access.
+     3. Secure backups and logs (rotation, encryption, access control).
