@@ -24,12 +24,8 @@ ln -sf "$HOME/dot-files/dot-files/.zshrc" "$HOME/.zshrc"
 ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
+ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
 
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
-
-echo "[*] Applying GNOME settings..."
-
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
-gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 
 echo "[*] Done!"

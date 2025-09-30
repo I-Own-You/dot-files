@@ -1,7 +1,3 @@
-ibus-setup in terminal, remove emoji picker // stop ibus from remapping keymaps
-// change/remove all keybindings inside dconf-editor
-// change keybinding for always-on-top inside dconf-editor
-
 // vlc
 if vlc has h264 problem, try install ffmpeg plugin for vlc (vlc-plugin-ffmpeg?)
 

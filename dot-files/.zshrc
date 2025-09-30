@@ -374,6 +374,8 @@ function ff() {
 autoload -U compinit
 compinit -i
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -382,7 +384,7 @@ eval "$(zoxide init zsh)"
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. "$HOME/.local/bin/env"
+#. "$HOME/.local/bin/env"
 
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
