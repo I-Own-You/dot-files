@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Neovide
 Comment=Neovim GUI
-Exec=/home/mkc/.cargo/bin/neovide --neovim-bin /home/linuxbrew/.linuxbrew/bin/nvim %F
+Exec=env PATH=$HOME/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:/usr/bin:/bin /home/mkc/.cargo/bin/neovide --neovim-bin /home/linuxbrew/.linuxbrew/bin/nvim %F
 Icon=neovide
 Terminal=false
 Type=Application
