@@ -19,7 +19,7 @@ echo "[*] Downloading brew..."
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo "Installing packages with brew..."
+echo "[*] Installing packages with brew..."
 
 brew tap wezterm/wezterm-linuxbrew
 brew install neovim zoxide yazi golang eza bat git-delta fzf ripgrep npm gh glab p7zip fd uv wezterm
@@ -34,5 +34,12 @@ ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
 
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
+
+echo "[*] Adding all custom application entries..."
+
+mkdir -p "$HOME/.local/share/icons/hicolor/128x128/apps"
+cp "$HOME/dot-files/linux-install-todo/desktop.applications/icons/neovide.png"  "$HOME/.local/share/icons/hicolor/128x128/apps/neovide.png"
+ln -sf "$HOME/dot-files/linux-install-todo/desktop.applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
+update-desktop-database "$HOME/.local/share/applications/"
 
 echo "[*] Done!"
