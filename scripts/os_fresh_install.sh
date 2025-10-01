@@ -9,13 +9,20 @@ git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
 git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
-echo "[*] Installing packages..."
-
-paru git zsh btop neovim discord zoxide yazi zip wget qbittorent golang eza bat git-delta jq ipyhton fzf ripgrep npm github-cli glab ctags fd p7zip unrar unzip vlc spotify obs-studio keepassxc keyd krita
-
-echo "[*] Installing antidote..."
-
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+
+echo "[*] Installing packages with apt...."
+
+sudo apt install zsh zip fzf unrar unzip keepassxc
+
+echo "[*] Downloading brew..."
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+echo "Installing packages with brew..."
+
+brew tap wezterm/wezterm-linuxbrew
+brew install neovim zoxide yazi golang eza bat git-delta fzf ripgrep npm gh glab p7zip fd uv wezterm
 
 echo "[*] Setting up dotfiles..."
 
