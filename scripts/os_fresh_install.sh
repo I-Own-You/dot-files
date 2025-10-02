@@ -13,7 +13,7 @@ git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antid
 
 echo "[*] Installing packages with apt...."
 
-sudo apt install zsh zip fzf unrar unzip keepassxc
+sudo apt install zsh zip fzf unrar unzip keepassxc syncthing
 
 echo "[*] Downloading brew..."
 
