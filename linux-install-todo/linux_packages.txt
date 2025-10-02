@@ -13,3 +13,4 @@ calf (for easy effects)
 zam-plugins (for easy effects)
 
 # also look for bluetooth/wifi drivers packages just in case
+bcmwl-kernel-source
