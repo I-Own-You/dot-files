@@ -13,6 +13,7 @@ git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antid
 
 echo "[*] Installing packages with apt...."
 
+# paru git zsh btop neovim discord zoxide yazi zip wget qbittorent golang eza bat git-delta jq ipyhton fzf ripgrep npm github-cli glab ctags fd p7zip unrar unzip vlc spotify obs-studio keepassxc keyd krita rnote syncthing uv wezterm neovide
 sudo apt install zsh zip fzf unrar unzip keepassxc syncthing
 
 echo "[*] Downloading brew..."
