@@ -13,17 +13,11 @@ git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antid
 
 echo "[*] Installing packages with apt...."
 
-# paru git zsh btop neovim discord zoxide yazi zip wget qbittorent golang eza bat git-delta jq ipyhton fzf ripgrep npm github-cli glab ctags fd p7zip unrar unzip vlc spotify obs-studio keepassxc keyd krita rnote syncthing uv wezterm neovide
-sudo apt install zsh zip fzf unrar unzip keepassxc syncthing
+paru git zsh btop neovim discord zoxide yazi zip wget qbittorrent golang eza bat git-delta jq ipyhton fzf ripgrep npm github-cli glab ctags fd p7zip unrar unzip vlc spotify obs-studio keepassxc keyd krita rnote syncthing uv wezterm neovide xclip playerctl brightnessctl rofi xrandr feh dunst redshift dex mkfifo polybar flameshot i3lock nmcli nmtui bluez blueman
 
-echo "[*] Downloading brew..."
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-echo "[*] Installing packages with brew..."
-
-brew tap wezterm/wezterm-linuxbrew
-brew install neovim zoxide yazi golang eza bat git-delta fzf ripgrep npm gh glab p7zip fd uv wezterm
+sudo systemctl enable --now bluetooth
+systemctl —user enable syncthing.service
+systemctl —user start syncthing.service
 
 echo "[*] Setting up dotfiles..."
 
@@ -33,14 +27,16 @@ ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
+ln -sf "$HOME/dot-files/linux-styling/wm/i3" "$HOME/.config/i3"
+ln -sf "$HOME/dot-files/linux-styling/compositors/picom" "$HOME/.config/picom"
+ln -sf "$HOME/dot-files/linux-styling/launchers/rofi" "$HOME/.config/rofi" # if this does not work, go to their github, grab the repo, use ./setup.sh and customize .config/rofi
+ln -sf "$HOME/dot-files/linux-styling/status-bars/polybar" "$HOME/.config/polybar"
 
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
-echo "[*] Adding all custom application entries..."
+echo "[*] Systemctl services..."
 
-mkdir -p "$HOME/.local/share/icons/hicolor/128x128/apps"
-cp "$HOME/dot-files/linux-install-todo/desktop.applications/icons/neovide.png"  "$HOME/.local/share/icons/hicolor/128x128/apps/neovide.png"
-ln -sf "$HOME/dot-files/linux-install-todo/desktop.applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
-update-desktop-database "$HOME/.local/share/applications/"
+sudo systemctl enable keyd
+sudo systemctl start keyd
 
 echo "[*] Done!"
