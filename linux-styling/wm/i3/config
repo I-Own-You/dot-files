@@ -1,0 +1,190 @@
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+#           Variables
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+set $mod Mod4
+set $term wezterm
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+floating_modifier $mod
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+#                                        Autostart
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+exec xrandr --output HDMI-1 --mode 1600x900 --rate 60
+
+exec feh --bg-fill /home/mkc/Pictures/wallpapers/moments_before_desk.png
+
+exec --no-startup-id dunst
+exec --no-startup-id picom
+exec --no-startup-id redshift
+exec --no-startup-id copyq
+exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent0
+
+exec --no-startup-id "i3-msg 'workspace 2; exec wezterm'"
+
+exec_always --no-startup-id ~/.config/polybar/launch.sh --material
+exec_always mkfifo /tmp/xobpipe && tail -f /tmp/xobpipe | xob -t 2170 & disown
+exec_always --no-startup-id setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+#                                        Styling
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+font pango:Hack 9
+gaps inner 8px
+
+# default_border pixel 2
+# default_floating_border pixel 2
+
+# class                 border      background  text        indicator   child_border
+client.focused          #bf00ff     #bf00ff     #1b1b1b     #bf00ff     #bf00ff
+client.focused_inactive #cccccc     #eaeaea     #555555     #cccccc     #cccccc
+client.unfocused        #dddddd     #f5f5f5     #777777     #dddddd     #dddddd
+client.urgent           #ff4500     #ff4500     #ffffff     #ff4500     #ff4500
+client.placeholder      #cccccc     #eaeaea     #555555     #cccccc     #cccccc
+client.background       #fffdf8
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+#                                        Window Rules
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+for_window [title="Calculator"] floating enable
+for_window [title="Timer"] floating enable
+for_window [class="copyq"] floating enable, resize set 800 600, move position center
+for_window [class="Blueman-manager"] floating enable, resize set 800 600, move position center
+for_window [class="^.*"] border none
+for_window [class="mpv"] floating enable
+for_window [class="imv"] floating enable
+for_window [class="zenity"] floating enable
+for_window [class="cachyos-welcome"] floating enable
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+#                                        Shortcuts
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+bindsym $mod+comma workspace prev
+bindsym $mod+period workspace next
+
+bindsym $mod+Return exec $term
+
+bindsym $mod+q kill
+
+# bindsym ctrl+space exec "rofi -show combi -modi window,run,combi -combi-modi window,run"
+bindsym ctrl+space exec /home/mkc/dot-files/linux-styling/launchers/rofi/launchers/type-4/launcher.sh
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym ctrl+Mod1+1 move container to workspace number $ws1; workspace $ws1
+bindsym ctrl+Mod1+2 move container to workspace number $ws2; workspace $ws2
+bindsym ctrl+Mod1+3 move container to workspace number $ws3; workspace $ws3
+bindsym ctrl+Mod1+4 move container to workspace number $ws4; workspace $ws4
+bindsym ctrl+Mod1+5 move container to workspace number $ws5; workspace $ws5
+bindsym ctrl+Mod1+6 move container to workspace number $ws6; workspace $ws6
+bindsym ctrl+Mod1+7 move container to workspace number $ws7; workspace $ws7
+bindsym ctrl+Mod1+8 move container to workspace number $ws8; workspace $ws8
+bindsym ctrl+Mod1+9 move container to workspace number $ws9; workspace $ws9
+bindsym ctrl+Mod1+0 move container to workspace number $ws10; workspace $ws10
+
+bindsym $mod+Delete exec "sleep 0.1 && i3lock --blur 5"
+
+bindsym XF86AudioRaiseVolume exec "pamixer -ui 3 && pamixer --get-volume > /tmp/xobpipe"
+bindsym XF86AudioLowerVolume exec "pamixer -ud 3 && pamixer --get-volume > /tmp/xobpipe"
+bindsym XF86AudioMute exec "amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > /tmp/xobpipe"
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+bindsym Print exec flameshot gui
+
+bindsym $mod+f mode "focus_windows_mode"
+bindsym $mod+r mode "resize_windows_mode"
+bindsym $mod+m mode "move_windows_mode"
+bindsym $mod+i mode "config_actions_mode"
+bindsym $mod+l mode "layout_change_mode"
+bindsym $mod+Shift+backslash mode "music_actions_mode"
+
+
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+#                                        Shortcut modes
+# ─────────────────────────────────────────────────────────────────────────────────────────────── #
+mode "config_actions_mode" {
+    bindsym r reload
+    bindsym c restart
+    bindsym x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+i mode "default"
+}
+mode "focus_windows_mode" {
+    bindsym h focus left
+    bindsym l focus right
+    bindsym j focus down
+    bindsym k focus up
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+f mode "default"
+}
+mode "resize_windows_mode" {
+    bindsym h resize shrink width 5 px or 5 ppt
+    bindsym l resize grow width 5 px or 5 ppt
+    bindsym j resize grow height 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+mode "move_windows_mode" {
+    bindsym h move left
+    bindsym l move right
+    bindsym j move down
+    bindsym k move up
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+mode "layout_change_mode" {
+    # bindsym h split h
+    # bindsym v split v
+    bindsym t split toggle
+
+    bindsym x layout stacking
+    bindsym v layout tabbed
+    bindsym s layout toggle split
+
+    bindsym $mod+f floating toggle
+    bindsym Shift+f focus mode_toggle
+
+    bindsym f fullscreen toggle
+    
+    bindsym p sticky toggle
+
+    bindsym a focus parent
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+l mode "default"
+}
+mode "music_actions_mode" {
+    bindsym k exec playerctl play-pause
+    bindsym l exec playerctl next
+    bindsym h exec playerctl previous
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+backslash mode "default"
+}
