@@ -1,0 +1,59 @@
+# powershell 7:
+winget install --id Microsoft.Powershell --source winget
+
+# cli packages
+winget install --id=Microsoft.WindowsTerminal -e
+winget install --id=ajeetdsouza.zoxide -e
+winget install --id=junegunn.fzf -e
+winget install --id=Git.Git -e
+winget install --id=Neovim.Neovim -e
+winget install --id=sxyazi.yazi -e
+winget install --id=eza-community.eza -e
+winget install --id=sharkdp.bat -e
+winget install --id=sharkdp.fd -e
+winget install --id=dandavison.delta -e
+winget install --id=BurntSushi.ripgrep.MSVC -e
+winget install --id=GitHub.cli -e
+winget install --id=GLab.GLab -e
+winget install --id=astral-sh.uv -e
+################################################
+winget install --id=Telegram.TelegramDesktop -e
+winget install --id=KeePassXCTeam.KeePassXC -e
+winget install --id=AntibodySoftware.WizTree -e
+winget install --id=VoidTools.Everything -e
+winget install --id=Flow-Launher.Flow-Launcher -e
+winget install --id=ShareX.ShareX -e
+winget install --id=VideoLAN.VLC -e
+winget install --id=OBSProject.OBSStudio -e
+winget install --id=JanosMathe.HardDiskSentinel.Standard -e
+winget install --id=FastStone.Viewer -e
+winget install --id=7zip.7zip -e
+winget install --id=Notepad++.Notepad++ -e
+winget install --id=qBittorrent.qBittorrent -e
+winget install --id=sourcegit-scm.SourceGit -e
+winget install --id=Discord.Discord -e
+winget install --id=dotPDN.PaintDotNet -e
+winget install --id=Syncthing.Syncthing -e
+winget install --id=DevToys-app.DevToys -e
+################################################
+winget install --id=GoLang.Go -e
+winget install --id=OpenJS.NodeJS.LTS -e
+#winget install --id=Microsoft.VisualStudio.2022.BuildTools -e # for neovim (gcc), but before install, check if needed
+winget install --id=Python.Python.3.13 -e # add to environment path if not added and points into ms store
+
+# in case you need to deblock script (erro appears that you cannot execute bla bla)
+Unblock-File -Path "$PROFILE"
+# Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+# Get-ExecutionPolicy -Scope CurrentUser
+
+# flow launcher configure it and also to use Everything app
+
+# git clone nvim into C:\Users\Idkwh\AppData\Local
+
+# install this for yazi support in terminal
+winget install Gyan.FFmpeg jqlang.jq oschwartz10612.Poppler ImageMagick.ImageMagick
+
+# SYMLINKS
+New-Item -ItemType SymbolicLink -Target "C:\Users\Idkwh\dot-files\dot-files\.gitconfig" -Path "C:\Users\Idkwh\.gitconfig" -Force
+New-Item -ItemType SymbolicLink -Target "C:\Users\Idkwh\dot-files\cli-tools\yazi" -Path "C:\Users\Idkwh\AppData\Roaming\yazi" -Force # remove the folder if exists
+New-Item -ItemType SymbolicLink -Target "C:\Users\Idkwh\dot-files\windows-post-install\Microsoft.PowerShell_profile.ps1" -Path "C:\Users\Idkwh\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -Force # remove the folder if exists
