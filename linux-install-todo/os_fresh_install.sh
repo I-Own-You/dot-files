@@ -9,7 +9,7 @@ git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
 echo  "[*] Install apt packages..."
-sudo apt install git zsh zip unrar unzip keepassxc vlc syncthing dconf-editor 
+sudo apt install git zsh zip unrar unzip keepassxc vlc syncthing dconf-editor xclip
 
 echo  "[*] Install packages from source..."
 git clone https://github.com/rvaiya/keyd "$HOME/from_source/keyd"
