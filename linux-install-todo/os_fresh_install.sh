@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-mkdir -p "$HOME/.config" "$HOME/Pictures" "$HOME/from_source"
+mkdir -p "$HOME/.config" "$HOME/Pictures" "$HOME/from_source" "$HOME/sync_files"
 
 echo  "[*] Clone repos..."
 git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
@@ -9,7 +9,7 @@ git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
 echo  "[*] Install apt packages..."
-sudo apt install git zsh zip unrar unzip keepassxc vlc syncthing
+sudo apt install git zsh zip unrar unzip keepassxc vlc syncthing dconf-editor 
 
 echo  "[*] Install packages from source..."
 git clone https://github.com/rvaiya/keyd "$HOME/from_source/keyd"
@@ -52,16 +52,37 @@ echo "[*] Install apps from shop..."
 # obs
 # qBittorrent
 
-echo "[*] Install apps from off sites"
+echo "[*] Install apps from off sites..."
 # telegram
+# google chrome
 
-echo "[*] Side packages in case you need them"
+echo "[*] Side packages in case you need them..."
 # easyeffects (plugins for pipewire apps, audio manager)
 # lsp-plugins (for easyeffects)
 # calf (for easy effects)
 # zam-plugins (for easy effects)
 
+echo "[*] Drivers in case you need the..."
 # bluetooth/wifi drivers packages just in case
 bcmwl-kernel-source
 # on arch
 broadcom-bt-firmware
+
+echo "[*] Git config..."
+ssh-keygen -t ed25519 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+ssh -T git@gitlab.com
+ssh -T git@github.com
+
+echo "[*] Gnome extensions..."
+https://extensions.gnome.org/extension/19/user-themes/
+https://extensions.gnome.org/extension/5090/space-bar/
+https://extensions.gnome.org/extension/973/switcher/
+https://extensions.gnome.org/extension/3843/just-perfection/
+https://extensions.gnome.org/extension/615/appindicator-support/
+https://extensions.gnome.org/extension/3396/color-picker/
+https://extensions.gnome.org/extension/16/auto-move-windows/
+https://extensions.gnome.org/extension/307/dash-to-dock/
+https://extensions.gnome.org/extension/779/clipboard-indicator/
