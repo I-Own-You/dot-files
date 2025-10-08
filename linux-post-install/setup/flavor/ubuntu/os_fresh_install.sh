@@ -47,14 +47,17 @@ systemctl —user start syncthing.service
 # keyd
 sudo systemctl enable --now keyd
 
-echo "[*] Install apps from shop..."
+echo "[*] Install apps from linux mint shop(usually flatpak)..."
 # discord
 # obs
 # qBittorrent
+# krita
 
 echo "[*] Install apps from off sites..."
 # telegram
 # google chrome
+# xnview mp
+# devtoys
 
 echo "[*] Side packages in case you need them..."
 # easyeffects (plugins for pipewire apps, audio manager)

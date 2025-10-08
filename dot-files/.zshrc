@@ -335,9 +335,8 @@ antidote load
 
 source ~/.zsh_plugins.zsh
 
-# source ~/dot-files/scripts/zsh-auto-enable-py-env.sh
-source ~/dot-files/scripts/cpwd.sh
-source ~/dot-files/scripts/custom_rename.sh
+source ~/dot-files/linux-post-install/scripts/cpwd.sh
+source ~/dot-files/linux-post-install/scripts/custom_rename.sh
 
 path+=('/home/mkc/.cargo/bin')
 #PATH=$PATH:$(go env GOPATH)/bin # another way to specify path, just for info, also: PATH=$PATH:$HOME/go/bin
