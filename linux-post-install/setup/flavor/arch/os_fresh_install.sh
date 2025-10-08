@@ -8,18 +8,10 @@ git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
 git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
-echo  "[*] Install apt packages..."
-sudo apt install git zsh zip unrar unzip keepassxc vlc syncthing dconf-editor xclip
-
-echo  "[*] Install packages from source..."
-git clone https://github.com/rvaiya/keyd "$HOME/from_source/keyd"
-cd "$HOME/from_source/keyd"
-make && sudo make install
-
-echo  "[*] Download brew and install packges..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew tap wezterm/wezterm-linuxbrew
-brew install neovim neovide zoxide yazi golang eza bat git-delta fzf ripgrep npm gh glab p7zip fd uv wezterm
+echo  "[*] Install pacman packages..."
+paru git zsh unrar unzip keepassxc vlc syncthing xclip keyd nvim neovide zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv wezterm discord obs-studio qbittorrent krita wl-clipboard
+echo  "[*] Install aur packages..."
+paru google-chrome devtoys xnviewmp
 
 echo  "[*] Download antidote zsh plugin..."
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
@@ -42,22 +34,13 @@ echo "[*] Systemctl services..."
 # bluetooth
 sudo systemctl enable --now bluetooth
 # syncthin
-systemctl —user enable syncthing.service
-systemctl —user start syncthing.service
+sudo systemctl enable syncthing@$(whoami).service
+sudo systemctl start syncthing@$(whoami).service
 # keyd
 sudo systemctl enable --now keyd
 
-echo "[*] Install apps from linux mint shop(usually flatpak)..."
-# discord
-# obs
-# qBittorrent
-# krita
-
 echo "[*] Install apps from off sites..."
 # telegram
-# google chrome
-# xnview mp
-# devtoys
 
 echo "[*] Side packages in case you need them..."
 # easyeffects (plugins for pipewire apps, audio manager)
@@ -66,8 +49,7 @@ echo "[*] Side packages in case you need them..."
 # zam-plugins (for easy effects)
 
 echo "[*] Drivers in case you need the..."
-# bluetooth/wifi drivers packages just in case
-bcmwl-kernel-source
+broadcom-bt-firmware
 
 echo "[*] Git config..."
 ssh-keygen -t ed25519 -C "your_email@example.com"
