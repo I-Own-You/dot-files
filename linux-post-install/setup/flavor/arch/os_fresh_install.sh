@@ -51,6 +51,14 @@ echo "[*] Side packages in case you need them..."
 echo "[*] Drivers in case you need the..."
 broadcom-bt-firmware
 
+echo "[*] Nvidia setup..."
+# dont forget to move to lts cachy os kernel
+sudo pacman -Syu
+sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils nvidia-390xx-settings
+sudo pacman -S linux-headers dkms base-devel
+sudo pacman -S nvidia-prime
+sudo modprobe nvidia
+
 echo "[*] Git config..."
 ssh-keygen -t ed25519 -C "your_email@example.com"
 eval "$(ssh-agent -s)"

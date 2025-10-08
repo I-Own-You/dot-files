@@ -69,6 +69,15 @@ echo "[*] Drivers in case you need the..."
 # bluetooth/wifi drivers packages just in case
 bcmwl-kernel-source
 
+echo "[*] Nvidia setup..."
+# configure it if you return to ubuntu  based
+# dont forget to move to lts cachy os kernel
+sudo pacman -Syu
+sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils nvidia-390xx-settings
+sudo pacman -S linux-headers dkms base-devel
+sudo pacman -S nvidia-prime
+sudo modprobe nvidia
+
 echo "[*] Git config..."
 ssh-keygen -t ed25519 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
