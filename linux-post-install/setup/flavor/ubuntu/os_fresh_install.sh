@@ -34,7 +34,6 @@ ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
 ln -sf "$HOME/dot-files/linux-styling/wm/i3" "$HOME/.config/i3"
 ln -sf "$HOME/dot-files/linux-styling/compositors/picom" "$HOME/.config/picom"
 ln -sf "$HOME/dot-files/linux-styling/launchers/rofi" "$HOME/.config/rofi" # if this does not work, go to their github, grab the repo, use ./setup.sh and customize .config/rofi
-ln -sf "$HOME/dot-files/linux-styling/status-bars/polybar" "$HOME/.config/polybar"
 
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 

@@ -16,6 +16,6 @@ theme='style-4'
 ## Run
 rofi \
     -show combi \
-    -modi window,run,combi \
-    -combi-modi window,run \
+    -modi window,drun,run,combi \
+    -combi-modi window,drun,run \
     -theme ${dir}/${theme}.rasi

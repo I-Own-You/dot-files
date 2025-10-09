@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-mkdir -p "$HOME/.config" "$HOME/Pictures" "$HOME/from_source" "$HOME/sync_files"
+mkdir -p "$HOME/.config" "$HOME/Pictures" "$HOME/from_source" "$HOME/sync_files" "$HOME/Apps"
 
 echo  "[*] Clone repos..."
 git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
@@ -9,25 +9,30 @@ git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
 echo  "[*] Install pacman packages..."
-paru git zsh unrar unzip keepassxc vlc syncthing xclip keyd nvim neovide zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv wezterm discord obs-studio qbittorrent krita wl-clipboard
+# cli
+sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv btop brightnessctl fastfetch network-manager-applet udisks2 udiskie
+# desktop
+sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita flameshot blueman copyq
+# i3wm
+sudo pacman -S picom  polkit-gnome feh xrandr
 echo  "[*] Install aur packages..."
 paru google-chrome devtoys xnviewmp
 
 echo  "[*] Download antidote zsh plugin..."
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
-echo "[*] Create sym links..."
+echo "[*] Symlink dots..."
 ln -sf "$HOME/dot-files/dot-files/.zprofile" "$HOME/.zprofile"
 ln -sf "$HOME/dot-files/dot-files/.zshrc" "$HOME/.zshrc"
 ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
-ln -sf "$HOME/dot-files/linux-styling/wm/i3" "$HOME/.config/i3"
-ln -sf "$HOME/dot-files/linux-styling/compositors/picom" "$HOME/.config/picom"
-ln -sf "$HOME/dot-files/linux-styling/launchers/rofi" "$HOME/.config/rofi" # if this does not work, go to their github, grab the repo, use ./setup.sh and customize .config/rofi
-ln -sf "$HOME/dot-files/linux-styling/status-bars/polybar" "$HOME/.config/polybar"
-
+ln -sf "$HOME/dot-files/linux-post-install/setup/wm/i3" "$HOME/.config/i3"
+ln -sf "$HOME/dot-files/linux-post-install/setup/compositors/picom" "$HOME/.config/picom"
+ln -sf "$HOME/dot-files/linux-post-install/setup/launchers/rofi" "$HOME/.config/rofi"
+ln -sf "$HOME/dot-files/linux-post-install/setup/status-bars/i3blocks" "$HOME/.config/i3blocks"
+ln -sf "$HOME/dot-files/linux-post-install/nvidia/environment.d" "$HOME/.config/environment.d"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 echo "[*] Systemctl services..."

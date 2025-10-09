@@ -17,21 +17,25 @@ floating_modifier $mod
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
 #                                        Autostart
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
-exec xrandr --output HDMI-1 --mode 1600x900 --rate 60
+# exec --no-startup-id i3-msg workspace 1
 
+exec xrandr --output HDMI-1 --mode 1600x900 --rate 60
 exec feh --bg-fill /home/mkc/Pictures/wallpapers/moments_before_desk.png
 
 exec --no-startup-id dunst
 exec --no-startup-id picom
 exec --no-startup-id redshift
-exec --no-startup-id copyq
+exec --no-startup-id copyq &
 exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent0
+exec --no-startup-id flameshot &
+exec --no-startup-id nm-applet &
+exec --no-startup-id udiskie &
 
-exec --no-startup-id "i3-msg 'workspace 1; exec google-chrome-stable'"
-exec --no-startup-id "i3-msg 'workspace 2; exec wezterm'"
+# exec --no-startup-id i3-msg "workspace 1; exec firefox"
+# exec --no-startup-id i3-msg "workspace 2; exec wezterm"
+# exec --no-startup-id i3-msg "workspace 1"
 
-exec_always --no-startup-id ~/.config/polybar/launch.sh --material
 exec_always mkfifo /tmp/xobpipe && tail -f /tmp/xobpipe | xob -t 2170 & disown
 exec_always --no-startup-id setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
@@ -40,8 +44,15 @@ exec_always --no-startup-id setxkbmap -layout "us,ru" -option "grp:win_space_tog
 font pango:Hack 9
 gaps inner 8px
 
-# default_border pixel 2
-# default_floating_border pixel 2
+default_border pixel 2
+default_floating_border pixel 2
+
+bar {
+    status_command i3blocks
+    position top
+    font pango: JetBrainsMono Nerd Font 12
+    workspace_buttons yes
+}
 
 # class                 border      background  text        indicator   child_border
 client.focused          #bf00ff     #bf00ff     #1b1b1b     #bf00ff     #bf00ff
@@ -53,29 +64,26 @@ client.background       #fffdf8
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
 #                                        Window Rules
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
-for_window [title="Calculator"] floating enable
-for_window [title="Timer"] floating enable
-for_window [class="copyq"] floating enable, resize set 800 600, move position center
-for_window [class="Blueman-manager"] floating enable, resize set 800 600, move position center
-
-for_window [class="Telegram"] move to workspace $ws10
-for_window [class="TelegramDesktop"] move to workspace $ws10
-
-for_window [class="obs"] move to workspace $ws8
-
-for_window [class="vlc"] move to workspace $ws7
+for_window [class="google-chrome"] move to workspace $ws1
+for_window [class="Google-chrome"] move to workspace $ws1
+for_window [class="firefox"] move to workspace $ws1
 
 for_window [class="keepassxc"] move to workspace $ws6
 for_window [class="KeePassXC"] move to workspace $ws6
 
-for_window [class="google-chrome"] move to workspace $ws1
-for_window [class="Google-chrome"] move to workspace $ws1
+for_window [class="vlc"] move to workspace $ws7
 
-for_window [class="^.*"] border none
-for_window [class="mpv"] floating enable
-for_window [class="imv"] floating enable
-for_window [class="zenity"] floating enable
-for_window [class="cachyos-welcome"] floating enable
+for_window [class="obs"] move to workspace $ws8
+
+for_window [class="Telegram"] move to workspace $ws10
+for_window [class="TelegramDesktop"] move to workspace $ws10
+
+# for_window [class="Blueman-manager"] floating enable, resize set 800 600, move position center
+
+for_window [class="Cachyos-hello"] floating enable
+for_window [class="CachyOSHello"] floating enable
+
+# for_window [class="^.*"] border none
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
 #                                        Shortcuts
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
@@ -87,7 +95,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # bindsym ctrl+space exec "rofi -show combi -modi window,run,combi -combi-modi window,run"
-bindsym ctrl+space exec /home/mkc/dot-files/linux-styling/launchers/rofi/launchers/type-4/launcher.sh
+# bindsym ctrl+space exec /home/mkc/dot-files/linux-post-install/setup/launchers/rofi/launchers/type-4/launcher.sh
+bindsym ctrl+space exec /home/mkc/dot-files/linux-post-install/setup/wm/i3/scripts/rofi_toggle.sh
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -99,6 +108,9 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+
+bindsym ctrl+Mod1+period move container to workspace next
+bindsym ctrl+Mod1+comma move container to workspace prev
 
 bindsym ctrl+Mod1+1 move container to workspace number $ws1; workspace $ws1
 bindsym ctrl+Mod1+2 move container to workspace number $ws2; workspace $ws2

@@ -11,12 +11,16 @@
 configuration {
 	modi:                       "drun";
     show-icons:                 true;
-    display-drun:               "";
+    display-drun:               "";
     display-run:                "";
     display-filebrowser:        "";
     display-window:             "";
-	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+	drun-display-format:        "{icon}{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 	window-format:              "{w} · {c} · {t}";
+    
+    kb-accept-entry: "Return,ctrl+space";
+    kb-row-select:              "";
+    // rofi -list-keybindings // in case you need to see what conflicts
 }
 
 /*****----- Global Properties -----*****/

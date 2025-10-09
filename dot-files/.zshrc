@@ -306,27 +306,6 @@ alias fgsp="forgit::stash::push"
 alias fgss="forgit::stash::show"
 alias fgw="forgit::warn"
 
-# autoload -Uz promptinit && promptinit && prompt pure
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-# --color=fg:#4d4d4c,bg:#1E1E1E,hl:#72DEC2
-# --color=fg+:#4d4d4c,bg+:#333232,hl+:#72DEC2
-# --color=info:#4271ae,prompt:#8959a8,pointer:#72DEC2
-# --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
-
-# --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
-# --color=fg+:#ffffff,bg+:#1a1b26,hl+:#7dcfff
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
---color=fg:#c0caf5,hl:#bb9af7
---color=fg+:#ffffff,hl+:#7dcfff
---color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff 
---color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
-
-# export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias : "
-export VISUAL=nvim
-export EDITOR=nvim
-export FORGIT_NO_ALIASES=1
-export LESS="-RXF"
-
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
@@ -337,10 +316,6 @@ source ~/.zsh_plugins.zsh
 
 source ~/dot-files/linux-post-install/scripts/cpwd.sh
 source ~/dot-files/linux-post-install/scripts/custom_rename.sh
-
-path+=('/home/mkc/.cargo/bin')
-#PATH=$PATH:$(go env GOPATH)/bin # another way to specify path, just for info, also: PATH=$PATH:$HOME/go/bin
-export PATH
 
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)

@@ -1,0 +1,46 @@
+# Global settings
+separator=true
+separator_block_width=15
+markup=pango
+
+[cpu]
+command=~/.config/i3blocks/scripts/cpu.sh
+interval=persist
+markup=pango
+# Optional envs:
+# REFRESH_TIME=1
+# WARN_PERCENT=50
+# CRIT_PERCENT=80
+# LABEL= 
+
+[mem]
+command=~/.config/i3blocks/scripts/ram.sh
+interval=1
+color=#4DB6AC
+
+[swap_ram]
+command=~/.config/i3blocks/scripts/ram_swap.sh
+interval=5
+color=#FFA94D
+
+[battery]
+command=~/.config/i3blocks/scripts/battery.sh
+interval=15
+
+[volume]
+command=~/.config/i3blocks/scripts/volume.sh
+interval=1
+signal=10
+
+[network]
+command=~/.config/i3blocks/scripts/network.sh
+interval=1
+
+[updates]
+command=~/.config/i3blocks/scripts/updates.sh
+interval=600
+
+[time]
+command=date '+%e %B / %I:%M:%S %p'
+interval=1
+color=#A0A0A0
