@@ -333,9 +333,9 @@ function zvm_after_init() {
 	source /home/mkc/.cache/antidote/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	}
 
-#bindkey '^[[1;3C' forward-word  # Alt + →
-#bindkey '^[[C' autosuggest-accept  # Right arrow
-bindkey '\el' forward-word
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+bindkey '\el' forward-word # alt + l
+bindkey '^[^?' backward-delete-word # alt + backspace
 
 
 function ff() {
