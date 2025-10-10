@@ -314,8 +314,8 @@ antidote load
 
 source ~/.zsh_plugins.zsh
 
-source ~/dot-files/linux-post-install/scripts/cpwd.sh
-source ~/dot-files/linux-post-install/scripts/custom_rename.sh
+source ~/dot-files/dot-files/scripts/cpwd.sh
+source ~/dot-files/dot-files/scripts/custom_rename.sh
 
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)
