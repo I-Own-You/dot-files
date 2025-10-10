@@ -306,7 +306,7 @@ alias fgsp="forgit::stash::push"
 alias fgss="forgit::stash::show"
 alias fgw="forgit::warn"
 
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 

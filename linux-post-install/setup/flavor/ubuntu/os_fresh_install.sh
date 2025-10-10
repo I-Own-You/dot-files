@@ -9,7 +9,7 @@ git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
 echo  "[*] Install apt packages..."
-sudo apt install git zsh zip unrar unzip keepassxc vlc syncthing dconf-editor xclip
+sudo apt install git zsh curl unzip unrar unzip keepassxc vlc syncthing dconf-editor xclip
 
 echo  "[*] Install packages from source..."
 git clone https://github.com/rvaiya/keyd "$HOME/from_source/keyd"
@@ -19,7 +19,7 @@ make && sudo make install
 echo  "[*] Download brew and install packges..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew tap wezterm/wezterm-linuxbrew
-brew install neovim neovide zoxide yazi golang eza bat git-delta fzf ripgrep npm gh glab p7zip fd uv wezterm
+brew install neovim zoxide yazi golang eza bat git-delta fzf ripgrep npm gh glab p7zip fd uv wezterm
 
 echo  "[*] Download antidote zsh plugin..."
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
@@ -31,31 +31,22 @@ ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
-ln -sf "$HOME/dot-files/linux-styling/wm/i3" "$HOME/.config/i3"
-ln -sf "$HOME/dot-files/linux-styling/compositors/picom" "$HOME/.config/picom"
-ln -sf "$HOME/dot-files/linux-styling/launchers/rofi" "$HOME/.config/rofi" # if this does not work, go to their github, grab the repo, use ./setup.sh and customize .config/rofi
+#ln -sf "$HOME/dot-files/linux-styling/wm/i3" "$HOME/.config/i3"
+#ln -sf "$HOME/dot-files/linux-styling/compositors/picom" "$HOME/.config/picom"
+#ln -sf "$HOME/dot-files/linux-styling/launchers/rofi" "$HOME/.config/rofi" # if this does not work, go to their github, grab the repo, use ./setup.sh and customize .config/rofi
 
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
-echo "[*] Systemctl services..."
-# bluetooth
-sudo systemctl enable --now bluetooth
-# syncthin
-systemctl —user enable syncthing.service
-systemctl —user start syncthing.service
-# keyd
-sudo systemctl enable --now keyd
-
-echo "[*] Install apps from linux mint shop(usually flatpak)..."
+echo "[*] Install apps from shop(usually flatpak)..."
 # discord
 # obs
 # qBittorrent
+# xnview mp
 # krita
 
 echo "[*] Install apps from off sites..."
 # telegram
 # google chrome
-# xnview mp
 # devtoys
 
 echo "[*] Side packages in case you need them..."
@@ -65,17 +56,21 @@ echo "[*] Side packages in case you need them..."
 # zam-plugins (for easy effects)
 
 echo "[*] Drivers in case you need the..."
-# bluetooth/wifi drivers packages just in case
-bcmwl-kernel-source
+# bluetooth (but its for my old laptop)
+z /lib/firmware/brcm/
+sudo wget https://github.com/winterheart/broadcom-bt-firmware/raw/master/brcm/BCM43142A0-105b-e065.hcd
+sudo modprobe -r btusb
+sudo modprobe btusb
+sudo systemctl restart bluetooth
 
-echo "[*] Nvidia setup..."
-# configure it if you return to ubuntu  based
-# dont forget to move to lts cachy os kernel
-sudo pacman -Syu
-sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils nvidia-390xx-settings
-sudo pacman -S linux-headers dkms base-devel
-sudo pacman -S nvidia-prime
-sudo modprobe nvidia
+echo "[*] Systemctl services..."
+# bluetooth
+sudo systemctl enable --now bluetooth
+# syncthing
+systemctl —-user enable syncthing.service
+systemctl —-user start syncthing.service
+# keyd
+sudo systemctl enable --now keyd
 
 echo "[*] Git config..."
 ssh-keygen -t ed25519 -C "your_email@example.com"

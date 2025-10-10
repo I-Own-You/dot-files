@@ -10,11 +10,13 @@ export LESS="-RXF"
 export BROWSER=cachy-browser
 export EDITOR=/usr/bin/nvim
 export MAIL=thunderbird
+export TERMINFO=/home/linuxbrew/.linuxbrew/share/terminfo
 export TERM=wezterm
 export TERMINAL=wezterm
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 path+=('/home/mkc/.cargo/bin')
+path+=('/home/linuxbrew/.linuxbrew/bin')
 #PATH=$PATH:$(go env GOPATH)/bin # another way to specify path, just for info, also: PATH=$PATH:$HOME/go/bin
 export PATH

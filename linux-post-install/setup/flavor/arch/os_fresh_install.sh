@@ -10,11 +10,10 @@ git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers
 
 echo  "[*] Install pacman packages..."
 # cli
-sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv btop brightnessctl fastfetch network-manager-applet udisks2 udiskie
+sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv btop
 # desktop
 sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita flameshot blueman copyq
-# i3wm
-sudo pacman -S picom  polkit-gnome feh xrandr
+
 echo  "[*] Install aur packages..."
 paru google-chrome devtoys xnviewmp
 
@@ -28,11 +27,11 @@ ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
-ln -sf "$HOME/dot-files/linux-post-install/setup/wm/i3" "$HOME/.config/i3"
-ln -sf "$HOME/dot-files/linux-post-install/setup/compositors/picom" "$HOME/.config/picom"
-ln -sf "$HOME/dot-files/linux-post-install/setup/launchers/rofi" "$HOME/.config/rofi"
-ln -sf "$HOME/dot-files/linux-post-install/setup/status-bars/i3blocks" "$HOME/.config/i3blocks"
-ln -sf "$HOME/dot-files/linux-post-install/nvidia/environment.d" "$HOME/.config/environment.d"
+#ln -sf "$HOME/dot-files/linux-post-install/setup/wm/i3" "$HOME/.config/i3"
+#ln -sf "$HOME/dot-files/linux-post-install/setup/compositors/picom" "$HOME/.config/picom"
+#ln -sf "$HOME/dot-files/linux-post-install/setup/launchers/rofi" "$HOME/.config/rofi"
+##ln -sf "$HOME/dot-files/linux-post-install/setup/status-bars/i3blocks" "$HOME/.config/i3blocks"
+#ln -sf "$HOME/dot-files/linux-post-install/nvidia/environment.d" "$HOME/.config/environment.d"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 echo "[*] Systemctl services..."
@@ -55,14 +54,6 @@ echo "[*] Side packages in case you need them..."
 
 echo "[*] Drivers in case you need the..."
 broadcom-bt-firmware
-
-echo "[*] Nvidia setup..."
-# dont forget to move to lts cachy os kernel
-sudo pacman -Syu
-sudo pacman -S nvidia-390xx-dkms nvidia-390xx-utils nvidia-390xx-settings
-sudo pacman -S linux-headers dkms base-devel
-sudo pacman -S nvidia-prime
-sudo modprobe nvidia
 
 echo "[*] Git config..."
 ssh-keygen -t ed25519 -C "your_email@example.com"
