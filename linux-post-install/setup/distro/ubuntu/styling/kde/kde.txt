@@ -1,0 +1,9 @@
+global theme: dracula purple
+application style: breeze
+plasma style: dracula
+colors: dracula purple
+window decoration: mkos-bigsur-night
+icons: kora
+splash screen: dracula purple
+
+login screen: apple sonoma v2
