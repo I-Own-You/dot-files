@@ -19,19 +19,19 @@ display=Display
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Meta+Del; Screensaver
+Lock Session=Screensaver; Meta+Del
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 Reboot Without Confirmation=
 
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Ctrl+A
-ClearLastMouseMark=Meta+Shift+F12; Meta+Shift+D
-ClearMouseMarks=Meta+Shift+A; Meta+Shift+F11
+ClearLastMouseMark=Meta+Shift+D; Meta+Shift+F12
+ClearMouseMarks=Meta+Shift+F11; Meta+Shift+A
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Launch (C); Ctrl+F10
+ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Increase Opacity=
@@ -112,7 +112,7 @@ Window Fullscreen=Meta+F
 Window Grow Horizontal=
 Window Grow Vertical=
 Window Lower=
-Window Maximize=Meta+PgUp
+Window Maximize=Meta+U
 Window Maximize Horizontal=
 Window Maximize Vertical=
 Window Minimize=Meta+PgDown
@@ -207,6 +207,9 @@ activate task manager entry 9=
 activate widget 29=
 activate widget 3=Alt+F1
 activate widget 55=
+activate widget 81=
+activate widget 93=
+activate widget 95=
 clear-history=
 clipboard_action=
 cycle-panels=
