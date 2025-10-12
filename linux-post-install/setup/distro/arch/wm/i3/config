@@ -96,7 +96,7 @@ bindsym $mod+q kill
 
 # bindsym ctrl+space exec "rofi -show combi -modi window,run,combi -combi-modi window,run"
 # bindsym ctrl+space exec /home/mkc/dot-files/linux-post-install/setup/launchers/rofi/launchers/type-4/launcher.sh
-bindsym ctrl+space exec /home/mkc/dot-files/linux-post-install/setup/wm/i3/scripts/rofi_toggle.sh
+bindsym ctrl+space exec /home/mkc/dot-files/linux-post-install/setup/distro/arch/wm/i3/scripts/rofi_toggle.sh
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
