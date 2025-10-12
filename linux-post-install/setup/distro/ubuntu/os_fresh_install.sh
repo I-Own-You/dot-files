@@ -9,7 +9,7 @@ git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
 echo  "[*] Install apt packages..."
-sudo apt install git zsh curl unzip unrar unzip keepassxc vlc syncthing dconf-editor xclip
+sudo apt install git zsh curl unrar unzip keepassxc vlc syncthing dconf-editor xclip xfce4-clipman
 
 echo  "[*] Install packages from source..."
 git clone https://github.com/rvaiya/keyd "$HOME/from_source/keyd"
@@ -33,8 +33,7 @@ ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
 #ln -sf "$HOME/dot-files/linux-styling/wm/i3" "$HOME/.config/i3"
 #ln -sf "$HOME/dot-files/linux-styling/compositors/picom" "$HOME/.config/picom"
-#ln -sf "$HOME/dot-files/linux-styling/launchers/rofi" "$HOME/.config/rofi" # if this does not work, go to their github, grab the repo, use ./setup.sh and customize .config/rofi
-
+ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/launchers/rofi" "$HOME/.config/rofi" # if this does not work, go to their github, grab the repo, use ./setup.sh and customize .config/rofi
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 echo "[*] Install apps from shop(usually flatpak)..."
