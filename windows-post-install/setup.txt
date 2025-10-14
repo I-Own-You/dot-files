@@ -1,11 +1,13 @@
+# update app installer in microsoft store if winget doesnt work inside cli
+
 # powershell 7:
 winget install --id Microsoft.Powershell --source winget
 
 # cli packages
+winget install --id=Git.Git -e
 winget install --id=Microsoft.WindowsTerminal -e
 winget install --id=ajeetdsouza.zoxide -e
 winget install --id=junegunn.fzf -e
-winget install --id=Git.Git -e
 winget install --id=Neovim.Neovim -e
 winget install --id=sxyazi.yazi -e
 winget install --id=eza-community.eza -e
@@ -16,44 +18,63 @@ winget install --id=BurntSushi.ripgrep.MSVC -e
 winget install --id=GitHub.cli -e
 winget install --id=GLab.GLab -e
 winget install --id=astral-sh.uv -e
+winget install --id Starship.Starship -e
 ################################################
+winget install --id=Google.Chrome -e
+winget install --id=Microsoft.VisualStudioCode -e
 winget install --id=Telegram.TelegramDesktop -e
 winget install --id=KeePassXCTeam.KeePassXC -e
 winget install --id=AntibodySoftware.WizTree -e
-winget install --id=VoidTools.Everything -e
-winget install --id=Flow-Launher.Flow-Launcher -e
+winget install --id=voidtools.Everything -e
+winget install --id=Flow-Launcher.Flow-Launcher -e
 winget install --id=ShareX.ShareX -e
 winget install --id=VideoLAN.VLC -e
 winget install --id=OBSProject.OBSStudio -e
-winget install --id=JanosMathe.HardDiskSentinel.Standard -e
 winget install --id=FastStone.Viewer -e
 winget install --id=7zip.7zip -e
 winget install --id=Notepad++.Notepad++ -e
 winget install --id=qBittorrent.qBittorrent -e
-winget install --id=Fork.Fork -e
 winget install --id=Discord.Discord -e
 winget install --id=dotPDN.PaintDotNet -e
-winget install --id=Syncthing.Syncthing -e
 winget install --id=DevToys-app.DevToys -e
 ################################################
 winget install --id=GoLang.Go -e
 winget install --id=OpenJS.NodeJS.LTS -e
-#winget install --id=Microsoft.VisualStudio.2022.BuildTools -e # for neovim (gcc), but before install, check if needed
 winget install --id=Python.Python.3.13 -e # add to environment path if not added and points into ms store
+
+# configure app
+flow launcher: make it use eveything backend
 
 # in case you need to deblock script (erro appears that you cannot execute bla bla)
 Unblock-File -Path "$PROFILE"
 # Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 # Get-ExecutionPolicy -Scope CurrentUser
 
-# flow launcher configure it and also to use Everything app
+# Create default folders
+mkdir "$env:USERPROFILE\sync_files"
+mkdir "$env:USERPROFILE\Apps"
 
-# git clone nvim into C:\Users\Idkwh\AppData\Local
-
-# install this for yazi support in terminal
-winget install Gyan.FFmpeg jqlang.jq oschwartz10612.Poppler ImageMagick.ImageMagick
+# git repo clone
+git clone https://github.com/I-Own-You/dot-files.git $env:USERPROFILE\dot-files
+git clone https://github.com/I-Own-You/nvim.git $env:LOCALAPPDATA\nvim
+git clone https://github.com/I-Own-You/wallpapers.git $env:USERPROFILE\Pictures\wallpapers
 
 # SYMLINKS
-New-Item -ItemType SymbolicLink -Target "C:\Users\Idkwh\dot-files\dot-files\.gitconfig" -Path "C:\Users\Idkwh\.gitconfig" -Force
-New-Item -ItemType SymbolicLink -Target "C:\Users\Idkwh\dot-files\cli-tools\yazi" -Path "C:\Users\Idkwh\AppData\Roaming\yazi" -Force # remove the folder if exists
-New-Item -ItemType SymbolicLink -Target "C:\Users\Idkwh\dot-files\windows-post-install\Microsoft.PowerShell_profile.ps1" -Path "C:\Users\Idkwh\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -Force # remove the folder if exists
+New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\dot-files\dot-files\.gitconfig" -Path "C:\Users\Idkwh\.gitconfig" -Force
+New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\dot-files\cli-tools\yazi" -Path "C:\Users\Idkwh\AppData\Roaming\yazi" -Force # remove the folder if exists
+New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\dot-files\windows-post-install\Microsoft.PowerShell_profile.ps1" -Path "C:\Users\Idkwh\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -Force # remove the folder if exists
+
+# apps outisde winget package to install
+https://github.com/Bill-Stewart/SyncthingWindowsSetup/releases/
+
+# setup git
+ssh-keygen -t ed25519 -C "your_email@example.com"
+Get-Service ssh-agent | Set-Service -StartupType Automatic
+Start-Service ssh-agent
+ssh-add $env:USERPROFILE\.ssh\id_ed25519
+cat $env:USERPROFILE\.ssh\id_ed25519.pub
+ssh -T git@gitlab.com
+ssh -T git@github.com
+
+# if you ever need to check ssd life:
+winget install --id=JanosMathe.HardDiskSentinel.Standard -e
