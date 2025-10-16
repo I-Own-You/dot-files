@@ -8,5 +8,5 @@
  **/
 
 * {
-    font: "CommitMono 15";
+    font: "JetBrainsMono 15";
 }

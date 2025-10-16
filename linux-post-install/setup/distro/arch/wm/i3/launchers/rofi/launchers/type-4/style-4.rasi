@@ -18,8 +18,8 @@ configuration {
 	drun-display-format:        "{icon}{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 	window-format:              "{w} · {c} · {t}";
     
-    kb-accept-entry: "Return,ctrl+space";
     kb-row-select:              "";
+    kb-cancel:                  "Escape,Ctrl+space";
     // rofi -list-keybindings // in case you need to see what conflicts
 }
 
