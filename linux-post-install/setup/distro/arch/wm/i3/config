@@ -2,6 +2,7 @@
 #           Variables
 # ─────────────────────────────────────────────────────────────────────────────────────────────── #
 set $mod Mod4
+set $alt Mod1
 set $term wezterm
 set $ws1 "1"
 set $ws2 "2"
@@ -109,19 +110,19 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-bindsym ctrl+Mod1+period move container to workspace next
-bindsym ctrl+Mod1+comma move container to workspace prev
+bindsym Shift+$mod+period move container to workspace next
+bindsym Shift+$mod+comma move container to workspace prev
 
-bindsym ctrl+Mod1+1 move container to workspace number $ws1; workspace $ws1
-bindsym ctrl+Mod1+2 move container to workspace number $ws2; workspace $ws2
-bindsym ctrl+Mod1+3 move container to workspace number $ws3; workspace $ws3
-bindsym ctrl+Mod1+4 move container to workspace number $ws4; workspace $ws4
-bindsym ctrl+Mod1+5 move container to workspace number $ws5; workspace $ws5
-bindsym ctrl+Mod1+6 move container to workspace number $ws6; workspace $ws6
-bindsym ctrl+Mod1+7 move container to workspace number $ws7; workspace $ws7
-bindsym ctrl+Mod1+8 move container to workspace number $ws8; workspace $ws8
-bindsym ctrl+Mod1+9 move container to workspace number $ws9; workspace $ws9
-bindsym ctrl+Mod1+0 move container to workspace number $ws10; workspace $ws10
+bindsym Shift+$mod+1 move container to workspace number $ws1; workspace $ws1
+bindsym Shift+$mod+2 move container to workspace number $ws2; workspace $ws2
+bindsym Shift+$mod+3 move container to workspace number $ws3; workspace $ws3
+bindsym Shift+$mod+4 move container to workspace number $ws4; workspace $ws4
+bindsym Shift+$mod+5 move container to workspace number $ws5; workspace $ws5
+bindsym Shift+$mod+6 move container to workspace number $ws6; workspace $ws6
+bindsym Shift+$mod+7 move container to workspace number $ws7; workspace $ws7
+bindsym Shift+$mod+8 move container to workspace number $ws8; workspace $ws8
+bindsym Shift+$mod+9 move container to workspace number $ws9; workspace $ws9
+bindsym Shift+$mod+0 move container to workspace number $ws10; workspace $ws10
 
 bindsym $mod+Delete exec "sleep 0.1 && i3lock --blur 5"
 
@@ -159,6 +160,10 @@ mode "focus_windows_mode" {
     bindsym l focus right
     bindsym j focus down
     bindsym k focus up
+    bindsym $mod+h focus left
+    bindsym $mod+l focus right
+    bindsym $mod+j focus down
+    bindsym $mod+k focus up
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -169,6 +174,10 @@ mode "resize_windows_mode" {
     bindsym l resize grow width 5 px or 5 ppt
     bindsym j resize grow height 5 px or 5 ppt
     bindsym k resize shrink height 5 px or 5 ppt
+    bindsym $mod+h resize shrink width 5 px or 5 ppt
+    bindsym $mod+l resize grow width 5 px or 5 ppt
+    bindsym $mod+j resize grow height 5 px or 5 ppt
+    bindsym $mod+k resize shrink height 5 px or 5 ppt
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -179,6 +188,10 @@ mode "move_windows_mode" {
     bindsym l move right
     bindsym j move down
     bindsym k move up
+    bindsym $mod+h move left
+    bindsym $mod+l move right
+    bindsym $mod+j move down
+    bindsym $mod+k move up
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -188,18 +201,20 @@ mode "layout_change_mode" {
     # bindsym h split h
     # bindsym v split v
     bindsym t split toggle
+    bindsym $mod+t split toggle
 
     bindsym x layout stacking
     bindsym v layout tabbed
     bindsym s layout toggle split
+    bindsym $mod+x layout stacking
+    bindsym $mod+v layout tabbed
+    bindsym $mod+s layout toggle split
 
     bindsym $mod+f floating toggle
     bindsym Shift+f focus mode_toggle
 
     bindsym f fullscreen toggle
-    
     bindsym p sticky toggle
-
     bindsym a focus parent
 
     bindsym Return mode "default"
@@ -210,6 +225,9 @@ mode "music_actions_mode" {
     bindsym k exec playerctl play-pause
     bindsym l exec playerctl next
     bindsym h exec playerctl previous
+    bindsym $mod+k exec playerctl play-pause
+    bindsym $mod+l exec playerctl next
+    bindsym $mod+h exec playerctl previous
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
