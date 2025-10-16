@@ -16,7 +16,7 @@ function module.apply_to_config(config)
 	config.show_new_tab_button_in_tab_bar = false
 	config.show_tab_index_in_tab_bar = false
 
-	config.font = wezterm.font("CommitMono")
+	config.font = wezterm.font("JetBrainsMono")
 	config.font_size = 16
 	config.command_palette_font_size = 20
 
