@@ -19,7 +19,7 @@ configuration {
 	window-format:              "{w} · {c} · {t}";
     
     kb-row-select:              "";
-    kb-cancel:                  "Escape,Ctrl+space";
+    kb-cancel:                  "Escape,Alt+space";
     // rofi -list-keybindings // in case you need to see what conflicts
 }
 
