@@ -13,6 +13,8 @@ echo  "[*] Install pacman packages..."
 sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv btop udiskie udisks2
 # desktop
 sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita flameshot blueman copyq
+# styles
+sudo pacman -S lxappearance qt5ct qt6ct kvantum kvantum-qt5 mint-themes cachyos/ant-dracula-kvantum-theme-git
 
 echo  "[*] Install aur packages..."
 paru google-chrome devtoys xnviewmp
@@ -61,3 +63,5 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 ssh -T git@gitlab.com
 ssh -T git@github.com
+
+# swappness set to 10
