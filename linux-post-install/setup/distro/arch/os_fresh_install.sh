@@ -10,7 +10,7 @@ git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers
 
 echo  "[*] Install pacman packages..."
 # cli
-sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv btop udiskie udisks2
+sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv btop udiskie udisks2 playerctl
 # desktop
 sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita flameshot blueman copyq
 # styles
