@@ -64,8 +64,6 @@
     {
         "context": "Editor && vim_mode == normal",
         "bindings": {
-            "space v v": "pane::SplitRight",
-            "space x x": "pane::SplitDown",
             "space x t": "workspace::CopyPath",
             "space e": "project_panel::ToggleFocus",
             "space g c": "git::Commit",
@@ -114,20 +112,9 @@
         }
     },
     {
-        "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
-        "bindings": {
-            "ctrl-j": "workspace::ActivatePaneDown",
-            "ctrl-k": "workspace::ActivatePaneUp",
-            "ctrl-h": "workspace::ActivatePaneLeft",
-            "ctrl-l": "workspace::ActivatePaneRight"
-        }
-    },
-    {
         "context": "VimControl && !menu",
         "bindings": {
             "q": null,
-            "ctrl-[": "vim::NextMethodStart",
-            "ctrl-]": "vim::PreviousMethodStart",
             "ctrl-e": [
                 "workspace::SendKeystrokes",
                 "ctrl-e ctrl-e ctrl-e ctrl-e ctrl-e"
@@ -170,8 +157,11 @@
             "x": "project_panel::Cut",
             "y": "project_panel::Copy",
             "p": "project_panel::Paste",
+            "o": "project_panel::OpenPermanent",
+            "s": "project_panel::OpenSplitHorizontal",
             "space x t": "workspace::CopyPath",
             "shift-d": ["project_panel::Trash", { "skip_prompt": false }],
+            "shift-s": "workspace::OpenWithSystem",
             "z M": "project_panel::CollapseAllEntries"
         }
     },
