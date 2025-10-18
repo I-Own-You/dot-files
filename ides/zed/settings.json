@@ -66,6 +66,35 @@
                     "rules": ["import/order"]
                 }
             }
+        },
+        "gopls": {
+            "initialization_options": {
+                // "directoryFilters": ["-**/node_modules", "-**/.git"],
+                // "formatting.gofumpt": true,
+                "symbolScope": "workspace",
+                // "staticcheck": true,
+                // "templateExtensions": ["tmpl"],
+                // "experimentalPostfixCompletions": true,
+                "analyses": {
+                    "nilness": true,
+                    "unusedparams": true,
+                    "unusedvariable": true,
+                    "unusedwrite": true,
+                    "useany": true
+                }
+                // "codelenses": {
+                //     "gc_details": true
+                // },
+                // "hints": {
+                //     "assignVariableTypes": true,
+                //     "compositeLiteralFields": true,
+                //     "compositeLiteralTypes": true,
+                //     "constantValues": true,
+                //     "functionTypeParameters": true,
+                //     "parameterNames": true,
+                //     "rangeVariableTypes": true
+                // }
+            }
         }
     },
     "languages": {
