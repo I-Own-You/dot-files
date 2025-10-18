@@ -2,6 +2,12 @@
     // non vim keybindings
     // terminal
     {
+        "bindings": {
+            "ctrl-n": "menu::SelectNext",
+            "ctrl-p": "menu::SelectPrevious"
+        }
+    },
+    {
         "context": "Workspace",
         "bindings": {
             "alt-t": "terminal_panel::ToggleFocus"
@@ -16,8 +22,8 @@
     {
         "context": "VimControl && !menu",
         "bindings": {
-            // "n": ["workspace::SendKeystrokes", "n z z"],
-            // "N": ["workspace::SendKeystrokes", "N z z"]
+            "n": ["workspace::SendKeystrokes", "n z z"],
+            "N": ["workspace::SendKeystrokes", "N z z"]
         }
     },
     {
@@ -35,12 +41,6 @@
         }
     },
     {
-        "context": "vim_mode == normal || vim_mode == visual",
-        "bindings": {
-            ";": "command_palette::Toggle"
-        }
-    },
-    {
         // only while an editor has focus and you’re in Normal or Visual mode
         "context": "Editor && (vim_mode == normal || vim_mode == visual)",
         "bindings": {
@@ -50,7 +50,9 @@
             "space r b b": "git::RestoreFile",
             "space s b": "git::StageAll",
             "space r b i": "git::UnstageAll",
-            "space r h": "git::Restore"
+            "space r h": "git::Restore",
+            "space g b b": "git::Switch",
+            "space g i d": "git::Diff"
         }
     },
     {
@@ -71,8 +73,6 @@
             "space b l": "git::Blame",
             "space m t": "git_panel::ToggleFocus",
             "space g b b": "git::Branch",
-            // "g s": "outline::Toggle",
-            // "g S": "project_symbols::Toggle",
             "space k a": "editor::ToggleCodeActions",
             "space l w": "diagnostics::Deploy",
             "space space": "pane::DeploySearch",
@@ -80,34 +80,21 @@
             "alt-shift-l": "vim::ResizePaneRight",
             "alt-shift-j": "vim::ResizePaneDown",
             "alt-shift-k": "vim::ResizePaneUp",
-            "ctrl-space h": "workspace::SwapPaneLeft",
-            "ctrl-space l": "workspace::SwapPaneRight",
-            "ctrl-space j": "workspace::SwapPaneDown",
-            "ctrl-space k": "workspace::SwapPaneUp",
             "g r": "editor::FindAllReferences",
-            "g I": "editor::GoToImplementation",
+            "g i": "editor::GoToImplementation",
             "g Y": "editor::GoToTypeDefinition",
             "g D": "editor::GoToDeclaration",
             "g d": "editor::GoToDefinition",
-            // "space r e": "editor::Rename", // c-d now
-            // "] d": "editor::GoToDiagnostic",
-            // "[ d": "editor::GoToPreviousDiagnostic",
+            "space r e": "editor::Rename",
             "space l s": "editor::ShowSignatureHelp",
             "ctrl-/": "workspace::ToggleZoom"
-        }
-    },
-    {
-        "context": "!ContextEditor > Editor && mode == full",
-        "bindings": {
-            "alt-n": "editor::GoToHunk",
-            "alt-p": "editor::GoToPreviousHunk"
         }
     },
     {
         "context": "Editor && vim_mode == insert",
         "bindings": {
             "j k": ["workspace::SendKeystrokes", "escape"],
-            "ctrl-l": "editor::ShowSignatureHelp",
+            "ctrl-s": "editor::ShowSignatureHelp",
             "ctrl-e": "editor::LineDown",
             "ctrl-y": "editor::LineUp"
         }
@@ -116,9 +103,7 @@
         "context": "Editor && vim_mode == insert && showing_completions || (Editor && showing_code_actions)",
         "bindings": {
             "ctrl-e": "editor::Cancel",
-            "ctrl-c": "editor::Cancel",
-            "tab": "editor::ContextMenuNext",
-            "shift-tab": "editor::ContextMenuPrevious"
+            "ctrl-c": "editor::Cancel"
         }
     },
     {
@@ -141,8 +126,6 @@
         "context": "VimControl && !menu",
         "bindings": {
             "q": null,
-            "tab": "pane::ActivateNextItem",
-            "shift-tab": "pane::ActivatePreviousItem",
             "ctrl-[": "vim::NextMethodStart",
             "ctrl-]": "vim::PreviousMethodStart",
             "ctrl-e": [
@@ -179,7 +162,6 @@
         "context": "ProjectPanel && not_editing",
         "bindings": {
             "q": "workspace::ToggleLeftDock",
-            ";": "command_palette::Toggle",
             "f": "project_panel::NewFile",
             "space e": "project_panel::ToggleFocus",
             "r": "project_panel::Rename",

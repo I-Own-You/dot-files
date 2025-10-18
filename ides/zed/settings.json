@@ -1,21 +1,21 @@
 {
     "icon_theme": "Material Icon Theme",
     "features": {
-        "edit_prediction_provider": "none"
+        "edit_prediction_provider": "zed"
     },
     "disable_ai": true,
     // ui related
     "ui_font_size": 17,
     "ui_font_weight": 300,
-    "ui_font_family": "CommitMono",
-    "buffer_font_size": 21,
+    "ui_font_family": "JetBrains Mono",
+    "buffer_font_size": 19,
     "buffer_font_weight": 300,
-    "buffer_font_family": "CommitMono",
+    "buffer_font_family": "JetBrains Mono",
     "buffer_line_height": {
-        "custom": 1.7
+        "custom": 1.2
     },
     "theme": {
-        "mode": "system",
+        "mode": "dark",
         "light": "One Light",
         "dark": "One Dark"
     },
@@ -24,54 +24,40 @@
     "file_finder": {
         "modal_max_width": "large"
     },
+    "relative_line_numbers": true,
     "preferred_line_length": 80,
     "show_whitespaces": "selection",
     "soft_wrap": "none",
     "tab_size": 4,
     "unnecessary_code_fade": 0.3,
-    // telemtetry
+    "active_pane_modifiers": {
+        "border_size": 3
+    },
     "telemetry": {
         "diagnostics": false,
         "metrics": false
     },
     // extensions
-    "auto_install_extensions": {},
+    "auto_install_extensions": {
+        "html": true,
+        "material-icon-theme": true
+    },
     // save
     "autosave": "off",
     "ensure_final_newline_on_save": true,
     "remove_trailing_whitespace_on_save": true,
-    // format
-    "format_on_save": null,
-    // you can also perform format with custom commands
-    // you can also use more than 1 formatter consecutively
-    // https://zed.dev/docs/configuring-zed#formatter
-    // tip: this is the default formatter for eveyrhting, so better setup formatters for each
-    // kind of filetype with "languages" option.
-    // it also has code_actions inside, but anyway better to setup for each language separately.
+    "format_on_save": "on",
     "formatter": "auto",
-    // sessioin restoration
-    // "restore_on_startup": "last_session",
-    // updates
     "auto_update": true,
-    // completions
-    // "inline_completions": {
-    // "disabled_globs": [".env"]
-    // },
-    // "show_completions_on_input": true,
-    // "show_completion_documentation": true,
-    // "show_inline_completions": true,
     // lsp settings
     "enable_language_server": true,
     "lsp_highlight_debounce": 999999999999, // workaround to disable highlight of every same word
     // lsp setup
     "lsp": {
         "typescript-language-server": {
-            "initialization_options": {
-                // "preferences": {
-                //     "strictNullChecks": true,
-                //     "target": "ES2020"
-                // }
-            },
+            // this setting is for startup of lsp, so a restart is needed
+            "initialization_options": {},
+            // this setting can change lsp at runtime without restart
             "settings": {}
         },
         "eslint": {
@@ -85,81 +71,54 @@
     "languages": {
         "JavaScript": {
             "enable_language_server": true,
-            "format_on_save": "on",
-            "formatter": "prettier",
-            // "code_actions_on_format": {
-            //     "source.fixAll.eslint": true
-            // }
+            "formatter": [
+                "prettier"
+                // { "code_action": "source.fixAll.eslint" },
+                // { "code_action": "source.organizeImports" }
+            ],
             "tab_size": 4
         },
         "TypeScript": {
             "enable_language_server": true,
-            "format_on_save": "on",
-            "formatter": "prettier",
-            // "code_actions_on_format": {
-            //     "source.fixAll.eslint": true
-            // }
+            "formatter": [
+                "prettier"
+                // { "code_action": "source.fixAll.eslint" },
+                // { "code_action": "source.organizeImports" }
+            ],
             "tab_size": 4
         },
         "Python": {
             "enable_language_server": true,
+            "formatter": "language_server",
             "language_servers": ["pyright"],
             "tab_size": 4
         },
         "HTML": {
             "enable_language_server": true,
-            "formatter": "prettier",
+            "formatter": [
+                "prettier"
+                // { "code_action": "source.fixAll.eslint" },
+                // { "code_action": "source.organizeImports" }
+            ],
             "tab_size": 4
         },
         "Go": {
             "enable_language_server": true,
+            "formatter": "language_server",
             "tab_size": 4
         }
     },
-    // editor scrollbar
-    // "scrollbar": {
-    //     "show": "auto",
-    //     "cursors": true,
-    //     "git_diff": true,
-    //     "search_results": true,
-    //     "selected_symbol": true,
-    //     "diagnostics": true,
-    //     "axes": {
-    //         "horizontal": true,
-    //         "vertical": true
-    //     }
-    // },
-    // editor tab bar
-    "tab_bar": {
-        // "show": true,
-        "show_nav_history_buttons": false
+    "jsx_tag_auto_close": {
+        "enabled": true
     },
-    // editor tabs (all tabs, not the tab bar where tabs are placed)
-    // "tabs": {
-    //     "close_position": "right",
-    //     "file_icons": false,
-    //     "git_status": false,
-    //     "activate_on_close": "history",
-    //     "always_show_close_button": false
-    // },
-    // "preview_tabs": {},
-    // editor toolbar
-    // "toolbar": {
-    //     "breadcrumbs": true,
-    //     "quick_actions": true
-    // },
-    // automatically close matching (, [, {, ', "
-    // "use_autoclose": true,
-    // "always_treat_brackets_as_autoclosed": false,
-    // search
-    // "search": {
-    //   "case_sensitive": false,
-    //   "include_ignored": false,
-    //   "regex": false,
-    //   "whole_word": false
-    // },
-    // exclude files
-    // skipped during files scan, files search, hidden from project file tree
+    "linked_edits": true,
+    "scrollbar": {
+        "show": "never"
+    },
+    "tab_bar": {
+        "show": false
+    },
+    "extend_comment_on_newline": false,
     "file_scan_exclusions": [
         // default settings are needed because if i specify without the default settings,
         // it will overwrite them.
@@ -175,127 +134,73 @@
         // my files
         "**/.node_modules"
     ],
-    // file types
-    // you can change its interpreted extensions
+    "file_scan_inclusions": [".env*"],
     // "file_types": {
-    //   "C++": ["c"],
-    //   "TOML": ["MyLockFile"],
     //   "Dockerfile": ["Dockerfile*"]
     // },
-    // git
     "git": {
-        // "git_gutter": "tracked_files",
-        // "gutter_debounce": null,
         "inline_blame": {
             "enabled": false,
-            // "delay_ms": 0,
-            // "min_column": 0,
             "show_commit_summary": true
         }
     },
-    // indentation
     "indent_guides": {
         "enabled": false,
-        // "active_line_width": 1,
-        // "background_coloring": "disabled",
-        // "line_width": 1,
         "coloring": "indent_aware"
     },
-    // keymaps
     "base_keymap": "VSCode",
-    // vim
     "vim_mode": true,
     "vim": {
-        // "custom_digraphs": {},
-        // "highlight_on_yank_duration": 0,
-        // "toggle_relative_line_numbers": true,
         "use_system_clipboard": "always"
-        // "use_multiline_find": false,
-        // "use_smartcase_find": false,
     },
     "hover_popover_enabled": false,
-    // inlay hints
-    // additional settings may require in "lsp"
-    // "inlay_hints": {
-    // "edit_debounce_ms": 700,
-    // "enabled": false,
-    // "scroll_debounce_ms": 50,
-    // "show_background": false,
-    // "show_other_hints": true,
-    // "show_parameter_hints": true,
-    // "show_type_hints": true
-    // },
-    // terminal: https://zed.dev/docs/configuring-zed#terminal
-    // "terminal": {},
-    // project panel (file tree) https://zed.dev/docs/configuring-zed#project-panel
     "project_panel": {
-        // "auto_fold_dirs": true,
-        // "auto_reveal_entries": true,
-        // "button": true,
-        // "default_width": 240,
-        // "dock": "left",
-        // "file_icons": true,
-        // "folder_icons": true,
-        // "git_status": true,
         "indent_guides": {
             "show": "never"
         },
-        // "indent_size": 20,
         "scrollbar": {
             "show": "never"
         }
-        // "show_diagnostics": "all"
     },
-    // assistant panel https://zed.dev/docs/configuring-zed#assistant-panel
     "agent": {
         "enabled": false,
         "button": false
-        // "default_height": 320,
-        // "default_width": 640,
-        // "dock": "right",
-        // "enable_experimental_live_diffs": false
-        // "default_model": {
-        //     "model": "",
-        //     "provider": ""
-        // },
-        // "inline_alternatives": [
-        //     {
-        //         "model": "",
-        //         "provider": ""
-        //     }
-        // ]
     },
-    // outline panel (symbols) https://zed.dev/docs/configuring-zed#outline-panel
     "outline_panel": {
-        // "auto_fold_dirs": true,
-        // "auto_reveal_entries": true,
-        // "button": true,
         "default_width": 280,
-        // "dock": "left",
-        // "file_icons": true,
-        // "folder_icons": true,
         "git_status": false,
         "indent_guides": {
             "show": "never"
         },
-        // "indent_size": 20,
         "scrollbar": {
             "show": "never"
         }
     },
-    // calls https://zed.dev/docs/configuring-zed#calls
     "calls": {
         "mute_on_join": true
-        // "share_on_join": false
     },
-    // collab panel(devs of zed)
     "collaboration_panel": {
         "button": false
     },
-    //diagnostics
     "diagnostics": {
         "inline": {
             "enabled": true
         }
+    },
+    "search": {
+        "include_ignored": true,
+        "regex": true
+    },
+    "use_smartcase_search": true,
+    "tasks": {
+        "enabled": true,
+        "variables": {}
     }
+    // "profiles": {
+    //     "presentation": {
+    //         "buffer_font_size": 20,
+    //         "ui_font_size": 18,
+    //         "theme": "One Light"
+    //     }
+    // }
 }
