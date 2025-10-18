@@ -72,18 +72,28 @@
         "JavaScript": {
             "enable_language_server": true,
             "formatter": [
-                "prettier"
-                // { "code_action": "source.fixAll.eslint" },
-                // { "code_action": "source.organizeImports" }
+                {
+                    "external": {
+                        "command": "./node_modules/.bin/prettier",
+                        "arguments": ["--stdin-filepath", "{buffer_path}"]
+                    }
+                },
+                { "code_action": "source.fixAll.eslint" },
+                { "code_action": "source.organizeImports" }
             ],
             "tab_size": 4
         },
         "TypeScript": {
             "enable_language_server": true,
             "formatter": [
-                "prettier"
-                // { "code_action": "source.fixAll.eslint" },
-                // { "code_action": "source.organizeImports" }
+                {
+                    "external": {
+                        "command": "./node_modules/.bin/prettier",
+                        "arguments": ["--stdin-filepath", "{buffer_path}"]
+                    }
+                },
+                { "code_action": "source.fixAll.eslint" },
+                { "code_action": "source.organizeImports" }
             ],
             "tab_size": 4
         },
@@ -96,15 +106,22 @@
         "HTML": {
             "enable_language_server": true,
             "formatter": [
-                "prettier"
-                // { "code_action": "source.fixAll.eslint" },
-                // { "code_action": "source.organizeImports" }
+                {
+                    "external": {
+                        "command": "./node_modules/.bin/prettier",
+                        "arguments": ["--stdin-filepath", "{buffer_path}"]
+                    }
+                },
+                { "code_action": "source.fixAll.eslint" }
             ],
             "tab_size": 4
         },
         "Go": {
             "enable_language_server": true,
-            "formatter": "language_server",
+            "formatter": [
+                { "language_server": { "name": "gopls" } },
+                { "code_action": "source.organizeImports" }
+            ],
             "tab_size": 4
         }
     },
@@ -116,7 +133,9 @@
         "show": "never"
     },
     "tab_bar": {
-        "show": false
+        "show": false,
+        "show_nav_history_buttons": false,
+        "show_tab_bar_buttons": false
     },
     "extend_comment_on_newline": false,
     "file_scan_exclusions": [
