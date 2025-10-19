@@ -58,7 +58,7 @@ bar {
 }
 
 # class                 border      background  text        indicator   child_border
-client.focused          #bf00ff     #bf00ff     #1b1b1b     #bf00ff     #bf00ff
+client.focused          #dddd00     #dddd00     #1b1b1b     #dddd00     #dddd00
 client.focused_inactive #cccccc     #eaeaea     #555555     #cccccc     #cccccc
 client.unfocused        #dddddd     #f5f5f5     #777777     #dddddd     #dddddd
 client.urgent           #ff4500     #ff4500     #ffffff     #ff4500     #ff4500
