@@ -140,6 +140,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
 bindsym Print exec flameshot gui
+bindsym $mod+c exec --no-startup-id xcolor | xclip -selection clipboard
 
 bindsym $mod+f mode "focus_windows_mode"
 bindsym $mod+r mode "resize_windows_mode"

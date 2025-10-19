@@ -14,7 +14,7 @@ sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-de
 # desktop
 sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita flameshot blueman copyq
 # i3
-sudo pacman -S btop udiskie udisks2 playerctl polkit-gnome-authentication-agent gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk
+sudo pacman -S btop udiskie udisks2 playerctl polkit-gnome-authentication-agent gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk xcolor
 # styles for i3
 sudo pacman -S lxappearance qt5ct qt6ct kvantum kvantum-qt5 mint-themes cachyos/ant-dracula-kvantum-theme-git
 
