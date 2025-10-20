@@ -136,11 +136,18 @@
     {
         "context": "Workspace",
         "bindings": {
-            "alt-f": "file_finder::Toggle"
+            "alt-a": "file_finder::Toggle",
+            "alt-f": "tab_switcher::ToggleAll"
         }
     },
     {
         "context": "FileFinder",
+        "bindings": {
+            "alt-a": "menu::Cancel"
+        }
+    },
+    {
+        "context": "TabSwitcher",
         "bindings": {
             "alt-f": "menu::Cancel"
         }
