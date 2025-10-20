@@ -35,6 +35,7 @@ ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3" "$HOME/.conf
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/compositors/picom" "$HOME/.config/picom"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/launchers/rofi" "$HOME/.config/rofi"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/status-bars/i3blocks" "$HOME/.config/i3blocks"
+ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/styling/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 echo "[*] Drivers in case you need the..."
