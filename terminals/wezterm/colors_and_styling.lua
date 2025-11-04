@@ -8,7 +8,7 @@ function module.apply_to_config(config)
 
 	config.color_scheme = "Everblush (Gogh)"
 
-	-- config.window_decorations = "NONE"
+	config.window_decorations = "NONE"
 
 	config.hide_tab_bar_if_only_one_tab = true
 	config.tab_bar_at_bottom = true
