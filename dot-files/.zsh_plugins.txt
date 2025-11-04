@@ -7,6 +7,6 @@ zsh-users/zsh-autosuggestions
 redxtech/zsh-kitty 
 zsh-users/zsh-completions 
 wfxr/forgit # delta, bat, exa need to install on linux 
-jimhester/per-directory-history 
+#jimhester/per-directory-history 
 Aloxaf/fzf-tab #zstyle ':completion:*:descriptions' format '[%d]' after install, if doesnt work, look at zsh-ls-colors #zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS) after install, to force default from zshrc
 #jeffreytse/zsh-vi-mode 
