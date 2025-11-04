@@ -40,7 +40,7 @@
     "auto_install_extensions": {
         "html": true,
         "material-icon-theme": true,
-        "spai-zero-them": true,
+        "spai-zero-theme": true,
         "clean-vscode-icons": true
     },
     // save
