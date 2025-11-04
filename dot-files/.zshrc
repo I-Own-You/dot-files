@@ -23,6 +23,9 @@ alias szsh=". ~/dot-files/dot-files/.zshrc"
 alias qq="shutdown now"
 alias qr="shutdown -r now"
 
+# pacman 
+alias pac="sudo pacman -S "
+
 # custom vars
 alias l="eza"
 alias b="cd .."
