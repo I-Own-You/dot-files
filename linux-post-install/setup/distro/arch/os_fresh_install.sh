@@ -12,7 +12,7 @@ echo  "[*] Install pacman packages..."
 # cli
 sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv
 # desktop
-sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita flameshot blueman copyq
+sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita
 # i3
 sudo pacman -S btop udiskie udisks2 playerctl polkit-gnome-authentication-agent gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk xcolor
 # styles for i3
