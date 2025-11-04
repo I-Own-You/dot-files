@@ -1,1 +1,3 @@
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+
+create shortcut in gnome: gradia --screenshot=INTERACTIVE

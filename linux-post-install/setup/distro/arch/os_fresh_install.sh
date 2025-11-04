@@ -19,7 +19,7 @@ sudo pacman -S btop udiskie udisks2 playerctl polkit-gnome-authentication-agent 
 sudo pacman -S lxappearance qt5ct qt6ct kvantum kvantum-qt5 mint-themes cachyos/ant-dracula-kvantum-theme-git
 
 echo  "[*] Install aur packages..."
-paru google-chrome devtoys xnviewmp
+paru google-chrome devtoys xnviewmp gradia
 
 echo  "[*] Download antidote zsh plugin..."
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
