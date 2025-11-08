@@ -40,8 +40,9 @@
     "auto_install_extensions": {
         "html": true,
         "material-icon-theme": true,
+        "clean-vscode-icons": true,
         "spai-zero-theme": true,
-        "clean-vscode-icons": true
+        "golangci-lint": true
     },
     // save
     "autosave": "off",
@@ -96,6 +97,18 @@
                 //     "rangeVariableTypes": true
                 // }
             }
+        },
+        "golangci-lint": {
+            "initialization_options": {
+                "command": [
+                    "golangci-lint",
+                    "run",
+                    "--output.json.path",
+                    "stdout",
+                    "--show-stats=false",
+                    "--output.text.path="
+                ]
+            }
         }
     },
     "languages": {
@@ -148,6 +161,7 @@
         },
         "Go": {
             "enable_language_server": true,
+            "language_servers": ["gopls", "golangci-lint"],
             "formatter": [
                 { "language_server": { "name": "gopls" } },
                 { "code_action": "source.organizeImports" }
