@@ -1,3 +1,6 @@
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 
 create shortcut in gnome: gradia --screenshot=INTERACTIVE
+
+if styling qt apps with whitesur doesnt give you mac buttons, install the dracula purple from i3 style and then
+put whitesur agaiin
