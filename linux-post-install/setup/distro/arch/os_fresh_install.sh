@@ -52,6 +52,7 @@ sudo systemctl enable --now keyd
 
 echo "[*] Install apps from off sites..."
 # telegram
+# spitcitify
 
 echo "[*] Side packages in case you need them..."
 # easyeffects (plugins for pipewire apps, audio manager)
