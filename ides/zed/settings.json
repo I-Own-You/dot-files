@@ -42,7 +42,8 @@
         "material-icon-theme": true,
         "clean-vscode-icons": true,
         "spai-zero-theme": true,
-        "golangci-lint": true
+        "golangci-lint": true,
+        "vue": true
     },
     // save
     "autosave": "off",
@@ -167,6 +168,17 @@
                 { "code_action": "source.organizeImports" }
             ],
             "tab_size": 4
+        },
+        "Vue.js": {
+            "formatter": [
+                {
+                    "external": {
+                        "command": "./node_modules/.bin/prettier",
+                        "arguments": ["--stdin-filepath", "{buffer_path}"]
+                    }
+                },
+                { "code_action": "source.fixAll.eslint" }
+            ]
         }
     },
     "jsx_tag_auto_close": {
