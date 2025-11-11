@@ -8,3 +8,4 @@ https://extensions.gnome.org/extension/3396/color-picker/
 https://extensions.gnome.org/extension/16/auto-move-windows/
 https://extensions.gnome.org/extension/307/dash-to-dock/
 https://extensions.gnome.org/extension/779/clipboard-indicator/
+https://extensions.gnome.org/extension/7406/spotify-controls/
