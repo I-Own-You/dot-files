@@ -128,7 +128,6 @@ function module.apply_to_config(config)
 			{ key = "#", mods = "SHIFT", action = action.ClearScrollback("ScrollbackOnly") },
 
 			{ key = "f", mods = "", action = action.Search("CurrentSelectionOrEmptyString") },
-			{ key = "s", mods = "", action = action.QuickSelect },
 			{ key = "x", mods = "CTRL", action = action.ActivateCopyMode },
 
 			{ key = "k", mods = "ALT", action = action.ScrollByPage(-1) },
