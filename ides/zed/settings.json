@@ -230,6 +230,7 @@
     },
     "hover_popover_enabled": false,
     "project_panel": {
+        "hide_root": true,
         "indent_guides": {
             "show": "never"
         },
