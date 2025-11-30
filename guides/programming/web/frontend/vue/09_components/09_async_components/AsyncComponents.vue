@@ -29,6 +29,9 @@ const AsyncComp2 = defineAsyncComponent({
 // app.component('MyComponent', defineAsyncComponent(() =>
 //   import('./components/MyComponent.vue')
 // ))
+
+// this component is called async since it has defineAsyncComponent(),
+// but if you have top level await, it will automatically become an async component aswell
 </script>
 
 <template>

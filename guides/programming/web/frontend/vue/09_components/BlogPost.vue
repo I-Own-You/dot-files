@@ -8,7 +8,7 @@ import { computed, ref, watch } from "vue";
 // 3. it also returns an object which contains all props in case you want myProp.propName1, myProp.propNameN
 defineProps(["title"]);
 // you can also annotate props with type in typescript:
-defineProps<{ title?: string }>();
+defineProps<{ title?: string }>(); // or define somewehre an interface and put it instead
 // you can also destructure, give default value, any ts thing...
 const { title = "hello" } = defineProps<{ title?: string }>();
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-// there is a way to trigger a callback when something reactive changes so, a side effect using watch
+// there is a way to trigger a callback when something reactive is read(not written to), a side effect using watch
+// note: in a watcher/watchEffect, only when you read a reactive value it is tracked, not when you write to it
 import {
     onWatcherCleanup,
     reactive,
@@ -44,7 +45,7 @@ watch(
     () => x.value + y.value,
     (sum) => {
         console.log(`sum of x + y is: ${sum}`);
-    },
+    }
 );
 // array of multiple sources
 watch([x, () => y.value], ([newX, newY]) => {
@@ -62,7 +63,7 @@ watch(
     () => obj,
     () => {
         // fires only when obj is replaced
-    },
+    }
 );
 watch(
     () => obj,
@@ -70,7 +71,7 @@ watch(
         // Note: `newValue` will be equal to `oldValue` here
         // *unless* obj has been replaced
     },
-    { deep: true }, // because of this now its deep watch
+    { deep: true } // because of this now its deep watch
     // you can have instead of true, a number which means how many levels to traverse
 );
 
@@ -80,7 +81,7 @@ watch(
     (newValue, oldValue) => {
         // executed immediately, then again when `source` changes
     },
-    { immediate: true }, // because of this, it executes at render then on rerenders
+    { immediate: true } // because of this, it executes at render then on rerenders
 );
 
 // once watcher
@@ -89,7 +90,7 @@ watch(
     (newValue, oldValue) => {
         // when `source` changes, triggers only once
     },
-    { once: true }, // executes only once, when state changes
+    { once: true } // executes only once, when state changes
 );
 obj.count++;
 
@@ -98,7 +99,9 @@ obj.count++;
 //       callback, only dependenies before first "await" will be tracked
 watchEffect(async () => {
     const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${(Math.random() * 10).toFixed()}`,
+        `https://jsonplaceholder.typicode.com/todos/${(
+            Math.random() * 10
+        ).toFixed()}`
     );
     data.value = await response.json();
 });
