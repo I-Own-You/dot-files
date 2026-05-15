@@ -1,8 +1,5 @@
 {
     "icon_theme": "Clean VSCode Icon Theme",
-    "features": {
-        "edit_prediction_provider": "zed"
-    },
     "disable_ai": true,
     // ui related
     "ui_font_size": 17,
@@ -12,30 +9,30 @@
     "buffer_font_weight": 300,
     "buffer_font_family": "CommitMono",
     "buffer_line_height": {
-        "custom": 1.4
+        "custom": 1.4,
     },
     "theme": {
         "mode": "dark",
         "light": "One Light",
-        "dark": "Spai Zero - Space Gray"
+        "dark": "Spai Zero - Space Gray",
     },
     "current_line_highlight": "all",
     "cursor_blink": false,
     "file_finder": {
-        "modal_max_width": "large"
+        "modal_max_width": "large",
     },
-    "relative_line_numbers": true,
+    "relative_line_numbers": "enabled",
     "preferred_line_length": 80,
     "show_whitespaces": "selection",
     "soft_wrap": "none",
     "tab_size": 4,
     "unnecessary_code_fade": 0.3,
     "active_pane_modifiers": {
-        "border_size": 3
+        "border_size": 3,
     },
     "telemetry": {
         "diagnostics": false,
-        "metrics": false
+        "metrics": false,
     },
     "auto_install_extensions": {
         "html": true,
@@ -43,7 +40,7 @@
         "clean-vscode-icons": true,
         "spai-zero-theme": true,
         "golangci-lint": true,
-        "vue": true
+        "vue": true,
     },
     // save
     "autosave": "off",
@@ -56,142 +53,16 @@
     "enable_language_server": true,
     "lsp_highlight_debounce": 999999999999, // workaround to disable highlight of every same word
     // lsp setup
-    "lsp": {
-        "typescript-language-server": {
-            // this setting is for startup of lsp, so a restart is needed
-            "initialization_options": {},
-            // this setting can change lsp at runtime without restart
-            "settings": {}
-        },
-        "eslint": {
-            "settings": {
-                "codeActionOnSave": {
-                    "rules": ["import/order"]
-                }
-            }
-        },
-        "gopls": {
-            "initialization_options": {
-                // "directoryFilters": ["-**/node_modules", "-**/.git"],
-                // "formatting.gofumpt": true,
-                "symbolScope": "workspace",
-                // "staticcheck": true,
-                // "templateExtensions": ["tmpl"],
-                // "experimentalPostfixCompletions": true,
-                "analyses": {
-                    "nilness": true,
-                    "unusedparams": true,
-                    "unusedvariable": true,
-                    "unusedwrite": true,
-                    "useany": true
-                }
-                // "codelenses": {
-                //     "gc_details": true
-                // },
-                // "hints": {
-                //     "assignVariableTypes": true,
-                //     "compositeLiteralFields": true,
-                //     "compositeLiteralTypes": true,
-                //     "constantValues": true,
-                //     "functionTypeParameters": true,
-                //     "parameterNames": true,
-                //     "rangeVariableTypes": true
-                // }
-            }
-        },
-        "golangci-lint": {
-            "initialization_options": {
-                "command": [
-                    "golangci-lint",
-                    "run",
-                    "--output.json.path",
-                    "stdout",
-                    "--show-stats=false",
-                    "--output.text.path="
-                ]
-            }
-        }
-    },
-    "languages": {
-        "JavaScript": {
-            "enable_language_server": true,
-            "formatter": [
-                {
-                    "external": {
-                        "command": "./node_modules/.bin/prettier",
-                        "arguments": ["--stdin-filepath", "{buffer_path}"]
-                    }
-                },
-                { "code_action": "source.fixAll.eslint" },
-                { "code_action": "source.organizeImports" }
-            ],
-            "tab_size": 4
-        },
-        "TypeScript": {
-            "enable_language_server": true,
-            "formatter": [
-                {
-                    "external": {
-                        "command": "./node_modules/.bin/prettier",
-                        "arguments": ["--stdin-filepath", "{buffer_path}"]
-                    }
-                },
-                { "code_action": "source.fixAll.eslint" },
-                { "code_action": "source.organizeImports" }
-            ],
-            "tab_size": 4
-        },
-        "Python": {
-            "enable_language_server": true,
-            "formatter": "language_server",
-            "language_servers": ["pyright"],
-            "tab_size": 4
-        },
-        "HTML": {
-            "enable_language_server": true,
-            "formatter": [
-                {
-                    "external": {
-                        "command": "./node_modules/.bin/prettier",
-                        "arguments": ["--stdin-filepath", "{buffer_path}"]
-                    }
-                },
-                { "code_action": "source.fixAll.eslint" }
-            ],
-            "tab_size": 4
-        },
-        "Go": {
-            "enable_language_server": true,
-            "language_servers": ["gopls", "golangci-lint"],
-            "formatter": [
-                { "language_server": { "name": "gopls" } },
-                { "code_action": "source.organizeImports" }
-            ],
-            "tab_size": 4
-        },
-        "Vue.js": {
-            "formatter": [
-                {
-                    "external": {
-                        "command": "./node_modules/.bin/prettier",
-                        "arguments": ["--stdin-filepath", "{buffer_path}"]
-                    }
-                },
-                { "code_action": "source.fixAll.eslint" }
-            ]
-        }
-    },
-    "jsx_tag_auto_close": {
-        "enabled": true
-    },
+    "lsp": {},
+    "languages": {},
     "linked_edits": true,
     "scrollbar": {
-        "show": "never"
+        "show": "never",
     },
     "tab_bar": {
         "show": false,
         "show_nav_history_buttons": false,
-        "show_tab_bar_buttons": false
+        "show_tab_bar_buttons": false,
     },
     "extend_comment_on_newline": false,
     "file_scan_exclusions": [
@@ -207,7 +78,7 @@
         "**/.classpath",
         "**/.settings",
         // my files
-        "**/.node_modules"
+        "**/.node_modules",
     ],
     "file_scan_inclusions": [".env*"],
     // "file_types": {
@@ -216,62 +87,62 @@
     "git": {
         "inline_blame": {
             "enabled": false,
-            "show_commit_summary": true
-        }
+            "show_commit_summary": true,
+        },
     },
     "indent_guides": {
         "enabled": false,
-        "coloring": "indent_aware"
+        "coloring": "indent_aware",
     },
     "base_keymap": "VSCode",
     "vim_mode": true,
     "vim": {
-        "use_system_clipboard": "always"
+        "use_system_clipboard": "always",
     },
     "hover_popover_enabled": false,
     "project_panel": {
         "hide_root": true,
         "indent_guides": {
-            "show": "never"
+            "show": "never",
         },
         "scrollbar": {
-            "show": "never"
-        }
+            "show": "never",
+        },
     },
     "agent": {
         "enabled": false,
-        "button": false
+        "button": false,
     },
     "outline_panel": {
         "default_width": 280,
         "git_status": false,
         "indent_guides": {
-            "show": "never"
+            "show": "never",
         },
         "scrollbar": {
-            "show": "never"
-        }
+            "show": "never",
+        },
     },
     "calls": {
-        "mute_on_join": true
+        "mute_on_join": true,
     },
     "collaboration_panel": {
-        "button": false
+        "button": false,
     },
     "diagnostics": {
         "inline": {
-            "enabled": true
-        }
+            "enabled": true,
+        },
     },
     "search": {
         "include_ignored": true,
-        "regex": true
+        "regex": true,
     },
     "use_smartcase_search": true,
     "tasks": {
         "enabled": true,
-        "variables": {}
-    }
+        "variables": {},
+    },
     // "profiles": {
     //     "presentation": {
     //         "buffer_font_size": 20,
