@@ -4,18 +4,18 @@
     {
         "bindings": {
             "ctrl-n": "menu::SelectNext",
-            "ctrl-p": "menu::SelectPrevious"
-        }
+            "ctrl-p": "menu::SelectPrevious",
+        },
     },
     {
         "context": "Workspace",
         "bindings": {
-            "alt-t": "terminal_panel::ToggleFocus"
-        }
+            "alt-t": "terminal_panel::ToggleFocus",
+        },
     },
     {
         "context": "Terminal",
-        "bindings": { "alt-t": "terminal_panel::ToggleFocus" }
+        "bindings": { "alt-t": "terminal_panel::ToggleFocus" },
     },
 
     // vim keybindings
@@ -23,22 +23,22 @@
         "context": "VimControl && !menu",
         "bindings": {
             "n": ["workspace::SendKeystrokes", "n z z"],
-            "N": ["workspace::SendKeystrokes", "N z z"]
-        }
+            "N": ["workspace::SendKeystrokes", "N z z"],
+        },
     },
     {
         "context": "vim_mode == normal",
         "bindings": {
             "+": "vim::Increment",
-            "-": "vim::Decrement"
-        }
+            "-": "vim::Decrement",
+        },
     },
     {
         "context": "vim_mode == visual",
         "bindings": {
             ">": "editor::Indent",
-            "<": "editor::Outdent"
-        }
+            "<": "editor::Outdent",
+        },
     },
     {
         // only while an editor has focus and you’re in Normal or Visual mode
@@ -52,14 +52,14 @@
             "space r b i": "git::UnstageAll",
             "space r h": "git::Restore",
             "space g b b": "git::Switch",
-            "space g i d": "git::Diff"
-        }
+            "space g i d": "git::Diff",
+        },
     },
     {
         "context": "GitPanel",
         "bindings": {
-            "q": "git_panel::Close"
-        }
+            "q": "git_panel::Close",
+        },
     },
     {
         "context": "Editor && vim_mode == normal",
@@ -85,8 +85,8 @@
             "g d": "editor::GoToDefinition",
             "space r e": "editor::Rename",
             "space l s": "editor::ShowSignatureHelp",
-            "ctrl-/": "workspace::ToggleZoom"
-        }
+            "ctrl-/": "workspace::ToggleZoom",
+        },
     },
     {
         "context": "Editor && vim_mode == insert",
@@ -94,22 +94,22 @@
             "j k": ["workspace::SendKeystrokes", "escape"],
             "ctrl-s": "editor::ShowSignatureHelp",
             "ctrl-e": "editor::LineDown",
-            "ctrl-y": "editor::LineUp"
-        }
+            "ctrl-y": "editor::LineUp",
+        },
     },
     {
         "context": "Editor && vim_mode == insert && showing_completions || (Editor && showing_code_actions)",
         "bindings": {
             "ctrl-e": "editor::Cancel",
-            "ctrl-c": "editor::Cancel"
-        }
+            "ctrl-c": "editor::Cancel",
+        },
     },
     {
         "context": "Editor && (vim_mode == normal || vim_mode == insert || vim_mode == visual)",
         "bindings": {
             "alt-j": "editor::MoveLineDown",
-            "alt-k": "editor::MoveLineUp"
-        }
+            "alt-k": "editor::MoveLineUp",
+        },
     },
     {
         "context": "VimControl && !menu",
@@ -117,45 +117,45 @@
             "q": null,
             "ctrl-e": [
                 "workspace::SendKeystrokes",
-                "ctrl-e ctrl-e ctrl-e ctrl-e ctrl-e"
+                "ctrl-e ctrl-e ctrl-e ctrl-e ctrl-e",
             ],
             "ctrl-y": [
                 "workspace::SendKeystrokes",
-                "ctrl-y ctrl-y ctrl-y ctrl-y ctrl-y"
-            ]
-        }
+                "ctrl-y ctrl-y ctrl-y ctrl-y ctrl-y",
+            ],
+        },
     },
     {
         "context": "Editor && mode == full && vim_mode == normal",
         "bindings": {
             "space w w": "editor::ToggleSoftWrap",
             "space n h": "buffer_search::Dismiss",
-            "space b o": "pane::CloseOtherItems"
-        }
+            "space b o": "pane::CloseOtherItems",
+        },
     },
     {
         "context": "Workspace",
         "bindings": {
             "alt-a": "file_finder::Toggle",
-            "alt-f": "tab_switcher::ToggleAll"
-        }
+            "alt-f": "tab_switcher::ToggleAll",
+        },
     },
     {
         "context": "FileFinder",
         "bindings": {
-            "alt-a": "menu::Cancel"
-        }
+            "alt-a": "menu::Cancel",
+        },
     },
     {
         "context": "TabSwitcher",
         "bindings": {
-            "alt-f": "menu::Cancel"
-        }
+            "alt-f": "menu::Cancel",
+        },
     },
     {
         "context": "ProjectPanel && not_editing",
         "bindings": {
-            "q": "workspace::ToggleLeftDock",
+            "q": "project_panel::Toggle",
             "f": "project_panel::NewFile",
             "space e": "project_panel::ToggleFocus",
             "r": "project_panel::Rename",
@@ -169,15 +169,15 @@
             "space x t": "workspace::CopyPath",
             "shift-d": ["project_panel::Trash", { "skip_prompt": false }],
             "shift-s": "workspace::OpenWithSystem",
-            "z M": "project_panel::CollapseAllEntries"
-        }
+            "z M": "project_panel::CollapseAllEntries",
+        },
     },
     {
         "context": "vim_mode == insert && showing_signature_help && !showing_completions || (vim_mode == normal && showing_signature_help && !showing_completions)",
         "bindings": {
             "ctrl-k": "editor::SignatureHelpPrevious",
-            "ctrl-j": "editor::SignatureHelpNext"
-        }
+            "ctrl-j": "editor::SignatureHelpNext",
+        },
     },
     {
         "context": "FileFinder || (FileFinder > Picker > Editor) || (FileFinder > Picker > menu)",
@@ -185,7 +185,7 @@
             "ctrl-j": "pane::SplitDown",
             "ctrl-k": "pane::SplitUp",
             "ctrl-h": "pane::SplitLeft",
-            "ctrl-l": "pane::SplitRight"
-        }
-    }
+            "ctrl-l": "pane::SplitRight",
+        },
+    },
 ]
