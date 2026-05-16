@@ -1,4 +1,4 @@
 # do this: ya pkg add yazi-rs/flavors:dracula
 
 [flavor]
-dark = "dracula"
+# dark = "dracula"
