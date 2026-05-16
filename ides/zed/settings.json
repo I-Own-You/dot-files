@@ -54,7 +54,11 @@
     "lsp_highlight_debounce": 999999999999, // workaround to disable highlight of every same word
     // lsp setup
     "lsp": {},
-    "languages": {},
+    "languages": {
+        "C": {
+            "format_on_save": "off",
+        },
+    },
     "linked_edits": true,
     "scrollbar": {
         "show": "never",
