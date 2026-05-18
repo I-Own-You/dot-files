@@ -21,6 +21,9 @@ function module.apply_to_config(config)
 		{ key = "c", mods = "SHIFT|CTRL", action = action.CopyTo("Clipboard") },
 		{ key = "v", mods = "SHIFT|CTRL", action = action.PasteFrom("Clipboard") },
 
+		{ key = "(", mods = "CTRL|SHIFT", action = action.Search("CurrentSelectionOrEmptyString") },
+		{ key = "9", mods = "CTRL|SHIFT", action = action.Search("CurrentSelectionOrEmptyString") },
+
 		{
 			key = "Enter",
 			mods = "ALT",
@@ -41,14 +44,14 @@ function module.apply_to_config(config)
 			{ key = "Enter", mods = "NONE", action = action.CopyMode("PriorMatch") },
 			{ key = "Enter", mods = "SHIFT", action = action.CopyMode("NextMatch") },
 			{ key = "Escape", mods = "NONE", action = action.CopyMode("Close") },
-			{ key = "c", mods = "CTRL", action = action.CopyMode("Close") },
+			-- { key = "c", mods = "CTRL", action = action.CopyMode("Close") },
 			{ key = "n", mods = "CTRL", action = action.CopyMode("NextMatch") },
 			{ key = "p", mods = "CTRL", action = action.CopyMode("PriorMatch") },
 			{ key = "r", mods = "CTRL", action = action.CopyMode("CycleMatchType") },
 			{ key = "w", mods = "CTRL", action = action.CopyMode("ClearPattern") },
 			{ key = "n", mods = "ALT", action = action.CopyMode("PriorMatchPage") },
 			{ key = "p", mods = "ALT", action = action.CopyMode("NextMatchPage") },
-			{ key = "f", mods = "CTRL|SHIFT", action = action.CopyMode("Close") },
+			-- { key = "f", mods = "CTRL|SHIFT", action = action.CopyMode("Close") },
 			{ key = "h", mods = "SHIFT|CTRL", action = wezterm.action.Search({ Regex = "[a-f0-9]{6,}" }) },
 		},
 		copy_mode = {
@@ -127,7 +130,6 @@ function module.apply_to_config(config)
 			{ key = "@", mods = "SHIFT", action = action.ReloadConfiguration },
 			{ key = "#", mods = "SHIFT", action = action.ClearScrollback("ScrollbackOnly") },
 
-			{ key = "f", mods = "", action = action.Search("CurrentSelectionOrEmptyString") },
 			{ key = "x", mods = "CTRL", action = action.ActivateCopyMode },
 
 			{ key = "k", mods = "ALT", action = action.ScrollByPage(-1) },
@@ -141,11 +143,11 @@ function module.apply_to_config(config)
 			{ key = "n", mods = "ALT", action = action.SpawnWindow },
 
 			{ key = "Tab", mods = "CTRL", action = wezterm.action.ShowTabNavigator },
-			{
-				key = "Tab",
-				mods = "CTRL|SHIFT",
-				action = action.ActivateKeyTable({ name = "workspace_actions", one_shot = true }),
-			},
+			-- 	key = "Tab",
+            -- {
+			-- 	mods = "CTRL|SHIFT",
+			-- 	action = action.ActivateKeyTable({ name = "workspace_actions", one_shot = true }),
+			-- },
 			{
 				key = "p",
 				mods = "ALT",
@@ -162,10 +164,10 @@ function module.apply_to_config(config)
 		},
 
 		resize_pane = {
-			{ key = "h", mods = "ALT|SHIFT", action = action.AdjustPaneSize({ "Left", 5 }) },
-			{ key = "l", mods = "ALT|SHIFT", action = action.AdjustPaneSize({ "Right", 5 }) },
-			{ key = "k", mods = "ALT|SHIFT", action = action.AdjustPaneSize({ "Up", 5 }) },
-			{ key = "j", mods = "ALT|SHIFT", action = action.AdjustPaneSize({ "Down", 5 }) },
+			{ key = "h", mods = "", action = action.AdjustPaneSize({ "Left", 5 }) },
+			{ key = "l", mods = "", action = action.AdjustPaneSize({ "Right", 5 }) },
+			{ key = "k", mods = "", action = action.AdjustPaneSize({ "Up", 5 }) },
+			{ key = "j", mods = "", action = action.AdjustPaneSize({ "Down", 5 }) },
 		},
 
 		pane_table_commands = {
@@ -192,36 +194,36 @@ function module.apply_to_config(config)
 			},
 		},
 
-		workspace_actions = {
-			{
-				key = "l",
-				mods = "",
-				action = action.ShowLauncherArgs({
-					flags = "FUZZY|WORKSPACES",
-				}),
-			},
-			{
-				key = "a",
-				mods = "",
-				action = action.PromptInputLine({
-					description = wezterm.format({
-						{ Attribute = { Intensity = "Bold" } },
-						{ Foreground = { AnsiColor = "Fuchsia" } },
-						{ Text = "Enter name for new workspace" },
-					}),
-					action = wezterm.action_callback(function(window, pane, line)
-						if line then
-							window:perform_action(
-								action.SwitchToWorkspace({
-									name = line,
-								}),
-								pane
-							)
-						end
-					end),
-				}),
-			},
-		},
+		-- workspace_actions = {
+		-- 	{
+		-- 		key = "l",
+		-- 		mods = "",
+		-- 		action = action.ShowLauncherArgs({
+		-- 			flags = "FUZZY|WORKSPACES",
+		-- 		}),
+		-- 	},
+		-- 	{
+		-- 		key = "a",
+		-- 		mods = "",
+		-- 		action = action.PromptInputLine({
+		-- 			description = wezterm.format({
+		-- 				{ Attribute = { Intensity = "Bold" } },
+		-- 				{ Foreground = { AnsiColor = "Fuchsia" } },
+		-- 				{ Text = "Enter name for new workspace" },
+		-- 			}),
+		-- 			action = wezterm.action_callback(function(window, pane, line)
+		-- 				if line then
+		-- 					window:perform_action(
+		-- 						action.SwitchToWorkspace({
+		-- 							name = line,
+		-- 						}),
+		-- 						pane
+		-- 					)
+		-- 				end
+		-- 			end),
+		-- 		}),
+		-- 	},
+		-- },
 	}
 end
 
