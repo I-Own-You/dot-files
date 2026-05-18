@@ -144,7 +144,7 @@ function module.apply_to_config(config)
 
 			{ key = "Tab", mods = "CTRL", action = wezterm.action.ShowTabNavigator },
 			-- 	key = "Tab",
-            -- {
+			-- {
 			-- 	mods = "CTRL|SHIFT",
 			-- 	action = action.ActivateKeyTable({ name = "workspace_actions", one_shot = true }),
 			-- },
