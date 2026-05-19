@@ -1,0 +1,24 @@
+1. Arithmetic Foundations:
+    book: basic mathematics (serge lang)
+    
+2. Algebra Foundations:
+    book:
+          1. basic mathematics (serge lang), it transitions into algebra later
+
+3. Logic & Discrete Thinking:
+    book:
+          1. Discrete Mathematics with Applications (Susanna S.Epp 4eth edition)
+          2. Discrete Mathematics and its Applicatioins (Mc Graw Hill 8 edition) (optional)
+
+4. Computer-Oriented Math:
+    book:
+          1. Code (charles petzold, find last edition)
+
+5. Beginner Probability & Statistics:
+    book: 
+          1. OpenIntro statistics (find last edition)
+
+book: Algebra and Trigonometry (openstax 2 edition), advanced topic at the end for acquaintance
+
+after these books you can learn whatever you want or choose any path that you are interested into,
+or you need for programming.
