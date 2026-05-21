@@ -16,12 +16,12 @@ setopt SHARE_HISTORY # there are differnert types, better read, it is impportant
 #                      (SHARE_HISTORY) - terminals has their own when active
 
 
-# Created by newuser for 5.8.1
 alias vim='nvim'
 alias nzsh="cd ~/dot-files/dot-files && nvim .zshrc"
 alias szsh=". ~/dot-files/dot-files/.zshrc"
 alias qq="shutdown now"
 alias qr="shutdown -r now"
+alias zz="zellij"
 
 # pacman 
 alias pac="sudo pacman -S "
