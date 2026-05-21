@@ -1,0 +1,11 @@
+[keyboard]
+bindings = [
+    # general keymaps
+    # { key = "O", mods = "Control|Shift", action = 'ReceiveChar' }, # disabled for neovim only
+    
+    { key = "PageUp", mods = "Shift", action = 'None' }, # disabled for neovim only
+    { key = "PageDown", mods = "Shift", action = 'None' }, # disabled for neovim only
+    { key = "Home", mods = "Shift", action = 'None' }, # disabled for neovim only
+    { key = "End", mods = "Shift", action = 'None' }, # disabled for neovim only
+
+]

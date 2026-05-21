@@ -1,0 +1,25 @@
+[general]
+import = [
+  "~/.config/alacritty/theme.toml",
+  "~/.config/alacritty/keymaps.toml"
+]
+live_config_reload = true
+
+[env]
+# here you can place env variables to use later in this file
+
+[window]
+decorations = "None"
+# opacity = 0.5
+# blur = true # sadly only on kde
+
+[scrolling]
+history = 10000
+
+[font]
+normal = {family = "CommitMono", style = "Regular" }
+size = 15.0
+offset = { x = 0, y = 0 } # x = space between chars, y = line spacing
+
+[selection]
+save_to_clipboard = true
