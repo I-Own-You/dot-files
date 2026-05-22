@@ -17,10 +17,10 @@ function module.apply_to_config(config)
 	config.show_tab_index_in_tab_bar = false
 
 	config.font = wezterm.font("CommitMono")
-	config.font_size = 16
+	config.font_size = 15
 	config.command_palette_font_size = 20
 
-	config.line_height = 1.1
+	config.line_height = 1.0
 	-- config.cell_width = 1.0
 
 	config.window_padding = {
