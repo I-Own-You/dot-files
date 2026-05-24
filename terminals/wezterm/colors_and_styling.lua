@@ -10,6 +10,8 @@ function module.apply_to_config(config)
 
 	config.window_decorations = "NONE"
 
+    config.enable_wayland = false
+
 	config.hide_tab_bar_if_only_one_tab = true
 	config.tab_bar_at_bottom = true
 	-- config.show_close_tab_button_in_tabs = false -- nightly build only
