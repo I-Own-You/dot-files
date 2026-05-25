@@ -7,6 +7,7 @@ function module.apply_to_config(config)
 
 	-- misc
 	config.audible_bell = "Disabled"
+    config.enable_wayland = true
 
 	-- tab
 	config.switch_to_last_active_tab_when_closing_tab = true
