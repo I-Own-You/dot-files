@@ -1,4 +1,0 @@
-dconf-editor(gnome store)
-gnome-tweaks(gnome store)
-gdm-settings(gnome store)
-lxappearance-gtk3(customize look and feel, gnome store)
