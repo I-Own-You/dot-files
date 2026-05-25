@@ -8,22 +8,6 @@ git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
 git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
 git clone https://github.com/I-Own-You/wallpapers.git "$HOME/Pictures/wallpapers"
 
-echo  "[*] Install pacman packages..."
-# cli
-sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi go eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv nwg-look tree-sitter tree-sitter-cli
-# desktop
-sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita
-# i3
-sudo pacman -S btop udiskie udisks2 playerctl polkit-gnome-authentication-agent gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk xcolor
-# styles for i3
-sudo pacman -S lxappearance qt5ct qt6ct kvantum kvantum-qt5 mint-themes cachyos/ant-dracula-kvantum-theme-git
-
-echo  "[*] Install aur packages..."
-paru google-chrome devtoys xnviewmp gradia
-
-echo  "[*] Download antidote zsh plugin..."
-git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
-
 echo "[*] Symlink dots..."
 ln -sf "$HOME/dot-files/dot-files/.zprofile" "$HOME/.zprofile"
 ln -sf "$HOME/dot-files/dot-files/.zshrc" "$HOME/.zshrc"
@@ -31,12 +15,39 @@ ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/alacritty" "$HOME/.config/alacritty"
+ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
+sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
+
+echo  "[*] Install pacman packages..."
+sudo pacman -S git zsh unrar unzip xclip keyd nvim zoxide yazi eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv nwg-look tree-sitter tree-sitter-cli
+sudo pacman -S keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita
+
+echo  "[*] Install aur packages..."
+paru google-chrome xnviewmp spotify
+
+# i3
+sudo pacman -S btop udiskie udisks2 playerctl polkit-gnome-authentication-agent gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk xcolor
+# i3 styling
+sudo pacman -S nwg-look qt5ct qt6ct kvantum kvantum-qt5 mint-themes cachyos/ant-dracula-kvantum-theme-git # styles
+# i3 dots
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3" "$HOME/.config/i3"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/compositors/picom" "$HOME/.config/picom"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/launchers/rofi" "$HOME/.config/rofi"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/status-bars/i3blocks" "$HOME/.config/i3blocks"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/i3/styling/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
-sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
+
+# hyprland
+sudo pacman -S btop udiskie udisks2 playerctl polkit-kde-agent xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-hyprland swaync nmrs overskride grim flameshot polkit-gnome hyprpaper waypaper hyprpicker dolphin nautilus hyprlock hyprsunset mission-center
+paru vicinae-bin
+# hyprland styling
+sudo pacman -S qt5ct qt6ct kvantum kvantum-qt5 nwg-look qt5-wayland qt6-wayland
+# hyprland dots
+ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/hypr" "$HOME/.config/hypr"
+ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/swaync" "$HOME/.config/swaync"
+ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/flameshot" "$HOME/.config/flameshot"
+
+echo  "[*] Download antidote zsh plugin..."
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
 echo "[*] Drivers in case you need the..."
 broadcom-bt-firmware
@@ -52,7 +63,6 @@ sudo systemctl enable --now keyd
 
 echo "[*] Install apps from off sites..."
 # telegram
-# spitcitify
 
 echo "[*] Side packages in case you need them..."
 # easyeffects (plugins for pipewire apps, audio manager)
@@ -67,5 +77,3 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 ssh -T git@gitlab.com
 ssh -T git@github.com
-
-# swappness set to 10
