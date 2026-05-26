@@ -64,6 +64,14 @@ sudo pacman -S qt5ct qt6ct kvantum kvantum-qt5 nwg-look qt5-wayland qt6-wayland
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/hypr" "$HOME/.config/hypr"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/swaync" "$HOME/.config/swaync"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/flameshot" "$HOME/.config/flameshot"
+# setup order
+# extensions
+# setttings
+# keyboard keymap
+# dconf keymaps
+# gdm settings
+# gnome tweaks
+# customize themes, .etc
 
 echo  "[*] Download antidote zsh plugin..."
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
