@@ -14,7 +14,6 @@ export TERMINFO=/home/linuxbrew/.linuxbrew/share/terminfo
 export TERM=wezterm
 export TERMINAL=wezterm
 export QT_QPA_PLATFORMTHEME="qt5ct" # chagne to qt5ct if some apps dont have theme
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 path+=('/home/mkc/.cargo/bin')
 path+=('/home/linuxbrew/.linuxbrew/bin')
