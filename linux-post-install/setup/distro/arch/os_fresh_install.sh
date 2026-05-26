@@ -41,6 +41,7 @@ https://extensions.gnome.org/extension/16/auto-move-windows/
 https://extensions.gnome.org/extension/307/dash-to-dock/
 https://extensions.gnome.org/extension/779/clipboard-indicator/ # only if not using vicinae
 https://extensions.gnome.org/extension/7406/spotify-controls/
+https://extensions.gnome.org/extension/8594/vicinae/
 # dots
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/flameshot" "$HOME/.config/flameshot"
 
@@ -78,6 +79,8 @@ sudo systemctl enable syncthing@$(whoami).service
 sudo systemctl start syncthing@$(whoami).service
 # keyd
 sudo systemctl enable --now keyd
+# vicinae
+systemctl --user enable vicinae --now
 
 echo "[*] Side packages in case you need them..."
 # easyeffects (plugins for pipewire apps, audio manager)
