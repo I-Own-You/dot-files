@@ -30,6 +30,127 @@ echo "[*] Install apps from off sites..."
 sudo pacman -S dconf-editor gnome-tweaks gdm-settings 
 # gsettings
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+
+gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,maximize,close"
+
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20
+
+gsettings set org.gnome.shell.keybindings open-new-window-application-1 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-2 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-3 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-4 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-5 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-6 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-7 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-8 "@as []"
+gsettings set org.gnome.shell.keybindings open-new-window-application-9 "@as []"
+
+gsettings set org.gnome.shell.keybindings switch-to-application-1 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-2 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-3 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-4 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-5 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-6 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-7 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-8 "@as []"
+gsettings set org.gnome.shell.keybindings switch-to-application-9 "@as []"
+
+gsettings set org.gnome.desktop.wm.keybindings toggle-above "['<Super>p']"
+
+gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
+
+gsettings set org.freedesktop.ibus.panel.emoji hotkey "@as []"
+gsettings set org.freedesktop.ibus.panel.emoji unicode-hotkey "@as []"
+
+gsettings set org.gnome.desktop.peripherals.touchpad middle-click-emulation true
+gsettings set org.gnome.desktop.peripherals.mouse middle-click-emulation true
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys increase-text-size "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys decrease-text-size "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys on-screen-keyboard "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenreader "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys magnifier "['<Shift><Super>z']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys magnifier-zoom-in "['<Shift><Super>a']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys magnifier-zoom-out "['<Shift><Super>d']"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys calculator "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys email "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys www "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys search "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "@as []"
+
+gsettings set org.gnome.desktop.wm.keybindings show-desktop "['<Super>d']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-down "@as []"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-left "@as []"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-right "@as []"
+gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-up "@as []"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Shift><Super>period']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Shift><Super>comma']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-last "['<Shift><Super>F12']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Shift><Super>6']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Super>7']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>8']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>9']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Shift><Super>0']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Shift><Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-panels "@as []"
+gsettings set org.gnome.desktop.wm.keybindings switch-panels-backward "@as []"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Super>6']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Super>7']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Super>8']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Super>9']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Super>0']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>period']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>comma']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "@as []"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "@as []"
+gsettings set org.gnome.desktop.wm.keybindings cycle-windows "['<Super>n']"
+gsettings set org.gnome.desktop.wm.keybindings cycle-windows-backward "['<Shift><Super>n']"
+gsettings set org.gnome.desktop.wm.keybindings cycle-group "['<Super>m']"
+gsettings set org.gnome.desktop.wm.keybindings cycle-group-backward "['<Shift><Super>m']"
+gsettings set org.gnome.desktop.wm.keybindings switch-group "['<Super>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-group-backward "['<Shift><Super>Tab']"
+
+gsettings set org.gnome.shell.keybindings focus-active-notification "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>Backspace']"
+gsettings set org.gnome.shell.keybindings toggle-quick-settings "@as []"
+gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts "@as []"
+gsettings set org.gnome.shell.keybindings toggle-application-view "@as []"
+gsettings set org.gnome.shell.keybindings toggle-message-tray "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys shutdown "@as []"
+gsettings set org.gnome.settings-daemon.plugins.media-keys reboot "@as []"
+gsettings set org.gnome.shell.keybindings toggle-overview "@as []"
+
+gsettings set org.gnome.desktop.wm.keybindings activate-window-menu "@as []"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super>c']"
+gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>a']"
+gsettings set org.gnome.desktop.wm.keybindings lower "@as []"
+gsettings set org.gnome.desktop.wm.keybindings maximize "@as []"
+gsettings set org.gnome.desktop.wm.keybindings maximize-horizontally "@as []"
+gsettings set org.gnome.desktop.wm.keybindings maximize-vertically "@as []"
+gsettings set org.gnome.desktop.wm.keybindings begin-move "@as []"
+gsettings set org.gnome.desktop.wm.keybindings raise "@as []"
+gsettings set org.gnome.desktop.wm.keybindings raise-or-lower "@as []"
+gsettings set org.gnome.desktop.wm.keybindings begin-resize "@as []"
+gsettings set org.gnome.desktop.wm.keybindings unmaximize "@as []"
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
+gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>k']"
+gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "['<Super>t']"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-left "@as []"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-right "@as []"
 # extension
 https://extensions.gnome.org/extension/19/user-themes/
 https://extensions.gnome.org/extension/5090/space-bar/
@@ -42,8 +163,21 @@ https://extensions.gnome.org/extension/307/dash-to-dock/
 https://extensions.gnome.org/extension/779/clipboard-indicator/ # only if not using vicinae
 https://extensions.gnome.org/extension/7406/spotify-controls/
 https://extensions.gnome.org/extension/8594/vicinae/
+https://extensions.gnome.org/extension/3193/blur-my-shell/
 # dots
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/flameshot" "$HOME/.config/flameshot"
+# order to setup:
+#                extensions
+#                setttings
+#                keyboard keymap
+#                dconf keymaps
+#                gdm settings
+#                gnome tweaks
+#                customize themes, .etc
+# styling
+# whitesur from github for gtk install script with "-l" then in tweaks apps
+# whitesur from github for kde in folder kvantum then kvantum + qt5/qt6
+# 
 
 # i3
 sudo pacman -S btop udiskie udisks2 playerctl polkit-gnome-authentication-agent gnome-keyring xdg-desktop-portal xdg-desktop-portal-gtk xcolor
@@ -64,13 +198,6 @@ sudo pacman -S qt5ct qt6ct kvantum kvantum-qt5 nwg-look qt5-wayland qt6-wayland
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/hypr" "$HOME/.config/hypr"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/swaync" "$HOME/.config/swaync"
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/flameshot" "$HOME/.config/flameshot"
-# extensions
-# setttings
-# keyboard keymap
-# dconf keymaps
-# gdm settings
-# gnome tweaks
-# customize themes, .etc
 
 echo  "[*] Download antidote zsh plugin..."
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
