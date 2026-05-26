@@ -20,7 +20,7 @@ ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 echo  "[*] Install pacman packages..."
-sudo pacman -S git zsh unrar unzip zip xclip keyd nvim neovide zoxide yazi eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv nwg-look tree-sitter tree-sitter-cli grim flameshot mission-center keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita qt5ct qt6ct qt5-wayland qt6-wayland kvantum kvantum-qt5 kvantum-qt6
+sudo pacman -S git zsh unrar unzip zip xclip keyd nvim neovide zoxide yazi eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv nwg-look tree-sitter tree-sitter-cli grim flameshot mission-center keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita qt5ct qt6ct qt5-wayland qt6-wayland kvantum kvantum-qt5 kvantum-qt6 gnome-browser-connector
 paru google-chrome xnviewmp spotify vicinae-bin
 
 echo "[*] Install apps from off sites..."
