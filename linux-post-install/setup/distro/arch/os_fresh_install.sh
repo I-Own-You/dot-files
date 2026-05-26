@@ -2,6 +2,7 @@
 set -e
 
 mkdir -p "$HOME/.config" "$HOME/Pictures" "$HOME/from_source" "$HOME/sync_files" "$HOME/Apps"
+sudo mkdir -p /etc/keyd
 
 echo  "[*] Clone repos..."
 git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
