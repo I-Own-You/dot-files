@@ -17,6 +17,7 @@ ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
 ln -sf "$HOME/dot-files/terminals/alacritty" "$HOME/.config/alacritty"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
+ln -sf "$HOME/dot-files/cli-tools/zellij" "$HOME/.config/zellij"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 echo  "[*] Install pacman packages..."
