@@ -165,6 +165,7 @@ https://extensions.gnome.org/extension/779/clipboard-indicator/ # only if not us
 https://extensions.gnome.org/extension/7406/spotify-controls/
 https://extensions.gnome.org/extension/8594/vicinae/
 https://extensions.gnome.org/extension/3193/blur-my-shell/
+https://extensions.gnome.org/extension/9037/focus-on-active-window/
 # dots
 ln -sf "$HOME/dot-files/linux-post-install/setup/distro/arch/wm/hyprland/flameshot" "$HOME/.config/flameshot"
 # order to setup:
