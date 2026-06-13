@@ -17,9 +17,9 @@ decorations = "None"
 history = 10000
 
 [font]
-normal = {family = "CommitMono", style = "Regular" }
+normal = {family = "CommitMono", style = "bold" }
 size = 15.0
-offset = { x = 0, y = 0 } # x = space between chars, y = line spacing
+offset = { x = 1, y = 1 } # x = space between chars, y = line spacing
 
 [selection]
 save_to_clipboard = true
