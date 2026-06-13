@@ -23,3 +23,6 @@ offset = { x = 1, y = 3 } # x = space between chars, y = line spacing
 
 [selection]
 save_to_clipboard = true
+
+[colors]
+cursor = { text = "CellBackground", cursor = "#fbb829" }
