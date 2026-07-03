@@ -6,9 +6,9 @@
 // 4. C does not restrict the length of an identifier
 
 // 5. there are special KEYWORDS reserved for C itself which cannot be used, such as:
-//    auto break case char const continue default do double else enum extern float for goto
-//    if inline† int long register restrict† return short signed sizeof static struct switch
-//    typedef union unsigned void volatile while _Bool† _Complex† _Imaginary†
+//        auto break case char const continue default do double else enum extern float for goto
+//        if inline† int long register restrict† return short signed sizeof static struct switch
+//        typedef union unsigned void volatile while _Bool† _Complex† _Imaginary†
 
 // 6. all functioins from stdlib are lowercase as well
 

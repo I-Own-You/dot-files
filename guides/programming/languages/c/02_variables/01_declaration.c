@@ -7,4 +7,7 @@ int main() {
     int height;
     // 1. variable of type float declared
     float profit;
+
+    // 1. aligned variables
+    int a, b;
 }

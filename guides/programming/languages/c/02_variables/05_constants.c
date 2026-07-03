@@ -1,13 +1,22 @@
 #include <stdio.h>
 
-// 1. you can create a constant using a "macro definition" like this, a "macro definitoin" is basically,
+// 1. you can create a constant using a "macro definition", a "macro definitoin" is basically,
 //    a preprocessor text substitution rule 
+
 // 2. preprocessor which handles directives will replace all INCHES_PER_POUND in the program
 //    with value "100" as if we would type "100" in the first place in stead of the constant name
 #define INCHES_PER_POUND 100
+
 // 3. value of a cosntant can be an expression too, and if it contains an operator, it must be put inside ( )
 #define K_OF_PI (1.0f / 3.14f)
+
 // 4. constants must not be CAPITAL_CASE but its a convention among programmers, so you do to
+
+// 5. "const" can be put before variables to make them const in terms that it cant be modified,
+//    through the name but they wont become real constants which are known at compile time,
+//    like enums or #define constants so:
+//    1. real constants exist only at compile time
+//    2. "const" defined variables are actual variables stored inside C memory layout 
 
 int main() {
     int a = 2;
@@ -25,4 +34,10 @@ int main() {
     //    preprocessor does not compile or run anything, it only replaces, remember this, and then
     //    the compiler will evaluate the constant IF IT CAN OPTIMIZE it.
     printf("%f", K_OF_PI);
+
+    // 1. "const" usage
+    // 1.1 if you would not give an initial value to a const, it will always remain that value, so you must,
+    //     always give a value at initialization time for a "const" variable
+    const int b = 0;
+    // b = 2; // not allowed
 }

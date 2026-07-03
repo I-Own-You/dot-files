@@ -1,6 +1,7 @@
 // 1. you can assign to a variable using "=" symbol after NAME of the variable with a value of variable TYPE
 // 2. assigning variables of some TYPE with another TYPE like float to int or int to float may work,
-//    since int will transform to float and float to int but its never safe do so never do it.
+//    since int will transform to float and float to int but its never safe do so never do it unless
+//    casting(technique disscussed later)
 
 int main() {
     int a, b;
