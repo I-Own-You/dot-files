@@ -1,80 +1,96 @@
-# update app installer in microsoft store if winget doesnt work inside cli
+# download chrisutils debloat tool from chrome bookmarks download uniget and all you need and debloat
 
-# powershell 7:
-winget install --id Microsoft.Powershell --source winget
+# activate windows by putting license key of course
 
-# cli packages
-winget install --id=Git.Git -e
-winget install --id=Microsoft.WindowsTerminal -e
-winget install --id=ajeetdsouza.zoxide -e
-winget install --id=junegunn.fzf -e
-winget install --id=Neovim.Neovim -e
-winget install --id=sxyazi.yazi -e
-winget install --id=eza-community.eza -e
-winget install --id=sharkdp.bat -e
-winget install --id=sharkdp.fd -e
-winget install --id=dandavison.delta -e
-winget install --id=BurntSushi.ripgrep.MSVC -e
-winget install --id=GitHub.cli -e
-winget install --id=GLab.GLab -e
-winget install --id=astral-sh.uv -e
-winget install --id Starship.Starship -e
-################################################
-winget install --id=Google.Chrome -e
-winget install --id=Microsoft.VisualStudioCode -e
-winget install --id=Telegram.TelegramDesktop -e
-winget install --id=KeePassXCTeam.KeePassXC -e
-winget install --id=AntibodySoftware.WizTree -e
-winget install --id=voidtools.Everything -e
-winget install --id=Flow-Launcher.Flow-Launcher -e
-winget install --id=ShareX.ShareX -e
-winget install --id=VideoLAN.VLC -e
-winget install --id=OBSProject.OBSStudio -e
-winget install --id=FastStone.Viewer -e
-winget install --id=7zip.7zip -e
-winget install --id=Notepad++.Notepad++ -e
-winget install --id=qBittorrent.qBittorrent -e
-winget install --id=Discord.Discord -e
-winget install --id=dotPDN.PaintDotNet -e
-winget install --id=DevToys-app.DevToys -e
-################################################
-winget install --id=GoLang.Go -e
-winget install --id=OpenJS.NodeJS.LTS -e
-winget install --id=Python.Python.3.13 -e # add to environment path if not added and points into ms store
+# cli packages (try to install through UniGet backup through github and skip this)
+winget install --id=Git.Git --id=Microsoft.WindowsTerminal --id=junegunn.fzf -e --id=sxyazi.yazi -e
+               --id=eza-community.eza -e --id=sharkdp.bat -e --id=sharkdp.fd -e --id=BurntSushi.ripgrep.MSVC -e 
+               --id=BillStewart.SyncthingWindowsSetup -e
 
-# configure app
-flow launcher: make it use eveything backend
-
-# in case you need to deblock script (erro appears that you cannot execute bla bla)
-Unblock-File -Path "$PROFILE"
-# Set-ExecutionPolicy Unrestricted -Scope CurrentUser
-# Get-ExecutionPolicy -Scope CurrentUser
+# non cli packages
+winget install --id=Google.Chrome -e --id=Microsoft.VisualStudioCode -e --id=Telegram.TelegramDesktop -e
+               --id=KeePassXCTeam.KeePassXC -e --id=AntibodySoftware.WizTree -e --id=voidtools.Everything -e
+               --id=Flow-Launcher.Flow-Launcher -e --id=ShareX.ShareX -e --id=VideoLAN.VLC -e --id=OBSProject.OBSStudio -e
+               --id=FastStone.Viewer -e --id=7zip.7zip -e --id=Notepad++.Notepad++ -e --id=qBittorrent.qBittorrent -e
+               --id=Discord.Discord -e 
 
 # Create default folders
 mkdir "$env:USERPROFILE\sync_files"
 mkdir "$env:USERPROFILE\Apps"
+mkdir "$env:USERPROFILE\.config"
 
 # git repo clone
 git clone https://github.com/I-Own-You/dot-files.git $env:USERPROFILE\dot-files
-git clone https://github.com/I-Own-You/nvim.git $env:LOCALAPPDATA\nvim
 git clone https://github.com/I-Own-You/wallpapers.git $env:USERPROFILE\Pictures\wallpapers
 
 # SYMLINKS
-New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\dot-files\dot-files\.gitconfig" -Path "C:\Users\Idkwh\.gitconfig" -Force
-New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\dot-files\cli-tools\yazi" -Path "C:\Users\Idkwh\AppData\Roaming\yazi" -Force # remove the folder if exists
-New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\dot-files\windows-post-install\Microsoft.PowerShell_profile.ps1" -Path "C:\Users\Idkwh\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -Force # remove the folder if exists
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.config\wezterm\" -Target "$env:USERPROFILE\dot-files\terminals\wezterm\"
 
-# apps outisde winget package to install
-https://github.com/Bill-Stewart/SyncthingWindowsSetup/releases/
+# configure app
+1. syncthing 8384
+2. drivers
+3. accounts
+4. windows settings
+5. kanata
+6. wsl
+7. neovide
+8. revo uninstaller
+9. git
 
-# setup git
-ssh-keygen -t ed25519 -C "your_email@example.com"
+# kanata
+1. go here: https://github.com/jtroo/kanata/releases
+2. download windows version zip file (x64)
+3. download the interception driver(it will be a folder with .exe in it) from there "copy in this repo" link
+4. put content from 2 and 3 step inside same folder under any folder, like $env:USERPROFILE\Apps\kanata
+5. install interception driver from interception folder downloaded from step 2 with "/install" argument without ""
+6. restart
+7. copy interception.dll from interception folder you downloaded: "Interception\library\x64\interception.dll" into kanata folder you created on 4 step
+8. copy kanata.kbd file from $env:USERPROFILE\dot-files\windows-post-install into folder from 4 step
+9. make kanata launch on startup:
+   1. crete a shortcut of kanata_windows_gui_wintercept_x64.exe file
+   2. take kanata shortcut and put inside: C:\Users\mkc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+10. restart
+
+# wsl
+set -e
+#
+mkdir -p "$HOME/.config" "$HOME/Pictures" "$HOME/from_source" "$HOME/sync_files"
+#
+git clone https://github.com/I-Own-You/dot-files.git "$HOME/dot-files"
+git clone https://github.com/I-Own-You/nvim.git "$HOME/.config/nvim"
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+#
+sudo apt install zsh curl unrar unzip xclip 
+#
+chsh -s /bin/zsh mkc
+#
+ln -sf "$HOME/dot-files/dot-files/.zprofile" "$HOME/.zprofile"
+ln -sf "$HOME/dot-files/dot-files/.zshrc" "$HOME/.zshrc"
+ln -sf "$HOME/dot-files/dot-files/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
+ln -sf "$HOME/dot-files/dot-files/.gitconfig" "$HOME/.gitconfig"
+ln -sf "$HOME/dot-files/cli-tools/yazi" "$HOME/.config/yazi"
+ln -sf "$HOME/dot-files/cli-tools/zellij" "$HOME/.config/zellij"
+#
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install neovim zoxide yazi eza bat git-delta fzf ripgrep gh glab p7zip fd uv uvx zellij tree-sitter-cli
+# 
+# use gh cli and glab cli for this
+ssh-keygen -t ed25519
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+ssh -T git@gitlab.com
+ssh -T git@github.com
+
+# neovide
+1. create a desktop shortcut with name: neovide.exe --wsl
+2. put it on taskbar
+
+# setup git on windows if needed using github/glab cli
+ssh-keygen -t ed25519
 Get-Service ssh-agent | Set-Service -StartupType Automatic
 Start-Service ssh-agent
 ssh-add $env:USERPROFILE\.ssh\id_ed25519
 cat $env:USERPROFILE\.ssh\id_ed25519.pub
 ssh -T git@gitlab.com
 ssh -T git@github.com
-
-# if you ever need to check ssd life:
-winget install --id=JanosMathe.HardDiskSentinel.Standard -e
