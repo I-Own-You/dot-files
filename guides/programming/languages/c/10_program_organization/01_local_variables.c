@@ -14,7 +14,9 @@
 //       execution which means if you call function multiple times, the value will be persisted,
 //    2. it still has block scope, so other functions will not be able to use it, so its a way to hide,
 //       data from other function but still persists it and use it for future calls
-//    3. dont create new variables for recursive functions, its shared among all copies of function
+//    3. dont create new variables for recursive functions, its shared among all copies of function, why ?
+//       because the variable declared "static" is created before even the function is invoked,
+//       so its "global" but local scope within the function
 
 // 3. parameters:
 //    1. have automatic static duration
