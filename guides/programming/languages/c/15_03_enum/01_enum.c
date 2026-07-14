@@ -41,6 +41,10 @@ int main() {
     if (status1 == SUCCESS1) {
         printf("nice\n");
     }
+
+    // why here its not warned like above with implicit casting ? becasue constants enums are just numbers,
+    // and a is of type "int" not an enum type
+    int a = SUCCESS3;
 }
 
 // remember, enum constants are just numbers under the hood, it can be used anywhere a number can,
