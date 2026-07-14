@@ -25,10 +25,22 @@ typedef enum { SUCCESS2, UPDATE2, RELOAD2, ERROR2 } t_status_code;
 enum status_code_defined { SUCCESS3, UPDATE3 = 5, RELOAD3, ERROR3 = 520}; // 0, 5, 6, 520
 
 int main() {
-    int SUCCESS = 0; // not error, scope is different
-
     enum status_codes status1, status2;
     t_status_code status3, status4;
+
+    // and yes, here actaully a meaningful knowledge, even though enum constant are just numbers,
+    // if a variable of some enum type is declared a constant from another enum, an implicit casting,
+    // will happen, bear this in mind, only constants from an enum wihtout a name and constants from,
+    // enum type of the variable can assign to the variable for it to not be casted
+    status1 = SUCCESS1; // ok, its from status_codes enum
+    status1 = SUCCESS; //  ok, its globally defined enum {};
+    status1 = SUCCESS2; // ok, but will implicitly cast SUCCESS2 like (enum status_codes) SUCCESS2,
+                        //     since SUCCESS2 is from t_status_code enum
+
+    // this is how you basically use it
+    if (status1 == SUCCESS1) {
+        printf("nice\n");
+    }
 }
 
 // remember, enum constants are just numbers under the hood, it can be used anywhere a number can,
