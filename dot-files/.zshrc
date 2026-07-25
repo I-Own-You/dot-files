@@ -77,6 +77,7 @@ source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
 
 source ~/.zsh_plugins.zsh
+source ~/.zprofile
 
 source ~/dot-files/dot-files/scripts/custom_rename.sh
 
