@@ -10,7 +10,7 @@ function module.apply_to_config(config)
 
 	config.window_decorations = "NONE"
 
-    config.enable_wayland = false
+    config.enable_wayland = true
 
 	config.hide_tab_bar_if_only_one_tab = true
 	config.tab_bar_at_bottom = true
@@ -18,7 +18,8 @@ function module.apply_to_config(config)
 	config.show_new_tab_button_in_tab_bar = false
 	config.show_tab_index_in_tab_bar = false
 
-	config.font = wezterm.font("CommitMono")
+	config.font = wezterm.font("CommitMono Nerd Font Mono")
+
 	config.font_size = 15
 	config.command_palette_font_size = 20
 
