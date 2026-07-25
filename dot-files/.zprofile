@@ -11,8 +11,8 @@ export BROWSER=cachy-browser
 export EDITOR=/usr/bin/nvim
 export MAIL=thunderbird
 export TERMINFO=/home/linuxbrew/.linuxbrew/share/terminfo
-export TERM=wezterm
-export TERMINAL=wezterm
+export TERM=alacritty
+export TERMINAL=alacritty
 export QT_QPA_PLATFORMTHEME="qt5ct" # chagne to qt5ct if some apps dont have theme
 
 path+=('/home/mkc/.cargo/bin')
