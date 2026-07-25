@@ -20,6 +20,7 @@ ln -sf "$HOME/dot-files/terminals/alacritty" "$HOME/.config/alacritty"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
 ln -sf "$HOME/dot-files/cli-tools/zellij" "$HOME/.config/zellij"
 ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/btop.desktop" "$HOME/.local/share/applications/btop.desktop"
+ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/google-chrome.desktop" "$HOME/.local/share/applications/google-chrome.desktop"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 # install pacman packages
