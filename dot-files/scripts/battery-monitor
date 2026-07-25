@@ -1,0 +1,16 @@
+#!/bin/bash
+
+BATTERY=$(upower -e | grep BAT)
+AC=$(upower -e | grep line_power)
+
+upower --monitor | while read -r line; do
+    if [[ "$line" == *"$AC"* ]]; then
+        status=$(upower -i "$AC" | grep online | awk '{print $2}')
+
+        if [ "$status" = "yes" ]; then
+            notify-send "🔌 Power" "Charger connected"
+        else
+            notify-send "🔋 Power" "Running on battery"
+        fi
+    fi
+done
