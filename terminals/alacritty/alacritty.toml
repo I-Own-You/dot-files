@@ -17,7 +17,7 @@ decorations = "None"
 history = 10000
 
 [font]
-normal = {family = "CommitMono", style = "medium" }
+normal = {family = "CommitMono Nerd Font Mono", style = "medium" }
 size = 15.0
 offset = { x = 1, y = 3 } # x = space between chars, y = line spacing
 
