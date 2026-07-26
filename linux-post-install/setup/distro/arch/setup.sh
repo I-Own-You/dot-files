@@ -24,8 +24,20 @@ ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/googl
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
 
 # install pacman packages
-sudo pacman -S git zellij zsh unrar unzip zip keyd nvim neovide zoxide yazi eza bat git-delta fzf ripgrep npm github-cli glab p7zip fd uv tree-sitter tree-sitter-cli keepassxc vlc syncthing wezterm discord obs-studio qbittorrent krita paru
-paru google-chrome-stable-bin xnviewmp spotify vicinae-bin
+sudo pacman -S 
+               # cli
+               git zsh zoxide eza bat git-delta fzf ripgrep fd yazi glab github-cli uv uvx nvim helix zellij unrar unzip zip p7zip ffmpeg yt-dlp imagemagick btop nvtop gdu duf iftop bandwhich iotop-c sysstat lnav systemctl-tui ouch just lazygit lazydocker sshs shellcheck direnv dust mpv 
+               # system pkgs
+               paru
+               # gui apps
+               vlc keepassxc discord obs-studio qbittorrent krita alacritty wezterm neovide
+               # daemons
+               syncthing keyd
+               # deps
+               npm tree-sitter tree-sitter-cli
+paru 
+     # gui apps
+     google-chrome-stable-bin xnviewmp spotify vicinae-bin
 
 # install apps from their website
 # telegram
