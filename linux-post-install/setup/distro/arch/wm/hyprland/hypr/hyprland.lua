@@ -20,8 +20,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprsunset")
 	--
 	hl.exec_cmd("vicinae server")
-    --
-    hl.exec_cmd("/home/mkc/dot-files/dot-files/scripts/battery-monitor")
+	--
+	hl.exec_cmd("/home/mkc/dot-files/dot-files/scripts/battery-monitor")
 end)
 
 hl.env("XCURSOR_SIZE", "24")
@@ -272,7 +272,9 @@ hl.define_submap("group", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
-hl.bind("SUPER + N", hl.dsp.window.cycle_next({ next = true }))
+-- uncmment this when you remove the monocle/dwindle functionality below
+-- hl.bind("SUPER + N", hl.dsp.window.cycle_next({ next = true }))
+require("helpers.curr_workspace_layout_cycle")
 hl.bind("SUPER + SHIFT + N", hl.dsp.window.cycle_next({ next = false }))
 
 hl.bind("SUPER + T", hl.dsp.window.center())
