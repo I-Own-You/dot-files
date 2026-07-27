@@ -112,3 +112,13 @@ hl.window_rule({
 	center = true,
 	size = { 1100, 650 },
 })
+hl.window_rule({
+	name = "waypaper floating",
+	match = {
+		class = "^org.qbittorrent.qBittorrent$",
+	},
+	float = true,
+	center = true,
+	size = { 1100, 650 },
+})
+
