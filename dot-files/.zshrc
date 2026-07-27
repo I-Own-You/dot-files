@@ -99,6 +99,9 @@ function zvm_after_init() {
 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 bindkey '\el' forward-word # alt + l
+bindkey '\eL' forward-word # shift + alt + l
+bindkey '\e;' end-of-line # shift + alt + l
+
 bindkey '^[^?' backward-delete-word # alt + backspace
 
 
