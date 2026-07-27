@@ -61,6 +61,12 @@ sudo systemctl enable --now keyd
 # 
 update-desktop-database ~/.local/share/applications
 
+# setup virt-manager + qemu + kvm
+sudo pacman -S qemu-desktop libvirt virt-manager dnsmasq vde2 openbsd-netcat
+paru bridge-utils
+sudo systemctl start libvirtd # you need to do this everytime you will use virt-manager
+sudo usermod -aG libvirt $USER # exit and enter again into user
+
 # git config
 ssh-keygen -t ed25519
 eval "$(ssh-agent -s)"
