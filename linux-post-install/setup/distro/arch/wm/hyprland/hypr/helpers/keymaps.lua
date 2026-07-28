@@ -32,7 +32,8 @@ hl.bind("SUPER + F7", hl.dsp.exec_cmd("hyprctl hyprsunset temperature 3000 && hy
 hl.bind("SUPER + F8", hl.dsp.exec_cmd("hyprctl hyprsunset identity && hyprctl hyprsunset gamma 100"))
 
 hl.bind("SUPER + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind("SUPER + P", hl.dsp.window.pseudo())
+-- hl.bind("SUPER + P", hl.dsp.window.pseudo())
+hl.bind("SUPER + P", hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind("SUPER + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 hl.bind("SUPER + E", hl.dsp.exec_cmd("thunar"))
