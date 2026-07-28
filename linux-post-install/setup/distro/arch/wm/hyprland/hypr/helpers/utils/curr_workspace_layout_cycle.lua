@@ -33,7 +33,7 @@ hl.bind("SUPER + N", function()
 		return
 	end
 
-	if workspace.tiled_layout == "monocle" then
+	if workspace.tiled_layout == "monocle" and not hl.get_active_special_workspace() then
 		hl.dispatch(hl.dsp.layout("cyclenext"))
 	else
 		hl.dispatch(hl.dsp.window.cycle_next({
