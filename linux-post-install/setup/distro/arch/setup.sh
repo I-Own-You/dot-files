@@ -26,7 +26,7 @@ sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/de
 # install pacman packages
 sudo pacman -S 
                # cli
-               git zsh zoxide eza bat git-delta fzf ripgrep fd yazi glab github-cli uv uvx nvim helix zellij unrar unzip zip p7zip ffmpeg yt-dlp imagemagick btop nvtop gdu duf iftop bandwhich iotop-c sysstat lnav systemctl-tui ouch just lazygit lazydocker sshs shellcheck direnv dust mpv 
+               git zsh zoxide eza bat git-delta fzf ripgrep fd yazi glab github-cli uv uvx nvim helix zellij unrar unzip zip p7zip ffmpeg yt-dlp imagemagick btop nvtop gdu duf iftop bandwhich iotop-c sysstat lnav systemctl-tui ouch just lazygit lazydocker sshs shellcheck direnv dust mpv golangci-lint
                # system pkgs
                paru
                # gui apps
