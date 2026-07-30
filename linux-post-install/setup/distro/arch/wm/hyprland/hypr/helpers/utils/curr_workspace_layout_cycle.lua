@@ -27,17 +27,17 @@ hl.bind("SUPER + tab", function()
 end)
 
 hl.bind("SUPER + N", function()
-	local workspace = hl.get_active_workspace()
+	local layout = (hl.get_active_special_workspace() or hl.get_active_workspace())
 
-	if not workspace then
+	if not layout then
 		return
 	end
 
-	if workspace.tiled_layout == "monocle" and not hl.get_active_special_workspace() then
-		hl.dispatch(hl.dsp.layout("cyclenext"))
-	else
+	if layout.tiled_layout == "dwindle" then
 		hl.dispatch(hl.dsp.window.cycle_next({
 			next = true,
 		}))
+	else
+		hl.dispatch(hl.dsp.layout("cyclenext"))
 	end
 end)
