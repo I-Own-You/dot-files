@@ -1,0 +1,1 @@
+yt-dlp --flat-playlist --print "https://www.youtube.com/watch?v=%(id)s" URL > filename // URL must be a playlist inside "", filename whatever you want, usually .txt file
