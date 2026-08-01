@@ -1,1 +1,14 @@
-yt-dlp --flat-playlist --print "https://www.youtube.com/watch?v=%(id)s" URL > filename // URL must be a playlist inside "", filename whatever you want, usually .txt file
+# take urls from videos inside playlist
+#
+# URL must be a playlist inside "",
+# filename whatever you want, usually .txt file
+yt-dlp --flat-playlist --print "https://www.youtube.com/watch?v=%(id)s" URL > filename
+
+# play songs from a playlist 
+#
+# filename is usually a .txt file,
+# --shuffle is needed to play songs from the playlist in random (it actually just shuffles the song lists and persist it)
+# --no-video so it doesnt take video info, since i use it only for audio
+# --cache-secs is needed so it doesnt use too much memory for buffering ahead in future
+# -playlist is needed to give the .txt file which contains the youtube links
+mpv --shuffle --no-video --cache-secs=60 -playlist filename 
