@@ -78,4 +78,7 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
+-- hl.bind("SUPER + F1", hl.dsp.exec_cmd("wpctl set-mute \"$(wpctl status -n | grep \"alsa_input.pci-0000_00_1b.0.analog-stereo\" | grep -oE \"[0-9]+\\.\" | head -1 | tr -d .)\" 1"), { locked = true })
+-- hl.bind("SUPER + F2", hl.dsp.exec_cmd("wpctl set-mute \"$(wpctl status -n | grep \"alsa_input.pci-0000_00_1b.0.analog-stereo\" | grep -oE \"[0-9]+\\.\" | head -1 | tr -d .)\" 0"), { locked = true })
+
 require("helpers.keymap_submaps")
