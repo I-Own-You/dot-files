@@ -1,0 +1,29 @@
+1. release profiles - predefined and customizble profiles with different configurations taht allow
+                      a programmer to have more control over various options for compiling code.
+
+2. cargo has 2 main profiles:
+    1. "dev" - cargo uses it when you run "cargo build" (suitable for development stage)
+    2. "release" - cargo uses it when you run "cargo build --release" (suitable for production ready)
+
+3. cargo has default settings for each profile which applies if you didnt add your settings
+   under [profile.*] inside Cargo.toml.
+
+3.1 if you do add some settings under [profile.*], then you override some of the default settings
+    set by the rust defaults for that profile
+
+    these are the default settings for both profiles:
+    
+    [profile.dev]                  [profile.release]
+    opt-level = 0                  opt-level = 3
+
+    "opt-level" settings control how many optimizations your code will have, more optimizations mean
+    more compile time, in dev stage you dont really care since you need faster compile and run time or
+    the code to run faster (ir will run slower without optimizations) but in production,
+    you do need optimization for faster code execution but with slower compile times.
+
+3.2 if you want to override the "opt-level" setting for either profile, just add this inside Cargo.toml:
+    [profile.dev]
+    opt-level = 1           // opt-level can take from 0 to 3, higher - more optimizations
+
+    
+    

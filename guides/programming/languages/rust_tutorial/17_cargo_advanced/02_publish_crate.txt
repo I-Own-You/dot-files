@@ -1,0 +1,90 @@
+1. rust and cargo has features so that you can public your own crates for other people to use
+
+2. rust has a particular kind of documentation different from "//" its designed for
+   "documentation comments" that literally generates "html" documentation, its mainly for API
+   things that shows what it is sfor and how to use it
+
+2.1 to use the "documentation comments" you muse use "///" instead of "//", it alsso supports
+    markdown notation:
+
+    /// Adds one to the number given.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// let arg = 5;
+    /// let answer = my_crate::add_one(arg);
+    ///
+    /// assert_eq!(6, answer);
+    /// ```
+    pub fn add_one(x: i32) -> i32 {
+        x + 1
+    }
+
+2.2 to generate the above documentatiion you need to run "cargo doc", it runs the "rustdoc" tool
+    it generates HTML and puts it insdie "target/doc/", it actually generates all the HTML from
+    all documentatiion within your project.
+
+2.3 there is another command "cargo doc --open" which does the above and also opens them in browser
+
+2.4 as you saw above, we have some code snippets inside the documentation, yes they can be run,
+    and tested with the command "cargo test"
+
+3. rust also provides another comments style which are used to describe whole crates or a module;
+   its basically needed to desribe crate as a whole or a module as a whole;
+   these type of comments are put at the start of the file and when you finish, you type 2 new lines
+   and put "///" codes again to document specific code:
+
+   //! # My Crate
+   //!
+   //! `my_crate` is a collection of utilities to make performing certain
+   //! calculations more convenient.
+   
+   /// Adds one to the number given.
+   pub some_func(x: i32) -> { 
+       // we return x here
+       x 
+   }
+    
+4. to publish a create you need to create an account on crates.io with github 
+
+4.1 you must have inside Cargo.toml:
+    1. a unique "name" of your crate, its the "name" under the [package] section,
+       otherwise you wont be able to push if there is already a crate with your name
+    2. a license under which your project is exposed on crates.io, but if you want to use a license
+       which is not available from this site: https://spdx.org/licenses/, then you must include the
+       license text inside a file, file should be inside your project and then you must add this
+       filename either name or path to it under "license-file" under [package] section. You can also
+       have multiple license by specifying between them "OR" text.
+    3. optionally a description of what your crate is doing
+    
+    example:
+            [package]
+            name = "guessing_game"
+            version = "0.1.0"
+            edition = "2024"
+            description = "A fun game where you guess what number the computer has chosen."
+            license = "MIT OR Apache-2.0"
+
+5. once you publish:
+    1. its permanent there
+    2. the version cannot be changed (you can publish other versions, this is how you update 
+                                      the package, by publishing again but code changed)
+    3. code cannot be deleted (very rare ocasion and circumstances)
+    4. command to publish is "cargo publish" (you need to set a token in cli from crates.io)
+    5. when you change your project code, you also change the version of the package inside Cargo.toml
+       and then just "cargo publish" again. You cannot have the version the same.
+
+6. you cannot remove code once published, but you can prevent others from using the crate by different
+   reasons, its broken, not maintained, another project is better, .etc. how ?
+
+6.1 by "yanking" a project version which means other people cannot add this specific version
+    to their project, but people which already use it cant still use it, without breaking their project.
+
+    it basically looks into "Cargo.lock" of the people and let people use the version is there, even
+    if its "yanked", but if they changed the version inside "Cargo.toml", the "Cargo.lock" changes as well,
+    and then they cannot go back to the previous "yanked" version ever
+
+6.2 you yank by running "cargo yank --vers 1.0.1"
+
+6.3 you can undo a "yank" and let people use it again by doing "cargo yank --vers 1.0.1 --undo"

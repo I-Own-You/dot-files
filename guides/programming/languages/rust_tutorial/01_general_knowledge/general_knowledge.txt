@@ -1,0 +1,78 @@
+1. rust is aot compilation style, which means its binary can be run without having rust toolchain
+
+2. usually you compile rust programs like this: rustc filename.rs, which ouputs an executable binary
+
+3. rust program always have a main.rs file which runs code first from other files
+
+4. function calls with "!" at the end of the name means you are calling a macro, not a funciton,
+   they behave differently from functions
+
+5. rust has a builtin package manger called "cargo" which does a lot of things:
+   1. building code
+   2. download the libraries your code depends and builds them
+5.1 usually you always start a project with cargo: cargo new project_name:
+    1. it creates a cargo.toml file
+    2. also initializes a .git repo (only if you are not already in one, but you can add anyway)
+5.2 cargo toml file is for project settings and dependencies
+
+6. a rust project with cargo usually consists of:
+   1. src/ foleder which should rely all your source files
+   2. and all other files kile readme/license/config files/anything else not being source files
+   
+6.1 if you have a project done without cargo you just put your source files inside a src/ folder,
+    and create a cargo.toml file with needed settings or just "cargo init" and you will get a cargo.toml
+    
+6.2 building your project is with "cargo build" at the root directory, which creates a
+    1. target/ folder with different kind of information, one of which is debug/project_name binary which,
+       is a debug build with debug information(and is usually unoptimized by the compiler),
+       you can run it with .target/project_name
+    2. cargo.lock file at root dir (only for the first time build) which keeps track of the dependencies,
+       versions, this file wont ever be changed by you manually usually
+       
+6.3 
+    1. using "cargo build" and then "./target/debug/project_name" to run it, is tedious, so there is another,
+       way by using "cargo run" which builds + runs the program from the target/debug/project_name folder;
+    2. "cargo run" wont rebuild your code if it doesnt notice any changes inside your code, it will,
+       just run it instead
+       
+6.4 there is way to check if your project still compiles but doesnt produce a binary, why do you need it?
+    because its faster than "cargo build", so you just check if its compiling and continue working,
+    the commands is "cargo check"
+
+6.5 when you build for production aka "release" your program, there is a command for this:
+    "cargo build --release" which produces a biinary with compiler optimizations which is placed,
+    inside target/release folder instead of target/debug;
+    this binary is faster than the debug one, but it also means the compilation time will be longer
+
+7. crate - collection of rust source code files, usually it will be a binary which contains features,
+           that can be used by other programs but not be executed on its own (library basically)
+
+7.1 usually, you will include a crate inside your Cargo.toml [dependencies] block so you can use it,
+    inside your project: 
+    [dependencies]
+    rand = "0.8.5"    crate_name = "version"
+    1. (version is based on semverg.org semantic),
+       "0.8.5" is shorthand for "^0.8.5" which means at least 0.8.5 but below 0.9.0
+    2. after you include a dependency:
+       1. cargo fetches a copy from the registry (a copy from Crates.io)
+       2. then it checks the dependencies that are listed by you but are not downloaded yet and download them,
+          it also downloads the dependencies of the crates as well
+       3. after downloading it compiles crates and dependencies for crates 
+       4. then it compiles the project itself with the new dependencies
+       5. any subsequent builds will reuse the downloaded and compiled crate only if your code also changes
+
+7.2 another imiportant thing is on first "cargo build" it creates a Cargo.lock which hass some,
+    information but the important one is that it has the exact versions of your dependencies specified,
+    so that if you have a version "0.8.5" which means at least "0.8.5" but below "0.9.0" and then,
+    you decide to build without a Cargo.lock, it will try to download "0.8.6" if its available,
+    but because of Cargo.lock it wont, becaue Cargo.lock fixates the dependency version and when,
+    you do a build and have a Cargo.lock file, it will fetch that versions without breaking your,
+    project.
+       
+7.3 also, if you want to update your dependencies, there is a command "cargo update" which ignores,
+    Cargo.lock dependencies versions but still respects the versioning semantic, so if there are updates,
+    between "0.8.5" and "0.9.0" then it will update, but if there is a version past "0.9.0" it wont update,
+    so you would need to change the Cargo.toml dependencie version in order for "cargo update"
+
+8. rust provided a way to locally see documentation of your dependencies, traits, code, .etc with,
+   a command "cargo doc --open" which opens the documentation locally inside a browser

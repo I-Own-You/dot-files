@@ -1,0 +1,100 @@
+1. cargo offers a feature called "workspace", basically splitting multiple related projects and
+   work on each other.
+
+2. workspace shares the same "Cargo.lock" and "output" directory("target/")
+
+3. example:
+    
+    1. mkdir add (the workspace itself)
+    2. inside "add" we create "Cargo.toml" which will have the setting for entire workspace
+    3. inside "Cargo.toml" we wont have [packages] but [workspace] section which will allow us
+       to add more members to the workspace
+    4. inside "Cargo.toml" we should add " resolver = "3" " setting under [workspace], this is
+       the latest algorithm version of rust to resolve paths, .etc for workspace content
+    5. "cargo new adder", this will create a new binary crate named "adder" inside "add" folder;
+       after "cargo new adder", the "cargo new" if executed inside a workspace (which it is in our case)
+       automatically adds a newly created package to the "members" setting under [workspace] inside
+       "Cargo.toml" of the workspace folder:
+
+       we know have this workspace settings inside "Cargo.toml" of "add" folder
+       
+       [workspace]
+       resolver = "3"
+       members = ["adder"]
+       
+       we know have this folder structure inside "adder":
+
+           adder
+           ├── Cargo.toml
+           └── src
+               └── main.rs
+
+       we know have this folder structure inside "add":
+       
+       ├── Cargo.lock
+       ├── Cargo.toml
+       ├── adder
+       │   ├── Cargo.toml
+       │   └── src
+       │       └── main.rs
+       └── target
+   
+       notice that "target/" folder is at the top, inside the workspace folder and not inside the
+       "adder/", binary crates inside a workspace dont how compiled code, only the worksapce has it
+    
+    6. "cargo new add_one --lib", this will add a new library crate (package) to our workspace
+
+        we know have this workspace settings inside "Cargo.toml" of "add" folder
+        
+        [workspace]
+        resolver = "3"
+        members = ["adder", "add_one"]
+        
+       we know have this folder structure inside "add":
+       
+       ├── Cargo.lock
+       ├── Cargo.toml
+       ├── add_one
+       │   ├── Cargo.toml
+       │   └── src
+       │       └── lib.rs
+       ├── adder
+       │   ├── Cargo.toml
+       │   └── src
+       │       └── main.rs
+       └── target
+    
+    7. inside "add_one/src/lib.rs" we add this code:
+            pub fn add_one(x: i32) -> i32 {
+                x + 1
+            }
+    
+    7.1 now, we can have "adder" crate to depend on "library code" from "add_one/src/lib.rs", but to
+        have this, we need to add the path dependency of "adder" inside "adder/Cargo.toml":
+        
+        [dependencies]
+        add_one = { path = "../add_one" }
+
+        we do this because cargo doesnt assume crates will depend on each other.
+
+        inside "adder/src/main.rs" we invoke the library crate like so:
+
+        fn main() {
+            println!("{}", add_one::add_one(5));
+        }
+    
+    7.2 now, we build the workspace, "cargo build"
+    7.3 now, we can specify which binary crate will run by specifying which package from workspace will run:
+        "cargo run -p adder", this will invoke "add/adder/src/main.rs"
+    
+    8. "Cargo.lock" is signle for entire workspace, if you want to use a specific package inside
+       a crate and not in others, you add it under [dependencies] inside "crate_name/Cargo.toml",
+       this adds the package to the project but only that specific crate can use. For other crates,
+       to use the package you added, you must add the package under [dependencies] in "Cargo.toml"
+       as well, the version can be the same (in which it will not make a copy and re download, it 
+       will reuse the downloaded one from the crate which downloaded it the first time), or specify
+       another version and then another version of that package will be added and used.
+        
+    9. when it come to publishing or testing different crates inside different packages,
+       you do the same as without a workspace but add "-p package_name" at the end.
+    

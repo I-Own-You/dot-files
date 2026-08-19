@@ -1,0 +1,7 @@
+1. cargo can be extended with new subcommands without having to modify cargo itself
+
+2. if you have a binary in your $PATH and its named cargo-any_name, you can run it:
+    "cargo any_name"          # (like a subcommand)
+
+3. you can find a list of all subcommands:
+    "cargo --list"

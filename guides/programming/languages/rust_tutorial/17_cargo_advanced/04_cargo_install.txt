@@ -1,0 +1,13 @@
+1. "cargo install" allows to install and use binary crates locally.
+
+    basically installing binaries to use like cli tools
+
+2. you can only install crates that have binary targets (obviously, since only binary crates) can be
+   executables, libraries cannot.
+
+3. the path were binaries are installed is stored in isntallation root bin foler,
+   either .cargo/bin from $PATH if you installed rust using rustup.rs
+
+4. example:
+    
+    "cargo intall ripgrep"

@@ -1,0 +1,22 @@
+1. smart pointers - data structures that act like a pointer but also have additional metadata and
+                    capabilities
+
+2. while references borrow data, smart pointers own data they point to
+
+3. smart pointers are usually implemented as a struct
+
+3.1 they must implemente "Deref" and "Drop" traits
+
+3.2 "Deref" allows an instace of the smart pointer sruct to behave like a reference so that you
+    can work either with referenes or smart pointers
+
+3.3 "Drop" allows you to customize the code that is run when when an instance of a smart pointer
+    goes out of scope
+
+4. std has a lot of smart pointers implementd, "crates.io" crates also have their.
+
+5. most common smart pointers inside std is:
+     1. Box<T> for allocating values on the heap
+     2. Rc<T> reference counting type that enables multiple ownership
+     3. Ref<T> and RefMut<T> accessed through RefCall<T>(which is a type that enforces the
+        borrowing rules at runtime instead of compile time)

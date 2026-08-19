@@ -1,0 +1,32 @@
+1. rust has a specific "tests/" directory at the root of the project where your integration tests go
+
+2. these test integrations can use only library code "src/lib.rs"
+
+3. each file inside "tests/" is a separate "crate"
+
+4. inside each file from "tests/" you dont need a separate module with #[cfd(test)] sinc rust
+   treats "tests/" specially and run code inside thse files only when you do "cargo test"
+
+5. to run a specific integration test function you do:
+    cargo test integration_test_function_name // specific function from integration test file is run
+
+5.1 to run all integration tests functions from a file within "tests/" you do:
+    cargo test --test integration_test_file_name // all test functions will be run from this file
+
+6. if you define a file within "tests/" and inside you define a function without #[test] its still
+   considered a test function and will be tested even if we created this file and this function
+   as a helper, so what can we do?
+
+   we need to create a folder with the name of the file we created, and inside this folder we need
+   a file called "mod.rs" and rust will stop treating it as an integration test file and then,
+   we can use this file as a simple module inside our integration files and use its code
+
+7. if our project is a single binary crate "src/main.rs" and we dont have a library "src/lib.rs" then
+   we cannot use integration tests, since the only place they can use code is from "src/lib.rs" so
+   if you need them, you need "src/lib.rs"
+       
+       
+integration tests - are tests that are used to test how different parts of code work with each other
+                    through "src/lib.rs".
+
+unit tests - test particular small code parts, mainly logic flow, usually within the same crate.

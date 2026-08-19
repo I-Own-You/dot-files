@@ -1,0 +1,69 @@
+1. when compiling a crate, the compiler looks inside the first "crate root" either for binary or library
+   for code to compile
+
+2. in "crate root" files you can declare new modules like "mod my_module;" then the compiler looks
+   for code inside my_module in either place and takes the first found:
+       1. if you had mod my_module { }, it will look inside { } for the code
+       2. in the file src/my_module.rs
+       3. src/my_module/mod.rs
+
+3. in any file that is not the "crate root" you can declare submodules
+3.1 inside "src/my_module.rs"(if you choose your module to be "src/my_module.rs" instead of 
+    inline { } or "src/my_module/mod.rs") you declare "mod other_module;"
+3.2 the compiler will look for code in "other_module" in either directory named after the parent module,
+    so it means if "mod other_module;" submodule is deined inside "src/my_module.rs" or "src/my_module/mod.rs"
+    or "mod my_module {}" then code for "mod other_module;" submodule will be found either in these 3 places:
+    1. "mod other_module {}"
+    2. "src/my_module/other_module.rs"
+    3. "src/my_module/other_module/mod.rs"
+
+    you should use the new style where you dont crete the separate folder with sub modules name
+    and have mod.rs inside it, only parent_module/sub_module.rs (which is the new style)
+
+4. then, inside a module you have some code, for example a structure "MyStruct", then accessing it
+   within the same crate will be: "crate::my_module::other_module::MyStruct" where "crate" means,
+   start looking from the "crate root" of current "crate", could be "main.rs" inside "src/" or other
+   "crate root" from "src/bin/"
+4.1 if you would like to use this functionality from another crate, you would this:
+    "project_name::my_module::other_module::MyStruct" where "project_name" is the "library crate"
+    of the project by default unless you changed the naming inside "Cargo.toml"
+
+5. code inside modules is private from its parents by default
+5.1 to make a module public you must declare it as public: "pub mod" instead of just "mod"
+5.2 to make items inside a "public mod" public you must use "pub" before their declarations
+
+6. "use" keyword helps to reduce repeating the path(bring in scope data) within crate like this:
+   1. "use crate::my_module::other_module::MyStruct;" so know you only need "MyStruct" instead of
+      repeating the the path
+   2. "use my_project::my_module::other_module::MyStruct;" for other crates
+
+summary:
+         1. when you have only 1 crate "main.rs" you dont even need "lib.rs" you just have your modules
+            inside "src/" as folders or files, usually "src/module_name.rs" and "src/module_name/*.rs"
+            
+         2. if you have more than 1 crate:
+         
+            1. if you dont need common modules, you dont need "lib.rs" and modules inside "src/"
+               so you put your modules inside "src/bin/module_name.rs" and then "src/bin/module_name/"
+               folder where different "*.rs" with logic relies, usually you will name your module folder,
+               after the binary crate, "src/bin/server.rs" then its modules will be inside "src/bin/server/"
+               where "src/bin/server/*.rs" or just a single file server_module.rs where logic
+               relies.
+               
+            2. if you need common modules for different crates, then you need "src/lib.rs" where you define
+               which modules are available inside "src/" like "src/network.rs" or "src/network/" where inside
+               you have a lot of files , usually it will be a "src/module_name.rs" and "src/module_name/*.rs";
+               you cannnot use common modules from "src/" without defining a "src/lib.rs" and info inside it
+
+               you need this because "project_name::" is actaully refereing to the library "lib.rs",
+               it cannot use "main.rs", its "binary crate"
+
+            3. if you need both common module and modules related to only your crate, you do both 1 and 2 step
+
+         
+         3. "mod" already creats a module, so you need in your crate to just type "mod module_name;" and 
+            thats it, dont put "mod module_name {}" inside the "module_name.rs" file, it will create
+            a submodule.
+
+         4. any module can use their parents(crate root which imports the module with "mod module;")
+            code either public or private but not otherwise.

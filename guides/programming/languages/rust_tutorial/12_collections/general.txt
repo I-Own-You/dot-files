@@ -1,0 +1,14 @@
+1. rust std has many data strcutures which we call "collections"
+
+2. collection differ from simple data types (including array and tuples) from the fact
+   that they are stored on the stack, but collections on the heap
+
+3. since collections are stored on the heap, dont need to know the amount of data at
+   the compile time
+
+4. collections usually can store multiple values
+
+some popular collection are:
+    1. vector - allows to store values next to each other (contiguous)
+    2. string - collection of characters (we used before)
+    3. hash map - allows to associate a value with a specific key

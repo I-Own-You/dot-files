@@ -1,0 +1,35 @@
+1. when you do "cargo test" it compiles the code in a "test binary" and runs it
+
+2. the default behaviour of the "test binary" is to run all the tet in parallel and capture
+   output generated during the test so it will show only at the end and only what is test related
+
+3. you can have arguments for the "cargo test" tool and some for the binary
+    1. cargo test --help its for "cargo test" tool
+    2. cargo test -- --help is for the test binary
+
+4. test code should not depend on each other or any shared state since they run in parallel
+
+5. if you want to run tests on 1 thread which means no parallelism, you can do:
+    cargo test -- --test-threads=1
+
+6. by default, all the output related to passed tests will not be shown, only for failures,
+   this includes like any prints from functions used, helpers, .etc.
+   To make tetst show output for passed tests as well, you can do:
+        cargo test -- --show-output
+
+7. by defaul, "cargo test" runs all tests, if you need to run specific single test by name, you can do this:
+        cargo test test_name       // test_name is the actaul function on which you have #[test]
+
+7.1 you cannot run multiple tests by giving multiple names with a space between them, but there
+    is a way to run multiple tests by name:
+        cargo test add          // where add is a substring from all test functions we have and also
+                                // the module name, so you can run entire functions within a module as well
+
+8. to run tests which we specified as ignored after #[test] inside code file, we can do this:
+        cargo test -- --ignored    // any test taht is ignored will be run
+        cargo test some_test_name --ignored   // only some_test_name that is also ignored will be run
+        cargo test substring_name -- ignored // only tests which contains substring_name and are ignored will run
+
+8.1 if you want to run all test either ignored or not, you can do this:
+        cargo test -- --iclude-ignored
+

@@ -1,0 +1,46 @@
+1. use - way of creating a shortcut for data instead of accsessing it through full path
+
+2. use - works only on the same scope, so if you have 2 modules where 1 module uses something 
+         from the 2 module and you make a shortcut like "use crate::first_module::something;"
+         and then you try to use it inside the 2 module, even if everything in 1 module is public,
+         you will not be able to use it since scope is different, because the 2 module
+         created its scope with mod second_module { } but "use" is on the same scope as 
+         "second_module" and inside "second_module" is another scope
+
+3. its idiomatic to shortcut code with "use" with either:
+    1. parent: "use parent;" and then "parent::something();"
+    2. without parent: "something;" and then "something();"
+
+    specifying:
+        1. parent is idiomatic for functions or to not clutter the namespace
+        2. without parent is idiomatic for data structures, variables for direct usage
+
+4. you can also give new name for the imported code with "as" keyword:
+    1. "use parent as new_parent;" then "new_parent::something();"
+    2. "use parent::something as new_something;" then "new_something();"
+
+5. there is a technique called "re-exporting" where you reexport a "use" shortcut which allows
+   to use current module not as "module::other_module::another_module::something()" but
+   "module::another_module::something()",
+   like so: "pub use other_module::another_module;" (we skipped "module" since we are in it)
+   and now other crates can do "module::another_module::something()" or "use module::another_module"
+
+6. "std" itself is shipped with rust language, this is why its not under [dependencies] inside Cargo.toml
+   but usign something from it outside of "prelude" implicit imports you need to import it with "use"
+   or direct usage "std::"
+
+7. if you have a lot of imports from the same path or sub-path, you can use the "nested import" technique:
+   use std::cmp::Ordering;
+   use std::io;
+   // above imports become a single import
+   use std::{cmp::Ordering, io};
+   
+   // it works for sub-path as well
+   use std::io;
+   use std::io::Write;
+   // above becomes a single import
+   use std::io::{self, Write};
+   
+8. there is also the "glob" importing where you import everything from some module:
+    use std::collectins::*;
+    // ultra bad practice, clutters name space, bugs, errors, do not do this

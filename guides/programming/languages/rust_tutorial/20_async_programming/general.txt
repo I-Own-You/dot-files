@@ -1,0 +1,31 @@
+1. async programming - an abstraction taht let express code in terms of potential pausing points and
+                       eventual results by coordinating between these points
+
+2. future, streams, async/await syntax in rust let us have that async programming power
+2.1 but we also will need async runtime which must be implementd by you
+
+3.  cpu-bound operation is the raw power of the processor where it does something:
+
+    example: a for loop which increases a number
+    
+3.1 i/o-bound operation is when your cpu needs to wait for something to be able to work on it:
+
+    example: writing/reading data from disk, waiting for network data, why its i/o:
+             1. because read/write is a constrain from our SSD/HDD which is not as fast as CPU,
+             2. because network data sent across network has limits at different places starting
+                from your network speed, ssd/hdd speed, server speed providing data, .etc
+
+3.2 OS usually switches from different taks, especially i/o bound to give other task resources
+    which means it pauses the previous task if that task is waiting on something and the free
+    resources now could be used by other task.
+
+3.3 but here is the problem, using system resource by our multiple threads will eventually
+    become a problem, too much system resources used could really harm the os itself and its processes
+    not to mention our program itself. It would be better if we would have a runtime that could choose
+    what tasks need to be done now and which could be done later, keeping the system resources ligher.
+
+4. async code in rust usually happen "concurrently", but depending:
+    1. on the hardware
+    2. the OS
+    3. async runtime we use
+    "concurrency" can use parallelism unde the hood based on the above

@@ -1,0 +1,28 @@
+1. path has 2 forms:
+
+   1. absolute path, starting from the "crate root" with 2 rules:
+      1. inside current crate: "crate::"
+      2. in external crate: "project_name" or if you changed the name look inside Cargo.toml
+   
+   2. relative path, starts from the current module and uses: "self", "super", "module_name" in current module
+       1. "super": goes up one level to access code, what does it mean ?
+                 1. if you have a module inside a file, and that file also has some code,
+                     then inside the module you do: "super::that_code" and you access the code, thats it!
+                 2. why useful ?
+                     1. if you have a nested strucutre, going up is shorter then
+                        specifying absolute path with "crate"
+                     2. if you move your module to a submodule of current module you again ensure
+                        that you will ivoke the parent module code
+                        
+                     3. if your parent is "crate root" then "super::" and "crate::" is the same thing
+
+       2. "self": ?
+
+1. pub keyword has some rules about structs and enums:
+    1. struct - if you define a structure public, its fieldss remain private,
+                1. so if you want to access them, you need to make them public with "pub"
+                2. if you want methods for it, you defined them with "pub" as well,
+                   and not "pub impl StructName" but methods inside it
+
+    2. enums - enum variants are public by default, no need for "pub" for each variant,
+               but you do need "pub" in fron of the enum itself

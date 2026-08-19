@@ -1,0 +1,12 @@
+// 1. key concurrency concepts that are embedded inside the language and not in std is:
+//      std::marker::Send and std::marker::Sync
+
+// 2. Send trait indicates that ownership of values of the type implementing Send can
+//    be transfered between threads. Almost every type in rust implements it but not all, for
+//    example Rc<T> dont.
+
+// 3. Sync trait means taht it is safe for the type implementing Sync to be referenced from multiple
+//    threads: Any type T implements Sync if &T implements Send. All primitive types implement Sync;
+//    RefCell<T>, *Cell dont implement Sync
+
+// 4. manually implementing new concurrent type not made with Send an Sync involves unsafe rust code.

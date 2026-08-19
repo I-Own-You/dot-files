@@ -1,0 +1,67 @@
+1. even if you pass to rustc a single file, its consiered a crate, even though crates,
+   can contain a lot of modules which can be defined in other files
+
+2. crate comes in 2 forms:
+   1. binary crate - 
+                     1. an executable file which you can run as a singly program;
+                     2. each binary crate must have a main() function which defines what happens
+                        when the binary is executed.
+   
+   2. library crate - 
+                      1. dont have main() and they dont compile to an executable
+                      2. they define functionality which shuld be shared with multiple projects
+                         (for example "rand" create we used, its a library crate)
+
+   3. crate root -
+                   1. source file from which Rust compiler starts from and makes the root module
+                      of the crate (so its the main.rs for an executable or lib.rs for a library
+                      inside src/ folder), crate root is not the crate, its the starting point of crate
+
+                      "crate root" itself isnt some magic, it does nothing, its for to just know that,
+                      its the entry point for constructing the hierarchy tree of a crate and modules
+
+3. package -
+             1. bundle of 1 or more crates that provide functionality
+             2. it contains a Cargo.toml which describes how to build crates
+             3. can contain any amount of binary crates
+             4. must contain only 1 or 0 library crates
+             5. must have at least 1 binary or library crate
+             
+             --- "cargo" cli tool is itself a package which contains binary crate ---
+             --- "cargo" package also contains library crates which it depends on ---
+
+# summary:
+1. you create a project with "cargo new project_name":
+2. a project_name folder is created with "Cargo.toml" file and "src/" folder
+3. "Cargo.toml" means this folder is a package
+4. "src/" folder inside has "main.rs" file
+5. "src/main.rs" is the "crate root" of a "binary crate" its a convention cargo follows
+6. rust knows its a package which will compile into a binary crate
+---
+1. if you would have "src/lib.rs" instead of "src/main.rs"
+2. "src/lib.rs" is the "crate root" of a "library crate" its a convention cargo follows
+3. rust knows its a package which will compile into a library crate
+---
+1. if you would have "src/main.rs" and "src/lib.rs"
+2. "src/main.rs" is the "crate root" for the binary crate
+3. "src/lib.rs" is the "crate root" for the library crate
+4. you know have both a binary and a library crate inside the package
+---
+1. if you want more than 1 binary crate, you can define them inside "src/bin/" folder
+2. "src/main.rs" is the main mandatory "crate root"
+3. "src/bin/second_binary.rs" is the second "binary crate" which "crate root"(main.rs) will pick it up
+4. "src/bin/N_binary.rs" .etc
+5. each binary crate from "src/bin/" are "crate root" themselves but can also be "modules" if they are
+   used as modules in some binary crates (better dont put binary crates taht need to be used as modules
+   in the same "src/bin/" folder where binary crates rely or you will end up confused)
+---
+1. by default, when you do "cargo run", the "crate root" is executed: cargo run main.rs
+2. to execute other binary crates, you do "cargo run --bin binary_name": "cargo run --bin secon_binary"
+---
+1. project folder you created with "cargo new project_name" will be automatically the crate name for both
+   library and binary, but this can be changed inside Cargo.toml
+2. if someone would want to use our crate, he would usually do "use project_name::some_function"
+   from our "lib.rs"
+3. if you want to use functionality from your library, you as well would do "use project_name::some_function"
+   since both "main.rs" or other binaries from "src/bin/" and "src/lib.rs" are in the same project scope
+   but they are different crates themselves.
