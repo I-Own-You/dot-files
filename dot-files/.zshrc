@@ -105,8 +105,10 @@ bindkey '\e;' end-of-line # shift + alt + ;
 
 bindkey '^[^?' backward-delete-word # alt + backspace
 
-source ~/.config/zsh/wezterm.sh
+# for osc 133 (zellij)
+source ~/.config/zsh/wezterm.sh 
 
+# yazi shortcut
 function ff() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
