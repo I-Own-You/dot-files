@@ -71,8 +71,8 @@ hl.config({
 		kb_model = "",
 		kb_rules = "",
 
-		repeat_rate = 50,
-		repeat_delay = 200,
+		-- repeat_rate = 50,
+		-- repeat_delay = 200,
 
 		follow_mouse = 2,
 
