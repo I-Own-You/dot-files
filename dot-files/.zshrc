@@ -70,7 +70,8 @@ alias fgsp="forgit::stash::push"
 alias fgss="forgit::stash::show"
 alias fgw="forgit::warn"
 
-#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# export PATH="$HOME/go/bin:$PATH"
+path=(~/go/bin $path)
 
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
@@ -115,7 +116,8 @@ function ff() {
 	rm -f -- "$tmp"
 }
 
-fpath=(~/.zsh/completions $fpath)
+# zsh completions sources
+fpath=(~/.config/zsh/completions/ $fpath)
 
 autoload -U compinit
 compinit -i
