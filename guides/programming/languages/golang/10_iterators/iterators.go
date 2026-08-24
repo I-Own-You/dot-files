@@ -24,12 +24,11 @@ func New[E comparable]() *Set[E] {
 
 // All() method here returns an iterator, iter.Seq type
 func (s *Set[E]) All() iter.Seq[E] {
+	// 1. the yield function is used to test if it should keep giving the value or return
+	// 2. return false/nothing - stops giving values
+	// 3. return true - continues giving values
 	return func(yield func(E) bool) {
 		for v := range s.m {
-			// main point here is that yield function is called on every value we will operate so taht iter.Seq,
-			// could decide to return or not. If if return false, the iterator stops, if it just returns, also stops,
-			// if returns true -> iterator will keep returning values that it takes with yield(v).
-			// the name could be anyting, not just yield.
 			if !yield(v) {
 				return
 			}
@@ -38,19 +37,23 @@ func (s *Set[E]) All() iter.Seq[E] {
 }
 
 func PrintAllElements[E comparable](s *Set[E]) {
-	// you can use for range construction to iterate over iterators, but here s.All() is kind of cluncky because,
-	// All() could be a iterator itself without returning one,
-	// but if it would have parameters, or any cleanup function, then a method would be better.
-	// if for any reason the range loop exits, like break or any other reason,
-	// the yield will effectively return false, so it will make sure the iterator is stopped.
+	// 1. you notice we didnt give a function to .All() method since it returns a function
+	//    which needs a function to be passed, this works because "range" from for loop
+	//	  generates it for you:
 	for v := range s.All() {
 		fmt.Println(v)
 	}
+	// 2. but you could pass it a function if you got some logic and dont want the implementation from .All():
+	s.All()(func(v E) bool {
+		fmt.Println(v)
+		return true
+	})
 }
 
 func main() {
 
 	a := New[int]()
+	
 	a.m[0] = struct{}{}
 	a.m[1] = struct{}{}
 	a.m[2] = struct{}{}
