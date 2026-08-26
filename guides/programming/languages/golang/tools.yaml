@@ -1,0 +1,78 @@
+backend:
+  language:
+    - Go
+
+  http:
+    - net/http
+    - chi
+
+  templates:
+    - templ
+    - templ-ui
+
+  database:
+    - PostgreSQL
+    - SQLite
+    - pgx
+    - sqlc
+    - database/sql
+
+  migrations:
+    - goose
+
+  logging:
+    - slog
+
+  validation:
+    - ?
+
+frontend:
+  server_driven:
+    - HTMX
+    - Datastar
+    - Alpine.js
+
+  frameworks:
+    - React
+    - Vue
+    - Svelte
+
+  language:
+    - TypeScript
+
+  css:
+    - Tailwind
+
+development:
+  - air
+  - just
+  - mise
+
+quality:
+  - golangci-lint (.golangci.yml file in project)
+
+testing:
+  - testing
+  - httptest
+  - testcontainers-go
+
+deployment:
+  - Docker
+  - ko
+  - Caddy
+
+ci_cd:
+  - GitHub Actions
+
+observability:
+  - slog
+  - Prometheus      
+  - OpenTelemetry  
+  - Sentry        
+  
+auth:
+  - ?
+
+api:
+  - openapi
+  - gRPC
