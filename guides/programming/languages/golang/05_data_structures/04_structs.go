@@ -5,7 +5,7 @@ import "fmt"
 // struct - typed collection fo fields, its useful for grouping data to form a record
 
 type person struct {
-	// in memory, the struct is just a contiguous block of memory which has its length for every filed like:
+	// in memory, the struct is just a contiguous block of memory which has its length for every field like:
 	// name will take 8 bytes (since my pc is 64 bit)
 	// age will take 8 bytes (since my pc is 64 bit)
 	// overall size of struct is 16 bytes, but because of alignment of memory it could take more.
@@ -48,21 +48,18 @@ func newPerson(name string) *person {
 }
 
 func StructDataStructure() {
-	// empty struct
-	// myV variable points to the empty struct{}, a global golang variable, but its pointer is nil(no allocation)
+	// empty struct, variables point to the empty struct{}
 	var myV person
 	fmt.Printf("myVVV: %v\n", myV)
 
-	// myVV now has a pointer(its allocated) but also points to struct{}, the value is empty struct{}
 	var myVV = person{}
 	fmt.Printf("myVVV: %v\n", myVV)
 
-	// allocated, points to struct{}
 	myVVV := person{}
 	fmt.Printf("myVVV: %v\n", myVVV)
 
-	// still 0, but addresses must be different since its an array, its a special case handled by compiler
-	// any other use, like value of key in map, chanel value, .etc will be 0 consumed memory, so, not allocated
+	// still 0, its a special case handled by compiler
+	// any other use, like value of key in map, chanel value, .etc will be 0 consumed memory
 	myVVVV := [5]struct{}{}
 	fmt.Printf("myVVVV: %v\n", myVVVV)
 

@@ -12,7 +12,7 @@ import (
 // as of 2024, the slog package is the best for logging,
 // more here: https://go.dev/blog/slog.
 
-// go provides pacages for simple log utilities like: log,
+// go provides packages for simple log utilities like: log,
 // and for more structured logs: log/slog.
 // go read the package for better understanding just in case you need it.
 

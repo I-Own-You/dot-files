@@ -9,7 +9,7 @@ type myGenericType[K comparable, V any] map[K]V
 // error, type paramteres cant be used as types for a type itself
 // type genericType[A any] A
 
-// generic type aliasess
+// generic type aliasess, both types are the same now
 type aliasMyGenericType[K comparable, V any] = myGenericType[K, V]
 
 // type aliases provide a easy way to define same types from different packages, as an example.

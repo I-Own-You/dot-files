@@ -11,10 +11,12 @@ func SwitchCondition() {
 	i := 2
 	fmt.Print("Write ", i, " as ")
 	switch i {
+	// the type of case expressions must be the same type as the value type passed to switch
 	case 1:
 		fmt.Println("one")
 		// fallthrough // this is a special keyword that lets you fallthrough to the next case
 		//                because in go, switch exits after first returned value / last executed statement
+		//				  inside a case.
 	case 2:
 		fmt.Println("two")
 	case 3:
@@ -22,8 +24,7 @@ func SwitchCondition() {
 	}
 
 	switch time.Now().Weekday() {
-	// you can separate by comma multiple expressions in a case statement
-	// you can also have more than 1 value to group possible variants, in this case it will check against both values
+	// 1. you can have multiple case expressions which it will choose from
 	case time.Saturday, time.Sunday, 2:
 		fmt.Println("It's the weekend")
 	default:
@@ -31,8 +32,7 @@ func SwitchCondition() {
 	}
 
 	t := time.Now()
-	// switch without initial value, acts like a if/else
-	// it defaults to switch true
+	// 1. switch without a value defaults to switch true {...}
 	switch {
 	case t.Hour() < 12:
 		fmt.Println("It's before noon")
@@ -52,7 +52,9 @@ func SwitchCondition() {
 			fmt.Println("I'm an int")
 			fmt.Printf("t: %T\n", t)   // will print the type, int
 			fmt.Printf("t: %v\n", t*2) // so here will be the value, not the type
-			//                            if formatted as %T, but put t*2, t*2 is dropped, becasue type is not a value
+			//                            if formatted as %T, but put t*2, t*2 is dropped,
+			//							  becasue type is not a value and int is printed
+			fmt.Println(t) // will print the value of t, not the type
 		default:
 			fmt.Printf("Don't know type %T\n", t)
 		}

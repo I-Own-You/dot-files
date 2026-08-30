@@ -22,7 +22,7 @@ func IntMin(a, b int) int {
 // and then the function being tested and some suffixes if needed,
 // the test file would also be in another folder like tests/,
 // and the file name starting with the function name and _test being the ending,
-// like intutils(the filename) and the ending _test so it would be intutils_test.go
+// like testintutils(the filename) and the ending _test so it would be testintutils_test.go
 func TestIntMinBasic(t *testing.T) {
 	ans := IntMin(2, -2)
 	if ans != -2 {
@@ -69,7 +69,7 @@ func TestIntMinTableDriven(t *testing.T) {
 // other tests are runned with: go test -v
 func BenchmarkIntMin(b *testing.B) {
 
-	for b.Loop() { // a modern way would be for b.Loop() { }
+	for b.Loop() {
 		// typically the benchmark runs a function b.N times
 		IntMin(1, 2)
 	}

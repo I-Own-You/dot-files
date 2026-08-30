@@ -43,7 +43,7 @@ func StructsWithMethods() {
 	//    because it needs to be held by garbage collector and follow + free memory at some point
 	// 2. if you would have a parameter in a receiver and changed there a property, then it would not work,
 	//    on a copy of that data, but on the original object would, but it could still allocate memory because of how
-	//    golang garbage collector escape analysis works, so decoupling should be avoid unless needed
+	//    golang garbage collector escape analysis (but not neccessarily)
 	myFunc := r.change
 	myFunc()
 	fmt.Printf("r.width: %v\n", r.width) // not 20, still 10

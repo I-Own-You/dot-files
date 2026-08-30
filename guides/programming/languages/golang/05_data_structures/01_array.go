@@ -58,9 +58,16 @@ func ArrayDataStructure() {
 	// 1. here, nums is a copy of original nums, not real one, so if you would nums[index] = someValue,
 	// 2. then inside this for loop you try if nums[index] == someValue, it would not work, because,
 	// 3. it changed the original array, but you operate on copy values (i, v), v - copy here
+	// 4. 
+	//	  1.range basically copies the array and work on it rather than the original array;
+	//	  2. so you should be aware of this, because copying things can become performance overhead if you
+	//	     have a really large array
+	//	  3. compiler can optimize it and not do a physical copy of an array if it can
+	//
+	// this behaviour is specific only to arrays, not slices.
 	nums := [3]int{0, 1, 2}
 	for i, v := range nums {
-		// even changing it at first iteration, it wont make v = 10 at next iteration where you access it below
+		// original nums is updated, the copy inside this for-range is not
 		nums[1] = 10
 		if i == 1 {
 			// 1, not 10

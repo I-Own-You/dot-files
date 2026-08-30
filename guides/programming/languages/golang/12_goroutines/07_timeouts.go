@@ -6,7 +6,7 @@ import (
 )
 
 func timeouts() {
-	// for example some external call then returns its result on channel c1 after 2s.
+	// some external call returns its result on channel c1 after 2s.
 	// the channel is buffered, meaning it will be nonblocking for 1 value,
 	// its a common pattern to buffer so it wont block the thread and in case you dont read from the channel
 	c1 := make(chan string, 1)

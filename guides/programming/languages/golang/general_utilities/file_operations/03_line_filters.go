@@ -10,7 +10,7 @@ import (
 func ScannerExample() {
 
 	// scanner is a handy way to work with files, mainly for its tokenization way,
-	// its used for read by lines or read by words but has other options too.
+	// its used to read by lines or read by words but has other options too.
 	// its not as efficient as buffio.reader/writer but nicer way for simple and easy things.
 	scanner := bufio.NewScanner(os.Stdin)
 

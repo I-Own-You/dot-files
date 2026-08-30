@@ -28,9 +28,12 @@ func headers(w http.ResponseWriter, req *http.Request) {
 			fmt.Fprintf(w, "%v: %v\n", name, h)
 			// here, it doesnt mean the server is sending response everytime it writes to w,
 			// it actually stores what it writes into internal buffer and sends data when:
-			// 1. handler returns or
-			// 2. internal buffer is full or
-			// 3. explicitly flush with http.Flusher
+			// 		1. handler returns or
+			// 		2. explicitly flush with http.Flusher
+			// 		3. internal buffer is full or (not necessarily when its full, just a general idea)
+			//
+			//		   this third option is more of a concept to be aware rather than to believe and think
+			//		   about it, only the 1 and 2 usually are explicitly done.
 			//
 			// even if you dont explicitly return from a http handler, it will still
 			// send the response because exiting the http handler means the handler is done,
@@ -39,7 +42,7 @@ func headers(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-// you could also implement the handler interface and use it in .Handle() but HandleFunc is idiomatic
+// you could also implement the handler interface and use it in http.Handle(myHanlder{})
 type myHandler struct{} // here could be any type
 
 func (mh myHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {

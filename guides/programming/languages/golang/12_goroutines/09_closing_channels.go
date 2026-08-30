@@ -12,9 +12,10 @@ func ClosingChannels() {
 	go func() {
 		for {
 			// here it will forever loop to get values from jobs:
-			// j: will be the value.
-			// more: a bool meaning all values have been received and the channel is closed, or
-			// values there remains and the channel is not closed
+			// 1. j: will be the value.
+			// 2. more: a bool meaning:
+			//		1. true -  channel is not closed and there are values or there are values
+			//	    2. false - channel is closed and there are no values in it
 			j, more := <-jobs
 			if more {
 				fmt.Println("received job", j)
@@ -39,7 +40,7 @@ func ClosingChannels() {
 	// wait for the goroutine above the forloop to notify the termination: done <- true on 21 line
 	<-done
 
-	// when you receive from a closed channel,
+	// when you receive from a closed channel without values:
 	// the first argument will be zero value of channel type, the second argument a bool false.
 	// so any receiving from a closed channel wont block the thread because its closed, no values and empty
 	_, ok := <-jobs
@@ -48,6 +49,6 @@ func ClosingChannels() {
 
 // tip:
 // 1. if you close a buffered channel, you STILL can receive all values and then v, ok := <-chan
-// will give you the zeroed value of channel type and ok will be false.
+//    will give you the zeroed value of channel type and ok will be false.
 // 2. if you close an unbuffered channel while the value is sent into it in some goroutine,
-// then go will panic because you cant send values into channels which are closed.
+//    then go will panic because you cant send values into channels which are closed.

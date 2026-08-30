@@ -44,8 +44,7 @@ func WriteToFiles() {
 	// from the memory(flushes), it also impacts performance,
 	// so its a trade off when working with critical resources like db operations, logs, .etc
 	//
-	// closing a file like f.Close()
-	// flushes the data from memory buffer to the disk but f.Sync() ensures its flushed.
+	// closing a file like f.Close() flushes the data from memory buffer to the disk as well
 	f.Sync()
 
 	// memory buffer where the data is stored instead of making multiple system calls,

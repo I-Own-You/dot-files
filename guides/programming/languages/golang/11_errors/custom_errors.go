@@ -44,11 +44,10 @@ func main() {
 
 	_, err := ff(42)
 	var ae *argError
-	fmt.Printf("ae: %v\n", (*ae))
 	// here errors.As finds the first error in err's tree that matches target, and if one is found,
 	// sets target to that error value and returns true. otherwise, it returns false.
 	// target must be a non-nil pointer to an error type or interface
-	if errors.As(err, &ae) {
+	if errors.As(err, ae) {
 		fmt.Println(ae.arg)
 		fmt.Println(ae.message)
 	} else {

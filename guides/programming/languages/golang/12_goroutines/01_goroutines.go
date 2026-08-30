@@ -14,7 +14,7 @@ import (
 //    but when it comes to file, then, it probably will create a separate real OS thread since only network pool
 //    async work is implemented by the operating systems, (windows probably has for files), but the thread will,
 //    anyway go to the thread pool again to be reused
-// 3. therad pool is also named (local runing queue) for go thread and (global runing queue) for real OS threads
+// 3. thread pool is also named (local runing queue) for go thread and (global runing queue) for real OS threads
 // 4. if a core from cpu no longer has goroutines to work, it could steal some from other core which has some,
 //    and help it with work, or it could steal from (global os threads if there are goroutines)
 // 5. context switch happens at go program level(go scheduler), not on pc hardware, so our cpu thinks we are,
@@ -54,8 +54,7 @@ func goroutines() {
 	time.Sleep(time.Second)
 	fmt.Println("done")
 	// the results here would be first everyting from sync code at first, but if it takes too long and the
-	// async code (in another threads) are done, they would be returned earlier than sync code, only,
-	// if async code is above sync code.
-
+	// async code (in another threads) is done, they would be returned earlier than sync code
+	
 	// so its a concurrent execution, all processes are interleaved and returned on ready state
 }

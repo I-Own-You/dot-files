@@ -30,17 +30,27 @@ import (
 
 	// this is a module in our module folder
 	"modules/example/myPkg"
-	// instead of example it would be utils, to be consistent, but nice to know names can be different.
-	// utils is an alternative name, you can have there any name, it will work, but its confusing, so
-	// example would be utils because submodule/example has utils package,
-	// you can even leave the name of utils, but formatter will try to either put it back or remove module/package
+
+	// 1. the package from the "module_example" module which is utils, all the other packages can be,
+	//    only in other folders and we would need to specify them after "submodule/example/{here}"
+	// 2. utils can be changed to other name and be used
+	// 3. we cannot remove the package name itself since the compiler will either:
+	//			1. add the package name in fron of the path
+	//			2. remove the declartion entirely
 	utils "submodule/example"
-	myPkgg "submodule/example/myPkgg"
+
+	// 1. same as above but now we import another package from "module_example" module
+	// 2. actually, here we must
+	myPkg2 "submodule/example/myPkgg"
+	// an important rule about folder names and package name:
+	//
+	// if your package name and folder name containing the package dont have the same name,
+	// you cannot import the package through a folder without specifying a name in front of it as we did above
 )
 
 func main() {
 	fmt.Println(quote.Go())
-	myPkgg.AB()
+	myPkg2.AB()
 	utils.CallMe()
 
 	a := myPkg.AC()

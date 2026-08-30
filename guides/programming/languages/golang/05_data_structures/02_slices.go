@@ -29,7 +29,7 @@ func SlicesDataStructure() {
 	var s1 []string
 	// make() also accepts a third parameter which will be the capacity of the slice,
 	// its mainly for optimization, so now the capacity is 10, and length 3,
-	// it means when you surpass the capacity, and append one more element,
+	// it means when your len(array) == capacity, and append one more element,
 	// the slice is reallocated and copied to a new memmory adddress,
 	// the element is appended and the capacity is increased, so be cautious
 	s1 = make([]string, 3, 10) // ["", "", ""], even though the capacity is 10
@@ -46,11 +46,11 @@ func SlicesDataStructure() {
 	fmt.Println("len:", len(s)) // 3
 
 	// append() function appends a new element to a slice and returns a new slice,
-	// it could be 1, 2 elements or a slice with [slice_name]... form.
+	// it could be 1, 2 elements or a slice with slice_name... form.
 	// if the slice has enough capacity it will be resliced to have the new elements,
 	// if it doesnt, the slice is reallocated, copied, elements/slice added and capacity increased.
-	// append() doesnt mutate the destination slice,
-	// so append(slice, element) wont add to slice the element.
+	// append() doesnt mutate the slice used as the argument, append(slice, "a"), slice is not mutated
+	// which means append(slice, element) will return a new slice and not mutate the slice
 	s = append(s, "d")
 	s = append(s, "e", "f")
 	s = append(s, s...)
@@ -136,13 +136,16 @@ func SlicesDataStructure() {
 	e[0] = 'a' // e == []byte{'a', 'a', 'e'}, d == []byte{'a', 'b', 'c', 'a'} // 'c' remained the same
 
 	// you can grow a slice with : operator until the capacity treshhold, going beyong will cause an error
+	// example: a[4] will not work, len(a) == 3, a = a[:cap(a)], len(a) == 5, a[4] will work
 	var a = make([]int, 3, 5) // a == [0,0,0]
 	a = a[:cap(a)]            // a == [0,0,0,0,0]
 	a = a[:cap(a)+1]          // error
 
 	// you can use clear function for map/slice, here for slice, it means it will make all values within
 	// the length of the slice to become its zeroed type, a is []int with 5 len, so [0,0,0,0,0].
-	// you can also use ranges with [number:number].
+	// you can also use ranges with [number:number];
+	//
+	// capacity/length remains the same though.
 	clear(a)
 
 	// there is also a technique but dont use it because its kind of easy to screw
@@ -167,7 +170,6 @@ func FindDigits(filename string) []byte {
 	//                                of os.ReadFile() which could be very big
 	//                                and garbage collector wont free it because its pointed by our return
 }
-
 // fix this:
 func CopyDigits(filename string) []byte {
 	b, _ := os.ReadFile(filename)

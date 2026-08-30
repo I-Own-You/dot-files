@@ -34,7 +34,7 @@ func stringss() {
 	fmt.Println("Rune count:", utf8.RuneCountInString(s))
 
 	// using range over strings will decode into runes(characters unicode code unit) so, a number.
-	// you can also have the index at which the new rune starts, without it, only the decoded rune is present.
+	// you can also have the index at which the new rune starts
 	// runeValue itself is rune type (int32), so a number, to get the unicode code point the %#U in Printf is used
 	for idx, runeValue := range s {
 		fmt.Printf("%#U starts at %d\n", runeValue, idx) // ส starts at 0, ว starts at 3 .etc
@@ -111,3 +111,14 @@ func examineRune(r rune) {
 }
 
 // be aware that string(2365) will give the unicode code point of 2365 and not the string "2365" in go.
+func special_semantic() {
+	s := string(2865) // 2865 is taken as unicode code point which in our case the symbol: ଲ
+					  // it has 3 bytes, s will hold a slice of those bytes internally but the 
+					  // variable itself will print that symbol.
+	
+	// to see the underneath bytes without doing s[0], .etc since we might not know the actual
+	// length of a symbol and trying to do s[0], s[?] is prone to panic we can do this:
+	s_internal := []byte(s) // [some byte, some byte, some byte, .etc]
+	// or just using "len" function
+	fmt.Println(len(s) == len(s_internal)) // true
+}

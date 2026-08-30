@@ -22,27 +22,26 @@ func WaitGroups() {
 	var wg sync.WaitGroup
 
 	for i := 1; i <= 5; i++ {
-		// increment wait group by n goroutines you start
+		// 1. increment wait group by n goroutines you start
 		wg.Add(1)
 
-		// execute in closure to tell the worker is done for the wait group
+		// 2. execute in closure to tell the worker is done for the wait group
 		go func() {
-			// defer keyword ensures the waitgroup is decremented by 1, no matter what happens inside goroutine,
-			// workerrr(i) functioin, like panics, early returns or errors, because if not called, it would break,
-			// the waitgroups tracking goroutines and could lead to panic because the programm hangs for waiting,
-			// the wait group to become 0, meaning all threads executed.
-			// also, the keyword defer here means it will be executed after all function scope is finished,
-			// meaning workerrr(i) also needs to finish, and then wg.Done() will be executed
+			// 1. wg.Done() ensures the waitgroup is decremented by 1 no matter what
+			//	  happens inside goroutine
+			// 2. if you dont call wg.Done() you never decrement the amount of wait groups you added,
+			//    which means the waitgroup will never reach 0 waitgroups available which would mean
+			//    calling "wg.Wait()" will just hang the program - deadlock.
+			//
+			// tip: defer means it will be executed after all function in current scope return,
+			//      meaning workerrr(i) also needs to finish, and then wg.Done() will be executed
 			defer wg.Done()
 			workerrr(i)
 			// wg.Done()
 		}()
 	}
-	// the execution here works
 
-	// here we block until the wait group counter goes to 0 (means all threads executed)
+	// block until the wait group counter goes to 0 (means all threads executed)
 	wg.Wait()
-
-	// only resumed when wg.Wait() finishes all its waiting threads
 
 }

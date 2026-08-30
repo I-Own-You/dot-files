@@ -15,6 +15,10 @@ func main() {
 		fmt.Println("received message", msg)
 	default:
 		fmt.Println("no message received") // this will execute since messages doesnt have values to return
+		// how "default" works in a "select":
+		//
+		// 1. "select" itself checks every case possible within itself in a random order, not from
+		//    top to bottom or bottom to top, and if neither case is ready, then default is executed
 	}
 
 	msg := "hi"

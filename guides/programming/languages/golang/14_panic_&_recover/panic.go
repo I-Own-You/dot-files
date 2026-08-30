@@ -2,9 +2,10 @@ package main
 
 import "os"
 
-// a panic means something went unexpectedly wrong
-// also panic is used to fail fast on errors that should not occur during normal operations, or
-// we are not yet ready to handle it
+// 1. a panic means something went unexpectedly wrong
+
+// 2. panic is used to fail fast on errors that should not occur during normal operations, or
+//    we are not yet ready to handle it
 
 func panicc() {
 

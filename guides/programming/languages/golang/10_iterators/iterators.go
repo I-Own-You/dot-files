@@ -28,8 +28,8 @@ func (s *Set[E]) All() iter.Seq[E] {
 	// 2. return false/nothing - stops giving values
 	// 3. return true - continues giving values
 	return func(yield func(E) bool) {
-		for v := range s.m {
-			if !yield(v) {
+		for key := range s.m {
+			if !yield(key) {
 				return
 			}
 		}
@@ -39,7 +39,11 @@ func (s *Set[E]) All() iter.Seq[E] {
 func PrintAllElements[E comparable](s *Set[E]) {
 	// 1. you notice we didnt give a function to .All() method since it returns a function
 	//    which needs a function to be passed, this works because "range" from for loop
-	//	  generates it for you:
+	//	  generates it for you.
+	// 2. internally "range" looks at the right expression and if it
+	//	  finds a function signature like "func(some_name func(place_holder)) bool" then it knows
+	//	  to interpret it as iterator and even provide a function in case you didnt give one
+	//	  as in this example you didnt
 	for v := range s.All() {
 		fmt.Println(v)
 	}
@@ -75,9 +79,6 @@ func main() {
 			if v%2 == 0 {
 				fmt.Printf("v: %v\n", v)
 			}
-			// true means the iterator will keep trying to return values.
-			// false/return with no value would mean cancel the iteration,
-			// but in this case you cant return nothing, so false.
 			return true
 		},
 	)
@@ -91,9 +92,6 @@ func filterOdd(v int) bool {
 	if v%2 == 0 {
 		fmt.Printf("v: %v\n", v)
 	}
-	// true means the iterator will keep trying to return values.
-	// (false/return with no value) would mean cancel the iteration,
-	// but in this case you cant return nothing, so false.
 	return true
 }
 

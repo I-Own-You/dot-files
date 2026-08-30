@@ -40,9 +40,11 @@ func EmbeddedStructure() {
 		describe() string
 	}
 
-	// even co doesnt implement describe() method from describer interface,
-	// it works becase container interface, embeds base struct, so base methods become container methods.
-	// base struct implements describer interface, so container struct implements the describer interface also.
+	// 1. co embeds base
+	// 2. base implements "describe" method
+	// 3. base implements describer interface with methods inside
+	// 4. base methods are co methods as well
+	// 5. co implements describer interface as well
 	var d describer = co
 	fmt.Println("describer:", d.describe())
 }

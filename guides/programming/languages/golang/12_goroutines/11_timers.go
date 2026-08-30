@@ -10,8 +10,9 @@ import (
 
 func timers() {
 
-	// a timer is an event in the future, you tell how long to wait before the execution.
-	// and it provides a channel that will be notified when to execute
+	// 1. a timer is an event in the future, you tell how long to wait before the execution.
+	//    and it provides a channel that will be notified when to execute
+	// 2. timer starts here, at the definition
 	timer1 := time.NewTimer(2 * time.Second)
 
 	// this line will block the thread in which its executing and unblock it when the timer finishes and,

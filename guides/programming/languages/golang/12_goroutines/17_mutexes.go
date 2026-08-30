@@ -6,6 +6,7 @@ import (
 )
 
 // for a complex state management we can use mutex to safely access data across multiple threads
+
 // this container will hold a map of counters that we will update from multiple threads.
 // we also add a mutex to synchronize the access.
 // mutexes must not be copied, if you pass this struct somewhere, only by pointer
@@ -15,8 +16,8 @@ type Container struct {
 }
 
 func (c *Container) inc(name string) {
-
-	// here we lock the resources while a thread is using it
+	// here we lock the resources while a thread is using it, it will wait until
+	// all goroutines finishes before a deadlock if no goroutine unlocked it.
 	c.mu.Lock()
 
 	// here we make sure we unlock the resources so we wont hang the program
@@ -52,5 +53,6 @@ func mutexes() {
 	fmt.Println(c.counters)
 }
 
-// starvation: when a goroutine waits for too long or never gets to run, in some case it could be ok(for delay only),
-// 			   for example sync.RwMutex which prioritizes writers over readers lock.
+// starvation: when a goroutine waits for too long or never gets to run,
+// 			   in some case it could be ok(for delay only),
+//			   for example sync.RwMutex which prioritizes writers over readers lock.

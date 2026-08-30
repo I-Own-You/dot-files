@@ -44,7 +44,7 @@ func MapsDataStructure() {
 	delete(m, "k2")
 	fmt.Println("map:", m)
 
-	// clear removes all key/value pairs from a map you
+	// clear removes all key/value pairs from a map
 	clear(m)
 	fmt.Println("map:", m)
 
@@ -69,10 +69,10 @@ func MapsDataStructure() {
 	}
 }
 
-// map doesnt guarantee the order of keys, so printing key/value pairs wont be ordered,
-// you need separate data struture in order to achieve this, like a slice with ordered keys.
+// 1. map doesnt guarantee the order of keys, so printing key/value pairs wont be ordered,
+//    you need separate data struture in order to achieve this, like a slice with ordered keys.
 
-// structs as values inside map dont have to pass the struct name, only map[string]sruct{}{"my-key": { }}
+// 2. structs as values inside map dont have to pass the struct name, only map[string]sruct{}{"my-key": { }}
 
-// if you have struct type as value, you cant take memory address of it, you need to put it somewhere,
-// like a variable or something, do what you need, and then reassign it to the key of the map
+// 3. if you have struct type as value, you cant take memory address of it, you need to put it somewhere,
+//    like a variable or something, do what you need, and then reassign it to the key of the map

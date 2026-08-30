@@ -6,8 +6,7 @@ import (
 	"os/exec"
 )
 
-// exec package provides working with different non-go processes,
-// like subcommands that would be useful for go.
+// exec package provides working with different non-go processes, like subcommands that would be useful for go.
 // we do this when we need an external process accessible to a running Go process.
 
 func SpawningProcesses() {

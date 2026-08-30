@@ -27,8 +27,8 @@ func main() {
 	vKind := reflect.ValueOf(xKind)
 	fmt.Println("type:", vKind.Type())                               // type: float64
 	fmt.Println("kind is float64:", vKind.Kind() == reflect.Float64) // kind is float64: true
-	//                                                 .Kind() always return the original type(dropping static one)
-	//                                                 static one is any custom, like type MyType int, MyType is cutsom
+	//                                       .Kind() always return the original type(dropping static one)
+	//                                       static one is any custom, like type MyType int, MyType is cutsom
 	fmt.Println("value:", vKind.Float()) // value: 3.4
 
 	// reflection goes from interface values to reflection objects and back again
@@ -44,7 +44,7 @@ func main() {
 	// vSet.SetFloat(7.1) // panic
 	pSet := reflect.ValueOf(&xSet)                  // &x, not x
 	fmt.Println("type of p:", pSet.Type())          // type of p: *float64
-	fmt.Println("settability of p:", pSet.CanSet()) // settability of p: false, but why ? because we need *p, not p
+	fmt.Println("settability of p:", pSet.CanSet()) // settability of p: false, because we need *p, not p
 	vSet = pSet.Elem()                              // Elem() helps us with indirecting *p
 	fmt.Println("settability of v:", vSet.CanSet()) // settability of v: true
 	vSet.SetFloat(7.1)                              // wont panic

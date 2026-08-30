@@ -75,8 +75,7 @@ func main() {
 	}
 
 	// here 'g' will be the number version of 'g' because the '{symbol}' which is a rune which is an alias for
-	// int32, which is itself a number which points to a unicode character, but only with literals like 'g', with
-	// variables it wont work like that, it will interpret it like a symbol, no 0,1,2,3, .etc, but 'g' and thats it.
+	// int32, which is itself a number which points to a unicode character
 	for c := range 'g' {
 		fmt.Println(c) // 0, 1, 2, n, 102
 	}

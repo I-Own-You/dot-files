@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-// interfaces are named collections for method signatures and (type generics (since 1.20, another topic later))
+// interfaces are named collections for method signatures and (type generics (another topic later))
 
 // here is how you can define a basic interface of geomtry shape, interface define a shape of a method
 type Geometry interface {
@@ -28,7 +28,6 @@ func (r rect) perim() float64 {
 	return 2*r.width + 2*r.height
 }
 
-// implementing an interface means implementing all its methods, name must be the same
 func (c circle) area() float64 {
 	return math.Pi * c.radius * c.radius
 }
@@ -39,9 +38,8 @@ func (c circle) perim() float64 {
 // here, its a general interface that can call any method from any struct that implements it
 func measure(g Geometry) {
 	fmt.Println(g)
-	// one thing you must remember that interface is valueless but when it decouples (takes the object) it works on
-	// and proceeds to its method it now needs access to the object data, which means an memory allocation happens
-	// becaue now no interface is working, the object itself is.
+	// one thing you must remember that interface is valueless but when it decouples
+	// (takes the object) and works on it
 	fmt.Println(g.area())
 	fmt.Println(g.perim())
 }
@@ -79,7 +77,7 @@ func StructureWithMethodsAndInterfaces() {
 	//
 	// type myStruct struct{}
 	// func (r myStruct) age() {}
-	// func myFunc(interface {
+	// func myFunc(a interface {
 	//		age() int
 	// }) { }
 	//
@@ -112,11 +110,8 @@ func StructureWithMethodsAndInterfaces() {
 	// an empty interface is implemented by all types
 	// the actual value is converted for us by go to become an interface.
 	// the interface points to 2 things:
-	// 1. the type: a table of methods for the underlying values type (the methods table is cached)
-	// 2. the actual data held by that value
-	// example:
-	// (a struct methods) and (the struct itself)
-	// (other types methods, if any) and (the value itself of other types) like builtin types or custom
+	// 1. the type
+	// 2. the actual data
 	//
 	// func DoSomething(v interface{}) {
 	// 	fmt.Printf("v: %v\n", v) // 2
