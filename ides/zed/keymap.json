@@ -59,7 +59,7 @@
     {
         "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
         "bindings": {
-            "p": ["vim::Paste", { "preserveClipboard": true }],
+            "p": ["vim::Paste", { "preserve_clipboard": true }],
         },
     },
     {
