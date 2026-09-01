@@ -1,13 +1,12 @@
 {
     "icon_theme": "Clean VSCode Icon Theme",
     "disable_ai": true,
-    // ui related
     "ui_font_size": 17,
     "ui_font_weight": 300,
-    "ui_font_family": "CommitMono",
-    "buffer_font_size": 19,
+    "ui_font_family": "CommitMono Nerd Font Mono",
+    "buffer_font_size": 20,
     "buffer_font_weight": 300,
-    "buffer_font_family": "CommitMono",
+    "buffer_font_family": "CommitMono Nerd Font Mono",
     "buffer_line_height": {
         "custom": 1.4,
     },
@@ -36,11 +35,11 @@
     },
     "auto_install_extensions": {
         "html": true,
-        "material-icon-theme": true,
         "clean-vscode-icons": true,
-        "spai-zero-theme": true,
         "golangci-lint": true,
-        "vue": true,
+        "tsgo": true,
+        "min-theme": true,
+        "biome": true,
     },
     // save
     "autosave": "off",
@@ -53,12 +52,131 @@
     "enable_language_server": true,
     "lsp_highlight_debounce": 999999999999, // workaround to disable highlight of every same word
     // lsp setup
-    "lsp": {},
-    "languages": {
-        "C": {
-            "format_on_save": "off",
+    "lsp": {
+        // this is for tailwind to work inside .ts files
+        // "tailwindcss-language-server": {
+        // "settings": {
+        //     "experimental": {
+        //         "classRegex": [
+        //             "\\.className\\s*[+]?=\\s*['\"]([^'\"]*)['\"]",
+        //             "\\.setAttributeNS\\(.*,\\s*['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+        //             "\\.setAttribute\\(['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+        //             "\\.classList\\.add\\(['\"]([^'\"]*)['\"]",
+        //             "\\.classList\\.remove\\(['\"]([^'\"]*)['\"]",
+        //             "\\.classList\\.toggle\\(['\"]([^'\"]*)['\"]",
+        //             "\\.classList\\.contains\\(['\"]([^'\"]*)['\"]",
+        //             "\\.classList\\.replace\\(\\s*['\"]([^'\"]*)['\"]",
+        //             "\\.classList\\.replace\\([^,)]+,\\s*['\"]([^'\"]*)['\"]",
+        //         ],
+        //     },
+        // },
+        // },
+        //
+        // this is for typescript inlay hints
+        // "typescript-ls": {
+        //     "initialization_options": {
+        //         "preferences": {
+        //             "includeInlayParameterNameHints": "all",
+        //             "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+        //             "includeInlayFunctionParameterTypeHints": true,
+        //             "includeInlayVariableTypeHints": true,
+        //             "includeInlayVariableTypeHintsWhenTypeMatchesName": true,
+        //             "includeInlayPropertyDeclarationTypeHints": true,
+        //             "includeInlayFunctionLikeReturnTypeHints": true,
+        //             "includeInlayEnumMemberValueHints": true,
+        //         },
+        //     },
+        // },
+        "biome": {
+            "settings": {
+                // will start biome only if biome.json/c file is available in the folder
+                "require_config_file": true,
+                // go to lsp for: variables, css classes in jsx/tsx/html, jstx/tsx/html components
+                // "goto_definition": false,
+            },
         },
     },
+    "languages": {
+        // ! in front of an lsp means dont run it
+        // "..." as an option means keep loading any other lsp which is by default assigned to
+        // to this lsp language
+        "TypeScript": {
+            "language_servers": [
+                "typescript-ls",
+                "!vtsls",
+                "!typescript-language-server",
+                "!eslint",
+                "...",
+            ],
+            "prettier": {
+                "allowed": false,
+            },
+            "format_on_save": "on",
+            "formatter": {
+                "language_server": {
+                    "name": "biome",
+                },
+            },
+            // will run code actions after the biome format
+            // "code_actions_on_format": {
+            //     "source.organizeImports.biome": true,
+            //     // 1. this is for assist options inside biome.jsonc, if enable here, enable there
+            //     "source.fixAll.biome": true,
+            //     // 2. the above doesnt enable the below, they go on par, but you must add actions by yourself,
+            //     //    there are currently 10 source actionss, this is one of it:
+            //     "source.action.useSortedKeys.biome": true,
+            // },
+        },
+        "JavaScript": {
+            "language_servers": [
+                "typescript-ls",
+                "!vtsls",
+                "!typescript-language-server",
+                "!eslint",
+                "...",
+            ],
+            "prettier": {
+                "allowed": false,
+            },
+            "formatter": {
+                "language_server": {
+                    "name": "biome",
+                },
+            },
+        },
+        "TSX": {
+            "language_servers": [
+                "typescript-ls",
+                "!vtsls",
+                "!typescript-language-server",
+                "!eslint",
+                "...",
+            ],
+            "prettier": {
+                "allowed": false,
+            },
+            "formatter": {
+                "language_server": {
+                    "name": "biome",
+                },
+            },
+        },
+        "CSS": {
+            "language_servers": [
+                // tailwind specific rules will work inside .css files
+                "tailwindcss-intellisense-css",
+                "!vscode-css-language-server",
+                "...",
+            ],
+            "formatter": {
+                "language_server": {
+                    "name": "biome",
+                },
+            },
+        },
+    },
+    // code lenses can be changed inside lsp for specific lsp and within its settings
+    "code_lens": "on",
     "linked_edits": true,
     "scrollbar": {
         "show": "never",
@@ -94,6 +212,7 @@
             "show_commit_summary": true,
         },
     },
+    "diff_view_style": "split",
     "indent_guides": {
         "enabled": false,
         "coloring": "indent_aware",
