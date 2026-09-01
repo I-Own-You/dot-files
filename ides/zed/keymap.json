@@ -167,6 +167,7 @@
         "context": "TabSwitcher",
         "bindings": {
             "alt-f": "menu::Cancel",
+            "ctrl-x ctrl-x": "tab_switcher::CloseSelectedItem",
         },
     },
     {
@@ -191,7 +192,6 @@
             "ctrl-l": "pane::SplitRight",
         },
     },
-
     {
         "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
         "bindings": {
@@ -199,6 +199,33 @@
             "ctrl-k": "vim::PreviousSameIndent",
             "ctrl-l": "vim::NextGreaterIndent",
             "ctrl-j": "vim::NextSameIndent",
+        },
+    },
+    {
+        "context": "Editor && mode == full && vim_mode == normal",
+        "bindings": {
+            "space space": "text_finder::Toggle",
+        },
+    },
+    {
+        "context": "VimControl && !menu || !Editor && !Terminal",
+        "bindings": {
+            "ctrl-w ctrl-h": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "left" },
+            ],
+            "ctrl-w ctrl-l": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "right" },
+            ],
+            "ctrl-w ctrl-j": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "down" },
+            ],
+            "ctrl-w ctrl-k": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "up" },
+            ],
         },
     },
 ]
@@ -256,3 +283,10 @@
 // "z z": "project_panel::ScrollCursorCenter",
 // "z c": "project_panel::ScrollCursorCenter",
 // "z b": "project_panel::ScrollCursorBottom",
+// "ctrl-`": "terminal_panel::Toggle",
+// "ctrl-~": "workspace::NewTerminal",
+// "alt-c": "search::ToggleCaseSensitive",
+// "alt-w": "search::ToggleWholeWord",
+// "alt-r": "search::ToggleRegex",
+// "f3": "search::SelectNextMatch",
+// "shift-f3": "search::SelectPreviousMatch",

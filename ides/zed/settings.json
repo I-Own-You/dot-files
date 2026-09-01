@@ -15,6 +15,11 @@
         "light": "One Light",
         "dark": "Min Dark (Solid)",
     },
+    "theme_overrides": {
+        "Min Dark (Solid)": {
+            "border.selected": "#0090ff",
+        },
+    },
     "current_line_highlight": "all",
     "cursor_blink": false,
     "file_finder": {
@@ -27,7 +32,8 @@
     "tab_size": 4,
     "unnecessary_code_fade": 0.3,
     "active_pane_modifiers": {
-        "border_size": 3,
+        "border_size": 2,
+        // "inactive_opacity": 0.5,
     },
     "telemetry": {
         "diagnostics": false,
