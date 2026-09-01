@@ -57,6 +57,12 @@
         },
     },
     {
+        "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+        "bindings": {
+            "p": ["vim::Paste", { "preserveClipboard": true }],
+        },
+    },
+    {
         "context": "GitPanel",
         "bindings": {
             "q": "git_panel::Close",
@@ -103,15 +109,17 @@
             "j k": ["workspace::SendKeystrokes", "escape"],
             "ctrl-e": "editor::LineDown",
             "ctrl-y": "editor::LineUp",
+            "ctrl-i": ["workspace::SendKeystrokes", "ctrl-o shift-i"],
+            "ctrl-a": ["workspace::SendKeystrokes", "ctrl-o shift-a"],
+            "ctrl-k": "editor::DeleteToNextWordEnd",
+            "ctrl-;": "editor::DeleteToEndOfLine",
+            "ctrl-l": "vim::DeleteRight",
+            "ctrl-h": "vim::DeleteLeft",
             "ctrl-j": null,
             // "ctrl-k": null,
             "ctrl-v": null,
             "ctrl-q": null,
             "ctrl-shift-q": null,
-            "ctrl-k": "editor::DeleteToNextWordEnd",
-            "ctrl-;": "editor::DeleteToEndOfLine",
-            "ctrl-l": "vim::DeleteRight",
-            "ctrl-h": "vim::DeleteLeft",
         },
     },
     {

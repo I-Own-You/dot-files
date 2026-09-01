@@ -17,7 +17,7 @@
     },
     "theme_overrides": {
         "Min Dark (Solid)": {
-            "border.selected": "#0090ff",
+            "border.selected": "#efd069",
         },
     },
     "current_line_highlight": "all",
