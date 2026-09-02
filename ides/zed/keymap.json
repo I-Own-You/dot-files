@@ -11,6 +11,9 @@
         "context": "Workspace",
         "bindings": {
             "alt-t": "terminal_panel::ToggleFocus",
+            "alt-a": "file_finder::Toggle",
+            "alt-f": "tab_switcher::ToggleAll",
+            "space h o": "projects::OpenRecent",
         },
     },
     {
@@ -159,13 +162,6 @@
         },
     },
     {
-        "context": "Workspace",
-        "bindings": {
-            "alt-a": "file_finder::Toggle",
-            "alt-f": "tab_switcher::ToggleAll",
-        },
-    },
-    {
         "context": "FileFinder",
         "bindings": {
             "alt-a": "menu::Cancel",
@@ -234,6 +230,12 @@
                 "workspace::MoveItemToPaneInDirection",
                 { "direction": "up" },
             ],
+        },
+    },
+    {
+        "context": "RecentProjects || (RecentProjects > Picker > Editor)",
+        "bindings": {
+            "ctrl-x ctrl-x": "recent_projects::RemoveSelected",
         },
     },
 ]
