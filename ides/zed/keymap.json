@@ -13,7 +13,6 @@
             "alt-t": "terminal_panel::ToggleFocus",
             "alt-a": "file_finder::Toggle",
             "alt-f": "tab_switcher::ToggleAll",
-            "space h o": "projects::OpenRecent",
         },
     },
     {
@@ -35,6 +34,7 @@
         "bindings": {
             "+": "vim::Increment",
             "-": "vim::Decrement",
+            "space h o": "projects::OpenRecent",
         },
     },
     {
