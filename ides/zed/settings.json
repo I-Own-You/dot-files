@@ -255,6 +255,7 @@
         "indent_guides": {
             "show": "never",
         },
+        "auto_fold_dirs": false,
         "scrollbar": {
             "show": "never",
         },
