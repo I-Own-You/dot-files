@@ -11,8 +11,8 @@
         "context": "Workspace",
         "bindings": {
             "alt-t": "terminal_panel::ToggleFocus",
-            "alt-a": "file_finder::Toggle",
-            "alt-f": "tab_switcher::ToggleAll",
+            "alt-f": "file_finder::Toggle",
+            "alt-b": "tab_switcher::ToggleAll",
         },
     },
     {
@@ -164,13 +164,13 @@
     {
         "context": "FileFinder",
         "bindings": {
-            "alt-a": "menu::Cancel",
+            "alt-f": "menu::Cancel",
         },
     },
     {
         "context": "TabSwitcher",
         "bindings": {
-            "alt-f": "menu::Cancel",
+            "alt-b": "menu::Cancel",
             "ctrl-x ctrl-x": "tab_switcher::CloseSelectedItem",
         },
     },
