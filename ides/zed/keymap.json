@@ -188,6 +188,12 @@
         },
     },
     {
+        "context": "FileFinder || (FileFinder > Picker > Editor)",
+        "bindings": {
+            "ctrl-i": "search::ToggleIncludeIgnored",
+        },
+    },
+    {
         "context": "FileFinder || (FileFinder > Picker > Editor) || (FileFinder > Picker > menu)",
         "bindings": {
             "ctrl-j": "pane::SplitDown",
