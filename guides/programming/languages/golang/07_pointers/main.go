@@ -34,3 +34,31 @@ func main() {
 	fmt.Printf("value of variable i: %v\n", i)
 	fmt.Printf("value of variable ptrI: %v\n", *ptrI)
 }
+
+// 1. variables passed into functions without explicit "&":
+//       1. maps: copy of pointer
+//       2. slices: copy of pointer
+//
+//       3. arrays:
+//			1. copy of value
+//		    2. if it has pointers inside, copy of them are passed:
+//				1. without dereferncing you change only the copy
+//				2. with dereference you change the underlying data
+//
+//       4. structs:
+//			1. copy of value
+//			2. if it has pointer fields:
+//				1. without dereferncing you change only the copy
+//				2. with dereference you change the underlying data
+//
+//       5. channels: copy of pointer
+//       6. interfaces: copy of pointer
+//       7. functions: copy of pointer
+//
+//		 summary:
+//       	1. everything in golang passes by value.
+//		 	2. copy of pointer does not allow changing the variable itself, you need the actual pointer,
+//			   not copy
+//			3. slices and map - can change data through copy pointer
+//		 	3.1 copy pointers inside array/struct can change data through copy pointer, but you need
+//				explicit dereferncing("*" in front) or you will alter the copy pointer
