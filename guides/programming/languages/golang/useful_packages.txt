@@ -1,0 +1,5 @@
+1. pkgsite - offline docs
+2. chi - http router + middlewares
+3. templ, templ-ui - html manipulation
+4. pgx - postgres sql db driver
+5. goose - sql migrations + go functions
