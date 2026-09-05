@@ -81,6 +81,7 @@
             "space m t": "git_panel::ToggleFocus",
             "space g b b": "git::Branch",
             "space l w": "diagnostics::Deploy",
+            "space x t": "editor::CopyFileName",
 
             // "alt-shift-h": "vim::ResizePaneLeft",
             // "alt-shift-l": "vim::ResizePaneRight",
