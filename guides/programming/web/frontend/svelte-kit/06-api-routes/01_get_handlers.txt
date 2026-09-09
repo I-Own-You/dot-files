@@ -1,4 +1,4 @@
-1. svelte-kit allows to create api routes by adding a +server.ts file that exports functions
+1. svelte-kit allows to create api routes by adding a "+server.ts" file that exports functions
    corresponding to HTTP methods: GET, PUT, POST, PATCH, DELETE
 
 2. inside "src/routes/roll/+server.ts":

@@ -107,7 +107,7 @@
                	}
             };
 
-4.1 and inside "+page\layout.svelte" you can access them through "form" prop like this:
+4.1 and inside "+page/layout.svelte" you can access them through "form" prop like this:
         <script lang="ts">
            	let { data, form } = $props();
         </script>
@@ -115,6 +115,3 @@
         {#if form.display_greeings}
             <p>Hello user!</p>
         {/if}
-
-5. "fail" function will work only for the "+page/layout.svelte" inside current directory where
-   you invoked "fail" either "+page/layout.server.ts", both must be in the same dir

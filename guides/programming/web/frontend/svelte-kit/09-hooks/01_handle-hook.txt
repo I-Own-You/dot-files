@@ -4,7 +4,7 @@
    it receives 2 properties:
         1. even object
         2. resolve function
-   and returns an Response
+   and returns a Response
 
 2.1 resolve is the most important, because:
     1. svelte-kit matches the incoming request URL to a route

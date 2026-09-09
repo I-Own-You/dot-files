@@ -2,8 +2,7 @@
    that is passed into api routes in:
         1. "+server.ts"
         2. form actions
-        3. "+page.server.ts"
-        4. "load" functions in "+page/layout.server.ts"
+        3. "load" in "+page/layout.server.ts"
 
 1.1 it has a lot of useful properties, one of them is "locals" property where you can
     store any arbitrary data to retrieve it later somewhere

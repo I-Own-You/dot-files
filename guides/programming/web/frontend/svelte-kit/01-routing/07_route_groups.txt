@@ -1,4 +1,4 @@
-1. sometime you want additional logic but without breaking the routes, like a wrapper or guard,
+1. sometime you want additional logic but without breaking the routes, like a wrapper guard,
    as "+layout.svelte" adds common UI, "+layout.server.ts" can be a common route group logic
 
 

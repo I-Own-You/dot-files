@@ -7,7 +7,7 @@
 <p>{console.log($state.snapshot(color))}</p>
 
 <!-- 1. this way, you can bind a property value on component -->
-<MyComponent {color} />
+<MyComponent bind:color={color} />
 <!-- 2. you can also skip the bindable argument if the name is the same as our reactive variable
             <MyComponent bind:color /> -->
 

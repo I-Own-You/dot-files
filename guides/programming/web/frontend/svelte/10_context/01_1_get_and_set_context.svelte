@@ -7,9 +7,8 @@
 
     // 1. the way setContext works is this:
     //      1. frist argument it wants a unique key of anything, either string, Symbol, Map, .etc
-    //      2. second argument is the value set to that key, can be anything you want
+    //      2. second argument is the value set to that key, can be anything you want(mostly)
     // 2. rewriting the same key means the old value is destroyed and new value set
-    //
     // 3. the point of context is that you can use it everywhere in your project without passing
     //    props data/functions creting really clunky dependencies;
     // 4. you can even pass a reactive value or whatever you want and

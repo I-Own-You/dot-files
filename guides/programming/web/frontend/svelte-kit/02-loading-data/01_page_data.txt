@@ -6,7 +6,8 @@
 2. every page("+page.svelte" this creates a page) can declare a "load" function in another file
    called "+page.server.ts", both "+page.svelte" and "+page.servere.ts" are in the same directory,
    they work for each other.
-2.1 "+page.server.ts" works only on server, and when client navigates in browser, it still runs on server for data
+2.1 "+page.server.ts" works only on server, and when client navigates in browser,
+    it still runs on server for data
 
 3. "+page.server.ts" inside has a "load" function which typically looks like this:
     export function load() {
@@ -23,6 +24,7 @@
     <script lang="ts">
     	let { data } = $props();
     </script>
+    // ".posts" is the property name from the object returned inside "load" from "+page.server.ts"
     <div>{data.posts[0]}</div>
 
 3.2 you can also access route parameters inside "load" function like this:

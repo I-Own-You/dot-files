@@ -1,10 +1,10 @@
 1. when something goes wrong inside a "load" function, svelte renders an error page
 
-2. the default error page is not what most of devs need, it can be customized by addign a file
-   called "+error.svelte"
-2.1 every route can have it
-2.2 "src/routes/+error.svelte" is considered root error page and rendered for all routes no matter
-    how deeply its nested if there are not other error pages above it to handle
+2. the default error page is not what most of devs need, it can be customized by adding a file
+   called "+error.svelte"(every route can have it)
+
+2.1 "src/routes/+error.svelte" is considered root error page and rendered for all routes no matter
+    how deeply its nested if there are no other error pages above it to handle
 
 3. inside "src/rotues/+error.svelte":
             <script lang="ts">

@@ -10,7 +10,8 @@
 <p>This is a paragraph.</p>
 
 <!-- 1. this is how you use the imported component -->
-<!-- 2. this component also has a <p> tag, but our styles will not affect it since style are scoped to current component, not imported -->
+<!-- 2. this component also has a <p> tag,
+        but our styles will not affect it since style are scoped to current component, not imported -->
 <NestedComponent />
 
 <style>

@@ -21,6 +21,7 @@
 	Clicked {count}
 	{count === 1 ? 'time' : 'times'}
 </button>
+
 <-- you can notice we assigned a function name without invoking it to a html tag attribute,
     in our case "onclick" will invoke our function every time we click on this button -->
 <button onclick={increment_reactive_value}>
@@ -32,8 +33,8 @@
      counters, non-reactive and reactive, while incrementing only the reactive one,
      everyting is fine, the rerender will updated the html with updated value,
      but what happens if we update the non-reactive and then update the reactive value:
-        1. you update 5 times the non-reactive -> html is not rerendered
-        2. you updated 1 time the reactive value -> html is rerendered
+        1. you update 5 times the non-reactive -> html is not re-rerendered
+        2. you updated 1 time the reactive value -> html is re-rendered
      and now, here is the problem, the reactive value got from 0 -> 1, html shows 1,
      but html also will show 5 for non-reactive value, why ? because the state for
      non-reactive value is still maintained, it just doesnt trigger rerenders,

@@ -2,7 +2,7 @@
 	let elapsed = $state(0);
 	let interval = $state(1000);
 
-    // 1. effect() is the thing that reacts to some state changes and runs on every render
+    // 1. effect() is the thing that reacts to some state changes and runs before every render
     // 2. if effect() doenst read any state when it runs, it will run only once on component mount
 	$effect(() => {
 		const id = setInterval(() => {

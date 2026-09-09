@@ -1,8 +1,8 @@
 1. we can make a parameter on a route optional by wrapping it in [[ ]] instead of [ ]
 
 2. be cautious that "src/routes/+page.svelte" and "src/routes/[[lang]]/+page.svelte"
-   will handle the same route!! so you should removed "src/routes/+page.svelte" and
-   updated needed code inside "src/routes/[[lang]]/+page.svelte"
+   will handle the same route!! so you should remove "src/routes/+page.svelte" and
+   update needed code inside "src/routes/[[lang]]/+page.svelte"
 
 3. in "src/routes/[[lang]]/+page.server.ts":
             const greetings = {

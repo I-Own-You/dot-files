@@ -1,4 +1,4 @@
-1. some env variables are safe to be seens(if scaffolded deep enough :p ) on client side
+1. some env variables are safe to be seen(if scaffolded deep enough :p ) on client side
    with $env/static/public, but env variable must have PUBLIC_ in front
 
 2. in ".env": PUBLIC_HELLO="hello"

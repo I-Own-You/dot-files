@@ -1,5 +1,6 @@
 <script>
-    // 1. svelte provides some reactive builtin classes you can work with, some of them: Map, Set, Date, URL, URLSearchParams
+    // 1. svelte provides some reactive builtin classes you can work with, some of them:
+    //           Map, Set, Date, URL, URLSearchParams
 	import { SvelteDate } from 'svelte/reactivity';
     //
 	// 2. yes, we could wrap date inside a $state()

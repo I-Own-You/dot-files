@@ -15,7 +15,7 @@
                	const visited = cookies.get('visited');
 
                 // you should try to always set a "path" when you set a cookie since browsers
-                // use to set a cookie for the parent of the current path
+                // always set a cookie for the parent of the current path
                	cookies.set('visited', 'true', { path: '/' });
 
                	return {

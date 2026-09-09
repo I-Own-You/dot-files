@@ -32,7 +32,7 @@
 
 <!-- 1. to assign a unique key to node, you put it either:
             1. near the value like so: {#each things as thing (thing.id) }
-               where thing is the object from the things array and .id is the property
+               where "thing" is the object from the things array and ".id" is the property
                from the thing object
             2. or you could use thing itself and add surrounding ( ), this works
                because svelte internally uses Map and objects as keys works for Map, but

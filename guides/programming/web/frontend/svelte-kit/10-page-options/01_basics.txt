@@ -1,8 +1,6 @@
 1. we can export various page options from these files:
-    1. "+page.server.ts"
-    2. "+layout.server.ts"
-    3. "+page.ts"
-    4. "+layout.ts"
+    1. "+page/layout.server.ts"
+    3. "+page/layout.ts"
     such as:
     1. ssr - should pages render on server or not
     2. csr - should svelte-kit load or not on client (js basically)
@@ -18,7 +16,7 @@
 
 3.1 some pages cannot be ssr since they need some client features like "window" object
     from the browser, so either make it not ssr or change the logic of the page to not need it
-export const ssr = false; (basically makes your page SPA(CSR))
+export const ssr = false; (basically makes your page SPA)
 
 4. csr - basically what makes a page interactive (JS) things
 export const csr = false;

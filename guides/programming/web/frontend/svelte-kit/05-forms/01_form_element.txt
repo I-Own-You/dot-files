@@ -31,7 +31,7 @@
 
         1. now, when you hit enter for the form, code inside actions.default will execute and the page
            reloads with the new "data", btw "data" here is not the variable define "const data = ...",
-           its the props inside "+page.svelte"
+           its the props "data" inside "+page.svelte"
         2. another thing is that we didnt write any "fetch" code or used any JS code, in fact
            this code will work even without JS itself since we use <form> element which works
            without JS

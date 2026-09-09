@@ -1,6 +1,6 @@
 1. svelte-kit uses file-based system routing, folders are paths
 
-2. +page.svelte in every folder starting from "src/routes" creates a new page:
+2. "+page.svelte" in every folder starting from "src/routes" creates a new page:
     1. "src/routes/+pages.svelte means" accessing "/" path on website
     2. "src/routes/about/+pages.svelte" means accessing "/about" on website
     3. accessing "/another-page" woul result in 404, since we dont have such a route defined

@@ -19,7 +19,7 @@
 
                	return {
               		message: 'everything is fine',
-              		code: 'JEREMYBEARIMY'
+              		code: 'kek'
                	};
             }
 

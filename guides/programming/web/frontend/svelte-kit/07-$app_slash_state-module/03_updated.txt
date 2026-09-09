@@ -1,5 +1,5 @@
 1. updated state contains true/false depending on whether a new version of the app has been
-   depoyed since the page was first opened.
+   deployed since the page was first opened.
 
 2. for "udpated" to work, you need to set inside "svelte.config.ts" this:
     kit.version.pollInterval

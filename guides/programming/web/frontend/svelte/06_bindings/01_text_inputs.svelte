@@ -2,8 +2,8 @@
 	let name = $state('world');
 </script>
 
-<!-- 1. in svelte usually 100 % of the time a parent sets the child props
-     but what if we wanted to break this rule ? -->
+<!-- 1. in svelte usually 100% of the time a parent sets the child props
+     but what if we wanted reverse or both to be able ? -->
 
 <!-- 2. by using bind: directive, which means this:
         1. updating name updates input value

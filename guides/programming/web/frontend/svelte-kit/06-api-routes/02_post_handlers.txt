@@ -1,5 +1,5 @@
 1. in most cases, you should use "form actions" for mutating data which even works without JS,
-   but if you really need, you can use POST api route hanlder as well.
+   but if you really need, you can use POST api route handler as well.
 
 2. in "+page.svelte":
                 <input

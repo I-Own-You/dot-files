@@ -10,4 +10,5 @@
     </div>
 </OtherComponent>
 
-<!-- 2. we cannot use both snippets sent automatically as props at the same time since they will conflict, either send children nodes or snippets -->
+<!-- 2. we cannot use both snippets(the automatic ones, not passed explicitly) and children
+        at the same time since they will conflict, either send children nodes or snippets -->

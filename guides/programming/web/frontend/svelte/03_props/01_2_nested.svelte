@@ -4,6 +4,8 @@
 	let { answer } = $props();
 	// 2. alternatively we could take the whole object $props() gave us and use it later
 	// let props = $props();
+	//
+	// 3. you cannot have more than 1 call to $props() in a component;
 
 </script>
 

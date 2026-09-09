@@ -12,7 +12,7 @@
     // 3. dont abuse this, you will rarely if really need this usability
     let name = 'Ana';
 
-    // 4. another feature is that you can export things from script tag which works from
+    // 4. another feature is that you can export things from script tag which can be done inside
     //    default script as well, and then import it inside another component, usually parent
     //    and assign it to an event handler
     export function greetings() {

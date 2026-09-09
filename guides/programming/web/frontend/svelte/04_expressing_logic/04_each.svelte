@@ -63,7 +63,7 @@
     <!-- 1. "colors" after "#each" can be any iterable or array-like object so
             anything that works with Array.from -->
     <!-- 2. #each block also lets you have the current index in the loop by specifying
-            any name after "color" like so: {#each colors as color, my_index} -->
+            any name after "color" like so: {#each colors as color, index} -->
 	{#each colors as color}
 		<button
 			style="background: {color}"

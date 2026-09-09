@@ -1,4 +1,4 @@
-1. your envs in .env, .env.loca, .env.prod, .etc (look for vite config) can be read
+1. your envs in .env, .env.local, .env.prod, .etc (look for vite config) can be read
    by svelte-kit
 
 2. in ".env": HELLO="hello"
@@ -10,14 +10,13 @@
     is not allowed by svelte-kit and will show you an error if you do so
 
 2.2.1 $env/static/private variables can appear only inside:
-        1. "+page.server.ts"
-        2. "layout.server.ts"
+        1. "+page/layout.server.ts"
         3. "+server.ts"
         4. any module(js file with type:module) ending in ".server.ts"
         5. any module inside "src/lib/server"
 
 2.3 $env/static/private, the "static" part means the environment variable must be known
-    at build time, and can then can be replaced to not be available after build:
+    at build time, and then can be replaced to not be available after build:
         import { FEATURE_FLAG_X } from '$env/static/private';
 
         if (FEATURE_FLAG_X === 'enabled') {

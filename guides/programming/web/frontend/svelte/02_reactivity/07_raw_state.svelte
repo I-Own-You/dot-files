@@ -20,7 +20,7 @@
 </button>
 
 <button onclick={
-        // 2. but this, will cause a rerender since we change the reactive variable itself
+        // 2. but this will cause a rerender since we change the reactive variable itself
         () => not_deep_reactive = [...not_deep_reactive, Math.trunc(Math.random() * 10)]
         //
         // 3. we have a side effect as well, but its not the point of this file,

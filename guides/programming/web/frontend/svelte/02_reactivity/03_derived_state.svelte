@@ -4,7 +4,7 @@
     // 1. you can derive from another state and make somethin else reactive based on that state
     // 2. "totoal" will be reactive and will change once its dependencies change too
     // 3. if "numbers"(dependency, since its a reactive value) change, code within
-    //    $derived(...) will execute, this happens everytime dependecny changes
+    //    $derived(...) will execute, this happens everytime dependency changes
     let total = $derived(numbers.reduce((t, n) => t + n, 0));
     // 4. of course you could have "total" without being reactive and then update it
     //    inside addNumber() function and use a side effect where "numbers" changing will

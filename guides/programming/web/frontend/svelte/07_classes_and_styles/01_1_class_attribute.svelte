@@ -4,7 +4,7 @@
 
 <div class="container">
 	Flip the card
-	<!-- 1. since we can use ts code inside { }, why not use a reactive value to decide rather we
+	<!-- 1. since we can use ts code inside { }, why not use a reactive value to decide rather
 	        we attach a class name to a html tag or not ? -->
 	<button
 		class="card {flipped ? 'flipped' : ''}"
@@ -12,7 +12,7 @@
 	>
 	<!-- 2. there is a feature svelte adds about classes, you can pass an object/array which
 	        will be converted into strings with addition of some classes based on its truthiness,
-			you can consult clsx on github for more info on how its converted into strings
+			you can consult clsx on github for more info on how it works
 		 3. in this case, ["card", { flipped }] means this:
 			    always add "card" class, add "flipped" class only if its truthy
 
