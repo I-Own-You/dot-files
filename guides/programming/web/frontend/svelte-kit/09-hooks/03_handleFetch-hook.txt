@@ -1,0 +1,12 @@
+1. "event" object has a "fetch" method that behaves like the standard Fetch API from browser
+   but with some changes:
+        1. it can be used to make credentialed requests on the server since it inherits
+           "cookie" and "authorization" headers from incoming request
+        2. it can make relative requests on the server (so, without the origin)
+        3. it can make internal requests (for example inside "+server.ts" has a POST handler
+           you can request it directly without the HTTP overhead but only on the server)
+
+2. but this "event.fetch" can be modified with "handleFetch" hook, which by default is this:
+            export async function handleFetch({ event, request, fetch }) {
+               	return await fetch(request);
+            }

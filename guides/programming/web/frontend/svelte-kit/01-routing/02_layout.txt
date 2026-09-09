@@ -1,0 +1,11 @@
+1. we can have another file beside "+page.svelte", its "+layout.svelte" component which applies
+   to all routes in the same directory and its childs
+
+2.  "src/routes/+layout.svelte" (its also called root layout which applies to all)
+    "src/routes/+page.svelte"
+    "src/routes/about/+page.svelte"
+    here, both "/" and "/about" will have the common component "+layout.svelte" on its page
+2.1 inside "+layout.svelte" you will need to have the render tag which defines where child
+    of "+layout.svelte" will render (childs here are the components it wraps): {@render children()}
+2.2 every route can have its "+layout.svelte" which will wrap the "+page.svelte" in its folder and
+    also the child ones in subdirectories

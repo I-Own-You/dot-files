@@ -1,0 +1,21 @@
+1. there are more sever errors such as:
+    1. loading root layout data
+    2. while rendering the error page itself
+    3. .etc
+
+1.1 for such scenarios, svelte-kit falls back to a static error page
+
+2. in "src/routes/+layout.server.ts":
+    export function load() {
+    	throw new Error('yikes');
+    }
+
+2.1 in "src/error.html":
+        <h1>Game over</h1>
+        <p>Code %sveltekit.status%</p>
+        <p>%sveltekit.error.message%</p>
+
+2.2 "error.html" inside "src/" is the static page svelte-kit falls back to, it can be customized
+    and also takes 2 special placeholder:
+        1. %sveltekit.status% - HTTP status code
+        2. %sveltekit.error.message% - error message

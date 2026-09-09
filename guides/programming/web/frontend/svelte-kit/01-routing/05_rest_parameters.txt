@@ -1,0 +1,12 @@
+1. to match an unknown of path segments, you can wrap a legal variable name inside [...var_name]
+
+2. "src/routes/[...path]" matches anything
+
+3. "src/routes/about/1",
+   "src/routes/about/kek"
+   "src/routes/about/edit/alo"
+   "src/routes/about/[...catchall]" (this will be tested last to ensure all the other routes
+                                     are tested first, since they are specific and have priority)
+   "src/routes/about/edit/alo/[...hey]"
+   "src/routes/about/me/alo/[f_param]"
+   "src/routes/about/edit/be/[[s_param]]"

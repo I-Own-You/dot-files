@@ -1,0 +1,58 @@
+1. when user makes a navigation, "laod" function is called only if svelte-kit things something changed
+
+2. "src/routes/+page.ts" can trigger "load" but "src/routes/+layout.ts" can be skipped since who knows
+   which data they work on or whatever work they do, but we need both of them to fire "load", how ?
+
+3. by using "invalidate()" which takes a URL and reruns any load functions depedning on that URL
+
+3.1 invalidate() also takes a callback which allows to invalidate based on a pattern and not URL
+
+3.2 we could add inside somewhere "+page.svelte":
+    	onMount(() => {
+    		const interval = setInterval(() => {
+    			invalidate('/api/now');
+    		}, 1000);
+        })
+
+        and since "+layout.ts" in the same dir with "+page.svelte" depends on "/api/now", it will
+        trigger load function.
+
+3.3 the above works because inside "+layout.ts" there is a fetch('/api/now') which makes the URL inside fetch
+    a dependency, but what if we dont need to call fetch at all, how to trigger the load then ?
+
+3.4 by using "depends(url)", which allows any valid string [a-z]+: of this pattern to be used as keys
+
+3.5 in "src/routes/+page.svelte":
+    	onMount(() => {
+    		const interval = setInterval(() => {
+    			invalidate('data:now');
+    		}, 1000);
+        })
+
+3.6 in "src/routes/+layout.ts":
+        // notice the depends argument
+        export async function load({ depends }) {
+            // notice, we just use the key we registered with invalidate(key) in "+page.svelte"
+           	depends('data:now');
+
+           	return {
+          		now: Date.now()
+           	};
+        }
+
+3.7 what if you just want to invalidate everything no matter what for a specific page ?
+
+3.8 you can, by using invalidateAll() which re-runs all load functions for the current page no matter
+    what they depend on
+
+3.9 in "src/routes/+page.svelte":
+        onMount(() => {
+          		const interval = setInterval(() => {
+         			invalidateAll();
+          		}, 1000);
+      		})
+
+3.10 in "src/routes/+layout.ts" you dont need any invalidate at all
+
+3.11 invalidate(() => true) and invalidateAll() are not the same, key difference:
+        invalidateAll() re-runs load functions without any url dependencies, invalidate(() => true) doesnt

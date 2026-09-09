@@ -1,0 +1,7 @@
+1. some env variables are safe to be seens(if scaffolded deep enough :p ) on client side
+   with $env/static/public, but env variable must have PUBLIC_ in front
+
+2. in ".env": PUBLIC_HELLO="hello"
+
+2.1 in "src/routes/+page.svelte":
+   	import { PUBLIC_HELLO } from '$env/static/public';

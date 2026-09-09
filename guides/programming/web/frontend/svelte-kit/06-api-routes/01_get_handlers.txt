@@ -1,0 +1,16 @@
+1. svelte-kit allows to create api routes by adding a +server.ts file that exports functions
+   corresponding to HTTP methods: GET, PUT, POST, PATCH, DELETE
+
+2. inside "src/routes/roll/+server.ts":
+            export function GET() {
+               	const number = Math.floor(Math.random() * 6) + 1;
+
+                // Response is the Web API Response object
+               	return new Response(number, {
+              		headers: {
+             			'Content-Type': 'application/json'
+              		}
+               	});
+                // or you could use json function from svelte
+                // return json(number);
+            }

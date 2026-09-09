@@ -1,0 +1,38 @@
+1. svelte can speed up navigation by aniticipating links.
+
+2. if <a> has "data-sveltekit-preload-data" attribute, svelte-kit will begin the navigation:
+   as soon as the user:
+        1. hover over the link(on desktop)
+        2. taps it (on mobile)
+        <nav>
+           	<a href="/">home</a>
+           	<a href="/slow-a" data-sveltekit-preload-data>slow-a</a> (will be faster)
+           	<a href="/slow-b">slow-b</a>
+        </nav>
+
+2.1 you can put "data-sveltekit-preload-data" attribute on any link or a parent which contains links,
+    the "body" tag is populated with it by svelte itself, and looks like this:
+    <body data-sveltekit-preload-data="hover">
+    	%sveltekit.body%
+    </body>
+
+2.2 "data-sveltekit-preload-data" can be customized with arguments:
+        1. "hover" - its the default on pc, falls back to "tap" on mobile
+        2. "tap" - preloading on tap
+        3. "false" - disables preloading entirely
+
+2.3 "data-sveltekit-preload-data" may sometime give a false positive and preload data which the
+    user is not navigating, this is not desirable, so there is "data-sveltekit-preload-code"
+    which eliminates it by preloading javascript only needed by a given route without eagerly
+    loading its data. the arguments for it are:
+        1. "eager" - prelaod everyting on the page following a navigation
+        2. "viewport" - preload links that appear in viewport
+        3. "hover" - default on pc, fallback to "tap" on mobile
+        4. "tap" - on tap for mobile
+        5. "false" - preloading disabled entirely
+
+3. you can also initiate a preload programtically with "preloadCode" and "preloadData" from
+   $app/navigation:
+        import { preloadCode, preloadData } from '$app/navigation';
+        preloadData('/foo');
+        preloadCode('/bar');

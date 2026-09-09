@@ -1,0 +1,9 @@
+1. sometimes you have code which is used in different places and you end up with thing like:
+    "../../../../../../", you got the idea
+
+2. svelte-kit provides a folder "src/lib" where code can be access by "$lib" alias
+
+3. "src/lib/messages.ts" would be access from "src/app/routes/about/+page.svelte" like this:
+        <script lang="ts">
+           	import { message } from "$lib/message.ts";
+        </script>

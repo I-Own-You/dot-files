@@ -1,0 +1,72 @@
+1. "use:enhance" actually can take a callback which lets us add things like:
+    1. pending states (display something while processing something)
+    2. optimistic UI (display something in advance while receiving the response)
+
+2. inside "+page.server.ts":
+            export const actions = {
+                // notice that both server actions now emulates fake delay, which means
+                // user waits for 1 second and doesnt understand either he screwed or not
+               	create: async ({ cookies, request }) => {
+              		await new Promise((fulfil) => setTimeout(fulfil, 1000));
+              		...
+               	},
+
+               	delete: async ({ cookies, request }) => {
+              		await new Promise((fulfil) => setTimeout(fulfil, 1000));
+                  		...
+               	}
+            };
+
+2.1 inside "+page.svelte"
+            <script lang="ts">
+               	import { fly, slide } from 'svelte/transition';
+               	import { enhance } from '$app/forms';
+
+               	let { data, form } = $props();
+
+               	let creating = $state(false);
+               	let deleting = $state([]);
+            </script>
+
+            <form
+               	method="POST"
+               	action="?/create"
+                // 1. notice the callback
+               	use:enhance={() => {
+                    // 2. set our state to true which is used as input disabled state
+              		creating = true;
+
+              		return async ({ update }) => {
+             			await update();
+                        // 3. when server action finishes "await update()", we set our state
+                        //    which is used as input attribute state back to false
+             			creating = false;
+              		};
+               	}}
+            >
+           	<label>
+          		add a todo:
+          		<input
+                    // 4. notice the state which is initially "false" but when form was
+                    //    submitted, state became true within the "use:enhance" and after
+                    //    server action returned the response, state became false again
+         			disabled={creating}
+         			name="description"
+         			value={form?.description ?? ''}
+         			autocomplete="off"
+         			required
+          		/>
+           	</label>
+        </form>
+
+        // 5. after form submitted, "creating" state became true, and we show someting
+        //    as a pending state
+        {#if creating}
+           	<span class="saving">saving...</span>
+        {/if}
+
+3. "use:enahnce" can be customized for different things, you can even:
+    1. cancel form submission
+    2. handle redirects
+    3. control wether the form is reset
+    4. .etc

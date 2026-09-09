@@ -1,0 +1,9 @@
+1. if your env variables are available only when your app runs, they are dynamic, they
+   can also be accessed by $env/dynamic/private in svelte
+
+2. in "src/routes/+page.server.ts":
+    import { env } from '$env/dynamic/private';
+
+    // console.log(env.HELLO)
+
+3. its advised to use static ones for better safety

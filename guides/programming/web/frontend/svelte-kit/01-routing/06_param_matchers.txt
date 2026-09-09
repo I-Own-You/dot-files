@@ -1,0 +1,14 @@
+1. you can specify a "matcher" which validates a router parameter, you have
+   "src/routes/colors/[value]" but you want value to match only hex values
+
+2. in "src/params/hex.ts":
+        export function match(value) {
+           	return /^[0-9a-f]{6}$/.test(value);
+        }
+
+3. change "src/routes/colors/[value]" into "src/routes/colors/[color=hex]"
+
+3.1 if the router parameter will not qualify for the match, svelte will try to match
+    other routes but eventaully if nothing has been found, 404 is returned
+
+4. matches run on both server and client(browser)

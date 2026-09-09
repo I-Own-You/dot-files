@@ -1,0 +1,17 @@
+1. svelte-kit provides some hooks that can override frameworks default behaviour
+
+2. one of the most basic hook is "handle" which lives in "src/hooks.server.ts",
+   it receives 2 properties:
+        1. even object
+        2. resolve function
+   and returns an Response
+
+2.1 resolve is the most important, because:
+    1. svelte-kit matches the incoming request URL to a route
+    2. imports relevant code ("+page/layout.server.ts" + "+page/layout.svelte" + .etc)
+    3. loads data needed by the route and generates a Response
+
+2.2 in "src/hooks.server.ts":
+    export async function handle({ event, resolve }) {
+    	return await resolve(event);
+    }

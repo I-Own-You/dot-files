@@ -1,0 +1,31 @@
+1. inside "load" function you can use the "cookies" object which uses the cookie API package
+   from "http://github.com/jshttp/cookie#api"
+
+2. to read a cookie, you would do this:
+        export function load({ cookies }) {
+           	const visited = cookies.get('visited');
+
+           	return {
+          		visited: visited === 'true'
+           	};
+        }
+
+2.1 to set a cookie you would do this:
+            export function load({ cookies }) {
+               	const visited = cookies.get('visited');
+
+                // you should try to always set a "path" when you set a cookie since browsers
+                // use to set a cookie for the parent of the current path
+               	cookies.set('visited', 'true', { path: '/' });
+
+               	return {
+              		visited: visited === 'true'
+               	};
+            }
+
+3. svelte-kit sets these defaults for the cookie API:
+            {
+               	httpOnly: true,
+               	secure: true,
+               	sameSite: 'lax'
+            }

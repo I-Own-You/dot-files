@@ -1,0 +1,10 @@
+1. svelte-kit naviagtes between pages without realoding it
+
+2. if you do need a reload of the page on a navigation you can use "data-sveltekit-reload" attribute
+   on a single link or a parent which contains links:
+            <nav data-sveltekit-reload>
+               	<a href="/">home</a>
+               	<a href="/about">about</a>
+            </nav>
+
+3. there are much more info about links in the docs

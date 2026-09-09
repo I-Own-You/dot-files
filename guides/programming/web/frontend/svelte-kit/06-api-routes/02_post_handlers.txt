@@ -1,0 +1,80 @@
+1. in most cases, you should use "form actions" for mutating data which even works without JS,
+   but if you really need, you can use POST api route hanlder as well.
+
+2. in "+page.svelte":
+                <input
+               	type="text"
+               	autocomplete="off"
+               	onkeydown={async (e) => {
+              		if (e.key !== 'Enter') return;
+
+              		const input = e.currentTarget;
+              		const description = input.value;
+
+                    // notice fetch('/todo')
+              		const response = await fetch('/todo', {
+             			method: 'POST',
+             			body: JSON.stringify({ description }),
+             			headers: {
+                				'Content-Type': 'application/json'
+             			}
+              		});
+
+              		input.value = '';
+               	}}
+                />
+
+2.1 in "src/route/todo/+server.ts":
+                import { json } from '@sveltejs/kit';
+                import * as database from '$lib/server/database.js';
+
+                export async function POST({ request, cookies }) {
+                   	const { description } = await request.json();
+
+                   	const userid = cookies.get('userid');
+                   	const { id } = await database.createTodo({ userid, description });
+
+                   	return json({ id }, { status: 201 });
+                }
+
+2.2 since we now have a POST handler, we update the "+page.svelte" code:
+                    <input
+                   	type="text"
+                   	autocomplete="off"
+                   	onkeydown={async (e) => {
+                  		if (e.key !== 'Enter') return;
+
+                  		const input = e.currentTarget;
+                  		const description = input.value;
+
+                  		const response = await fetch('/todo', {
+                 			method: 'POST',
+                 			body: JSON.stringify({ description }),
+                 			headers: {
+                    				'Content-Type': 'application/json'
+                 			}
+                  		});
+
+                        // now, since response is populated with the response from POST api handler,
+                        // we can use it to retrieve data
+                  		const { id } = await response.json();
+
+                  		const todos = [...data.todos, {
+                 			id,
+                 			description
+                  		}];
+
+                        // 1. "data" here is the prop, and there is an important rule about it:
+                        //
+                        //    you should only update it in such a way that you would get the same
+                        //    result by reloading the page.
+                        //
+                        // 1.1. the above is important because "data" prop is not "deep reactive" which
+                        //      means updating its content inside wont trigger a rerender, so you need
+                        //      to update the variable itself, or update it somehow that will cause a
+                        //      rerender.
+                  		data = { ...data, todos };
+
+                  		input.value = '';
+                   	}}
+                    />

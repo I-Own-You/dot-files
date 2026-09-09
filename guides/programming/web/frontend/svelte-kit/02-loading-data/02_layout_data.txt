@@ -1,0 +1,11 @@
+1. beside "+layout.svelte" sharing common UI between pages, there is "+layout.server.ts" which
+   loads data for every child route
+
+2. "src/routes/blog/+layout.server.ts"
+   "src/routes/blog/+page.svelte"
+   "src/routes/blog/[slug]/+page.svelte"
+
+   here, instead of defining 2 load functions inside blog/ and /blog/[slug]/ we can define it
+   inside "+layout.server.ts"! which will share it for both of them, even if we defined "load" for
+   both of them, it would still work and they would have their data, but "+layout.server.ts" can
+   add more data for both of them!

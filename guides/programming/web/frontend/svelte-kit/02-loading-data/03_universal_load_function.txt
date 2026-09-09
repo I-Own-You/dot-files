@@ -1,0 +1,67 @@
+1. there are times when you want to:
+    1. load data from an external api
+    2. use in-memory data
+    3. dealy navigation until an image is preloaded
+    4. you need to return from "laod" something that is not serializable since svelte-kit
+       uses "devalue" to turn server data into JSON
+
+2. this can be achieved inside "+page.ts", now "load" functions will run on both server
+   during ssr, and on client when the app hydrates or the user performs a client-side navigation
+
+3. in "src/routes/+page.ts":
+        import component from './blue.svelte';
+
+        export function load() {
+           	return {
+          		color: 'blue',
+                // now you can send component which is not serializable in "src/routes/+page.server.ts"
+          		component
+           	};
+        }
+
+3.1 and inside "src/routes/+pages.svelte":
+	{#if page.data.component}
+		<page.data.component />
+	{/if}
+
+4. differences between universal and server:
+    server:
+        1. Server load functions always run on the server.
+
+    universal:
+        1. by default, universal load functions run on the server during SSR when the user
+           first visits your page, they will run again during hydration,
+           reusing any responses from fetch requests.
+        1.1. all subsequent invocations of universal load functions happen in the browser,
+             you can customize the behavior through page options.
+        2. if you disable ssr, you will get an SPA and universal load functions always run on the client.
+
+    server + universal:
+        1. if a route contains both universal and server load functions, the server load runs first.
+
+4.1 "load" function is invoked at runtime, but if you prerender the page, its invoked at build time.
+
+5. you can have both server/universal load functions and access data from
+   "src/routes/+page.server.ts" inside "src/routes/+page.ts" but the reverse is not possible
+
+5.1 "data" prop in "load" function within "+page.ts" is not merged with "+page.server.ts", you must
+    return any data from "+page.ts" you want your "+page.svelte to reuse":
+
+5.2 in "src/routes/+layout.server.ts":
+        export function load() {
+           	return { a: 1 };
+        }
+5.3 in "src/routes/sum/+layout.ts":
+        export async function load({ parent }) {
+            // notice the "parent" prop which will wait for any load functions inside parents to finish
+           	const { a } = await parent();
+           	return { b: a + 1 };
+        }
+
+5.4 in "src/routes/sum/+page.ts":
+        export async function load({ parent }) {
+           	const { a, b } = await parent();
+           	return { c: a + b };
+        }
+
+5.5 be really cautious with this waterfall "await parent()" easy to screw

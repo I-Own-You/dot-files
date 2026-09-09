@@ -1,0 +1,15 @@
+1.  "src/routes/+layout.svelte"
+    "src/routes/a/+layout.svelte"
+    "src/routes/a/b/+layout.svelte"
+    "src/routes/a/b/c/+layout.svelte"
+
+    "src/routes/a/b/c/+page.svelte" inherits every layout above, and if we want to start
+    inheriting earlier and skipping some of them ?
+
+2. you can skip some layouts by adding "@" between "+page" and "dir_name.svelte":
+        inside  "src/routes/a/b/c" you change "+page.svelte" to "+page@a.svelte" which means
+        "src/routes/a/b/c" page will start using layout from "src/routes/a/+layout.svelte"
+
+2.1 "+page@.svelte" would mean starting from the root layout in "src/routes/+layout.svelte"
+
+3. you cannot break out of root layout, its the starting point of whole app

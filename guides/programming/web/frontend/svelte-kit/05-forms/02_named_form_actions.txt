@@ -1,0 +1,120 @@
+1. having "default" server action is not cool since it will handle all <form> request,
+   so we need to define specific ones and address it inside the form "action" attribute to use
+
+2. here is how you would define different server actions:
+            export const actions = {
+                // you cannot have both "default" server action and something else defined
+                // default: ...
+               	create: async ({ cookies, request }) => {
+              		const data = await request.formData();
+              		db.createTodo(cookies.get('userid'), data.get('description'));
+               	},
+
+               	delete: async ({ cookies, request }) => {
+              		const data = await request.formData();
+              		db.deleteTodo(cookies.get('userid'), data.get('id'));
+               	}
+            };
+
+2.1 and inside "+page.svelte" you would assign server actions like this:
+            // 1. notice the action="?/create" attribute
+            // 2. "action" can be any URL, so if on route "/todos" you would have:
+            //    "+page.server.ts" or "+layout.server.ts" and inside actions defined,
+            //    you could use them in current url like this: action="/todos?/create"
+            // 3. you can actaully remove "?" here, since we have defined server action in our
+            //    own route directory inside either "+page.server.ts" or "+layout.server.ts"
+            <form method="POST" action="?/create">
+               	<label>
+              		add a todo:
+              		<input
+             			name="description"
+             			autocomplete="off"
+              		/>
+               	</label>
+            </form>
+            // 4. for deletion you would have:
+            <ul class="todos">
+               	{#each data.todos as todo (todo.id)}
+              		<li>
+             			<form method="POST" action="?/delete">
+            				<input type="hidden" name="id" value={todo.id} />
+            				<span>{todo.description}</span>
+            				<button aria-label="Mark as complete"></button>
+             			</form>
+              		</li>
+               	{/each}
+            </ul>
+
+3. if something went wrong, we can inform user by providing him a message about an error by
+   using "fail" function inside "+page/layout.server.ts":
+        import { fail } from '@sveltejs/kit';
+        import * as db from '$lib/server/database.js';
+
+        export function load({ cookies }) {...}
+
+        export const actions = {
+           	create: async ({ cookies, request }) => {
+          		const data = await request.formData();
+
+          		try {
+         			db.createTodo(cookies.get('userid'), data.get('description'));
+          		} catch (error) {
+                    // here, we pass the status code: 422 and an object with 2 properties
+         			return fail(422, {
+            				description: data.get('description'),
+            				error: error.message
+         			});
+          		}
+       	}
+
+3.1  and inside "+page/layout.svelte" we can access those 2 properties passed through "form" prop
+     like this:
+        <script lang="ts">
+           	let { data, form } = $props();
+        </script>
+
+        <div class="centered">
+           	<h1>todos</h1>
+
+           	{#if form?.error}
+          		<p class="error">{form.error}</p>
+           	{/if}
+
+           	<form method="POST" action="?/create">
+          		<label>
+         			add a todo:
+         			<input
+            				name="description"
+            				value={form?.description ?? ''}
+            				autocomplete="off"
+            				required
+         			/>
+          		</label>
+           	</form>
+        </div>
+
+4. you can also return data from server actions without wrapping them in "fail" for something
+   that is not about errors but for example a success, and it will be availabe thorugh "form" prop:
+            export const actions = {
+               	create: async ({ cookies, request }) => {
+              		const data = await request.formData();
+              		db.createTodo(cookies.get('userid'), data.get('description'));
+
+                    return {
+                        success: true,
+                        display_greetings: true,
+                    }
+               	}
+            };
+
+4.1 and inside "+page\layout.svelte" you can access them through "form" prop like this:
+        <script lang="ts">
+           	let { data, form } = $props();
+        </script>
+        <div>It is success ? {form.success ? 'yes' : 'no'}</div>
+        {#if form.display_greeings}
+            <p>Hello user!</p>
+        {/if}
+
+5. "fail" function will work only for the "+page/layout.svelte" inside current directory where
+   you invoked "fail" either "+page/layout.server.ts", both must be in the same dir

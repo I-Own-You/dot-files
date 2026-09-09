@@ -1,0 +1,22 @@
+1. svelte provides redirect function to redirect from a page to another
+
+2. in "src/routes/about/+page.server.ts":
+            import { redirect } from '@sveltejs/kit';
+
+            export function load() {
+                // 307 - temporary redirects
+                // 308 - permanent redirects
+                // 303 - form action after a successful submission
+                // there are more
+               	redirect(307, '/not-about');
+            }
+
+2.1 navigatin to "/about" will redirect to "/not-about" instead
+
+3. you can invoke redirect() inside:
+    1. "load" functions
+    2. form actions
+    3. api routes
+    4. handle hooks (discussed later)
+
+4. redirect() throws as well as error() which means no code will run after it

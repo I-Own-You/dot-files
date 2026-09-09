@@ -1,0 +1,10 @@
+1. navigating object represents the current navigation:
+        1. when a navigation starts because of a:
+            1. link click
+            2. back/forward navigation
+            3. programmatic "goto",
+            the value of navigating will become an object with the following properties:
+                1. "from" and "to" objects with: "params", "route", "url" properties
+                2. "type": type of navigation (link, popstate or goto)
+
+2. navigation object has more info, consult the docs for it

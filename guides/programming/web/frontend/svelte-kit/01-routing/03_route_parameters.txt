@@ -1,0 +1,8 @@
+1. you can create routes with dynamic parameters, for this you need to wrap a name which
+   (you will access to get the value) inside [ ], this name should be a legal variable name:
+        1. "src/routes/blog/[slug]/+page.svelte" creates a route and mathces this:
+            1. "/blog/one", "/blog/a", "/blog/3" and so on
+
+2. you can have multiple route parameters inside a single route, but there is a rule:
+        1. parameters should be separated by at least 1 static character:
+            1. "about/[f_param]-[s_param]" is valid, bot are accessible within "+page.svelte"

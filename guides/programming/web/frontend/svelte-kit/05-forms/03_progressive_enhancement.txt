@@ -1,0 +1,30 @@
+1. since <form> work without js, everything is fine, but most of the time people do have js,
+   so we can progressively enhance the user experience by adding some js
+
+2. inside "+page.svelte":
+        <script lang="ts">
+            // 1. this is what we need
+           	import { enhance } from '$app/forms';
+
+           	let { data, form } = $props();
+        </script>
+
+        // 2. and here is how we use it, "use:enhance" attribute
+        <form method="POST" action="?/create" use:enhance>
+
+        now, when user has JS, "use:enhance" will emulate the browser-native behaviour but not
+        the full page reload:
+            1. update the "form" prop
+            2. invalidate all "data" on a successful response which means "load" functions reloads
+            3. navigate to new page on a redirect response
+            4. render the nearest error page if an error occurs
+
+2.1 and since now we have access to JS, we can use svelte things...
+            <script lang="ts">
+               	import { fly, slide } from 'svelte/transition';
+               	import { enhance } from '$app/forms';
+
+               	let { data, form } = $props();
+            </script>
+
+            <li in:fly={{ y: 20 }} out:slide>...</li>

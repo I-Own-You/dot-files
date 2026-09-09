@@ -1,0 +1,34 @@
+1. svelte-kit provides 3 readonly state objects availabe through the $app/state module:
+    1. page
+    2. navigating
+    3. updated
+
+2. page provides info about the current page("+page.svelte"):
+    1. url - WEB API URL
+    2. params - url params
+    3. route - an object with "id" property representing the current rout
+    4. status - HTTP status code of the current page
+    5. error - error object if any
+    6. data - data, combining the return values of all "load" functions
+    7. form - data returned from "form action"
+
+3. each state (page, navigating, updated) is reactive using $state.raw under the hood
+
+4. an example of page.url.pathname inside "+layout.svelte":
+
+            <script lang="ts">
+               	import { page } from '$app/state';
+
+               	let { children } = $props();
+            </script>
+
+            <nav>
+               	<a href="/" aria-current={page.url.pathname === '/'}>
+              		home
+               	</a>
+               	<a href="/about" aria-current={page.url.pathname === '/about'}>
+              		about
+               	</a>
+            </nav>
+
+            {@render children()}

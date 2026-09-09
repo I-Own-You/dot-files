@@ -1,0 +1,22 @@
+1. there are 2 kind of errors in svelte:
+    1. expected
+    2. unexpected
+
+2. an expected error is one that was thrown with "error" helper from @svelte/kit
+
+2.1 in "src/routes/about/+page.server.ts":
+        import { error } from '@sveltejs/kit';
+
+        export function load() {
+           	error(420, 'Enhance your calm');
+        }
+
+3. any other error is unexpected
+
+3.1 in "src/routes/user/+page.server.ts":
+        export function load() {
+           	throw new Error('Kaboom!');
+        }
+
+3.2 unexpected erorr shows the error in the console of the browser where every user has access to.
+3.3 unexpected errors if not customized, always return internal server error which is 500 status code

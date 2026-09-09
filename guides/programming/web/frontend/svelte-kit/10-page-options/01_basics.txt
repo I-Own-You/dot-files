@@ -1,0 +1,43 @@
+1. we can export various page options from these files:
+    1. "+page.server.ts"
+    2. "+layout.server.ts"
+    3. "+page.ts"
+    4. "+layout.ts"
+    such as:
+    1. ssr - should pages render on server or not
+    2. csr - should svelte-kit load or not on client (js basically)
+    3. prerender (ssg) - to prerender pages at buildtime or not
+    4. trailingSlash - to strip/add/ignore trailing slashes in URL
+
+2. exporting from the root, makes childs respect that option
+
+2.1 exporting on a child ignores the parents export, so you can mix and make
+    whole app ssr and some parts csr, some parts ssg..
+
+3. ssr - generates html on server (which is svelte-kit default behaviour)
+
+3.1 some pages cannot be ssr since they need some client features like "window" object
+    from the browser, so either make it not ssr or change the logic of the page to not need it
+export const ssr = false; (basically makes your page SPA(CSR))
+
+4. csr - basically what makes a page interactive (JS) things
+export const csr = false;
+
+5. prerender (ssg) - generates HTML for a page once at build time
+export const prerender = true;
+
+5.1 not all pages can be ssg, there is a rule:
+        1. any amount of users requesting the content from the server must be the same for all of them
+        2. page must not contain form actions
+
+5.2 dynamic route parameters are possible for ssg as long as they are defined inside
+    "prerender.entries" configuration
+
+6. by default, svelte-kit strips trailing slashes, "/foo/" is redirected to "/foo"
+        export const trailingSlash = 'never'; (its the default)
+
+6.1 if you want trailing slashes to be preserved:
+        export const trailingSlash = 'always';
+
+6.2 if you want both cases to work (which will make both separate entries (BAD AS HELL DECISION)):
+        export const trailingSlash = 'ignore';

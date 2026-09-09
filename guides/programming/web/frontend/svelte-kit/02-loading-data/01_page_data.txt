@@ -1,0 +1,35 @@
+1. the core of svelte-kit job is:
+    1. routing (find which route to match)
+    2. load data needed for this page
+    3. render the content(either on server through ssr) or update DOM (in browser)
+
+2. every page("+page.svelte" this creates a page) can declare a "load" function in another file
+   called "+page.server.ts", both "+page.svelte" and "+page.servere.ts" are in the same directory,
+   they work for each other.
+2.1 "+page.server.ts" works only on server, and when client navigates in browser, it still runs on server for data
+
+3. "+page.server.ts" inside has a "load" function which typically looks like this:
+    export function load() {
+        // yes, an object is returning
+    	return {
+    		posts: posts.map((post) => ({
+    			slug: post.slug,
+    			title: post.title
+    		}))
+    	};
+    }
+
+3.1 and inside "+page.svelte" you will get this data in <script> tag through "data" prop like this:
+    <script lang="ts">
+    	let { data } = $props();
+    </script>
+    <div>{data.posts[0]}</div>
+
+3.2 you can also access route parameters inside "load" function like this:
+    export function load({ params }) {
+    	const post = posts.find((post) => post.slug === params.slug);
+
+    	return {
+    		post
+    	};
+    }

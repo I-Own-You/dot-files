@@ -1,0 +1,10 @@
+1. its possible to access dynamic public env variables as well with $env/dynamic/public
+
+2. in "src/routes/+page.svelte":
+        <script lang="ts">
+           	import { env } from '$env/dynamic/public';
+
+            console.log(env.PUBLIC_HELLO);
+        </script>
+
+3. as with $env/dynamic/private, its advised to use static ones for better safety

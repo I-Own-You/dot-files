@@ -1,0 +1,18 @@
+1. when something goes wrong inside a "load" function, svelte renders an error page
+
+2. the default error page is not what most of devs need, it can be customized by addign a file
+   called "+error.svelte"
+2.1 every route can have it
+2.2 "src/routes/+error.svelte" is considered root error page and rendered for all routes no matter
+    how deeply its nested if there are not other error pages above it to handle
+
+3. inside "src/rotues/+error.svelte":
+            <script lang="ts">
+               	import { page } from '$app/state';
+               	import { emojis } from './emojis.js';
+            </script>
+
+            <h1>{page.status} {page.error.message}</h1>
+            <span style="font-size: 10em">
+               	{emojis[page.status] ?? emojis[500]}
+            </span>

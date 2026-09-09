@@ -1,0 +1,9 @@
+1. inside "load" function (and also form actions, hooks and API routes discussed later), you
+   have access to "setHeaders" function which can be used to set headers on response
+
+2. an example of usage, inside "+page.server.ts":
+        export function load({ setHeaders }) {
+           	setHeaders({
+          		'Content-Type': 'text/plain'
+           	});
+        }
