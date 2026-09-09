@@ -1,0 +1,1 @@
+1. this folder is usually needed when the whole application is tested and a lot of things are going on
