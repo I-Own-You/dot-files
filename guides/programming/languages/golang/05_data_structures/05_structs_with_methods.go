@@ -55,6 +55,6 @@ func StructsWithMethods() {
 // methods cant be defined for types that comes from external packages, they must be local to type definition
 
 // never mix value and pointer receivers
-// you can go as exception from value to pointer, but you cannot go from pointer to value, as a rule (respect it)
+// you can go as exception from value to pointer, but you should not go from pointer to value, as a rule (respect it)
 
 // in go, you should never write get/set methods(receivers), because API should provide something, and get/set doesnt.
