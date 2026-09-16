@@ -145,20 +145,23 @@ func main() {
 	var g10 uint64
 	fmt.Printf("g10: %v\n", g10)
 
-	decimal := 10
-	octal := 07 // 0 in front of a decimal means the number is octal but
+	decimal := 10 // if you can use "_" between digits to make it more readable, like 10_000
+	octal_v1 := 07 // 0 in front of a decimal means the number is octal but
 	//			   variable "octal" will still hold the decimal represenation of "07"
 	//			   0-7 didigts are allowed after the first 0
-	also_octal := 0o2 // this is also octal, if you put lower capital "o" between 0 and a digit
+	octal_v2 := 0o2 // this is also octal, if you put lower capital "o" between 0 and a digit
+	octal_v3 := 0O2
 	//
-	hexa := 0xA80F // 0x in front of digits means the number is hexa but
+	hexa_v1 := 0xA80F // 0x in front of digits means the number is hexa but
 	//				  variable "hexa" will still hold the decimal representation of "0xA80F"
 	//				  0-9 and A-F are allowed in hexa
+	hexa_v2 := 0XA80F
 	//
-	binary := 0b1001 // 0b in front of digits means the number is a binary number but
+	binary_v1 := 0b1001 // 0b in front of digits means the number is a binary number but
 	//					 variable "binary" will still hold the decimal representation of "1001"
 	//					 0-1 digits are allowed in a binary number
-	fmt.Println(decimal, octal, also_octal, hexa, binary)
+	binarY_v2 := 0B1001
+	fmt.Println(decimal, octal_v1, octal_v2, octal_v3, hexa_v1, hexa_v2, binary_v1, binarY_v2)
 
 	// default: nil
 	var m interface{}
