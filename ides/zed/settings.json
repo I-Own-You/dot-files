@@ -60,21 +60,18 @@
     "lsp_highlight_debounce": 999999999999, // workaround to disable highlight of every same word
     // lsp setup
     "lsp": {
-        // i tried to use golangci-lint offline, didnt work out, but i will keep this just in case
-        // "golangci-lint": {
-        //     "binary": {
-        //         "path": "/home/mkc/.local/share/zed/extensions/work/golangci-lint/golangci-lint-langserver-v0.0.12/golangci-lint-langserver",
-        //     },
-        //     "initialization_options": {
-        //         "command": [
-        //             "golangci-lint",
-        //             "run",
-        //             "--output.json.path=stdout",
-        //             "--output.text.path=",
-        //             "--show-stats=false",
-        //         ],
-        //     },
-        // },
+        "golangci-lint": {
+            "initialization_options": {
+                "command": [
+                    "golangci-lint",
+                    "run",
+                    "--output.json.path",
+                    "stdout",
+                    "--show-stats=false",
+                    "--output.text.path=",
+                ],
+            },
+        },
         //
         // this is for tailwind to work inside .ts files
         // "tailwindcss-language-server": {
@@ -124,7 +121,6 @@
         // "..." as an option means keep loading any other lsp which is by default assigned to
         // to this lsp language
 
-        // i tried to use golangci-lint offline, didnt work out, but i will keep this just in case
         // "Go": {
         //     "language_servers": ["gopls", "golangci-lint", "..."],
         // },
