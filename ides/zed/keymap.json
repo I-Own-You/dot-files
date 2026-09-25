@@ -82,6 +82,7 @@
             "space m f": "git::FileHistory",
             "space g b b": "git::Branch",
             "space l w": "diagnostics::Deploy",
+            "space l q": "diagnostics::DeployCurrentFile",
             "space x t": "editor::CopyFileName",
 
             // "alt-shift-h": "vim::ResizePaneLeft",
