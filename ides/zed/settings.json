@@ -38,7 +38,7 @@
     },
     "file_finder": {
         "modal_max_width": "large",
-   },
+    },
     "relative_line_numbers": "enabled",
     "preferred_line_length": 80,
     "show_whitespaces": "selection",
