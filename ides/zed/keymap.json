@@ -78,7 +78,8 @@
             "space g c": "git::Commit",
             "space g p": "git::Push",
             "space b l": "git::Blame",
-            "space m t": "git_panel::ToggleFocus",
+            "space m t": "git_graph::Open",
+            "space m f": "git::FileHistory",
             "space g b b": "git::Branch",
             "space l w": "diagnostics::Deploy",
             "space x t": "editor::CopyFileName",
@@ -107,6 +108,14 @@
             "ctrl-/": "workspace::ToggleZoom",
         },
     },
+    {
+        "context": "GitGraph",
+        "bindings": {
+            "ctrl-y": "git_graph::CopyCommitSha",
+            "ctrl-t": "git_graph::CopyCommitTag",
+        },
+    },
+
     {
         "context": "Editor && vim_mode == insert",
         "bindings": {
