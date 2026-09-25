@@ -1,6 +1,15 @@
 {
+    "auto_install_extensions": {
+        "html": true,
+        "clean-vscode-icons": true,
+        "golangci-lint": true,
+        "tsgo": true,
+        "min-theme": true,
+        "biome": true,
+        "charmed-icons": true,
+    },
     "cli_default_open_behavior": "new_window",
-    "icon_theme": "Clean VSCode Icon Theme",
+    "icon_theme": "Warm Charmed Icons",
     "disable_ai": true,
     "ui_font_size": 17,
     "ui_font_weight": 300,
@@ -14,18 +23,22 @@
     "theme": {
         "mode": "dark",
         "light": "One Light",
-        "dark": "Min Dark (Solid)",
+        "dark": "Islands Dark",
     },
     "theme_overrides": {
         "Min Dark (Solid)": {
             "border.selected": "#efd069",
         },
     },
+    "colorize_brackets": true,
     "current_line_highlight": "all",
     "cursor_blink": false,
+    "cursor_animation": {
+        "enabled": true,
+    },
     "file_finder": {
         "modal_max_width": "large",
-    },
+   },
     "relative_line_numbers": "enabled",
     "preferred_line_length": 80,
     "show_whitespaces": "selection",
@@ -39,14 +52,6 @@
     "telemetry": {
         "diagnostics": false,
         "metrics": false,
-    },
-    "auto_install_extensions": {
-        "html": true,
-        "clean-vscode-icons": true,
-        "golangci-lint": true,
-        "tsgo": true,
-        "min-theme": true,
-        "biome": true,
     },
     // save
     "autosave": "off",
@@ -290,6 +295,9 @@
     "tasks": {
         "enabled": true,
         "variables": {},
+    },
+    "markdown_preview": {
+        "open_markdown_files_in_preview": true,
     },
     // "profiles": {
     //     "presentation": {
