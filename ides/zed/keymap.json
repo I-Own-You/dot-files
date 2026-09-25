@@ -5,6 +5,7 @@
         "bindings": {
             "ctrl-n": "menu::SelectNext",
             "ctrl-p": "menu::SelectPrevious",
+            "ctrl-alt-.": "zed::OpenKeymapFile",
         },
     },
     {
