@@ -241,6 +241,7 @@
             "show_commit_summary": true,
         },
     },
+    "git_commit_buffer_font_size": 18,
     "diff_view_style": "split",
     "indent_guides": {
         "enabled": false,
