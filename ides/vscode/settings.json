@@ -1,0 +1,155 @@
+{
+    "chat.disableAIFeatures": true,
+    "chat.tips.enabled": false,
+    //
+    "telemetry.telemetryLevel": "off",
+    //
+    "security.workspace.trust.untrustedFiles": "open",
+    //
+    "settingsSync.keybindingsPerPlatform": false,
+    //
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "on",
+        "strings": "on"
+    },
+    "editor.formatOnSave": true,
+    "editor.linkedEditing": true,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "CommitMono Nerd Font Mono",
+    "editor.fontSize": 17,
+    "editor.lineNumbers": "relative",
+    "editor.cursorBlinking": "solid",
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.wordWrap": "off",
+    "editor.renderWhitespace": "none",
+    "editor.showFoldingControls": "always",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.lineHeight": 1.5,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.stablePeek": true,
+    "editor.renderLineHighlight": "none",
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
+    "editor.matchBrackets": "never",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "editor.guides.indentation": false,
+    "editor.tokenColorCustomizations": {
+        "[Islands Dark]": {}
+    },
+    "editor.semanticHighlighting.enabled": "configuredByTheme",
+    //
+    "window.menuBarVisibility": "hidden",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.zoomLevel": 1,
+    //
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.sideBar.location": "right",
+    "workbench.tips.enabled": false,
+    "workbench.editor.showTabs": "none",
+    "workbench.editor.enablePreview": false,
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.editor.centeredLayoutAutoResize": true,
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Islands Dark",
+    "workbench.colorCustomizations": {
+        "[Islands Dark]": {
+            "focusBorder": "#00ACC1",
+            "editorGroup.border": "#00ACC1",
+            "editorCursor.foreground": "#2F81F7",
+            "editorCursor.background": "#FAF8F9"
+        },
+    },
+    //
+    "zenMode.showTabs": "none",
+    "zenMode.hideStatusBar": false,
+    //
+    "search.useIgnoreFiles": false,
+    //
+    "git.decorations.enabled": false,
+    "git.suggestSmartCommit": false,
+    //
+    "gitlab.duo.enabledWithoutGitlabProject": false,
+    "gitlab.duoChat.enabled": false,
+    "gitlab.duoCodeSuggestions.enabled": false,
+    //
+    "explorer.confirmDragAndDrop": true,
+    "explorer.confirmDelete": true,
+    "explorer.compactFolders": false,
+    "explorer.autoReveal": false,
+    //
+    "files.insertFinalNewline": true,
+    "files.autoSave": "off",
+    "files.associations": {
+        "*.vue": "vue"
+    },
+    //
+    // "tailwindCSS.experimental.classRegex": [
+    //   "tw`(.*?)`",
+    //   "tw\\('(.*?)'\\)",
+    //   "tw\\(\\s*('(.*?)'|\"(.*?)\")\\s*\\)"
+    // ], // mainly for tailwind
+    //
+    "extensions.ignoreRecommendations": true,
+    //
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "terminal.integrated.fontFamily": "CommitMono Nerd Font Mono",
+    "terminal.integrated.fontLigatures.enabled": true,
+    //
+    "accessibility.underlineLinks": true,
+    //
+    "[json]": {
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true,
+        "editor.indentSize": "tabSize"
+    },
+    "[snippets]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[go]": {
+        "editor.tabSize": 4,
+        "editor.indentSize": "tabSize",
+        // "editor.defaultFormatter": "golang.go",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.fixAll": "always"
+        }
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "gopls": {
+        "ui.semanticTokens": true,
+    },
+    "go.lintTool": "golangci-lint-v2",
+    "go.lintFlags": [
+        "--path-mode=abs",
+        "--fast-only"
+    ],
+    "go.formatTool": "custom",
+    "go.alternateTools": {
+        "customFormatter": "golangci-lint-v2",
+    },
+    "go.formatFlags": [
+        "fmt",
+        "--stdin"
+    ],
+    "js/ts.experimental.useTsgo": true,
+    "js/ts.tsdk.path": "./node_modules/typescript",
+    "js/ts.suggest.autoImports": true,
+    // "path-intellisense.showHiddenFiles": true, // you can also create custom paths by keymaps
+    // "path-intellisense.absolutePathToWorkspace": true // if you need to start path from root "/"
+    // "path-intellisense.autoSlashAfterDirectory": true,
+    "path-intellisense.autoTriggerNextSuggestion": true,
+}

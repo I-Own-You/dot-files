@@ -1,0 +1,108 @@
+{
+  //-tsx
+  "nextjs use client directive": {
+    "prefix": "uc",
+    "body": "\"use client\"",
+    "description": "nextjs use client directive"
+  },
+  "nextjs use server action directive": {
+    "prefix": "us",
+    "body": "\"use server\"",
+    "description": "nextjs use server action directive"
+  },
+  "nextjs link": {
+    "prefix": "nlink",
+    "body": [
+      "<Link href=\"$0\" />"
+    ],
+    "description": "nextjs link",
+  },
+  "nextjs image": {
+    "prefix": "nimg",
+    "body": [
+      "<Image src=\"${1:srcPath}\" alt=\"${2:Image Placeholder}\" width={${3:999999}} height={${0:999999}} />"
+    ],
+    "description": "nextjs image",
+  },
+  //-ts
+  "export const variable": {
+    "prefix": "ecv",
+    "body": [
+      "export const $1: $0 = $2"
+    ],
+    "description": "export const variable",
+  },
+  "export function": {
+    "prefix": "ef",
+    "body": [
+      "export function $1() {",
+      "\treturn $0",
+      "}"
+    ],
+    "description": "export function",
+  },
+  "export default": {
+    "prefix": "ed",
+    "body": [
+      "export default $0"
+    ],
+    "description": "export default",
+  },
+  "export default function": {
+    "prefix": "edf",
+    "body": [
+      "export default function $1() {",
+      "\treturn $0",
+      "}"
+    ],
+    "description": "export default function",
+  },
+  "function": {
+    "prefix": "fn",
+    "body": [
+      "function $1() {",
+      "\treturn $0",
+      "}"
+    ],
+    "description": "function"
+  },
+  "try-catch": {
+    "prefix": "tc",
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch (error) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "try-catch"
+  },
+  "anonymous arrow function": {
+    "prefix": "aaf",
+    "body": "${1:args} => ${0:val}",
+    "description": "anonymous arrow functioin"
+  },
+  "named anonymous arrow function": {
+    "prefix": "naaf",
+    "body": [
+      "const ${1:fnName} = (${2:args}) => {",
+      "\treturn ${0:val}",
+      "}"
+    ],
+    "description": "named anonymous arrow function"
+  },
+  "array destructuring": {
+    "prefix": "ad",
+    "body": [
+      "const [$0] = $1"
+    ],
+    "description": "array destructuring"
+  },
+  "object destructuring": {
+    "prefix": "od",
+    "body": [
+      "const { $0 } = $1"
+    ],
+    "description": "object destructuring"
+  }
+}

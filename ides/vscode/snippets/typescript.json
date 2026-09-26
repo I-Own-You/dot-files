@@ -1,0 +1,147 @@
+{
+  //-tsx
+  "next api route get": {
+    "prefix": "narg",
+    "body": [
+      "export async function GET(request: Request) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "next api route get",
+  },
+  "next api route head": {
+    "prefix": "narh",
+    "body": [
+      "export async function HEAD(request: Request) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "next api route head",
+  },
+  "next api route post": {
+    "prefix": "narp",
+    "body": [
+      "export async function POST(request: Request) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "next api route post",
+  },
+  "next api route put": {
+    "prefix": "narp",
+    "body": [
+      "export async function PUT(request: Request) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "next api route put",
+  },
+  "next api route delete": {
+    "prefix": "nard",
+    "body": [
+      "export async function DELETE(request: Request) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "next api route delete",
+  },
+  "next api route patch": {
+    "prefix": "narp",
+    "body": [
+      "export async function PATCH(request: Request) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "next api route patch",
+  },
+  "next api route options": {
+    "prefix": "naro",
+    "body": [
+      "export async function OPTIONS(request: Request) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "next api route options",
+  },
+  //-ts
+  "export const variable": {
+    "prefix": "ecv",
+    "body": [
+      "export const $1: $0 = $2"
+    ],
+    "description": "export const variable",
+  },
+  "export function": {
+    "prefix": "ef",
+    "body": [
+      "export function $1() {",
+      "\treturn $0",
+      "}"
+    ],
+    "description": "export const function",
+  },
+  "export default": {
+    "prefix": "ed",
+    "body": [
+      "export default $0"
+    ],
+    "description": "export default",
+  },
+  "export default function": {
+    "prefix": "edf",
+    "body": [
+      "export default function $1() {",
+      "\treturn $0",
+      "}"
+    ],
+    "description": "export default function",
+  },
+  "function": {
+    "prefix": "fn",
+    "body": [
+      "function $1() {",
+      "\treturn $0",
+      "}"
+    ],
+    "description": "function"
+  },
+  "try-catch": {
+    "prefix": "tc",
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch (error) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "try-catch"
+  },
+  "anonymous arrow function": {
+    "prefix": "aaf",
+    "body": "${1:args} => ${0:val}",
+    "description": "anonymous arrow functioin"
+  },
+  "named anonymous arrow function": {
+    "prefix": "naaf",
+    "body": [
+      "const ${1:fnName} = (${2:args}) => {",
+      "\treturn ${0:val}",
+      "}"
+    ],
+    "description": "named anonymous arrow function"
+  },
+  "array destructuring": {
+    "prefix": "ad",
+    "body": [
+      "const [$0] = $1"
+    ],
+    "description": "array destructuring"
+  },
+  "object destructuring": {
+    "prefix": "od",
+    "body": [
+      "const { $0 } = $1"
+    ],
+    "description": "object destructuring"
+  },
+}

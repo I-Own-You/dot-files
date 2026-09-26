@@ -1,0 +1,365 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "selectNextCodeAction",
+        "when": " codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "selectPrevCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "f",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "x",
+        "command": "filesExplorer.cut",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "y",
+        "command": "filesExplorer.copy",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+    },
+    {
+        "key": "p",
+        "command": "filesExplorer.paste",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "d",
+        "command": "deleteFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "tab",
+        "command": "togglePeekWidgetFocus",
+        "when": "referenceSearchVisible && inReferenceSearchEditor || referenceSearchVisible  && !inReferenceSearchEditor"
+    },
+    {
+        "key": "escape",
+        "command": "", // when in peek window editor, dont close
+        "when": "inReferenceSearchEditor"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "closeReferenceSearch", // when in peek window editor, close
+        "when": "inReferenceSearchEditor"
+    },
+    {
+        "key": "ctrl+shift+space",
+        "command": "editor.action.triggerParameterHints",
+        "when": "editorHasSignatureHelpProvider && editorTextFocus && !parameterHintsVisible"
+    },
+    {
+        "key": "ctrl+shift+space",
+        "command": "closeParameterHints",
+        "when": "editorHasSignatureHelpProvider && editorTextFocus && parameterHintsVisible"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "showNextParameterHint",
+        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "showPrevParameterHint",
+        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+    },
+    {
+        "key": "alt+s alt+h",
+        "command": "workbench.action.moveActiveEditorGroupLeft",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+s alt+l",
+        "command": "workbench.action.moveActiveEditorGroupRight",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+s alt+j",
+        "command": "workbench.action.moveActiveEditorGroupDown",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+s alt+k",
+        "command": "workbench.action.moveActiveEditorGroupUp",
+        "when": "editorFocus"
+    },
+    /* {
+    "key": "alt+m alt+h",
+    "command": "workbench.action.moveEditorToLeftGroup",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+m alt+l",
+    "command": "workbench.action.moveEditorToRightGroup",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+m alt+j",
+    "command": "workbench.action.moveEditorToBelowGroup",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+m alt+k",
+    "command": "workbench.action.moveEditorToAboveGroup",
+    "when": "editorFocus"
+  }, */
+    {
+        "key": "tab",
+        "command": "search.action.focusQueryEditorWidget",
+        "when": "inSearchEditor"
+    },
+    {
+        "key": "shift+tab",
+        "command": "search.action.focusNextSearchResult",
+        "when": "inSearchEditor"
+    },
+    {
+        "key": "shift+alt+j",
+        "command": "workbench.action.previousEditor",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+alt+k",
+        "command": "workbench.action.nextEditor",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+shift+u",
+        "command": "cursorRedo",
+        "when": "textInputFocus"
+    }
+]
+// ctrl+end = go to bottom file
+// ctrl+shift+end = previous + select content
+// end = go to end of line
+// shift+end = previous + select content
+// home = go to start of line
+// shift+home = previous + select content
+// pagedown = move cursor by a page down
+// shift+pagedown = previous + select it
+//  pageup = move cursor by a page up
+//  shift+pageup = previous + select content
+// ctrl+home = go to top of the file
+// shift+ctrl+home = previous + select content
+// delete = delete charater on the right
+//  ctrl+l = select current line and move cursor down
+// ctrl+z = undo
+// ctrl+y = redo
+// ctrl+up = move by 1 line up but dont move the cursor
+// ctrl+down = move by 1 line down but dont move the cursor
+// alt+pagedown = same as pagedown but without moving the cursor
+// alt+pageup = same as pageup but without moving the cursor
+// f2 = rename
+// f12 = reveal definition
+// f12 = go to next symbol from result
+// f4/f12 = go to next reference
+// shift+f4/f12 = go to previous reference
+// shift+f12 = go to references
+// ctrl+f12 = reveal definition
+// ctrl+f12 = go to implementation
+// ctrl+k f12 = reveal definition aside
+// ctrl+k ctrl+f12 = reveal definition aside
+// ctrl+shift+f10 = peek definition
+// ctrl+shift+f12 = peek implementation
+// ctrl+enter = open reference from peek in side tab
+// ctrl+k ctrl+i = show hover
+// ctrl+shift+o = go to symbol
+// ctrl+t = show all symbols in workspace
+// ctrl+u = move backword in history where cursor was, it also restores selection
+// ctrl+backspace = delete word backward
+// ctrl+delete = delete word infront
+// ctrl+d = selects the word under the cursor and next(same) words while pressing ctrl+d
+// ctrl+k ctrl+d = if you selected a bunch of words with ctrl+d, you can deselect current and select next with this one
+// ctrl+f2 = selects all entries under the cursor from the entire file
+// shift+alt+. = autofix
+// ctrl+/ = comment line
+// ctrl+shift+a = block comment(multiline, like /* */ but language specific)
+// ctrl+c = copy line
+// ctrl+x = delete line
+// ctrl+v = paste line
+// ctrl+shift+alt+down = copies current line downwards
+// ctrl+shift+alt+up = copies current line upwards
+// alt+f3 = next dirty diff(git, when you are in file, not git side by side)
+// shift+alt+f3 = previous dirty diff(git, when you are in file, not git side by side)
+// alt+f5 = next git change in git diff
+// shift+alt+f5 = previous change in git diff
+// ctrl+shift+i = format document
+// ctrl+k ctrl+f = format selection
+// ctrl+] = indent lines
+// ctrl+[ = outdent lines
+// alt+] = show next inline suggestion (ai ?)
+// alt+[ = show previous inline suggestion (ai ?)
+// ctrl+right = accept next inline suggest word (ai ?)
+// ctrl+shift+up = insert 1 cursor above
+// ctrl+shift+down = insert 1 cursor below
+// shift+alt+up = insert 1 cursor above
+// shift+alt+down = insert 1 cursor down
+// shift+alt+i = inserts cursor at the end of each line in selected text
+// ctrl+enter = insert line below current and moves cursor to it
+// ctrl+shift+enter = inserts line above current and moves cursor to it
+// ctrl+shift+\ = jump to matching brackets
+// alt+f8 = next marker(diagnostic, same file)
+// shift+alt+f8 = previous marker(diagnostic, same file)
+// f8 = next marker(diagnostic, all opened files)
+// shift+f8 = previous marker(diagnostic, all opened files)
+// alt+up = move line up
+// alt+down = move line down
+// shift+alt+o = organize imports
+// ctrl+. = code action
+// ctrl+shift+r = refactor
+// ctrl+alt+backspace = remove brackets
+// shift+alt+right = smart select expand
+// shift+alt+left = smart select shrink
+// ctrl+h = find+replace
+// ctrl+m = removes tab focus mode
+// alt+z = toggle word wrap
+// ctrl+k ctrl+x = trim trailing whitespace
+// f7 = next entry of highlighted word (if its turned off in settings, it wont work)
+// shift+f7 = previous entry of highlighted word
+// ctrl+shift+[ = fold
+// ctrl+shift+] = unfold
+// ctrl+shift+f = open search editor
+// f4 = go to next search entry
+// shift+f4 = go to previous search entry
+// alt+c = toggle case in find widget
+// alt+l = toggle find in selection in find widget
+// alt+r = toggle regexp in find widget
+// alt+w = toggle find whole word in find widget
+// alt+p = toggle preserve case in find widget
+// ctrl+shift+l = add cursor at end of each entry from find widget
+// down = show next paramter hint (if there are overloads, you can switch between them)
+// up = show previoous paraamter hint
+// alt+down = show next parameter hint
+// alt+up = show previous parameter hint
+// pagedown = show next page suggestion completions
+// pageup = show previous page suggestion completions
+// ctrl+shift+; = focus breadcrumbs
+// ctrl+shift+. = focus and select breadcrumbs
+// ctrl+enter/space = reveal focused
+// shift+alt+h = show call hierarchy and a bunch of other utilities related
+// f3 = find files in explorer
+// ctrl+alt+r = reveal file in folder
+// ctrl+k p = copy path of active file
+// ctrl+n = new untitled file
+// ctrl+shift+n = new window
+// ctrl+r = open recent
+// ctrl+o = open new file/folder from
+// ctrl+k r = reveal active file in folder
+// ctrl+shift+s = save as
+// ctrl+k s = save without formatting
+// ctrl+g = go to N number
+// ctrl+k ctrl+q = go to last edit location
+// ctrl+shift+t = reopen last closed editor
+// ctrl+shift+h = find&replacel tool
+// ctrl+p = show all files in workspace
+// ctrl+k ctrl+p = show all opened files
+// ctrl+shift+p = open commands
+// ctrl+\ = split editor vertically
+// ctrl+k ctrl+\ = split editor horizontally
+// ctrl+k ctrl+m = maximize editor
+// ctrl+shift+m = show problems of projects(diagnostic)
+// ctrl+alt+i = open AI chat
+// emacs commands
+// move:
+// C-f	        Move forward (forward-char)
+// C-b	        Move backward (backward-char)
+// C-n	        Move to the next line (next-line)
+// C-p	        Move to the previous line (previous-line)
+// C-a	        Move to the beginning of line (move-beginning-of-line)
+// C-e	        Move to the end of line (move-end-of-line)
+// M-f	        Move forward by one word unit (forward-word)
+// M-b	        Move backward by one word unit (backward-word)
+// M-m	        Move (forward or back) to the first non-whitespace character on the current line (back-to-indentation)
+// C-v	        Scroll down by one screen unit (scroll-up-command)
+// M-v	        Scroll up by one screen unit (scroll-down-command)
+// M-S-[        Move back to previous paragraph beginning (backward-paragraph)
+// M-S-]        Move forward to next paragraph end (forward-paragraph)
+// M-S-,        Move to the top of the buffer (beginning-of-buffer)
+// M-S-.        Move to the end of the buffer (end-of-buffer)
+// M-g g        Read a number n and move point to the beginning of line number n (goto-line)
+// M-g n        Jump to next error
+// M-g p        Jump to previous error
+// C-l          Center screen on current line (recenter-top-bottom)
+// search:
+// C-s	        Incremental search forward (isearch-forward).
+// C-r	        Incremental search backward (isearch-backward).
+// C-M-s	    Begin incremental regexp search (isearch-forward-regexp).
+// C-M-r	    Begin reverse incremental regexp search (isearch-backward-regexp).
+// M-S-5 	    Replace (query-replace)
+// C-M-S-5 	    Replace with regexp (query-replace-regexp)
+// C-M-n	    Add selection to next find match
+// C-M-p	    Add selection to previous find match
+// M-s o	    Open Quick Search, which is like Emacs' occur command.
+// M-c	        Toggles the case sensitivity of the find widget.
+// edit:
+// C-d		                Delete right (DEL)
+// C-h		                Delete left (BACKSPACE)
+// M-\		                Delete spaces and tabs around point (delete-horizontal-space).
+// C-x C-o		            Delete blank lines around (delete-blank-lines)
+// M-S-6 		            join two lines cleanly (delete-indentation)
+// M-d		                Kill word (kill-word)
+// M-Bksp		            Kill word left (backward-kill-word)
+// C-k		                Kill from the current cursor to the end of line (kill-line)
+// C-S-Bksp	                Kill whole line (kill-whole-line)
+// C-w		                Kill region
+// M-w		                Copy region to kill ring
+// C-y		                Yank
+// M-y		                Yank pop
+// C-c 		                Browse kill ring
+// C-o		                Open line
+// C-j		                New line
+// C-m		                New line
+// C-x h		            Select All
+// C-x u, C-/, C-S--		Undo
+// C-;		                Toggle line comment in and out
+// M-;		                Toggle region comment in and out
+// C-x C-l (M-l)		    Convert to lower case (On the Emacs' original behavior, C-x C-l and M-l are assigned to the different functionalities. However, this extension assigns these keys to the same emacs-mcx.transformToLowercase command which calls editor.action.transformToLowercase command internally and works similarly to both the original Emacs' functionalities based on the context. Upper case and title case (below) are same)
+// C-x C-u (M-u)		    Convert to upper case
+// M-c		                Convert to title case
