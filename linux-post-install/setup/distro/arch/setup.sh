@@ -20,6 +20,10 @@ ln -sf "$HOME/dot-files/terminals/alacritty" "$HOME/.config/alacritty"
 ln -sf "$HOME/dot-files/terminals/wezterm" "$HOME/.config/wezterm"
 ln -sf "$HOME/dot-files/cli-tools/zellij" "$HOME/.config/zellij"
 ln -sf "$HOME/dot-files/cli-tools/zsh" "$HOME/.config/zsh"
+ln -sf "$HOME/dot-files/ides/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
+ln -sf "$HOME/dot-files/ides/vscode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
+ln -sf "$HOME/dot-files/ides/vscode/tasks.json" "$HOME/.config/Code/User/tasks.json"
+ln -sf "$HOME/dot-files/ides/vscode/snippets" "$HOME/.config/Code/User/snippets"
 ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/btop.desktop" "$HOME/.local/share/applications/btop.desktop"
 ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/google-chrome.desktop" "$HOME/.local/share/applications/google-chrome.desktop"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
@@ -27,7 +31,7 @@ sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/de
 # install pacman packages
 sudo pacman -S 
                # cli
-               git zsh zoxide eza bat git-delta fzf ripgrep fd yazi glab github-cli uv uvx nvim helix zellij unrar unzip zip p7zip ffmpeg yt-dlp imagemagick btop nvtop gdu duf iftop bandwhich iotop-c sysstat lnav systemctl-tui ouch just lazygit lazydocker sshs shellcheck direnv dust mpv golangci-lint
+               git zsh zoxide eza bat git-delta fzf ripgrep fd yazi glab github-cli uv uvx nvim helix zellij unrar unzip zip p7zip ffmpeg yt-dlp imagemagick btop nvtop gdu duf iftop bandwhich iotop-c sysstat lnav systemctl-tui ouch just lazygit lazydocker sshs shellcheck direnv dust mpv golangci-lint zed
                # system pkgs
                paru
                # gui apps
@@ -38,7 +42,7 @@ sudo pacman -S
                npm tree-sitter tree-sitter-cli
 paru 
      # gui apps
-     google-chrome-stable-bin xnviewmp spotify vicinae-bin
+     google-chrome-stable-bin xnviewmp spotify vicinae-bin visual-studio-code-bin
 
 # install apps from their website
 # telegram
