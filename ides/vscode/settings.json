@@ -44,13 +44,17 @@
         "[Islands Dark]": {}
     },
     "editor.semanticHighlighting.enabled": "configuredByTheme",
+    "editor.bracketPairColorization.enabled": true,
     //
     "window.menuBarVisibility": "hidden",
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,
+    "window.titleBarStyle": "native",
+    "window.customTitleBarVisibility": "never",
     "window.zoomLevel": 1,
     //
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.useModal": "some",
     "workbench.tree.renderIndentGuides": "none",
     "workbench.editor.editorActionsLocation": "hidden",
     "workbench.sideBar.location": "right",
@@ -152,4 +156,227 @@
     // "path-intellisense.absolutePathToWorkspace": true // if you need to start path from root "/"
     // "path-intellisense.autoSlashAfterDirectory": true,
     "path-intellisense.autoTriggerNextSuggestion": true,
+    //
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "space",
+    "vim.visualstar": true,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "#25303d",
+    "vim.highlightedyank.duration": 200,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "vim.enableNeovim": true,
+    "vim.handleKeys": {
+        // false - delegate to vscode
+        // true - disable for vscode
+        "<C-d>": true,
+        "<C-s>": true,
+        "<C-z>": true,
+        "<C-;>": true,
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "<C-i>"
+            ],
+            "commands": [
+                "cursorHome"
+            ]
+        },
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "commands": [
+                "cursorEnd"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "commands": [
+                "deleteWordRight"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "commands": [
+                "deleteRight"
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindings": [
+        // {
+        //     "before": [
+        //         "q"
+        //     ],
+        //     "commands": []
+        // },
+        {
+            "before": [
+                "q"
+            ],
+            "commands": [
+                ":nohl"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "+"
+            ],
+            "commands": [
+                "extension.vim_ctrl+a"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "-"
+            ],
+            "commands": [
+                "extension.vim_ctrl+x"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<C-space>"
+            ],
+            "commands": [
+                "extension.vim_ctrl+6"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "h"
+            ],
+            "commands": [
+                "editor.action.dirtydiff.next"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "w"
+            ],
+            "commands": [
+                "editor.action.toggleWordWrap"
+            ]
+        },
+        // {
+        //     "before": [
+        //         "<C-h>"
+        //     ],
+        //     "commands": [
+        //         "editor.gotoParentFold"
+        //     ]
+        // },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "commands": [
+                "editor.gotoParentFold"
+            ]
+        },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "<leader>"
+        //     ],
+        //     "commands": [
+        //         "workbench.action.quickTextSearch"
+        //     ]
+        // },
+        {
+            "before": [
+                "<leader>",
+                "/"
+            ],
+            "commands": [
+                "search.action.openEditor"
+            ]
+        },
+        {
+            "before": [
+                "<A-g>",
+            ],
+            "commands": [
+                "goToNextReference"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "q"
+            ],
+            "commands": []
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "p"
+            ],
+            "after": [
+                "p",
+                "g",
+                "v",
+                "y"
+            ]
+        }
+    ]
 }

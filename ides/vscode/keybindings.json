@@ -1,5 +1,44 @@
 // Place your key bindings in this file to override the defaults
 [
+    // {
+    // "key": "alt+t",
+    // "command": "editor.action.addSelectionToNextFindMatch"
+    // },
+    {
+        "key": "ctrl+alt+,",
+        "command": "workbench.action.openSettingsJson"
+    },
+    {
+        "key": "ctrl+alt+.",
+        "command": "workbench.action.openGlobalKeybindingsFile"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+f",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "alt+f",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+b",
+        "command": "workbench.action.showAllEditors"
+    },
+    {
+        "key": "alt+b",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+    },
     {
         "key": "ctrl+n",
         "command": "workbench.action.quickOpenSelectNext",
@@ -36,17 +75,17 @@
         "when": "inQuickOpen"
     },
     {
-        "key": "a",
+        "key": "shift+5",
         "command": "explorer.newFile",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "f",
+        "key": "d",
         "command": "explorer.newFolder",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "r",
+        "key": "shift-r",
         "command": "renameFile",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
@@ -66,9 +105,24 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "d",
+        "key": "shift-d",
         "command": "deleteFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "shift-t",
+        "command": "moveFileToTrash",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "z m",
+        "command": "workbench.files.action.collapseExplorerFolders",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "/",
+        "command": "list.find",
+        "when": "listFocus && listSupportsFind"
     },
     {
         "key": "tab",
@@ -79,6 +133,42 @@
         "key": "escape",
         "command": "", // when in peek window editor, dont close
         "when": "inReferenceSearchEditor"
+    },
+    {
+        "key": "alt+shift+h",
+        "command": "workbench.action.decreaseViewWidth"
+    },
+    {
+        "key": "alt+shift+l",
+        "command": "workbench.action.increaseViewWidth"
+    },
+    {
+        "key": "alt+shift+k",
+        "command": "workbench.action.decreaseViewHeight"
+    },
+    {
+        "key": "alt+shift+j",
+        "command": "workbench.action.increaseViewHeight"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "workbench.action.toggleMaximizeEditorGroup",
+        "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "workbench.action.toggleModalEditorMaximized",
+        "when": "editorPartModal"
+    },
+    {
+        "key": "ctrl+alt+m",
+        "command": "workbench.action.movemain",
+        "when": "editorPartModal"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "workbench.action.moveModalEditorToMain",
+        "when": "editorPartModal"
     },
     {
         "key": "ctrl+c",
@@ -125,26 +215,26 @@
         "command": "workbench.action.moveActiveEditorGroupUp",
         "when": "editorFocus"
     },
-    /* {
-    "key": "alt+m alt+h",
-    "command": "workbench.action.moveEditorToLeftGroup",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+m alt+l",
-    "command": "workbench.action.moveEditorToRightGroup",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+m alt+j",
-    "command": "workbench.action.moveEditorToBelowGroup",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+m alt+k",
-    "command": "workbench.action.moveEditorToAboveGroup",
-    "when": "editorFocus"
-  }, */
+    {
+        "key": "alt+m alt+h",
+        "command": "workbench.action.moveEditorToLeftGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+m alt+l",
+        "command": "workbench.action.moveEditorToRightGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+m alt+j",
+        "command": "workbench.action.moveEditorToBelowGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+m alt+k",
+        "command": "workbench.action.moveEditorToAboveGroup",
+        "when": "editorFocus"
+    },
     {
         "key": "tab",
         "command": "search.action.focusQueryEditorWidget",
@@ -156,14 +246,9 @@
         "when": "inSearchEditor"
     },
     {
-        "key": "shift+alt+j",
-        "command": "workbench.action.previousEditor",
-        "when": "editorFocus"
-    },
-    {
-        "key": "shift+alt+k",
-        "command": "workbench.action.nextEditor",
-        "when": "editorFocus"
+        "key": "ctrl+shift+q",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
     },
     {
         "key": "ctrl+shift+g",
@@ -174,8 +259,83 @@
         "key": "ctrl+shift+u",
         "command": "cursorRedo",
         "when": "textInputFocus"
-    }
+    },
+    {
+        "key": "ctrl+e",
+        "command": "editorScroll",
+        "args": {
+            "to": "down",
+            "by": "line",
+            "value": 5
+        },
+        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "editorScroll",
+        "args": {
+            "to": "up",
+            "by": "line",
+            "value": 5
+        },
+        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "editorScroll",
+        "args": {
+            "to": "down",
+            "by": "line",
+            "value": 1
+        },
+        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
+    },
+    {
+        "key": "ctrl+shift+y",
+        "command": "editorScroll",
+        "args": {
+            "to": "up",
+            "by": "line",
+            "value": 1
+        },
+        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "deleteAllRight",
+        "when": "vim.mode == 'Insert'"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'VisualLine'"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'VisualLine'"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.addSelectionToPreviousFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "command": "editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
 ]
+// {
+//     "key": "[ r",
+//     "command": "goToPreviousReference",
+//     "when": "inReferenceSearchEditor || referenceSearchVisible"
+// },
 // ctrl+end = go to bottom file
 // ctrl+shift+end = previous + select content
 // end = go to end of line
@@ -306,60 +466,3 @@
 // ctrl+k ctrl+m = maximize editor
 // ctrl+shift+m = show problems of projects(diagnostic)
 // ctrl+alt+i = open AI chat
-// emacs commands
-// move:
-// C-f	        Move forward (forward-char)
-// C-b	        Move backward (backward-char)
-// C-n	        Move to the next line (next-line)
-// C-p	        Move to the previous line (previous-line)
-// C-a	        Move to the beginning of line (move-beginning-of-line)
-// C-e	        Move to the end of line (move-end-of-line)
-// M-f	        Move forward by one word unit (forward-word)
-// M-b	        Move backward by one word unit (backward-word)
-// M-m	        Move (forward or back) to the first non-whitespace character on the current line (back-to-indentation)
-// C-v	        Scroll down by one screen unit (scroll-up-command)
-// M-v	        Scroll up by one screen unit (scroll-down-command)
-// M-S-[        Move back to previous paragraph beginning (backward-paragraph)
-// M-S-]        Move forward to next paragraph end (forward-paragraph)
-// M-S-,        Move to the top of the buffer (beginning-of-buffer)
-// M-S-.        Move to the end of the buffer (end-of-buffer)
-// M-g g        Read a number n and move point to the beginning of line number n (goto-line)
-// M-g n        Jump to next error
-// M-g p        Jump to previous error
-// C-l          Center screen on current line (recenter-top-bottom)
-// search:
-// C-s	        Incremental search forward (isearch-forward).
-// C-r	        Incremental search backward (isearch-backward).
-// C-M-s	    Begin incremental regexp search (isearch-forward-regexp).
-// C-M-r	    Begin reverse incremental regexp search (isearch-backward-regexp).
-// M-S-5 	    Replace (query-replace)
-// C-M-S-5 	    Replace with regexp (query-replace-regexp)
-// C-M-n	    Add selection to next find match
-// C-M-p	    Add selection to previous find match
-// M-s o	    Open Quick Search, which is like Emacs' occur command.
-// M-c	        Toggles the case sensitivity of the find widget.
-// edit:
-// C-d		                Delete right (DEL)
-// C-h		                Delete left (BACKSPACE)
-// M-\		                Delete spaces and tabs around point (delete-horizontal-space).
-// C-x C-o		            Delete blank lines around (delete-blank-lines)
-// M-S-6 		            join two lines cleanly (delete-indentation)
-// M-d		                Kill word (kill-word)
-// M-Bksp		            Kill word left (backward-kill-word)
-// C-k		                Kill from the current cursor to the end of line (kill-line)
-// C-S-Bksp	                Kill whole line (kill-whole-line)
-// C-w		                Kill region
-// M-w		                Copy region to kill ring
-// C-y		                Yank
-// M-y		                Yank pop
-// C-c 		                Browse kill ring
-// C-o		                Open line
-// C-j		                New line
-// C-m		                New line
-// C-x h		            Select All
-// C-x u, C-/, C-S--		Undo
-// C-;		                Toggle line comment in and out
-// M-;		                Toggle region comment in and out
-// C-x C-l (M-l)		    Convert to lower case (On the Emacs' original behavior, C-x C-l and M-l are assigned to the different functionalities. However, this extension assigns these keys to the same emacs-mcx.transformToLowercase command which calls editor.action.transformToLowercase command internally and works similarly to both the original Emacs' functionalities based on the context. Upper case and title case (below) are same)
-// C-x C-u (M-u)		    Convert to upper case
-// M-c		                Convert to title case
