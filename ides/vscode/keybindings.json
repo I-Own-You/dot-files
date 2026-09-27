@@ -1,468 +1,366 @@
 // Place your key bindings in this file to override the defaults
 [
-    // {
-    // "key": "alt+t",
-    // "command": "editor.action.addSelectionToNextFindMatch"
-    // },
     {
-        "key": "ctrl+alt+,",
-        "command": "workbench.action.openSettingsJson"
+        "command": "workbench.action.openSettingsJson",
+        "key": "ctrl+alt+,"
     },
     {
-        "key": "ctrl+alt+.",
-        "command": "workbench.action.openGlobalKeybindingsFile"
+        "command": "workbench.action.openGlobalKeybindingsFile",
+        "key": "ctrl+alt+."
     },
     {
+        "command": "workbench.action.showCommands",
+        "key": "alt+p"
+    },
+    {
+        "command": "workbench.action.closeQuickOpen",
         "key": "alt+p",
-        "command": "workbench.action.showCommands"
-    },
-    {
-        "key": "alt+p",
-        "command": "workbench.action.closeQuickOpen",
         "when": "inQuickOpen"
     },
     {
+        "command": "workbench.action.quickOpen",
+        "key": "alt+f"
+    },
+    {
+        "command": "workbench.action.closeQuickOpen",
         "key": "alt+f",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "alt+f",
-        "command": "workbench.action.closeQuickOpen",
         "when": "inQuickOpen"
     },
     {
-        "key": "alt+b",
-        "command": "workbench.action.showAllEditors"
+        "command": "workbench.action.showAllEditors",
+        "key": "alt+b"
     },
     {
-        "key": "alt+b",
         "command": "workbench.action.closeQuickOpen",
+        "key": "alt+b",
         "when": "inQuickOpen"
     },
     {
-        "key": "ctrl+n",
         "command": "workbench.action.quickOpenSelectNext",
+        "key": "ctrl+n",
         "when": "inQuickOpen"
     },
     {
-        "key": "ctrl+p",
         "command": "workbench.action.quickOpenSelectPrevious",
+        "key": "ctrl+p",
         "when": "inQuickOpen"
     },
     {
-        "key": "ctrl+n",
         "command": "selectNextSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "selectPrevSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
-    },
-    {
         "key": "ctrl+n",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
+    },
+    {
+        "command": "selectPrevSuggestion",
+        "key": "ctrl+p",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
+    },
+    {
         "command": "selectNextCodeAction",
+        "key": "ctrl+n",
         "when": " codeActionMenuVisible"
     },
     {
-        "key": "ctrl+p",
         "command": "selectPrevCodeAction",
+        "key": "ctrl+p",
         "when": "codeActionMenuVisible"
     },
     {
-        "key": "ctrl+c",
         "command": "workbench.action.closeQuickOpen",
+        "key": "ctrl+c",
         "when": "inQuickOpen"
     },
     {
-        "key": "shift+5",
         "command": "explorer.newFile",
+        "key": "shift+5",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "d",
         "command": "explorer.newFolder",
+        "key": "d",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "shift-r",
         "command": "renameFile",
+        "key": "shift-r",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "x",
         "command": "filesExplorer.cut",
+        "key": "x",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "y",
         "command": "filesExplorer.copy",
+        "key": "y",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
     },
     {
-        "key": "p",
         "command": "filesExplorer.paste",
+        "key": "p",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "shift-d",
         "command": "deleteFile",
+        "key": "shift-d",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "shift-t",
         "command": "moveFileToTrash",
+        "key": "shift-t",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "z m",
         "command": "workbench.files.action.collapseExplorerFolders",
+        "key": "z m",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
     {
-        "key": "/",
         "command": "list.find",
+        "key": "/",
         "when": "listFocus && listSupportsFind"
     },
     {
-        "key": "tab",
         "command": "togglePeekWidgetFocus",
+        "key": "tab",
         "when": "referenceSearchVisible && inReferenceSearchEditor || referenceSearchVisible  && !inReferenceSearchEditor"
     },
     {
-        "key": "escape",
         "command": "", // when in peek window editor, dont close
+        "key": "escape",
         "when": "inReferenceSearchEditor"
     },
     {
-        "key": "alt+shift+h",
-        "command": "workbench.action.decreaseViewWidth"
+        "command": "workbench.action.decreaseViewWidth",
+        "key": "alt+shift+h"
     },
     {
-        "key": "alt+shift+l",
-        "command": "workbench.action.increaseViewWidth"
+        "command": "workbench.action.increaseViewWidth",
+        "key": "alt+shift+l"
     },
     {
-        "key": "alt+shift+k",
-        "command": "workbench.action.decreaseViewHeight"
+        "command": "workbench.action.decreaseViewHeight",
+        "key": "alt+shift+k"
     },
     {
-        "key": "alt+shift+j",
-        "command": "workbench.action.increaseViewHeight"
+        "command": "workbench.action.increaseViewHeight",
+        "key": "alt+shift+j"
     },
     {
-        "key": "ctrl+/",
         "command": "workbench.action.toggleMaximizeEditorGroup",
+        "key": "ctrl+/",
         "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
     },
     {
-        "key": "ctrl+/",
         "command": "workbench.action.toggleModalEditorMaximized",
+        "key": "ctrl+/",
         "when": "editorPartModal"
     },
     {
-        "key": "ctrl+alt+m",
         "command": "workbench.action.movemain",
+        "key": "ctrl+alt+m",
         "when": "editorPartModal"
     },
     {
-        "key": "ctrl+m",
         "command": "workbench.action.moveModalEditorToMain",
+        "key": "ctrl+m",
         "when": "editorPartModal"
     },
     {
-        "key": "ctrl+c",
         "command": "closeReferenceSearch", // when in peek window editor, close
-        "when": "inReferenceSearchEditor"
+        "key": "q",
+        "when": "inReferenceSearchEditor || referenceSearchVisible"
     },
     {
-        "key": "ctrl+shift+space",
         "command": "editor.action.triggerParameterHints",
+        "key": "ctrl+s",
         "when": "editorHasSignatureHelpProvider && editorTextFocus && !parameterHintsVisible"
     },
     {
-        "key": "ctrl+shift+space",
         "command": "closeParameterHints",
+        "key": "ctrl+s",
         "when": "editorHasSignatureHelpProvider && editorTextFocus && parameterHintsVisible"
     },
     {
-        "key": "ctrl+n",
         "command": "showNextParameterHint",
+        "key": "ctrl+n",
         "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
     },
     {
-        "key": "ctrl+p",
         "command": "showPrevParameterHint",
+        "key": "ctrl+p",
         "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
     },
     {
-        "key": "alt+s alt+h",
         "command": "workbench.action.moveActiveEditorGroupLeft",
+        "key": "alt+s alt+h",
         "when": "editorFocus"
     },
     {
-        "key": "alt+s alt+l",
         "command": "workbench.action.moveActiveEditorGroupRight",
+        "key": "alt+s alt+l",
         "when": "editorFocus"
     },
     {
-        "key": "alt+s alt+j",
         "command": "workbench.action.moveActiveEditorGroupDown",
+        "key": "alt+s alt+j",
         "when": "editorFocus"
     },
     {
-        "key": "alt+s alt+k",
         "command": "workbench.action.moveActiveEditorGroupUp",
+        "key": "alt+s alt+k",
         "when": "editorFocus"
     },
     {
-        "key": "alt+m alt+h",
         "command": "workbench.action.moveEditorToLeftGroup",
+        "key": "alt+m alt+h",
         "when": "editorFocus"
     },
     {
-        "key": "alt+m alt+l",
         "command": "workbench.action.moveEditorToRightGroup",
+        "key": "alt+m alt+l",
         "when": "editorFocus"
     },
     {
-        "key": "alt+m alt+j",
         "command": "workbench.action.moveEditorToBelowGroup",
+        "key": "alt+m alt+j",
         "when": "editorFocus"
     },
     {
-        "key": "alt+m alt+k",
         "command": "workbench.action.moveEditorToAboveGroup",
+        "key": "alt+m alt+k",
         "when": "editorFocus"
     },
     {
-        "key": "tab",
         "command": "search.action.focusQueryEditorWidget",
+        "key": "tab",
         "when": "inSearchEditor"
     },
     {
-        "key": "shift+tab",
         "command": "search.action.focusNextSearchResult",
+        "key": "shift+tab",
         "when": "inSearchEditor"
     },
     {
-        "key": "ctrl+shift+q",
         "command": "workbench.view.explorer",
+        "key": "ctrl+shift+q",
         "when": "viewContainer.workbench.view.explorer.enabled"
     },
     {
-        "key": "ctrl+shift+g",
         "command": "workbench.view.scm",
+        "key": "ctrl+shift+g",
         "when": "workbench.scm.active"
     },
     {
-        "key": "ctrl+shift+u",
         "command": "cursorRedo",
+        "key": "ctrl+shift+u",
         "when": "textInputFocus"
     },
     {
+        "args": {
+            "by": "line",
+            "to": "down",
+            "value": 5
+        },
+        "command": "editorScroll",
         "key": "ctrl+e",
-        "command": "editorScroll",
-        "args": {
-            "to": "down",
-            "by": "line",
-            "value": 5
-        },
         "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
     },
     {
+        "args": {
+            "by": "line",
+            "to": "up",
+            "value": 5
+        },
+        "command": "editorScroll",
         "key": "ctrl+y",
-        "command": "editorScroll",
-        "args": {
-            "to": "up",
-            "by": "line",
-            "value": 5
-        },
         "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
     },
     {
-        "key": "ctrl+shift+e",
-        "command": "editorScroll",
         "args": {
+            "by": "line",
             "to": "down",
-            "by": "line",
             "value": 1
         },
-        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
-    },
-    {
-        "key": "ctrl+shift+y",
         "command": "editorScroll",
-        "args": {
-            "to": "up",
-            "by": "line",
-            "value": 1
-        },
+        "key": "ctrl+shift+e",
         "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
     },
     {
-        "key": "ctrl+;",
+        "args": {
+            "by": "line",
+            "to": "up",
+            "value": 1
+        },
+        "command": "editorScroll",
+        "key": "ctrl+shift+y",
+        "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine'"
+    },
+    {
         "command": "deleteAllRight",
+        "key": "ctrl+;",
         "when": "vim.mode == 'Insert'"
     },
     {
-        "key": "alt+j",
         "command": "editor.action.moveLinesDownAction",
+        "key": "alt+j",
         "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'VisualLine'"
     },
     {
-        "key": "alt+k",
         "command": "editor.action.moveLinesUpAction",
+        "key": "alt+k",
         "when": "vim.mode == 'Normal' || vim.mode == 'Insert' || vim.mode == 'VisualLine'"
     },
     {
-        "key": "ctrl+a",
         "command": "editor.action.addSelectionToNextFindMatch",
-        "when": "editorFocus"
+        "key": "ctrl+a",
+        "when": "editorFocus && vim.mode != 'Insert'"
     },
     {
-        "key": "ctrl+x",
         "command": "editor.action.addSelectionToPreviousFindMatch",
-        "when": "editorFocus"
+        "key": "ctrl+x",
+        "when": "editorFocus && vim.mode != 'Insert'"
     },
     {
-        "key": "ctrl+shift+a",
         "command": "editor.action.selectHighlights",
-        "when": "editorFocus"
+        "key": "ctrl+shift+a",
+        "when": "editorFocus && vim.mode != 'Insert'"
+    },
+    {
+        "command": "editor.action.scrollLeftHover",
+        "key": "h",
+        "when": "editorHoverFocused"
+    },
+    {
+        "command": "editor.action.scrollDownHover",
+        "key": "j",
+        "when": "editorHoverFocused"
+    },
+    {
+        "command": "editor.action.scrollUpHover",
+        "key": "k",
+        "when": "editorHoverFocused"
+    },
+    {
+        "command": "editor.action.scrollRightHover",
+        "key": "l",
+        "when": "editorHoverFocused"
+    },
+    {
+        "command": "editor.action.pageUpHover",
+        "key": "ctrl+u",
+        "when": "editorHoverFocused"
+    },
+    {
+        "command": "editor.action.pageDownHover",
+        "key": "ctrl+d",
+        "when": "editorHoverFocused"
     },
 ]
-// {
-//     "key": "[ r",
-//     "command": "goToPreviousReference",
-//     "when": "inReferenceSearchEditor || referenceSearchVisible"
-// },
-// ctrl+end = go to bottom file
-// ctrl+shift+end = previous + select content
-// end = go to end of line
-// shift+end = previous + select content
-// home = go to start of line
-// shift+home = previous + select content
-// pagedown = move cursor by a page down
-// shift+pagedown = previous + select it
-//  pageup = move cursor by a page up
-//  shift+pageup = previous + select content
-// ctrl+home = go to top of the file
-// shift+ctrl+home = previous + select content
-// delete = delete charater on the right
-//  ctrl+l = select current line and move cursor down
-// ctrl+z = undo
-// ctrl+y = redo
-// ctrl+up = move by 1 line up but dont move the cursor
-// ctrl+down = move by 1 line down but dont move the cursor
-// alt+pagedown = same as pagedown but without moving the cursor
-// alt+pageup = same as pageup but without moving the cursor
-// f2 = rename
-// f12 = reveal definition
-// f12 = go to next symbol from result
-// f4/f12 = go to next reference
-// shift+f4/f12 = go to previous reference
-// shift+f12 = go to references
-// ctrl+f12 = reveal definition
-// ctrl+f12 = go to implementation
-// ctrl+k f12 = reveal definition aside
-// ctrl+k ctrl+f12 = reveal definition aside
-// ctrl+shift+f10 = peek definition
-// ctrl+shift+f12 = peek implementation
-// ctrl+enter = open reference from peek in side tab
-// ctrl+k ctrl+i = show hover
-// ctrl+shift+o = go to symbol
-// ctrl+t = show all symbols in workspace
-// ctrl+u = move backword in history where cursor was, it also restores selection
-// ctrl+backspace = delete word backward
-// ctrl+delete = delete word infront
-// ctrl+d = selects the word under the cursor and next(same) words while pressing ctrl+d
-// ctrl+k ctrl+d = if you selected a bunch of words with ctrl+d, you can deselect current and select next with this one
-// ctrl+f2 = selects all entries under the cursor from the entire file
-// shift+alt+. = autofix
-// ctrl+/ = comment line
-// ctrl+shift+a = block comment(multiline, like /* */ but language specific)
-// ctrl+c = copy line
-// ctrl+x = delete line
-// ctrl+v = paste line
-// ctrl+shift+alt+down = copies current line downwards
-// ctrl+shift+alt+up = copies current line upwards
-// alt+f3 = next dirty diff(git, when you are in file, not git side by side)
-// shift+alt+f3 = previous dirty diff(git, when you are in file, not git side by side)
-// alt+f5 = next git change in git diff
-// shift+alt+f5 = previous change in git diff
-// ctrl+shift+i = format document
-// ctrl+k ctrl+f = format selection
-// ctrl+] = indent lines
-// ctrl+[ = outdent lines
-// alt+] = show next inline suggestion (ai ?)
-// alt+[ = show previous inline suggestion (ai ?)
-// ctrl+right = accept next inline suggest word (ai ?)
-// ctrl+shift+up = insert 1 cursor above
-// ctrl+shift+down = insert 1 cursor below
-// shift+alt+up = insert 1 cursor above
-// shift+alt+down = insert 1 cursor down
-// shift+alt+i = inserts cursor at the end of each line in selected text
-// ctrl+enter = insert line below current and moves cursor to it
-// ctrl+shift+enter = inserts line above current and moves cursor to it
-// ctrl+shift+\ = jump to matching brackets
-// alt+f8 = next marker(diagnostic, same file)
-// shift+alt+f8 = previous marker(diagnostic, same file)
-// f8 = next marker(diagnostic, all opened files)
-// shift+f8 = previous marker(diagnostic, all opened files)
-// alt+up = move line up
-// alt+down = move line down
-// shift+alt+o = organize imports
-// ctrl+. = code action
-// ctrl+shift+r = refactor
-// ctrl+alt+backspace = remove brackets
-// shift+alt+right = smart select expand
-// shift+alt+left = smart select shrink
-// ctrl+h = find+replace
-// ctrl+m = removes tab focus mode
-// alt+z = toggle word wrap
-// ctrl+k ctrl+x = trim trailing whitespace
-// f7 = next entry of highlighted word (if its turned off in settings, it wont work)
-// shift+f7 = previous entry of highlighted word
-// ctrl+shift+[ = fold
-// ctrl+shift+] = unfold
-// ctrl+shift+f = open search editor
-// f4 = go to next search entry
-// shift+f4 = go to previous search entry
 // alt+c = toggle case in find widget
 // alt+l = toggle find in selection in find widget
 // alt+r = toggle regexp in find widget
 // alt+w = toggle find whole word in find widget
 // alt+p = toggle preserve case in find widget
-// ctrl+shift+l = add cursor at end of each entry from find widget
-// down = show next paramter hint (if there are overloads, you can switch between them)
-// up = show previoous paraamter hint
-// alt+down = show next parameter hint
-// alt+up = show previous parameter hint
-// pagedown = show next page suggestion completions
-// pageup = show previous page suggestion completions
-// ctrl+shift+; = focus breadcrumbs
-// ctrl+shift+. = focus and select breadcrumbs
-// ctrl+enter/space = reveal focused
-// shift+alt+h = show call hierarchy and a bunch of other utilities related
-// f3 = find files in explorer
-// ctrl+alt+r = reveal file in folder
-// ctrl+k p = copy path of active file
-// ctrl+n = new untitled file
-// ctrl+shift+n = new window
-// ctrl+r = open recent
-// ctrl+o = open new file/folder from
-// ctrl+k r = reveal active file in folder
-// ctrl+shift+s = save as
-// ctrl+k s = save without formatting
-// ctrl+g = go to N number
-// ctrl+k ctrl+q = go to last edit location
 // ctrl+shift+t = reopen last closed editor
-// ctrl+shift+h = find&replacel tool
-// ctrl+p = show all files in workspace
-// ctrl+k ctrl+p = show all opened files
-// ctrl+shift+p = open commands
-// ctrl+\ = split editor vertically
-// ctrl+k ctrl+\ = split editor horizontally
-// ctrl+k ctrl+m = maximize editor
 // ctrl+shift+m = show problems of projects(diagnostic)
-// ctrl+alt+i = open AI chat
