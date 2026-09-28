@@ -57,7 +57,8 @@
             "space r b i": "git::UnstageAll",
             "space r h": "git::Restore",
             "space g b b": "git::Switch",
-            "space g i d": "git::Diff",
+            "space g s t": "git::ViewUnstagedChanges",
+            "space g s s": "git::ViewStagedChanges",
         },
     },
     {
@@ -254,6 +255,12 @@
         "context": "RecentProjects || (RecentProjects > Picker > Editor)",
         "bindings": {
             "ctrl-x ctrl-x": "recent_projects::RemoveSelected",
+        },
+    },
+    {
+        "context": "!Editor && !Terminal",
+        "bindings": {
+            "ctrl-w q": "pane::CloseActiveItem",
         },
     },
 ]
