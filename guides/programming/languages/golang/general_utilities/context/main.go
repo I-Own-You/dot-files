@@ -130,7 +130,7 @@ func processHandler(w http.ResponseWriter, r *http.Request) {
 	done := make(chan struct{})
 	go func() {
 		defer close(done)
-		
+
 		for i := 1; i <= 10; i++ {
 			select {
 			case <-ctx.Done():
@@ -179,7 +179,7 @@ func processHandler(w http.ResponseWriter, r *http.Request) {
 //       "myKey" is safe to access in different goroutines,
 // 	     myMap is NOT, you should make it safe with synching, .etc.
 //
-//    2. use custom types for keys to avoid collisions: 
+//    2. use custom types for keys to avoid collisions:
 //
 //		 type myPrivate string
 //		 const a myPrivate = "myKey"
