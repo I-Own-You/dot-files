@@ -189,6 +189,11 @@
         "body": "close(${1:ch})",
         "description": "Create buffered channel"
     },
+    "struct empty value": {
+        "prefix": "ss",
+        "body": "struct{}{}",
+        "description": "Create buffered channel"
+    },
     "json decode": {
         "prefix": "jd",
         "body": "if err := json.NewDecoder(${1:r.Body}).Decode(&${2:v}); err != nil {\n\treturn $3\n}",
