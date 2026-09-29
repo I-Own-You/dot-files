@@ -175,12 +175,12 @@
         "description": "Create buffered channel"
     },
     "chanel receiver/consumer": {
-        "prefix": "chr",
+        "prefix": "chp",
         "body": "${1:ch} <- ${2:value}",
         "description": "Create buffered channel"
     },
     "chanel producer": {
-        "prefix": "chp",
+        "prefix": "chr",
         "body": "<- ${1:ch}",
         "description": "Create buffered channel"
     },
