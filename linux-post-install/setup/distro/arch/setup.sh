@@ -42,7 +42,7 @@ sudo pacman -S
                npm tree-sitter tree-sitter-cli
 paru 
      # gui apps
-     google-chrome-stable-bin xnviewmp spotify vicinae-bin visual-studio-code-bin
+     google-chrome-stable-bin xnviewmp spotify vicinae-bin visual-studio-code-bin dbflux
 
 # install apps from their website
 # telegram
