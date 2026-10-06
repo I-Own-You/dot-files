@@ -348,12 +348,22 @@
     },
     {
         "command": "editor.action.pageUpHover",
-        "key": "ctrl+u",
+        "key": "u",
         "when": "editorHoverFocused"
     },
     {
         "command": "editor.action.pageDownHover",
-        "key": "ctrl+d",
+        "key": "d",
+        "when": "editorHoverFocused"
+    },
+    {
+        "command": "editor.action.goToTopHover",
+        "key": "g",
+        "when": "editorHoverFocused"
+    },
+    {
+        "command": "editor.action.goToBottomHover",
+        "key": "shift-g",
         "when": "editorHoverFocused"
     },
     {
