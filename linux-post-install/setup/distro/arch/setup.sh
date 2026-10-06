@@ -26,7 +26,7 @@ ln -sf "$HOME/dot-files/ides/vscode/tasks.json" "$HOME/.config/Code/User/tasks.j
 ln -sf "$HOME/dot-files/ides/vscode/snippets" "$HOME/.config/Code/User/snippets"
 ln -sf "$HOME/dot-files/ides/vscode/product.json" "$HOME/.config/VSCodium/product.json"
 ln -sf "$HOME/dot-files/ides/vscode/settings.json" "$HOME/.config/VSCodium/User/settings.json"
-ln -sf "$HOME/dot-files/ides/vscode/keybindings.json" "$HOME/.config/VSCodiumtUser/keybindings.json"
+ln -sf "$HOME/dot-files/ides/vscode/keybindings.json" "$HOME/.config/VSCodium/User/keybindings.json"
 ln -sf "$HOME/dot-files/ides/vscode/tasks.json" "$HOME/.config/VSCodium/User/tasks.json"
 ln -sf "$HOME/dot-files/ides/vscode/snippets" "$HOME/.config/VSCodium/User/snippets"
 ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/btop.desktop" "$HOME/.local/share/applications/btop.desktop"
