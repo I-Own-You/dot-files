@@ -480,6 +480,38 @@
                 "x"
             ]
         },
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "s",
+            ],
+            "commands": [
+                "projectManager.saveProject"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "l",
+                "c"
+            ],
+            "commands": [
+                "projectManager.listProjects"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "l",
+                "n"
+            ],
+            "commands": [
+                "projectManager.listProjectsNewWindow"
+            ]
+        },
     ],
     "vim.useCtrlKeys": true,
     //
