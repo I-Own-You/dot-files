@@ -88,6 +88,7 @@
     //
     "git.decorations.enabled": false,
     "git.suggestSmartCommit": false,
+    "git.confirmSync": false,
     //
     "gitlab.duo.enabledWithoutGitlabProject": false,
     "gitlab.duoChat.enabled": false,
