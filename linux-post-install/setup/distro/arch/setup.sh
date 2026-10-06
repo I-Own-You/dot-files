@@ -24,6 +24,11 @@ ln -sf "$HOME/dot-files/ides/vscode/settings.json" "$HOME/.config/Code/User/sett
 ln -sf "$HOME/dot-files/ides/vscode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
 ln -sf "$HOME/dot-files/ides/vscode/tasks.json" "$HOME/.config/Code/User/tasks.json"
 ln -sf "$HOME/dot-files/ides/vscode/snippets" "$HOME/.config/Code/User/snippets"
+ln -sf "$HOME/dot-files/ides/vscode/product.json" "$HOME/.config/VSCodium/product.json"
+ln -sf "$HOME/dot-files/ides/vscode/settings.json" "$HOME/.config/VSCodium/User/settings.json"
+ln -sf "$HOME/dot-files/ides/vscode/keybindings.json" "$HOME/.config/VSCodiumtUser/keybindings.json"
+ln -sf "$HOME/dot-files/ides/vscode/tasks.json" "$HOME/.config/VSCodium/User/tasks.json"
+ln -sf "$HOME/dot-files/ides/vscode/snippets" "$HOME/.config/VSCodium/User/snippets"
 ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/btop.desktop" "$HOME/.local/share/applications/btop.desktop"
 ln -sf "$HOME/dot-files/linux-post-install/setup/utility/mime_applications/google-chrome.desktop" "$HOME/.local/share/applications/google-chrome.desktop"
 sudo ln -sf "$HOME/dot-files/keybindings-related/keyd/default.conf" /etc/keyd/default.conf
