@@ -356,6 +356,11 @@
         "key": "ctrl+d",
         "when": "editorHoverFocused"
     },
+    {
+        "command": "editor.action.insertLineBefore",
+        "key": "shift+enter",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Insert'"
+    },
 ]
 // alt+c = toggle case in find widget
 // alt+l = toggle find in selection in find widget
