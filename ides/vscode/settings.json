@@ -21,13 +21,13 @@
     "[snippets]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    //
-    "accessibility.underlineLinks": true,
+    // "accessibility.underlineLinks": true,
     "chat.disableAIFeatures": true,
     "chat.tips.enabled": false,
     "editor.bracketPairColorization.enabled": true,
     "editor.cursorBlinking": "solid",
     "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorSurroundingLines": 3,
     "editor.detectIndentation": false,
     "editor.fontFamily": "CommitMono",
     "editor.fontLigatures": true,
