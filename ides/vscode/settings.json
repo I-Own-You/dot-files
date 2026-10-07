@@ -29,7 +29,7 @@
     "editor.cursorBlinking": "solid",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.detectIndentation": false,
-    "editor.fontFamily": "CommitMono Nerd Font Mono",
+    "editor.fontFamily": "CommitMono",
     "editor.fontLigatures": true,
     "editor.fontSize": 17,
     "editor.formatOnSave": true,
@@ -86,9 +86,9 @@
     //
     "files.insertFinalNewline": true,
     //
+    "git.confirmSync": false,
     "git.decorations.enabled": false,
     "git.suggestSmartCommit": false,
-    "git.confirmSync": false,
     //
     "gitlab.duo.enabledWithoutGitlabProject": false,
     "gitlab.duoChat.enabled": false,
