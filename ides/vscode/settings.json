@@ -584,7 +584,7 @@
     "workbench.editor.editorActionsLocation": "hidden",
     "workbench.editor.enablePreview": false,
     "workbench.editor.showTabs": "none",
-    "workbench.editor.useModal": "some",
+    "workbench.editor.useModal": "off",
     //
     "workbench.iconTheme": "material-icon-theme",
     "workbench.sideBar.location": "right",
