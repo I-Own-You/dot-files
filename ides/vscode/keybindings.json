@@ -13,6 +13,11 @@
         "key": "alt+p"
     },
     {
+        "command": "workbench.action.showCommands",
+        "key": "shift+alt+p",
+        "when": "editorPartModal" // workaround since somehow alt+p doenst work in modal mode
+    },
+    {
         "command": "workbench.action.closeQuickOpen",
         "key": "alt+p",
         "when": "inQuickOpen"
@@ -48,12 +53,12 @@
     {
         "command": "selectNextSuggestion",
         "key": "ctrl+n",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
+        "when": "editorPartModalVisible || suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
     },
     {
         "command": "selectPrevSuggestion",
         "key": "ctrl+p",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion && !supermaven-view.visible"
+        "when": "editorPartModalVisible || suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
     },
     {
         "command": "selectNextCodeAction",
