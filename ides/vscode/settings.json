@@ -103,9 +103,15 @@
     "go.formatTool": "custom",
     "go.lintFlags": [
         "--path-mode=abs",
-        "--fast-only"
+        // "--fast-only" // removed because it makes golangcilint race and not run linters (probaby weal pc, idk)
     ],
     "go.lintTool": "golangci-lint-v2",
+    // i will keep this just in case the above stops working
+    // "go.lintOnSave": "package",
+    // "go.lintTool": "golangci-lint-v2",
+    // "go.lintFlags": [
+    //     "--path-mode=abs"
+    // ],
     "gopls": {
         "ui.semanticTokens": true
     },
