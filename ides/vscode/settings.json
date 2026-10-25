@@ -585,7 +585,7 @@
             "focusBorder": "#00ACC1"
         }
     },
-    "workbench.colorTheme": "Islands Dark",
+    "workbench.colorTheme": "Min Dark", // Islands Dark
     "workbench.editor.centeredLayoutAutoResize": true,
     "workbench.editor.editorActionsLocation": "hidden",
     "workbench.editor.enablePreview": false,

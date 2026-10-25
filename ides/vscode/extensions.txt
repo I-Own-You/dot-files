@@ -21,3 +21,4 @@ ritwickdey.liveserver
 shd101wyy.markdown-preview-enhanced
 usernamehw.errorlens
 vscodevim.vim
+miguelsolorio.min-theme
