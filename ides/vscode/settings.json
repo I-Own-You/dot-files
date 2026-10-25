@@ -583,6 +583,12 @@
             "editorCursor.foreground": "#2F81F7",
             "editorGroup.border": "#00ACC1",
             "focusBorder": "#00ACC1"
+        },
+        "[Min Dark]": {
+            "editorCursor.background": "#FAF8F9",
+            "editorCursor.foreground": "#2F81F7",
+            "editorGroup.border": "#00ACC1",
+            "focusBorder": "#00ACC1",
         }
     },
     "workbench.colorTheme": "Min Dark", // Islands Dark
