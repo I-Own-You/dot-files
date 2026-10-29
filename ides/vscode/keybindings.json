@@ -257,11 +257,6 @@
         "when": "workbench.scm.active"
     },
     {
-        "command": "cursorRedo",
-        "key": "ctrl+shift+u",
-        "when": "textInputFocus"
-    },
-    {
         "args": {
             "by": "line",
             "to": "down",
