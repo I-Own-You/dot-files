@@ -22,7 +22,7 @@
 # magenta-400 "#CE5D97" ma
 
 [app]
-overall = { bg = "#100F0F" } # bg
+overall = { bg = "#1e1f22" } # bg
 
 [mgr]
 cwd = { fg = "#CECDC3", bold = true } # tx
