@@ -25,4 +25,4 @@ offset = { x = 0, y = 0 }
 save_to_clipboard = true
 
 [colors]
-cursor = { text = "CellBackground", cursor = "#fbb829" }
+cursor = { text = "CellBackground", cursor = "#50fa7b" }
