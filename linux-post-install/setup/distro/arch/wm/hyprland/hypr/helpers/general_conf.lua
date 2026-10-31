@@ -1,5 +1,6 @@
 hl.config({
     -- its a fix for opengl issues with 0.57 version of hyprland, remove this when upgrade pc
+    -- when you updated hyprland remove and try without this
 	quirks = {
 		skip_non_kms_dmabuf_formats = false,
 	},
