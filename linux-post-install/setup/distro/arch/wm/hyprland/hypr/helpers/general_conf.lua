@@ -24,6 +24,7 @@ hl.config({
 		layout = "dwindle",
 	},
 
+    -- when upgra pc, look into blur, window wobble
 	decoration = {
 		rounding = 5,
 		rounding_power = 2,
