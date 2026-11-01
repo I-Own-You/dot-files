@@ -1,18 +1,23 @@
 [Desktop Entry]
 Version=1.0
 Name=Google Chrome
-Exec=/usr/bin/google-chrome-stable --enable-gpu-rasterization --enable-zero-copy %U
+GenericName=Web Browser
+StartupWMClass=Google-chrome
+Exec=/usr/bin/google-chrome-stable --ozone-platform=wayland --enable-gpu-rasterization --enable-zero-copy %U
+StartupNotify=true
 Terminal=false
 Icon=google-chrome
 Type=Application
 Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/google-chrome;
 Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=/usr/bin/google-chrome
+StartupWMClass=Google-chrome
+Exec=/usr/bin/google-chrome-stable --ozone-platform=wayland --enable-gpu-rasterization --enable-zero-copy
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
-Exec=/usr/bin/google-chrome --incognito
+StartupWMClass=Google-chrome
+Exec=/usr/bin/google-chrome-stable --ozone-platform=wayland --enable-gpu-rasterization --enable-zero-copy --incognito
