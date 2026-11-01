@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=Google Chrome
-Exec=/usr/bin/google-chrome --enable-gpu-rasterization --enable-zero-copy %U
+Exec=/usr/bin/google-chrome-stable --enable-gpu-rasterization --enable-zero-copy %U
 Terminal=false
 Icon=google-chrome
 Type=Application
