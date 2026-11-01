@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+# when you upgrade your pc, recheck all setttings and turn off optimizations you made for your old laptop
+
 # create folders
 mkdir -p "$HOME/.config" "$HOME/Pictures" "$HOME/from_source" "$HOME/sync_files" "$HOME/Apps"
 sudo mkdir -p /etc/keyd
