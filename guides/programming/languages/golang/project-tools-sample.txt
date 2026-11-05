@@ -1,0 +1,65 @@
+1. envs:                            https://github.com/joho/godotenv
+
+2. db migration:                    https://github.com/pressly/goose
+
+3. db:
+        1. sqlc -                   https://github.com/sqlc-dev/sqlc (go code gen from sql)
+        2. postgres driver -        https://github.com/jackc/pgx
+        
+4. observability:
+                    1. logging -    log/slog (go std package)
+                    2. monitoring:
+                        1. Prometheus - for metrics (Grafana visualization for this)
+                        2. Sentry - errors / traces
+                        3. find something for performance monitoring
+                        
+
+5. linting:                         https://github.com/golangci/golangci-lint
+
+6. hot-relaod:                      https://github.com/air-verse/air
+
+7. build tool:                      
+                1. just -           https://github.com/casey/just (like cmake)
+                2. mise -           https://github.com/jdx/mise   (package version control mainly)
+                
+8. valiation:                       build myself
+
+9. testing:                         testing, httptest (go std packag)
+
+10. backend:                        golang
+
+11. frontend:                       svelte, native css
+
+12. deployment:                     docker
+
+13. front/back communcation: grpc through https://connectrpc.com/
+
+14. security:
+                1. csrf - middleware
+                2. cors - middleware (but i dont really need it since both svelte/go is on the same origin)
+                3. csp - middleware
+                4. password hashing - argon2 / bcrypt
+                5. rate limiting
+                6. file validations
+
+15. authentication: session cookies
+
+16. authorization: build yourself
+
+17. background/scheduled/queue tasks: https://github.com/hibiken/asynq or async(if you use redis as cache)
+
+18. cache: https://github.com/maypok86/otter
+
+19: user uploads: s3 / cdn
+
+20: statis assets: go embedding
+
+21: internationalization: https://github.com/nicksnyder/go-i18n
+
+22: progressive and continuous updates: sse + https://github.com/coder/websocket
+
+23: voice: need to find out
+
+24: errors: global/local middlewares
+
+25: email: https://pkg.go.dev/github.com/emersion/go-smtp (for inbound i need a provided (not yet))
