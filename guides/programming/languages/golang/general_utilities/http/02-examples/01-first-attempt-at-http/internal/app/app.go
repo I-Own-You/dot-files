@@ -5,8 +5,15 @@ package app
 // you only have app := app.New(), app.Run()
 
 import (
+	"context"
+	"errors"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"example.com/test/internal/api/users"
 	"example.com/test/internal/config"
@@ -14,9 +21,7 @@ import (
 )
 
 type App struct {
-	mux         *http.ServeMux
-	server      *http.Server
-	middlewares http.Handler
+	mux *http.ServeMux
 }
 
 func New() *App {
@@ -31,37 +36,55 @@ func (app *App) Routes() {
 	usersRepo := users.NewRepository()
 	usersService := users.NewService(usersRepo)
 	usersHandler := users.NewHandler(usersService)
-
 	users.Routes(app.mux, usersHandler)
 }
 
-func (app *App) Middlewares() {
-	handler := middleware.Recovery(app.mux)
-	handler = middleware.RequestID(handler)
-	handler = middleware.Logging(handler)
+func (app *App) Run() error {
+	server := app.cfgSrv()
 
-	app.middlewares = handler
-}
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
 
-func (app *App) Run() {
-	app.serverConfig()
+	errCh := make(chan error, 1)
+	go func() {
+		if err := server.ListenAndServe(); !errors.Is(err, http.ErrServerClosed) {
+			errCh <- err
+		}
+	}()
 
-	if err := app.server.ListenAndServe(); err != nil {
-		log.Fatal(err)
+	select {
+	case err := <-errCh:
+		return fmt.Errorf("some error: %w", err)
+	case <-ctx.Done():
+		stop()
 	}
+
+	shutDownCtx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(shutDownCtx); err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			_ = server.Close()
+		}
+		fmt.Errorf("shutdown %w", err)
+	}
+
+	log.Println("server closed successfully")
+	return nil
+
 }
 
-func (app *App) serverConfig() {
-	cfg := config.LoadServerConfig()
+func (app *App) cfgSrv() *http.Server {
+	cfg := config.LoadSrvCfg()
 
 	server := &http.Server{
-		Addr:    cfg.HTTPAddr,
-		Handler: app.mux,
+		Addr: cfg.HTTPAddr,
+		Handler: middleware.Chain(app.mux,
+			middleware.Recovery,
+			middleware.RequestID,
+			middleware.Logging,
+		),
 	}
 
-	if handler := app.middlewares; handler != nil {
-		server.Handler = handler
-	}
-
-	app.server = server
+	return server
 }

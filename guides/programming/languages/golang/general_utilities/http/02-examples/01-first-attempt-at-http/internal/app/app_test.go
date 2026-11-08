@@ -10,12 +10,11 @@ import (
 func TestUserCreate(t *testing.T) {
 	app := New()
 
-	app.Middlewares()
 	app.Routes()
-	app.serverConfig()
+	srvCfg := app.cfgSrv()
 
-	server := httptest.NewServer(app.server.Handler)
-	server.Config.Addr = app.server.Addr
+	server := httptest.NewServer(srvCfg.Handler)
+	server.Config.Addr = srvCfg.Addr
 	defer server.Close()
 
 	resp, err := http.Post(server.URL+"/users", "application/json", strings.NewReader(`{"name": "Ana"}`))

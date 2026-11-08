@@ -14,16 +14,16 @@ import "os"
 //
 //    this is usually done if config.go gets really big
 
-type ServerConfig struct {
+type SrvCfg struct {
 	HTTPAddr string
 }
 
-type UserConfig struct {
+type UsrCfg struct {
 	// to be done
 }
 
-func LoadServerConfig() ServerConfig {
-	return ServerConfig{
+func LoadSrvCfg() SrvCfg {
+	return SrvCfg{
 		HTTPAddr: os.Getenv("HTTP_ADDR"),
 	}
 }
