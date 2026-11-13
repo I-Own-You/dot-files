@@ -259,6 +259,29 @@ load_plugins {
 web_client {
     font "monospace"
 }
+
+terminal {
+    font "CommitMono Nerd Font Mono"
+    font_size 15
+    font_weight "regular"
+    ligatures false
+    line_height 1.0
+    cell_width 1.0
+    padding 0.0
+    padding_top 0
+    opacity 0.5
+    blur true
+    cursor_style "block"
+    cursor_blink false
+    cursor_unfocused_hollow true
+    copy_keys "Ctrl Shift c"
+    paste_keys "Ctrl Shift v"
+    fullscreen_keys 
+    zoom_in_keys "Ctrl ="
+    zoom_out_keys "Ctrl -"
+    zoom_reset_keys "Ctrl 0"
+    smooth_scrolling true
+}
  
 // Use a simplified UI without special fonts (arrow glyphs)
 // Options:
