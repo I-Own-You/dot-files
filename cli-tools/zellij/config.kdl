@@ -262,7 +262,7 @@ web_client {
 
 terminal {
     font "CommitMono Nerd Font Mono"
-    font_size 16
+    font_size 15
     font_weight "regular"
     ligatures false
     line_height 1.0
